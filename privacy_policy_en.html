@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - kAIboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-bottom: 1px solid #ecf0f1;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #7f8c8d;
+            margin-top: 20px;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        .important {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .contact-box {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Privacy Policy - kAIboard</h1>
+
+<p><strong>Last updated:</strong> January 14, 2026</p>
+<p><strong>Version:</strong> 2.0</p>
+
+<div class="highlight">
+    <strong>📱 kAIboard</strong> is an Android keyboard with AI-powered translation features. This Privacy Policy explains what data we collect, how we use it, and your rights under the General Data Protection Regulation (GDPR - EU Regulation 2016/679).
+</div>
+
+<h2>1. Data Controller</h2>
+
+<div class="contact-box">
+    <p><strong>Name:</strong> Alessandro Faedda</p>
+    <p><strong>Email:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+    <p><strong>Type:</strong> Individual (independent developer)</p>
+</div>
+
+<p>Alessandro Faedda is the data controller for personal data collected through the kAIboard app.</p>
+
+<h2>2. What Data We Collect</h2>
+
+<p>kAIboard is designed following the principle of <strong>data minimization</strong>. We only collect data strictly necessary for the app to function.</p>
+
+<h3>2.1 Automatically Collected Data</h3>
+
+<table>
+    <tr>
+        <th>Data</th>
+        <th>Type</th>
+        <th>Purpose</th>
+        <th>Legal Basis</th>
+    </tr>
+    <tr>
+        <td><strong>Anonymous Device ID</strong></td>
+        <td>Pseudonymous identifier generated locally</td>
+        <td>Restore purchased tokens on new devices</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Token Balance</strong></td>
+        <td>Integer number</td>
+        <td>Backup purchased translation credits</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Purchase History</strong></td>
+        <td>Product ID, purchase date, order ID</td>
+        <td>Verify purchases and prevent fraud</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Text to Translate</strong></td>
+        <td>Text content</td>
+        <td>Real-time translation</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
+    </tr>
+</table>
+
+<h3>2.2 Data Stored Locally Only (On Device)</h3>
+
+<p>The following data <strong>is NEVER sent to external servers</strong>:</p>
+
+<ul>
+    <li>✅ <strong>App preferences and settings</strong></li>
+    <li>✅ <strong>Language assigned to each contact</strong> (contact ID + language code)</li>
+    <li>✅ <strong>Typed words</strong> for personalized suggestions (max 14 days, then automatically deleted)</li>
+    <li>✅ <strong>Translation cache</strong> (RAM only, lost when app closes)</li>
+</ul>
+
+<div class="important">
+    <strong>⚠️ IMPORTANT:</strong> kAIboard accesses your contacts ONLY to display contact names in the language management interface. <strong>Phone numbers and contact names are NEVER sent to our servers.</strong>
+</div>
+
+<h3>2.3 Data We DO NOT Collect</h3>
+
+<p>kAIboard <strong>DOES NOT collect</strong>:</p>
+
+<ul>
+    <li>❌ Message history</li>
+    <li>❌ Complete chat content</li>
+    <li>❌ Phone numbers</li>
+    <li>❌ Contact email addresses</li>
+    <li>❌ Precise geographic location</li>
+    <li>❌ Biometric data</li>
+</ul>
+
+<h2>3. How We Use Your Data</h2>
+
+<h3>3.1 Real-Time Translation</h3>
+
+<p>When you use the translation feature:</p>
+
+<ol>
+    <li>The text you type is sent to our Cloudflare Worker server (secure relay)</li>
+    <li>The Worker forwards the text to OpenAI for translation</li>
+    <li>The translation is returned to the app</li>
+    <li><strong>⚠️ IMPORTANT: The text is NEVER saved on our servers or OpenAI</strong> (transit only in memory)</li>
+</ol>
+
+<h3>3.2 Token Backup and Restore</h3>
+
+<p>Purchased tokens are saved on Firebase (Google Cloud) to allow you to:</p>
+
+<ul>
+    <li>✅ Restore tokens if you reinstall the app</li>
+    <li>✅ Sync tokens across multiple devices</li>
+    <li>✅ Keep your balance even after changing phones</li>
+</ul>
+
+<h3>3.3 Purchase Verification</h3>
+
+<p>Purchase history is saved to:</p>
+
+<ul>
+    <li>✅ Verify in-app purchase validity</li>
+    <li>✅ Prevent fraud and abuse</li>
+    <li>✅ Handle refunds and disputes with Google Play</li>
+</ul>
+
+<h2>4. Where We Send Your Data</h2>
+
+<h3>4.1 Third-Party Services</h3>
+
+<table>
+    <tr>
+        <th>Service</th>
+        <th>Data Sent</th>
+        <th>Purpose</th>
+        <th>Location</th>
+    </tr>
+    <tr>
+        <td><strong>Firebase (Google)</strong></td>
+        <td>Anonymous ID, token balance, purchase history</td>
+        <td>Backup and synchronization</td>
+        <td>EU (European servers)</td>
+    </tr>
+    <tr>
+        <td><strong>Cloudflare Worker</strong></td>
+        <td>Text to translate (transit only)</td>
+        <td>Secure relay for translation</td>
+        <td>EU (European servers)</td>
+    </tr>
+    <tr>
+        <td><strong>OpenAI</strong></td>
+        <td>Text to translate (transit only)</td>
+        <td>Translation processing</td>
+        <td>USA (with Standard Contractual Clauses)</td>
+    </tr>
+    <tr>
+        <td><strong>Google Play Billing</strong></td>
+        <td>Order ID, purchased product</td>
+        <td>In-app purchase management</td>
+        <td>EU (Google servers)</td>
+    </tr>
+</table>
+
+<h3>4.2 Transfers Outside the EU</h3>
+
+<p>Text to be translated is sent to OpenAI (USA) for processing. The transfer is based on:</p>
+
+<ul>
+    <li>✅ Standard Contractual Clauses (SCC) approved by the European Commission</li>
+    <li>✅ OpenAI's public Privacy Policy stating that API data is not used for training</li>
+    <li>✅ Temporary transit: text is NOT stored (0 seconds storage)</li>
+</ul>
+
+<p><strong>⚠️ IMPORTANT:</strong> kAIboard uses OpenAI as a translation service provider via API.
+    Although OpenAI publicly states that API data is not used for training,
+    we do not have a formal Data Processing Agreement (DPA) with OpenAI.
+    We recommend avoiding translation of highly sensitive information (health, financial, legal data).</p>
+
+<p><strong>References:</strong></p>
+<ul>
+    <li><a href="https://openai.com/privacy" target="_blank">OpenAI Privacy Policy</a></li>
+    <li><a href="https://openai.com/enterprise-privacy" target="_blank">OpenAI API Data Usage Policy</a></li>
+    <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Cloudflare Privacy Policy</a></li>
+</ul>
+
+<h2>5. How Long We Keep Your Data</h2>
+
+<h3>5.1 Automatic Retention Policy</h3>
+
+<table>
+    <tr>
+        <th>Data Type</th>
+        <th>Retention Period</th>
+        <th>Deletion</th>
+    </tr>
+    <tr>
+        <td><strong>Token Backup (Firebase)</strong></td>
+        <td>365 days of inactivity</td>
+        <td>Automatic + manual deletion</td>
+    </tr>
+    <tr>
+        <td><strong>Purchase History (Firebase)</strong></td>
+        <td>365 days from purchase</td>
+        <td>Automatic + manual deletion</td>
+    </tr>
+    <tr>
+        <td><strong>Local Data (Device)</strong></td>
+        <td>Until uninstall</td>
+        <td>App uninstall + manual deletion</td>
+    </tr>
+    <tr>
+        <td><strong>Learned Words (Prediction)</strong></td>
+        <td>14 days (automatic decay)</td>
+        <td>Automatic + manual deletion</td>
+    </tr>
+    <tr>
+        <td><strong>Translated Text</strong></td>
+        <td>0 seconds (NEVER saved)</td>
+        <td>Automatic (memory transit only)</td>
+    </tr>
+    <tr>
+        <td><strong>Translation Cache (RAM)</strong></td>
+        <td>Until app closes</td>
+        <td>Automatic</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🗑️ AUTOMATIC CLEANUP:</strong> The app automatically performs cleanup every 24 hours. Data older than 365 days is automatically deleted, even if you no longer use the app.
+</div>
+
+<h2>6. Your Rights (GDPR)</h2>
+
+<p>Under the GDPR, you have the following rights:</p>
+
+<h3>6.1 Right of Access (Art. 15 GDPR)</h3>
+<p>You can request a copy of all data we hold about you.</p>
+
+<h3>6.2 Right to Rectification (Art. 16 GDPR)</h3>
+<p>You can correct inaccurate or incomplete data.</p>
+
+<h3>6.3 Right to Erasure (Art. 17 GDPR)</h3>
+<p>You can delete all your data at any time through the <strong>Privacy screen</strong> in the app:</p>
+
+<ul>
+    <li>✅ <strong>Delete cloud data</strong>: Removes token backup and purchase history from Firebase</li>
+    <li>✅ <strong>Delete learning data</strong>: Removes learned words for suggestions</li>
+    <li>✅ <strong>Delete all local data</strong>: Removes all preferences and data on device</li>
+</ul>
+
+<h3>6.4 Right to Data Portability (Art. 20 GDPR)</h3>
+<p>You can request your data in a structured, machine-readable format.</p>
+
+<h3>6.5 Right to Object (Art. 21 GDPR)</h3>
+<p>You can object to data processing for legitimate reasons.</p>
+
+<h3>6.6 Right to Lodge a Complaint</h3>
+<p>You can file a complaint with the competent supervisory authority:</p>
+
+<ul>
+    <li><strong>Germany:</strong> Bundesbeauftragter für den Datenschutz und die Informationsfreiheit (BfDI) - <a href="https://www.bfdi.bund.de">www.bfdi.bund.de</a></li>
+    <li><strong>Italy:</strong> Garante per la protezione dei dati personali - <a href="https://www.garanteprivacy.it">www.garanteprivacy.it</a></li>
+</ul>
+
+<h2>7. How to Exercise Your Rights</h2>
+
+<h3>7.1 Deletion Through App (Immediate)</h3>
+
+<p><strong>Path:</strong> Settings → Privacy & Security</p>
+
+<ol>
+    <li><strong>Delete cloud data</strong>: Token backup + purchase history (irreversible)</li>
+    <li><strong>Delete learning data</strong>: Learned words (11 languages)</li>
+    <li><strong>Delete all local data</strong>: All preferences (restarts app)</li>
+</ol>
+
+<h3>7.2 Request via Email</h3>
+
+<p>To exercise other rights, write to: <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+
+<p>We will respond within <strong>30 days</strong> of your request (Art. 12 GDPR).</p>
+
+<h2>8. Data Security</h2>
+
+<p>We implement technical and organizational measures to protect your data:</p>
+
+<ul>
+    <li>🔒 <strong>Encryption in transit</strong>: HTTPS/TLS 1.3 for all communications</li>
+    <li>🔒 <strong>Encryption at rest</strong>: Firebase uses AES-256 encryption</li>
+    <li>🔒 <strong>Firebase Security Rules</strong>: Access limited to data owner only</li>
+    <li>🔒 <strong>Pseudonymous ID</strong>: No direct personal data (name, email, phone)</li>
+    <li>🔒 <strong>Data minimization</strong>: We only collect what's strictly necessary</li>
+    <li>🔒 <strong>Automatic deletion</strong>: Data deleted after 365 days of inactivity</li>
+</ul>
+
+<h2>9. Android Permissions Required</h2>
+
+<table>
+    <tr>
+        <th>Permission</th>
+        <th>Purpose</th>
+        <th>Mandatory</th>
+    </tr>
+    <tr>
+        <td><strong>Contacts</strong></td>
+        <td>Assign language to each contact for automatic keyboard switching</td>
+        <td>❌ No (optional)</td>
+    </tr>
+    <tr>
+        <td><strong>Accessibility</strong></td>
+        <td>Detect active chat app to automatically change language</td>
+        <td>❌ No (optional)</td>
+    </tr>
+    <tr>
+        <td><strong>Notifications</strong></td>
+        <td>Quick replies from lockscreen with correct language</td>
+        <td>❌ No (optional)</td>
+    </tr>
+    <tr>
+        <td><strong>Microphone</strong></td>
+        <td>Voice dictation (recording only when you press microphone button)</td>
+        <td>❌ No (optional)</td>
+    </tr>
+    <tr>
+        <td><strong>Internet</strong></td>
+        <td>Real-time translation and cloud backup</td>
+        <td>✅ Yes (for translation features)</td>
+    </tr>
+</table>
+
+<div class="important">
+    <strong>⚠️ SECURITY NOTE:</strong> Android's security warning for keyboards is standard for all third-party keyboards, it does not mean kAIboard reads or saves your messages. You can verify the source code or contact us for more information.
+</div>
+
+<h2>10. Crash Reports (Optional)</h2>
+
+<p>kAIboard can send anonymous crash reports to Firebase Crashlytics <strong>ONLY if you explicitly enable the option</strong>.</p>
+
+<h3>What Crash Reports Include:</h3>
+
+<ul>
+    <li>✅ Stack trace (error path in code)</li>
+    <li>✅ App version and operating system</li>
+    <li>✅ Device model</li>
+    <li>✅ Runtime information (memory, CPU)</li>
+</ul>
+
+<h3>What They DO NOT Include:</h3>
+
+<ul>
+    <li>❌ Typed text</li>
+    <li>❌ Chat content</li>
+    <li>❌ Contact names</li>
+    <li>❌ Messages</li>
+</ul>
+
+<p><strong>Legal basis:</strong> Explicit consent (Art. 6.1.a GDPR)</p>
+
+<p><strong>How to disable:</strong> Settings → Crash reports (optional) → Disable</p>
+
+<h2>11. Minors</h2>
+
+<p>kAIboard is not intended for children under 13 years of age. We do not knowingly collect data from minors. If you are a parent and discover that your child has provided data, contact us to delete it.</p>
+
+<h2>12. Changes to Privacy Policy</h2>
+
+<p>We may update this Privacy Policy periodically. We will notify you of any substantial changes through:</p>
+
+<ul>
+    <li>📧 Email (if provided)</li>
+    <li>📱 In-app notification</li>
+    <li>🌐 Updated date at the top of this document</li>
+</ul>
+
+<p>Continued use of the app after changes constitutes acceptance of the new Privacy Policy.</p>
+
+<h2>13. Contact</h2>
+
+<div class="contact-box">
+    <p>For questions, GDPR requests, or reports:</p>
+    <p><strong>Email:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+    <p><strong>Response time:</strong> Within 30 days (Art. 12 GDPR)</p>
+</div>
+
+<h2>14. Legal Basis for Processing</h2>
+
+<p>Processing of your data is based on:</p>
+
+<ul>
+    <li><strong>Art. 6.1.b GDPR</strong> - Contract performance: Token backup, purchase history, translation</li>
+    <li><strong>Art. 6.1.a GDPR</strong> - Consent: Crash reports (optional)</li>
+    <li><strong>Art. 6.1.f GDPR</strong> - Legitimate interest: Fraud prevention, security</li>
+</ul>
+
+<p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
+    <strong>Version 2.0 - Last updated: January 14, 2026</strong><br>
+    © 2026 Alessandro Faedda - kAIboard
+</p>
+
+</body>
+</html>
