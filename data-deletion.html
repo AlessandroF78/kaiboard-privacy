@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Deletion - kAIboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1a1a1a;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        h2 {
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #34495e;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .intro {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            margin: 25px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-left: 4px solid #ffc107;
+            margin: 25px 0;
+        }
+        .info-box {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 25px 0;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 15px;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px 10px 10px 0;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Deletion Policy</h1>
+        
+        <div class="intro">
+            <p><strong>kAIboard</strong> respects your right to data deletion under GDPR Article 17 (Right to Erasure). You can delete your personal data at any time, either directly through the app or by contacting us via email.</p>
+        </div>
+
+        <h2>Method 1: In-App Deletion (Immediate)</h2>
+        
+        <p>The fastest way to delete your data is directly through the app:</p>
+        
+        <ol>
+            <li>Open <strong>kAIboard</strong> on your Android device</li>
+            <li>Navigate to <strong>Settings</strong></li>
+            <li>Select <strong>Privacy & Security</strong></li>
+            <li>Choose one of the three deletion options</li>
+        </ol>
+
+        <h3>Available Deletion Options</h3>
+        
+        <table>
+            <tr>
+                <th>Option</th>
+                <th>What Gets Deleted</th>
+                <th>Effect</th>
+            </tr>
+            <tr>
+                <td><strong>Delete Cloud Data</strong></td>
+                <td>Token balance and purchase history stored in Firebase</td>
+                <td>Irreversible. You will lose your token balance.</td>
+            </tr>
+            <tr>
+                <td><strong>Delete Learning Data</strong></td>
+                <td>Learned words for personalized suggestions (all 11 languages)</td>
+                <td>Predictive text will restart from scratch.</td>
+            </tr>
+            <tr>
+                <td><strong>Delete All Local Data</strong></td>
+                <td>All preferences, settings, and local data</td>
+                <td>App will restart with default settings.</td>
+            </tr>
+        </table>
+
+        <p><strong>Processing Time:</strong> Immediate (0-5 seconds)</p>
+
+        <h2>Method 2: Email Request</h2>
+
+        <p>If you prefer assistance or have questions about data deletion, you can contact us via email:</p>
+
+        <div class="info-box">
+            <p><strong>Email:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+            <p><strong>Subject:</strong> "GDPR Data Deletion Request"</p>
+            <p><strong>Information to Include:</strong></p>
+            <ul>
+                <li>Device ID (if known) or device description</li>
+                <li>Type of data you wish to delete (cloud, learning data, or all)</li>
+                <li>Confirmation of your identity (for security purposes)</li>
+            </ul>
+            <p><strong>Response Time:</strong> Maximum 30 days (as required by GDPR Article 12)</p>
+        </div>
+
+        <h2>Automatic Data Deletion</h2>
+
+        <p>kAIboard includes automated data cleanup mechanisms to protect your privacy:</p>
+
+        <table>
+            <tr>
+                <th>Data Type</th>
+                <th>Retention Period</th>
+                <th>Details</th>
+            </tr>
+            <tr>
+                <td>Cloud Data (Firebase)</td>
+                <td>365 days of inactivity</td>
+                <td>Automatically deleted after one year without app usage</td>
+            </tr>
+            <tr>
+                <td>Learned Words</td>
+                <td>Indefinite with decay</td>
+                <td>Frequency scores decrease over time; unused words eventually removed</td>
+            </tr>
+            <tr>
+                <td>Translation Cache</td>
+                <td>Session only</td>
+                <td>Stored in RAM only; deleted when app closes</td>
+            </tr>
+            <tr>
+                <td>Translation Text</td>
+                <td>Never stored</td>
+                <td>0 seconds storage; transit only to OpenAI API</td>
+            </tr>
+        </table>
+
+        <h2>Data Inventory</h2>
+
+        <p>The following table details all data collected by kAIboard and how to delete it:</p>
+
+        <table>
+            <tr>
+                <th>Data Type</th>
+                <th>Storage Location</th>
+                <th>Deletion Method</th>
+            </tr>
+            <tr>
+                <td>Anonymous Device ID</td>
+                <td>Firebase (cloud)</td>
+                <td>"Delete Cloud Data" button</td>
+            </tr>
+            <tr>
+                <td>Token Balance</td>
+                <td>Firebase (cloud)</td>
+                <td>"Delete Cloud Data" button</td>
+            </tr>
+            <tr>
+                <td>Purchase History</td>
+                <td>Firebase (cloud)</td>
+                <td>"Delete Cloud Data" button</td>
+            </tr>
+            <tr>
+                <td>Learned Words (Predictions)</td>
+                <td>Local (device)</td>
+                <td>"Delete Learning Data" button</td>
+            </tr>
+            <tr>
+                <td>App Preferences</td>
+                <td>Local (device)</td>
+                <td>"Delete All Local Data" button</td>
+            </tr>
+            <tr>
+                <td>Contact Language Assignments</td>
+                <td>Local (device)</td>
+                <td>"Delete All Local Data" button</td>
+            </tr>
+            <tr>
+                <td>Translation Text</td>
+                <td>Never stored</td>
+                <td>No action required (0 seconds retention)</td>
+            </tr>
+        </table>
+
+        <h2>Non-Deletable Data</h2>
+
+        <p>For legal and technical reasons, certain data cannot be immediately deleted:</p>
+
+        <ul>
+            <li><strong>Google Play Transactions:</strong> Managed by Google according to their policies (for refund requests, fraud prevention, and tax compliance)</li>
+            <li><strong>Anonymous System Logs:</strong> Retained for up to 90 days for debugging purposes (contain no personally identifiable information)</li>
+        </ul>
+
+        <h2>Consequences of Data Deletion</h2>
+
+        <div class="warning">
+            <p><strong>Important Notice:</strong> Deletion of certain data is <strong>irreversible</strong>. Please ensure you understand the consequences before proceeding:</p>
+            <ul>
+                <li><strong>Delete Cloud Data:</strong> You will lose your token balance and will NOT be able to recover it, even after reinstalling the app</li>
+                <li><strong>Delete Learning Data:</strong> Personalized text predictions will restart from scratch</li>
+                <li><strong>Delete All Local Data:</strong> All preferences and settings will be lost</li>
+            </ul>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>What happens if I delete cloud data?</h3>
+        <p>You will lose your token balance and purchase history. If you reinstall the app, you will start from zero.</p>
+
+        <h3>Can I delete only specific data?</h3>
+        <p>Yes. You can choose to delete only cloud data, only learning data, or all data together.</p>
+
+        <h3>Are my translated messages saved?</h3>
+        <p>No. Text you type for translation is <strong>never saved</strong>. It is sent to OpenAI only for translation processing and immediately discarded (0 seconds retention).</p>
+
+        <h3>How long does data deletion take?</h3>
+        <p>In-app deletion is <strong>immediate</strong> (0-5 seconds). Email requests are processed within 30 days.</p>
+
+        <h3>Can I recover data after deletion?</h3>
+        <p>No. Deletion is <strong>irreversible</strong>. Please ensure you want to delete your data before proceeding.</p>
+
+        <h2>Additional Resources</h2>
+
+        <p>
+            <a href="https://alessandrof78.github.io/kaiboard-privacy/" class="button">Read Full Privacy Policy</a>
+            <a href="mailto:support@kaiboard.eu" class="button">Contact Support</a>
+        </p>
+
+        <div class="footer">
+            <p><strong>Version 1.0 - Last Updated: January 17, 2026</strong></p>
+            <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
+            <p>Compliant with GDPR (EU Regulation 2016/679)</p>
+        </div>
+    </div>
+</body>
+</html>
