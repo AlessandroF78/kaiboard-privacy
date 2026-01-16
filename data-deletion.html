@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kAIboard - Data Deletion Policy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .lang-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .lang-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .flag {
+            font-size: 24px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #ecf0f1;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .language-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🔐</div>
+        <h1>kAIboard</h1>
+        <p class="subtitle">Data Deletion Policy - Select your language</p>
+
+        <div class="language-grid">
+            <a href="data-deletion_en.html" class="lang-button">
+                <span class="flag">🇬🇧</span>
+                <span>English</span>
+            </a>
+
+            <a href="data-deletion_de.html" class="lang-button">
+                <span class="flag">🇩🇪</span>
+                <span>Deutsch</span>
+            </a>
+
+            <a href="data-deletion_it.html" class="lang-button">
+                <span class="flag">🇮🇹</span>
+                <span>Italiano</span>
+            </a>
+
+            <a href="data-deletion_es.html" class="lang-button">
+                <span class="flag">🇪🇸</span>
+                <span>Español</span>
+            </a>
+
+            <a href="data-deletion_fr.html" class="lang-button">
+                <span class="flag">🇫🇷</span>
+                <span>Français</span>
+            </a>
+
+            <a href="data-deletion_pt.html" class="lang-button">
+                <span class="flag">🇵🇹</span>
+                <span>Português</span>
+            </a>
+
+            <a href="data-deletion_nl.html" class="lang-button">
+                <span class="flag">🇳🇱</span>
+                <span>Nederlands</span>
+            </a>
+
+            <a href="data-deletion_pl.html" class="lang-button">
+                <span class="flag">🇵🇱</span>
+                <span>Polski</span>
+            </a>
+
+            <a href="data-deletion_tr.html" class="lang-button">
+                <span class="flag">🇹🇷</span>
+                <span>Türkçe</span>
+            </a>
+
+            <a href="data-deletion_ru.html" class="lang-button">
+                <span class="flag">🇷🇺</span>
+                <span>Русский</span>
+            </a>
+
+            <a href="data-deletion_uk.html" class="lang-button">
+                <span class="flag">🇺🇦</span>
+                <span>Українська</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p><strong>Version 1.0</strong> - Last updated: January 17, 2026</p>
+            <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
+            <p>
+                <a href="https://www.kaiboard.eu" target="_blank">www.kaiboard.eu</a> | 
+                <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
