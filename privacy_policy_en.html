@@ -142,6 +142,15 @@
     <li>✅ <strong>Translation cache</strong> (RAM only, lost when app closes)</li>
 </ul>
 
+<div class="highlight">
+    <strong>📌 PERFORMANCE CACHE:</strong> To avoid lag when switching between conversations,
+    kAIboard remembers which language you use with your most frequent contacts (~25-30).
+    This cache stays on your device and uses less than 1 MB of storage.
+    It is kept until app uninstall or manual deletion via the "Delete all local data" button.
+    This extended retention is necessary to ensure a smooth experience without 1-3 second delays
+    every time you switch chats.
+</div>
+
 <div class="important">
     <strong>⚠️ IMPORTANT:</strong> kAIboard accesses your contacts ONLY to display contact names in the language management interface. <strong>Phone numbers and contact names are NEVER sent to our servers.</strong>
 </div>
@@ -181,6 +190,14 @@
     <li>✅ Sync tokens across multiple devices</li>
     <li>✅ Keep your balance even after changing phones</li>
 </ul>
+
+<div class="important">
+    <strong>⚠️ GOOGLE ACCOUNT REQUIREMENT:</strong> Token restoration across multiple devices
+    works ONLY if all devices use the same Google Play account with which you made the
+    purchases. This requirement is enforced by the Google Play Billing API for security
+    reasons and to prevent fraud. If you change your Google account, you will need to
+    repurchase tokens on the new account.
+</div>
 
 <h3>3.3 Purchase Verification</h3>
 
@@ -275,6 +292,11 @@
         <td><strong>Local Data (Device)</strong></td>
         <td>Until uninstall</td>
         <td>App uninstall + manual deletion</td>
+    </tr>
+    <tr>
+        <td><strong>Contact Language Cache (Device)</strong></td>
+        <td>Until manual deletion or app uninstall</td>
+        <td>Button "Delete all local data"</td>
     </tr>
     <tr>
         <td><strong>Learned Words (Prediction)</strong></td>
