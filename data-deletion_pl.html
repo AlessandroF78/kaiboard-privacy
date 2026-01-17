@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuwanie Danych - kAIboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1a1a1a;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        h2 {
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #34495e;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .intro {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            margin: 25px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-left: 4px solid #ffc107;
+            margin: 25px 0;
+        }
+        .info-box {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 25px 0;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 15px;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px 10px 10px 0;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Polityka Usuwania Danych</h1>
+        
+        <div class="intro">
+            <p><strong>kAIboard</strong> szanuje Twoje prawo do usunięcia danych zgodnie z Artykułem 17 RODO (Prawo do Usunięcia). Możesz usunąć swoje dane osobowe w dowolnym momencie, bezpośrednio przez aplikację lub kontaktując się z nami e-mailem.</p>
+        </div>
+
+        <h2>Metoda 1: Usuwanie w Aplikacji (Natychmiastowe)</h2>
+        
+        <p>Najszybszym sposobem usunięcia danych jest bezpośrednio przez aplikację:</p>
+        
+        <ol>
+            <li>Otwórz <strong>kAIboard</strong> na urządzeniu Android</li>
+            <li>Przejdź do <strong>Ustawień</strong></li>
+            <li>Wybierz <strong>Prywatność i Bezpieczeństwo</strong></li>
+            <li>Wybierz jedną z trzech opcji usuwania</li>
+        </ol>
+
+        <h3>Dostępne Opcje Usuwania</h3>
+        
+        <table>
+            <tr>
+                <th>Opcja</th>
+                <th>Co Zostanie Usunięte</th>
+                <th>Efekt</th>
+            </tr>
+            <tr>
+                <td><strong>Usuń Dane w Chmurze</strong></td>
+                <td>Saldo tokenów i historia zakupów przechowywana w Firebase</td>
+                <td>Nieodwracalne. Stracisz saldo tokenów.</td>
+            </tr>
+            <tr>
+                <td><strong>Usuń Dane Uczenia</strong></td>
+                <td>Nauczone słowa dla spersonalizowanych sugestii (wszystkie 11 języków)</td>
+                <td>Tekst predykcyjny zacznie od nowa.</td>
+            </tr>
+            <tr>
+                <td><strong>Usuń Wszystkie Dane Lokalne</strong></td>
+                <td>Wszystkie preferencje, ustawienia i dane lokalne</td>
+                <td>Aplikacja uruchomi się ponownie z domyślnymi ustawieniami.</td>
+            </tr>
+        </table>
+
+        <p><strong>Czas Przetwarzania:</strong> Natychmiastowy (0-5 sekund)</p>
+
+        <h2>Metoda 2: Prośba E-mailowa</h2>
+
+        <p>Jeśli wolisz pomoc lub masz pytania dotyczące usuwania danych, możesz skontaktować się z nami e-mailem:</p>
+
+        <div class="info-box">
+            <p><strong>E-mail:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+            <p><strong>Temat:</strong> "Prośba o Usunięcie Danych RODO"</p>
+            <p><strong>Informacje do Podania:</strong></p>
+            <ul>
+                <li>ID urządzenia (jeśli znane) lub opis urządzenia</li>
+                <li>Typ danych, które chcesz usunąć (chmura, dane uczenia lub wszystkie)</li>
+                <li>Potwierdzenie tożsamości (ze względów bezpieczeństwa)</li>
+            </ul>
+            <p><strong>Czas Odpowiedzi:</strong> Maksymalnie 30 dni (zgodnie z wymogiem Artykułu 12 RODO)</p>
+        </div>
+
+        <h2>Automatyczne Usuwanie Danych</h2>
+
+        <p>kAIboard zawiera automatyczne mechanizmy czyszczenia danych w celu ochrony prywatności:</p>
+
+        <table>
+            <tr>
+                <th>Typ Danych</th>
+                <th>Okres Przechowywania</th>
+                <th>Szczegóły</th>
+            </tr>
+            <tr>
+                <td>Dane w Chmurze (Firebase)</td>
+                <td>365 dni braku aktywności</td>
+                <td>Automatycznie usuwane po roku bez korzystania z aplikacji</td>
+            </tr>
+            <tr>
+                <td>Nauczone Słowa</td>
+                <td>Bezterminowo z degradacją</td>
+                <td>Wyniki częstotliwości maleją z czasem; nieużywane słowa są usuwane</td>
+            </tr>
+            <tr>
+                <td>Pamięć Podręczna Tłumaczeń</td>
+                <td>Tylko sesja</td>
+                <td>Przechowywane tylko w RAM; usuwane przy zamknięciu aplikacji</td>
+            </tr>
+            <tr>
+                <td>Tekst Tłumaczenia</td>
+                <td>Nigdy nie przechowywany</td>
+                <td>0 sekund przechowywania; tylko tranzyt do API OpenAI</td>
+            </tr>
+        </table>
+
+        <h2>Inwentarz Danych</h2>
+
+        <p>Poniższa tabela szczegółowo przedstawia wszystkie dane zbierane przez kAIboard i sposób ich usunięcia:</p>
+
+        <table>
+            <tr>
+                <th>Typ Danych</th>
+                <th>Lokalizacja Przechowywania</th>
+                <th>Metoda Usuwania</th>
+            </tr>
+            <tr>
+                <td>Anonimowe ID Urządzenia</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk "Usuń Dane w Chmurze"</td>
+            </tr>
+            <tr>
+                <td>Saldo Tokenów</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk "Usuń Dane w Chmurze"</td>
+            </tr>
+            <tr>
+                <td>Historia Zakupów</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk "Usuń Dane w Chmurze"</td>
+            </tr>
+            <tr>
+                <td>Nauczone Słowa (Predykcje)</td>
+                <td>Lokalnie (urządzenie)</td>
+                <td>Przycisk "Usuń Dane Uczenia"</td>
+            </tr>
+            <tr>
+                <td>Preferencje Aplikacji</td>
+                <td>Lokalnie (urządzenie)</td>
+                <td>Przycisk "Usuń Wszystkie Dane Lokalne"</td>
+            </tr>
+            <tr>
+                <td>Przypisania Języków Kontaktów</td>
+                <td>Lokalnie (urządzenie)</td>
+                <td>Przycisk "Usuń Wszystkie Dane Lokalne"</td>
+            </tr>
+            <tr>
+                <td>Tekst Tłumaczenia</td>
+                <td>Nigdy nie przechowywany</td>
+                <td>Nie jest wymagane żadne działanie (0 sekund przechowywania)</td>
+            </tr>
+        </table>
+
+        <h2>Dane Niemożliwe do Usunięcia</h2>
+
+        <p>Ze względów prawnych i technicznych niektóre dane nie mogą zostać natychmiast usunięte:</p>
+
+        <ul>
+            <li><strong>Transakcje Google Play:</strong> Zarządzane przez Google zgodnie z ich polityką (w celu obsługi próśb o zwrot, zapobiegania oszustwom i zgodności podatkowej)</li>
+            <li><strong>Anonimowe Dzienniki Systemowe:</strong> Przechowywane do 90 dni w celach debugowania (nie zawierają informacji umożliwiających identyfikację osoby)</li>
+        </ul>
+
+        <h2>Konsekwencje Usunięcia Danych</h2>
+
+        <div class="warning">
+            <p><strong>Ważne Powiadomienie:</strong> Usunięcie niektórych danych jest <strong>nieodwracalne</strong>. Upewnij się, że rozumiesz konsekwencje przed kontynuowaniem:</p>
+            <ul>
+                <li><strong>Usuń Dane w Chmurze:</strong> Stracisz saldo tokenów i NIE będziesz mógł go odzyskać, nawet po ponownej instalacji aplikacji</li>
+                <li><strong>Usuń Dane Uczenia:</strong> Spersonalizowane predykcje tekstu zaczną od nowa</li>
+                <li><strong>Usuń Wszystkie Dane Lokalne:</strong> Wszystkie preferencje i ustawienia zostaną utracone</li>
+            </ul>
+        </div>
+
+        <h2>Często Zadawane Pytania</h2>
+
+        <h3>Co się stanie, jeśli usunę dane w chmurze?</h3>
+        <p>Stracisz saldo tokenów i historię zakupów. Jeśli ponownie zainstalujesz aplikację, zaczniesz od zera.</p>
+
+        <h3>Czy mogę usunąć tylko określone dane?</h3>
+        <p>Tak. Możesz wybrać usunięcie tylko danych w chmurze, tylko danych uczenia lub wszystkich danych razem.</p>
+
+        <h3>Czy moje przetłumaczone wiadomości są zapisywane?</h3>
+        <p>Nie. Tekst, który wpiszesz do tłumaczenia, <strong>nigdy nie jest zapisywany</strong>. Jest wysyłany do OpenAI tylko w celu przetworzenia tłumaczenia i natychmiast usuwany (0 sekund przechowywania).</p>
+
+        <h3>Jak długo trwa usuwanie danych?</h3>
+        <p>Usuwanie w aplikacji jest <strong>natychmiastowe</strong> (0-5 sekund). Prośby e-mailowe są przetwarzane w ciągu 30 dni.</p>
+
+        <h3>Czy mogę odzyskać dane po usunięciu?</h3>
+        <p>Nie. Usunięcie jest <strong>nieodwracalne</strong>. Upewnij się, że chcesz usunąć swoje dane przed kontynuowaniem.</p>
+
+        <h2>Dodatkowe Zasoby</h2>
+
+        <p>
+            <a href="https://alessandrof78.github.io/kaiboard-privacy/" class="button">Przeczytaj Pełną Politykę Prywatności</a>
+            <a href="mailto:support@kaiboard.eu" class="button">Skontaktuj się z Pomocą Techniczną</a>
+        </p>
+
+        <div class="footer">
+            <p><strong>Wersja 1.0 - Ostatnia Aktualizacja: 17 stycznia 2026</strong></p>
+            <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
+            <p>Zgodne z RODO (Rozporządzenie UE 2016/679)</p>
+        </div>
+    </div>
+</body>
+</html>

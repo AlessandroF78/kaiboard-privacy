@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veri Silme - kAIboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1a1a1a;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        h2 {
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #34495e;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .intro {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            margin: 25px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-left: 4px solid #ffc107;
+            margin: 25px 0;
+        }
+        .info-box {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 25px 0;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 15px;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px 10px 10px 0;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Veri Silme Politikası</h1>
+        
+        <div class="intro">
+            <p><strong>kAIboard</strong>, GDPR Madde 17 (Silinme Hakkı) uyarınca veri silme hakkınıza saygı duyar. Kişisel verilerinizi istediğiniz zaman doğrudan uygulama üzerinden veya bize e-posta göndererek silebilirsiniz.</p>
+        </div>
+
+        <h2>Yöntem 1: Uygulama İçi Silme (Anında)</h2>
+        
+        <p>Verilerinizi silmenin en hızlı yolu doğrudan uygulama üzerinden:</p>
+        
+        <ol>
+            <li>Android cihazınızda <strong>kAIboard</strong>'u açın</li>
+            <li><strong>Ayarlar</strong>'a gidin</li>
+            <li><strong>Gizlilik ve Güvenlik</strong>'i seçin</li>
+            <li>Üç silme seçeneğinden birini seçin</li>
+        </ol>
+
+        <h3>Mevcut Silme Seçenekleri</h3>
+        
+        <table>
+            <tr>
+                <th>Seçenek</th>
+                <th>Ne Silinir</th>
+                <th>Etki</th>
+            </tr>
+            <tr>
+                <td><strong>Bulut Verilerini Sil</strong></td>
+                <td>Firebase'de saklanan jeton bakiyesi ve satın alma geçmişi</td>
+                <td>Geri alınamaz. Jeton bakiyenizi kaybedersiniz.</td>
+            </tr>
+            <tr>
+                <td><strong>Öğrenme Verilerini Sil</strong></td>
+                <td>Kişiselleştirilmiş öneriler için öğrenilen kelimeler (tüm 11 dil)</td>
+                <td>Tahmin metni sıfırdan başlayacak.</td>
+            </tr>
+            <tr>
+                <td><strong>Tüm Yerel Verileri Sil</strong></td>
+                <td>Tüm tercihler, ayarlar ve yerel veriler</td>
+                <td>Uygulama varsayılan ayarlarla yeniden başlayacak.</td>
+            </tr>
+        </table>
+
+        <p><strong>İşlem Süresi:</strong> Anında (0-5 saniye)</p>
+
+        <h2>Yöntem 2: E-posta İle Talep</h2>
+
+        <p>Yardım isterseniz veya veri silme hakkında sorularınız varsa, bize e-posta ile ulaşabilirsiniz:</p>
+
+        <div class="info-box">
+            <p><strong>E-posta:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+            <p><strong>Konu:</strong> "GDPR Veri Silme Talebi"</p>
+            <p><strong>Eklenecek Bilgiler:</strong></p>
+            <ul>
+                <li>Cihaz kimliği (biliniyorsa) veya cihaz açıklaması</li>
+                <li>Silmek istediğiniz veri türü (bulut, öğrenme verileri veya tümü)</li>
+                <li>Kimlik doğrulama (güvenlik nedeniyle)</li>
+            </ul>
+            <p><strong>Yanıt Süresi:</strong> Maksimum 30 gün (GDPR Madde 12'nin gerektirdiği şekilde)</p>
+        </div>
+
+        <h2>Otomatik Veri Silme</h2>
+
+        <p>kAIboard, gizliliğinizi korumak için otomatik veri temizleme mekanizmaları içerir:</p>
+
+        <table>
+            <tr>
+                <th>Veri Türü</th>
+                <th>Saklama Süresi</th>
+                <th>Detaylar</th>
+            </tr>
+            <tr>
+                <td>Bulut Verileri (Firebase)</td>
+                <td>365 gün hareketsizlik</td>
+                <td>Uygulamayı bir yıl kullanmadıktan sonra otomatik olarak silinir</td>
+            </tr>
+            <tr>
+                <td>Öğrenilen Kelimeler</td>
+                <td>Süresiz bozulma ile</td>
+                <td>Sıklık puanları zamanla azalır; kullanılmayan kelimeler kaldırılır</td>
+            </tr>
+            <tr>
+                <td>Çeviri Önbelleği</td>
+                <td>Yalnızca oturum</td>
+                <td>Yalnızca RAM'de saklanır; uygulama kapandığında silinir</td>
+            </tr>
+            <tr>
+                <td>Çeviri Metni</td>
+                <td>Hiçbir zaman saklanmaz</td>
+                <td>0 saniye saklama; yalnızca OpenAI API'sine geçiş</td>
+            </tr>
+        </table>
+
+        <h2>Veri Envanteri</h2>
+
+        <p>Aşağıdaki tablo, kAIboard tarafından toplanan tüm verileri ve bunların nasıl silineceğini detaylandırır:</p>
+
+        <table>
+            <tr>
+                <th>Veri Türü</th>
+                <th>Depolama Konumu</th>
+                <th>Silme Yöntemi</th>
+            </tr>
+            <tr>
+                <td>Anonim Cihaz Kimliği</td>
+                <td>Firebase (bulut)</td>
+                <td>"Bulut Verilerini Sil" düğmesi</td>
+            </tr>
+            <tr>
+                <td>Jeton Bakiyesi</td>
+                <td>Firebase (bulut)</td>
+                <td>"Bulut Verilerini Sil" düğmesi</td>
+            </tr>
+            <tr>
+                <td>Satın Alma Geçmişi</td>
+                <td>Firebase (bulut)</td>
+                <td>"Bulut Verilerini Sil" düğmesi</td>
+            </tr>
+            <tr>
+                <td>Öğrenilen Kelimeler (Tahminler)</td>
+                <td>Yerel (cihaz)</td>
+                <td>"Öğrenme Verilerini Sil" düğmesi</td>
+            </tr>
+            <tr>
+                <td>Uygulama Tercihleri</td>
+                <td>Yerel (cihaz)</td>
+                <td>"Tüm Yerel Verileri Sil" düğmesi</td>
+            </tr>
+            <tr>
+                <td>Kişi Dil Atamaları</td>
+                <td>Yerel (cihaz)</td>
+                <td>"Tüm Yerel Verileri Sil" düğmesi</td>
+            </tr>
+            <tr>
+                <td>Çeviri Metni</td>
+                <td>Hiçbir zaman saklanmaz</td>
+                <td>İşlem gerekmez (0 saniye saklama)</td>
+            </tr>
+        </table>
+
+        <h2>Silinemeyen Veriler</h2>
+
+        <p>Yasal ve teknik nedenlerle, bazı veriler hemen silinemez:</p>
+
+        <ul>
+            <li><strong>Google Play İşlemleri:</strong> Google tarafından politikalarına göre yönetilir (iade talepleri, dolandırıcılık önleme ve vergi uyumluluğu için)</li>
+            <li><strong>Anonim Sistem Günlükleri:</strong> Hata ayıklama amaçları için 90 güne kadar saklanır (kişisel olarak tanımlanabilir bilgi içermez)</li>
+        </ul>
+
+        <h2>Veri Silmenin Sonuçları</h2>
+
+        <div class="warning">
+            <p><strong>Önemli Uyarı:</strong> Bazı verilerin silinmesi <strong>geri alınamaz</strong>. Devam etmeden önce sonuçları anladığınızdan emin olun:</p>
+            <ul>
+                <li><strong>Bulut Verilerini Sil:</strong> Jeton bakiyenizi kaybedersiniz ve uygulamayı yeniden yükledikten sonra bile geri alamazsınız</li>
+                <li><strong>Öğrenme Verilerini Sil:</strong> Kişiselleştirilmiş metin tahminleri sıfırdan başlayacak</li>
+                <li><strong>Tüm Yerel Verileri Sil:</strong> Tüm tercihler ve ayarlar kaybolacak</li>
+            </ul>
+        </div>
+
+        <h2>Sıkça Sorulan Sorular</h2>
+
+        <h3>Bulut verilerini silersem ne olur?</h3>
+        <p>Jeton bakiyenizi ve satın alma geçmişinizi kaybedersiniz. Uygulamayı yeniden yüklerseniz, sıfırdan başlarsınız.</p>
+
+        <h3>Yalnızca belirli verileri silebilir miyim?</h3>
+        <p>Evet. Yalnızca bulut verilerini, yalnızca öğrenme verilerini veya tüm verileri birlikte silmeyi seçebilirsiniz.</p>
+
+        <h3>Çevrilen mesajlarım kaydediliyor mu?</h3>
+        <p>Hayır. Çeviri için yazdığınız metin <strong>hiçbir zaman kaydedilmez</strong>. Yalnızca çeviri işleme için OpenAI'ye gönderilir ve hemen atılır (0 saniye saklama).</p>
+
+        <h3>Veri silme ne kadar sürer?</h3>
+        <p>Uygulama içi silme <strong>anında</strong>dır (0-5 saniye). E-posta talepleri 30 gün içinde işlenir.</p>
+
+        <h3>Silme işleminden sonra verileri kurtarabilir miyim?</h3>
+        <p>Hayır. Silme işlemi <strong>geri alınamaz</strong>. Devam etmeden önce verilerinizi silmek istediğinizden emin olun.</p>
+
+        <h2>Ek Kaynaklar</h2>
+
+        <p>
+            <a href="https://alessandrof78.github.io/kaiboard-privacy/" class="button">Tam Gizlilik Politikasını Okuyun</a>
+            <a href="mailto:support@kaiboard.eu" class="button">Destek ile İletişime Geçin</a>
+        </p>
+
+        <div class="footer">
+            <p><strong>Sürüm 1.0 - Son Güncelleme: 17 Ocak 2026</strong></p>
+            <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
+            <p>GDPR Uyumlu (AB Yönetmeliği 2016/679)</p>
+        </div>
+    </div>
+</body>
+</html>

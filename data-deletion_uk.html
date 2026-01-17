@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Видалення даних - kAIboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1a1a1a;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        h2 {
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #34495e;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .intro {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            margin: 25px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-left: 4px solid #ffc107;
+            margin: 25px 0;
+        }
+        .info-box {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 25px 0;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 15px;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px 10px 10px 0;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Політика видалення даних</h1>
+        
+        <div class="intro">
+            <p><strong>kAIboard</strong> поважає ваше право на видалення даних відповідно до статті 17 GDPR (Право на видалення). Ви можете видалити свої персональні дані в будь-який час безпосередньо через додаток або зв'язавшись з нами електронною поштою.</p>
+        </div>
+
+        <h2>Спосіб 1: Видалення в додатку (Миттєво)</h2>
+        
+        <p>Найшвидший спосіб видалити дані — безпосередньо через додаток:</p>
+        
+        <ol>
+            <li>Відкрийте <strong>kAIboard</strong> на вашому Android-пристрої</li>
+            <li>Перейдіть до <strong>Налаштувань</strong></li>
+            <li>Виберіть <strong>Конфіденційність та безпека</strong></li>
+            <li>Виберіть один з трьох варіантів видалення</li>
+        </ol>
+
+        <h3>Доступні варіанти видалення</h3>
+        
+        <table>
+            <tr>
+                <th>Варіант</th>
+                <th>Що видаляється</th>
+                <th>Ефект</th>
+            </tr>
+            <tr>
+                <td><strong>Видалити хмарні дані</strong></td>
+                <td>Баланс токенів та історія покупок, що зберігаються в Firebase</td>
+                <td>Незворотно. Ви втратите баланс токенів.</td>
+            </tr>
+            <tr>
+                <td><strong>Видалити дані навчання</strong></td>
+                <td>Вивчені слова для персоналізованих пропозицій (усі 11 мов)</td>
+                <td>Прогнозний текст почнеться з нуля.</td>
+            </tr>
+            <tr>
+                <td><strong>Видалити всі локальні дані</strong></td>
+                <td>Усі налаштування та локальні дані</td>
+                <td>Додаток перезапуститься з типовими налаштуваннями.</td>
+            </tr>
+        </table>
+
+        <p><strong>Час обробки:</strong> Миттєво (0-5 секунд)</p>
+
+        <h2>Спосіб 2: Запит електронною поштою</h2>
+
+        <p>Якщо ви віддаєте перевагу допомозі або маєте запитання щодо видалення даних, ви можете зв'язатися з нами електронною поштою:</p>
+
+        <div class="info-box">
+            <p><strong>Електронна пошта:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+            <p><strong>Тема:</strong> "Запит на видалення даних GDPR"</p>
+            <p><strong>Інформація для включення:</strong></p>
+            <ul>
+                <li>ID пристрою (якщо відомий) або опис пристрою</li>
+                <li>Тип даних, які ви хочете видалити (хмарні, дані навчання або всі)</li>
+                <li>Підтвердження вашої особистості (з міркувань безпеки)</li>
+            </ul>
+            <p><strong>Час відповіді:</strong> Максимум 30 днів (як того вимагає стаття 12 GDPR)</p>
+        </div>
+
+        <h2>Автоматичне видалення даних</h2>
+
+        <p>kAIboard включає автоматичні механізми очищення даних для захисту вашої конфіденційності:</p>
+
+        <table>
+            <tr>
+                <th>Тип даних</th>
+                <th>Термін зберігання</th>
+                <th>Деталі</th>
+            </tr>
+            <tr>
+                <td>Хмарні дані (Firebase)</td>
+                <td>365 днів бездіяльності</td>
+                <td>Автоматично видаляються через рік без використання додатка</td>
+            </tr>
+            <tr>
+                <td>Вивчені слова</td>
+                <td>Безстроково з деградацією</td>
+                <td>Показники частоти з часом знижуються; невикористовувані слова видаляються</td>
+            </tr>
+            <tr>
+                <td>Кеш перекладу</td>
+                <td>Тільки сеанс</td>
+                <td>Зберігається тільки в RAM; видаляється при закритті додатка</td>
+            </tr>
+            <tr>
+                <td>Текст перекладу</td>
+                <td>Ніколи не зберігається</td>
+                <td>0 секунд зберігання; тільки транзит до API OpenAI</td>
+            </tr>
+        </table>
+
+        <h2>Інвентаризація даних</h2>
+
+        <p>У наступній таблиці детально описано всі дані, що збираються kAIboard, та способи їх видалення:</p>
+
+        <table>
+            <tr>
+                <th>Тип даних</th>
+                <th>Місце зберігання</th>
+                <th>Спосіб видалення</th>
+            </tr>
+            <tr>
+                <td>Анонімний ID пристрою</td>
+                <td>Firebase (хмара)</td>
+                <td>Кнопка "Видалити хмарні дані"</td>
+            </tr>
+            <tr>
+                <td>Баланс токенів</td>
+                <td>Firebase (хмара)</td>
+                <td>Кнопка "Видалити хмарні дані"</td>
+            </tr>
+            <tr>
+                <td>Історія покупок</td>
+                <td>Firebase (хмара)</td>
+                <td>Кнопка "Видалити хмарні дані"</td>
+            </tr>
+            <tr>
+                <td>Вивчені слова (Прогнози)</td>
+                <td>Локально (пристрій)</td>
+                <td>Кнопка "Видалити дані навчання"</td>
+            </tr>
+            <tr>
+                <td>Налаштування додатка</td>
+                <td>Локально (пристрій)</td>
+                <td>Кнопка "Видалити всі локальні дані"</td>
+            </tr>
+            <tr>
+                <td>Призначення мов контактів</td>
+                <td>Локально (пристрій)</td>
+                <td>Кнопка "Видалити всі локальні дані"</td>
+            </tr>
+            <tr>
+                <td>Текст перекладу</td>
+                <td>Ніколи не зберігається</td>
+                <td>Ніяких дій не потрібно (0 секунд зберігання)</td>
+            </tr>
+        </table>
+
+        <h2>Дані, що не видаляються</h2>
+
+        <p>З юридичних та технічних причин деякі дані не можуть бути негайно видалені:</p>
+
+        <ul>
+            <li><strong>Транзакції Google Play:</strong> Керуються Google відповідно до їхньої політики (для запитів на повернення коштів, запобігання шахрайству та дотримання податкового законодавства)</li>
+            <li><strong>Анонімні системні журнали:</strong> Зберігаються до 90 днів для цілей налагодження (не містять особистої ідентифікуючої інформації)</li>
+        </ul>
+
+        <h2>Наслідки видалення даних</h2>
+
+        <div class="warning">
+            <p><strong>Важливе повідомлення:</strong> Видалення деяких даних <strong>незворотне</strong>. Переконайтеся, що ви розумієте наслідки, перш ніж продовжити:</p>
+            <ul>
+                <li><strong>Видалити хмарні дані:</strong> Ви втратите баланс токенів і НЕ зможете його відновити, навіть після переустановлення додатка</li>
+                <li><strong>Видалити дані навчання:</strong> Персоналізовані текстові прогнози почнуться з нуля</li>
+                <li><strong>Видалити всі локальні дані:</strong> Усі налаштування будуть втрачені</li>
+            </ul>
+        </div>
+
+        <h2>Часті запитання</h2>
+
+        <h3>Що станеться, якщо я видалю хмарні дані?</h3>
+        <p>Ви втратите баланс токенів та історію покупок. Якщо ви переустановите додаток, ви почнете з нуля.</p>
+
+        <h3>Чи можу я видалити тільки певні дані?</h3>
+        <p>Так. Ви можете вибрати видалення тільки хмарних даних, тільки даних навчання або всіх даних разом.</p>
+
+        <h3>Чи зберігаються мої перекладені повідомлення?</h3>
+        <p>Ні. Текст, який ви вводите для перекладу, <strong>ніколи не зберігається</strong>. Він надсилається до OpenAI тільки для обробки перекладу і негайно видаляється (0 секунд зберігання).</p>
+
+        <h3>Скільки часу займає видалення даних?</h3>
+        <p>Видалення в додатку відбувається <strong>миттєво</strong> (0-5 секунд). Запити електронною поштою обробляються протягом 30 днів.</p>
+
+        <h3>Чи можу я відновити дані після видалення?</h3>
+        <p>Ні. Видалення <strong>незворотне</strong>. Переконайтеся, що ви хочете видалити свої дані, перш ніж продовжити.</p>
+
+        <h2>Додаткові ресурси</h2>
+
+        <p>
+            <a href="https://alessandrof78.github.io/kaiboard-privacy/" class="button">Прочитати повну політику конфіденційності</a>
+            <a href="mailto:support@kaiboard.eu" class="button">Зв'язатися з підтримкою</a>
+        </p>
+
+        <div class="footer">
+            <p><strong>Версія 1.0 - Останнє оновлення: 17 січня 2026</strong></p>
+            <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
+            <p>Відповідає GDPR (Регламент ЄС 2016/679)</p>
+        </div>
+    </div>
+</body>
+</html>
