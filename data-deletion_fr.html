@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suppression des Données - kAIboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1a1a1a;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        h2 {
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #34495e;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .intro {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            margin: 25px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-left: 4px solid #ffc107;
+            margin: 25px 0;
+        }
+        .info-box {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 25px 0;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 15px;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px 10px 10px 0;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Politique de Suppression des Données</h1>
+        
+        <div class="intro">
+            <p><strong>kAIboard</strong> respecte votre droit à la suppression des données conformément à l'article 17 du RGPD (Droit à l'effacement). Vous pouvez supprimer vos données personnelles à tout moment, soit directement via l'application, soit en nous contactant par e-mail.</p>
+        </div>
+
+        <h2>Méthode 1 : Suppression dans l'Application (Immédiate)</h2>
+        
+        <p>Le moyen le plus rapide de supprimer vos données est directement via l'application :</p>
+        
+        <ol>
+            <li>Ouvrez <strong>kAIboard</strong> sur votre appareil Android</li>
+            <li>Accédez aux <strong>Paramètres</strong></li>
+            <li>Sélectionnez <strong>Confidentialité et Sécurité</strong></li>
+            <li>Choisissez l'une des trois options de suppression</li>
+        </ol>
+
+        <h3>Options de Suppression Disponibles</h3>
+        
+        <table>
+            <tr>
+                <th>Option</th>
+                <th>Ce qui est Supprimé</th>
+                <th>Effet</th>
+            </tr>
+            <tr>
+                <td><strong>Supprimer les Données Cloud</strong></td>
+                <td>Solde de jetons et historique d'achat stockés dans Firebase</td>
+                <td>Irréversible. Vous perdrez votre solde de jetons.</td>
+            </tr>
+            <tr>
+                <td><strong>Supprimer les Données d'Apprentissage</strong></td>
+                <td>Mots appris pour les suggestions personnalisées (toutes les 11 langues)</td>
+                <td>Le texte prédictif repartira de zéro.</td>
+            </tr>
+            <tr>
+                <td><strong>Supprimer Toutes les Données Locales</strong></td>
+                <td>Toutes les préférences, paramètres et données locales</td>
+                <td>L'application redémarrera avec les paramètres par défaut.</td>
+            </tr>
+        </table>
+
+        <p><strong>Délai de Traitement :</strong> Immédiat (0-5 secondes)</p>
+
+        <h2>Méthode 2 : Demande par E-mail</h2>
+
+        <p>Si vous préférez une assistance ou avez des questions sur la suppression des données, vous pouvez nous contacter par e-mail :</p>
+
+        <div class="info-box">
+            <p><strong>E-mail :</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+            <p><strong>Objet :</strong> "Demande de Suppression de Données RGPD"</p>
+            <p><strong>Informations à Inclure :</strong></p>
+            <ul>
+                <li>ID de l'appareil (si connu) ou description de l'appareil</li>
+                <li>Type de données que vous souhaitez supprimer (cloud, données d'apprentissage ou toutes)</li>
+                <li>Confirmation de votre identité (pour des raisons de sécurité)</li>
+            </ul>
+            <p><strong>Délai de Réponse :</strong> Maximum 30 jours (comme l'exige l'article 12 du RGPD)</p>
+        </div>
+
+        <h2>Suppression Automatique des Données</h2>
+
+        <p>kAIboard inclut des mécanismes de nettoyage automatique des données pour protéger votre vie privée :</p>
+
+        <table>
+            <tr>
+                <th>Type de Donnée</th>
+                <th>Période de Conservation</th>
+                <th>Détails</th>
+            </tr>
+            <tr>
+                <td>Données Cloud (Firebase)</td>
+                <td>365 jours d'inactivité</td>
+                <td>Supprimées automatiquement après un an sans utilisation de l'application</td>
+            </tr>
+            <tr>
+                <td>Mots Appris</td>
+                <td>Indéfini avec dégradation</td>
+                <td>Les scores de fréquence diminuent avec le temps ; les mots inutilisés sont supprimés</td>
+            </tr>
+            <tr>
+                <td>Cache de Traduction</td>
+                <td>Session uniquement</td>
+                <td>Stocké uniquement en RAM ; supprimé à la fermeture de l'application</td>
+            </tr>
+            <tr>
+                <td>Texte de Traduction</td>
+                <td>Jamais stocké</td>
+                <td>0 seconde de conservation ; transit uniquement vers l'API OpenAI</td>
+            </tr>
+        </table>
+
+        <h2>Inventaire des Données</h2>
+
+        <p>Le tableau suivant détaille toutes les données collectées par kAIboard et comment les supprimer :</p>
+
+        <table>
+            <tr>
+                <th>Type de Donnée</th>
+                <th>Lieu de Stockage</th>
+                <th>Méthode de Suppression</th>
+            </tr>
+            <tr>
+                <td>ID d'Appareil Anonyme</td>
+                <td>Firebase (cloud)</td>
+                <td>Bouton "Supprimer les Données Cloud"</td>
+            </tr>
+            <tr>
+                <td>Solde de Jetons</td>
+                <td>Firebase (cloud)</td>
+                <td>Bouton "Supprimer les Données Cloud"</td>
+            </tr>
+            <tr>
+                <td>Historique d'Achat</td>
+                <td>Firebase (cloud)</td>
+                <td>Bouton "Supprimer les Données Cloud"</td>
+            </tr>
+            <tr>
+                <td>Mots Appris (Prédictions)</td>
+                <td>Local (appareil)</td>
+                <td>Bouton "Supprimer les Données d'Apprentissage"</td>
+            </tr>
+            <tr>
+                <td>Préférences de l'Application</td>
+                <td>Local (appareil)</td>
+                <td>Bouton "Supprimer Toutes les Données Locales"</td>
+            </tr>
+            <tr>
+                <td>Affectations de Langue des Contacts</td>
+                <td>Local (appareil)</td>
+                <td>Bouton "Supprimer Toutes les Données Locales"</td>
+            </tr>
+            <tr>
+                <td>Texte de Traduction</td>
+                <td>Jamais stocké</td>
+                <td>Aucune action requise (0 seconde de conservation)</td>
+            </tr>
+        </table>
+
+        <h2>Données Non Supprimables</h2>
+
+        <p>Pour des raisons légales et techniques, certaines données ne peuvent pas être supprimées immédiatement :</p>
+
+        <ul>
+            <li><strong>Transactions Google Play :</strong> Gérées par Google selon leurs politiques (pour les demandes de remboursement, la prévention de la fraude et la conformité fiscale)</li>
+            <li><strong>Journaux Système Anonymes :</strong> Conservés jusqu'à 90 jours à des fins de débogage (ne contiennent aucune information personnelle identifiable)</li>
+        </ul>
+
+        <h2>Conséquences de la Suppression des Données</h2>
+
+        <div class="warning">
+            <p><strong>Avis Important :</strong> La suppression de certaines données est <strong>irréversible</strong>. Assurez-vous de comprendre les conséquences avant de continuer :</p>
+            <ul>
+                <li><strong>Supprimer les Données Cloud :</strong> Vous perdrez votre solde de jetons et ne pourrez PAS le récupérer, même après avoir réinstallé l'application</li>
+                <li><strong>Supprimer les Données d'Apprentissage :</strong> Les prédictions de texte personnalisées repartiront de zéro</li>
+                <li><strong>Supprimer Toutes les Données Locales :</strong> Toutes les préférences et paramètres seront perdus</li>
+            </ul>
+        </div>
+
+        <h2>Questions Fréquemment Posées</h2>
+
+        <h3>Que se passe-t-il si je supprime les données cloud ?</h3>
+        <p>Vous perdrez votre solde de jetons et votre historique d'achat. Si vous réinstallez l'application, vous repartirez de zéro.</p>
+
+        <h3>Puis-je supprimer uniquement des données spécifiques ?</h3>
+        <p>Oui. Vous pouvez choisir de supprimer uniquement les données cloud, uniquement les données d'apprentissage ou toutes les données ensemble.</p>
+
+        <h3>Mes messages traduits sont-ils enregistrés ?</h3>
+        <p>Non. Le texte que vous saisissez pour la traduction n'est <strong>jamais enregistré</strong>. Il est envoyé à OpenAI uniquement pour le traitement de la traduction et immédiatement supprimé (0 seconde de conservation).</p>
+
+        <h3>Combien de temps prend la suppression des données ?</h3>
+        <p>La suppression dans l'application est <strong>immédiate</strong> (0-5 secondes). Les demandes par e-mail sont traitées dans un délai de 30 jours.</p>
+
+        <h3>Puis-je récupérer les données après la suppression ?</h3>
+        <p>Non. La suppression est <strong>irréversible</strong>. Assurez-vous de vouloir supprimer vos données avant de continuer.</p>
+
+        <h2>Ressources Supplémentaires</h2>
+
+        <p>
+            <a href="https://alessandrof78.github.io/kaiboard-privacy/" class="button">Lire la Politique de Confidentialité Complète</a>
+            <a href="mailto:support@kaiboard.eu" class="button">Contacter le Support</a>
+        </p>
+
+        <div class="footer">
+            <p><strong>Version 1.0 - Dernière Mise à Jour : 17 janvier 2026</strong></p>
+            <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
+            <p>Conforme au RGPD (Règlement UE 2016/679)</p>
+        </div>
+    </div>
+</body>
+</html>
