@@ -142,6 +142,15 @@
     <li>✅ <strong>Çeviri önbelleği</strong> (yalnızca RAM, uygulama kapatıldığında kaybolur)</li>
 </ul>
 
+<div class="highlight">
+    <strong>📌 PERFORMANS ÖNBELLEĞİ:</strong> Konuşmalar arasında geçiş yaparken gecikmeyi önlemek için,
+    kAIboard en sık kullandığınız kişilerle (~25-30) hangi dili kullandığınızı hatırlar.
+    Bu önbellek cihazınızda kalır ve 1 MB'den az depolama alanı kullanır.
+    Uygulamanın kaldırılmasına veya "Tüm yerel verileri sil" düğmesiyle manuel silme işlemine kadar saklanır.
+    Bu uzun süreli saklama, her sohbet değişiminde 1-3 saniye gecikme olmadan
+    sorunsuz bir deneyim sağlamak için gereklidir.
+</div>
+
 <div class="important">
     <strong>⚠️ ÖNEMLİ:</strong> kAIboard, kişilerinize YALNIZCA dil yönetimi arayüzünde kişi adlarını görüntülemek için erişir. <strong>Telefon numaraları ve kişi adları ASLA sunucularımıza gönderilmez.</strong>
 </div>
@@ -181,6 +190,14 @@
     <li>✅ Token'ları birden fazla cihazda senkronize etme</li>
     <li>✅ Telefon değiştirdikten sonra bile bakiyenizi koruma</li>
 </ul>
+
+<div class="important">
+    <strong>⚠️ GOOGLE HESABI GEREKLİDİR:</strong> Token'ların birden fazla cihazda geri yüklenmesi,
+    YALNIZCA tüm cihazların satın alımları yaptığınız aynı Google Play hesabını kullanması durumunda
+    çalışır. Bu gereklilik, güvenlik nedenleriyle ve sahtekarlığı önlemek için Google Play Faturalandırma
+    API'si tarafından uygulanmaktadır. Google hesabınızı değiştirirseniz, token'ları yeni hesapta
+    yeniden satın almanız gerekecektir.
+</div>
 
 <h3>3.3 Satın Alma Doğrulama</h3>
 
@@ -275,6 +292,11 @@
         <td><strong>Yerel Veriler (Cihaz)</strong></td>
         <td>Kaldırılana kadar</td>
         <td>Uygulama kaldırma + manuel silme</td>
+    </tr>
+    <tr>
+        <td><strong>Kişi-Dil Önbelleği (Cihaz)</strong></td>
+        <td>Manuel silme veya kaldırmaya kadar</td>
+        <td>"Tüm yerel verileri sil" düğmesi</td>
     </tr>
     <tr>
         <td><strong>Öğrenilen Kelimeler (Tahmin)</strong></td>
