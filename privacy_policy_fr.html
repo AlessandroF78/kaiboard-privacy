@@ -142,6 +142,16 @@
     <li>✅ <strong>Cache de traduction</strong> (RAM uniquement, perdu à la fermeture de l'application)</li>
 </ul>
 
+<div class="highlight">
+    <strong>📌 CACHE DE PERFORMANCES :</strong> Pour éviter les ralentissements lors du changement entre conversations,
+    kAIboard mémorise quelle langue vous utilisez avec vos contacts les plus fréquents (~25-30).
+    Ce cache reste sur votre appareil et occupe moins de 1 Mo de stockage.
+    Il est conservé jusqu'à la désinstallation de l'application ou la suppression manuelle
+    via le bouton "Supprimer toutes les données locales". Cette conservation prolongée
+    est nécessaire pour garantir une expérience fluide sans délais de 1-3 secondes
+    à chaque changement de discussion.
+</div>
+
 <div class="important">
     <strong>⚠️ IMPORTANT :</strong> kAIboard accède à vos contacts UNIQUEMENT pour afficher les noms de contacts dans l'interface de gestion des langues. <strong>Les numéros de téléphone et les noms de contacts ne sont JAMAIS envoyés à nos serveurs.</strong>
 </div>
@@ -181,6 +191,14 @@
     <li>✅ Synchroniser les jetons sur plusieurs appareils</li>
     <li>✅ Conserver votre solde même après avoir changé de téléphone</li>
 </ul>
+
+<div class="important">
+    <strong>⚠️ COMPTE GOOGLE REQUIS:</strong> La restauration des jetons sur plusieurs appareils
+    fonctionne UNIQUEMENT si tous les appareils utilisent le même compte Google Play avec lequel
+    vous avez effectué les achats. Cette exigence est imposée par l'API de facturation Google Play
+    pour des raisons de sécurité et pour prévenir la fraude. Si vous changez de compte Google,
+    vous devrez racheter les jetons sur le nouveau compte.
+</div>
 
 <h3>3.3 Vérification des Achats</h3>
 
@@ -275,6 +293,11 @@
         <td><strong>Données Locales (Appareil)</strong></td>
         <td>Jusqu'à la désinstallation</td>
         <td>Désinstallation + suppression manuelle</td>
+    </tr>
+    <tr>
+        <td><strong>Cache Contact-Langue (Appareil)</strong></td>
+        <td>Jusqu'à suppression manuelle ou désinstallation</td>
+        <td>Bouton "Supprimer toutes les données locales"</td>
     </tr>
     <tr>
         <td><strong>Mots Appris (Prédiction)</strong></td>
