@@ -142,6 +142,16 @@
     <li>✅ <strong>Cache traduzioni</strong> (solo RAM, persa alla chiusura dell'app)</li>
 </ul>
 
+<div class="highlight">
+    <strong>📌 CACHE PER LE PRESTAZIONI:</strong> Per evitare lag durante il cambio tra conversazioni,
+    kAIboard memorizza quale lingua usi con i tuoi contatti più frequenti (~25-30).
+    Questa cache rimane sul tuo dispositivo e occupa meno di 1 MB di spazio.
+    Viene conservata fino alla disinstallazione dell'app o all'eliminazione manuale
+    tramite il pulsante "Elimina tutti i dati locali". Questa conservazione prolungata
+    è necessaria per garantire un'esperienza fluida senza ritardi di 1-3 secondi
+    ogni volta che cambi chat.
+</div>
+
 <div class="important">
     <strong>⚠️ IMPORTANTE:</strong> kAIboard accede ai tuoi contatti SOLO per visualizzare i nomi dei contatti nell'interfaccia di gestione delle lingue. <strong>Numeri di telefono e nomi dei contatti NON vengono MAI inviati ai nostri server.</strong>
 </div>
@@ -181,6 +191,14 @@
     <li>✅ Sincronizzare i token su più dispositivi</li>
     <li>✅ Mantenere il tuo saldo anche dopo aver cambiato telefono</li>
 </ul>
+
+<div class="important">
+    <strong>⚠️ REQUISITO ACCOUNT GOOGLE:</strong> Il ripristino dei token su più dispositivi
+    funziona SOLO se tutti i dispositivi utilizzano lo stesso account Google Play con cui
+    hai effettuato gli acquisti. Questo vincolo è imposto dalla Google Play Billing API
+    per motivi di sicurezza e per prevenire frodi. Se cambi account Google, dovrai
+    riacquistare i token sul nuovo account.
+</div>
 
 <h3>3.3 Verifica Acquisti</h3>
 
@@ -275,6 +293,11 @@
         <td><strong>Dati Locali (Dispositivo)</strong></td>
         <td>Fino alla disinstallazione</td>
         <td>Disinstallazione app + eliminazione manuale</td>
+    </tr>
+    <tr>
+        <td><strong>Cache Contatto-Lingua (Dispositivo)</strong></td>
+        <td>Fino a eliminazione manuale o disinstallazione</td>
+        <td>Pulsante "Elimina tutti i dati locali"</td>
     </tr>
     <tr>
         <td><strong>Parole Apprese (Predizione)</strong></td>
