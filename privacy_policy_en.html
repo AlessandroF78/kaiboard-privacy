@@ -28,6 +28,10 @@
             color: #7f8c8d;
             margin-top: 20px;
         }
+        h4 {
+            color: #95a5a6;
+            margin-top: 15px;
+        }
         .highlight {
             background-color: #fff3cd;
             padding: 15px;
@@ -38,6 +42,12 @@
             background-color: #f8d7da;
             padding: 15px;
             border-left: 4px solid #dc3545;
+            margin: 20px 0;
+        }
+        .info {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border-left: 4px solid #17a2b8;
             margin: 20px 0;
         }
         table {
@@ -69,14 +79,20 @@
         li {
             margin: 10px 0;
         }
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
 
 <h1>Privacy Policy - kAIboard</h1>
 
-<p><strong>Last updated:</strong> January 14, 2026</p>
-<p><strong>Version:</strong> 2.0</p>
+<p><strong>Last updated:</strong> January 18, 2026</p>
+<p><strong>Version:</strong> 2.1</p>
 
 <div class="highlight">
     <strong>📱 kAIboard</strong> is an Android keyboard with AI-powered translation features. This Privacy Policy explains what data we collect, how we use it, and your rights under the General Data Protection Regulation (GDPR - EU Regulation 2016/679).
@@ -107,9 +123,9 @@
     </tr>
     <tr>
         <td><strong>Anonymous Device ID</strong></td>
-        <td>Pseudonymous identifier generated locally</td>
-        <td>Restore purchased tokens on new devices</td>
-        <td>Contract performance (Art. 6.1.b GDPR)</td>
+        <td>Identifier based on device's Android ID (e.g., android_e19d6c741afe8197)</td>
+        <td>Restore purchased tokens and prevent fraud (only ONE active device at a time)</td>
+        <td>Contract performance (Art. 6.1.b) + Legitimate interest fraud prevention (Art. 6.1.f GDPR)</td>
     </tr>
     <tr>
         <td><strong>Token Balance</strong></td>
@@ -122,6 +138,12 @@
         <td>Product ID, purchase date, order ID</td>
         <td>Verify purchases and prevent fraud</td>
         <td>Contract performance (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Migration Metadata</strong></td>
+        <td>Active device, migration timestamp, source device</td>
+        <td>Anti-fraud system to prevent token duplication across multiple devices</td>
+        <td>Legitimate interest (Art. 6.1.f GDPR)</td>
     </tr>
     <tr>
         <td><strong>Text to Translate</strong></td>
@@ -199,7 +221,40 @@
     repurchase tokens on the new account.
 </div>
 
-<h3>3.3 Purchase Verification</h3>
+<h3>3.3 Anti-Fraud System for Tokens</h3>
+
+<div class="important">
+    <strong>⚠️ IMPORTANT - HOW TOKEN RESTORATION WORKS:</strong>
+</div>
+
+<p>To prevent abuse and fraud, kAIboard implements an anti-fraud system whereby <strong>only ONE device at a time can use purchased tokens</strong>.</p>
+
+<h4>Behavior during restoration:</h4>
+
+<ol>
+    <li><strong>Device A</strong> purchases 50,000 tokens → Device A is "active" ✅</li>
+    <li><strong>Device B</strong> (same Google Play account) clicks "Restore purchases" → Device B becomes "active" ✅</li>
+    <li><strong>Device A</strong> is automatically "invalidated" → Tokens on Device A are zeroed ❌</li>
+    <li>To reactivate Device A: click "Restore purchases" again on Device A</li>
+</ol>
+
+<p><strong>Metadata saved for the anti-fraud system:</strong></p>
+
+<ul>
+    <li><strong>active_device</strong>: ID of the currently active device</li>
+    <li><strong>invalidated_at</strong>: Timestamp when a device was deactivated</li>
+    <li><strong>invalidated_reason</strong>: Reason for deactivation (e.g., "migrated_to_android_xxx")</li>
+    <li><strong>migrated_from</strong>: Source device of the tokens</li>
+    <li><strong>migration_timestamp</strong>: Date/time of migration</li>
+</ul>
+
+<p><strong>Legal basis:</strong> Legitimate interest to prevent fraud and abuse of the purchase system (Art. 6.1.f GDPR)</p>
+
+<div class="highlight">
+    <strong>💡 NOTE:</strong> This system ensures that purchased tokens are not fraudulently duplicated across multiple devices. Token migration is <strong>irreversible</strong>: when you restore on Device B, Device A permanently loses the tokens until you perform a new restoration on Device A.
+</div>
+
+<h3>3.4 Purchase Verification</h3>
 
 <p>Purchase history is saved to:</p>
 
@@ -222,8 +277,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>Anonymous ID, token balance, purchase history</td>
-        <td>Backup and synchronization</td>
+        <td>Anonymous ID, token balance, purchase history, migration metadata</td>
+        <td>Backup, synchronization, and anti-fraud system</td>
         <td>EU (European servers)</td>
     </tr>
     <tr>
@@ -286,6 +341,11 @@
     <tr>
         <td><strong>Purchase History (Firebase)</strong></td>
         <td>365 days from purchase</td>
+        <td>Automatic + manual deletion</td>
+    </tr>
+    <tr>
+        <td><strong>Migration Metadata (Firebase)</strong></td>
+        <td>365 days from last migration</td>
         <td>Automatic + manual deletion</td>
     </tr>
     <tr>
@@ -383,7 +443,42 @@
     <li>🔒 <strong>Automatic deletion</strong>: Data deleted after 365 days of inactivity</li>
 </ul>
 
-<h2>9. Android Permissions Required</h2>
+<h2>9. Device Identifiers and Android Permissions</h2>
+
+<h3>9.1 Device Identifiers Used</h3>
+
+<p>kAIboard uses the following identifiers to generate the anonymous device ID:</p>
+
+<table>
+    <tr>
+        <th>Identifier</th>
+        <th>Type</th>
+        <th>Purpose</th>
+        <th>Persistence</th>
+    </tr>
+    <tr>
+        <td><strong>Android ID</strong></td>
+        <td>Settings.Secure.ANDROID_ID</td>
+        <td>Generate unique and stable device ID</td>
+        <td>Persists even after factory reset</td>
+    </tr>
+    <tr>
+        <td><strong>Install Referrer ID</strong></td>
+        <td>Google Play Install Referrer API</td>
+        <td>Fallback if Android ID unavailable</td>
+        <td>Persists across reinstalls (if installed from Play Store)</td>
+    </tr>
+    <tr>
+        <td><strong>Local UUID</strong></td>
+        <td>java.util.UUID</td>
+        <td>Final fallback (sideload only)</td>
+        <td>Does NOT persist (lost on uninstall)</td>
+    </tr>
+</table>
+
+<p><strong>⚠️ PRIVACY NOTE:</strong> The Android ID is a unique device identifier. kAIboard uses it ONLY to generate the anonymized pseudonymous ID (format: "android_[hash]"). The raw Android ID is NEVER sent to our servers or third parties.</p>
+
+<h3>9.2 App Permissions</h3>
 
 <table>
     <tr>
@@ -479,11 +574,33 @@
 <ul>
     <li><strong>Art. 6.1.b GDPR</strong> - Contract performance: Token backup, purchase history, translation</li>
     <li><strong>Art. 6.1.a GDPR</strong> - Consent: Crash reports (optional)</li>
-    <li><strong>Art. 6.1.f GDPR</strong> - Legitimate interest: Fraud prevention, security</li>
+    <li><strong>Art. 6.1.f GDPR</strong> - Legitimate interest:
+        <ul>
+            <li>Fraud prevention (token anti-fraud system)</li>
+            <li>Purchase security</li>
+            <li>Protection of billing system from abuse</li>
+        </ul>
+    </li>
 </ul>
 
+<div class="info">
+    <strong>📋 LEGITIMATE INTEREST ASSESSMENT (Art. 6.1.f GDPR):</strong>
+    <p>The anti-fraud system is necessary to:</p>
+    <ul>
+        <li>✅ Protect the app's economic sustainability</li>
+        <li>✅ Prevent abuse of the in-app purchase system</li>
+        <li>✅ Ensure fairness among users</li>
+    </ul>
+    <p>Impact on user rights is minimized because:</p>
+    <ul>
+        <li>✅ Users can always reactivate any device via "Restore purchases"</li>
+        <li>✅ The system uses only pseudonymized data (no direct personal data)</li>
+        <li>✅ The logic is transparent and documented in this Privacy Policy</li>
+    </ul>
+</div>
+
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Version 2.0 - Last updated: January 14, 2026</strong><br>
+    <strong>Version 2.1 - Last updated: January 18, 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 
