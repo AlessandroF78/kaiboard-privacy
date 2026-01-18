@@ -28,6 +28,10 @@
             color: #7f8c8d;
             margin-top: 20px;
         }
+        h4 {
+            color: #95a5a6;
+            margin-top: 15px;
+        }
         .highlight {
             background-color: #fff3cd;
             padding: 15px;
@@ -38,6 +42,12 @@
             background-color: #f8d7da;
             padding: 15px;
             border-left: 4px solid #dc3545;
+            margin: 20px 0;
+        }
+        .info {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border-left: 4px solid #17a2b8;
             margin: 20px 0;
         }
         table {
@@ -69,14 +79,20 @@
         li {
             margin: 10px 0;
         }
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
 
 <h1>Política de Privacidade - kAIboard</h1>
 
-<p><strong>Última atualização:</strong> 14 de janeiro de 2026</p>
-<p><strong>Versão:</strong> 2.0</p>
+<p><strong>Última atualização:</strong> 18 de janeiro de 2026</p>
+<p><strong>Versão:</strong> 2.1</p>
 
 <div class="highlight">
     <strong>📱 kAIboard</strong> é um teclado Android com recursos de tradução alimentados por IA. Esta Política de Privacidade explica quais dados coletamos, como os usamos e seus direitos sob o Regulamento Geral de Proteção de Dados (RGPD - Regulamento UE 2016/679).
@@ -107,9 +123,9 @@
     </tr>
     <tr>
         <td><strong>ID de Dispositivo Anônimo</strong></td>
-        <td>Identificador pseudônimo gerado localmente</td>
-        <td>Restaurar tokens comprados em novos dispositivos</td>
-        <td>Execução de contrato (Art. 6.1.b RGPD)</td>
+        <td>Identificador baseado no Android ID do dispositivo (ex. android_e19d6c741afe8197)</td>
+        <td>Restaurar tokens comprados e prevenir fraudes (apenas UM dispositivo ativo por vez)</td>
+        <td>Execução de contrato (Art. 6.1.b) + Interesse legítimo prevenção de fraudes (Art. 6.1.f RGPD)</td>
     </tr>
     <tr>
         <td><strong>Saldo de Tokens</strong></td>
@@ -122,6 +138,12 @@
         <td>ID do produto, data de compra, ID do pedido</td>
         <td>Verificar compras e prevenir fraude</td>
         <td>Execução de contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Metadados de Migração</strong></td>
+        <td>Dispositivo ativo, carimbo de data/hora da migração, dispositivo de origem</td>
+        <td>Sistema antifraude para prevenir duplicação de tokens em múltiplos dispositivos</td>
+        <td>Interesse legítimo (Art. 6.1.f RGPD)</td>
     </tr>
     <tr>
         <td><strong>Texto a Traduzir</strong></td>
@@ -200,7 +222,40 @@
     recomprar os tokens na nova conta.
 </div>
 
-<h3>3.3 Verificação de Compras</h3>
+<h3>3.3 Sistema Antifraude para Tokens</h3>
+
+<div class="important">
+    <strong>⚠️ IMPORTANTE - COMO FUNCIONA A RESTAURAÇÃO DE TOKENS:</strong>
+</div>
+
+<p>Para prevenir abusos e fraudes, o kAIboard implementa um sistema antifraude no qual <strong>apenas UM dispositivo por vez pode usar os tokens comprados</strong>.</p>
+
+<h4>Comportamento durante a restauração:</h4>
+
+<ol>
+    <li><strong>Dispositivo A</strong> compra 50.000 tokens → Dispositivo A está "ativo" ✅</li>
+    <li><strong>Dispositivo B</strong> (mesma conta Google Play) clica em "Restaurar compras" → Dispositivo B torna-se "ativo" ✅</li>
+    <li><strong>Dispositivo A</strong> é automaticamente "invalidado" → Os tokens no Dispositivo A são zerados ❌</li>
+    <li>Para reativar o Dispositivo A: clique novamente em "Restaurar compras" no Dispositivo A</li>
+</ol>
+
+<p><strong>Metadados salvos para o sistema antifraude:</strong></p>
+
+<ul>
+    <li><strong>active_device</strong>: ID do dispositivo atualmente ativo</li>
+    <li><strong>invalidated_at</strong>: Carimbo de data/hora quando um dispositivo foi desativado</li>
+    <li><strong>invalidated_reason</strong>: Motivo da desativação (ex. "migrated_to_android_xxx")</li>
+    <li><strong>migrated_from</strong>: Dispositivo de origem dos tokens</li>
+    <li><strong>migration_timestamp</strong>: Data/hora da migração</li>
+</ul>
+
+<p><strong>Base legal:</strong> Interesse legítimo para prevenir fraudes e abusos do sistema de compras (Art. 6.1.f RGPD)</p>
+
+<div class="highlight">
+    <strong>💡 NOTA:</strong> Este sistema garante que os tokens comprados não sejam duplicados fraudulentamente em múltiplos dispositivos. A migração de tokens é <strong>irreversível</strong>: quando você restaura no Dispositivo B, o Dispositivo A perde permanentemente os tokens até que você realize uma nova restauração no Dispositivo A.
+</div>
+
+<h3>3.4 Verificação de Compras</h3>
 
 <p>O histórico de compras é salvo para:</p>
 
@@ -223,8 +278,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>ID anônimo, saldo de tokens, histórico de compras</td>
-        <td>Backup e sincronização</td>
+        <td>ID anônimo, saldo de tokens, histórico de compras, metadados de migração</td>
+        <td>Backup, sincronização e sistema antifraude</td>
         <td>UE (servidores europeus)</td>
     </tr>
     <tr>
@@ -287,6 +342,11 @@
     <tr>
         <td><strong>Histórico de Compras (Firebase)</strong></td>
         <td>365 dias a partir da compra</td>
+        <td>Automática + exclusão manual</td>
+    </tr>
+    <tr>
+        <td><strong>Metadados de Migração (Firebase)</strong></td>
+        <td>365 dias a partir da última migração</td>
         <td>Automática + exclusão manual</td>
     </tr>
     <tr>
@@ -384,7 +444,42 @@
     <li>🔒 <strong>Exclusão automática</strong>: Dados excluídos após 365 dias de inatividade</li>
 </ul>
 
-<h2>9. Permissões Android Necessárias</h2>
+<h2>9. Identificadores de Dispositivo e Permissões Android</h2>
+
+<h3>9.1 Identificadores de Dispositivo Utilizados</h3>
+
+<p>kAIboard utiliza os seguintes identificadores para gerar o ID de dispositivo anônimo:</p>
+
+<table>
+    <tr>
+        <th>Identificador</th>
+        <th>Tipo</th>
+        <th>Finalidade</th>
+        <th>Persistência</th>
+    </tr>
+    <tr>
+        <td><strong>Android ID</strong></td>
+        <td>Settings.Secure.ANDROID_ID</td>
+        <td>Gerar ID de dispositivo único e estável</td>
+        <td>Persiste mesmo após reset de fábrica</td>
+    </tr>
+    <tr>
+        <td><strong>Install Referrer ID</strong></td>
+        <td>Google Play Install Referrer API</td>
+        <td>Alternativa se Android ID não disponível</td>
+        <td>Persiste entre reinstalações (se instalado da Play Store)</td>
+    </tr>
+    <tr>
+        <td><strong>UUID Local</strong></td>
+        <td>java.util.UUID</td>
+        <td>Alternativa final (apenas instalação manual)</td>
+        <td>NÃO persiste (perdido na desinstalação)</td>
+    </tr>
+</table>
+
+<p><strong>⚠️ NOTA DE PRIVACIDADE:</strong> O Android ID é um identificador único do dispositivo. kAIboard o utiliza APENAS para gerar o ID anônimo pseudonimizado (formato: "android_[hash]"). O Android ID bruto NUNCA é enviado aos nossos servidores ou a terceiros.</p>
+
+<h3>9.2 Permissões do Aplicativo</h3>
 
 <table>
     <tr>
@@ -480,11 +575,33 @@
 <ul>
     <li><strong>Art. 6.1.b RGPD</strong> - Execução de contrato: Backup de tokens, histórico de compras, tradução</li>
     <li><strong>Art. 6.1.a RGPD</strong> - Consentimento: Relatórios de falhas (opcional)</li>
-    <li><strong>Art. 6.1.f RGPD</strong> - Interesse legítimo: Prevenção de fraude, segurança</li>
+    <li><strong>Art. 6.1.f RGPD</strong> - Interesse legítimo:
+        <ul>
+            <li>Prevenção de fraude (sistema antifraude de tokens)</li>
+            <li>Segurança de compras</li>
+            <li>Proteção do sistema de faturamento contra abusos</li>
+        </ul>
+    </li>
 </ul>
 
+<div class="info">
+    <strong>📋 AVALIAÇÃO DE INTERESSE LEGÍTIMO (Art. 6.1.f RGPD):</strong>
+    <p>O sistema antifraude é necessário para:</p>
+    <ul>
+        <li>✅ Proteger a sustentabilidade econômica do aplicativo</li>
+        <li>✅ Prevenir abusos do sistema de compras no aplicativo</li>
+        <li>✅ Garantir equidade entre os usuários</li>
+    </ul>
+    <p>O impacto nos direitos do usuário é minimizado porque:</p>
+    <ul>
+        <li>✅ O usuário sempre pode reativar qualquer dispositivo através de "Restaurar compras"</li>
+        <li>✅ O sistema usa apenas dados pseudonimizados (sem dados pessoais diretos)</li>
+        <li>✅ A lógica é transparente e documentada nesta Política de Privacidade</li>
+    </ul>
+</div>
+
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Versão 2.0 - Última atualização: 14 de janeiro de 2026</strong><br>
+    <strong>Versão 2.1 - Última atualização: 18 de janeiro de 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 
