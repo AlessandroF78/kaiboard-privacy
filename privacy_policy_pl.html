@@ -28,6 +28,10 @@
             color: #7f8c8d;
             margin-top: 20px;
         }
+        h4 {
+            color: #95a5a6;
+            margin-top: 15px;
+        }
         .highlight {
             background-color: #fff3cd;
             padding: 15px;
@@ -38,6 +42,12 @@
             background-color: #f8d7da;
             padding: 15px;
             border-left: 4px solid #dc3545;
+            margin: 20px 0;
+        }
+        .info {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border-left: 4px solid #17a2b8;
             margin: 20px 0;
         }
         table {
@@ -69,14 +79,20 @@
         li {
             margin: 10px 0;
         }
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
 
 <h1>Polityka Prywatności - kAIboard</h1>
 
-<p><strong>Ostatnia aktualizacja:</strong> 14 stycznia 2026</p>
-<p><strong>Wersja:</strong> 2.0</p>
+<p><strong>Ostatnia aktualizacja:</strong> 18 stycznia 2026</p>
+<p><strong>Wersja:</strong> 2.1</p>
 
 <div class="highlight">
     <strong>📱 kAIboard</strong> to klawiatura Android z funkcjami tłumaczenia opartymi na sztucznej inteligencji. Ta Polityka Prywatności wyjaśnia, jakie dane zbieramy, jak ich używamy oraz Twoje prawa wynikające z Ogólnego Rozporządzenia o Ochronie Danych (RODO - Rozporządzenie UE 2016/679).
@@ -107,9 +123,9 @@
     </tr>
     <tr>
         <td><strong>Anonimowy ID Urządzenia</strong></td>
-        <td>Pseudonimowy identyfikator generowany lokalnie</td>
-        <td>Przywracanie zakupionych tokenów na nowych urządzeniach</td>
-        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+        <td>Identyfikator oparty na Android ID urządzenia (np. android_e19d6c741afe8197)</td>
+        <td>Przywracanie zakupionych tokenów i zapobieganie oszustwom (tylko JEDNO aktywne urządzenie naraz)</td>
+        <td>Wykonanie umowy (Art. 6.1.b) + Uzasadniony interes zapobieganie oszustwom (Art. 6.1.f RODO)</td>
     </tr>
     <tr>
         <td><strong>Saldo Tokenów</strong></td>
@@ -122,6 +138,12 @@
         <td>ID produktu, data zakupu, ID zamówienia</td>
         <td>Weryfikacja zakupów i zapobieganie oszustwom</td>
         <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+    </tr>
+    <tr>
+        <td><strong>Metadane Migracji</strong></td>
+        <td>Aktywne urządzenie, znacznik czasu migracji, urządzenie źródłowe</td>
+        <td>System antyfraudowy zapobiegający duplikacji tokenów na wielu urządzeniach</td>
+        <td>Uzasadniony interes (Art. 6.1.f RODO)</td>
     </tr>
     <tr>
         <td><strong>Tekst do Tłumaczenia</strong></td>
@@ -200,7 +222,40 @@
     kupić tokeny na nowym koncie.
 </div>
 
-<h3>3.3 Weryfikacja Zakupów</h3>
+<h3>3.3 System Antyfraudowy dla Tokenów</h3>
+
+<div class="important">
+    <strong>⚠️ WAŻNE - JAK DZIAŁA PRZYWRACANIE TOKENÓW:</strong>
+</div>
+
+<p>Aby zapobiec nadużyciom i oszustwom, kAIboard wdraża system antyfraudowy, w którym <strong>tylko JEDNO urządzenie na raz może używać zakupionych tokenów</strong>.</p>
+
+<h4>Zachowanie podczas przywracania:</h4>
+
+<ol>
+    <li><strong>Urządzenie A</strong> kupuje 50 000 tokenów → Urządzenie A jest "aktywne" ✅</li>
+    <li><strong>Urządzenie B</strong> (to samo konto Google Play) klika "Przywróć zakupy" → Urządzenie B staje się "aktywne" ✅</li>
+    <li><strong>Urządzenie A</strong> zostaje automatycznie "unieważnione" → Tokeny na Urządzeniu A są zerowane ❌</li>
+    <li>Aby ponownie aktywować Urządzenie A: kliknij ponownie "Przywróć zakupy" na Urządzeniu A</li>
+</ol>
+
+<p><strong>Metadane zapisane dla systemu antyfraudowego:</strong></p>
+
+<ul>
+    <li><strong>active_device</strong>: ID aktualnie aktywnego urządzenia</li>
+    <li><strong>invalidated_at</strong>: Znacznik czasu, gdy urządzenie zostało dezaktywowane</li>
+    <li><strong>invalidated_reason</strong>: Powód dezaktywacji (np. "migrated_to_android_xxx")</li>
+    <li><strong>migrated_from</strong>: Urządzenie źródłowe tokenów</li>
+    <li><strong>migration_timestamp</strong>: Data/godzina migracji</li>
+</ul>
+
+<p><strong>Podstawa prawna:</strong> Uzasadniony interes zapobiegania oszustwom i nadużyciom systemu zakupów (Art. 6.1.f RODO)</p>
+
+<div class="highlight">
+    <strong>💡 UWAGA:</strong> Ten system gwarantuje, że zakupione tokeny nie są oszukańczo duplikowane na wielu urządzeniach. Migracja tokenów jest <strong>nieodwracalna</strong>: gdy przywracasz na Urządzeniu B, Urządzenie A traci trwale tokeny do momentu wykonania nowego przywracania na Urządzeniu A.
+</div>
+
+<h3>3.4 Weryfikacja Zakupów</h3>
 
 <p>Historia zakupów jest zapisywana w celu:</p>
 
@@ -223,8 +278,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>Anonimowy ID, saldo tokenów, historia zakupów</td>
-        <td>Kopia zapasowa i synchronizacja</td>
+        <td>Anonimowy ID, saldo tokenów, historia zakupów, metadane migracji</td>
+        <td>Kopia zapasowa, synchronizacja i system antyfraudowy</td>
         <td>UE (serwery europejskie)</td>
     </tr>
     <tr>
@@ -287,6 +342,11 @@
     <tr>
         <td><strong>Historia Zakupów (Firebase)</strong></td>
         <td>365 dni od zakupu</td>
+        <td>Automatyczne + ręczne usuwanie</td>
+    </tr>
+    <tr>
+        <td><strong>Metadane Migracji (Firebase)</strong></td>
+        <td>365 dni od ostatniej migracji</td>
         <td>Automatyczne + ręczne usuwanie</td>
     </tr>
     <tr>
@@ -384,7 +444,42 @@
     <li>🔒 <strong>Automatyczne usuwanie</strong>: Dane usuwane po 365 dniach nieaktywności</li>
 </ul>
 
-<h2>9. Wymagane Uprawnienia Android</h2>
+<h2>9. Identyfikatory Urządzeń i Wymagane Uprawnienia Android</h2>
+
+<h3>9.1 Używane Identyfikatory Urządzeń</h3>
+
+<p>kAIboard używa następujących identyfikatorów do generowania anonimowego ID urządzenia:</p>
+
+<table>
+    <tr>
+        <th>Identyfikator</th>
+        <th>Typ</th>
+        <th>Cel</th>
+        <th>Trwałość</th>
+    </tr>
+    <tr>
+        <td><strong>Android ID</strong></td>
+        <td>Settings.Secure.ANDROID_ID</td>
+        <td>Generowanie unikalnego i stabilnego ID urządzenia</td>
+        <td>Pozostaje nawet po resecie fabrycznym</td>
+    </tr>
+    <tr>
+        <td><strong>Install Referrer ID</strong></td>
+        <td>Google Play Install Referrer API</td>
+        <td>Alternatywa gdy Android ID niedostępny</td>
+        <td>Pozostaje między reinstalacjami (jeśli zainstalowano z Play Store)</td>
+    </tr>
+    <tr>
+        <td><strong>Lokalny UUID</strong></td>
+        <td>java.util.UUID</td>
+        <td>Ostatnia alternatywa (tylko instalacja manualna)</td>
+        <td>NIE pozostaje (tracony przy deinstalacji)</td>
+    </tr>
+</table>
+
+<p><strong>⚠️ UWAGA O PRYWATNOŚCI:</strong> Android ID jest unikalnym identyfikatorem urządzenia. kAIboard używa go TYLKO do wygenerowania pseudonimowego ID (format: "android_[hash]"). Surowy Android ID NIGDY nie jest wysyłany na nasze serwery lub do stron trzecich.</p>
+
+<h3>9.2 Uprawnienia Aplikacji</h3>
 
 <table>
     <tr>
@@ -480,11 +575,33 @@
 <ul>
     <li><strong>Art. 6.1.b RODO</strong> - Wykonanie umowy: Kopia zapasowa tokenów, historia zakupów, tłumaczenie</li>
     <li><strong>Art. 6.1.a RODO</strong> - Zgoda: Raporty o awariach (opcjonalne)</li>
-    <li><strong>Art. 6.1.f RODO</strong> - Uzasadniony interes: Zapobieganie oszustwom, bezpieczeństwo</li>
+    <li><strong>Art. 6.1.f RODO</strong> - Uzasadniony interes:
+        <ul>
+            <li>Zapobieganie oszustwom (system antyfraudowy tokenów)</li>
+            <li>Bezpieczeństwo zakupów</li>
+            <li>Ochrona systemu rozliczeń przed nadużyciami</li>
+        </ul>
+    </li>
 </ul>
 
+<div class="info">
+    <strong>📋 OCENA UZASADNIONEGO INTERESU (Art. 6.1.f RODO):</strong>
+    <p>System antyfraudowy jest niezbędny do:</p>
+    <ul>
+        <li>✅ Ochrony ekonomicznej stabilności aplikacji</li>
+        <li>✅ Zapobiegania nadużyciom systemu zakupów w aplikacji</li>
+        <li>✅ Zapewnienia uczciwości między użytkownikami</li>
+    </ul>
+    <p>Wpływ na prawa użytkownika jest minimalizowany, ponieważ:</p>
+    <ul>
+        <li>✅ Użytkownik zawsze może ponownie aktywować dowolne urządzenie poprzez "Przywróć zakupy"</li>
+        <li>✅ System używa tylko danych pseudonimizowanych (bez bezpośrednich danych osobowych)</li>
+        <li>✅ Logika jest przejrzysta i udokumentowana w tej Polityce Prywatności</li>
+    </ul>
+</div>
+
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Wersja 2.0 - Ostatnia aktualizacja: 14 stycznia 2026</strong><br>
+    <strong>Wersja 2.1 - Ostatnia aktualizacja: 18 stycznia 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 
