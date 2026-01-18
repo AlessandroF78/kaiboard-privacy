@@ -28,6 +28,10 @@
             color: #7f8c8d;
             margin-top: 20px;
         }
+        h4 {
+            color: #95a5a6;
+            margin-top: 15px;
+        }
         .highlight {
             background-color: #fff3cd;
             padding: 15px;
@@ -38,6 +42,12 @@
             background-color: #f8d7da;
             padding: 15px;
             border-left: 4px solid #dc3545;
+            margin: 20px 0;
+        }
+        .info {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border-left: 4px solid #17a2b8;
             margin: 20px 0;
         }
         table {
@@ -69,14 +79,20 @@
         li {
             margin: 10px 0;
         }
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
 
 <h1>Privacybeleid - kAIboard</h1>
 
-<p><strong>Laatst bijgewerkt:</strong> 14 januari 2026</p>
-<p><strong>Versie:</strong> 2.0</p>
+<p><strong>Laatst bijgewerkt:</strong> 18 januari 2026</p>
+<p><strong>Versie:</strong> 2.1</p>
 
 <div class="highlight">
     <strong>📱 kAIboard</strong> is een Android-toetsenbord met AI-aangedreven vertaalfuncties. Dit Privacybeleid legt uit welke gegevens we verzamelen, hoe we ze gebruiken en uw rechten onder de Algemene Verordening Gegevensbescherming (AVG - EU-verordening 2016/679).
@@ -107,9 +123,9 @@
     </tr>
     <tr>
         <td><strong>Anoniem Apparaat-ID</strong></td>
-        <td>Lokaal gegenereerde pseudonieme identificatie</td>
-        <td>Gekochte tokens herstellen op nieuwe apparaten</td>
-        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
+        <td>Identificatie gebaseerd op Android ID van het apparaat (bijv. android_e19d6c741afe8197)</td>
+        <td>Gekochte tokens herstellen en fraude voorkomen (slechts ÉÉN actief apparaat tegelijk)</td>
+        <td>Contractuitvoering (Art. 6.1.b) + Gerechtvaardigd belang fraudepreventie (Art. 6.1.f AVG)</td>
     </tr>
     <tr>
         <td><strong>Tokensaldo</strong></td>
@@ -122,6 +138,12 @@
         <td>Product-ID, aankoopdatum, bestelnummer</td>
         <td>Aankopen verifiëren en fraude voorkomen</td>
         <td>Contractuitvoering (Art. 6.1.b AVG)</td>
+    </tr>
+    <tr>
+        <td><strong>Migratie Metadata</strong></td>
+        <td>Actief apparaat, migratie tijdstempel, bronapparaat</td>
+        <td>Anti-fraudesysteem om tokenduplicatie op meerdere apparaten te voorkomen</td>
+        <td>Gerechtvaardigd belang (Art. 6.1.f AVG)</td>
     </tr>
     <tr>
         <td><strong>Te Vertalen Tekst</strong></td>
@@ -200,7 +222,40 @@
     op het nieuwe account.
 </div>
 
-<h3>3.3 Verificatie van Aankopen</h3>
+<h3>3.3 Anti-Fraudesysteem voor Tokens</h3>
+
+<div class="important">
+    <strong>⚠️ BELANGRIJK - HOE TOKENHERSTEL WERKT:</strong>
+</div>
+
+<p>Om misbruik en fraude te voorkomen, implementeert kAIboard een anti-fraudesysteem waarbij <strong>slechts ÉÉN apparaat tegelijk de gekochte tokens kan gebruiken</strong>.</p>
+
+<h4>Gedrag tijdens herstel:</h4>
+
+<ol>
+    <li><strong>Apparaat A</strong> koopt 50.000 tokens → Apparaat A is "actief" ✅</li>
+    <li><strong>Apparaat B</strong> (zelfde Google Play-account) klikt op "Aankopen herstellen" → Apparaat B wordt "actief" ✅</li>
+    <li><strong>Apparaat A</strong> wordt automatisch "geïnvalideerd" → Tokens op Apparaat A worden op nul gezet ❌</li>
+    <li>Om Apparaat A te heractiveren: klik opnieuw op "Aankopen herstellen" op Apparaat A</li>
+</ol>
+
+<p><strong>Metadata opgeslagen voor het anti-fraudesysteem:</strong></p>
+
+<ul>
+    <li><strong>active_device</strong>: ID van het momenteel actieve apparaat</li>
+    <li><strong>invalidated_at</strong>: Tijdstempel wanneer een apparaat werd gedeactiveerd</li>
+    <li><strong>invalidated_reason</strong>: Reden voor deactivatie (bijv. "migrated_to_android_xxx")</li>
+    <li><strong>migrated_from</strong>: Bronapparaat van de tokens</li>
+    <li><strong>migration_timestamp</strong>: Datum/tijd van migratie</li>
+</ul>
+
+<p><strong>Rechtsgrondslag:</strong> Gerechtvaardigd belang om fraude en misbruik van het aankoopsysteem te voorkomen (Art. 6.1.f AVG)</p>
+
+<div class="highlight">
+    <strong>💡 OPMERKING:</strong> Dit systeem garandeert dat gekochte tokens niet frauduleus worden gedupliceerd op meerdere apparaten. Tokenmigratie is <strong>onomkeerbaar</strong>: wanneer u herstelt op Apparaat B, verliest Apparaat A de tokens permanent totdat u een nieuw herstel uitvoert op Apparaat A.
+</div>
+
+<h3>3.4 Verificatie van Aankopen</h3>
 
 <p>Aankoopgeschiedenis wordt opgeslagen om:</p>
 
@@ -223,8 +278,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>Anoniem ID, tokensaldo, aankoopgeschiedenis</td>
-        <td>Back-up en synchronisatie</td>
+        <td>Anoniem ID, tokensaldo, aankoopgeschiedenis, migratie metadata</td>
+        <td>Back-up, synchronisatie en anti-fraudesysteem</td>
         <td>EU (Europese servers)</td>
     </tr>
     <tr>
@@ -287,6 +342,11 @@
     <tr>
         <td><strong>Aankoopgeschiedenis (Firebase)</strong></td>
         <td>365 dagen vanaf aankoop</td>
+        <td>Automatisch + handmatige verwijdering</td>
+    </tr>
+    <tr>
+        <td><strong>Migratie Metadata (Firebase)</strong></td>
+        <td>365 dagen vanaf laatste migratie</td>
         <td>Automatisch + handmatige verwijdering</td>
     </tr>
     <tr>
@@ -384,7 +444,42 @@
     <li>🔒 <strong>Automatische verwijdering</strong>: Gegevens verwijderd na 365 dagen inactiviteit</li>
 </ul>
 
-<h2>9. Vereiste Android-machtigingen</h2>
+<h2>9. Apparaat-Identifiers en Android-machtigingen</h2>
+
+<h3>9.1 Gebruikte Apparaat-Identifiers</h3>
+
+<p>kAIboard gebruikt de volgende identifiers om het anonieme apparaat-ID te genereren:</p>
+
+<table>
+    <tr>
+        <th>Identifier</th>
+        <th>Type</th>
+        <th>Doel</th>
+        <th>Persistentie</th>
+    </tr>
+    <tr>
+        <td><strong>Android ID</strong></td>
+        <td>Settings.Secure.ANDROID_ID</td>
+        <td>Unieke en stabiele apparaat-ID genereren</td>
+        <td>Blijft zelfs na factory reset bestaan</td>
+    </tr>
+    <tr>
+        <td><strong>Install Referrer ID</strong></td>
+        <td>Google Play Install Referrer API</td>
+        <td>Fallback als Android ID niet beschikbaar</td>
+        <td>Blijft tussen herinstallaties bestaan (als geïnstalleerd vanaf Play Store)</td>
+    </tr>
+    <tr>
+        <td><strong>Lokale UUID</strong></td>
+        <td>java.util.UUID</td>
+        <td>Laatste fallback (alleen voor sideload)</td>
+        <td>Blijft NIET bestaan (verloren bij deïnstallatie)</td>
+    </tr>
+</table>
+
+<p><strong>⚠️ PRIVACYOPMERKING:</strong> De Android ID is een unieke apparaat-identifier. kAIboard gebruikt deze ALLEEN om het geanonimiseerde pseudonieme ID te genereren (formaat: "android_[hash]"). De ruwe Android ID wordt NOOIT naar onze servers of derden verzonden.</p>
+
+<h3>9.2 App-machtigingen</h3>
 
 <table>
     <tr>
@@ -480,11 +575,33 @@
 <ul>
     <li><strong>Art. 6.1.b AVG</strong> - Contractuitvoering: Token back-up, aankoopgeschiedenis, vertaling</li>
     <li><strong>Art. 6.1.a AVG</strong> - Toestemming: Crashrapporten (optioneel)</li>
-    <li><strong>Art. 6.1.f AVG</strong> - Gerechtvaardigd belang: Fraudepreventie, beveiliging</li>
+    <li><strong>Art. 6.1.f AVG</strong> - Gerechtvaardigd belang:
+        <ul>
+            <li>Fraudepreventie (token anti-fraudesysteem)</li>
+            <li>Aankoopbeveiliging</li>
+            <li>Bescherming van het factureringssysteem tegen misbruik</li>
+        </ul>
+    </li>
 </ul>
 
+<div class="info">
+    <strong>📋 BEOORDELING GERECHTVAARDIGD BELANG (Art. 6.1.f AVG):</strong>
+    <p>Het anti-fraudesysteem is noodzakelijk om:</p>
+    <ul>
+        <li>✅ De economische duurzaamheid van de app te beschermen</li>
+        <li>✅ Misbruik van het in-app-aankoopsysteem te voorkomen</li>
+        <li>✅ Eerlijkheid tussen gebruikers te garanderen</li>
+    </ul>
+    <p>De impact op gebruikersrechten wordt geminimaliseerd omdat:</p>
+    <ul>
+        <li>✅ Gebruikers altijd elk apparaat kunnen heractiveren via "Aankopen herstellen"</li>
+        <li>✅ Het systeem alleen gepseudonimiseerde gegevens gebruikt (geen directe persoonlijke gegevens)</li>
+        <li>✅ De logica transparant is en gedocumenteerd in dit Privacybeleid</li>
+    </ul>
+</div>
+
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Versie 2.0 - Laatst bijgewerkt: 14 januari 2026</strong><br>
+    <strong>Versie 2.1 - Laatst bijgewerkt: 18 januari 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 
