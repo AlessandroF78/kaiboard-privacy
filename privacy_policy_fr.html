@@ -28,6 +28,10 @@
             color: #7f8c8d;
             margin-top: 20px;
         }
+        h4 {
+            color: #95a5a6;
+            margin-top: 15px;
+        }
         .highlight {
             background-color: #fff3cd;
             padding: 15px;
@@ -38,6 +42,12 @@
             background-color: #f8d7da;
             padding: 15px;
             border-left: 4px solid #dc3545;
+            margin: 20px 0;
+        }
+        .info {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border-left: 4px solid #17a2b8;
             margin: 20px 0;
         }
         table {
@@ -69,14 +79,20 @@
         li {
             margin: 10px 0;
         }
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
 
 <h1>Politique de Confidentialité - kAIboard</h1>
 
-<p><strong>Dernière mise à jour :</strong> 14 janvier 2026</p>
-<p><strong>Version :</strong> 2.0</p>
+<p><strong>Dernière mise à jour :</strong> 18 janvier 2026</p>
+<p><strong>Version :</strong> 2.1</p>
 
 <div class="highlight">
     <strong>📱 kAIboard</strong> est un clavier Android avec des fonctionnalités de traduction alimentées par l'IA. Cette Politique de Confidentialité explique quelles données nous collectons, comment nous les utilisons et vos droits en vertu du Règlement Général sur la Protection des Données (RGPD - Règlement UE 2016/679).
@@ -107,9 +123,9 @@
     </tr>
     <tr>
         <td><strong>ID de Dispositif Anonyme</strong></td>
-        <td>Identifiant pseudonyme généré localement</td>
-        <td>Restaurer les jetons achetés sur les nouveaux appareils</td>
-        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+        <td>Identifiant basé sur l'Android ID du dispositif (ex. android_e19d6c741afe8197)</td>
+        <td>Restaurer les jetons achetés et prévenir la fraude (UN SEUL appareil actif à la fois)</td>
+        <td>Exécution du contrat (Art. 6.1.b) + Intérêt légitime prévention de la fraude (Art. 6.1.f RGPD)</td>
     </tr>
     <tr>
         <td><strong>Solde de Jetons</strong></td>
@@ -122,6 +138,12 @@
         <td>ID de produit, date d'achat, ID de commande</td>
         <td>Vérifier les achats et prévenir la fraude</td>
         <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Métadonnées de Migration</strong></td>
+        <td>Appareil actif, horodatage de migration, appareil source</td>
+        <td>Système anti-fraude pour prévenir la duplication de jetons sur plusieurs appareils</td>
+        <td>Intérêt légitime (Art. 6.1.f RGPD)</td>
     </tr>
     <tr>
         <td><strong>Texte à Traduire</strong></td>
@@ -200,7 +222,40 @@
     vous devrez racheter les jetons sur le nouveau compte.
 </div>
 
-<h3>3.3 Vérification des Achats</h3>
+<h3>3.3 Système Anti-Fraude pour les Jetons</h3>
+
+<div class="important">
+    <strong>⚠️ IMPORTANT - COMMENT FONCTIONNE LA RESTAURATION DES JETONS :</strong>
+</div>
+
+<p>Pour prévenir les abus et la fraude, kAIboard implémente un système anti-fraude selon lequel <strong>UN SEUL appareil à la fois peut utiliser les jetons achetés</strong>.</p>
+
+<h4>Comportement lors de la restauration :</h4>
+
+<ol>
+    <li><strong>Appareil A</strong> achète 50 000 jetons → Appareil A est "actif" ✅</li>
+    <li><strong>Appareil B</strong> (même compte Google Play) clique sur "Restaurer les achats" → Appareil B devient "actif" ✅</li>
+    <li><strong>Appareil A</strong> est automatiquement "invalidé" → Les jetons sur Appareil A sont remis à zéro ❌</li>
+    <li>Pour réactiver Appareil A : cliquez à nouveau sur "Restaurer les achats" sur Appareil A</li>
+</ol>
+
+<p><strong>Métadonnées sauvegardées pour le système anti-fraude :</strong></p>
+
+<ul>
+    <li><strong>active_device</strong> : ID de l'appareil actuellement actif</li>
+    <li><strong>invalidated_at</strong> : Horodatage lorsqu'un appareil a été désactivé</li>
+    <li><strong>invalidated_reason</strong> : Raison de la désactivation (ex. "migrated_to_android_xxx")</li>
+    <li><strong>migrated_from</strong> : Appareil source des jetons</li>
+    <li><strong>migration_timestamp</strong> : Date/heure de la migration</li>
+</ul>
+
+<p><strong>Base légale :</strong> Intérêt légitime pour prévenir la fraude et les abus du système d'achats (Art. 6.1.f RGPD)</p>
+
+<div class="highlight">
+    <strong>💡 NOTE :</strong> Ce système garantit que les jetons achetés ne sont pas dupliqués frauduleusement sur plusieurs appareils. La migration des jetons est <strong>irréversible</strong> : lorsque vous restaurez sur Appareil B, Appareil A perd définitivement les jetons jusqu'à ce que vous effectuiez une nouvelle restauration sur Appareil A.
+</div>
+
+<h3>3.4 Vérification des Achats</h3>
 
 <p>L'historique des achats est sauvegardé pour :</p>
 
@@ -223,8 +278,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>ID anonyme, solde de jetons, historique des achats</td>
-        <td>Sauvegarde et synchronisation</td>
+        <td>ID anonyme, solde de jetons, historique des achats, métadonnées de migration</td>
+        <td>Sauvegarde, synchronisation et système anti-fraude</td>
         <td>UE (serveurs européens)</td>
     </tr>
     <tr>
@@ -287,6 +342,11 @@
     <tr>
         <td><strong>Historique des Achats (Firebase)</strong></td>
         <td>365 jours à partir de l'achat</td>
+        <td>Automatique + suppression manuelle</td>
+    </tr>
+    <tr>
+        <td><strong>Métadonnées de Migration (Firebase)</strong></td>
+        <td>365 jours à partir de la dernière migration</td>
         <td>Automatique + suppression manuelle</td>
     </tr>
     <tr>
@@ -384,7 +444,42 @@
     <li>🔒 <strong>Suppression automatique</strong> : Données supprimées après 365 jours d'inactivité</li>
 </ul>
 
-<h2>9. Autorisations Android Requises</h2>
+<h2>9. Identifiants de Dispositif et Autorisations Android</h2>
+
+<h3>9.1 Identifiants de Dispositif Utilisés</h3>
+
+<p>kAIboard utilise les identifiants suivants pour générer l'ID de dispositif anonyme :</p>
+
+<table>
+    <tr>
+        <th>Identifiant</th>
+        <th>Type</th>
+        <th>Finalité</th>
+        <th>Persistance</th>
+    </tr>
+    <tr>
+        <td><strong>Android ID</strong></td>
+        <td>Settings.Secure.ANDROID_ID</td>
+        <td>Générer un ID de dispositif unique et stable</td>
+        <td>Persiste même après une réinitialisation d'usine</td>
+    </tr>
+    <tr>
+        <td><strong>Install Referrer ID</strong></td>
+        <td>Google Play Install Referrer API</td>
+        <td>Solution de secours si Android ID non disponible</td>
+        <td>Persiste entre les réinstallations (si installé depuis Play Store)</td>
+    </tr>
+    <tr>
+        <td><strong>UUID Local</strong></td>
+        <td>java.util.UUID</td>
+        <td>Solution de secours finale (sideload uniquement)</td>
+        <td>Ne persiste PAS (perdu lors de la désinstallation)</td>
+    </tr>
+</table>
+
+<p><strong>⚠️ NOTE DE CONFIDENTIALITÉ :</strong> L'Android ID est un identifiant unique du dispositif. kAIboard l'utilise UNIQUEMENT pour générer l'ID anonyme pseudonymisé (format : "android_[hash]"). L'Android ID brut n'est JAMAIS envoyé à nos serveurs ou à des tiers.</p>
+
+<h3>9.2 Autorisations de l'Application</h3>
 
 <table>
     <tr>
@@ -480,11 +575,33 @@
 <ul>
     <li><strong>Art. 6.1.b RGPD</strong> - Exécution du contrat : Sauvegarde des jetons, historique des achats, traduction</li>
     <li><strong>Art. 6.1.a RGPD</strong> - Consentement : Rapports de plantage (optionnel)</li>
-    <li><strong>Art. 6.1.f RGPD</strong> - Intérêt légitime : Prévention de la fraude, sécurité</li>
+    <li><strong>Art. 6.1.f RGPD</strong> - Intérêt légitime :
+        <ul>
+            <li>Prévention de la fraude (système anti-fraude pour jetons)</li>
+            <li>Sécurité des achats</li>
+            <li>Protection du système de facturation contre les abus</li>
+        </ul>
+    </li>
 </ul>
 
+<div class="info">
+    <strong>📋 ÉVALUATION DE L'INTÉRÊT LÉGITIME (Art. 6.1.f RGPD) :</strong>
+    <p>Le système anti-fraude est nécessaire pour :</p>
+    <ul>
+        <li>✅ Protéger la viabilité économique de l'application</li>
+        <li>✅ Prévenir les abus du système d'achats intégrés</li>
+        <li>✅ Garantir l'équité entre les utilisateurs</li>
+    </ul>
+    <p>L'impact sur les droits de l'utilisateur est minimisé car :</p>
+    <ul>
+        <li>✅ L'utilisateur peut toujours réactiver n'importe quel appareil via "Restaurer les achats"</li>
+        <li>✅ Le système utilise uniquement des données pseudonymisées (pas de données personnelles directes)</li>
+        <li>✅ La logique est transparente et documentée dans cette Politique de Confidentialité</li>
+    </ul>
+</div>
+
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Version 2.0 - Dernière mise à jour : 14 janvier 2026</strong><br>
+    <strong>Version 2.1 - Dernière mise à jour : 18 janvier 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 
