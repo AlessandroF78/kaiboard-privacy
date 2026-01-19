@@ -28,6 +28,10 @@
             color: #7f8c8d;
             margin-top: 20px;
         }
+        h4 {
+            color: #95a5a6;
+            margin-top: 15px;
+        }
         .highlight {
             background-color: #fff3cd;
             padding: 15px;
@@ -38,6 +42,12 @@
             background-color: #f8d7da;
             padding: 15px;
             border-left: 4px solid #dc3545;
+            margin: 20px 0;
+        }
+        .info {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border-left: 4px solid #17a2b8;
             margin: 20px 0;
         }
         table {
@@ -69,14 +79,20 @@
         li {
             margin: 10px 0;
         }
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
 
 <h1>Gizlilik Politikası - kAIboard</h1>
 
-<p><strong>Son güncelleme:</strong> 14 Ocak 2026</p>
-<p><strong>Sürüm:</strong> 2.0</p>
+<p><strong>Son güncelleme:</strong> 18 Ocak 2026</p>
+<p><strong>Sürüm:</strong> 2.1</p>
 
 <div class="highlight">
     <strong>📱 kAIboard</strong>, yapay zeka destekli çeviri özellikleri olan bir Android klavyesidir. Bu Gizlilik Politikası, hangi verileri topladığımızı, bunları nasıl kullandığımızı ve Genel Veri Koruma Yönetmeliği (GDPR - AB Yönetmeliği 2016/679) kapsamındaki haklarınızı açıklar.
@@ -107,9 +123,9 @@
     </tr>
     <tr>
         <td><strong>Anonim Cihaz Kimliği</strong></td>
-        <td>Yerel olarak oluşturulan takma ad tanımlayıcı</td>
-        <td>Yeni cihazlarda satın alınan token'ları geri yükleme</td>
-        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+        <td>Cihazın Android ID'sine dayalı tanımlayıcı (örn. android_e19d6c741afe8197)</td>
+        <td>Satın alınan token'ları geri yükleme ve dolandırıcılığı önleme (aynı anda yalnızca BİR aktif cihaz)</td>
+        <td>Sözleşme ifası (Mad. 6.1.b) + Dolandırıcılığı önleme için meşru menfaat (Mad. 6.1.f GDPR)</td>
     </tr>
     <tr>
         <td><strong>Token Bakiyesi</strong></td>
@@ -122,6 +138,12 @@
         <td>Ürün kimliği, satın alma tarihi, sipariş kimliği</td>
         <td>Satın almaları doğrulama ve dolandırıcılığı önleme</td>
         <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Taşıma Metadata'ları</strong></td>
+        <td>Aktif cihaz, taşıma zaman damgası, kaynak cihaz</td>
+        <td>Birden fazla cihazda token kopyalanmasını önlemek için dolandırıcılık önleme sistemi</td>
+        <td>Meşru menfaat (Mad. 6.1.f GDPR)</td>
     </tr>
     <tr>
         <td><strong>Çevrilecek Metin</strong></td>
@@ -199,7 +221,40 @@
     yeniden satın almanız gerekecektir.
 </div>
 
-<h3>3.3 Satın Alma Doğrulama</h3>
+<h3>3.3 Token'lar için Dolandırıcılık Önleme Sistemi</h3>
+
+<div class="important">
+    <strong>⚠️ ÖNEMLİ - TOKEN GERİ YÜKLEME NASIL ÇALIŞIR:</strong>
+</div>
+
+<p>Kötüye kullanımı ve dolandırıcılığı önlemek için, kAIboard <strong>aynı anda yalnızca BİR cihazın satın alınan token'ları kullanabileceği</strong> bir dolandırıcılık önleme sistemi uygular.</p>
+
+<h4>Geri yükleme sırasında davranış:</h4>
+
+<ol>
+    <li><strong>Cihaz A</strong> 50.000 token satın alır → Cihaz A "aktif" ✅</li>
+    <li><strong>Cihaz B</strong> (aynı Google Play hesabı) "Satın alımları geri yükle"ye tıklar → Cihaz B "aktif" olur ✅</li>
+    <li><strong>Cihaz A</strong> otomatik olarak "geçersiz kılınır" → Cihaz A'daki token'lar sıfırlanır ❌</li>
+    <li>Cihaz A'yı yeniden etkinleştirmek için: Cihaz A'da tekrar "Satın alımları geri yükle"ye tıklayın</li>
+</ol>
+
+<p><strong>Dolandırıcılık önleme sistemi için kaydedilen metadata'lar:</strong></p>
+
+<ul>
+    <li><strong>active_device</strong>: Şu anda aktif olan cihazın ID'si</li>
+    <li><strong>invalidated_at</strong>: Cihazın devre dışı bırakıldığı zaman damgası</li>
+    <li><strong>invalidated_reason</strong>: Devre dışı bırakma nedeni (örn. "migrated_to_android_xxx")</li>
+    <li><strong>migrated_from</strong>: Token'ların kaynak cihazı</li>
+    <li><strong>migration_timestamp</strong>: Taşıma tarihi/saati</li>
+</ul>
+
+<p><strong>Yasal dayanak:</strong> Satın alma sisteminin dolandırıcılığını ve kötüye kullanımını önlemek için meşru menfaat (Mad. 6.1.f GDPR)</p>
+
+<div class="highlight">
+    <strong>💡 NOT:</strong> Bu sistem, satın alınan token'ların birden fazla cihazda dolandırıcı şekilde kopyalanmamasını garanti eder. Token taşıma işlemi <strong>geri alınamaz</strong>: Cihaz B'de geri yüklediğinizde, Cihaz A'da yeni bir geri yükleme yapana kadar Cihaz A token'ları kalıcı olarak kaybeder.
+</div>
+
+<h3>3.4 Satın Alma Doğrulama</h3>
 
 <p>Satın alma geçmişi şunlar için saklanır:</p>
 
@@ -222,8 +277,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>Anonim kimlik, token bakiyesi, satın alma geçmişi</td>
-        <td>Yedekleme ve senkronizasyon</td>
+        <td>Anonim kimlik, token bakiyesi, satın alma geçmişi, taşıma metadata'ları</td>
+        <td>Yedekleme, senkronizasyon ve dolandırıcılık önleme sistemi</td>
         <td>AB (Avrupa sunucuları)</td>
     </tr>
     <tr>
@@ -286,6 +341,11 @@
     <tr>
         <td><strong>Satın Alma Geçmişi (Firebase)</strong></td>
         <td>Satın almadan itibaren 365 gün</td>
+        <td>Otomatik + manuel silme</td>
+    </tr>
+    <tr>
+        <td><strong>Taşıma Metadata'ları (Firebase)</strong></td>
+        <td>Son taşımadan itibaren 365 gün</td>
         <td>Otomatik + manuel silme</td>
     </tr>
     <tr>
@@ -383,7 +443,42 @@
     <li>🔒 <strong>Otomatik silme</strong>: Veriler 365 gün hareketsizlikten sonra silinir</li>
 </ul>
 
-<h2>9. Gerekli Android İzinleri</h2>
+<h2>9. Cihaz Tanımlayıcıları ve Android İzinleri</h2>
+
+<h3>9.1 Kullanılan Cihaz Tanımlayıcıları</h3>
+
+<p>kAIboard, anonim cihaz kimliğini oluşturmak için aşağıdaki tanımlayıcıları kullanır:</p>
+
+<table>
+    <tr>
+        <th>Tanımlayıcı</th>
+        <th>Tür</th>
+        <th>Amaç</th>
+        <th>Kalıcılık</th>
+    </tr>
+    <tr>
+        <td><strong>Android ID</strong></td>
+        <td>Settings.Secure.ANDROID_ID</td>
+        <td>Benzersiz ve kararlı cihaz kimliği oluşturma</td>
+        <td>Fabrika ayarlarına döndürmeden sonra bile devam eder</td>
+    </tr>
+    <tr>
+        <td><strong>Install Referrer ID</strong></td>
+        <td>Google Play Install Referrer API</td>
+        <td>Android ID kullanılamıyorsa yedek</td>
+        <td>Yeniden yüklemeler arasında devam eder (Play Store'dan yüklenmişse)</td>
+    </tr>
+    <tr>
+        <td><strong>Yerel UUID</strong></td>
+        <td>java.util.UUID</td>
+        <td>Son yedek (yalnızca sideload için)</td>
+        <td>Devam ETMİYOR (kaldırmayla kaybolur)</td>
+    </tr>
+</table>
+
+<p><strong>⚠️ GİZLİLİK NOTU:</strong> Android ID, cihazın benzersiz bir tanımlayıcısıdır. kAIboard bunu YALNIZCA anonim takma adlı kimlik oluşturmak için kullanır (format: "android_[hash]"). Ham Android ID sunucularımıza veya üçüncü taraflara ASLA gönderilmez.</p>
+
+<h3>9.2 Uygulama İzinleri</h3>
 
 <table>
     <tr>
@@ -479,11 +574,33 @@
 <ul>
     <li><strong>Mad. 6.1.b GDPR</strong> - Sözleşme ifası: Token yedeği, satın alma geçmişi, çeviri</li>
     <li><strong>Mad. 6.1.a GDPR</strong> - Rıza: Çökme raporları (isteğe bağlı)</li>
-    <li><strong>Mad. 6.1.f GDPR</strong> - Meşru menfaat: Dolandırıcılık önleme, güvenlik</li>
+    <li><strong>Mad. 6.1.f GDPR</strong> - Meşru menfaat:
+        <ul>
+            <li>Dolandırıcılığı önleme (token dolandırıcılık önleme sistemi)</li>
+            <li>Satın alma güvenliği</li>
+            <li>Faturalandırma sistemini kötüye kullanımdan koruma</li>
+        </ul>
+    </li>
 </ul>
 
+<div class="info">
+    <strong>📋 MEŞRU MENFAAT DEĞERLENDİRMESİ (Mad. 6.1.f GDPR):</strong>
+    <p>Dolandırıcılık önleme sistemi şunlar için gereklidir:</p>
+    <ul>
+        <li>✅ Uygulamanın ekonomik sürdürülebilirliğini korumak</li>
+        <li>✅ Uygulama içi satın alma sisteminin kötüye kullanımını önlemek</li>
+        <li>✅ Kullanıcılar arasında adaleti sağlamak</li>
+    </ul>
+    <p>Kullanıcı hakları üzerindeki etki en aza indirilmiştir çünkü:</p>
+    <ul>
+        <li>✅ Kullanıcı "Satın alımları geri yükle" ile her zaman herhangi bir cihazı yeniden etkinleştirebilir</li>
+        <li>✅ Sistem yalnızca takma adlı veriler kullanır (doğrudan kişisel veri yok)</li>
+        <li>✅ Mantık şeffaftır ve bu Gizlilik Politikasında belgelenmiştir</li>
+    </ul>
+</div>
+
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Sürüm 2.0 - Son güncelleme: 14 Ocak 2026</strong><br>
+    <strong>Sürüm 2.1 - Son güncelleme: 18 Ocak 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 
