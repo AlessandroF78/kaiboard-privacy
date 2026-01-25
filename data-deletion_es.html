@@ -146,8 +146,8 @@
             </tr>
             <tr>
                 <td><strong>Eliminar Datos en la Nube</strong></td>
-                <td>Saldo de tokens e historial de compras almacenado en Firebase</td>
-                <td>Irreversible. Perderá su saldo de tokens.</td>
+                <td>Saldo de tokens, historial de compras y datos de suscripción almacenados en Firebase</td>
+                <td>Irreversible. Perderás tu saldo de tokens. Requiere cancelación de suscripción si está activa.</td>
             </tr>
             <tr>
                 <td><strong>Eliminar Datos de Aprendizaje</strong></td>
@@ -162,6 +162,30 @@
         </table>
 
         <p><strong>Tiempo de Procesamiento:</strong> Inmediato (0-5 segundos)</p>
+
+        <div class="warning">
+            <h3>⚠️ Limitación de Eliminación con Suscripción Activa (Art. 17.3.b RGPD)</h3>
+            
+            <p>Si tienes una <strong>suscripción mensual activa</strong>, la eliminación de datos en la nube está <strong>temporalmente bloqueada</strong> hasta la cancelación de la suscripción.</p>
+            
+            <p><strong>Motivo:</strong> Los datos relacionados con la suscripción (plan activo, límite de tokens, fecha de reinicio) son necesarios para la ejecución del contrato en curso (Art. 6.1.b RGPD). La eliminación anticipada impediría:</p>
+            <ul>
+                <li>❌ El correcto funcionamiento del servicio mensual adquirido</li>
+                <li>❌ La sincronización del límite de tokens entre dispositivos</li>
+                <li>❌ El reinicio automático de tokens al inicio del mes</li>
+            </ul>
+            
+            <p><strong>Cómo proceder:</strong></p>
+            <ol>
+                <li>Cancela la suscripción a través de Google Play Store</li>
+                <li>Espera hasta el final del período de facturación actual</li>
+                <li>Elimina los datos en la nube a través de la app</li>
+            </ol>
+            
+            <p><strong>Eliminación inmediata:</strong> La app te redirige automáticamente a Google Play para gestionar tu suscripción. Después de la cancelación, la eliminación de datos estará inmediatamente disponible.</p>
+            
+            <p><strong>Base jurídica del bloqueo:</strong> Art. 17.3.b RGPD - "El derecho de supresión no se aplicará cuando el tratamiento sea necesario para la ejecución de un contrato en el que el interesado es parte".</p>
+        </div>
 
         <h2>Método 2: Solicitud por Correo Electrónico</h2>
 
@@ -188,6 +212,11 @@
                 <th>Tipo de Dato</th>
                 <th>Período de Retención</th>
                 <th>Detalles</th>
+            </tr>
+            <tr>
+                <td><strong>Datos de Suscripción (Firebase)</strong></td>
+                <td>Hasta el final del período de facturación + 365 días después del vencimiento</td>
+                <td>Eliminados automáticamente después del vencimiento de la suscripción y período de retención</td>
             </tr>
             <tr>
                 <td>Datos en la Nube (Firebase)</td>
@@ -237,6 +266,26 @@
                 <td>Botón "Eliminar Datos en la Nube"</td>
             </tr>
             <tr>
+                <td>Plan de Suscripción</td>
+                <td>Firebase (nube)</td>
+                <td>Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
+            </tr>
+            <tr>
+                <td>Límite Mensual de Tokens</td>
+                <td>Firebase (nube)</td>
+                <td>Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
+            </tr>
+            <tr>
+                <td>Uso Actual de Tokens</td>
+                <td>Firebase (nube)</td>
+                <td>Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
+            </tr>
+            <tr>
+                <td>Fecha de Reinicio Mensual</td>
+                <td>Firebase (nube)</td>
+                <td>Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
+            </tr>
+            <tr>
                 <td>Palabras Aprendidas (Predicciones)</td>
                 <td>Local (dispositivo)</td>
                 <td>Botón "Eliminar Datos de Aprendizaje"</td>
@@ -272,7 +321,7 @@
         <div class="warning">
             <p><strong>Aviso Importante:</strong> La eliminación de ciertos datos es <strong>irreversible</strong>. Asegúrese de comprender las consecuencias antes de continuar:</p>
             <ul>
-                <li><strong>Eliminar Datos en la Nube:</strong> Perderá su saldo de tokens y NO podrá recuperarlo, incluso después de reinstalar la aplicación</li>
+                <li><strong>Eliminar Datos en la Nube:</strong> Perderás tu saldo de tokens, el historial de compras y los datos de suscripción. NO podrás recuperarlos, incluso después de reinstalar la app. Si tienes una suscripción activa, primero debes cancelarla a través de Google Play Store.</li>
                 <li><strong>Eliminar Datos de Aprendizaje:</strong> Las predicciones de texto personalizadas comenzarán desde cero</li>
                 <li><strong>Eliminar Todos los Datos Locales:</strong> Todas las preferencias y configuraciones se perderán</li>
             </ul>
@@ -303,10 +352,11 @@
         </p>
 
         <div class="footer">
-            <p><strong>Versión 1.0 - Última Actualización: 17 de enero de 2026</strong></p>
+            <p><strong>Versión 1.1 - Última Actualización: 25 de enero de 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Conforme al RGPD (Reglamento UE 2016/679)</p>
         </div>
     </div>
 </body>
+
 </html>
