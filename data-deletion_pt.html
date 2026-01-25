@@ -146,8 +146,8 @@
             </tr>
             <tr>
                 <td><strong>Eliminar Dados da Nuvem</strong></td>
-                <td>Saldo de tokens e histórico de compras armazenado no Firebase</td>
-                <td>Irreversível. Perderá o seu saldo de tokens.</td>
+                <td>Saldo de tokens, histórico de compras e dados de assinatura armazenados no Firebase</td>
+                <td>Irreversível. Você perderá seu saldo de tokens. Requer cancelamento de assinatura se ativa.</td>
             </tr>
             <tr>
                 <td><strong>Eliminar Dados de Aprendizagem</strong></td>
@@ -162,6 +162,30 @@
         </table>
 
         <p><strong>Tempo de Processamento:</strong> Imediato (0-5 segundos)</p>
+
+        <div class="warning">
+            <h3>⚠️ Limitação de Exclusão com Assinatura Ativa (Art. 17.3.b RGPD)</h3>
+            
+            <p>Se você tiver uma <strong>assinatura mensal ativa</strong>, a exclusão de dados da nuvem fica <strong>temporariamente bloqueada</strong> até o cancelamento da assinatura.</p>
+            
+            <p><strong>Motivo:</strong> Os dados relacionados à assinatura (plano ativo, limite de tokens, data de reset) são necessários para a execução do contrato em andamento (Art. 6.1.b RGPD). A exclusão antecipada impediria:</p>
+            <ul>
+                <li>❌ O funcionamento correto do serviço mensal adquirido</li>
+                <li>❌ A sincronização do limite de tokens entre dispositivos</li>
+                <li>❌ O reset automático de tokens no início do mês</li>
+            </ul>
+            
+            <p><strong>Como proceder:</strong></p>
+            <ol>
+                <li>Cancele a assinatura através da Google Play Store</li>
+                <li>Aguarde até o fim do período de faturamento atual</li>
+                <li>Exclua os dados da nuvem através do aplicativo</li>
+            </ol>
+            
+            <p><strong>Exclusão imediata:</strong> O aplicativo redireciona você automaticamente para o Google Play para gerenciar sua assinatura. Após o cancelamento, a exclusão de dados estará imediatamente disponível.</p>
+            
+            <p><strong>Base jurídica do bloqueio:</strong> Art. 17.3.b RGPD - "O direito ao apagamento não se aplica na medida em que o tratamento seja necessário para a execução de um contrato do qual o titular dos dados é parte".</p>
+        </div>
 
         <h2>Método 2: Pedido por E-mail</h2>
 
@@ -188,6 +212,11 @@
                 <th>Tipo de Dados</th>
                 <th>Período de Retenção</th>
                 <th>Detalhes</th>
+            </tr>
+            <tr>
+                <td><strong>Dados de Assinatura (Firebase)</strong></td>
+                <td>Até o fim do período de faturamento + 365 dias após expiração</td>
+                <td>Excluídos automaticamente após expiração da assinatura e período de retenção</td>
             </tr>
             <tr>
                 <td>Dados da Nuvem (Firebase)</td>
@@ -237,6 +266,26 @@
                 <td>Botão "Eliminar Dados da Nuvem"</td>
             </tr>
             <tr>
+                <td>Plano de Assinatura</td>
+                <td>Firebase (nuvem)</td>
+                <td>Botão "Excluir Dados da Nuvem" (somente após cancelamento de assinatura)</td>
+            </tr>
+            <tr>
+                <td>Limite Mensal de Tokens</td>
+                <td>Firebase (nuvem)</td>
+                <td>Botão "Excluir Dados da Nuvem" (somente após cancelamento de assinatura)</td>
+            </tr>
+            <tr>
+                <td>Uso Atual de Tokens</td>
+                <td>Firebase (nuvem)</td>
+                <td>Botão "Excluir Dados da Nuvem" (somente após cancelamento de assinatura)</td>
+            </tr>
+            <tr>
+                <td>Data de Reset Mensal</td>
+                <td>Firebase (nuvem)</td>
+                <td>Botão "Excluir Dados da Nuvem" (somente após cancelamento de assinatura)</td>
+            </tr>
+            <tr>
                 <td>Palavras Aprendidas (Previsões)</td>
                 <td>Local (dispositivo)</td>
                 <td>Botão "Eliminar Dados de Aprendizagem"</td>
@@ -272,7 +321,7 @@
         <div class="warning">
             <p><strong>Aviso Importante:</strong> A eliminação de certos dados é <strong>irreversível</strong>. Certifique-se de compreender as consequências antes de prosseguir:</p>
             <ul>
-                <li><strong>Eliminar Dados da Nuvem:</strong> Perderá o seu saldo de tokens e NÃO poderá recuperá-lo, mesmo após reinstalar a aplicação</li>
+                <li><strong>Excluir Dados da Nuvem:</strong> Você perderá seu saldo de tokens, histórico de compras e dados de assinatura. Você NÃO poderá recuperá-los, mesmo após reinstalar o aplicativo. Se você tiver uma assinatura ativa, deve primeiro cancelá-la através da Google Play Store.</li>
                 <li><strong>Eliminar Dados de Aprendizagem:</strong> As previsões de texto personalizadas começarão do zero</li>
                 <li><strong>Eliminar Todos os Dados Locais:</strong> Todas as preferências e definições serão perdidas</li>
             </ul>
@@ -303,10 +352,11 @@
         </p>
 
         <div class="footer">
-            <p><strong>Versão 1.0 - Última Atualização: 17 de janeiro de 2026</strong></p>
+            <p><strong>Versão 1.1 - Última Atualização: 25 de janeiro de 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Conforme o RGPD (Regulamento UE 2016/679)</p>
         </div>
     </div>
 </body>
+
 </html>
