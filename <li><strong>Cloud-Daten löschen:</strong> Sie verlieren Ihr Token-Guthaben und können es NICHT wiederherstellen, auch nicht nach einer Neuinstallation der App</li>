@@ -146,8 +146,8 @@
             </tr>
             <tr>
                 <td><strong>Cloud-Daten löschen</strong></td>
-                <td>Token-Guthaben und Kaufhistorie in Firebase gespeichert</td>
-                <td>Unwiderruflich. Sie verlieren Ihr Token-Guthaben.</td>
+                <td>Token-Guthaben, Kaufhistorie und Abonnementdaten auf Firebase gespeichert</td>
+                <td>Unwiderruflich. Sie verlieren Ihr Token-Guthaben. Erfordert Abonnement-Kündigung falls aktiv.</td>
             </tr>
             <tr>
                 <td><strong>Lerndaten löschen</strong></td>
@@ -162,6 +162,30 @@
         </table>
 
         <p><strong>Bearbeitungszeit:</strong> Sofort (0-5 Sekunden)</p>
+
+        <div class="warning">
+            <h3>⚠️ Einschränkung der Löschung bei aktivem Abonnement (Art. 17.3.b DSGVO)</h3>
+            
+            <p>Wenn Sie ein <strong>aktives Monatsabonnement</strong> haben, wird die Löschung der Cloud-Daten <strong>vorübergehend blockiert</strong>, bis das Abonnement gekündigt wird.</p>
+            
+            <p><strong>Grund:</strong> Die Abonnementdaten (aktiver Plan, Token-Limit, Reset-Datum) sind für die Erfüllung des laufenden Vertrags erforderlich (Art. 6.1.b DSGVO). Eine vorzeitige Löschung würde Folgendes verhindern:</p>
+            <ul>
+                <li>❌ Das ordnungsgemäße Funktionieren des gekauften monatlichen Dienstes</li>
+                <li>❌ Die Synchronisierung des Token-Limits zwischen Geräten</li>
+                <li>❌ Das automatische Zurücksetzen der Token zu Monatsbeginn</li>
+            </ul>
+            
+            <p><strong>Vorgehensweise:</strong></p>
+            <ol>
+                <li>Kündigen Sie das Abonnement über den Google Play Store</li>
+                <li>Warten Sie bis zum Ende des aktuellen Abrechnungszeitraums</li>
+                <li>Löschen Sie die Cloud-Daten über die App</li>
+            </ol>
+            
+            <p><strong>Sofortige Löschung:</strong> Die App leitet Sie automatisch zum Google Play Store weiter, um das Abonnement zu verwalten. Nach der Kündigung ist die Datenlöschung sofort verfügbar.</p>
+            
+            <p><strong>Rechtsgrundlage der Blockierung:</strong> Art. 17.3.b DSGVO - "Das Recht auf Löschung gilt nicht, soweit die Verarbeitung zur Erfüllung eines Vertrags erforderlich ist, dessen Vertragspartei die betroffene Person ist".</p>
+        </div>
 
         <h2>Methode 2: E-Mail-Anfrage</h2>
 
@@ -188,6 +212,11 @@
                 <th>Datentyp</th>
                 <th>Aufbewahrungsfrist</th>
                 <th>Details</th>
+            </tr>
+            <tr>
+                <td><strong>Abonnementdaten (Firebase)</strong></td>
+                <td>Bis zum Ende des Abrechnungszeitraums + 365 Tage nach Ablauf</td>
+                <td>Automatisch gelöscht nach Ablauf des Abonnements und Aufbewahrungsfrist</td>
             </tr>
             <tr>
                 <td>Cloud-Daten (Firebase)</td>
@@ -237,6 +266,26 @@
                 <td>Schaltfläche "Cloud-Daten löschen"</td>
             </tr>
             <tr>
+                <td>Abonnementplan</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche "Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
+            </tr>
+            <tr>
+                <td>Monatliches Token-Limit</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche "Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
+            </tr>
+            <tr>
+                <td>Aktuelle Token-Nutzung</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche "Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
+            </tr>
+            <tr>
+                <td>Monatliches Reset-Datum</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche "Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
+            </tr>
+            <tr>
                 <td>Gelernte Wörter (Vorhersagen)</td>
                 <td>Lokal (Gerät)</td>
                 <td>Schaltfläche "Lerndaten löschen"</td>
@@ -272,7 +321,7 @@
         <div class="warning">
             <p><strong>Wichtiger Hinweis:</strong> Die Löschung bestimmter Daten ist <strong>unwiderruflich</strong>. Stellen Sie sicher, dass Sie die Folgen verstehen, bevor Sie fortfahren:</p>
             <ul>
-                <li><strong>Cloud-Daten löschen:</strong> Sie verlieren Ihr Token-Guthaben und können es NICHT wiederherstellen, auch nicht nach Neuinstallation der App</li>
+                <li><strong>Cloud-Daten löschen:</strong> Sie verlieren Ihr Token-Guthaben, die Kaufhistorie und die Abonnementdaten. Sie können sie NICHT wiederherstellen, auch nicht nach einer Neuinstallation der App. Wenn Sie ein aktives Abonnement haben, müssen Sie es zuerst über den Google Play Store kündigen.</li>
                 <li><strong>Lerndaten löschen:</strong> Personalisierte Textvorhersagen beginnen von vorne</li>
                 <li><strong>Alle lokalen Daten löschen:</strong> Alle Einstellungen gehen verloren</li>
             </ul>
@@ -303,10 +352,11 @@
         </p>
 
         <div class="footer">
-            <p><strong>Version 1.0 - Letzte Aktualisierung: 17. Januar 2026</strong></p>
+            <p><strong>Version 1.1 - Letzte Aktualisierung: 25. Januar 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>DSGVO-konform (EU-Verordnung 2016/679)</p>
         </div>
     </div>
 </body>
+
 </html>
