@@ -153,6 +153,68 @@
     </tr>
 </table>
 
+<h3>2.1.1 Abonelik Verileri</h3>
+
+<p><strong>Aylık aboneliğe</strong> abone olursanız (örn. ayda 250.000 token ile PLUS Planı), aşağıdaki ek verileri kaydederiz:</p>
+
+<table>
+    <tr>
+        <th>Veri</th>
+        <th>Tür</th>
+        <th>Amaç</th>
+        <th>Yasal Dayanak</th>
+    </tr>
+    <tr>
+        <td><strong>Abonelik Planı</strong></td>
+        <td>Dize (örn. "plus", "pro")</td>
+        <td>Aktif planı tanımla ve doğru token limitini uygula</td>
+        <td>Sözleşme ifası (Madde 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Aylık Token Limiti</strong></td>
+        <td>Tam sayı (örn. 250000)</td>
+        <td>Aboneliğe dahil maksimum token'ı uygula</td>
+        <td>Sözleşme ifası (Madde 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Mevcut Token Kullanımı</strong></td>
+        <td>Tam sayı</td>
+        <td>Aylık tüketimi izle ve limiti uygula</td>
+        <td>Sözleşme ifası (Madde 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Aylık Sıfırlama Tarihi</strong></td>
+        <td>ISO Tarihi (örn. "2026-02-01")</td>
+        <td>Ay başında otomatik kullanım sıfırlama</td>
+        <td>Sözleşme ifası (Madde 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Google Play Ürün Kimliği</strong></td>
+        <td>Dize (örn. "abbonamento_mensile_2500")</td>
+        <td>Google Play Billing API üzerinden abonelik geçerliliğini doğrula</td>
+        <td>Sözleşme ifası (Madde 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Otomatik Yenileme Durumu</strong></td>
+        <td>Boolean</td>
+        <td>Aboneliğin otomatik yenileneceğini kontrol et</td>
+        <td>Sözleşme ifası (Madde 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Abonelik Satın Alma Tarihi</strong></td>
+        <td>Zaman damgası</td>
+        <td>Fatura döngüsü yönetimi ve anlaşmazlıklar</td>
+        <td>Sözleşme ifası (Madde 6.1.b GDPR)</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔄 OTOMATİK AYLIK SIFIRLAMA:</strong> Token kullanım sayacı her ayın ilk günü otomatik olarak sıfırlanır. Aylık limit manuel müdahale olmadan geri yüklenir.
+</div>
+
+<div class="important">
+    <strong>⚠️ ÖNEMLİ - ABONELİK İPTALİ:</strong> Aboneliğinizi iptal ederseniz, abonelik verileri mevcut fatura döneminin sonuna kadar saklanır (Madde 6.1.b GDPR - sözleşme ifası). Süre dolduktan sonra t
+
 <h3>2.2 Yalnızca Yerel Olarak Saklanan Veriler (Cihazda)</h3>
 
 <p>Aşağıdaki veriler <strong>ASLA harici sunuculara gönderilmez</strong>:</p>
@@ -334,6 +396,11 @@
         <th>Silme</th>
     </tr>
     <tr>
+        <td><strong>Abonelik Verileri (Firebase)</strong></td>
+        <td>Fatura döneminin sonuna kadar + süresi dolduktan sonra 365 gün</td>
+        <td>Otomatik + manuel silme</td>
+    </tr>
+    <tr>
         <td><strong>Token Yedeği (Firebase)</strong></td>
         <td>365 gün hareketsizlik</td>
         <td>Otomatik + manuel silme</td>
@@ -389,14 +456,37 @@
 <h3>6.2 Düzeltme Hakkı (Mad. 16 GDPR)</h3>
 <p>Yanlış veya eksik verileri düzeltebilirsiniz.</p>
 
-<h3>6.3 Silme Hakkı (Mad. 17 GDPR)</h3>
-<p>Uygulamadaki <strong>Gizlilik ekranı</strong> aracılığıyla istediğiniz zaman tüm verilerinizi silebilirsiniz:</p>
+    <h3>6.3 Silme Hakkı (Madde 17 GDPR)</h3>
+    <p>Uygulamadaki <strong>Gizlilik ekranı</strong> üzerinden istediğiniz zaman tüm verilerinizi silebilirsiniz:</p>
 
-<ul>
-    <li>✅ <strong>Bulut verilerini sil</strong>: Firebase'den token yedeğini ve satın alma geçmişini kaldırır</li>
-    <li>✅ <strong>Öğrenme verilerini sil</strong>: Öneriler için öğrenilen kelimeleri kaldırır</li>
-    <li>✅ <strong>Tüm yerel verileri sil</strong>: Cihazdaki tüm tercihleri ve verileri kaldırır</li>
-</ul>
+    <ul>
+        <li>✅ <strong>Bulut verilerini sil</strong>: Firebase'den token yedeğini, satın alma geçmişini ve abonelik verilerini kaldırır</li>
+        <li>✅ <strong>Öğrenme verilerini sil</strong>: Öneriler için öğrenilen kelimeleri kaldırır</li>
+        <li>✅ <strong>Tüm yerel verileri sil</strong>: Cihazdaki tüm tercihleri ve verileri kaldırır</li>
+    </ul>
+
+    <div class="important">
+        <strong>⚠️ AKTİF ABONELİKLE SİLME KISITLAMASI (Madde 17.3.b GDPR):</strong>
+        <p><strong>Aktif aylık aboneliğiniz</strong> varsa, bulut verisi silme işlemi aboneliği iptal edene kadar <strong>geçici olarak engellenir</strong>.</p>
+
+        <p><strong>Sebep:</strong> Abonelik verileri (aktif plan, token limiti, sıfırlama tarihi) sözleşmenin yerine getirilmesi için gereklidir (Madde 6.1.b GDPR). Erken silme şunları engelleyecektir:</p>
+        <ul>
+            <li>❌ Satın alınan aylık hizmetin düzgün çalışması</li>
+            <li>❌ Cihazlar arası token limiti senkronizasyonu</li>
+            <li>❌ Ay başında otomatik token sıfırlama</li>
+        </ul>
+
+        <p><strong>Nasıl devam edilir:</strong></p>
+        <ol>
+            <li>Google Play Store üzerinden aboneliği iptal edin</li>
+            <li>Mevcut fatura döneminin sonuna kadar bekleyin</li>
+            <li>Uygulama üzerinden bulut verilerini silin</li>
+        </ol>
+
+        <p><strong>Anında silme:</strong> Uygulama, aboneliğinizi yönetmek için sizi otomatik olarak Google Play'e yönlendirir. İptal sonrası veri silme hemen kullanılabilir olacaktır.</p>
+
+        <p><strong>Engellemenin yasal dayanağı:</strong> Madde 17.3.b GDPR - "Silme hakkı, işleme veri sahibinin taraf olduğu bir sözleşmenin ifası için gerekli olduğu ölçüde uygulanmaz".</p>
+    </div>
 
 <h3>6.4 Veri Taşınabilirliği Hakkı (Mad. 20 GDPR)</h3>
 <p>Verilerinizi yapılandırılmış, makine tarafından okunabilir bir biçimde talep edebilirsiniz.</p>
@@ -418,8 +508,8 @@
 
 <p><strong>Yol:</strong> Ayarlar → Gizlilik ve Güvenlik</p>
 
-<ol>
-    <li><strong>Bulut verilerini sil</strong>: Token yedeği + satın alma geçmişi (geri alınamaz)</li>
+    <ol>
+        <li><strong>Bulut verilerini sil</strong>: Token yedeği + satın alma geçmişi + abonelik verileri (geri alınamaz - aktif ise abonelik iptali gerekir)</li>
     <li><strong>Öğrenme verilerini sil</strong>: Öğrenilen kelimeler (11 dil)</li>
     <li><strong>Tüm yerel verileri sil</strong>: Tüm tercihler (uygulamayı yeniden başlatır)</li>
 </ol>
