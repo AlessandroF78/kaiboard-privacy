@@ -153,6 +153,69 @@
     </tr>
 </table>
 
+<h3>2.1.1 Datos de Suscripción</h3>
+
+<p>Si se suscribe a una <strong>suscripción mensual</strong> (por ejemplo, Plan PLUS con 250,000 tokens/mes), guardamos los siguientes datos adicionales:</p>
+
+<table>
+    <tr>
+        <th>Datos</th>
+        <th>Tipo</th>
+        <th>Finalidad</th>
+        <th>Base Legal</th>
+    </tr>
+    <tr>
+        <td><strong>Plan de Suscripción</strong></td>
+        <td>Cadena (ej. "plus", "pro")</td>
+        <td>Identificar el plan activo y aplicar el límite de tokens correcto</td>
+        <td>Ejecución del contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Límite Mensual de Tokens</strong></td>
+        <td>Entero (ej. 250000)</td>
+        <td>Aplicar el máximo de tokens incluidos en la suscripción</td>
+        <td>Ejecución del contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Uso Actual de Tokens</strong></td>
+        <td>Entero</td>
+        <td>Rastrear el consumo mensual y aplicar el límite</td>
+        <td>Ejecución del contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Fecha de Reinicio Mensual</strong></td>
+        <td>Fecha ISO (ej. "2026-02-01")</td>
+        <td>Reinicio automático del uso al inicio del mes</td>
+        <td>Ejecución del contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>ID de Producto Google Play</strong></td>
+        <td>Cadena (ej. "abbonamento_mensile_2500")</td>
+        <td>Verificar validez de la suscripción a través de Google Play Billing API</td>
+        <td>Ejecución del contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Estado de Renovación Automática</strong></td>
+        <td>Booleano</td>
+        <td>Verificar si la suscripción se renovará automáticamente</td>
+        <td>Ejecución del contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Fecha de Compra de la Suscripción</strong></td>
+        <td>Marca de tiempo</td>
+        <td>Gestión del ciclo de facturación y disputas</td>
+        <td>Ejecución del contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔄 REINICIO AUTOMÁTICO MENSUAL:</strong> El contador de uso de tokens se reinicia automáticamente el primer día de cada mes. El límite mensual se restaura sin intervención manual.
+</div>
+
+<div class="important">
+    <strong>⚠️ IMPORTANTE - CANCELACIÓN DE SUSCRIPCIÓN:</strong> Si cancela su suscripción, los datos de suscripción se mantienen hasta el final del período de facturación actual (Art. 6.1.b RGPD - ejecución del contrato). Después de la expiración, puede eliminar todos los datos en la nube a través de la pantalla de Privacidad.
+</div>
+
 <h3>2.2 Datos Almacenados Solo Localmente (En el Dispositivo)</h3>
 
 <p>Los siguientes datos <strong>NUNCA se envían a servidores externos</strong>:</p>
@@ -335,6 +398,11 @@
         <th>Eliminación</th>
     </tr>
     <tr>
+        <td><strong>Datos de Suscripción (Firebase)</strong></td>
+        <td>Hasta el final del período de facturación + 365 días después de la expiración</td>
+        <td>Automática + eliminación manual</td>
+    </tr>
+    <tr>
         <td><strong>Copia de Seguridad de Tokens (Firebase)</strong></td>
         <td>365 días de inactividad</td>
         <td>Automática + eliminación manual</td>
@@ -391,13 +459,36 @@
 <p>Puedes corregir datos inexactos o incompletos.</p>
 
 <h3>6.3 Derecho de Supresión (Art. 17 RGPD)</h3>
-<p>Puedes eliminar todos tus datos en cualquier momento a través de la <strong>pantalla de Privacidad</strong> en la aplicación:</p>
+<p>Puede eliminar todos sus datos en cualquier momento a través de la <strong>pantalla de Privacidad</strong> en la aplicación:</p>
 
 <ul>
-    <li>✅ <strong>Eliminar datos en la nube</strong>: Elimina copia de seguridad de tokens e historial de compras de Firebase</li>
-    <li>✅ <strong>Eliminar datos de aprendizaje</strong>: Elimina palabras aprendidas para sugerencias</li>
+    <li>✅ <strong>Eliminar datos en la nube</strong>: Elimina la copia de seguridad de tokens, el historial de compras y los datos de suscripción de Firebase</li>
+    <li>✅ <strong>Eliminar datos de aprendizaje</strong>: Elimina las palabras aprendidas para sugerencias</li>
     <li>✅ <strong>Eliminar todos los datos locales</strong>: Elimina todas las preferencias y datos en el dispositivo</li>
 </ul>
+
+<div class="important">
+    <strong>⚠️ RESTRICCIÓN DE ELIMINACIÓN CON SUSCRIPCIÓN ACTIVA (Art. 17.3.b RGPD):</strong>
+    <p>Si tiene una <strong>suscripción mensual activa</strong>, la eliminación de datos en la nube está <strong>temporalmente bloqueada</strong> hasta que cancele la suscripción.</p>
+
+    <p><strong>Motivo:</strong> Los datos de suscripción (plan activo, límite de tokens, fecha de reinicio) son necesarios para la ejecución del contrato (Art. 6.1.b RGPD). La eliminación anticipada impediría:</p>
+    <ul>
+        <li>❌ El correcto funcionamiento del servicio mensual adquirido</li>
+        <li>❌ La sincronización del límite de tokens entre dispositivos</li>
+        <li>❌ El reinicio automático de tokens al inicio del mes</li>
+    </ul>
+
+    <p><strong>Cómo proceder:</strong></p>
+    <ol>
+        <li>Cancele la suscripción a través de Google Play Store</li>
+        <li>Espere hasta el final del período de facturación actual</li>
+        <li>Elimine los datos en la nube a través de la aplicación</li>
+    </ol>
+
+    <p><strong>Eliminación inmediata:</strong> La aplicación le redirige automáticamente a Google Play para gestionar su suscripción. Después de la cancelación, la eliminación de datos estará disponible inmediatamente.</p>
+
+    <p><strong>Base legal del bloqueo:</strong> Art. 17.3.b RGPD - "El derecho de supresión no se aplicará cuando el tratamiento sea necesario para la ejecución de un contrato en el que el interesado es parte".</p>
+</div>
 
 <h3>6.4 Derecho a la Portabilidad de Datos (Art. 20 RGPD)</h3>
 <p>Puedes solicitar tus datos en un formato estructurado y legible por máquina.</p>
@@ -420,7 +511,7 @@
 <p><strong>Ruta:</strong> Configuración → Privacidad y Seguridad</p>
 
 <ol>
-    <li><strong>Eliminar datos en la nube</strong>: Copia de seguridad de tokens + historial de compras (irreversible)</li>
+    <li><strong>Eliminar datos en la nube</strong>: Copia de seguridad de tokens + historial de compras + datos de suscripción (irreversible - requiere cancelación de suscripción si está activa)</li>
     <li><strong>Eliminar datos de aprendizaje</strong>: Palabras aprendidas (11 idiomas)</li>
     <li><strong>Eliminar todos los datos locales</strong>: Todas las preferencias (reinicia aplicación)</li>
 </ol>
