@@ -146,8 +146,8 @@
             </tr>
             <tr>
                 <td><strong>Bulut Verilerini Sil</strong></td>
-                <td>Firebase'de saklanan jeton bakiyesi ve satın alma geçmişi</td>
-                <td>Geri alınamaz. Jeton bakiyenizi kaybedersiniz.</td>
+                <td>Firebase'de saklanan token bakiyesi, satın alma geçmişi ve abonelik verileri</td>
+                <td>Geri alınamaz. Token bakiyenizi kaybedeceksiniz. Aktifse abonelik iptali gerektirir.</td>
             </tr>
             <tr>
                 <td><strong>Öğrenme Verilerini Sil</strong></td>
@@ -162,6 +162,30 @@
         </table>
 
         <p><strong>İşlem Süresi:</strong> Anında (0-5 saniye)</p>
+
+        <div class="warning">
+            <h3>⚠️ Aktif Abonelikle Silme Kısıtlaması (Madde 17.3.b GDPR)</h3>
+            
+            <p><strong>Aktif aylık aboneliğiniz</strong> varsa, bulut verilerinin silinmesi abonelik iptal edilene kadar <strong>geçici olarak engellenir</strong>.</p>
+            
+            <p><strong>Neden:</strong> Abonelik verileri (aktif plan, token limiti, sıfırlama tarihi) devam eden sözleşmenin yerine getirilmesi için gereklidir (Madde 6.1.b GDPR). Erken silme şunları engelleyecektir:</p>
+            <ul>
+                <li>❌ Satın alınan aylık hizmetin düzgün çalışması</li>
+                <li>❌ Cihazlar arasında token limiti senkronizasyonu</li>
+                <li>❌ Ay başında otomatik token sıfırlama</li>
+            </ul>
+            
+            <p><strong>Nasıl ilerleyeceğiniz:</strong></p>
+            <ol>
+                <li>Google Play Store üzerinden aboneliği iptal edin</li>
+                <li>Mevcut fatura döneminin sonunu bekleyin</li>
+                <li>Uygulama üzerinden bulut verilerini silin</li>
+            </ol>
+            
+            <p><strong>Anında silme:</strong> Uygulama sizi otomatik olarak aboneliğinizi yönetmek için Google Play'e yönlendirir. İptalden sonra veri silme hemen kullanılabilir olacaktır.</p>
+            
+            <p><strong>Engellemenin yasal dayanağı:</strong> Madde 17.3.b GDPR - "Silme hakkı, işlemenin veri sahibinin taraf olduğu bir sözleşmenin yerine getirilmesi için gerekli olduğu ölçüde geçerli değildir".</p>
+        </div>
 
         <h2>Yöntem 2: E-posta İle Talep</h2>
 
@@ -188,6 +212,11 @@
                 <th>Veri Türü</th>
                 <th>Saklama Süresi</th>
                 <th>Detaylar</th>
+            </tr>
+            <tr>
+                <td><strong>Abonelik Verileri (Firebase)</strong></td>
+                <td>Fatura döneminin sonuna kadar + sona ermeden 365 gün sonra</td>
+                <td>Abonelik sona ermesi ve saklama süresinden sonra otomatik olarak silinir</td>
             </tr>
             <tr>
                 <td>Bulut Verileri (Firebase)</td>
@@ -237,6 +266,26 @@
                 <td>"Bulut Verilerini Sil" düğmesi</td>
             </tr>
             <tr>
+                <td>Abonelik Planı</td>
+                <td>Firebase (bulut)</td>
+                <td>"Bulut Verilerini Sil" düğmesi (sadece abonelik iptali sonrası)</td>
+            </tr>
+            <tr>
+                <td>Aylık Token Limiti</td>
+                <td>Firebase (bulut)</td>
+                <td>"Bulut Verilerini Sil" düğmesi (sadece abonelik iptali sonrası)</td>
+            </tr>
+            <tr>
+                <td>Mevcut Token Kullanımı</td>
+                <td>Firebase (bulut)</td>
+                <td>"Bulut Verilerini Sil" düğmesi (sadece abonelik iptali sonrası)</td>
+            </tr>
+            <tr>
+                <td>Aylık Sıfırlama Tarihi</td>
+                <td>Firebase (bulut)</td>
+                <td>"Bulut Verilerini Sil" düğmesi (sadece abonelik iptali sonrası)</td>
+            </tr>
+            <tr>
                 <td>Öğrenilen Kelimeler (Tahminler)</td>
                 <td>Yerel (cihaz)</td>
                 <td>"Öğrenme Verilerini Sil" düğmesi</td>
@@ -272,7 +321,7 @@
         <div class="warning">
             <p><strong>Önemli Uyarı:</strong> Bazı verilerin silinmesi <strong>geri alınamaz</strong>. Devam etmeden önce sonuçları anladığınızdan emin olun:</p>
             <ul>
-                <li><strong>Bulut Verilerini Sil:</strong> Jeton bakiyenizi kaybedersiniz ve uygulamayı yeniden yükledikten sonra bile geri alamazsınız</li>
+                <li><strong>Bulut Verilerini Sil:</strong> Token bakiyenizi, satın alma geçmişinizi ve abonelik verilerinizi kaybedeceksiniz. Uygulamayı yeniden yükledikten sonra bile onları geri ALAMAZSINIZ. Aktif bir aboneliğiniz varsa, önce Google Play Store üzerinden iptal etmelisiniz.</li>
                 <li><strong>Öğrenme Verilerini Sil:</strong> Kişiselleştirilmiş metin tahminleri sıfırdan başlayacak</li>
                 <li><strong>Tüm Yerel Verileri Sil:</strong> Tüm tercihler ve ayarlar kaybolacak</li>
             </ul>
@@ -303,10 +352,11 @@
         </p>
 
         <div class="footer">
-            <p><strong>Sürüm 1.0 - Son Güncelleme: 17 Ocak 2026</strong></p>
+            <p><strong>Sürüm 1.1 - Son Güncelleme: 25 Ocak 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>GDPR Uyumlu (AB Yönetmeliği 2016/679)</p>
         </div>
     </div>
 </body>
+
 </html>
