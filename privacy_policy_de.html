@@ -153,6 +153,69 @@
     </tr>
 </table>
 
+<h3>2.1.1 Abonnementdaten</h3>
+
+<p>Wenn Sie ein <strong>Monatsabonnement</strong> abschließen (z.B. PLUS-Plan mit 250.000 Token/Monat), speichern wir folgende zusätzliche Daten:</p>
+
+<table>
+    <tr>
+        <th>Daten</th>
+        <th>Typ</th>
+        <th>Zweck</th>
+        <th>Rechtsgrundlage</th>
+    </tr>
+    <tr>
+        <td><strong>Abonnementplan</strong></td>
+        <td>String (z.B. "plus", "pro")</td>
+        <td>Identifizierung des aktiven Plans und Anwendung des korrekten Token-Limits</td>
+        <td>Vertragserfüllung (Art. 6.1.b DSGVO)</td>
+    </tr>
+    <tr>
+        <td><strong>Monatliches Token-Limit</strong></td>
+        <td>Ganzzahl (z.B. 250000)</td>
+        <td>Anwendung des im Abonnement enthaltenen Token-Maximums</td>
+        <td>Vertragserfüllung (Art. 6.1.b DSGVO)</td>
+    </tr>
+    <tr>
+        <td><strong>Aktueller Token-Verbrauch</strong></td>
+        <td>Ganzzahl</td>
+        <td>Verfolgung des monatlichen Verbrauchs und Anwendung des Limits</td>
+        <td>Vertragserfüllung (Art. 6.1.b DSGVO)</td>
+    </tr>
+    <tr>
+        <td><strong>Monatliches Reset-Datum</strong></td>
+        <td>ISO-Datum (z.B. "2026-02-01")</td>
+        <td>Automatisches Zurücksetzen des Verbrauchs zu Monatsbeginn</td>
+        <td>Vertragserfüllung (Art. 6.1.b DSGVO)</td>
+    </tr>
+    <tr>
+        <td><strong>Google Play Produkt-ID</strong></td>
+        <td>String (z.B. "abbonamento_mensile_2500")</td>
+        <td>Überprüfung der Abonnementgültigkeit über Google Play Billing API</td>
+        <td>Vertragserfüllung (Art. 6.1.b DSGVO)</td>
+    </tr>
+    <tr>
+        <td><strong>Status der automatischen Verlängerung</strong></td>
+        <td>Boolean</td>
+        <td>Überprüfung, ob das Abonnement automatisch verlängert wird</td>
+        <td>Vertragserfüllung (Art. 6.1.b DSGVO)</td>
+    </tr>
+    <tr>
+        <td><strong>Kaufdatum des Abonnements</strong></td>
+        <td>Zeitstempel</td>
+        <td>Verwaltung des Abrechnungszyklus und Streitfälle</td>
+        <td>Vertragserfüllung (Art. 6.1.b DSGVO)</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔄 AUTOMATISCHES MONATLICHES ZURÜCKSETZEN:</strong> Der Token-Verbrauchszähler wird am ersten Tag jedes Monats automatisch zurückgesetzt. Das monatliche Limit wird ohne manuellen Eingriff wiederhergestellt.
+</div>
+
+<div class="important">
+    <strong>⚠️ WICHTIG - ABONNEMENTKÜNDIGUNG:</strong> Wenn Sie das Abonnement kündigen, werden die Abonnementdaten bis zum Ende des aktuellen Abrechnungszeitraums aufbewahrt (Art. 6.1.b DSGVO - Vertragserfüllung). Nach Ablauf können Sie alle Cloud-Daten über den Datenschutz-Bildschirm löschen.
+</div>
+
 <h3>2.2 Nur lokal gespeicherte Daten (auf dem Gerät)</h3>
 
 <p>Die folgenden Daten werden <strong>NIEMALS an externe Server gesendet</strong>:</p>
@@ -335,6 +398,11 @@
         <th>Löschung</th>
     </tr>
     <tr>
+        <td><strong>Abonnementdaten (Firebase)</strong></td>
+        <td>Bis zum Ende des Abrechnungszeitraums + 365 Tage nach Ablauf</td>
+        <td>Automatisch + manuelle Löschung</td>
+    </tr>
+    <tr>
         <td><strong>Token-Backup (Firebase)</strong></td>
         <td>365 Tage Inaktivität</td>
         <td>Automatisch + manuelle Löschung</td>
@@ -394,10 +462,33 @@
 <p>Sie können alle Ihre Daten jederzeit über den <strong>Datenschutz-Bildschirm</strong> in der App löschen:</p>
 
 <ul>
-    <li>✅ <strong>Cloud-Daten löschen</strong>: Entfernt Token-Backup und Kaufhistorie von Firebase</li>
+    <li>✅ <strong>Cloud-Daten löschen</strong>: Entfernt Token-Backup, Kaufhistorie und Abonnementdaten aus Firebase</li>
     <li>✅ <strong>Lerndaten löschen</strong>: Entfernt gelernte Wörter für Vorschläge</li>
     <li>✅ <strong>Alle lokalen Daten löschen</strong>: Entfernt alle Einstellungen und Daten auf dem Gerät</li>
 </ul>
+
+<div class="important">
+    <strong>⚠️ LÖSCHUNGSBESCHRÄNKUNG BEI AKTIVEM ABONNEMENT (Art. 17.3.b DSGVO):</strong>
+    <p>Wenn Sie ein <strong>aktives Monatsabonnement</strong> haben, wird die Löschung der Cloud-Daten <strong>vorübergehend blockiert</strong>, bis Sie das Abonnement kündigen.</p>
+
+    <p><strong>Grund:</strong> Die Abonnementdaten (aktiver Plan, Token-Limit, Reset-Datum) sind für die Vertragserfüllung erforderlich (Art. 6.1.b DSGVO). Eine vorzeitige Löschung würde verhindern:</p>
+    <ul>
+        <li>❌ Das ordnungsgemäße Funktionieren des erworbenen Monatsdienstes</li>
+        <li>❌ Die Synchronisierung des Token-Limits zwischen Geräten</li>
+        <li>❌ Das automatische Zurücksetzen der Token zu Monatsbeginn</li>
+    </ul>
+
+    <p><strong>So gehen Sie vor:</strong></p>
+    <ol>
+        <li>Kündigen Sie das Abonnement über den Google Play Store</li>
+        <li>Warten Sie bis zum Ende des aktuellen Abrechnungszeitraums</li>
+        <li>Löschen Sie die Cloud-Daten über die App</li>
+    </ol>
+
+    <p><strong>Sofortige Löschung:</strong> Die App leitet Sie automatisch zu Google Play weiter, um das Abonnement zu verwalten. Nach der Kündigung ist die Datenlöschung sofort verfügbar.</p>
+
+    <p><strong>Rechtsgrundlage der Blockierung:</strong> Art. 17.3.b DSGVO - "Das Recht auf Löschung gilt nicht, soweit die Verarbeitung erforderlich ist zur Erfüllung eines Vertrags, dessen Vertragspartei die betroffene Person ist".</p>
+</div>
 
 <h3>6.4 Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</h3>
 <p>Sie können Ihre Daten in einem strukturierten, maschinenlesbaren Format anfordern.</p>
@@ -420,7 +511,7 @@
 <p><strong>Pfad:</strong> Einstellungen → Datenschutz & Sicherheit</p>
 
 <ol>
-    <li><strong>Cloud-Daten löschen</strong>: Token-Backup + Kaufhistorie (unwiderruflich)</li>
+    <li><strong>Cloud-Daten löschen</strong>: Token-Backup + Kaufhistorie + Abonnementdaten (unwiderruflich - erfordert Abonnementkündigung falls aktiv)</li>
     <li><strong>Lerndaten löschen</strong>: Gelernte Wörter (11 Sprachen)</li>
     <li><strong>Alle lokalen Daten löschen</strong>: Alle Einstellungen (startet App neu)</li>
 </ol>
