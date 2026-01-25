@@ -146,8 +146,8 @@
             </tr>
             <tr>
                 <td><strong>Cloudgegevens Verwijderen</strong></td>
-                <td>Tokensaldo en aankoopgeschiedenis opgeslagen in Firebase</td>
-                <td>Onomkeerbaar. U verliest uw tokensaldo.</td>
+                <td>Tokensaldo, aankoopgeschiedenis en abonnementsgegevens opgeslagen op Firebase</td>
+                <td>Onomkeerbaar. U verliest uw tokensaldo. Vereist annulering van abonnement indien actief.</td>
             </tr>
             <tr>
                 <td><strong>Leergegevens Verwijderen</strong></td>
@@ -162,6 +162,30 @@
         </table>
 
         <p><strong>Verwerkingstijd:</strong> Onmiddellijk (0-5 seconden)</p>
+
+        <div class="warning">
+            <h3>⚠️ Verwijderingsbeperking bij Actief Abonnement (Art. 17.3.b AVG)</h3>
+            
+            <p>Als u een <strong>actief maandabonnement</strong> heeft, wordt het verwijderen van cloudgegevens <strong>tijdelijk geblokkeerd</strong> totdat het abonnement wordt geannuleerd.</p>
+            
+            <p><strong>Reden:</strong> Abonnementsgegevens (actief plan, tokenlimiet, reset-datum) zijn noodzakelijk voor de uitvoering van het lopende contract (Art. 6.1.b AVG). Vervroegde verwijdering zou het volgende verhinderen:</p>
+            <ul>
+                <li>❌ Het correct functioneren van de gekochte maandelijkse service</li>
+                <li>❌ Synchronisatie van tokenlimiet tussen apparaten</li>
+                <li>❌ Automatische reset van tokens aan het begin van de maand</li>
+            </ul>
+            
+            <p><strong>Hoe te handelen:</strong></p>
+            <ol>
+                <li>Annuleer het abonnement via Google Play Store</li>
+                <li>Wacht tot het einde van de huidige factureringsperiode</li>
+                <li>Verwijder cloudgegevens via de app</li>
+            </ol>
+            
+            <p><strong>Onmiddellijke verwijdering:</strong> De app leidt u automatisch door naar Google Play om uw abonnement te beheren. Na annulering is gegevensverwijdering onmiddellijk beschikbaar.</p>
+            
+            <p><strong>Juridische basis voor blokkering:</strong> Art. 17.3.b AVG - "Het recht op verwijdering is niet van toepassing voor zover de verwerking noodzakelijk is voor de uitvoering van een overeenkomst waarbij de betrokkene partij is".</p>
+        </div>
 
         <h2>Methode 2: Verzoek per E-mail</h2>
 
@@ -188,6 +212,11 @@
                 <th>Gegevenstype</th>
                 <th>Bewaartermijn</th>
                 <th>Details</th>
+            </tr>
+            <tr>
+                <td><strong>Abonnementsgegevens (Firebase)</strong></td>
+                <td>Tot het einde van de factureringsperiode + 365 dagen na afloop</td>
+                <td>Automatisch verwijderd na afloop van abonnement en bewaartermijn</td>
             </tr>
             <tr>
                 <td>Cloudgegevens (Firebase)</td>
@@ -237,6 +266,26 @@
                 <td>Knop "Cloudgegevens Verwijderen"</td>
             </tr>
             <tr>
+                <td>Abonnementsplan</td>
+                <td>Firebase (cloud)</td>
+                <td>Knop "Cloud-gegevens Verwijderen" (alleen na annulering abonnement)</td>
+            </tr>
+            <tr>
+                <td>Maandelijkse Tokenlimiet</td>
+                <td>Firebase (cloud)</td>
+                <td>Knop "Cloud-gegevens Verwijderen" (alleen na annulering abonnement)</td>
+            </tr>
+            <tr>
+                <td>Huidig Tokengebruik</td>
+                <td>Firebase (cloud)</td>
+                <td>Knop "Cloud-gegevens Verwijderen" (alleen na annulering abonnement)</td>
+            </tr>
+            <tr>
+                <td>Maandelijkse Reset-datum</td>
+                <td>Firebase (cloud)</td>
+                <td>Knop "Cloud-gegevens Verwijderen" (alleen na annulering abonnement)</td>
+            </tr>
+            <tr>
                 <td>Aangeleerde Woorden (Voorspellingen)</td>
                 <td>Lokaal (apparaat)</td>
                 <td>Knop "Leergegevens Verwijderen"</td>
@@ -272,7 +321,7 @@
         <div class="warning">
             <p><strong>Belangrijke Kennisgeving:</strong> Verwijdering van bepaalde gegevens is <strong>onomkeerbaar</strong>. Zorg ervoor dat u de gevolgen begrijpt voordat u doorgaat:</p>
             <ul>
-                <li><strong>Cloudgegevens Verwijderen:</strong> U verliest uw tokensaldo en kunt dit NIET herstellen, zelfs niet na herinstallatie van de app</li>
+                <li><strong>Cloud-gegevens Verwijderen:</strong> U verliest uw tokensaldo, aankoopgeschiedenis en abonnementsgegevens. U kunt ze NIET herstellen, zelfs niet na herinstallatie van de app. Als u een actief abonnement heeft, moet u dit eerst annuleren via Google Play Store.</li>
                 <li><strong>Leergegevens Verwijderen:</strong> Gepersonaliseerde tekstvoorspellingen beginnen opnieuw vanaf nul</li>
                 <li><strong>Alle Lokale Gegevens Verwijderen:</strong> Alle voorkeuren en instellingen gaan verloren</li>
             </ul>
@@ -303,10 +352,11 @@
         </p>
 
         <div class="footer">
-            <p><strong>Versie 1.0 - Laatst Bijgewerkt: 17 januari 2026</strong></p>
+            <p><strong>Versie 1.1 - Laatste Update: 25 januari 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Conform AVG (EU Verordening 2016/679)</p>
         </div>
     </div>
 </body>
+
 </html>
