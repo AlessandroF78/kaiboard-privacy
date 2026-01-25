@@ -153,6 +153,69 @@
     </tr>
 </table>
 
+<h3>2.1.1 Dati Abbonamento Mensile</h3>
+
+<p>Se sottoscrivi un <strong>abbonamento mensile</strong> (es. Piano PLUS con 250.000 token/mese), salviamo i seguenti dati aggiuntivi:</p>
+
+<table>
+    <tr>
+        <th>Dato</th>
+        <th>Tipo</th>
+        <th>Finalità</th>
+        <th>Base Giuridica</th>
+    </tr>
+    <tr>
+        <td><strong>Piano Abbonamento</strong></td>
+        <td>String (es. "plus", "pro")</td>
+        <td>Identificare il piano attivo e applicare il limite token corretto</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Limite Token Mensile</strong></td>
+        <td>Numero intero (es. 250000)</td>
+        <td>Applicare il massimale di token inclusi nell'abbonamento</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Utilizzo Token Corrente</strong></td>
+        <td>Numero intero</td>
+        <td>Tracciare il consumo mensile e applicare il limite</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Data Reset Mensile</strong></td>
+        <td>Data ISO (es. "2026-02-01")</td>
+        <td>Reset automatico dell'utilizzo a inizio mese</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>ID Prodotto Google Play</strong></td>
+        <td>String (es. "abbonamento_mensile_2500")</td>
+        <td>Verificare validità abbonamento tramite Google Play Billing API</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Stato Rinnovo Automatico</strong></td>
+        <td>Boolean</td>
+        <td>Verificare se l'abbonamento si rinnoverà automaticamente</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Data Acquisto Abbonamento</strong></td>
+        <td>Timestamp</td>
+        <td>Gestione ciclo di fatturazione e controversie</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔄 RESET AUTOMATICO MENSILE:</strong> Il contatore di utilizzo token viene azzerato automaticamente il primo giorno di ogni mese. Il limite mensile viene ripristinato senza intervento manuale.
+</div>
+
+<div class="important">
+    <strong>⚠️ IMPORTANTE - CANCELLAZIONE ABBONAMENTO:</strong> Se annulli l'abbonamento, i dati relativi all'abbonamento vengono mantenuti fino alla fine del periodo di fatturazione corrente (Art. 6.1.b GDPR - esecuzione contratto). Dopo la scadenza, puoi eliminare tutti i dati cloud tramite la schermata Privacy.
+</div>
+
 <h3>2.2 Dati Memorizzati Solo Localmente (Sul Dispositivo)</h3>
 
 <p>I seguenti dati <strong>NON vengono MAI inviati a server esterni</strong>:</p>
@@ -335,6 +398,11 @@
         <th>Eliminazione</th>
     </tr>
     <tr>
+        <td><strong>Dati Abbonamento (Firebase)</strong></td>
+        <td>Fino alla fine del periodo di fatturazione + 365 giorni dalla scadenza</td>
+        <td>Automatica + eliminazione manuale</td>
+    </tr>
+    <tr>
         <td><strong>Backup Token (Firebase)</strong></td>
         <td>365 giorni di inattività</td>
         <td>Automatica + eliminazione manuale</td>
@@ -394,10 +462,33 @@
 <p>Puoi eliminare tutti i tuoi dati in qualsiasi momento tramite la <strong>schermata Privacy</strong> nell'app:</p>
 
 <ul>
-    <li>✅ <strong>Elimina dati cloud</strong>: Rimuove backup token e cronologia acquisti da Firebase</li>
+    <li>✅ <strong>Elimina dati cloud</strong>: Rimuove backup token, cronologia acquisti e dati abbonamento da Firebase</li>
     <li>✅ <strong>Elimina dati apprendimento</strong>: Rimuove parole apprese per suggerimenti</li>
     <li>✅ <strong>Elimina tutti i dati locali</strong>: Rimuove tutte le preferenze e dati sul dispositivo</li>
 </ul>
+
+<div class="important">
+    <strong>⚠️ LIMITAZIONE CANCELLAZIONE CON ABBONAMENTO ATTIVO (Art. 17.3.b GDPR):</strong>
+    <p>Se hai un <strong>abbonamento mensile attivo</strong>, la cancellazione dei dati cloud viene <strong>temporaneamente bloccata</strong> fino all'annullamento dell'abbonamento.</p>
+
+    <p><strong>Motivo:</strong> I dati relativi all'abbonamento (piano attivo, limite token, data reset) sono necessari per l'esecuzione del contratto in corso (Art. 6.1.b GDPR). La cancellazione anticipata impedirebbe:</p>
+    <ul>
+        <li>❌ Il corretto funzionamento del servizio mensile acquistato</li>
+        <li>❌ La sincronizzazione del limite token tra dispositivi</li>
+        <li>❌ Il reset automatico dei token a inizio mese</li>
+    </ul>
+
+    <p><strong>Come procedere:</strong></p>
+    <ol>
+        <li>Annulla l'abbonamento tramite Google Play Store</li>
+        <li>Attendi la fine del periodo di fatturazione corrente</li>
+        <li>Elimina i dati cloud tramite l'app</li>
+    </ol>
+
+    <p><strong>Cancellazione immediata:</strong> L'app ti reindirizza automaticamente a Google Play per gestire l'abbonamento. Dopo l'annullamento, la cancellazione dati sarà immediatamente disponibile.</p>
+
+    <p><strong>Base giuridica del blocco:</strong> Art. 17.3.b GDPR - "Il diritto alla cancellazione non si applica nella misura in cui il trattamento sia necessario per l'esecuzione di un contratto di cui l'interessato è parte".</p>
+</div>
 
 <h3>6.4 Diritto alla Portabilità dei Dati (Art. 20 GDPR)</h3>
 <p>Puoi richiedere i tuoi dati in un formato strutturato e leggibile da macchina.</p>
@@ -420,7 +511,8 @@
 <p><strong>Percorso:</strong> Impostazioni → Privacy & Sicurezza</p>
 
 <ol>
-    <li><strong>Elimina dati cloud</strong>: Backup token + cronologia acquisti (irreversibile)</li>
+    <ol>
+        <li><strong>Elimina dati cloud</strong>: Backup token + cronologia acquisti + dati abbonamento (irreversibile - richiede annullamento abbonamento se attivo)</li>
     <li><strong>Elimina dati apprendimento</strong>: Parole apprese (11 lingue)</li>
     <li><strong>Elimina tutti i dati locali</strong>: Tutte le preferenze (riavvia app)</li>
 </ol>
