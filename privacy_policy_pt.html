@@ -153,6 +153,69 @@
     </tr>
 </table>
 
+<h3>2.1.1 Dados de Assinatura</h3>
+
+<p>Se você assinar uma <strong>assinatura mensal</strong> (por exemplo, Plano PLUS com 250.000 tokens/mês), salvamos os seguintes dados adicionais:</p>
+
+<table>
+    <tr>
+        <th>Dados</th>
+        <th>Tipo</th>
+        <th>Finalidade</th>
+        <th>Base Legal</th>
+    </tr>
+    <tr>
+        <td><strong>Plano de Assinatura</strong></td>
+        <td>String (ex. "plus", "pro")</td>
+        <td>Identificar plano ativo e aplicar limite correto de tokens</td>
+        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Limite Mensal de Tokens</strong></td>
+        <td>Inteiro (ex. 250000)</td>
+        <td>Aplicar máximo de tokens incluídos na assinatura</td>
+        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Uso Atual de Tokens</strong></td>
+        <td>Inteiro</td>
+        <td>Rastrear consumo mensal e aplicar limite</td>
+        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Data de Renovação Mensal</strong></td>
+        <td>Data ISO (ex. "2026-02-01")</td>
+        <td>Renovação automática do uso no início do mês</td>
+        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>ID do Produto Google Play</strong></td>
+        <td>String (ex. "abbonamento_mensile_2500")</td>
+        <td>Verificar validade da assinatura através da Google Play Billing API</td>
+        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Status de Renovação Automática</strong></td>
+        <td>Boolean</td>
+        <td>Verificar se a assinatura será renovada automaticamente</td>
+        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Data de Compra da Assinatura</strong></td>
+        <td>Timestamp</td>
+        <td>Gerenciamento do ciclo de cobrança e disputas</td>
+        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔄 RENOVAÇÃO AUTOMÁTICA MENSAL:</strong> O contador de uso de tokens é automaticamente renovado no primeiro dia de cada mês. O limite mensal é restaurado sem intervenção manual.
+</div>
+
+<div class="important">
+    <strong>⚠️ IMPORTANTE - CANCELAMENTO DE ASSINATURA:</strong> Se você cancelar sua assinatura, os dados de assinatura são mantidos até o final do período de cobrança atual (Art. 6.1.b RGPD - execução do contrato). Após a expiração, você pode excluir todos os dados na nuvem através da tela de Privacidade.
+</div>
+
 <h3>2.2 Dados Armazenados Apenas Localmente (No Dispositivo)</h3>
 
 <p>Os seguintes dados <strong>NUNCA são enviados para servidores externos</strong>:</p>
@@ -335,6 +398,11 @@
         <th>Exclusão</th>
     </tr>
     <tr>
+        <td><strong>Dados de Assinatura (Firebase)</strong></td>
+        <td>Até o fim do período de cobrança + 365 dias após expiração</td>
+        <td>Automático + exclusão manual</td>
+    </tr>
+    <tr>
         <td><strong>Backup de Tokens (Firebase)</strong></td>
         <td>365 dias de inatividade</td>
         <td>Automática + exclusão manual</td>
@@ -394,10 +462,33 @@
 <p>Você pode excluir todos os seus dados a qualquer momento através da <strong>tela de Privacidade</strong> no aplicativo:</p>
 
 <ul>
-    <li>✅ <strong>Excluir dados na nuvem</strong>: Remove backup de tokens e histórico de compras do Firebase</li>
+    <li>✅ <strong>Excluir dados na nuvem</strong>: Remove backup de tokens, histórico de compras e dados de assinatura do Firebase</li>
     <li>✅ <strong>Excluir dados de aprendizagem</strong>: Remove palavras aprendidas para sugestões</li>
     <li>✅ <strong>Excluir todos os dados locais</strong>: Remove todas as preferências e dados no dispositivo</li>
 </ul>
+
+<div class="important">
+    <strong>⚠️ RESTRIÇÃO DE EXCLUSÃO COM ASSINATURA ATIVA (Art. 17.3.b RGPD):</strong>
+    <p>Se você tiver uma <strong>assinatura mensal ativa</strong>, a exclusão de dados na nuvem fica <strong>temporariamente bloqueada</strong> até o cancelamento da assinatura.</p>
+
+    <p><strong>Motivo:</strong> Os dados de assinatura (plano ativo, limite de tokens, data de renovação) são necessários para a execução do contrato (Art. 6.1.b RGPD). A exclusão antecipada impediria:</p>
+    <ul>
+        <li>❌ O funcionamento adequado do serviço mensal adquirido</li>
+        <li>❌ A sincronização do limite de tokens entre dispositivos</li>
+        <li>❌ A renovação automática de tokens no início do mês</li>
+    </ul>
+
+    <p><strong>Como proceder:</strong></p>
+    <ol>
+        <li>Cancele a assinatura através da Google Play Store</li>
+        <li>Aguarde até o final do período de cobrança atual</li>
+        <li>Exclua os dados na nuvem através do aplicativo</li>
+    </ol>
+
+    <p><strong>Exclusão imediata:</strong> O aplicativo redireciona automaticamente para o Google Play para gerenciar sua assinatura. Após o cancelamento, a exclusão de dados estará imediatamente disponível.</p>
+
+    <p><strong>Base legal do bloqueio:</strong> Art. 17.3.b RGPD - "O direito ao apagamento não se aplica na medida em que o tratamento seja necessário para a execução de um contrato do qual o titular dos dados é parte".</p>
+</div>
 
 <h3>6.4 Direito à Portabilidade de Dados (Art. 20 RGPD)</h3>
 <p>Você pode solicitar seus dados em um formato estruturado e legível por máquina.</p>
@@ -420,7 +511,7 @@
 <p><strong>Caminho:</strong> Configurações → Privacidade e Segurança</p>
 
 <ol>
-    <li><strong>Excluir dados na nuvem</strong>: Backup de tokens + histórico de compras (irreversível)</li>
+    <li><strong>Excluir dados na nuvem</strong>: Backup de tokens + histórico de compras + dados de assinatura (irreversível - requer cancelamento da assinatura se ativa)</li>
     <li><strong>Excluir dados de aprendizagem</strong>: Palavras aprendidas (11 idiomas)</li>
     <li><strong>Excluir todos os dados locais</strong>: Todas as preferências (reinicia aplicativo)</li>
 </ol>
