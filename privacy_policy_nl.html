@@ -153,6 +153,69 @@
     </tr>
 </table>
 
+<h3>2.1.1 Abonnementsgegevens</h3>
+
+<p>Als u een <strong>maandabonnement</strong> neemt (bijv. PLUS-abonnement met 250.000 tokens/maand), slaan we de volgende aanvullende gegevens op:</p>
+
+<table>
+    <tr>
+        <th>Gegevens</th>
+        <th>Type</th>
+        <th>Doel</th>
+        <th>Rechtsgrondslag</th>
+    </tr>
+    <tr>
+        <td><strong>Abonnementsplan</strong></td>
+        <td>Tekenreeks (bijv. "plus", "pro")</td>
+        <td>Actief plan identificeren en correcte tokenlimiet toepassen</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
+    </tr>
+    <tr>
+        <td><strong>Maandelijkse Tokenlimiet</strong></td>
+        <td>Geheel getal (bijv. 250000)</td>
+        <td>Maximum tokens in abonnement toepassen</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
+    </tr>
+    <tr>
+        <td><strong>Huidig Tokengebruik</strong></td>
+        <td>Geheel getal</td>
+        <td>Maandelijks verbruik bijhouden en limiet toepassen</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
+    </tr>
+    <tr>
+        <td><strong>Maandelijkse Resetdatum</strong></td>
+        <td>ISO-datum (bijv. "2026-02-01")</td>
+        <td>Automatische gebruiksreset aan begin van maand</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
+    </tr>
+    <tr>
+        <td><strong>Google Play Product-ID</strong></td>
+        <td>Tekenreeks (bijv. "abbonamento_mensile_2500")</td>
+        <td>Abonnementsgeldigheid verifiëren via Google Play Billing API</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
+    </tr>
+    <tr>
+        <td><strong>Auto-vernieuwingsstatus</strong></td>
+        <td>Boolean</td>
+        <td>Controleren of abonnement automatisch wordt verlengd</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
+    </tr>
+    <tr>
+        <td><strong>Aankoopdatum Abonnement</strong></td>
+        <td>Tijdstempel</td>
+        <td>Beheer factureringscyclus en geschillen</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔄 AUTOMATISCHE MAANDELIJKSE RESET:</strong> De tokengebruiksteller wordt automatisch gereset op de eerste dag van elke maand. De maandelijkse limiet wordt hersteld zonder handmatige interventie.
+</div>
+
+<div class="important">
+    <strong>⚠️ BELANGRIJK - ABONNEMENTSANNULERING:</strong> Als u uw abonnement annuleert, worden abonnementsgegevens bewaard tot het einde van de huidige factureringsperiode (Art. 6.1.b AVG - contractuitvoering). Na afloop kunt u alle cloudgegevens verwijderen via het Privacy-scherm.
+</div>
+
 <h3>2.2 Alleen Lokaal Opgeslagen Gegevens (Op Apparaat)</h3>
 
 <p>De volgende gegevens worden <strong>NOOIT naar externe servers verzonden</strong>:</p>
@@ -335,6 +398,11 @@
         <th>Verwijdering</th>
     </tr>
     <tr>
+        <td><strong>Abonnementsgegevens (Firebase)</strong></td>
+        <td>Tot einde factureringsperiode + 365 dagen na afloop</td>
+        <td>Automatisch + handmatige verwijdering</td>
+    </tr>
+    <tr>
         <td><strong>Token Back-up (Firebase)</strong></td>
         <td>365 dagen inactiviteit</td>
         <td>Automatisch + handmatige verwijdering</td>
@@ -390,14 +458,37 @@
 <h3>6.2 Recht op Rectificatie (Art. 16 AVG)</h3>
 <p>U kunt onjuiste of onvolledige gegevens corrigeren.</p>
 
-<h3>6.3 Recht op Wissing (Art. 17 AVG)</h3>
-<p>U kunt al uw gegevens op elk moment verwijderen via het <strong>Privacyscherm</strong> in de app:</p>
+<h3>6.3 Recht op Gegevenswissing (Art. 17 AVG)</h3>
+<p>U kunt al uw gegevens op elk moment verwijderen via het <strong>Privacy-scherm</strong> in de app:</p>
 
 <ul>
-    <li>✅ <strong>Cloudgegevens verwijderen</strong>: Verwijdert token back-up en aankoopgeschiedenis van Firebase</li>
+    <li>✅ <strong>Cloudgegevens verwijderen</strong>: Verwijdert tokenback-up, aankoopgeschiedenis en abonnementsgegevens uit Firebase</li>
     <li>✅ <strong>Leergegevens verwijderen</strong>: Verwijdert geleerde woorden voor suggesties</li>
-    <li>✅ <strong>Alle lokale gegevens verwijderen</strong>: Verwijdert alle voorkeuren en gegevens op apparaat</li>
+    <li>✅ <strong>Alle lokale gegevens verwijderen</strong>: Verwijdert alle voorkeuren en gegevens op het apparaat</li>
 </ul>
+
+<div class="important">
+    <strong>⚠️ VERWIJDERINGSBEPERKING BIJ ACTIEF ABONNEMENT (Art. 17.3.b AVG):</strong>
+    <p>Als u een <strong>actief maandabonnement</strong> heeft, wordt het verwijderen van cloudgegevens <strong>tijdelijk geblokkeerd</strong> totdat u het abonnement annuleert.</p>
+
+    <p><strong>Reden:</strong> Abonnementsgegevens (actief plan, tokenlimiet, resetdatum) zijn noodzakelijk voor de uitvoering van het contract (Art. 6.1.b AVG). Vroegtijdige verwijdering zou het volgende verhinderen:</p>
+    <ul>
+        <li>❌ Correct functioneren van de aangekochte maandelijkse service</li>
+        <li>❌ Synchronisatie van tokenlimiet tussen apparaten</li>
+        <li>❌ Automatische tokenreset aan het begin van de maand</li>
+    </ul>
+
+    <p><strong>Hoe verder te gaan:</strong></p>
+    <ol>
+        <li>Annuleer het abonnement via Google Play Store</li>
+        <li>Wacht tot het einde van de huidige factureringsperiode</li>
+        <li>Verwijder cloudgegevens via de app</li>
+    </ol>
+
+    <p><strong>Onmiddellijke verwijdering:</strong> De app leidt u automatisch door naar Google Play om uw abonnement te beheren. Na annulering is gegevensverwijdering direct beschikbaar.</p>
+
+    <p><strong>Rechtsgrond voor blokkering:</strong> Art. 17.3.b AVG - "Het recht op gegevenswissing is niet van toepassing voor zover de verwerking noodzakelijk is voor de uitvoering van een overeenkomst waarbij de betrokkene partij is".</p>
+</div>
 
 <h3>6.4 Recht op Gegevensoverdraagbaarheid (Art. 20 AVG)</h3>
 <p>U kunt uw gegevens aanvragen in een gestructureerd, machineleesbaar formaat.</p>
@@ -420,7 +511,7 @@
 <p><strong>Pad:</strong> Instellingen → Privacy en Beveiliging</p>
 
 <ol>
-    <li><strong>Cloudgegevens verwijderen</strong>: Token back-up + aankoopgeschiedenis (onomkeerbaar)</li>
+    <li><strong>Cloudgegevens verwijderen</strong>: Tokenback-up + aankoopgeschiedenis + abonnementsgegevens (onomkeerbaar - vereist abonnementsannulering indien actief)</li>
     <li><strong>Leergegevens verwijderen</strong>: Geleerde woorden (11 talen)</li>
     <li><strong>Alle lokale gegevens verwijderen</strong>: Alle voorkeuren (herstart app)</li>
 </ol>
