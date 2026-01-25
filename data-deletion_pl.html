@@ -146,8 +146,8 @@
             </tr>
             <tr>
                 <td><strong>Usuń Dane w Chmurze</strong></td>
-                <td>Saldo tokenów i historia zakupów przechowywana w Firebase</td>
-                <td>Nieodwracalne. Stracisz saldo tokenów.</td>
+                <td>Saldo tokenów, historia zakupów i dane subskrypcji przechowywane w Firebase</td>
+                <td>Nieodwracalne. Stracisz swoje saldo tokenów. Wymaga anulowania subskrypcji jeśli aktywna.</td>
             </tr>
             <tr>
                 <td><strong>Usuń Dane Uczenia</strong></td>
@@ -162,6 +162,30 @@
         </table>
 
         <p><strong>Czas Przetwarzania:</strong> Natychmiastowy (0-5 sekund)</p>
+
+        <div class="warning">
+            <h3>⚠️ Ograniczenie Usuwania przy Aktywnej Subskrypcji (Art. 17.3.b RODO)</h3>
+            
+            <p>Jeśli masz <strong>aktywną miesięczną subskrypcję</strong>, usuwanie danych w chmurze jest <strong>tymczasowo zablokowane</strong> do momentu anulowania subskrypcji.</p>
+            
+            <p><strong>Powód:</strong> Dane związane z subskrypcją (aktywny plan, limit tokenów, data resetowania) są niezbędne do wykonania trwającej umowy (Art. 6.1.b RODO). Wcześniejsze usunięcie uniemożliwiłoby:</p>
+            <ul>
+                <li>❌ Prawidłowe działanie zakupionej usługi miesięcznej</li>
+                <li>❌ Synchronizację limitu tokenów między urządzeniami</li>
+                <li>❌ Automatyczne resetowanie tokenów na początku miesiąca</li>
+            </ul>
+            
+            <p><strong>Jak postępować:</strong></p>
+            <ol>
+                <li>Anuluj subskrypcję przez Google Play Store</li>
+                <li>Poczekaj do końca bieżącego okresu rozliczeniowego</li>
+                <li>Usuń dane w chmurze przez aplikację</li>
+            </ol>
+            
+            <p><strong>Natychmiastowe usunięcie:</strong> Aplikacja automatycznie przekierowuje Cię do Google Play, aby zarządzać subskrypcją. Po anulowaniu usuwanie danych będzie natychmiast dostępne.</p>
+            
+            <p><strong>Podstawa prawna blokady:</strong> Art. 17.3.b RODO - "Prawo do usunięcia nie ma zastosowania w zakresie, w jakim przetwarzanie jest niezbędne do wykonania umowy, której stroną jest osoba, której dane dotyczą".</p>
+        </div>
 
         <h2>Metoda 2: Prośba E-mailowa</h2>
 
@@ -188,6 +212,11 @@
                 <th>Typ Danych</th>
                 <th>Okres Przechowywania</th>
                 <th>Szczegóły</th>
+            </tr>
+            <tr>
+                <td><strong>Dane Subskrypcji (Firebase)</strong></td>
+                <td>Do końca okresu rozliczeniowego + 365 dni po wygaśnięciu</td>
+                <td>Automatycznie usunięte po wygaśnięciu subskrypcji i okresie przechowywania</td>
             </tr>
             <tr>
                 <td>Dane w Chmurze (Firebase)</td>
@@ -237,6 +266,26 @@
                 <td>Przycisk "Usuń Dane w Chmurze"</td>
             </tr>
             <tr>
+                <td>Plan Subskrypcji</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk "Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
+            </tr>
+            <tr>
+                <td>Miesięczny Limit Tokenów</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk "Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
+            </tr>
+            <tr>
+                <td>Bieżące Wykorzystanie Tokenów</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk "Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
+            </tr>
+            <tr>
+                <td>Data Miesięcznego Resetowania</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk "Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
+            </tr>
+            <tr>
                 <td>Nauczone Słowa (Predykcje)</td>
                 <td>Lokalnie (urządzenie)</td>
                 <td>Przycisk "Usuń Dane Uczenia"</td>
@@ -272,7 +321,7 @@
         <div class="warning">
             <p><strong>Ważne Powiadomienie:</strong> Usunięcie niektórych danych jest <strong>nieodwracalne</strong>. Upewnij się, że rozumiesz konsekwencje przed kontynuowaniem:</p>
             <ul>
-                <li><strong>Usuń Dane w Chmurze:</strong> Stracisz saldo tokenów i NIE będziesz mógł go odzyskać, nawet po ponownej instalacji aplikacji</li>
+                <li><strong>Usuń Dane w Chmurze:</strong> Stracisz swoje saldo tokenów, historię zakupów i dane subskrypcji. NIE będziesz mógł ich odzyskać, nawet po ponownej instalacji aplikacji. Jeśli masz aktywną subskrypcję, musisz ją najpierw anulować przez Google Play Store.</li>
                 <li><strong>Usuń Dane Uczenia:</strong> Spersonalizowane predykcje tekstu zaczną od nowa</li>
                 <li><strong>Usuń Wszystkie Dane Lokalne:</strong> Wszystkie preferencje i ustawienia zostaną utracone</li>
             </ul>
@@ -303,10 +352,11 @@
         </p>
 
         <div class="footer">
-            <p><strong>Wersja 1.0 - Ostatnia Aktualizacja: 17 stycznia 2026</strong></p>
+            <p><strong>Wersja 1.1 - Ostatnia Aktualizacja: 25 stycznia 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Zgodne z RODO (Rozporządzenie UE 2016/679)</p>
         </div>
     </div>
 </body>
+
 </html>
