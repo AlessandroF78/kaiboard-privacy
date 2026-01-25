@@ -146,8 +146,8 @@
             </tr>
             <tr>
                 <td><strong>Delete Cloud Data</strong></td>
-                <td>Token balance and purchase history stored in Firebase</td>
-                <td>Irreversible. You will lose your token balance.</td>
+                <td>Token balance, purchase history and subscription data stored on Firebase</td>
+            <td>Irreversible. You will lose your token balance. Requires subscription cancellation if active.</td>
             </tr>
             <tr>
                 <td><strong>Delete Learning Data</strong></td>
@@ -162,6 +162,30 @@
         </table>
 
         <p><strong>Processing Time:</strong> Immediate (0-5 seconds)</p>
+
+        <div class="warning">
+            <h3>⚠️ Deletion Limitation with Active Subscription (Art. 17.3.b GDPR)</h3>
+            
+            <p>If you have an <strong>active monthly subscription</strong>, cloud data deletion is <strong>temporarily blocked</strong> until subscription cancellation.</p>
+            
+            <p><strong>Reason:</strong> Subscription data (active plan, token limit, reset date) is necessary for the performance of the ongoing contract (Art. 6.1.b GDPR). Early deletion would prevent:</p>
+            <ul>
+                <li>❌ Proper functioning of the purchased monthly service</li>
+                <li>❌ Token limit synchronization between devices</li>
+                <li>❌ Automatic token reset at the beginning of the month</li>
+            </ul>
+            
+            <p><strong>How to proceed:</strong></p>
+            <ol>
+                <li>Cancel the subscription through Google Play Store</li>
+                <li>Wait for the end of the current billing period</li>
+                <li>Delete cloud data through the app</li>
+            </ol>
+            
+            <p><strong>Immediate deletion:</strong> The app automatically redirects you to Google Play to manage your subscription. After cancellation, data deletion will be immediately available.</p>
+            
+            <p><strong>Legal basis for blocking:</strong> Art. 17.3.b GDPR - "The right to erasure shall not apply to the extent that processing is necessary for the performance of a contract to which the data subject is party".</p>
+        </div>
 
         <h2>Method 2: Email Request</h2>
 
@@ -188,6 +212,11 @@
                 <th>Data Type</th>
                 <th>Retention Period</th>
                 <th>Details</th>
+            </tr>
+            <tr>
+                <td><strong>Subscription Data (Firebase)</strong></td>
+                <td>Until the end of billing period + 365 days after expiration</td>
+                <td>Automatically deleted after subscription expiration and retention period</td>
             </tr>
             <tr>
                 <td>Cloud Data (Firebase)</td>
@@ -235,6 +264,26 @@
                 <td>Purchase History</td>
                 <td>Firebase (cloud)</td>
                 <td>"Delete Cloud Data" button</td>
+            </tr>
+            <tr>
+                <td>Subscription Plan</td>
+                <td>Firebase (cloud)</td>
+                <td>Button "Delete Cloud Data" (only after subscription cancellation)</td>
+            </tr>
+            <tr>
+                <td>Monthly Token Limit</td>
+                <td>Firebase (cloud)</td>
+                <td>Button "Delete Cloud Data" (only after subscription cancellation)</td>
+            </tr>
+            <tr>
+                <td>Current Token Usage</td>
+                <td>Firebase (cloud)</td>
+                <td>Button "Delete Cloud Data" (only after subscription cancellation)</td>
+            </tr>
+            <tr>
+                <td>Monthly Reset Date</td>
+                <td>Firebase (cloud)</td>
+                <td>Button "Delete Cloud Data" (only after subscription cancellation)</td>
             </tr>
             <tr>
                 <td>Learned Words (Predictions)</td>
@@ -303,10 +352,11 @@
         </p>
 
         <div class="footer">
-            <p><strong>Version 1.0 - Last Updated: January 17, 2026</strong></p>
+            <p><strong>Version 1.1 - Last Updated: January 25, 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Compliant with GDPR (EU Regulation 2016/679)</p>
         </div>
     </div>
 </body>
 </html>
+
