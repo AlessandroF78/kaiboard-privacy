@@ -146,8 +146,8 @@
             </tr>
             <tr>
                 <td><strong>Supprimer les Données Cloud</strong></td>
-                <td>Solde de jetons et historique d'achat stockés dans Firebase</td>
-                <td>Irréversible. Vous perdrez votre solde de jetons.</td>
+                <td>Solde de jetons, historique d'achats et données d'abonnement stockés sur Firebase</td>
+                <td>Irréversible. Vous perdrez votre solde de jetons. Nécessite l'annulation de l'abonnement s'il est actif.</td>
             </tr>
             <tr>
                 <td><strong>Supprimer les Données d'Apprentissage</strong></td>
@@ -162,6 +162,30 @@
         </table>
 
         <p><strong>Délai de Traitement :</strong> Immédiat (0-5 secondes)</p>
+
+        <div class="warning">
+            <h3>⚠️ Limitation de Suppression avec Abonnement Actif (Art. 17.3.b RGPD)</h3>
+            
+            <p>Si vous avez un <strong>abonnement mensuel actif</strong>, la suppression des données cloud est <strong>temporairement bloquée</strong> jusqu'à l'annulation de l'abonnement.</p>
+            
+            <p><strong>Raison:</strong> Les données liées à l'abonnement (plan actif, limite de jetons, date de réinitialisation) sont nécessaires pour l'exécution du contrat en cours (Art. 6.1.b RGPD). La suppression anticipée empêcherait:</p>
+            <ul>
+                <li>❌ Le bon fonctionnement du service mensuel acheté</li>
+                <li>❌ La synchronisation de la limite de jetons entre les appareils</li>
+                <li>❌ La réinitialisation automatique des jetons en début de mois</li>
+            </ul>
+            
+            <p><strong>Comment procéder:</strong></p>
+            <ol>
+                <li>Annulez l'abonnement via Google Play Store</li>
+                <li>Attendez la fin de la période de facturation actuelle</li>
+                <li>Supprimez les données cloud via l'application</li>
+            </ol>
+            
+            <p><strong>Suppression immédiate:</strong> L'application vous redirige automatiquement vers Google Play pour gérer votre abonnement. Après l'annulation, la suppression des données sera immédiatement disponible.</p>
+            
+            <p><strong>Base juridique du blocage:</strong> Art. 17.3.b RGPD - "Le droit à l'effacement ne s'applique pas dans la mesure où le traitement est nécessaire à l'exécution d'un contrat auquel la personne concernée est partie".</p>
+        </div>
 
         <h2>Méthode 2 : Demande par E-mail</h2>
 
@@ -188,6 +212,11 @@
                 <th>Type de Donnée</th>
                 <th>Période de Conservation</th>
                 <th>Détails</th>
+            </tr>
+            <tr>
+                <td><strong>Données d'Abonnement (Firebase)</strong></td>
+                <td>Jusqu'à la fin de la période de facturation + 365 jours après expiration</td>
+                <td>Supprimées automatiquement après expiration de l'abonnement et période de conservation</td>
             </tr>
             <tr>
                 <td>Données Cloud (Firebase)</td>
@@ -237,6 +266,26 @@
                 <td>Bouton "Supprimer les Données Cloud"</td>
             </tr>
             <tr>
+                <td>Plan d'Abonnement</td>
+                <td>Firebase (cloud)</td>
+                <td>Bouton "Supprimer les Données Cloud" (seulement après annulation de l'abonnement)</td>
+            </tr>
+            <tr>
+                <td>Limite Mensuelle de Jetons</td>
+                <td>Firebase (cloud)</td>
+                <td>Bouton "Supprimer les Données Cloud" (seulement après annulation de l'abonnement)</td>
+            </tr>
+            <tr>
+                <td>Utilisation Actuelle de Jetons</td>
+                <td>Firebase (cloud)</td>
+                <td>Bouton "Supprimer les Données Cloud" (seulement après annulation de l'abonnement)</td>
+            </tr>
+            <tr>
+                <td>Date de Réinitialisation Mensuelle</td>
+                <td>Firebase (cloud)</td>
+                <td>Bouton "Supprimer les Données Cloud" (seulement après annulation de l'abonnement)</td>
+            </tr>
+            <tr>
                 <td>Mots Appris (Prédictions)</td>
                 <td>Local (appareil)</td>
                 <td>Bouton "Supprimer les Données d'Apprentissage"</td>
@@ -272,7 +321,7 @@
         <div class="warning">
             <p><strong>Avis Important :</strong> La suppression de certaines données est <strong>irréversible</strong>. Assurez-vous de comprendre les conséquences avant de continuer :</p>
             <ul>
-                <li><strong>Supprimer les Données Cloud :</strong> Vous perdrez votre solde de jetons et ne pourrez PAS le récupérer, même après avoir réinstallé l'application</li>
+                <li><strong>Supprimer les Données Cloud:</strong> Vous perdrez votre solde de jetons, l'historique d'achats et les données d'abonnement. Vous ne pourrez PAS les récupérer, même après avoir réinstallé l'application. Si vous avez un abonnement actif, vous devez d'abord l'annuler via Google Play Store.</li>
                 <li><strong>Supprimer les Données d'Apprentissage :</strong> Les prédictions de texte personnalisées repartiront de zéro</li>
                 <li><strong>Supprimer Toutes les Données Locales :</strong> Toutes les préférences et paramètres seront perdus</li>
             </ul>
@@ -303,10 +352,11 @@
         </p>
 
         <div class="footer">
-            <p><strong>Version 1.0 - Dernière Mise à Jour : 17 janvier 2026</strong></p>
+            <p><strong>Version 1.1 - Dernière Mise à Jour: 25 janvier 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Conforme au RGPD (Règlement UE 2016/679)</p>
         </div>
     </div>
 </body>
+
 </html>
