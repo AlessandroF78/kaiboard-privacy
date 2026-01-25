@@ -153,6 +153,69 @@
     </tr>
 </table>
 
+<h3>2.1.1 Subscription Data</h3>
+
+<p>If you subscribe to a <strong>monthly subscription</strong> (e.g., PLUS Plan with 250,000 tokens/month), we save the following additional data:</p>
+
+<table>
+    <tr>
+        <th>Data</th>
+        <th>Type</th>
+        <th>Purpose</th>
+        <th>Legal Basis</th>
+    </tr>
+    <tr>
+        <td><strong>Subscription Plan</strong></td>
+        <td>String (e.g., "plus", "pro")</td>
+        <td>Identify active plan and apply correct token limit</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Monthly Token Limit</strong></td>
+        <td>Integer (e.g., 250000)</td>
+        <td>Apply maximum tokens included in subscription</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Current Token Usage</strong></td>
+        <td>Integer</td>
+        <td>Track monthly consumption and apply limit</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Monthly Reset Date</strong></td>
+        <td>ISO Date (e.g., "2026-02-01")</td>
+        <td>Automatic usage reset at beginning of month</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Google Play Product ID</strong></td>
+        <td>String (e.g., "abbonamento_mensile_2500")</td>
+        <td>Verify subscription validity through Google Play Billing API</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Auto-Renewal Status</strong></td>
+        <td>Boolean</td>
+        <td>Check if subscription will renew automatically</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Subscription Purchase Date</strong></td>
+        <td>Timestamp</td>
+        <td>Billing cycle management and disputes</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔄 AUTOMATIC MONTHLY RESET:</strong> The token usage counter is automatically reset on the first day of each month. The monthly limit is restored without manual intervention.
+</div>
+
+<div class="important">
+    <strong>⚠️ IMPORTANT - SUBSCRIPTION CANCELLATION:</strong> If you cancel your subscription, subscription data is retained until the end of the current billing period (Art. 6.1.b GDPR - contract performance). After expiration, you can delete all cloud data through the Privacy screen.
+</div>
+
 <h3>2.2 Data Stored Locally Only (On Device)</h3>
 
 <p>The following data <strong>is NEVER sent to external servers</strong>:</p>
@@ -334,6 +397,11 @@
         <th>Deletion</th>
     </tr>
     <tr>
+        <td><strong>Subscription Data (Firebase)</strong></td>
+        <td>Until end of billing period + 365 days after expiration</td>
+        <td>Automatic + manual deletion</td>
+    </tr>
+    <tr>
         <td><strong>Token Backup (Firebase)</strong></td>
         <td>365 days of inactivity</td>
         <td>Automatic + manual deletion</td>
@@ -393,10 +461,33 @@
 <p>You can delete all your data at any time through the <strong>Privacy screen</strong> in the app:</p>
 
 <ul>
-    <li>✅ <strong>Delete cloud data</strong>: Removes token backup and purchase history from Firebase</li>
+    <li>✅ <strong>Delete cloud data</strong>: Removes token backup, purchase history and subscription data from Firebase</li>
     <li>✅ <strong>Delete learning data</strong>: Removes learned words for suggestions</li>
-    <li>✅ <strong>Delete all local data</strong>: Removes all preferences and data on device</li>
+    <li>✅ <strong>Delete all local data</strong>: Removes all preferences and data on the device</li>
 </ul>
+
+<div class="important">
+    <strong>⚠️ DELETION RESTRICTION WITH ACTIVE SUBSCRIPTION (Art. 17.3.b GDPR):</strong>
+    <p>If you have an <strong>active monthly subscription</strong>, cloud data deletion is <strong>temporarily blocked</strong> until you cancel the subscription.</p>
+
+    <p><strong>Reason:</strong> Subscription data (active plan, token limit, reset date) is necessary for contract performance (Art. 6.1.b GDPR). Early deletion would prevent:</p>
+    <ul>
+        <li>❌ Proper functioning of the purchased monthly service</li>
+        <li>❌ Token limit synchronization across devices</li>
+        <li>❌ Automatic token reset at the beginning of the month</li>
+    </ul>
+
+    <p><strong>How to proceed:</strong></p>
+    <ol>
+        <li>Cancel the subscription through Google Play Store</li>
+        <li>Wait until the end of the current billing period</li>
+        <li>Delete cloud data through the app</li>
+    </ol>
+
+    <p><strong>Immediate deletion:</strong> The app automatically redirects you to Google Play to manage your subscription. After cancellation, data deletion will be immediately available.</p>
+
+    <p><strong>Legal basis for blocking:</strong> Art. 17.3.b GDPR - "The right to erasure shall not apply to the extent that processing is necessary for the performance of a contract to which the data subject is party".</p>
+</div>
 
 <h3>6.4 Right to Data Portability (Art. 20 GDPR)</h3>
 <p>You can request your data in a structured, machine-readable format.</p>
@@ -419,7 +510,7 @@
 <p><strong>Path:</strong> Settings → Privacy & Security</p>
 
 <ol>
-    <li><strong>Delete cloud data</strong>: Token backup + purchase history (irreversible)</li>
+    <li><strong>Delete cloud data</strong>: Token backup + purchase history + subscription data (irreversible - requires subscription cancellation if active)</li>
     <li><strong>Delete learning data</strong>: Learned words (11 languages)</li>
     <li><strong>Delete all local data</strong>: All preferences (restarts app)</li>
 </ol>
