@@ -146,8 +146,8 @@
             </tr>
             <tr>
                 <td><strong>Elimina Dati Cloud</strong></td>
-                <td>Saldo token e cronologia acquisti memorizzati su Firebase</td>
-                <td>Irreversibile. Perderai il tuo saldo token.</td>
+                <td>Saldo token, cronologia acquisti e dati abbonamento memorizzati su Firebase</td>
+                <td>Irreversibile. Perderai il tuo saldo token. Richiede annullamento abbonamento se attivo.</td>
             </tr>
             <tr>
                 <td><strong>Elimina Dati Apprendimento</strong></td>
@@ -162,6 +162,29 @@
         </table>
 
         <p><strong>Tempo di Elaborazione:</strong> Immediato (0-5 secondi)</p>
+		<div class="warning">
+            <h3>⚠️ Limitazione Cancellazione con Abbonamento Attivo (Art. 17.3.b GDPR)</h3>
+            
+            <p>Se hai un <strong>abbonamento mensile attivo</strong>, la cancellazione dei dati cloud viene <strong>temporaneamente bloccata</strong> fino all'annullamento dell'abbonamento.</p>
+            
+            <p><strong>Motivo:</strong> I dati relativi all'abbonamento (piano attivo, limite token, data reset) sono necessari per l'esecuzione del contratto in corso (Art. 6.1.b GDPR). La cancellazione anticipata impedirebbe:</p>
+            <ul>
+                <li>❌ Il corretto funzionamento del servizio mensile acquistato</li>
+                <li>❌ La sincronizzazione del limite token tra dispositivi</li>
+                <li>❌ Il reset automatico dei token a inizio mese</li>
+            </ul>
+            
+            <p><strong>Come procedere:</strong></p>
+            <ol>
+                <li>Annulla l'abbonamento tramite Google Play Store</li>
+                <li>Attendi la fine del periodo di fatturazione corrente</li>
+                <li>Elimina i dati cloud tramite l'app</li>
+            </ol>
+            
+            <p><strong>Cancellazione immediata:</strong> L'app ti reindirizza automaticamente a Google Play per gestire l'abbonamento. Dopo l'annullamento, la cancellazione dati sarà immediatamente disponibile.</p>
+            
+            <p><strong>Base giuridica del blocco:</strong> Art. 17.3.b GDPR - "Il diritto alla cancellazione non si applica nella misura in cui il trattamento sia necessario per l'esecuzione di un contratto di cui l'interessato è parte".</p>
+        </div>
 
         <h2>Metodo 2: Richiesta via Email</h2>
 
@@ -236,6 +259,26 @@
                 <td>Firebase (cloud)</td>
                 <td>Pulsante "Elimina Dati Cloud"</td>
             </tr>
+			<tr>
+                <td>Piano Abbonamento</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud" (solo dopo annullamento abbonamento)</td>
+            </tr>
+            <tr>
+                <td>Limite Token Mensile</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud" (solo dopo annullamento abbonamento)</td>
+            </tr>
+            <tr>
+                <td>Utilizzo Token Corrente</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud" (solo dopo annullamento abbonamento)</td>
+            </tr>
+            <tr>
+                <td>Data Reset Mensile</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud" (solo dopo annullamento abbonamento)</td>
+            </tr>
             <tr>
                 <td>Parole Apprese (Predizioni)</td>
                 <td>Locale (dispositivo)</td>
@@ -272,7 +315,7 @@
         <div class="warning">
             <p><strong>Avviso Importante:</strong> La cancellazione di alcuni dati è <strong>irreversibile</strong>. Assicurati di comprendere le conseguenze prima di procedere:</p>
             <ul>
-                <li><strong>Elimina Dati Cloud:</strong> Perderai il tuo saldo token e NON potrai recuperarlo, anche dopo aver reinstallato l'app</li>
+                <li><strong>Elimina Dati Cloud:</strong> Perderai il tuo saldo token, la cronologia acquisti e i dati abbonamento. NON potrai recuperarli, anche dopo aver reinstallato l'app. Se hai un abbonamento attivo, dovrai prima annullarlo tramite Google Play Store.</li>
                 <li><strong>Elimina Dati Apprendimento:</strong> Le predizioni di testo personalizzate ripartiranno da zero</li>
                 <li><strong>Elimina Tutti i Dati Locali:</strong> Tutte le preferenze e impostazioni andranno perse</li>
             </ul>
@@ -303,10 +346,11 @@
         </p>
 
         <div class="footer">
-            <p><strong>Versione 1.0 - Ultimo Aggiornamento: 17 gennaio 2026</strong></p>
+            <p><strong>Versione 1.1 - Ultimo Aggiornamento: 25 gennaio 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Conforme al GDPR (Regolamento UE 2016/679)</p>
         </div>
     </div>
 </body>
+
 </html>
