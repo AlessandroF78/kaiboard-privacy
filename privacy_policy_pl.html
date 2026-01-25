@@ -153,6 +153,69 @@
     </tr>
 </table>
 
+<h3>2.1.1 Dane Subskrypcji</h3>
+
+<p>Jeśli subskrybujesz <strong>miesięczną subskrypcję</strong> (np. Plan PLUS z 250 000 tokenów/miesiąc), zapisujemy następujące dodatkowe dane:</p>
+
+<table>
+    <tr>
+        <th>Dane</th>
+        <th>Typ</th>
+        <th>Cel</th>
+        <th>Podstawa Prawna</th>
+    </tr>
+    <tr>
+        <td><strong>Plan Subskrypcji</strong></td>
+        <td>Ciąg znaków (np. "plus", "pro")</td>
+        <td>Identyfikacja aktywnego planu i zastosowanie prawidłowego limitu tokenów</td>
+        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+    </tr>
+    <tr>
+        <td><strong>Miesięczny Limit Tokenów</strong></td>
+        <td>Liczba całkowita (np. 250000)</td>
+        <td>Zastosowanie maksymalnej liczby tokenów w subskrypcji</td>
+        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+    </tr>
+    <tr>
+        <td><strong>Bieżące Użycie Tokenów</strong></td>
+        <td>Liczba całkowita</td>
+        <td>Śledzenie miesięcznego zużycia i zastosowanie limitu</td>
+        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+    </tr>
+    <tr>
+        <td><strong>Data Miesięcznego Resetu</strong></td>
+        <td>Data ISO (np. "2026-02-01")</td>
+        <td>Automatyczny reset użycia na początku miesiąca</td>
+        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+    </tr>
+    <tr>
+        <td><strong>ID Produktu Google Play</strong></td>
+        <td>Ciąg znaków (np. "abbonamento_mensile_2500")</td>
+        <td>Weryfikacja ważności subskrypcji przez Google Play Billing API</td>
+        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+    </tr>
+    <tr>
+        <td><strong>Status Automatycznego Odnowienia</strong></td>
+        <td>Boolean</td>
+        <td>Sprawdzenie czy subskrypcja będzie automatycznie odnawiana</td>
+        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+    </tr>
+    <tr>
+        <td><strong>Data Zakupu Subskrypcji</strong></td>
+        <td>Znacznik czasu</td>
+        <td>Zarządzanie cyklem rozliczeniowym i sporami</td>
+        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔄 AUTOMATYCZNY MIESIĘCZNY RESET:</strong> Licznik użycia tokenów jest automatycznie resetowany pierwszego dnia każdego miesiąca. Miesięczny limit jest przywracany bez ręcznej interwencji.
+</div>
+
+<div class="important">
+    <strong>⚠️ WAŻNE - ANULOWANIE SUBSKRYPCJI:</strong> Jeśli anulujesz subskrypcję, dane subskrypcji są zachowane do końca bieżącego okresu rozliczeniowego (Art. 6.1.b RODO - wykonanie umowy). Po wygaśnięciu możesz usunąć wszystkie dane w chmurze przez ekran Prywatności.
+</div>
+
 <h3>2.2 Dane Przechowywane Tylko Lokalnie (Na Urządzeniu)</h3>
 
 <p>Następujące dane <strong>NIGDY nie są wysyłane do zewnętrznych serwerów</strong>:</p>
@@ -335,6 +398,11 @@
         <th>Usuwanie</th>
     </tr>
     <tr>
+        <td><strong>Dane Subskrypcji (Firebase)</strong></td>
+        <td>Do końca okresu rozliczeniowego + 365 dni po wygaśnięciu</td>
+        <td>Automatyczne + ręczne usuwanie</td>
+    </tr>
+    <tr>
         <td><strong>Kopia Zapasowa Tokenów (Firebase)</strong></td>
         <td>365 dni nieaktywności</td>
         <td>Automatyczne + ręczne usuwanie</td>
@@ -391,14 +459,36 @@
 <p>Możesz poprawić niedokładne lub niekompletne dane.</p>
 
 <h3>6.3 Prawo do Usunięcia (Art. 17 RODO)</h3>
-<p>Możesz w dowolnym momencie usunąć wszystkie swoje dane poprzez <strong>ekran Prywatności</strong> w aplikacji:</p>
+<p>Możesz usunąć wszystkie swoje dane w dowolnym momencie przez <strong>ekran Prywatności</strong> w aplikacji:</p>
 
 <ul>
-    <li>✅ <strong>Usuń dane w chmurze</strong>: Usuwa kopię zapasową tokenów i historię zakupów z Firebase</li>
-    <li>✅ <strong>Usuń dane uczenia</strong>: Usuwa nauczone słowa dla sugestii</li>
+    <li>✅ <strong>Usuń dane w chmurze</strong>: Usuwa kopię zapasową tokenów, historię zakupów i dane subskrypcji z Firebase</li>
+    <li>✅ <strong>Usuń dane uczenia</strong>: Usuwa nauczone słowa do sugestii</li>
     <li>✅ <strong>Usuń wszystkie dane lokalne</strong>: Usuwa wszystkie preferencje i dane na urządzeniu</li>
 </ul>
 
+<div class="important">
+    <strong>⚠️ OGRANICZENIE USUWANIA Z AKTYWNĄ SUBSKRYPCJĄ (Art. 17.3.b RODO):</strong>
+    <p>Jeśli masz <strong>aktywną miesięczną subskrypcję</strong>, usuwanie danych w chmurze jest <strong>tymczasowo zablokowane</strong> do momentu anulowania subskrypcji.</p>
+
+    <p><strong>Powód:</strong> Dane subskrypcji (aktywny plan, limit tokenów, data resetu) są niezbędne do wykonania umowy (Art. 6.1.b RODO). Przedwczesne usunięcie uniemożliwiłoby:</p>
+    <ul>
+        <li>❌ Prawidłowe funkcjonowanie zakupionej usługi miesięcznej</li>
+        <li>❌ Synchronizację limitu tokenów między urządzeniami</li>
+        <li>❌ Automatyczny reset tokenów na początku miesiąca</li>
+    </ul>
+
+    <p><strong>Jak postępować:</strong></p>
+    <ol>
+        <li>Anuluj subskrypcję przez Google Play Store</li>
+        <li>Poczekaj do końca bieżącego okresu rozliczeniowego</li>
+        <li>Usuń dane w chmurze przez aplikację</li>
+    </ol>
+
+    <p><strong>Natychmiastowe usunięcie:</strong> Aplikacja automatycznie przekierowuje do Google Play w celu zarządzania subskrypcją. Po anulowaniu usuwanie danych będzie natychmiast dostępne.</p>
+
+    <p><strong>Podstawa prawna blokady:</strong> Art. 17.3.b RODO - "Prawo do usunięcia nie ma zastosowania w zakresie, w jakim przetwarzanie jest niezbędne do wykonania umowy, której stroną jest osoba, której dane dotyczą".</p>
+</div>
 <h3>6.4 Prawo do Przenoszenia Danych (Art. 20 RODO)</h3>
 <p>Możesz poprosić o swoje dane w ustrukturyzowanym, nadającym się do odczytu maszynowego formacie.</p>
 
@@ -420,7 +510,7 @@
 <p><strong>Ścieżka:</strong> Ustawienia → Prywatność i Bezpieczeństwo</p>
 
 <ol>
-    <li><strong>Usuń dane w chmurze</strong>: Kopia zapasowa tokenów + historia zakupów (nieodwracalne)</li>
+    <li><strong>Usuń dane w chmurze</strong>: Kopia zapasowa tokenów + historia zakupów + dane subskrypcji (nieodwracalne - wymaga anulowania subskrypcji jeśli aktywna)</li>
     <li><strong>Usuń dane uczenia</strong>: Nauczone słowa (11 języków)</li>
     <li><strong>Usuń wszystkie dane lokalne</strong>: Wszystkie preferencje (restartuje aplikację)</li>
 </ol>
