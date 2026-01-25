@@ -153,6 +153,69 @@
     </tr>
 </table>
 
+<h3>2.1.1 Données d'Abonnement</h3>
+
+<p>Si vous souscrivez à un <strong>abonnement mensuel</strong> (par exemple, Plan PLUS avec 250 000 jetons/mois), nous enregistrons les données supplémentaires suivantes :</p>
+
+<table>
+    <tr>
+        <th>Données</th>
+        <th>Type</th>
+        <th>Finalité</th>
+        <th>Base Juridique</th>
+    </tr>
+    <tr>
+        <td><strong>Plan d'Abonnement</strong></td>
+        <td>Chaîne (ex. "plus", "pro")</td>
+        <td>Identifier le plan actif et appliquer la limite de jetons correcte</td>
+        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Limite Mensuelle de Jetons</strong></td>
+        <td>Entier (ex. 250000)</td>
+        <td>Appliquer le maximum de jetons inclus dans l'abonnement</td>
+        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Utilisation Actuelle de Jetons</strong></td>
+        <td>Entier</td>
+        <td>Suivre la consommation mensuelle et appliquer la limite</td>
+        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Date de Réinitialisation Mensuelle</strong></td>
+        <td>Date ISO (ex. "2026-02-01")</td>
+        <td>Réinitialisation automatique de l'utilisation en début de mois</td>
+        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>ID Produit Google Play</strong></td>
+        <td>Chaîne (ex. "abbonamento_mensile_2500")</td>
+        <td>Vérifier la validité de l'abonnement via Google Play Billing API</td>
+        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Statut de Renouvellement Automatique</strong></td>
+        <td>Booléen</td>
+        <td>Vérifier si l'abonnement se renouvellera automatiquement</td>
+        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Date d'Achat de l'Abonnement</strong></td>
+        <td>Horodatage</td>
+        <td>Gestion du cycle de facturation et litiges</td>
+        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔄 RÉINITIALISATION AUTOMATIQUE MENSUELLE :</strong> Le compteur d'utilisation de jetons est automatiquement réinitialisé le premier jour de chaque mois. La limite mensuelle est restaurée sans intervention manuelle.
+</div>
+
+<div class="important">
+    <strong>⚠️ IMPORTANT - ANNULATION D'ABONNEMENT :</strong> Si vous annulez votre abonnement, les données d'abonnement sont conservées jusqu'à la fin de la période de facturation actuelle (Art. 6.1.b RGPD - exécution du contrat). Après expiration, vous pouvez supprimer toutes les données cloud via l'écran Confidentialité.
+</div>
+
 <h3>2.2 Données Stockées Uniquement en Local (Sur l'Appareil)</h3>
 
 <p>Les données suivantes <strong>ne sont JAMAIS envoyées à des serveurs externes</strong> :</p>
@@ -335,6 +398,11 @@
         <th>Suppression</th>
     </tr>
     <tr>
+        <td><strong>Données d'Abonnement (Firebase)</strong></td>
+        <td>Jusqu'à la fin de la période de facturation + 365 jours après expiration</td>
+        <td>Automatique + suppression manuelle</td>
+    </tr>
+    <tr>
         <td><strong>Sauvegarde des Jetons (Firebase)</strong></td>
         <td>365 jours d'inactivité</td>
         <td>Automatique + suppression manuelle</td>
@@ -394,10 +462,33 @@
 <p>Vous pouvez supprimer toutes vos données à tout moment via l'<strong>écran Confidentialité</strong> dans l'application :</p>
 
 <ul>
-    <li>✅ <strong>Supprimer les données cloud</strong> : Supprime la sauvegarde des jetons et l'historique des achats de Firebase</li>
+    <li>✅ <strong>Supprimer les données cloud</strong> : Supprime la sauvegarde des jetons, l'historique des achats et les données d'abonnement de Firebase</li>
     <li>✅ <strong>Supprimer les données d'apprentissage</strong> : Supprime les mots appris pour les suggestions</li>
     <li>✅ <strong>Supprimer toutes les données locales</strong> : Supprime toutes les préférences et données sur l'appareil</li>
 </ul>
+
+<div class="important">
+    <strong>⚠️ RESTRICTION DE SUPPRESSION AVEC ABONNEMENT ACTIF (Art. 17.3.b RGPD) :</strong>
+    <p>Si vous avez un <strong>abonnement mensuel actif</strong>, la suppression des données cloud est <strong>temporairement bloquée</strong> jusqu'à l'annulation de l'abonnement.</p>
+
+    <p><strong>Raison :</strong> Les données d'abonnement (plan actif, limite de jetons, date de réinitialisation) sont nécessaires pour l'exécution du contrat (Art. 6.1.b RGPD). Une suppression anticipée empêcherait :</p>
+    <ul>
+        <li>❌ Le bon fonctionnement du service mensuel acheté</li>
+        <li>❌ La synchronisation de la limite de jetons entre appareils</li>
+        <li>❌ La réinitialisation automatique des jetons en début de mois</li>
+    </ul>
+
+    <p><strong>Comment procéder :</strong></p>
+    <ol>
+        <li>Annulez l'abonnement via le Google Play Store</li>
+        <li>Attendez la fin de la période de facturation actuelle</li>
+        <li>Supprimez les données cloud via l'application</li>
+    </ol>
+
+    <p><strong>Suppression immédiate :</strong> L'application vous redirige automatiquement vers Google Play pour gérer votre abonnement. Après l'annulation, la suppression des données sera immédiatement disponible.</p>
+
+    <p><strong>Base juridique du blocage :</strong> Art. 17.3.b RGPD - "Le droit à l'effacement ne s'applique pas dans la mesure où le traitement est nécessaire à l'exécution d'un contrat auquel la personne concernée est partie".</p>
+</div>
 
 <h3>6.4 Droit à la Portabilité des Données (Art. 20 RGPD)</h3>
 <p>Vous pouvez demander vos données dans un format structuré et lisible par machine.</p>
@@ -420,7 +511,7 @@
 <p><strong>Chemin :</strong> Paramètres → Confidentialité et Sécurité</p>
 
 <ol>
-    <li><strong>Supprimer les données cloud</strong> : Sauvegarde des jetons + historique des achats (irréversible)</li>
+    <li><strong>Supprimer les données cloud</strong> : Sauvegarde des jetons + historique des achats + données d'abonnement (irréversible - nécessite l'annulation de l'abonnement si actif)</li>
     <li><strong>Supprimer les données d'apprentissage</strong> : Mots appris (11 langues)</li>
     <li><strong>Supprimer toutes les données locales</strong> : Toutes les préférences (redémarre l'application)</li>
 </ol>
