@@ -146,8 +146,16 @@
             </tr>
             <tr>
                 <td><strong>Elimina Dati Cloud</strong></td>
-                <td>Saldo token, cronologia acquisti e dati abbonamento memorizzati su Firebase</td>
-                <td>Irreversibile. Perderai il tuo saldo token. Richiede annullamento abbonamento se attivo.</td>
+                <td>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+                        <li>Documento abbonamento attivo (user_subscriptions)</li>
+                        <li>Cronologia abbonamenti (user_subscriptions_history)</li>
+                        <li>Saldo token (se nessun abbonamento attivo)</li>
+                        <li>Cronologia acquisti token</li>
+                        <li>Array dispositivi multi-device</li>
+                    </ul>
+                </td>
+                <td>Irreversibile. Perderai il tuo saldo token, cronologia acquisti e cronologia abbonamenti. Richiede annullamento abbonamento se attivo.</td>
             </tr>
             <tr>
                 <td><strong>Elimina Dati Apprendimento</strong></td>
@@ -162,7 +170,8 @@
         </table>
 
         <p><strong>Tempo di Elaborazione:</strong> Immediato (0-5 secondi)</p>
-		<div class="warning">
+        
+        <div class="warning">
             <h3>⚠️ Limitazione Cancellazione con Abbonamento Attivo (Art. 17.3.b GDPR)</h3>
             
             <p>Se hai un <strong>abbonamento mensile attivo</strong>, la cancellazione dei dati cloud viene <strong>temporaneamente bloccata</strong> fino all'annullamento dell'abbonamento.</p>
@@ -177,11 +186,11 @@
             <p><strong>Come procedere:</strong></p>
             <ol>
                 <li>Annulla l'abbonamento tramite Google Play Store</li>
-                <li>Attendi la fine del periodo di fatturazione corrente</li>
+                <li>Attendi la fine del periodo di fatturazione corrente (grace period)</li>
                 <li>Elimina i dati cloud tramite l'app</li>
             </ol>
             
-            <p><strong>Cancellazione immediata:</strong> L'app ti reindirizza automaticamente a Google Play per gestire l'abbonamento. Dopo l'annullamento, la cancellazione dati sarà immediatamente disponibile.</p>
+            <p><strong>Cancellazione immediata:</strong> L'app ti reindirizza automaticamente a Google Play per gestire l'abbonamento. Dopo l'annullamento, la cancellazione dati sarà disponibile al termine del periodo già pagato.</p>
             
             <p><strong>Base giuridica del blocco:</strong> Art. 17.3.b GDPR - "Il diritto alla cancellazione non si applica nella misura in cui il trattamento sia necessario per l'esecuzione di un contratto di cui l'interessato è parte".</p>
         </div>
@@ -212,28 +221,33 @@
                 <th>Periodo di Conservazione</th>
                 <th>Dettagli</th>
             </tr>
-			<tr>
-                <td><strong>Dati Abbonamento (Firebase)</strong></td>
-                <td>Fino alla fine del periodo di fatturazione + 365 giorni dalla scadenza</td>
-                <td>Eliminati automaticamente dopo la scadenza dell'abbonamento e periodo di conservazione</td>
+            <tr>
+                <td><strong>Dati Abbonamento Attivo (Firebase)</strong></td>
+                <td>Fino alla fine del periodo di fatturazione corrente</td>
+                <td>Spostati automaticamente in cronologia quando abbonamento scade</td>
             </tr>
             <tr>
-                <td>Dati Cloud (Firebase)</td>
+                <td><strong>Cronologia Abbonamenti (Firebase)</strong></td>
+                <td>90 giorni dalla scadenza</td>
+                <td>Eliminati automaticamente dopo 90 giorni dalla fine dell'abbonamento</td>
+            </tr>
+            <tr>
+                <td><strong>Dati Cloud Token (Firebase)</strong></td>
                 <td>365 giorni di inattività</td>
                 <td>Eliminati automaticamente dopo un anno senza utilizzo dell'app</td>
             </tr>
             <tr>
-                <td>Parole Apprese</td>
-                <td>Indefinito con decadimento</td>
+                <td><strong>Parole Apprese</strong></td>
+                <td>14 giorni con decadimento</td>
                 <td>I punteggi di frequenza diminuiscono nel tempo; le parole inutilizzate vengono rimosse</td>
             </tr>
             <tr>
-                <td>Cache Traduzione</td>
+                <td><strong>Cache Traduzione</strong></td>
                 <td>Solo sessione</td>
                 <td>Memorizzata solo in RAM; eliminata alla chiusura dell'app</td>
             </tr>
             <tr>
-                <td>Testo Tradotto</td>
+                <td><strong>Testo Tradotto</strong></td>
                 <td>Mai memorizzato</td>
                 <td>0 secondi di conservazione; solo transito verso API OpenAI</td>
             </tr>
@@ -250,7 +264,7 @@
                 <th>Metodo di Cancellazione</th>
             </tr>
             <tr>
-                <td>ID Dispositivo Anonimo</td>
+                <td>Array Dispositivi</td>
                 <td>Firebase (cloud)</td>
                 <td>Pulsante "Elimina Dati Cloud"</td>
             </tr>
@@ -264,7 +278,7 @@
                 <td>Firebase (cloud)</td>
                 <td>Pulsante "Elimina Dati Cloud"</td>
             </tr>
-			<tr>
+            <tr>
                 <td>Piano Abbonamento</td>
                 <td>Firebase (cloud)</td>
                 <td>Pulsante "Elimina Dati Cloud" (solo dopo annullamento abbonamento)</td>
@@ -283,6 +297,21 @@
                 <td>Data Reset Mensile</td>
                 <td>Firebase (cloud)</td>
                 <td>Pulsante "Elimina Dati Cloud" (solo dopo annullamento abbonamento)</td>
+            </tr>
+            <tr>
+                <td>Data Fine Abbonamento</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud" (solo dopo scadenza grace period)</td>
+            </tr>
+            <tr>
+                <td>Flag "Non si Rinnoverà"</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud" (solo dopo scadenza grace period)</td>
+            </tr>
+            <tr>
+                <td>Cronologia Abbonamenti</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud" (elimina tutto: attivo + cronologia)</td>
             </tr>
             <tr>
                 <td>Parole Apprese (Predizioni)</td>
@@ -320,7 +349,7 @@
         <div class="warning">
             <p><strong>Avviso Importante:</strong> La cancellazione di alcuni dati è <strong>irreversibile</strong>. Assicurati di comprendere le conseguenze prima di procedere:</p>
             <ul>
-                <li><strong>Elimina Dati Cloud:</strong> Perderai il tuo saldo token, la cronologia acquisti e i dati abbonamento. NON potrai recuperarli, anche dopo aver reinstallato l'app. Se hai un abbonamento attivo, dovrai prima annullarlo tramite Google Play Store.</li>
+                <li><strong>Elimina Dati Cloud:</strong> Perderai il tuo saldo token, la cronologia acquisti, i dati abbonamento e la cronologia abbonamenti. NON potrai recuperarli, anche dopo aver reinstallato l'app. Se hai un abbonamento attivo, dovrai prima annullarlo tramite Google Play Store e attendere la fine del periodo già pagato.</li>
                 <li><strong>Elimina Dati Apprendimento:</strong> Le predizioni di testo personalizzate ripartiranno da zero</li>
                 <li><strong>Elimina Tutti i Dati Locali:</strong> Tutte le preferenze e impostazioni andranno perse</li>
             </ul>
@@ -329,7 +358,7 @@
         <h2>Domande Frequenti</h2>
 
         <h3>Cosa succede se elimino i dati cloud?</h3>
-        <p>Perderai il tuo saldo token e la cronologia acquisti. Se reinstalli l'app, ripartirai da zero.</p>
+        <p>Perderai il tuo saldo token, la cronologia acquisti, i dati abbonamento attivo e la cronologia degli abbonamenti passati. Se reinstalli l'app, ripartirai da zero.</p>
 
         <h3>Posso eliminare solo dati specifici?</h3>
         <p>Sì. Puoi scegliere di eliminare solo i dati cloud, solo i dati di apprendimento o tutti i dati insieme.</p>
@@ -343,6 +372,12 @@
         <h3>Posso recuperare i dati dopo la cancellazione?</h3>
         <p>No. La cancellazione è <strong>irreversibile</strong>. Assicurati di voler eliminare i tuoi dati prima di procedere.</p>
 
+        <h3>Cosa succede alla cronologia abbonamenti dopo la cancellazione?</h3>
+        <p>La cronologia abbonamenti viene eliminata insieme ai dati cloud. Include tutti gli abbonamenti passati (scaduti o cancellati) con relativi dettagli di utilizzo token, date e dispositivi utilizzati.</p>
+
+        <h3>Posso eliminare i dati durante il grace period?</h3>
+        <p>No. Se hai annullato l'abbonamento ma il servizio è ancora attivo (grace period), dovrai attendere la scadenza effettiva prima di poter eliminare i dati cloud. Questo protegge la tua esperienza utente durante il periodo già pagato.</p>
+
         <h2>Risorse Aggiuntive</h2>
 
         <p>
@@ -351,12 +386,10 @@
         </p>
 
         <div class="footer">
-            <p><strong>Versione 1.1 - Ultimo Aggiornamento: 25 gennaio 2026</strong></p>
+            <p><strong>Versione 1.2 - Ultimo Aggiornamento: 31 gennaio 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Conforme al GDPR (Regolamento UE 2016/679)</p>
         </div>
     </div>
 </body>
-
 </html>
-
