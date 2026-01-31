@@ -91,8 +91,8 @@
 
 <h1>Informativa sulla Privacy - kAIboard</h1>
 
-<p><strong>Ultimo aggiornamento:</strong> 18 gennaio 2026</p>
-<p><strong>Versione:</strong> 2.1</p>
+<p><strong>Ultimo aggiornamento:</strong> 31 gennaio 2026</p>
+<p><strong>Versione:</strong> 2.2</p>
 
 <div class="highlight">
     <strong>📱 kAIboard</strong> è una tastiera Android con funzionalità di traduzione basate sull'intelligenza artificiale. Questa Informativa sulla Privacy spiega quali dati raccogliamo, come li utilizziamo e i tuoi diritti ai sensi del Regolamento Generale sulla Protezione dei Dati (GDPR - Regolamento UE 2016/679).
@@ -122,10 +122,10 @@
         <th>Base Giuridica</th>
     </tr>
     <tr>
-        <td><strong>ID Dispositivo Anonimo</strong></td>
-        <td>Identificatore basato sull'Android ID del dispositivo (es. android_e19d6c741afe8197)</td>
-        <td>Ripristinare i token acquistati e prevenire frodi (solo UN device attivo alla volta)</td>
-        <td>Esecuzione contratto (Art. 6.1.b) + Interesse legittimo prevenzione frodi (Art. 6.1.f GDPR)</td>
+        <td><strong>Array Dispositivi</strong></td>
+        <td>Lista di identificatori (es. ["android_e19d6c...", "android_175be4..."])</td>
+        <td>Sincronizzare abbonamento e token su più dispositivi con stesso account Google Play</td>
+        <td>Esecuzione contratto (Art. 6.1.b) + Interesse legittimo multi-device (Art. 6.1.f GDPR)</td>
     </tr>
     <tr>
         <td><strong>Saldo Token</strong></td>
@@ -153,6 +153,26 @@
     </tr>
 </table>
 
+<h4>Sincronizzazione Multi-Device</h4>
+
+<p>Se utilizzi kAIboard su più dispositivi con lo <strong>stesso account Google Play</strong>:</p>
+
+<ul>
+    <li>✅ Abbonamento condiviso automaticamente tra tutti i device</li>
+    <li>✅ Saldo token sincronizzato in tempo reale</li>
+    <li>✅ Limite mensile condiviso (es. 250.000 token TOTALI, non per device)</li>
+    <li>✅ Listener Firebase aggiorna tutti i device simultaneamente</li>
+</ul>
+
+<p><strong>Dati salvati per multi-device:</strong></p>
+<ul>
+    <li><strong>devices:</strong> Array di Android ID anonimi che usano lo stesso abbonamento</li>
+    <li><strong>purchaseToken:</strong> Chiave unica dell'abbonamento Google Play</li>
+    <li><strong>current_usage:</strong> Consumo token totale tra tutti i device</li>
+</ul>
+
+<p><strong>Privacy:</strong> L'array <code>devices</code> contiene SOLO Android ID pseudonimizzati (es. "android_abc123..."). Non raccogliamo numeri di telefono, IMEI o altri identificatori personali.</p>
+
 <h3>2.1.1 Dati Abbonamento Mensile</h3>
 
 <p>Se sottoscrivi un <strong>abbonamento mensile</strong> (es. Piano PLUS con 250.000 token/mese), salviamo i seguenti dati aggiuntivi:</p>
@@ -166,13 +186,13 @@
     </tr>
     <tr>
         <td><strong>Piano Abbonamento</strong></td>
-        <td>String (es. "plus", "pro")</td>
+        <td>String (es. "plus", "pro", "max")</td>
         <td>Identificare il piano attivo e applicare il limite token corretto</td>
         <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
         <td><strong>Limite Token Mensile</strong></td>
-        <td>Numero intero (es. 250000)</td>
+        <td>Numero intero (es. 250000, 500000, 1000000)</td>
         <td>Applicare il massimale di token inclusi nell'abbonamento</td>
         <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
@@ -206,6 +226,24 @@
         <td>Gestione ciclo di fatturazione e controversie</td>
         <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
+    <tr>
+        <td><strong>Data Fine Abbonamento</strong></td>
+        <td>Timestamp ISO 8601 (es. "2026-02-28T14:30:00Z")</td>
+        <td>Gestire periodo di grazia dopo cancellazione (abbonamento resta attivo fino a questa data)</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Flag "Non si Rinnoverà"</strong></td>
+        <td>Boolean (will_not_renew)</td>
+        <td>Indicare se l'abbonamento è stato cancellato ma resta valido fino a scadenza</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Data Cancellazione</strong></td>
+        <td>Timestamp (cancelled_at)</td>
+        <td>Tracciare quando l'utente ha annullato l'abbonamento</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
+    </tr>
 </table>
 
 <div class="highlight">
@@ -214,6 +252,76 @@
 
 <div class="important">
     <strong>⚠️ IMPORTANTE - CANCELLAZIONE ABBONAMENTO:</strong> Se annulli l'abbonamento, i dati relativi all'abbonamento vengono mantenuti fino alla fine del periodo di fatturazione corrente (Art. 6.1.b GDPR - esecuzione contratto). Dopo la scadenza, puoi eliminare tutti i dati cloud tramite la schermata Privacy.
+</div>
+
+<h3>2.1.2 Grace Period (Periodo di Grazia)</h3>
+
+<div class="info">
+    <strong>📅 ABBONAMENTO CANCELLATO MA ANCORA ATTIVO</strong>
+    <p>Se annulli l'abbonamento tramite Google Play, il servizio premium <strong>resta attivo fino alla fine del periodo già pagato</strong>.</p>
+    
+    <p><strong>Esempio:</strong></p>
+    <ul>
+        <li>Acquisti abbonamento PLUS il 15 gennaio 2026</li>
+        <li>Annulli il 20 gennaio 2026</li>
+        <li>✅ Premium resta attivo fino al 15 febbraio 2026 (hai già pagato)</li>
+        <li>✅ Token mensili disponibili fino alla scadenza</li>
+        <li>❌ L'abbonamento NON si rinnova automaticamente</li>
+    </ul>
+    
+    <p><strong>Dati salvati durante il grace period:</strong></p>
+    <ul>
+        <li><strong>subscription_end:</strong> Data esatta fino a cui hai diritto al servizio</li>
+        <li><strong>will_not_renew:</strong> Flag che indica "cancellato ma valido"</li>
+        <li><strong>cancelled_at:</strong> Timestamp della cancellazione</li>
+        <li><strong>monthly_limit:</strong> Limite token preservato fino a scadenza</li>
+    </ul>
+    
+    <p><strong>Quando scade il grace period:</strong></p>
+    <ol>
+        <li>Premium viene disattivato automaticamente</li>
+        <li>Dati abbonamento spostati in cronologia (user_subscriptions_history)</li>
+        <li>Documento attivo (user_subscriptions) eliminato</li>
+        <li>Puoi eliminare la cronologia tramite "Elimina dati cloud"</li>
+    </ol>
+</div>
+
+<h3>2.1.3 Cronologia Abbonamenti</h3>
+
+<p>Quando un abbonamento scade o viene eliminato, spostiamo i dati in un documento di cronologia per conformità GDPR e audit.</p>
+
+<table>
+    <tr>
+        <th>Dato</th>
+        <th>Tipo</th>
+        <th>Finalità</th>
+        <th>Conservazione</th>
+    </tr>
+    <tr>
+        <td><strong>Cronologia Abbonamenti</strong></td>
+        <td>Array di oggetti in user_subscriptions_history/{purchaseToken}</td>
+        <td>Tracciabilità acquisti, audit trail, GDPR compliance</td>
+        <td>90 giorni dalla scadenza</td>
+    </tr>
+    <tr>
+        <td><strong>Dati per Entry</strong></td>
+        <td>Piano, token usati/limite, date inizio/fine/cancellazione, motivo cancellazione, dispositivi</td>
+        <td>Audit, supporto utente, gestione rimborsi</td>
+        <td>90 giorni dalla scadenza</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔒 CONSOLIDAMENTO MULTI-DEVICE:</strong> La cronologia viene consolidata per <strong>purchaseToken</strong>, non per device. Tutti i rinnovi e modifiche dello stesso abbonamento sono raggruppati in un unico documento, indipendentemente dal numero di dispositivi utilizzati.
+</div>
+
+<div class="important">
+    <strong>⚠️ ELIMINAZIONE CRONOLOGIA:</strong> Puoi eliminare la cronologia in qualsiasi momento tramite "Elimina dati cloud". L'eliminazione è definitiva e include:
+    <ul>
+        <li>✅ Documento attivo (user_subscriptions/{purchaseToken})</li>
+        <li>✅ Documento cronologia (user_subscriptions_history/{purchaseToken})</li>
+        <li>✅ GDPR compliant: ricerca con purchaseToken, fallback con devices array</li>
+    </ul>
 </div>
 
 <h3>2.2 Dati Memorizzati Solo Localmente (Sul Dispositivo)</h3>
@@ -341,7 +449,7 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>ID anonimo, saldo token, cronologia acquisti, metadati migrazione</td>
+        <td>ID anonimo, saldo token, cronologia acquisti, metadati migrazione, dati abbonamento</td>
         <td>Backup, sincronizzazione e sistema anti-frode</td>
         <td>UE (server europei)</td>
     </tr>
@@ -398,9 +506,14 @@
         <th>Eliminazione</th>
     </tr>
     <tr>
-        <td><strong>Dati Abbonamento (Firebase)</strong></td>
-        <td>Fino alla fine del periodo di fatturazione + 365 giorni dalla scadenza</td>
-        <td>Automatica + eliminazione manuale</td>
+        <td><strong>Dati Abbonamento Attivo (Firebase)</strong></td>
+        <td>Fino alla fine del periodo di fatturazione corrente</td>
+        <td>Eliminazione automatica quando abbonamento scade + spostamento in cronologia</td>
+    </tr>
+    <tr>
+        <td><strong>Cronologia Abbonamenti (Firebase)</strong></td>
+        <td>90 giorni dalla scadenza abbonamento</td>
+        <td>Eliminazione automatica + eliminazione manuale tramite "Elimina dati cloud"</td>
     </tr>
     <tr>
         <td><strong>Backup Token (Firebase)</strong></td>
@@ -445,7 +558,7 @@
 </table>
 
 <div class="highlight">
-    <strong>🗑️ PULIZIA AUTOMATICA:</strong> L'app esegue automaticamente una pulizia ogni 24 ore. I dati più vecchi di 365 giorni vengono eliminati automaticamente, anche se non usi più l'app.
+    <strong>🗑️ PULIZIA AUTOMATICA:</strong> L'app esegue automaticamente una pulizia ogni 24 ore. I dati più vecchi di 365 giorni (o 90 giorni per la cronologia abbonamenti) vengono eliminati automaticamente, anche se non usi più l'app.
 </div>
 
 <h2>6. I Tuoi Diritti (GDPR)</h2>
@@ -462,7 +575,7 @@
 <p>Puoi eliminare tutti i tuoi dati in qualsiasi momento tramite la <strong>schermata Privacy</strong> nell'app:</p>
 
 <ul>
-    <li>✅ <strong>Elimina dati cloud</strong>: Rimuove backup token, cronologia acquisti e dati abbonamento da Firebase</li>
+    <li>✅ <strong>Elimina dati cloud</strong>: Rimuove backup token, cronologia acquisti, dati abbonamento e cronologia abbonamenti da Firebase</li>
     <li>✅ <strong>Elimina dati apprendimento</strong>: Rimuove parole apprese per suggerimenti</li>
     <li>✅ <strong>Elimina tutti i dati locali</strong>: Rimuove tutte le preferenze e dati sul dispositivo</li>
 </ul>
@@ -511,8 +624,7 @@
 <p><strong>Percorso:</strong> Impostazioni → Privacy & Sicurezza</p>
 
 <ol>
-    <ol>
-        <li><strong>Elimina dati cloud</strong>: Backup token + cronologia acquisti + dati abbonamento (irreversibile - richiede annullamento abbonamento se attivo)</li>
+    <li><strong>Elimina dati cloud</strong>: Backup token + cronologia acquisti + dati abbonamento + cronologia abbonamenti (irreversibile - richiede annullamento abbonamento se attivo)</li>
     <li><strong>Elimina dati apprendimento</strong>: Parole apprese (11 lingue)</li>
     <li><strong>Elimina tutti i dati locali</strong>: Tutte le preferenze (riavvia app)</li>
 </ol>
@@ -533,7 +645,7 @@
     <li>🔒 <strong>Regole di Sicurezza Firebase</strong>: Accesso limitato al solo proprietario dei dati</li>
     <li>🔒 <strong>ID Pseudonimo</strong>: Nessun dato personale diretto (nome, email, telefono)</li>
     <li>🔒 <strong>Minimizzazione dei dati</strong>: Raccogliamo solo lo strettamente necessario</li>
-    <li>🔒 <strong>Eliminazione automatica</strong>: Dati eliminati dopo 365 giorni di inattività</li>
+    <li>🔒 <strong>Eliminazione automatica</strong>: Dati eliminati dopo 365 giorni di inattività (90 giorni per cronologia abbonamenti)</li>
 </ul>
 
 <h2>9. Identificatori Dispositivo e Permessi Android</h2>
@@ -665,13 +777,14 @@
 <p>Il trattamento dei tuoi dati si basa su:</p>
 
 <ul>
-    <li><strong>Art. 6.1.b GDPR</strong> - Esecuzione contratto: Backup token, cronologia acquisti, traduzione</li>
+    <li><strong>Art. 6.1.b GDPR</strong> - Esecuzione contratto: Backup token, cronologia acquisti, traduzione, gestione abbonamenti</li>
     <li><strong>Art. 6.1.a GDPR</strong> - Consenso: Report crash (opzionale)</li>
     <li><strong>Art. 6.1.f GDPR</strong> - Interesse legittimo:
         <ul>
             <li>Prevenzione frodi (sistema anti-frode token)</li>
             <li>Sicurezza degli acquisti</li>
             <li>Protezione del sistema di billing da abusi</li>
+            <li>Sincronizzazione multi-device</li>
         </ul>
     </li>
 </ul>
@@ -693,7 +806,7 @@
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Versione 2.1 - Ultimo aggiornamento: 18 gennaio 2026</strong><br>
+    <strong>Versione 2.2 - Ultimo aggiornamento: 31 gennaio 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 
