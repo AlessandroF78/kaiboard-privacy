@@ -91,8 +91,8 @@
 
 <h1>Privacy Policy - kAIboard</h1>
 
-<p><strong>Last updated:</strong> January 18, 2026</p>
-<p><strong>Version:</strong> 2.1</p>
+<p><strong>Last updated:</strong> February 21, 2026</p>
+<p><strong>Version:</strong> 2.3</p>
 
 <div class="highlight">
     <strong>📱 kAIboard</strong> is an Android keyboard with AI-powered translation features. This Privacy Policy explains what data we collect, how we use it, and your rights under the General Data Protection Regulation (GDPR - EU Regulation 2016/679).
@@ -122,10 +122,10 @@
         <th>Legal Basis</th>
     </tr>
     <tr>
-        <td><strong>Anonymous Device ID</strong></td>
-        <td>Identifier based on device's Android ID (e.g., android_e19d6c741afe8197)</td>
-        <td>Restore purchased tokens and prevent fraud (only ONE active device at a time)</td>
-        <td>Contract performance (Art. 6.1.b) + Legitimate interest fraud prevention (Art. 6.1.f GDPR)</td>
+        <td><strong>Device Array</strong></td>
+        <td>List of identifiers (e.g., ["android_e19d6c...", "android_175be4..."])</td>
+        <td>Synchronize subscription and tokens across multiple devices with the same Google Play account</td>
+        <td>Contract performance (Art. 6.1.b) + Legitimate interest multi-device (Art. 6.1.f GDPR)</td>
     </tr>
     <tr>
         <td><strong>Token Balance</strong></td>
@@ -153,7 +153,27 @@
     </tr>
 </table>
 
-<h3>2.1.1 Subscription Data</h3>
+<h4>Multi-Device Synchronization</h4>
+
+<p>If you use kAIboard on multiple devices with the <strong>same Google Play account</strong>:</p>
+
+<ul>
+    <li>✅ Subscription shared automatically across all devices</li>
+    <li>✅ Token balance synchronized in real time</li>
+    <li>✅ Monthly limit shared (e.g., 250,000 tokens TOTAL, not per device)</li>
+    <li>✅ Firebase listener updates all devices simultaneously</li>
+</ul>
+
+<p><strong>Data saved for multi-device:</strong></p>
+<ul>
+    <li><strong>devices:</strong> Array of anonymous Android IDs using the same subscription</li>
+    <li><strong>purchaseToken:</strong> Unique key of the Google Play subscription</li>
+    <li><strong>current_usage:</strong> Total token consumption across all devices</li>
+</ul>
+
+<p><strong>Privacy:</strong> The <code>devices</code> array contains ONLY pseudonymized Android IDs (e.g., "android_abc123..."). We do not collect phone numbers, IMEI, or other personal identifiers.</p>
+
+<h3>2.1.1 Monthly Subscription Data</h3>
 
 <p>If you subscribe to a <strong>monthly subscription</strong> (e.g., PLUS Plan with 250,000 tokens/month), we save the following additional data:</p>
 
@@ -166,13 +186,13 @@
     </tr>
     <tr>
         <td><strong>Subscription Plan</strong></td>
-        <td>String (e.g., "plus", "pro")</td>
+        <td>String (e.g., "plus", "pro", "max")</td>
         <td>Identify active plan and apply correct token limit</td>
         <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
         <td><strong>Monthly Token Limit</strong></td>
-        <td>Integer (e.g., 250000)</td>
+        <td>Integer (e.g., 250000, 500000, 1000000)</td>
         <td>Apply maximum tokens included in subscription</td>
         <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
@@ -206,6 +226,24 @@
         <td>Billing cycle management and disputes</td>
         <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
+    <tr>
+        <td><strong>Subscription End Date</strong></td>
+        <td>ISO 8601 Timestamp (e.g., "2026-02-28T14:30:00Z")</td>
+        <td>Manage grace period after cancellation (subscription remains active until this date)</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>"Will Not Renew" Flag</strong></td>
+        <td>Boolean (will_not_renew)</td>
+        <td>Indicate if subscription was cancelled but remains valid until expiration</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Cancellation Date</strong></td>
+        <td>Timestamp (cancelled_at)</td>
+        <td>Track when the user cancelled the subscription</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
+    </tr>
 </table>
 
 <div class="highlight">
@@ -214,6 +252,144 @@
 
 <div class="important">
     <strong>⚠️ IMPORTANT - SUBSCRIPTION CANCELLATION:</strong> If you cancel your subscription, subscription data is retained until the end of the current billing period (Art. 6.1.b GDPR - contract performance). After expiration, you can delete all cloud data through the Privacy screen.
+</div>
+
+<h3>2.1.2 Grace Period</h3>
+
+<div class="info">
+    <strong>📅 SUBSCRIPTION CANCELLED BUT STILL ACTIVE</strong>
+    <p>If you cancel your subscription through Google Play, the premium service <strong>remains active until the end of the already paid period</strong>.</p>
+
+    <p><strong>Example:</strong></p>
+    <ul>
+        <li>You purchase a PLUS subscription on January 15, 2026</li>
+        <li>You cancel on January 20, 2026</li>
+        <li>✅ Premium remains active until February 15, 2026 (already paid)</li>
+        <li>✅ Monthly tokens available until expiration</li>
+        <li>❌ Subscription will NOT renew automatically</li>
+    </ul>
+
+    <p><strong>Data saved during grace period:</strong></p>
+    <ul>
+        <li><strong>subscription_end:</strong> Exact date until which you are entitled to the service</li>
+        <li><strong>will_not_renew:</strong> Flag indicating "cancelled but valid"</li>
+        <li><strong>cancelled_at:</strong> Cancellation timestamp</li>
+        <li><strong>monthly_limit:</strong> Token limit preserved until expiration</li>
+    </ul>
+
+    <p><strong>When the grace period expires:</strong></p>
+    <ol>
+        <li>Premium is automatically deactivated</li>
+        <li>Subscription data moved to history (user_subscriptions_history)</li>
+        <li>Active document (user_subscriptions) deleted</li>
+        <li>You can delete history via "Delete cloud data"</li>
+    </ol>
+</div>
+
+<h3>2.1.3 Subscription History</h3>
+
+<p>When a subscription expires or is deleted, we move the data to a history document for GDPR compliance and audit.</p>
+
+<table>
+    <tr>
+        <th>Data</th>
+        <th>Type</th>
+        <th>Purpose</th>
+        <th>Retention</th>
+    </tr>
+    <tr>
+        <td><strong>Subscription History</strong></td>
+        <td>Array of objects in user_subscriptions_history/{purchaseToken}</td>
+        <td>Purchase traceability, audit trail, GDPR compliance</td>
+        <td>90 days from expiration</td>
+    </tr>
+    <tr>
+        <td><strong>Data per Entry</strong></td>
+        <td>Plan, tokens used/limit, start/end/cancellation dates, cancellation reason, devices</td>
+        <td>Audit, user support, refund management</td>
+        <td>90 days from expiration</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔒 MULTI-DEVICE CONSOLIDATION:</strong> History is consolidated by <strong>purchaseToken</strong>, not by device. All renewals and modifications of the same subscription are grouped in a single document, regardless of the number of devices used.
+</div>
+
+<div class="important">
+    <strong>⚠️ HISTORY DELETION:</strong> You can delete history at any time via "Delete cloud data". Deletion is permanent and includes:
+    <ul>
+        <li>✅ Active document (user_subscriptions/{purchaseToken})</li>
+        <li>✅ History document (user_subscriptions_history/{purchaseToken})</li>
+        <li>✅ Administrative activity logs (admin_activity_logs/{device_id})</li>
+        <li>✅ GDPR compliant: lookup by purchaseToken, fallback with devices array</li>
+    </ul>
+</div>
+
+<h3>2.1.4 Administrative Activity Logs</h3>
+
+<p>To ensure traceability and support in case of disputes, we save a log of main operations related to subscriptions.</p>
+
+<table>
+    <tr>
+        <th>Data</th>
+        <th>Type</th>
+        <th>Purpose</th>
+        <th>Retention</th>
+    </tr>
+    <tr>
+        <td><strong>Administrative Activity Logs</strong></td>
+        <td>Array of events in admin_activity_logs/{device_id}</td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Audit trail for user support</li>
+                <li>Google Play dispute resolution (within 60 days)</li>
+                <li>Fraud prevention and billing disputes</li>
+                <li>Grace period and auto-renewal management</li>
+            </ul>
+        </td>
+        <td>90 days from last modification</td>
+    </tr>
+    <tr>
+        <td><strong>Logged Events</strong></td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Subscription creation</li>
+                <li>Subscription cancellation</li>
+                <li>Subscription expiration</li>
+                <li>Automatic renewal</li>
+                <li>Plan changes</li>
+            </ul>
+        </td>
+        <td>Track modification history for audit and support</td>
+        <td>90 days from last modification</td>
+    </tr>
+    <tr>
+        <td><strong>Details per Event</strong></td>
+        <td>Timestamp, action, reason, plan, operation details</td>
+        <td>Information needed to reconstruct timeline in case of disputes</td>
+        <td>90 days from last modification</td>
+    </tr>
+</table>
+
+<div class="important">
+    <strong>⚠️ IMPORTANT - ACTIVITY LOGS:</strong> Activity logs contain ONLY operational metadata (when, what, why). They do NOT contain sensitive personal data. They are automatically deleted after 90 days from the last modification and are accessible and deletable via "Delete cloud data".
+</div>
+
+<div class="highlight">
+    <strong>🔒 LEGAL BASIS:</strong> Legitimate interest (Art. 6.1.f GDPR) - Necessary for:
+    <ul>
+        <li>Dispute management within 60 days (Google Play requirement)</li>
+        <li>Technical support and troubleshooting</li>
+        <li>Fraud prevention in the billing system</li>
+        <li>Audit trail for operational compliance</li>
+    </ul>
+    <p>Impact on user rights is minimized because:</p>
+    <ul>
+        <li>✅ Pseudonymized data (no direct personal identifiers)</li>
+        <li>✅ Retention limited to 90 days</li>
+        <li>✅ Automatic deletion every 24 hours via background cleanup</li>
+        <li>✅ Manual deletion via "Delete cloud data"</li>
+    </ul>
 </div>
 
 <h3>2.2 Data Stored Locally Only (On Device)</h3>
@@ -225,6 +401,10 @@
     <li>✅ <strong>Language assigned to each contact</strong> (contact ID + language code)</li>
     <li>✅ <strong>Typed words</strong> for personalized suggestions (max 14 days, then automatically deleted)</li>
     <li>✅ <strong>Translation cache</strong> (RAM only, lost when app closes)</li>
+    <li>✅ <strong>Contact disambiguation cache</strong> (RAM only, lost when service restarts)</li>
+    <li>✅ <strong>Predictive N-gram models</strong> (downloaded by user, saved locally)</li>
+    <li>✅ <strong>Hunspell dictionaries</strong> (copied from assets, saved locally)</li>
+    <li>✅ <strong>Subscription alerts</strong> (local notifications about usage)</li>
 </ul>
 
 <div class="highlight">
@@ -237,7 +417,7 @@
 </div>
 
 <div class="important">
-    <strong>⚠️ IMPORTANT:</strong> kAIboard accesses your contacts ONLY to display contact names in the language management interface. <strong>Phone numbers and contact names are NEVER sent to our servers.</strong>
+    <strong>⚠️ IMPORTANT:</strong> kAIboard accesses your contacts ONLY to display contact names in the language management interface and to determine the language from the international phone number prefix. <strong>Phone numbers and contact names are NEVER sent to our servers.</strong>
 </div>
 
 <h3>2.3 Data We DO NOT Collect</h3>
@@ -251,6 +431,7 @@
     <li>❌ Contact email addresses</li>
     <li>❌ Precise geographic location</li>
     <li>❌ Biometric data</li>
+    <li>❌ Advertising identifiers</li>
 </ul>
 
 <h2>3. How We Use Your Data</h2>
@@ -340,8 +521,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>Anonymous ID, token balance, purchase history, migration metadata</td>
-        <td>Backup, synchronization, and anti-fraud system</td>
+        <td>Anonymous ID, token balance, purchase history, migration metadata, subscription data, activity logs</td>
+        <td>Backup, synchronization, anti-fraud system and audit trail</td>
         <td>EU (European servers)</td>
     </tr>
     <tr>
@@ -397,9 +578,19 @@
         <th>Deletion</th>
     </tr>
     <tr>
-        <td><strong>Subscription Data (Firebase)</strong></td>
-        <td>Until end of billing period + 365 days after expiration</td>
-        <td>Automatic + manual deletion</td>
+        <td><strong>Active Subscription Data (Firebase)</strong></td>
+        <td>Until end of current billing period</td>
+        <td>Automatic deletion when subscription expires + moved to history</td>
+    </tr>
+    <tr>
+        <td><strong>Subscription History (Firebase)</strong></td>
+        <td>90 days from subscription expiration</td>
+        <td>Automatic deletion + manual deletion via "Delete cloud data"</td>
+    </tr>
+    <tr>
+        <td><strong>Activity Logs (admin_activity_logs)</strong></td>
+        <td>90 days from last modification</td>
+        <td>Automatic deletion (every 24h) + manual deletion</td>
     </tr>
     <tr>
         <td><strong>Token Backup (Firebase)</strong></td>
@@ -423,8 +614,18 @@
     </tr>
     <tr>
         <td><strong>Contact Language Cache (Device)</strong></td>
-        <td>Until manual deletion or app uninstall</td>
-        <td>Button "Delete all local data"</td>
+        <td>Until manual deletion or uninstall</td>
+        <td>"Delete all local data" button</td>
+    </tr>
+    <tr>
+        <td><strong>Predictive N-gram Models (Device)</strong></td>
+        <td>Until manual deletion or uninstall</td>
+        <td>"Delete all local data" button or removal from Offline Models screen</td>
+    </tr>
+    <tr>
+        <td><strong>Hunspell Dictionaries (Device)</strong></td>
+        <td>Until manual deletion or uninstall</td>
+        <td>"Delete all local data" button</td>
     </tr>
     <tr>
         <td><strong>Learned Words (Prediction)</strong></td>
@@ -441,10 +642,15 @@
         <td>Until app closes</td>
         <td>Automatic</td>
     </tr>
+    <tr>
+        <td><strong>Disambiguation Cache (RAM)</strong></td>
+        <td>Until accessibility service restarts</td>
+        <td>Automatic</td>
+    </tr>
 </table>
 
 <div class="highlight">
-    <strong>🗑️ AUTOMATIC CLEANUP:</strong> The app automatically performs cleanup every 24 hours. Data older than 365 days is automatically deleted, even if you no longer use the app.
+    <strong>🗑️ AUTOMATIC CLEANUP:</strong> The app automatically performs cleanup every 24 hours. Data older than 365 days (or 90 days for subscription history and activity logs) is automatically deleted, even if you no longer use the app.
 </div>
 
 <h2>6. Your Rights (GDPR)</h2>
@@ -452,18 +658,18 @@
 <p>Under the GDPR, you have the following rights:</p>
 
 <h3>6.1 Right of Access (Art. 15 GDPR)</h3>
-<p>You can request a copy of all data we hold about you.</p>
+<p>You can request a copy of all data we hold about you. Subscription data is visible directly in the app.</p>
 
 <h3>6.2 Right to Rectification (Art. 16 GDPR)</h3>
-<p>You can correct inaccurate or incomplete data.</p>
+<p>You can correct inaccurate or incomplete data, for example by changing the language assigned to a contact.</p>
 
 <h3>6.3 Right to Erasure (Art. 17 GDPR)</h3>
 <p>You can delete all your data at any time through the <strong>Privacy screen</strong> in the app:</p>
 
 <ul>
-    <li>✅ <strong>Delete cloud data</strong>: Removes token backup, purchase history and subscription data from Firebase</li>
-    <li>✅ <strong>Delete learning data</strong>: Removes learned words for suggestions</li>
-    <li>✅ <strong>Delete all local data</strong>: Removes all preferences and data on the device</li>
+    <li>✅ <strong>Delete cloud data</strong>: Removes token backup, purchase history, subscription data, subscription history and activity logs from Firebase</li>
+    <li>✅ <strong>Delete learning data</strong>: Removes learned words for suggestions (all 13 languages)</li>
+    <li>✅ <strong>Delete all local data</strong>: Removes all preferences, data on the device, downloaded models, dictionaries and cache</li>
 </ul>
 
 <div class="important">
@@ -490,10 +696,10 @@
 </div>
 
 <h3>6.4 Right to Data Portability (Art. 20 GDPR)</h3>
-<p>You can request your data in a structured, machine-readable format.</p>
+<p>You can export your data in machine-readable JSON format via the <strong>"Export your data (JSON)"</strong> button in the Privacy screen. The file includes local data (preferences, learning) and cloud data (subscription, history, activity logs).</p>
 
 <h3>6.5 Right to Object (Art. 21 GDPR)</h3>
-<p>You can object to data processing for legitimate reasons.</p>
+<p>You can object to data processing for legitimate reasons. You can disable translation, crash reports and revoke contact access at any time.</p>
 
 <h3>6.6 Right to Lodge a Complaint</h3>
 <p>You can file a complaint with the competent supervisory authority:</p>
@@ -505,14 +711,15 @@
 
 <h2>7. How to Exercise Your Rights</h2>
 
-<h3>7.1 Deletion Through App (Immediate)</h3>
+<h3>7.1 Through App (Immediate)</h3>
 
 <p><strong>Path:</strong> Settings → Privacy & Security</p>
 
 <ol>
-    <li><strong>Delete cloud data</strong>: Token backup + purchase history + subscription data (irreversible - requires subscription cancellation if active)</li>
-    <li><strong>Delete learning data</strong>: Learned words (11 languages)</li>
-    <li><strong>Delete all local data</strong>: All preferences (restarts app)</li>
+    <li><strong>Export your data (JSON)</strong>: Complete export of local and cloud data in machine-readable format (Art. 15 + Art. 20)</li>
+    <li><strong>Delete cloud data</strong>: Token backup + purchase history + subscription data + subscription history + activity logs (irreversible - requires subscription cancellation if active)</li>
+    <li><strong>Delete learning data</strong>: Learned words (13 languages)</li>
+    <li><strong>Delete all local data</strong>: All preferences, downloaded models, dictionaries, cache (restarts app)</li>
 </ol>
 
 <h3>7.2 Request via Email</h3>
@@ -528,10 +735,12 @@
 <ul>
     <li>🔒 <strong>Encryption in transit</strong>: HTTPS/TLS 1.3 for all communications</li>
     <li>🔒 <strong>Encryption at rest</strong>: Firebase uses AES-256 encryption</li>
-    <li>🔒 <strong>Firebase Security Rules</strong>: Access limited to data owner only</li>
+    <li>🔒 <strong>Local database encryption</strong>: The learning database is encrypted with AES-256 via hardware-backed Android Keystore</li>
+    <li>🔒 <strong>Firebase Security Rules</strong>: Access limited to data owner only (default deny)</li>
     <li>🔒 <strong>Pseudonymous ID</strong>: No direct personal data (name, email, phone)</li>
     <li>🔒 <strong>Data minimization</strong>: We only collect what's strictly necessary</li>
-    <li>🔒 <strong>Automatic deletion</strong>: Data deleted after 365 days of inactivity</li>
+    <li>🔒 <strong>Automatic deletion</strong>: Data deleted after 365 days of inactivity (90 days for subscription history and activity logs)</li>
+    <li>🔒 <strong>Protected API Key</strong>: The OpenAI API key is never exposed in the client, it is stored as a secret in the Cloudflare relay</li>
 </ul>
 
 <h2>9. Device Identifiers and Android Permissions</h2>
@@ -632,7 +841,7 @@
 
 <p><strong>Legal basis:</strong> Explicit consent (Art. 6.1.a GDPR)</p>
 
-<p><strong>How to disable:</strong> Settings → Crash reports (optional) → Disable</p>
+<p><strong>How to disable:</strong> Settings → Crash reports (optional) → Disable. Disabling stops future sending and deletes reports not yet sent on the device. Reports already sent to Firebase remain on the backend and cannot be deleted from the phone.</p>
 
 <h2>11. Minors</h2>
 
@@ -663,13 +872,15 @@
 <p>Processing of your data is based on:</p>
 
 <ul>
-    <li><strong>Art. 6.1.b GDPR</strong> - Contract performance: Token backup, purchase history, translation</li>
+    <li><strong>Art. 6.1.b GDPR</strong> - Contract performance: Token backup, purchase history, translation, subscription management</li>
     <li><strong>Art. 6.1.a GDPR</strong> - Consent: Crash reports (optional)</li>
     <li><strong>Art. 6.1.f GDPR</strong> - Legitimate interest:
         <ul>
             <li>Fraud prevention (token anti-fraud system)</li>
             <li>Purchase security</li>
             <li>Protection of billing system from abuse</li>
+            <li>Multi-device synchronization</li>
+            <li>Administrative activity logs (audit trail)</li>
         </ul>
     </li>
 </ul>
@@ -691,7 +902,7 @@
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Version 2.1 - Last updated: January 18, 2026</strong><br>
+    <strong>Version 2.3 - Last updated: February 21, 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 

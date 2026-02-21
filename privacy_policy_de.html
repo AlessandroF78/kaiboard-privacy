@@ -91,8 +91,8 @@
 
 <h1>Datenschutzerklärung - kAIboard</h1>
 
-<p><strong>Letzte Aktualisierung:</strong> 18. Januar 2026</p>
-<p><strong>Version:</strong> 2.1</p>
+<p><strong>Letzte Aktualisierung:</strong> 21. Februar 2026</p>
+<p><strong>Version:</strong> 2.3</p>
 
 <div class="highlight">
     <strong>📱 kAIboard</strong> ist eine Android-Tastatur mit KI-gestützten Übersetzungsfunktionen. Diese Datenschutzerklärung erklärt, welche Daten wir sammeln, wie wir sie verwenden und welche Rechte Sie gemäß der Datenschutz-Grundverordnung (DSGVO - EU-Verordnung 2016/679) haben.
@@ -122,10 +122,10 @@
         <th>Rechtsgrundlage</th>
     </tr>
     <tr>
-        <td><strong>Anonyme Geräte-ID</strong></td>
-        <td>Auf Android-ID basierender Identifikator (z.B. android_e19d6c741afe8197)</td>
-        <td>Wiederherstellung gekaufter Token und Betrugsprävention (nur EIN aktives Gerät gleichzeitig)</td>
-        <td>Vertragserfüllung (Art. 6 Abs. 1 lit. b) + Berechtigtes Interesse Betrugsprävention (Art. 6 Abs. 1 lit. f DSGVO)</td>
+        <td><strong>Geräte-Array</strong></td>
+        <td>Liste von Identifikatoren (z.B. ["android_e19d6c...", "android_175be4..."])</td>
+        <td>Abonnement und Token über mehrere Geräte mit demselben Google Play-Konto synchronisieren</td>
+        <td>Vertragserfüllung (Art. 6 Abs. 1 lit. b) + Berechtigtes Interesse Multi-Device (Art. 6 Abs. 1 lit. f DSGVO)</td>
     </tr>
     <tr>
         <td><strong>Token-Guthaben</strong></td>
@@ -153,7 +153,27 @@
     </tr>
 </table>
 
-<h3>2.1.1 Abonnementdaten</h3>
+<h4>Multi-Device-Synchronisierung</h4>
+
+<p>Wenn Sie kAIboard auf mehreren Geräten mit demselben <strong>Google Play-Konto</strong> verwenden:</p>
+
+<ul>
+    <li>✅ Abonnement wird automatisch auf allen Geräten geteilt</li>
+    <li>✅ Token-Guthaben wird in Echtzeit synchronisiert</li>
+    <li>✅ Monatliches Limit wird geteilt (z.B. 250.000 Token GESAMT, nicht pro Gerät)</li>
+    <li>✅ Firebase-Listener aktualisiert alle Geräte gleichzeitig</li>
+</ul>
+
+<p><strong>Für Multi-Device gespeicherte Daten:</strong></p>
+<ul>
+    <li><strong>devices:</strong> Array anonymer Android-IDs, die dasselbe Abonnement nutzen</li>
+    <li><strong>purchaseToken:</strong> Eindeutiger Schlüssel des Google Play-Abonnements</li>
+    <li><strong>current_usage:</strong> Gesamter Token-Verbrauch über alle Geräte</li>
+</ul>
+
+<p><strong>Datenschutz:</strong> Das <code>devices</code>-Array enthält AUSSCHLIESSLICH pseudonymisierte Android-IDs (z.B. "android_abc123..."). Wir sammeln keine Telefonnummern, IMEI oder andere persönliche Identifikatoren.</p>
+
+<h3>2.1.1 Monatliche Abonnementdaten</h3>
 
 <p>Wenn Sie ein <strong>Monatsabonnement</strong> abschließen (z.B. PLUS-Plan mit 250.000 Token/Monat), speichern wir folgende zusätzliche Daten:</p>
 
@@ -166,13 +186,13 @@
     </tr>
     <tr>
         <td><strong>Abonnementplan</strong></td>
-        <td>String (z.B. "plus", "pro")</td>
+        <td>String (z.B. "plus", "pro", "max")</td>
         <td>Identifizierung des aktiven Plans und Anwendung des korrekten Token-Limits</td>
         <td>Vertragserfüllung (Art. 6.1.b DSGVO)</td>
     </tr>
     <tr>
         <td><strong>Monatliches Token-Limit</strong></td>
-        <td>Ganzzahl (z.B. 250000)</td>
+        <td>Ganzzahl (z.B. 250000, 500000, 1000000)</td>
         <td>Anwendung des im Abonnement enthaltenen Token-Maximums</td>
         <td>Vertragserfüllung (Art. 6.1.b DSGVO)</td>
     </tr>
@@ -206,6 +226,24 @@
         <td>Verwaltung des Abrechnungszyklus und Streitfälle</td>
         <td>Vertragserfüllung (Art. 6.1.b DSGVO)</td>
     </tr>
+    <tr>
+        <td><strong>Ablaufdatum des Abonnements</strong></td>
+        <td>ISO 8601 Zeitstempel (z.B. "2026-02-28T14:30:00Z")</td>
+        <td>Verwaltung der Kulanzzeit nach Kündigung (Abonnement bleibt bis zu diesem Datum aktiv)</td>
+        <td>Vertragserfüllung (Art. 6.1.b DSGVO)</td>
+    </tr>
+    <tr>
+        <td><strong>Flag „Wird nicht verlängert"</strong></td>
+        <td>Boolean (will_not_renew)</td>
+        <td>Angeben, ob das Abonnement gekündigt wurde, aber bis zum Ablauf gültig bleibt</td>
+        <td>Vertragserfüllung (Art. 6.1.b DSGVO)</td>
+    </tr>
+    <tr>
+        <td><strong>Kündigungsdatum</strong></td>
+        <td>Zeitstempel (cancelled_at)</td>
+        <td>Nachverfolgen, wann der Nutzer das Abonnement gekündigt hat</td>
+        <td>Vertragserfüllung (Art. 6.1.b DSGVO)</td>
+    </tr>
 </table>
 
 <div class="highlight">
@@ -214,6 +252,144 @@
 
 <div class="important">
     <strong>⚠️ WICHTIG - ABONNEMENTKÜNDIGUNG:</strong> Wenn Sie das Abonnement kündigen, werden die Abonnementdaten bis zum Ende des aktuellen Abrechnungszeitraums aufbewahrt (Art. 6.1.b DSGVO - Vertragserfüllung). Nach Ablauf können Sie alle Cloud-Daten über den Datenschutz-Bildschirm löschen.
+</div>
+
+<h3>2.1.2 Kulanzzeit (Grace Period)</h3>
+
+<div class="info">
+    <strong>📅 ABONNEMENT GEKÜNDIGT ABER NOCH AKTIV</strong>
+    <p>Wenn Sie Ihr Abonnement über Google Play kündigen, bleibt der Premium-Dienst <strong>bis zum Ende des bereits bezahlten Zeitraums aktiv</strong>.</p>
+
+    <p><strong>Beispiel:</strong></p>
+    <ul>
+        <li>Sie kaufen ein PLUS-Abonnement am 15. Januar 2026</li>
+        <li>Sie kündigen am 20. Januar 2026</li>
+        <li>✅ Premium bleibt bis zum 15. Februar 2026 aktiv (bereits bezahlt)</li>
+        <li>✅ Monatliche Token bis zum Ablauf verfügbar</li>
+        <li>❌ Abonnement wird NICHT automatisch verlängert</li>
+    </ul>
+
+    <p><strong>Während der Kulanzzeit gespeicherte Daten:</strong></p>
+    <ul>
+        <li><strong>subscription_end:</strong> Genaues Datum, bis zu dem Sie Anspruch auf den Dienst haben</li>
+        <li><strong>will_not_renew:</strong> Flag für „gekündigt aber gültig"</li>
+        <li><strong>cancelled_at:</strong> Zeitstempel der Kündigung</li>
+        <li><strong>monthly_limit:</strong> Token-Limit bis zum Ablauf beibehalten</li>
+    </ul>
+
+    <p><strong>Wenn die Kulanzzeit abläuft:</strong></p>
+    <ol>
+        <li>Premium wird automatisch deaktiviert</li>
+        <li>Abonnementdaten werden in die Historie verschoben (user_subscriptions_history)</li>
+        <li>Aktives Dokument (user_subscriptions) wird gelöscht</li>
+        <li>Sie können die Historie über „Cloud-Daten löschen" entfernen</li>
+    </ol>
+</div>
+
+<h3>2.1.3 Abonnement-Historie</h3>
+
+<p>Wenn ein Abonnement abläuft oder gelöscht wird, verschieben wir die Daten in ein Historien-Dokument zur DSGVO-Konformität und Prüfung.</p>
+
+<table>
+    <tr>
+        <th>Daten</th>
+        <th>Typ</th>
+        <th>Zweck</th>
+        <th>Aufbewahrung</th>
+    </tr>
+    <tr>
+        <td><strong>Abonnement-Historie</strong></td>
+        <td>Array von Objekten in user_subscriptions_history/{purchaseToken}</td>
+        <td>Kaufnachverfolgung, Audit Trail, DSGVO-Konformität</td>
+        <td>90 Tage ab Ablauf</td>
+    </tr>
+    <tr>
+        <td><strong>Daten pro Eintrag</strong></td>
+        <td>Plan, verwendete Token/Limit, Start-/End-/Kündigungsdaten, Kündigungsgrund, Geräte</td>
+        <td>Prüfung, Benutzer-Support, Erstattungsverwaltung</td>
+        <td>90 Tage ab Ablauf</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔒 MULTI-DEVICE-KONSOLIDIERUNG:</strong> Die Historie wird nach <strong>purchaseToken</strong> konsolidiert, nicht nach Gerät. Alle Verlängerungen und Änderungen desselben Abonnements werden in einem einzigen Dokument zusammengefasst, unabhängig von der Anzahl der verwendeten Geräte.
+</div>
+
+<div class="important">
+    <strong>⚠️ LÖSCHUNG DER HISTORIE:</strong> Sie können die Historie jederzeit über „Cloud-Daten löschen" entfernen. Die Löschung ist endgültig und umfasst:
+    <ul>
+        <li>✅ Aktives Dokument (user_subscriptions/{purchaseToken})</li>
+        <li>✅ Historien-Dokument (user_subscriptions_history/{purchaseToken})</li>
+        <li>✅ Administrative Aktivitätsprotokolle (admin_activity_logs/{device_id})</li>
+        <li>✅ DSGVO-konform: Suche nach purchaseToken, Fallback mit devices-Array</li>
+    </ul>
+</div>
+
+<h3>2.1.4 Administrative Aktivitätsprotokolle</h3>
+
+<p>Um Nachverfolgbarkeit und Support bei Streitfällen zu gewährleisten, speichern wir ein Protokoll der wichtigsten abonnementbezogenen Vorgänge.</p>
+
+<table>
+    <tr>
+        <th>Daten</th>
+        <th>Typ</th>
+        <th>Zweck</th>
+        <th>Aufbewahrung</th>
+    </tr>
+    <tr>
+        <td><strong>Administrative Aktivitätsprotokolle</strong></td>
+        <td>Array von Ereignissen in admin_activity_logs/{device_id}</td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Audit Trail für Benutzer-Support</li>
+                <li>Google Play Streitbeilegung (innerhalb von 60 Tagen)</li>
+                <li>Betrugsprävention und Billing-Streitigkeiten</li>
+                <li>Verwaltung von Kulanzzeit und automatischer Verlängerung</li>
+            </ul>
+        </td>
+        <td>90 Tage ab letzter Änderung</td>
+    </tr>
+    <tr>
+        <td><strong>Protokollierte Ereignisse</strong></td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Abonnement-Abschluss</li>
+                <li>Abonnement-Kündigung</li>
+                <li>Abonnement-Ablauf</li>
+                <li>Automatische Verlängerung</li>
+                <li>Planänderungen</li>
+            </ul>
+        </td>
+        <td>Änderungsverlauf für Prüfung und Support nachverfolgen</td>
+        <td>90 Tage ab letzter Änderung</td>
+    </tr>
+    <tr>
+        <td><strong>Details pro Ereignis</strong></td>
+        <td>Zeitstempel, Aktion, Grund, Plan, Vorgangsdetails</td>
+        <td>Informationen zur Rekonstruktion des Zeitverlaufs bei Streitfällen</td>
+        <td>90 Tage ab letzter Änderung</td>
+    </tr>
+</table>
+
+<div class="important">
+    <strong>⚠️ WICHTIG - AKTIVITÄTSPROTOKOLLE:</strong> Aktivitätsprotokolle enthalten AUSSCHLIESSLICH operative Metadaten (wann, was, warum). Sie enthalten KEINE sensiblen personenbezogenen Daten. Sie werden nach 90 Tagen ab der letzten Änderung automatisch gelöscht und sind über „Cloud-Daten löschen" zugänglich und löschbar.
+</div>
+
+<div class="highlight">
+    <strong>🔒 RECHTSGRUNDLAGE:</strong> Berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO) - Erforderlich für:
+    <ul>
+        <li>Streitbeilegung innerhalb von 60 Tagen (Google Play-Anforderung)</li>
+        <li>Technischer Support und Fehlerbehebung</li>
+        <li>Betrugsprävention im Billing-System</li>
+        <li>Audit Trail für operative Konformität</li>
+    </ul>
+    <p>Die Auswirkungen auf die Rechte der Nutzer werden minimiert, weil:</p>
+    <ul>
+        <li>✅ Pseudonymisierte Daten (keine direkten persönlichen Identifikatoren)</li>
+        <li>✅ Aufbewahrung auf 90 Tage begrenzt</li>
+        <li>✅ Automatische Löschung alle 24 Stunden durch Hintergrundbereinigung</li>
+        <li>✅ Manuelle Löschung über „Cloud-Daten löschen"</li>
+    </ul>
 </div>
 
 <h3>2.2 Nur lokal gespeicherte Daten (auf dem Gerät)</h3>
@@ -225,6 +401,10 @@
     <li>✅ <strong>Jedem Kontakt zugewiesene Sprache</strong> (Kontakt-ID + Sprachcode)</li>
     <li>✅ <strong>Getippte Wörter</strong> für personalisierte Vorschläge (max. 14 Tage, dann automatisch gelöscht)</li>
     <li>✅ <strong>Übersetzungs-Cache</strong> (nur im RAM, verloren beim Schließen der App)</li>
+    <li>✅ <strong>Kontakt-Disambiguierungs-Cache</strong> (nur im RAM, verloren beim Neustart des Dienstes)</li>
+    <li>✅ <strong>Prädiktive N-Gramm-Modelle</strong> (vom Nutzer heruntergeladen, lokal gespeichert)</li>
+    <li>✅ <strong>Hunspell-Wörterbücher</strong> (aus Assets kopiert, lokal gespeichert)</li>
+    <li>✅ <strong>Abonnement-Benachrichtigungen</strong> (lokale Benachrichtigungen über Nutzung)</li>
 </ul>
 
 <div class="highlight">
@@ -232,13 +412,13 @@
     speichert kAIboard, welche Sprache Sie mit Ihren häufigsten Kontakten (~25-30) verwenden.
     Dieser Cache bleibt auf Ihrem Gerät und belegt weniger als 1 MB Speicherplatz.
     Er wird bis zur Deinstallation der App oder bis zur manuellen Löschung
-    über die Schaltfläche "Alle lokalen Daten löschen" aufbewahrt. Diese längere Aufbewahrung
+    über die Schaltfläche „Alle lokalen Daten löschen" aufbewahrt. Diese längere Aufbewahrung
     ist notwendig, um ein flüssiges Erlebnis ohne Verzögerungen von 1-3 Sekunden
     bei jedem Chat-Wechsel zu gewährleisten.
 </div>
 
 <div class="important">
-    <strong>⚠️ WICHTIG:</strong> kAIboard greift NUR auf Ihre Kontakte zu, um Kontaktnamen in der Sprachverwaltungsoberfläche anzuzeigen. <strong>Telefonnummern und Kontaktnamen werden NIEMALS an unsere Server gesendet.</strong>
+    <strong>⚠️ WICHTIG:</strong> kAIboard greift auf Ihre Kontakte NUR zu, um Kontaktnamen in der Sprachverwaltungsoberfläche anzuzeigen und um die Sprache anhand der internationalen Telefonvorwahl zu bestimmen. <strong>Telefonnummern und Kontaktnamen werden NIEMALS an unsere Server gesendet.</strong>
 </div>
 
 <h3>2.3 Daten, die wir NICHT sammeln</h3>
@@ -252,6 +432,7 @@
     <li>❌ E-Mail-Adressen von Kontakten</li>
     <li>❌ Präzise geografische Lage</li>
     <li>❌ Biometrische Daten</li>
+    <li>❌ Werbe-Identifikatoren</li>
 </ul>
 
 <h2>3. Wie wir Ihre Daten verwenden</h2>
@@ -296,10 +477,10 @@
 <h4>Verhalten während der Wiederherstellung:</h4>
 
 <ol>
-    <li><strong>Gerät A</strong> kauft 50.000 Token → Gerät A ist "aktiv" ✅</li>
-    <li><strong>Gerät B</strong> (gleiches Google Play-Konto) klickt "Käufe wiederherstellen" → Gerät B wird "aktiv" ✅</li>
-    <li><strong>Gerät A</strong> wird automatisch "invalidiert" → Token auf Gerät A werden auf Null gesetzt ❌</li>
-    <li>Um Gerät A zu reaktivieren: Klicken Sie erneut auf "Käufe wiederherstellen" auf Gerät A</li>
+    <li><strong>Gerät A</strong> kauft 50.000 Token → Gerät A ist „aktiv" ✅</li>
+    <li><strong>Gerät B</strong> (gleiches Google Play-Konto) klickt „Käufe wiederherstellen" → Gerät B wird „aktiv" ✅</li>
+    <li><strong>Gerät A</strong> wird automatisch „invalidiert" → Token auf Gerät A werden auf Null gesetzt ❌</li>
+    <li>Um Gerät A zu reaktivieren: Klicken Sie erneut auf „Käufe wiederherstellen" auf Gerät A</li>
 </ol>
 
 <p><strong>Für das Anti-Betrugs-System gespeicherte Metadaten:</strong></p>
@@ -307,7 +488,7 @@
 <ul>
     <li><strong>active_device</strong>: ID des aktuell aktiven Geräts</li>
     <li><strong>invalidated_at</strong>: Zeitstempel, wann ein Gerät deaktiviert wurde</li>
-    <li><strong>invalidated_reason</strong>: Grund für die Deaktivierung (z.B. "migrated_to_android_xxx")</li>
+    <li><strong>invalidated_reason</strong>: Grund für die Deaktivierung (z.B. „migrated_to_android_xxx")</li>
     <li><strong>migrated_from</strong>: Ursprungsgerät der Token</li>
     <li><strong>migration_timestamp</strong>: Datum/Uhrzeit der Migration</li>
 </ul>
@@ -341,8 +522,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>Anonyme ID, Token-Guthaben, Kaufhistorie, Migrations-Metadaten</td>
-        <td>Backup, Synchronisierung und Anti-Betrugs-System</td>
+        <td>Anonyme ID, Token-Guthaben, Kaufhistorie, Migrations-Metadaten, Abonnementdaten, Aktivitätsprotokolle</td>
+        <td>Backup, Synchronisierung, Anti-Betrugs-System und Audit Trail</td>
         <td>EU (europäische Server)</td>
     </tr>
     <tr>
@@ -398,9 +579,19 @@
         <th>Löschung</th>
     </tr>
     <tr>
-        <td><strong>Abonnementdaten (Firebase)</strong></td>
-        <td>Bis zum Ende des Abrechnungszeitraums + 365 Tage nach Ablauf</td>
-        <td>Automatisch + manuelle Löschung</td>
+        <td><strong>Aktive Abonnementdaten (Firebase)</strong></td>
+        <td>Bis zum Ende des aktuellen Abrechnungszeitraums</td>
+        <td>Automatische Löschung bei Ablauf + Verschiebung in Historie</td>
+    </tr>
+    <tr>
+        <td><strong>Abonnement-Historie (Firebase)</strong></td>
+        <td>90 Tage ab Abonnement-Ablauf</td>
+        <td>Automatische Löschung + manuelle Löschung über „Cloud-Daten löschen"</td>
+    </tr>
+    <tr>
+        <td><strong>Aktivitätsprotokolle (admin_activity_logs)</strong></td>
+        <td>90 Tage ab letzter Änderung</td>
+        <td>Automatische Löschung (alle 24h) + manuelle Löschung</td>
     </tr>
     <tr>
         <td><strong>Token-Backup (Firebase)</strong></td>
@@ -425,7 +616,17 @@
     <tr>
         <td><strong>Kontakt-Sprache-Cache (Gerät)</strong></td>
         <td>Bis zur manuellen Löschung oder Deinstallation</td>
-        <td>Schaltfläche "Alle lokalen Daten löschen"</td>
+        <td>Schaltfläche „Alle lokalen Daten löschen"</td>
+    </tr>
+    <tr>
+        <td><strong>Prädiktive N-Gramm-Modelle (Gerät)</strong></td>
+        <td>Bis zur manuellen Löschung oder Deinstallation</td>
+        <td>Schaltfläche „Alle lokalen Daten löschen" oder Entfernung aus dem Offline-Modelle-Bildschirm</td>
+    </tr>
+    <tr>
+        <td><strong>Hunspell-Wörterbücher (Gerät)</strong></td>
+        <td>Bis zur manuellen Löschung oder Deinstallation</td>
+        <td>Schaltfläche „Alle lokalen Daten löschen"</td>
     </tr>
     <tr>
         <td><strong>Gelernte Wörter (Vorhersage)</strong></td>
@@ -442,10 +643,15 @@
         <td>Bis App geschlossen wird</td>
         <td>Automatisch</td>
     </tr>
+    <tr>
+        <td><strong>Disambiguierungs-Cache (RAM)</strong></td>
+        <td>Bis zum Neustart des Bedienungshilfen-Dienstes</td>
+        <td>Automatisch</td>
+    </tr>
 </table>
 
 <div class="highlight">
-    <strong>🗑️ AUTOMATISCHE BEREINIGUNG:</strong> Die App führt automatisch alle 24 Stunden eine Bereinigung durch. Daten, die älter als 365 Tage sind, werden automatisch gelöscht, auch wenn Sie die App nicht mehr verwenden.
+    <strong>🗑️ AUTOMATISCHE BEREINIGUNG:</strong> Die App führt automatisch alle 24 Stunden eine Bereinigung durch. Daten, die älter als 365 Tage (oder 90 Tage für Abonnement-Historie und Aktivitätsprotokolle) sind, werden automatisch gelöscht, auch wenn Sie die App nicht mehr verwenden.
 </div>
 
 <h2>6. Ihre Rechte (DSGVO)</h2>
@@ -453,18 +659,18 @@
 <p>Gemäß der DSGVO haben Sie folgende Rechte:</p>
 
 <h3>6.1 Recht auf Auskunft (Art. 15 DSGVO)</h3>
-<p>Sie können eine Kopie aller Daten anfordern, die wir über Sie gespeichert haben.</p>
+<p>Sie können eine Kopie aller Daten anfordern, die wir über Sie gespeichert haben. Abonnementdaten sind direkt in der App einsehbar.</p>
 
 <h3>6.2 Recht auf Berichtigung (Art. 16 DSGVO)</h3>
-<p>Sie können unrichtige oder unvollständige Daten korrigieren.</p>
+<p>Sie können unrichtige oder unvollständige Daten korrigieren, zum Beispiel durch Ändern der einem Kontakt zugewiesenen Sprache.</p>
 
 <h3>6.3 Recht auf Löschung (Art. 17 DSGVO)</h3>
 <p>Sie können alle Ihre Daten jederzeit über den <strong>Datenschutz-Bildschirm</strong> in der App löschen:</p>
 
 <ul>
-    <li>✅ <strong>Cloud-Daten löschen</strong>: Entfernt Token-Backup, Kaufhistorie und Abonnementdaten aus Firebase</li>
-    <li>✅ <strong>Lerndaten löschen</strong>: Entfernt gelernte Wörter für Vorschläge</li>
-    <li>✅ <strong>Alle lokalen Daten löschen</strong>: Entfernt alle Einstellungen und Daten auf dem Gerät</li>
+    <li>✅ <strong>Cloud-Daten löschen</strong>: Entfernt Token-Backup, Kaufhistorie, Abonnementdaten, Abonnement-Historie und Aktivitätsprotokolle aus Firebase</li>
+    <li>✅ <strong>Lerndaten löschen</strong>: Entfernt gelernte Wörter für Vorschläge (alle 13 Sprachen)</li>
+    <li>✅ <strong>Alle lokalen Daten löschen</strong>: Entfernt alle Einstellungen, Daten auf dem Gerät, heruntergeladene Modelle, Wörterbücher und Cache</li>
 </ul>
 
 <div class="important">
@@ -487,14 +693,14 @@
 
     <p><strong>Sofortige Löschung:</strong> Die App leitet Sie automatisch zu Google Play weiter, um das Abonnement zu verwalten. Nach der Kündigung ist die Datenlöschung sofort verfügbar.</p>
 
-    <p><strong>Rechtsgrundlage der Blockierung:</strong> Art. 17.3.b DSGVO - "Das Recht auf Löschung gilt nicht, soweit die Verarbeitung erforderlich ist zur Erfüllung eines Vertrags, dessen Vertragspartei die betroffene Person ist".</p>
+    <p><strong>Rechtsgrundlage der Blockierung:</strong> Art. 17.3.b DSGVO - „Das Recht auf Löschung gilt nicht, soweit die Verarbeitung erforderlich ist zur Erfüllung eines Vertrags, dessen Vertragspartei die betroffene Person ist".</p>
 </div>
 
 <h3>6.4 Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</h3>
-<p>Sie können Ihre Daten in einem strukturierten, maschinenlesbaren Format anfordern.</p>
+<p>Sie können Ihre Daten im maschinenlesbaren JSON-Format über die Schaltfläche <strong>„Daten exportieren (JSON)"</strong> im Datenschutz-Bildschirm exportieren. Die Datei enthält lokale Daten (Einstellungen, Lerndaten) und Cloud-Daten (Abonnement, Historie, Aktivitätsprotokolle).</p>
 
 <h3>6.5 Widerspruchsrecht (Art. 21 DSGVO)</h3>
-<p>Sie können der Datenverarbeitung aus berechtigten Gründen widersprechen.</p>
+<p>Sie können der Datenverarbeitung aus berechtigten Gründen widersprechen. Sie können jederzeit die Übersetzung, Absturzberichte deaktivieren und den Kontaktzugriff widerrufen.</p>
 
 <h3>6.6 Beschwerderecht</h3>
 <p>Sie können eine Beschwerde bei der zuständigen Aufsichtsbehörde einreichen:</p>
@@ -506,14 +712,15 @@
 
 <h2>7. Wie Sie Ihre Rechte ausüben</h2>
 
-<h3>7.1 Löschung über App (Sofort)</h3>
+<h3>7.1 Über App (Sofort)</h3>
 
 <p><strong>Pfad:</strong> Einstellungen → Datenschutz & Sicherheit</p>
 
 <ol>
-    <li><strong>Cloud-Daten löschen</strong>: Token-Backup + Kaufhistorie + Abonnementdaten (unwiderruflich - erfordert Abonnementkündigung falls aktiv)</li>
-    <li><strong>Lerndaten löschen</strong>: Gelernte Wörter (11 Sprachen)</li>
-    <li><strong>Alle lokalen Daten löschen</strong>: Alle Einstellungen (startet App neu)</li>
+    <li><strong>Daten exportieren (JSON)</strong>: Vollständiger Export lokaler und Cloud-Daten im maschinenlesbaren Format (Art. 15 + Art. 20)</li>
+    <li><strong>Cloud-Daten löschen</strong>: Token-Backup + Kaufhistorie + Abonnementdaten + Abonnement-Historie + Aktivitätsprotokolle (unwiderruflich - erfordert Abonnementkündigung falls aktiv)</li>
+    <li><strong>Lerndaten löschen</strong>: Gelernte Wörter (13 Sprachen)</li>
+    <li><strong>Alle lokalen Daten löschen</strong>: Alle Einstellungen, heruntergeladene Modelle, Wörterbücher, Cache (startet App neu)</li>
 </ol>
 
 <h3>7.2 Anfrage per E-Mail</h3>
@@ -529,10 +736,12 @@
 <ul>
     <li>🔒 <strong>Verschlüsselung während der Übertragung</strong>: HTTPS/TLS 1.3 für alle Kommunikationen</li>
     <li>🔒 <strong>Verschlüsselung im Ruhezustand</strong>: Firebase verwendet AES-256-Verschlüsselung</li>
-    <li>🔒 <strong>Firebase-Sicherheitsregeln</strong>: Zugriff nur für den Dateneigentümer</li>
+    <li>🔒 <strong>Lokale Datenbankverschlüsselung</strong>: Die Lerndatenbank ist mit AES-256 über den hardwaregestützten Android Keystore verschlüsselt</li>
+    <li>🔒 <strong>Firebase-Sicherheitsregeln</strong>: Zugriff nur für den Dateneigentümer (Standard: verweigert)</li>
     <li>🔒 <strong>Pseudonyme ID</strong>: Keine direkten persönlichen Daten (Name, E-Mail, Telefon)</li>
     <li>🔒 <strong>Datenminimierung</strong>: Wir sammeln nur das absolut Notwendige</li>
-    <li>🔒 <strong>Automatische Löschung</strong>: Daten werden nach 365 Tagen Inaktivität gelöscht</li>
+    <li>🔒 <strong>Automatische Löschung</strong>: Daten werden nach 365 Tagen Inaktivität gelöscht (90 Tage für Abonnement-Historie und Aktivitätsprotokolle)</li>
+    <li>🔒 <strong>Geschützter API-Schlüssel</strong>: Der OpenAI-API-Schlüssel wird niemals im Client offengelegt, er wird als Secret im Cloudflare-Relais gespeichert</li>
 </ul>
 
 <h2>9. Geräte-Identifikatoren und Android-Berechtigungen</h2>
@@ -568,7 +777,7 @@
     </tr>
 </table>
 
-<p><strong>⚠️ DATENSCHUTZHINWEIS:</strong> Die Android ID ist ein eindeutiger Geräte-Identifikator. kAIboard verwendet sie NUR zur Generierung der anonymisierten pseudonymen ID (Format: "android_[hash]"). Die rohe Android ID wird NIEMALS an unsere Server oder Dritte gesendet.</p>
+<p><strong>⚠️ DATENSCHUTZHINWEIS:</strong> Die Android ID ist ein eindeutiger Geräte-Identifikator. kAIboard verwendet sie NUR zur Generierung der anonymisierten pseudonymen ID (Format: „android_[hash]"). Die rohe Android ID wird NIEMALS an unsere Server oder Dritte gesendet.</p>
 
 <h3>9.2 App-Berechtigungen</h3>
 
@@ -633,7 +842,7 @@
 
 <p><strong>Rechtsgrundlage:</strong> Ausdrückliche Einwilligung (Art. 6 Abs. 1 lit. a DSGVO)</p>
 
-<p><strong>So deaktivieren Sie:</strong> Einstellungen → Absturzberichte (optional) → Deaktivieren</p>
+<p><strong>So deaktivieren Sie:</strong> Einstellungen → Absturzberichte (optional) → Deaktivieren. Die Deaktivierung stoppt den zukünftigen Versand und löscht noch nicht gesendete Berichte auf dem Gerät. Bereits an Firebase gesendete Berichte verbleiben im Backend und können nicht vom Telefon gelöscht werden.</p>
 
 <h2>11. Minderjährige</h2>
 
@@ -664,13 +873,15 @@
 <p>Die Verarbeitung Ihrer Daten basiert auf:</p>
 
 <ul>
-    <li><strong>Art. 6 Abs. 1 lit. b DSGVO</strong> - Vertragserfüllung: Token-Backup, Kaufhistorie, Übersetzung</li>
+    <li><strong>Art. 6 Abs. 1 lit. b DSGVO</strong> - Vertragserfüllung: Token-Backup, Kaufhistorie, Übersetzung, Abonnementverwaltung</li>
     <li><strong>Art. 6 Abs. 1 lit. a DSGVO</strong> - Einwilligung: Absturzberichte (optional)</li>
     <li><strong>Art. 6 Abs. 1 lit. f DSGVO</strong> - Berechtigtes Interesse:
         <ul>
             <li>Betrugsprävention (Anti-Betrugs-System für Token)</li>
             <li>Sicherheit der Käufe</li>
             <li>Schutz des Billing-Systems vor Missbrauch</li>
+            <li>Multi-Device-Synchronisierung</li>
+            <li>Administrative Aktivitätsprotokolle (Audit Trail)</li>
         </ul>
     </li>
 </ul>
@@ -685,14 +896,14 @@
     </ul>
     <p>Die Auswirkungen auf die Rechte der Nutzer werden minimiert, weil:</p>
     <ul>
-        <li>✅ Nutzer können jedes Gerät jederzeit über "Käufe wiederherstellen" reaktivieren</li>
+        <li>✅ Nutzer können jedes Gerät jederzeit über „Käufe wiederherstellen" reaktivieren</li>
         <li>✅ Das System verwendet nur pseudonymisierte Daten (keine direkten personenbezogenen Daten)</li>
         <li>✅ Die Logik ist transparent und in dieser Datenschutzerklärung dokumentiert</li>
     </ul>
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Version 2.1 - Letzte Aktualisierung: 18. Januar 2026</strong><br>
+    <strong>Version 2.3 - Letzte Aktualisierung: 21. Februar 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 

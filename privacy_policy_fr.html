@@ -91,8 +91,8 @@
 
 <h1>Politique de Confidentialité - kAIboard</h1>
 
-<p><strong>Dernière mise à jour :</strong> 18 janvier 2026</p>
-<p><strong>Version :</strong> 2.1</p>
+<p><strong>Dernière mise à jour :</strong> 21 février 2026</p>
+<p><strong>Version :</strong> 2.3</p>
 
 <div class="highlight">
     <strong>📱 kAIboard</strong> est un clavier Android avec des fonctionnalités de traduction alimentées par l'IA. Cette Politique de Confidentialité explique quelles données nous collectons, comment nous les utilisons et vos droits en vertu du Règlement Général sur la Protection des Données (RGPD - Règlement UE 2016/679).
@@ -122,10 +122,10 @@
         <th>Base Légale</th>
     </tr>
     <tr>
-        <td><strong>ID de Dispositif Anonyme</strong></td>
-        <td>Identifiant basé sur l'Android ID du dispositif (ex. android_e19d6c741afe8197)</td>
-        <td>Restaurer les jetons achetés et prévenir la fraude (UN SEUL appareil actif à la fois)</td>
-        <td>Exécution du contrat (Art. 6.1.b) + Intérêt légitime prévention de la fraude (Art. 6.1.f RGPD)</td>
+        <td><strong>Tableau de Dispositifs</strong></td>
+        <td>Liste d'identifiants (ex. ["android_e19d6c...", "android_175be4..."])</td>
+        <td>Synchroniser l'abonnement et les jetons sur plusieurs appareils avec le même compte Google Play</td>
+        <td>Exécution du contrat (Art. 6.1.b) + Intérêt légitime multi-appareil (Art. 6.1.f RGPD)</td>
     </tr>
     <tr>
         <td><strong>Solde de Jetons</strong></td>
@@ -153,7 +153,27 @@
     </tr>
 </table>
 
-<h3>2.1.1 Données d'Abonnement</h3>
+<h4>Synchronisation Multi-Appareil</h4>
+
+<p>Si vous utilisez kAIboard sur plusieurs appareils avec le <strong>même compte Google Play</strong> :</p>
+
+<ul>
+    <li>✅ Abonnement partagé automatiquement entre tous les appareils</li>
+    <li>✅ Solde de jetons synchronisé en temps réel</li>
+    <li>✅ Limite mensuelle partagée (ex. 250 000 jetons AU TOTAL, pas par appareil)</li>
+    <li>✅ Listener Firebase met à jour tous les appareils simultanément</li>
+</ul>
+
+<p><strong>Données sauvegardées pour multi-appareil :</strong></p>
+<ul>
+    <li><strong>devices :</strong> Tableau d'Android IDs anonymes utilisant le même abonnement</li>
+    <li><strong>purchaseToken :</strong> Clé unique de l'abonnement Google Play</li>
+    <li><strong>current_usage :</strong> Consommation totale de jetons sur tous les appareils</li>
+</ul>
+
+<p><strong>Confidentialité :</strong> Le tableau <code>devices</code> contient UNIQUEMENT des Android IDs pseudonymisés (ex. "android_abc123..."). Nous ne collectons pas de numéros de téléphone, IMEI ou autres identifiants personnels.</p>
+
+<h3>2.1.1 Données d'Abonnement Mensuel</h3>
 
 <p>Si vous souscrivez à un <strong>abonnement mensuel</strong> (par exemple, Plan PLUS avec 250 000 jetons/mois), nous enregistrons les données supplémentaires suivantes :</p>
 
@@ -166,13 +186,13 @@
     </tr>
     <tr>
         <td><strong>Plan d'Abonnement</strong></td>
-        <td>Chaîne (ex. "plus", "pro")</td>
+        <td>Chaîne (ex. "plus", "pro", "max")</td>
         <td>Identifier le plan actif et appliquer la limite de jetons correcte</td>
         <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
         <td><strong>Limite Mensuelle de Jetons</strong></td>
-        <td>Entier (ex. 250000)</td>
+        <td>Entier (ex. 250000, 500000, 1000000)</td>
         <td>Appliquer le maximum de jetons inclus dans l'abonnement</td>
         <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
@@ -206,6 +226,24 @@
         <td>Gestion du cycle de facturation et litiges</td>
         <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
+    <tr>
+        <td><strong>Date de Fin d'Abonnement</strong></td>
+        <td>Horodatage ISO 8601 (ex. "2026-02-28T14:30:00Z")</td>
+        <td>Gérer la période de grâce après annulation (l'abonnement reste actif jusqu'à cette date)</td>
+        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Flag « Ne sera pas renouvelé »</strong></td>
+        <td>Booléen (will_not_renew)</td>
+        <td>Indiquer si l'abonnement a été annulé mais reste valide jusqu'à expiration</td>
+        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Date d'Annulation</strong></td>
+        <td>Horodatage (cancelled_at)</td>
+        <td>Enregistrer quand l'utilisateur a annulé l'abonnement</td>
+        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+    </tr>
 </table>
 
 <div class="highlight">
@@ -214,6 +252,144 @@
 
 <div class="important">
     <strong>⚠️ IMPORTANT - ANNULATION D'ABONNEMENT :</strong> Si vous annulez votre abonnement, les données d'abonnement sont conservées jusqu'à la fin de la période de facturation actuelle (Art. 6.1.b RGPD - exécution du contrat). Après expiration, vous pouvez supprimer toutes les données cloud via l'écran Confidentialité.
+</div>
+
+<h3>2.1.2 Période de Grâce (Grace Period)</h3>
+
+<div class="info">
+    <strong>📅 ABONNEMENT ANNULÉ MAIS ENCORE ACTIF</strong>
+    <p>Si vous annulez votre abonnement via Google Play, le service premium <strong>reste actif jusqu'à la fin de la période déjà payée</strong>.</p>
+
+    <p><strong>Exemple :</strong></p>
+    <ul>
+        <li>Vous achetez un abonnement PLUS le 15 janvier 2026</li>
+        <li>Vous annulez le 20 janvier 2026</li>
+        <li>✅ Premium reste actif jusqu'au 15 février 2026 (déjà payé)</li>
+        <li>✅ Jetons mensuels disponibles jusqu'à expiration</li>
+        <li>❌ L'abonnement ne se renouvellera PAS automatiquement</li>
+    </ul>
+
+    <p><strong>Données sauvegardées pendant la période de grâce :</strong></p>
+    <ul>
+        <li><strong>subscription_end :</strong> Date exacte jusqu'à laquelle vous avez droit au service</li>
+        <li><strong>will_not_renew :</strong> Flag indiquant « annulé mais valide »</li>
+        <li><strong>cancelled_at :</strong> Horodatage de l'annulation</li>
+        <li><strong>monthly_limit :</strong> Limite de jetons préservée jusqu'à expiration</li>
+    </ul>
+
+    <p><strong>Lorsque la période de grâce expire :</strong></p>
+    <ol>
+        <li>Premium est automatiquement désactivé</li>
+        <li>Données d'abonnement déplacées vers l'historique (user_subscriptions_history)</li>
+        <li>Document actif (user_subscriptions) supprimé</li>
+        <li>Vous pouvez supprimer l'historique via « Supprimer les données cloud »</li>
+    </ol>
+</div>
+
+<h3>2.1.3 Historique des Abonnements</h3>
+
+<p>Lorsqu'un abonnement expire ou est supprimé, nous déplaçons les données vers un document d'historique pour la conformité RGPD et l'audit.</p>
+
+<table>
+    <tr>
+        <th>Donnée</th>
+        <th>Type</th>
+        <th>Finalité</th>
+        <th>Conservation</th>
+    </tr>
+    <tr>
+        <td><strong>Historique des Abonnements</strong></td>
+        <td>Tableau d'objets dans user_subscriptions_history/{purchaseToken}</td>
+        <td>Traçabilité des achats, piste d'audit, conformité RGPD</td>
+        <td>90 jours à partir de l'expiration</td>
+    </tr>
+    <tr>
+        <td><strong>Données par Entrée</strong></td>
+        <td>Plan, jetons utilisés/limite, dates début/fin/annulation, motif annulation, appareils</td>
+        <td>Audit, support utilisateur, gestion des remboursements</td>
+        <td>90 jours à partir de l'expiration</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔒 CONSOLIDATION MULTI-APPAREIL :</strong> L'historique est consolidé par <strong>purchaseToken</strong>, pas par appareil. Tous les renouvellements et modifications du même abonnement sont regroupés dans un seul document, quel que soit le nombre d'appareils utilisés.
+</div>
+
+<div class="important">
+    <strong>⚠️ SUPPRESSION DE L'HISTORIQUE :</strong> Vous pouvez supprimer l'historique à tout moment via « Supprimer les données cloud ». La suppression est définitive et comprend :
+    <ul>
+        <li>✅ Document actif (user_subscriptions/{purchaseToken})</li>
+        <li>✅ Document d'historique (user_subscriptions_history/{purchaseToken})</li>
+        <li>✅ Journaux d'activité administrative (admin_activity_logs/{device_id})</li>
+        <li>✅ Conforme RGPD : recherche par purchaseToken, repli avec tableau devices</li>
+    </ul>
+</div>
+
+<h3>2.1.4 Journaux d'Activité Administrative</h3>
+
+<p>Pour garantir la traçabilité et le support en cas de litiges, nous sauvegardons un journal des opérations principales liées aux abonnements.</p>
+
+<table>
+    <tr>
+        <th>Donnée</th>
+        <th>Type</th>
+        <th>Finalité</th>
+        <th>Conservation</th>
+    </tr>
+    <tr>
+        <td><strong>Journaux d'Activité Administrative</strong></td>
+        <td>Tableau d'événements dans admin_activity_logs/{device_id}</td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Piste d'audit pour le support utilisateur</li>
+                <li>Résolution de litiges Google Play (dans les 60 jours)</li>
+                <li>Prévention de la fraude et litiges de facturation</li>
+                <li>Gestion de la période de grâce et des renouvellements automatiques</li>
+            </ul>
+        </td>
+        <td>90 jours à partir de la dernière modification</td>
+    </tr>
+    <tr>
+        <td><strong>Événements Enregistrés</strong></td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Création d'abonnement</li>
+                <li>Annulation d'abonnement</li>
+                <li>Expiration d'abonnement</li>
+                <li>Renouvellement automatique</li>
+                <li>Changements de plan</li>
+            </ul>
+        </td>
+        <td>Suivre l'historique des modifications pour audit et support</td>
+        <td>90 jours à partir de la dernière modification</td>
+    </tr>
+    <tr>
+        <td><strong>Détails par Événement</strong></td>
+        <td>Horodatage, action, motif, plan, détails de l'opération</td>
+        <td>Informations nécessaires pour reconstituer la chronologie en cas de litiges</td>
+        <td>90 jours à partir de la dernière modification</td>
+    </tr>
+</table>
+
+<div class="important">
+    <strong>⚠️ IMPORTANT - JOURNAUX D'ACTIVITÉ :</strong> Les journaux d'activité contiennent UNIQUEMENT des métadonnées opérationnelles (quand, quoi, pourquoi). Ils ne contiennent PAS de données personnelles sensibles. Ils sont automatiquement supprimés après 90 jours à partir de la dernière modification et sont accessibles et supprimables via « Supprimer les données cloud ».
+</div>
+
+<div class="highlight">
+    <strong>🔒 BASE JURIDIQUE :</strong> Intérêt légitime (Art. 6.1.f RGPD) - Nécessaire pour :
+    <ul>
+        <li>Gestion des litiges dans les 60 jours (exigence Google Play)</li>
+        <li>Support technique et résolution de problèmes</li>
+        <li>Prévention de la fraude dans le système de facturation</li>
+        <li>Piste d'audit pour la conformité opérationnelle</li>
+    </ul>
+    <p>L'impact sur les droits de l'utilisateur est minimisé car :</p>
+    <ul>
+        <li>✅ Données pseudonymisées (aucun identifiant personnel direct)</li>
+        <li>✅ Conservation limitée à 90 jours</li>
+        <li>✅ Suppression automatique toutes les 24 heures via nettoyage en arrière-plan</li>
+        <li>✅ Suppression manuelle via « Supprimer les données cloud »</li>
+    </ul>
 </div>
 
 <h3>2.2 Données Stockées Uniquement en Local (Sur l'Appareil)</h3>
@@ -225,6 +401,10 @@
     <li>✅ <strong>Langue attribuée à chaque contact</strong> (ID de contact + code de langue)</li>
     <li>✅ <strong>Mots tapés</strong> pour les suggestions personnalisées (max. 14 jours, puis supprimés automatiquement)</li>
     <li>✅ <strong>Cache de traduction</strong> (RAM uniquement, perdu à la fermeture de l'application)</li>
+    <li>✅ <strong>Cache de désambiguïsation des contacts</strong> (RAM uniquement, perdu au redémarrage du service)</li>
+    <li>✅ <strong>Modèles prédictifs N-grammes</strong> (téléchargés par l'utilisateur, sauvegardés localement)</li>
+    <li>✅ <strong>Dictionnaires Hunspell</strong> (copiés depuis les assets, sauvegardés localement)</li>
+    <li>✅ <strong>Alertes d'abonnement</strong> (notifications locales sur l'utilisation)</li>
 </ul>
 
 <div class="highlight">
@@ -232,13 +412,13 @@
     kAIboard mémorise quelle langue vous utilisez avec vos contacts les plus fréquents (~25-30).
     Ce cache reste sur votre appareil et occupe moins de 1 Mo de stockage.
     Il est conservé jusqu'à la désinstallation de l'application ou la suppression manuelle
-    via le bouton "Supprimer toutes les données locales". Cette conservation prolongée
+    via le bouton « Supprimer toutes les données locales ». Cette conservation prolongée
     est nécessaire pour garantir une expérience fluide sans délais de 1-3 secondes
     à chaque changement de discussion.
 </div>
 
 <div class="important">
-    <strong>⚠️ IMPORTANT :</strong> kAIboard accède à vos contacts UNIQUEMENT pour afficher les noms de contacts dans l'interface de gestion des langues. <strong>Les numéros de téléphone et les noms de contacts ne sont JAMAIS envoyés à nos serveurs.</strong>
+    <strong>⚠️ IMPORTANT :</strong> kAIboard accède à vos contacts UNIQUEMENT pour afficher les noms de contacts dans l'interface de gestion des langues et pour déterminer la langue à partir du préfixe international du numéro de téléphone. <strong>Les numéros de téléphone et les noms de contacts ne sont JAMAIS envoyés à nos serveurs.</strong>
 </div>
 
 <h3>2.3 Données que Nous NE Collectons PAS</h3>
@@ -252,6 +432,7 @@
     <li>❌ Adresses email des contacts</li>
     <li>❌ Position géographique précise</li>
     <li>❌ Données biométriques</li>
+    <li>❌ Identifiants publicitaires</li>
 </ul>
 
 <h2>3. Comment Nous Utilisons Vos Données</h2>
@@ -278,7 +459,7 @@
 </ul>
 
 <div class="important">
-    <strong>⚠️ COMPTE GOOGLE REQUIS:</strong> La restauration des jetons sur plusieurs appareils
+    <strong>⚠️ COMPTE GOOGLE REQUIS :</strong> La restauration des jetons sur plusieurs appareils
     fonctionne UNIQUEMENT si tous les appareils utilisent le même compte Google Play avec lequel
     vous avez effectué les achats. Cette exigence est imposée par l'API de facturation Google Play
     pour des raisons de sécurité et pour prévenir la fraude. Si vous changez de compte Google,
@@ -296,10 +477,10 @@
 <h4>Comportement lors de la restauration :</h4>
 
 <ol>
-    <li><strong>Appareil A</strong> achète 50 000 jetons → Appareil A est "actif" ✅</li>
-    <li><strong>Appareil B</strong> (même compte Google Play) clique sur "Restaurer les achats" → Appareil B devient "actif" ✅</li>
-    <li><strong>Appareil A</strong> est automatiquement "invalidé" → Les jetons sur Appareil A sont remis à zéro ❌</li>
-    <li>Pour réactiver Appareil A : cliquez à nouveau sur "Restaurer les achats" sur Appareil A</li>
+    <li><strong>Appareil A</strong> achète 50 000 jetons → Appareil A est « actif » ✅</li>
+    <li><strong>Appareil B</strong> (même compte Google Play) clique sur « Restaurer les achats » → Appareil B devient « actif » ✅</li>
+    <li><strong>Appareil A</strong> est automatiquement « invalidé » → Les jetons sur Appareil A sont remis à zéro ❌</li>
+    <li>Pour réactiver Appareil A : cliquez à nouveau sur « Restaurer les achats » sur Appareil A</li>
 </ol>
 
 <p><strong>Métadonnées sauvegardées pour le système anti-fraude :</strong></p>
@@ -307,7 +488,7 @@
 <ul>
     <li><strong>active_device</strong> : ID de l'appareil actuellement actif</li>
     <li><strong>invalidated_at</strong> : Horodatage lorsqu'un appareil a été désactivé</li>
-    <li><strong>invalidated_reason</strong> : Raison de la désactivation (ex. "migrated_to_android_xxx")</li>
+    <li><strong>invalidated_reason</strong> : Raison de la désactivation (ex. « migrated_to_android_xxx »)</li>
     <li><strong>migrated_from</strong> : Appareil source des jetons</li>
     <li><strong>migration_timestamp</strong> : Date/heure de la migration</li>
 </ul>
@@ -341,8 +522,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>ID anonyme, solde de jetons, historique des achats, métadonnées de migration</td>
-        <td>Sauvegarde, synchronisation et système anti-fraude</td>
+        <td>ID anonyme, solde de jetons, historique des achats, métadonnées de migration, données d'abonnement, journaux d'activité</td>
+        <td>Sauvegarde, synchronisation, système anti-fraude et piste d'audit</td>
         <td>UE (serveurs européens)</td>
     </tr>
     <tr>
@@ -398,9 +579,19 @@
         <th>Suppression</th>
     </tr>
     <tr>
-        <td><strong>Données d'Abonnement (Firebase)</strong></td>
-        <td>Jusqu'à la fin de la période de facturation + 365 jours après expiration</td>
-        <td>Automatique + suppression manuelle</td>
+        <td><strong>Données d'Abonnement Actif (Firebase)</strong></td>
+        <td>Jusqu'à la fin de la période de facturation actuelle</td>
+        <td>Suppression automatique à l'expiration + déplacement vers l'historique</td>
+    </tr>
+    <tr>
+        <td><strong>Historique des Abonnements (Firebase)</strong></td>
+        <td>90 jours à partir de l'expiration de l'abonnement</td>
+        <td>Suppression automatique + suppression manuelle via « Supprimer les données cloud »</td>
+    </tr>
+    <tr>
+        <td><strong>Journaux d'Activité (admin_activity_logs)</strong></td>
+        <td>90 jours à partir de la dernière modification</td>
+        <td>Suppression automatique (toutes les 24h) + suppression manuelle</td>
     </tr>
     <tr>
         <td><strong>Sauvegarde des Jetons (Firebase)</strong></td>
@@ -425,7 +616,17 @@
     <tr>
         <td><strong>Cache Contact-Langue (Appareil)</strong></td>
         <td>Jusqu'à suppression manuelle ou désinstallation</td>
-        <td>Bouton "Supprimer toutes les données locales"</td>
+        <td>Bouton « Supprimer toutes les données locales »</td>
+    </tr>
+    <tr>
+        <td><strong>Modèles Prédictifs N-grammes (Appareil)</strong></td>
+        <td>Jusqu'à suppression manuelle ou désinstallation</td>
+        <td>Bouton « Supprimer toutes les données locales » ou suppression depuis l'écran Modèles Hors Ligne</td>
+    </tr>
+    <tr>
+        <td><strong>Dictionnaires Hunspell (Appareil)</strong></td>
+        <td>Jusqu'à suppression manuelle ou désinstallation</td>
+        <td>Bouton « Supprimer toutes les données locales »</td>
     </tr>
     <tr>
         <td><strong>Mots Appris (Prédiction)</strong></td>
@@ -442,10 +643,15 @@
         <td>Jusqu'à la fermeture de l'application</td>
         <td>Automatique</td>
     </tr>
+    <tr>
+        <td><strong>Cache de Désambiguïsation (RAM)</strong></td>
+        <td>Jusqu'au redémarrage du service d'accessibilité</td>
+        <td>Automatique</td>
+    </tr>
 </table>
 
 <div class="highlight">
-    <strong>🗑️ NETTOYAGE AUTOMATIQUE :</strong> L'application effectue automatiquement un nettoyage toutes les 24 heures. Les données de plus de 365 jours sont automatiquement supprimées, même si vous n'utilisez plus l'application.
+    <strong>🗑️ NETTOYAGE AUTOMATIQUE :</strong> L'application effectue automatiquement un nettoyage toutes les 24 heures. Les données de plus de 365 jours (ou 90 jours pour l'historique des abonnements et les journaux d'activité) sont automatiquement supprimées, même si vous n'utilisez plus l'application.
 </div>
 
 <h2>6. Vos Droits (RGPD)</h2>
@@ -453,18 +659,18 @@
 <p>En vertu du RGPD, vous disposez des droits suivants :</p>
 
 <h3>6.1 Droit d'Accès (Art. 15 RGPD)</h3>
-<p>Vous pouvez demander une copie de toutes les données que nous détenons sur vous.</p>
+<p>Vous pouvez demander une copie de toutes les données que nous détenons sur vous. Les données d'abonnement sont visibles directement dans l'application.</p>
 
 <h3>6.2 Droit de Rectification (Art. 16 RGPD)</h3>
-<p>Vous pouvez corriger des données inexactes ou incomplètes.</p>
+<p>Vous pouvez corriger des données inexactes ou incomplètes, par exemple en modifiant la langue attribuée à un contact.</p>
 
 <h3>6.3 Droit à l'Effacement (Art. 17 RGPD)</h3>
 <p>Vous pouvez supprimer toutes vos données à tout moment via l'<strong>écran Confidentialité</strong> dans l'application :</p>
 
 <ul>
-    <li>✅ <strong>Supprimer les données cloud</strong> : Supprime la sauvegarde des jetons, l'historique des achats et les données d'abonnement de Firebase</li>
-    <li>✅ <strong>Supprimer les données d'apprentissage</strong> : Supprime les mots appris pour les suggestions</li>
-    <li>✅ <strong>Supprimer toutes les données locales</strong> : Supprime toutes les préférences et données sur l'appareil</li>
+    <li>✅ <strong>Supprimer les données cloud</strong> : Supprime la sauvegarde des jetons, l'historique des achats, les données d'abonnement, l'historique des abonnements et les journaux d'activité de Firebase</li>
+    <li>✅ <strong>Supprimer les données d'apprentissage</strong> : Supprime les mots appris pour les suggestions (les 13 langues)</li>
+    <li>✅ <strong>Supprimer toutes les données locales</strong> : Supprime toutes les préférences, données sur l'appareil, modèles téléchargés, dictionnaires et cache</li>
 </ul>
 
 <div class="important">
@@ -487,14 +693,14 @@
 
     <p><strong>Suppression immédiate :</strong> L'application vous redirige automatiquement vers Google Play pour gérer votre abonnement. Après l'annulation, la suppression des données sera immédiatement disponible.</p>
 
-    <p><strong>Base juridique du blocage :</strong> Art. 17.3.b RGPD - "Le droit à l'effacement ne s'applique pas dans la mesure où le traitement est nécessaire à l'exécution d'un contrat auquel la personne concernée est partie".</p>
+    <p><strong>Base juridique du blocage :</strong> Art. 17.3.b RGPD - « Le droit à l'effacement ne s'applique pas dans la mesure où le traitement est nécessaire à l'exécution d'un contrat auquel la personne concernée est partie ».</p>
 </div>
 
 <h3>6.4 Droit à la Portabilité des Données (Art. 20 RGPD)</h3>
-<p>Vous pouvez demander vos données dans un format structuré et lisible par machine.</p>
+<p>Vous pouvez exporter vos données au format JSON lisible par machine via le bouton <strong>« Exporter vos données (JSON) »</strong> dans l'écran Confidentialité. Le fichier comprend les données locales (préférences, apprentissage) et les données cloud (abonnement, historique, journaux d'activité).</p>
 
 <h3>6.5 Droit d'Opposition (Art. 21 RGPD)</h3>
-<p>Vous pouvez vous opposer au traitement des données pour des raisons légitimes.</p>
+<p>Vous pouvez vous opposer au traitement des données pour des raisons légitimes. Vous pouvez désactiver à tout moment la traduction, les rapports de plantage et révoquer l'accès aux contacts.</p>
 
 <h3>6.6 Droit de Déposer une Plainte</h3>
 <p>Vous pouvez déposer une plainte auprès de l'autorité de contrôle compétente :</p>
@@ -506,14 +712,15 @@
 
 <h2>7. Comment Exercer Vos Droits</h2>
 
-<h3>7.1 Suppression via l'Application (Immédiate)</h3>
+<h3>7.1 Via l'Application (Immédiat)</h3>
 
 <p><strong>Chemin :</strong> Paramètres → Confidentialité et Sécurité</p>
 
 <ol>
-    <li><strong>Supprimer les données cloud</strong> : Sauvegarde des jetons + historique des achats + données d'abonnement (irréversible - nécessite l'annulation de l'abonnement si actif)</li>
-    <li><strong>Supprimer les données d'apprentissage</strong> : Mots appris (11 langues)</li>
-    <li><strong>Supprimer toutes les données locales</strong> : Toutes les préférences (redémarre l'application)</li>
+    <li><strong>Exporter vos données (JSON)</strong> : Export complet des données locales et cloud au format lisible par machine (Art. 15 + Art. 20)</li>
+    <li><strong>Supprimer les données cloud</strong> : Sauvegarde des jetons + historique des achats + données d'abonnement + historique des abonnements + journaux d'activité (irréversible - nécessite l'annulation de l'abonnement si actif)</li>
+    <li><strong>Supprimer les données d'apprentissage</strong> : Mots appris (13 langues)</li>
+    <li><strong>Supprimer toutes les données locales</strong> : Toutes les préférences, modèles téléchargés, dictionnaires, cache (redémarre l'application)</li>
 </ol>
 
 <h3>7.2 Demande par Email</h3>
@@ -529,10 +736,12 @@
 <ul>
     <li>🔒 <strong>Chiffrement en transit</strong> : HTTPS/TLS 1.3 pour toutes les communications</li>
     <li>🔒 <strong>Chiffrement au repos</strong> : Firebase utilise le chiffrement AES-256</li>
-    <li>🔒 <strong>Règles de Sécurité Firebase</strong> : Accès limité au propriétaire des données uniquement</li>
+    <li>🔒 <strong>Chiffrement de la base de données locale</strong> : La base de données d'apprentissage est chiffrée en AES-256 via Android Keystore matériel</li>
+    <li>🔒 <strong>Règles de Sécurité Firebase</strong> : Accès limité au propriétaire des données uniquement (refus par défaut)</li>
     <li>🔒 <strong>ID Pseudonyme</strong> : Aucune donnée personnelle directe (nom, email, téléphone)</li>
     <li>🔒 <strong>Minimisation des données</strong> : Nous ne collectons que le strict nécessaire</li>
-    <li>🔒 <strong>Suppression automatique</strong> : Données supprimées après 365 jours d'inactivité</li>
+    <li>🔒 <strong>Suppression automatique</strong> : Données supprimées après 365 jours d'inactivité (90 jours pour l'historique des abonnements et les journaux d'activité)</li>
+    <li>🔒 <strong>Clé API protégée</strong> : La clé API OpenAI n'est jamais exposée dans le client, elle est stockée comme secret dans le relais Cloudflare</li>
 </ul>
 
 <h2>9. Identifiants de Dispositif et Autorisations Android</h2>
@@ -568,7 +777,7 @@
     </tr>
 </table>
 
-<p><strong>⚠️ NOTE DE CONFIDENTIALITÉ :</strong> L'Android ID est un identifiant unique du dispositif. kAIboard l'utilise UNIQUEMENT pour générer l'ID anonyme pseudonymisé (format : "android_[hash]"). L'Android ID brut n'est JAMAIS envoyé à nos serveurs ou à des tiers.</p>
+<p><strong>⚠️ NOTE DE CONFIDENTIALITÉ :</strong> L'Android ID est un identifiant unique du dispositif. kAIboard l'utilise UNIQUEMENT pour générer l'ID anonyme pseudonymisé (format : « android_[hash] »). L'Android ID brut n'est JAMAIS envoyé à nos serveurs ou à des tiers.</p>
 
 <h3>9.2 Autorisations de l'Application</h3>
 
@@ -633,7 +842,7 @@
 
 <p><strong>Base légale :</strong> Consentement explicite (Art. 6.1.a RGPD)</p>
 
-<p><strong>Comment désactiver :</strong> Paramètres → Rapports de plantage (optionnel) → Désactiver</p>
+<p><strong>Comment désactiver :</strong> Paramètres → Rapports de plantage (optionnel) → Désactiver. La désactivation arrête l'envoi futur et supprime les rapports non encore envoyés présents sur l'appareil. Les rapports déjà envoyés à Firebase restent sur le backend et ne peuvent pas être supprimés depuis le téléphone.</p>
 
 <h2>11. Mineurs</h2>
 
@@ -664,13 +873,15 @@
 <p>Le traitement de vos données est basé sur :</p>
 
 <ul>
-    <li><strong>Art. 6.1.b RGPD</strong> - Exécution du contrat : Sauvegarde des jetons, historique des achats, traduction</li>
+    <li><strong>Art. 6.1.b RGPD</strong> - Exécution du contrat : Sauvegarde des jetons, historique des achats, traduction, gestion des abonnements</li>
     <li><strong>Art. 6.1.a RGPD</strong> - Consentement : Rapports de plantage (optionnel)</li>
     <li><strong>Art. 6.1.f RGPD</strong> - Intérêt légitime :
         <ul>
             <li>Prévention de la fraude (système anti-fraude pour jetons)</li>
             <li>Sécurité des achats</li>
             <li>Protection du système de facturation contre les abus</li>
+            <li>Synchronisation multi-appareil</li>
+            <li>Journaux d'activité administrative (piste d'audit)</li>
         </ul>
     </li>
 </ul>
@@ -685,14 +896,14 @@
     </ul>
     <p>L'impact sur les droits de l'utilisateur est minimisé car :</p>
     <ul>
-        <li>✅ L'utilisateur peut toujours réactiver n'importe quel appareil via "Restaurer les achats"</li>
+        <li>✅ L'utilisateur peut toujours réactiver n'importe quel appareil via « Restaurer les achats »</li>
         <li>✅ Le système utilise uniquement des données pseudonymisées (pas de données personnelles directes)</li>
         <li>✅ La logique est transparente et documentée dans cette Politique de Confidentialité</li>
     </ul>
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Version 2.1 - Dernière mise à jour : 18 janvier 2026</strong><br>
+    <strong>Version 2.3 - Dernière mise à jour : 21 février 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 

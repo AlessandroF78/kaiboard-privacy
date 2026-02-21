@@ -91,8 +91,8 @@
 
 <h1>Polityka Prywatności - kAIboard</h1>
 
-<p><strong>Ostatnia aktualizacja:</strong> 18 stycznia 2026</p>
-<p><strong>Wersja:</strong> 2.1</p>
+<p><strong>Ostatnia aktualizacja:</strong> 21 lutego 2026</p>
+<p><strong>Wersja:</strong> 2.3</p>
 
 <div class="highlight">
     <strong>📱 kAIboard</strong> to klawiatura Android z funkcjami tłumaczenia opartymi na sztucznej inteligencji. Ta Polityka Prywatności wyjaśnia, jakie dane zbieramy, jak ich używamy oraz Twoje prawa wynikające z Ogólnego Rozporządzenia o Ochronie Danych (RODO - Rozporządzenie UE 2016/679).
@@ -122,10 +122,10 @@
         <th>Podstawa Prawna</th>
     </tr>
     <tr>
-        <td><strong>Anonimowy ID Urządzenia</strong></td>
-        <td>Identyfikator oparty na Android ID urządzenia (np. android_e19d6c741afe8197)</td>
-        <td>Przywracanie zakupionych tokenów i zapobieganie oszustwom (tylko JEDNO aktywne urządzenie naraz)</td>
-        <td>Wykonanie umowy (Art. 6.1.b) + Uzasadniony interes zapobieganie oszustwom (Art. 6.1.f RODO)</td>
+        <td><strong>Tablica Urządzeń</strong></td>
+        <td>Lista identyfikatorów (np. ["android_e19d6c...", "android_175be4..."])</td>
+        <td>Synchronizacja subskrypcji i tokenów na wielu urządzeniach z tym samym kontem Google Play</td>
+        <td>Wykonanie umowy (Art. 6.1.b) + Uzasadniony interes wielourządzeniowy (Art. 6.1.f RODO)</td>
     </tr>
     <tr>
         <td><strong>Saldo Tokenów</strong></td>
@@ -153,7 +153,27 @@
     </tr>
 </table>
 
-<h3>2.1.1 Dane Subskrypcji</h3>
+<h4>Synchronizacja Wielourządzeniowa</h4>
+
+<p>Jeśli korzystasz z kAIboard na wielu urządzeniach z <strong>tym samym kontem Google Play</strong>:</p>
+
+<ul>
+    <li>✅ Subskrypcja współdzielona automatycznie między wszystkimi urządzeniami</li>
+    <li>✅ Saldo tokenów synchronizowane w czasie rzeczywistym</li>
+    <li>✅ Limit miesięczny współdzielony (np. 250 000 tokenów ŁĄCZNIE, nie na urządzenie)</li>
+    <li>✅ Listener Firebase aktualizuje wszystkie urządzenia jednocześnie</li>
+</ul>
+
+<p><strong>Dane zapisane dla wielourządzeniowości:</strong></p>
+<ul>
+    <li><strong>devices:</strong> Tablica anonimowych Android ID korzystających z tej samej subskrypcji</li>
+    <li><strong>purchaseToken:</strong> Unikalny klucz subskrypcji Google Play</li>
+    <li><strong>current_usage:</strong> Całkowite zużycie tokenów na wszystkich urządzeniach</li>
+</ul>
+
+<p><strong>Prywatność:</strong> Tablica <code>devices</code> zawiera TYLKO pseudonimizowane Android ID (np. "android_abc123..."). Nie zbieramy numerów telefonów, IMEI ani innych identyfikatorów osobowych.</p>
+
+<h3>2.1.1 Dane Subskrypcji Miesięcznej</h3>
 
 <p>Jeśli subskrybujesz <strong>miesięczną subskrypcję</strong> (np. Plan PLUS z 250 000 tokenów/miesiąc), zapisujemy następujące dodatkowe dane:</p>
 
@@ -166,13 +186,13 @@
     </tr>
     <tr>
         <td><strong>Plan Subskrypcji</strong></td>
-        <td>Ciąg znaków (np. "plus", "pro")</td>
+        <td>Ciąg znaków (np. "plus", "pro", "max")</td>
         <td>Identyfikacja aktywnego planu i zastosowanie prawidłowego limitu tokenów</td>
         <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
     <tr>
         <td><strong>Miesięczny Limit Tokenów</strong></td>
-        <td>Liczba całkowita (np. 250000)</td>
+        <td>Liczba całkowita (np. 250000, 500000, 1000000)</td>
         <td>Zastosowanie maksymalnej liczby tokenów w subskrypcji</td>
         <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
@@ -206,6 +226,24 @@
         <td>Zarządzanie cyklem rozliczeniowym i sporami</td>
         <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
+    <tr>
+        <td><strong>Data Zakończenia Subskrypcji</strong></td>
+        <td>Znacznik czasu ISO 8601 (np. "2026-02-28T14:30:00Z")</td>
+        <td>Zarządzanie okresem karencji po anulowaniu (subskrypcja pozostaje aktywna do tej daty)</td>
+        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+    </tr>
+    <tr>
+        <td><strong>Flaga "Nie Odnowi Się"</strong></td>
+        <td>Boolean (will_not_renew)</td>
+        <td>Wskazanie czy subskrypcja została anulowana, ale pozostaje ważna do wygaśnięcia</td>
+        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+    </tr>
+    <tr>
+        <td><strong>Data Anulowania</strong></td>
+        <td>Znacznik czasu (cancelled_at)</td>
+        <td>Śledzenie kiedy użytkownik anulował subskrypcję</td>
+        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+    </tr>
 </table>
 
 <div class="highlight">
@@ -214,6 +252,144 @@
 
 <div class="important">
     <strong>⚠️ WAŻNE - ANULOWANIE SUBSKRYPCJI:</strong> Jeśli anulujesz subskrypcję, dane subskrypcji są zachowane do końca bieżącego okresu rozliczeniowego (Art. 6.1.b RODO - wykonanie umowy). Po wygaśnięciu możesz usunąć wszystkie dane w chmurze przez ekran Prywatności.
+</div>
+
+<h3>2.1.2 Okres Karencji (Grace Period)</h3>
+
+<div class="info">
+    <strong>📅 SUBSKRYPCJA ANULOWANA, ALE NADAL AKTYWNA</strong>
+    <p>Jeśli anulujesz subskrypcję przez Google Play, usługa premium <strong>pozostaje aktywna do końca już opłaconego okresu</strong>.</p>
+
+    <p><strong>Przykład:</strong></p>
+    <ul>
+        <li>Kupujesz subskrypcję PLUS 15 stycznia 2026</li>
+        <li>Anulujesz 20 stycznia 2026</li>
+        <li>✅ Premium pozostaje aktywne do 15 lutego 2026 (już opłacone)</li>
+        <li>✅ Tokeny miesięczne dostępne do wygaśnięcia</li>
+        <li>❌ Subskrypcja NIE odnowi się automatycznie</li>
+    </ul>
+
+    <p><strong>Dane zapisane podczas okresu karencji:</strong></p>
+    <ul>
+        <li><strong>subscription_end:</strong> Dokładna data do której masz prawo do usługi</li>
+        <li><strong>will_not_renew:</strong> Flaga oznaczająca "anulowana, ale ważna"</li>
+        <li><strong>cancelled_at:</strong> Znacznik czasu anulowania</li>
+        <li><strong>monthly_limit:</strong> Limit tokenów zachowany do wygaśnięcia</li>
+    </ul>
+
+    <p><strong>Gdy okres karencji wygasa:</strong></p>
+    <ol>
+        <li>Premium zostaje automatycznie dezaktywowane</li>
+        <li>Dane subskrypcji przenoszone do historii (user_subscriptions_history)</li>
+        <li>Aktywny dokument (user_subscriptions) usunięty</li>
+        <li>Możesz usunąć historię przez "Usuń dane w chmurze"</li>
+    </ol>
+</div>
+
+<h3>2.1.3 Historia Subskrypcji</h3>
+
+<p>Gdy subskrypcja wygasa lub zostaje usunięta, przenosimy dane do dokumentu historii w celu zgodności z RODO i audytu.</p>
+
+<table>
+    <tr>
+        <th>Dane</th>
+        <th>Typ</th>
+        <th>Cel</th>
+        <th>Przechowywanie</th>
+    </tr>
+    <tr>
+        <td><strong>Historia Subskrypcji</strong></td>
+        <td>Tablica obiektów w user_subscriptions_history/{purchaseToken}</td>
+        <td>Śledzenie zakupów, ścieżka audytu, zgodność z RODO</td>
+        <td>90 dni od wygaśnięcia</td>
+    </tr>
+    <tr>
+        <td><strong>Dane dla Wpisu</strong></td>
+        <td>Plan, użyte tokeny/limit, daty rozpoczęcia/zakończenia/anulowania, powód anulowania, urządzenia</td>
+        <td>Audyt, wsparcie użytkownika, zarządzanie zwrotami</td>
+        <td>90 dni od wygaśnięcia</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔒 KONSOLIDACJA WIELOURZĄDZENIOWA:</strong> Historia jest konsolidowana według <strong>purchaseToken</strong>, nie według urządzenia. Wszystkie odnowienia i zmiany tej samej subskrypcji są grupowane w jednym dokumencie, niezależnie od liczby używanych urządzeń.
+</div>
+
+<div class="important">
+    <strong>⚠️ USUWANIE HISTORII:</strong> Możesz usunąć historię w dowolnym momencie przez "Usuń dane w chmurze". Usunięcie jest definitywne i obejmuje:
+    <ul>
+        <li>✅ Aktywny dokument (user_subscriptions/{purchaseToken})</li>
+        <li>✅ Dokument historii (user_subscriptions_history/{purchaseToken})</li>
+        <li>✅ Logi aktywności administracyjnej (admin_activity_logs/{device_id})</li>
+        <li>✅ Zgodne z RODO: wyszukiwanie przez purchaseToken, fallback przez tablicę devices</li>
+    </ul>
+</div>
+
+<h3>2.1.4 Logi Aktywności Administracyjnej</h3>
+
+<p>Aby zapewnić śledzenie i wsparcie w przypadku sporów, zapisujemy rejestr głównych operacji związanych z subskrypcjami.</p>
+
+<table>
+    <tr>
+        <th>Dane</th>
+        <th>Typ</th>
+        <th>Cel</th>
+        <th>Przechowywanie</th>
+    </tr>
+    <tr>
+        <td><strong>Logi Aktywności Administracyjnej</strong></td>
+        <td>Tablica zdarzeń w admin_activity_logs/{device_id}</td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Ścieżka audytu dla wsparcia użytkownika</li>
+                <li>Rozwiązywanie sporów Google Play (w ciągu 60 dni)</li>
+                <li>Zapobieganie oszustwom i sporom rozliczeniowym</li>
+                <li>Zarządzanie okresem karencji i automatycznymi odnowieniami</li>
+            </ul>
+        </td>
+        <td>90 dni od ostatniej modyfikacji</td>
+    </tr>
+    <tr>
+        <td><strong>Zarejestrowane Zdarzenia</strong></td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Subskrypcja</li>
+                <li>Anulowanie subskrypcji</li>
+                <li>Wygaśnięcie subskrypcji</li>
+                <li>Automatyczne odnowienie</li>
+                <li>Zmiany planu</li>
+            </ul>
+        </td>
+        <td>Śledzenie historii zmian dla audytu i wsparcia</td>
+        <td>90 dni od ostatniej modyfikacji</td>
+    </tr>
+    <tr>
+        <td><strong>Szczegóły Zdarzenia</strong></td>
+        <td>Znacznik czasu, akcja, powód, plan, szczegóły operacji</td>
+        <td>Informacje niezbędne do odtworzenia chronologii w przypadku sporów</td>
+        <td>90 dni od ostatniej modyfikacji</td>
+    </tr>
+</table>
+
+<div class="important">
+    <strong>⚠️ WAŻNE - LOGI AKTYWNOŚCI:</strong> Logi aktywności zawierają TYLKO metadane operacyjne (kiedy, co, dlaczego). NIE zawierają wrażliwych danych osobowych. Są automatycznie usuwane po 90 dniach od ostatniej modyfikacji i są dostępne oraz usuwalne przez "Usuń dane w chmurze".
+</div>
+
+<div class="highlight">
+    <strong>🔒 PODSTAWA PRAWNA:</strong> Uzasadniony interes (Art. 6.1.f RODO) - Niezbędne do:
+    <ul>
+        <li>Zarządzania reklamacjami w ciągu 60 dni (wymóg Google Play)</li>
+        <li>Wsparcia technicznego i rozwiązywania problemów</li>
+        <li>Zapobiegania oszustwom w systemie rozliczeniowym</li>
+        <li>Ścieżki audytu dla zgodności operacyjnej</li>
+    </ul>
+    <p>Wpływ na prawa użytkownika jest minimalizowany, ponieważ:</p>
+    <ul>
+        <li>✅ Dane pseudonimizowane (brak bezpośrednich identyfikatorów osobowych)</li>
+        <li>✅ Przechowywanie ograniczone do 90 dni</li>
+        <li>✅ Automatyczne usuwanie co 24 godziny przez czyszczenie w tle</li>
+        <li>✅ Ręczne usuwanie przez "Usuń dane w chmurze"</li>
+    </ul>
 </div>
 
 <h3>2.2 Dane Przechowywane Tylko Lokalnie (Na Urządzeniu)</h3>
@@ -225,6 +401,10 @@
     <li>✅ <strong>Język przypisany do każdego kontaktu</strong> (ID kontaktu + kod języka)</li>
     <li>✅ <strong>Wpisane słowa</strong> dla spersonalizowanych sugestii (maks. 14 dni, potem automatycznie usuwane)</li>
     <li>✅ <strong>Pamięć podręczna tłumaczeń</strong> (tylko RAM, utracona po zamknięciu aplikacji)</li>
+    <li>✅ <strong>Pamięć podręczna disambiguacji kontaktów</strong> (tylko RAM, utracona po restarcie usługi)</li>
+    <li>✅ <strong>Modele predykcyjne N-gram</strong> (pobrane przez użytkownika, zapisane lokalnie)</li>
+    <li>✅ <strong>Słowniki Hunspell</strong> (skopiowane z zasobów, zapisane lokalnie)</li>
+    <li>✅ <strong>Alerty subskrypcji</strong> (lokalne powiadomienia o użyciu)</li>
 </ul>
 
 <div class="highlight">
@@ -238,7 +418,7 @@
 </div>
 
 <div class="important">
-    <strong>⚠️ WAŻNE:</strong> kAIboard uzyskuje dostęp do Twoich kontaktów TYLKO w celu wyświetlenia nazw kontaktów w interfejsie zarządzania językami. <strong>Numery telefonów i nazwy kontaktów NIGDY nie są wysyłane na nasze serwery.</strong>
+    <strong>⚠️ WAŻNE:</strong> kAIboard uzyskuje dostęp do Twoich kontaktów TYLKO w celu wyświetlenia nazw kontaktów w interfejsie zarządzania językami oraz w celu określenia języka na podstawie międzynarodowego numeru kierunkowego numeru telefonu. <strong>Numery telefonów i nazwy kontaktów NIGDY nie są wysyłane na nasze serwery.</strong>
 </div>
 
 <h3>2.3 Dane, Których NIE Zbieramy</h3>
@@ -252,6 +432,7 @@
     <li>❌ Adresów email kontaktów</li>
     <li>❌ Precyzyjnej lokalizacji geograficznej</li>
     <li>❌ Danych biometrycznych</li>
+    <li>❌ Identyfikatorów reklamowych</li>
 </ul>
 
 <h2>3. Jak Używamy Twoich Danych</h2>
@@ -261,7 +442,7 @@
 <p>Gdy używasz funkcji tłumaczenia:</p>
 
 <ol>
-    <li>Tekst, który wpisujesz, jest wysyłany na nasz serwer Cloudflare Worker (bezpieczne przekaźnik)</li>
+    <li>Tekst, który wpisujesz, jest wysyłany na nasz serwer Cloudflare Worker (bezpieczny przekaźnik)</li>
     <li>Worker przekazuje tekst do OpenAI w celu tłumaczenia</li>
     <li>Tłumaczenie jest zwracane do aplikacji</li>
     <li><strong>⚠️ WAŻNE: Tekst NIGDY nie jest zapisywany na naszych serwerach ani w OpenAI</strong> (tylko przesyłanie w pamięci)</li>
@@ -341,14 +522,14 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>Anonimowy ID, saldo tokenów, historia zakupów, metadane migracji</td>
-        <td>Kopia zapasowa, synchronizacja i system antyfraudowy</td>
+        <td>Anonimowy ID, saldo tokenów, historia zakupów, metadane migracji, dane subskrypcji, logi aktywności</td>
+        <td>Kopia zapasowa, synchronizacja, system antyfraudowy i ścieżka audytu</td>
         <td>UE (serwery europejskie)</td>
     </tr>
     <tr>
         <td><strong>Cloudflare Worker</strong></td>
         <td>Tekst do tłumaczenia (tylko przesyłanie)</td>
-        <td>Bezpieczne przekaźnik dla tłumaczenia</td>
+        <td>Bezpieczny przekaźnik dla tłumaczenia</td>
         <td>UE (serwery europejskie)</td>
     </tr>
     <tr>
@@ -398,9 +579,19 @@
         <th>Usuwanie</th>
     </tr>
     <tr>
-        <td><strong>Dane Subskrypcji (Firebase)</strong></td>
-        <td>Do końca okresu rozliczeniowego + 365 dni po wygaśnięciu</td>
-        <td>Automatyczne + ręczne usuwanie</td>
+        <td><strong>Aktywne Dane Subskrypcji (Firebase)</strong></td>
+        <td>Do końca bieżącego okresu rozliczeniowego</td>
+        <td>Automatyczne usunięcie po wygaśnięciu subskrypcji + przeniesienie do historii</td>
+    </tr>
+    <tr>
+        <td><strong>Historia Subskrypcji (Firebase)</strong></td>
+        <td>90 dni od wygaśnięcia subskrypcji</td>
+        <td>Automatyczne usunięcie + ręczne usunięcie przez "Usuń dane w chmurze"</td>
+    </tr>
+    <tr>
+        <td><strong>Logi Aktywności (admin_activity_logs)</strong></td>
+        <td>90 dni od ostatniej modyfikacji</td>
+        <td>Automatyczne usunięcie (co 24h) + ręczne usunięcie</td>
     </tr>
     <tr>
         <td><strong>Kopia Zapasowa Tokenów (Firebase)</strong></td>
@@ -428,6 +619,16 @@
         <td>Przycisk "Usuń wszystkie dane lokalne"</td>
     </tr>
     <tr>
+        <td><strong>Modele Predykcyjne N-gram (Urządzenie)</strong></td>
+        <td>Do ręcznego usunięcia lub odinstalowania</td>
+        <td>Przycisk "Usuń wszystkie dane lokalne" lub usunięcie z ekranu Modele Offline</td>
+    </tr>
+    <tr>
+        <td><strong>Słowniki Hunspell (Urządzenie)</strong></td>
+        <td>Do ręcznego usunięcia lub odinstalowania</td>
+        <td>Przycisk "Usuń wszystkie dane lokalne"</td>
+    </tr>
+    <tr>
         <td><strong>Nauczone Słowa (Przewidywanie)</strong></td>
         <td>14 dni (automatyczny zanik)</td>
         <td>Automatyczne + ręczne usuwanie</td>
@@ -442,10 +643,15 @@
         <td>Do zamknięcia aplikacji</td>
         <td>Automatyczne</td>
     </tr>
+    <tr>
+        <td><strong>Pamięć Podręczna Disambiguacji (RAM)</strong></td>
+        <td>Do restartu usługi dostępności</td>
+        <td>Automatyczne</td>
+    </tr>
 </table>
 
 <div class="highlight">
-    <strong>🗑️ AUTOMATYCZNE CZYSZCZENIE:</strong> Aplikacja automatycznie przeprowadza czyszczenie co 24 godziny. Dane starsze niż 365 dni są automatycznie usuwane, nawet jeśli nie korzystasz już z aplikacji.
+    <strong>🗑️ AUTOMATYCZNE CZYSZCZENIE:</strong> Aplikacja automatycznie przeprowadza czyszczenie co 24 godziny. Dane starsze niż 365 dni (lub 90 dni dla historii subskrypcji i logów aktywności) są automatycznie usuwane, nawet jeśli nie korzystasz już z aplikacji.
 </div>
 
 <h2>6. Twoje Prawa (RODO)</h2>
@@ -453,18 +659,18 @@
 <p>Zgodnie z RODO masz następujące prawa:</p>
 
 <h3>6.1 Prawo Dostępu (Art. 15 RODO)</h3>
-<p>Możesz poprosić o kopię wszystkich danych, które o Tobie posiadamy.</p>
+<p>Możesz poprosić o kopię wszystkich danych, które o Tobie posiadamy. Dane subskrypcji są widoczne bezpośrednio w aplikacji.</p>
 
 <h3>6.2 Prawo do Sprostowania (Art. 16 RODO)</h3>
-<p>Możesz poprawić niedokładne lub niekompletne dane.</p>
+<p>Możesz poprawić niedokładne lub niekompletne dane, na przykład zmieniając język przypisany do kontaktu.</p>
 
 <h3>6.3 Prawo do Usunięcia (Art. 17 RODO)</h3>
 <p>Możesz usunąć wszystkie swoje dane w dowolnym momencie przez <strong>ekran Prywatności</strong> w aplikacji:</p>
 
 <ul>
-    <li>✅ <strong>Usuń dane w chmurze</strong>: Usuwa kopię zapasową tokenów, historię zakupów i dane subskrypcji z Firebase</li>
-    <li>✅ <strong>Usuń dane uczenia</strong>: Usuwa nauczone słowa do sugestii</li>
-    <li>✅ <strong>Usuń wszystkie dane lokalne</strong>: Usuwa wszystkie preferencje i dane na urządzeniu</li>
+    <li>✅ <strong>Usuń dane w chmurze</strong>: Usuwa kopię zapasową tokenów, historię zakupów, dane subskrypcji, historię subskrypcji i logi aktywności z Firebase</li>
+    <li>✅ <strong>Usuń dane uczenia</strong>: Usuwa nauczone słowa do sugestii (wszystkie 13 języków)</li>
+    <li>✅ <strong>Usuń wszystkie dane lokalne</strong>: Usuwa wszystkie preferencje, dane na urządzeniu, pobrane modele, słowniki i pamięć podręczną</li>
 </ul>
 
 <div class="important">
@@ -489,11 +695,12 @@
 
     <p><strong>Podstawa prawna blokady:</strong> Art. 17.3.b RODO - "Prawo do usunięcia nie ma zastosowania w zakresie, w jakim przetwarzanie jest niezbędne do wykonania umowy, której stroną jest osoba, której dane dotyczą".</p>
 </div>
+
 <h3>6.4 Prawo do Przenoszenia Danych (Art. 20 RODO)</h3>
-<p>Możesz poprosić o swoje dane w ustrukturyzowanym, nadającym się do odczytu maszynowego formacie.</p>
+<p>Możesz wyeksportować swoje dane w formacie JSON nadającym się do odczytu maszynowego za pomocą przycisku <strong>"Eksportuj swoje dane (JSON)"</strong> na ekranie Prywatności. Plik zawiera dane lokalne (preferencje, uczenie) oraz dane w chmurze (subskrypcja, historia, logi aktywności).</p>
 
 <h3>6.5 Prawo do Sprzeciwu (Art. 21 RODO)</h3>
-<p>Możesz sprzeciwić się przetwarzaniu danych z uzasadnionych powodów.</p>
+<p>Możesz sprzeciwić się przetwarzaniu danych z uzasadnionych powodów. Możesz w dowolnym momencie wyłączyć tłumaczenie, raporty o awariach i cofnąć dostęp do kontaktów.</p>
 
 <h3>6.6 Prawo do Wniesienia Skargi</h3>
 <p>Możesz złożyć skargę do właściwego organu nadzorczego:</p>
@@ -505,14 +712,15 @@
 
 <h2>7. Jak Wykonać Swoje Prawa</h2>
 
-<h3>7.1 Usuwanie Przez Aplikację (Natychmiastowe)</h3>
+<h3>7.1 Przez Aplikację (Natychmiastowe)</h3>
 
 <p><strong>Ścieżka:</strong> Ustawienia → Prywatność i Bezpieczeństwo</p>
 
 <ol>
-    <li><strong>Usuń dane w chmurze</strong>: Kopia zapasowa tokenów + historia zakupów + dane subskrypcji (nieodwracalne - wymaga anulowania subskrypcji jeśli aktywna)</li>
-    <li><strong>Usuń dane uczenia</strong>: Nauczone słowa (11 języków)</li>
-    <li><strong>Usuń wszystkie dane lokalne</strong>: Wszystkie preferencje (restartuje aplikację)</li>
+    <li><strong>Eksportuj swoje dane (JSON)</strong>: Pełny eksport danych lokalnych i w chmurze w formacie machine-readable (Art. 15 + Art. 20)</li>
+    <li><strong>Usuń dane w chmurze</strong>: Kopia zapasowa tokenów + historia zakupów + dane subskrypcji + historia subskrypcji + logi aktywności (nieodwracalne - wymaga anulowania subskrypcji jeśli aktywna)</li>
+    <li><strong>Usuń dane uczenia</strong>: Nauczone słowa (13 języków)</li>
+    <li><strong>Usuń wszystkie dane lokalne</strong>: Wszystkie preferencje, pobrane modele, słowniki, pamięć podręczna (restartuje aplikację)</li>
 </ol>
 
 <h3>7.2 Żądanie Przez Email</h3>
@@ -528,13 +736,15 @@
 <ul>
     <li>🔒 <strong>Szyfrowanie w trakcie przesyłania</strong>: HTTPS/TLS 1.3 dla wszystkich komunikacji</li>
     <li>🔒 <strong>Szyfrowanie w spoczynku</strong>: Firebase używa szyfrowania AES-256</li>
-    <li>🔒 <strong>Reguły Bezpieczeństwa Firebase</strong>: Dostęp ograniczony tylko do właściciela danych</li>
+    <li>🔒 <strong>Szyfrowanie lokalnej bazy danych</strong>: Baza danych uczenia jest szyfrowana AES-256 za pomocą sprzętowo wspieranego Android Keystore</li>
+    <li>🔒 <strong>Reguły Bezpieczeństwa Firebase</strong>: Dostęp ograniczony tylko do właściciela danych (domyślna odmowa)</li>
     <li>🔒 <strong>ID Pseudonimowy</strong>: Brak bezpośrednich danych osobowych (imię, email, telefon)</li>
     <li>🔒 <strong>Minimalizacja danych</strong>: Zbieramy tylko to, co ściśle niezbędne</li>
-    <li>🔒 <strong>Automatyczne usuwanie</strong>: Dane usuwane po 365 dniach nieaktywności</li>
+    <li>🔒 <strong>Automatyczne usuwanie</strong>: Dane usuwane po 365 dniach nieaktywności (90 dni dla historii subskrypcji i logów aktywności)</li>
+    <li>🔒 <strong>Chroniony klucz API</strong>: Klucz API OpenAI nigdy nie jest eksponowany w kliencie, jest zapisany jako secret w przekaźniku Cloudflare</li>
 </ul>
 
-<h2>9. Identyfikatory Urządzeń i Wymagane Uprawnienia Android</h2>
+<h2>9. Identyfikatory Urządzeń i Uprawnienia Android</h2>
 
 <h3>9.1 Używane Identyfikatory Urządzeń</h3>
 
@@ -632,7 +842,7 @@
 
 <p><strong>Podstawa prawna:</strong> Wyraźna zgoda (Art. 6.1.a RODO)</p>
 
-<p><strong>Jak wyłączyć:</strong> Ustawienia → Raporty o awariach (opcjonalne) → Wyłącz</p>
+<p><strong>Jak wyłączyć:</strong> Ustawienia → Raporty o awariach (opcjonalne) → Wyłącz. Wyłączenie blokuje przyszłe wysyłanie i usuwa raporty jeszcze niewysłane z urządzenia. Raporty już wysłane do Firebase pozostają na serwerze i nie mogą być usunięte z telefonu.</p>
 
 <h2>11. Osoby Niepełnoletnie</h2>
 
@@ -663,13 +873,15 @@
 <p>Przetwarzanie Twoich danych opiera się na:</p>
 
 <ul>
-    <li><strong>Art. 6.1.b RODO</strong> - Wykonanie umowy: Kopia zapasowa tokenów, historia zakupów, tłumaczenie</li>
+    <li><strong>Art. 6.1.b RODO</strong> - Wykonanie umowy: Kopia zapasowa tokenów, historia zakupów, tłumaczenie, zarządzanie subskrypcjami</li>
     <li><strong>Art. 6.1.a RODO</strong> - Zgoda: Raporty o awariach (opcjonalne)</li>
     <li><strong>Art. 6.1.f RODO</strong> - Uzasadniony interes:
         <ul>
             <li>Zapobieganie oszustwom (system antyfraudowy tokenów)</li>
             <li>Bezpieczeństwo zakupów</li>
             <li>Ochrona systemu rozliczeń przed nadużyciami</li>
+            <li>Synchronizacja wielourządzeniowa</li>
+            <li>Logi aktywności administracyjnej (ścieżka audytu)</li>
         </ul>
     </li>
 </ul>
@@ -691,7 +903,7 @@
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Wersja 2.1 - Ostatnia aktualizacja: 18 stycznia 2026</strong><br>
+    <strong>Wersja 2.3 - Ostatnia aktualizacja: 21 lutego 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 

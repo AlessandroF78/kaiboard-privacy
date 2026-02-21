@@ -91,8 +91,8 @@
 
 <h1>Política de Privacidad - kAIboard</h1>
 
-<p><strong>Última actualización:</strong> 18 de enero de 2026</p>
-<p><strong>Versión:</strong> 2.1</p>
+<p><strong>Última actualización:</strong> 21 de febrero de 2026</p>
+<p><strong>Versión:</strong> 2.3</p>
 
 <div class="highlight">
     <strong>📱 kAIboard</strong> es un teclado Android con funciones de traducción impulsadas por IA. Esta Política de Privacidad explica qué datos recopilamos, cómo los usamos y tus derechos bajo el Reglamento General de Protección de Datos (RGPD - Reglamento UE 2016/679).
@@ -122,10 +122,10 @@
         <th>Base Legal</th>
     </tr>
     <tr>
-        <td><strong>ID de Dispositivo Anónimo</strong></td>
-        <td>Identificador basado en el Android ID del dispositivo (ej. android_e19d6c741afe8197)</td>
-        <td>Restaurar tokens comprados y prevenir fraudes (solo UN dispositivo activo a la vez)</td>
-        <td>Ejecución del contrato (Art. 6.1.b) + Interés legítimo prevención de fraudes (Art. 6.1.f RGPD)</td>
+        <td><strong>Array de Dispositivos</strong></td>
+        <td>Lista de identificadores (ej. ["android_e19d6c...", "android_175be4..."])</td>
+        <td>Sincronizar suscripción y tokens en múltiples dispositivos con la misma cuenta de Google Play</td>
+        <td>Ejecución del contrato (Art. 6.1.b) + Interés legítimo multi-dispositivo (Art. 6.1.f RGPD)</td>
     </tr>
     <tr>
         <td><strong>Saldo de Tokens</strong></td>
@@ -153,9 +153,29 @@
     </tr>
 </table>
 
-<h3>2.1.1 Datos de Suscripción</h3>
+<h4>Sincronización Multi-Dispositivo</h4>
 
-<p>Si se suscribe a una <strong>suscripción mensual</strong> (por ejemplo, Plan PLUS con 250,000 tokens/mes), guardamos los siguientes datos adicionales:</p>
+<p>Si usas kAIboard en múltiples dispositivos con la <strong>misma cuenta de Google Play</strong>:</p>
+
+<ul>
+    <li>✅ Suscripción compartida automáticamente entre todos los dispositivos</li>
+    <li>✅ Saldo de tokens sincronizado en tiempo real</li>
+    <li>✅ Límite mensual compartido (ej. 250.000 tokens TOTALES, no por dispositivo)</li>
+    <li>✅ Listener de Firebase actualiza todos los dispositivos simultáneamente</li>
+</ul>
+
+<p><strong>Datos guardados para multi-dispositivo:</strong></p>
+<ul>
+    <li><strong>devices:</strong> Array de Android IDs anónimos que usan la misma suscripción</li>
+    <li><strong>purchaseToken:</strong> Clave única de la suscripción de Google Play</li>
+    <li><strong>current_usage:</strong> Consumo total de tokens entre todos los dispositivos</li>
+</ul>
+
+<p><strong>Privacidad:</strong> El array <code>devices</code> contiene SOLO Android IDs pseudonimizados (ej. "android_abc123..."). No recopilamos números de teléfono, IMEI u otros identificadores personales.</p>
+
+<h3>2.1.1 Datos de Suscripción Mensual</h3>
+
+<p>Si se suscribe a una <strong>suscripción mensual</strong> (por ejemplo, Plan PLUS con 250.000 tokens/mes), guardamos los siguientes datos adicionales:</p>
 
 <table>
     <tr>
@@ -166,13 +186,13 @@
     </tr>
     <tr>
         <td><strong>Plan de Suscripción</strong></td>
-        <td>Cadena (ej. "plus", "pro")</td>
+        <td>Cadena (ej. "plus", "pro", "max")</td>
         <td>Identificar el plan activo y aplicar el límite de tokens correcto</td>
         <td>Ejecución del contrato (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
         <td><strong>Límite Mensual de Tokens</strong></td>
-        <td>Entero (ej. 250000)</td>
+        <td>Entero (ej. 250000, 500000, 1000000)</td>
         <td>Aplicar el máximo de tokens incluidos en la suscripción</td>
         <td>Ejecución del contrato (Art. 6.1.b RGPD)</td>
     </tr>
@@ -206,6 +226,24 @@
         <td>Gestión del ciclo de facturación y disputas</td>
         <td>Ejecución del contrato (Art. 6.1.b RGPD)</td>
     </tr>
+    <tr>
+        <td><strong>Fecha de Fin de Suscripción</strong></td>
+        <td>Marca de tiempo ISO 8601 (ej. "2026-02-28T14:30:00Z")</td>
+        <td>Gestionar el período de gracia tras la cancelación (la suscripción permanece activa hasta esta fecha)</td>
+        <td>Ejecución del contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Flag "No se Renovará"</strong></td>
+        <td>Booleano (will_not_renew)</td>
+        <td>Indicar si la suscripción fue cancelada pero sigue válida hasta su expiración</td>
+        <td>Ejecución del contrato (Art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+        <td><strong>Fecha de Cancelación</strong></td>
+        <td>Marca de tiempo (cancelled_at)</td>
+        <td>Registrar cuándo el usuario canceló la suscripción</td>
+        <td>Ejecución del contrato (Art. 6.1.b RGPD)</td>
+    </tr>
 </table>
 
 <div class="highlight">
@@ -214,6 +252,144 @@
 
 <div class="important">
     <strong>⚠️ IMPORTANTE - CANCELACIÓN DE SUSCRIPCIÓN:</strong> Si cancela su suscripción, los datos de suscripción se mantienen hasta el final del período de facturación actual (Art. 6.1.b RGPD - ejecución del contrato). Después de la expiración, puede eliminar todos los datos en la nube a través de la pantalla de Privacidad.
+</div>
+
+<h3>2.1.2 Período de Gracia (Grace Period)</h3>
+
+<div class="info">
+    <strong>📅 SUSCRIPCIÓN CANCELADA PERO AÚN ACTIVA</strong>
+    <p>Si cancela su suscripción a través de Google Play, el servicio premium <strong>permanece activo hasta el final del período ya pagado</strong>.</p>
+
+    <p><strong>Ejemplo:</strong></p>
+    <ul>
+        <li>Compra una suscripción PLUS el 15 de enero de 2026</li>
+        <li>Cancela el 20 de enero de 2026</li>
+        <li>✅ Premium permanece activo hasta el 15 de febrero de 2026 (ya pagado)</li>
+        <li>✅ Tokens mensuales disponibles hasta la expiración</li>
+        <li>❌ La suscripción NO se renovará automáticamente</li>
+    </ul>
+
+    <p><strong>Datos guardados durante el período de gracia:</strong></p>
+    <ul>
+        <li><strong>subscription_end:</strong> Fecha exacta hasta la que tiene derecho al servicio</li>
+        <li><strong>will_not_renew:</strong> Flag que indica "cancelada pero válida"</li>
+        <li><strong>cancelled_at:</strong> Marca de tiempo de la cancelación</li>
+        <li><strong>monthly_limit:</strong> Límite de tokens preservado hasta la expiración</li>
+    </ul>
+
+    <p><strong>Cuando expira el período de gracia:</strong></p>
+    <ol>
+        <li>Premium se desactiva automáticamente</li>
+        <li>Datos de suscripción se mueven al historial (user_subscriptions_history)</li>
+        <li>Documento activo (user_subscriptions) eliminado</li>
+        <li>Puede eliminar el historial mediante "Eliminar datos en la nube"</li>
+    </ol>
+</div>
+
+<h3>2.1.3 Historial de Suscripciones</h3>
+
+<p>Cuando una suscripción expira o se elimina, movemos los datos a un documento de historial para cumplimiento del RGPD y auditoría.</p>
+
+<table>
+    <tr>
+        <th>Dato</th>
+        <th>Tipo</th>
+        <th>Finalidad</th>
+        <th>Retención</th>
+    </tr>
+    <tr>
+        <td><strong>Historial de Suscripciones</strong></td>
+        <td>Array de objetos en user_subscriptions_history/{purchaseToken}</td>
+        <td>Trazabilidad de compras, registro de auditoría, cumplimiento RGPD</td>
+        <td>90 días desde la expiración</td>
+    </tr>
+    <tr>
+        <td><strong>Datos por Entrada</strong></td>
+        <td>Plan, tokens usados/límite, fechas inicio/fin/cancelación, motivo cancelación, dispositivos</td>
+        <td>Auditoría, soporte al usuario, gestión de reembolsos</td>
+        <td>90 días desde la expiración</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔒 CONSOLIDACIÓN MULTI-DISPOSITIVO:</strong> El historial se consolida por <strong>purchaseToken</strong>, no por dispositivo. Todas las renovaciones y modificaciones de la misma suscripción se agrupan en un único documento, independientemente del número de dispositivos utilizados.
+</div>
+
+<div class="important">
+    <strong>⚠️ ELIMINACIÓN DEL HISTORIAL:</strong> Puede eliminar el historial en cualquier momento mediante "Eliminar datos en la nube". La eliminación es definitiva e incluye:
+    <ul>
+        <li>✅ Documento activo (user_subscriptions/{purchaseToken})</li>
+        <li>✅ Documento de historial (user_subscriptions_history/{purchaseToken})</li>
+        <li>✅ Registros de actividad administrativa (admin_activity_logs/{device_id})</li>
+        <li>✅ Compatible con RGPD: búsqueda por purchaseToken, respaldo con array de dispositivos</li>
+    </ul>
+</div>
+
+<h3>2.1.4 Registros de Actividad Administrativa</h3>
+
+<p>Para garantizar la trazabilidad y el soporte en caso de disputas, guardamos un registro de las operaciones principales relacionadas con las suscripciones.</p>
+
+<table>
+    <tr>
+        <th>Dato</th>
+        <th>Tipo</th>
+        <th>Finalidad</th>
+        <th>Retención</th>
+    </tr>
+    <tr>
+        <td><strong>Registros de Actividad Administrativa</strong></td>
+        <td>Array de eventos en admin_activity_logs/{device_id}</td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Registro de auditoría para soporte al usuario</li>
+                <li>Resolución de disputas de Google Play (dentro de 60 días)</li>
+                <li>Prevención de fraude y disputas de facturación</li>
+                <li>Gestión del período de gracia y renovaciones automáticas</li>
+            </ul>
+        </td>
+        <td>90 días desde la última modificación</td>
+    </tr>
+    <tr>
+        <td><strong>Eventos Registrados</strong></td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Creación de suscripción</li>
+                <li>Cancelación de suscripción</li>
+                <li>Expiración de suscripción</li>
+                <li>Renovación automática</li>
+                <li>Cambios de plan</li>
+            </ul>
+        </td>
+        <td>Registrar historial de modificaciones para auditoría y soporte</td>
+        <td>90 días desde la última modificación</td>
+    </tr>
+    <tr>
+        <td><strong>Detalles por Evento</strong></td>
+        <td>Marca de tiempo, acción, motivo, plan, detalles de la operación</td>
+        <td>Información necesaria para reconstruir la cronología en caso de disputas</td>
+        <td>90 días desde la última modificación</td>
+    </tr>
+</table>
+
+<div class="important">
+    <strong>⚠️ IMPORTANTE - REGISTROS DE ACTIVIDAD:</strong> Los registros de actividad contienen SOLO metadatos operativos (cuándo, qué, por qué). NO contienen datos personales sensibles. Se eliminan automáticamente después de 90 días desde la última modificación y son accesibles y eliminables mediante "Eliminar datos en la nube".
+</div>
+
+<div class="highlight">
+    <strong>🔒 BASE LEGAL:</strong> Interés legítimo (Art. 6.1.f RGPD) - Necesario para:
+    <ul>
+        <li>Gestión de disputas dentro de 60 días (requisito de Google Play)</li>
+        <li>Soporte técnico y resolución de problemas</li>
+        <li>Prevención de fraude en el sistema de facturación</li>
+        <li>Registro de auditoría para cumplimiento operativo</li>
+    </ul>
+    <p>El impacto en los derechos del usuario se minimiza porque:</p>
+    <ul>
+        <li>✅ Datos pseudonimizados (sin identificadores personales directos)</li>
+        <li>✅ Retención limitada a 90 días</li>
+        <li>✅ Eliminación automática cada 24 horas mediante limpieza en segundo plano</li>
+        <li>✅ Eliminación manual mediante "Eliminar datos en la nube"</li>
+    </ul>
 </div>
 
 <h3>2.2 Datos Almacenados Solo Localmente (En el Dispositivo)</h3>
@@ -225,6 +401,10 @@
     <li>✅ <strong>Idioma asignado a cada contacto</strong> (ID de contacto + código de idioma)</li>
     <li>✅ <strong>Palabras escritas</strong> para sugerencias personalizadas (máx. 14 días, luego se eliminan automáticamente)</li>
     <li>✅ <strong>Caché de traducción</strong> (solo RAM, se pierde al cerrar la aplicación)</li>
+    <li>✅ <strong>Caché de desambiguación de contactos</strong> (solo RAM, se pierde al reiniciar el servicio)</li>
+    <li>✅ <strong>Modelos predictivos N-gram</strong> (descargados por el usuario, guardados localmente)</li>
+    <li>✅ <strong>Diccionarios Hunspell</strong> (copiados de assets, guardados localmente)</li>
+    <li>✅ <strong>Alertas de suscripción</strong> (notificaciones locales sobre uso)</li>
 </ul>
 
 <div class="highlight">
@@ -238,7 +418,7 @@
 </div>
 
 <div class="important">
-    <strong>⚠️ IMPORTANTE:</strong> kAIboard accede a tus contactos SOLO para mostrar nombres de contactos en la interfaz de gestión de idiomas. <strong>Los números de teléfono y nombres de contactos NUNCA se envían a nuestros servidores.</strong>
+    <strong>⚠️ IMPORTANTE:</strong> kAIboard accede a tus contactos SOLO para mostrar nombres de contactos en la interfaz de gestión de idiomas y para determinar el idioma a partir del prefijo internacional del número de teléfono. <strong>Los números de teléfono y nombres de contactos NUNCA se envían a nuestros servidores.</strong>
 </div>
 
 <h3>2.3 Datos que NO Recopilamos</h3>
@@ -252,6 +432,7 @@
     <li>❌ Direcciones de correo electrónico de contactos</li>
     <li>❌ Ubicación geográfica precisa</li>
     <li>❌ Datos biométricos</li>
+    <li>❌ Identificadores publicitarios</li>
 </ul>
 
 <h2>3. Cómo Usamos Tus Datos</h2>
@@ -341,8 +522,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>ID anónimo, saldo de tokens, historial de compras, metadatos de migración</td>
-        <td>Copia de seguridad, sincronización y sistema anti-fraude</td>
+        <td>ID anónimo, saldo de tokens, historial de compras, metadatos de migración, datos de suscripción, registros de actividad</td>
+        <td>Copia de seguridad, sincronización, sistema anti-fraude y registro de auditoría</td>
         <td>UE (servidores europeos)</td>
     </tr>
     <tr>
@@ -398,9 +579,19 @@
         <th>Eliminación</th>
     </tr>
     <tr>
-        <td><strong>Datos de Suscripción (Firebase)</strong></td>
-        <td>Hasta el final del período de facturación + 365 días después de la expiración</td>
-        <td>Automática + eliminación manual</td>
+        <td><strong>Datos de Suscripción Activa (Firebase)</strong></td>
+        <td>Hasta el final del período de facturación actual</td>
+        <td>Eliminación automática al expirar + traslado al historial</td>
+    </tr>
+    <tr>
+        <td><strong>Historial de Suscripciones (Firebase)</strong></td>
+        <td>90 días desde la expiración de la suscripción</td>
+        <td>Eliminación automática + eliminación manual mediante "Eliminar datos en la nube"</td>
+    </tr>
+    <tr>
+        <td><strong>Registros de Actividad (admin_activity_logs)</strong></td>
+        <td>90 días desde la última modificación</td>
+        <td>Eliminación automática (cada 24h) + eliminación manual</td>
     </tr>
     <tr>
         <td><strong>Copia de Seguridad de Tokens (Firebase)</strong></td>
@@ -428,6 +619,16 @@
         <td>Botón "Eliminar todos los datos locales"</td>
     </tr>
     <tr>
+        <td><strong>Modelos Predictivos N-gram (Dispositivo)</strong></td>
+        <td>Hasta eliminación manual o desinstalación</td>
+        <td>Botón "Eliminar todos los datos locales" o eliminación desde la pantalla Modelos Offline</td>
+    </tr>
+    <tr>
+        <td><strong>Diccionarios Hunspell (Dispositivo)</strong></td>
+        <td>Hasta eliminación manual o desinstalación</td>
+        <td>Botón "Eliminar todos los datos locales"</td>
+    </tr>
+    <tr>
         <td><strong>Palabras Aprendidas (Predicción)</strong></td>
         <td>14 días (caducidad automática)</td>
         <td>Automática + eliminación manual</td>
@@ -442,10 +643,15 @@
         <td>Hasta cerrar aplicación</td>
         <td>Automática</td>
     </tr>
+    <tr>
+        <td><strong>Caché de Desambiguación (RAM)</strong></td>
+        <td>Hasta el reinicio del servicio de accesibilidad</td>
+        <td>Automática</td>
+    </tr>
 </table>
 
 <div class="highlight">
-    <strong>🗑️ LIMPIEZA AUTOMÁTICA:</strong> La aplicación realiza automáticamente una limpieza cada 24 horas. Los datos con más de 365 días se eliminan automáticamente, incluso si ya no usas la aplicación.
+    <strong>🗑️ LIMPIEZA AUTOMÁTICA:</strong> La aplicación realiza automáticamente una limpieza cada 24 horas. Los datos con más de 365 días (o 90 días para el historial de suscripciones y registros de actividad) se eliminan automáticamente, incluso si ya no usas la aplicación.
 </div>
 
 <h2>6. Tus Derechos (RGPD)</h2>
@@ -453,18 +659,18 @@
 <p>Bajo el RGPD, tienes los siguientes derechos:</p>
 
 <h3>6.1 Derecho de Acceso (Art. 15 RGPD)</h3>
-<p>Puedes solicitar una copia de todos los datos que conservamos sobre ti.</p>
+<p>Puedes solicitar una copia de todos los datos que conservamos sobre ti. Los datos de suscripción son visibles directamente en la aplicación.</p>
 
 <h3>6.2 Derecho de Rectificación (Art. 16 RGPD)</h3>
-<p>Puedes corregir datos inexactos o incompletos.</p>
+<p>Puedes corregir datos inexactos o incompletos, por ejemplo modificando el idioma asignado a un contacto.</p>
 
 <h3>6.3 Derecho de Supresión (Art. 17 RGPD)</h3>
 <p>Puede eliminar todos sus datos en cualquier momento a través de la <strong>pantalla de Privacidad</strong> en la aplicación:</p>
 
 <ul>
-    <li>✅ <strong>Eliminar datos en la nube</strong>: Elimina la copia de seguridad de tokens, el historial de compras y los datos de suscripción de Firebase</li>
-    <li>✅ <strong>Eliminar datos de aprendizaje</strong>: Elimina las palabras aprendidas para sugerencias</li>
-    <li>✅ <strong>Eliminar todos los datos locales</strong>: Elimina todas las preferencias y datos en el dispositivo</li>
+    <li>✅ <strong>Eliminar datos en la nube</strong>: Elimina la copia de seguridad de tokens, el historial de compras, los datos de suscripción, el historial de suscripciones y los registros de actividad de Firebase</li>
+    <li>✅ <strong>Eliminar datos de aprendizaje</strong>: Elimina las palabras aprendidas para sugerencias (los 13 idiomas)</li>
+    <li>✅ <strong>Eliminar todos los datos locales</strong>: Elimina todas las preferencias, datos en el dispositivo, modelos descargados, diccionarios y caché</li>
 </ul>
 
 <div class="important">
@@ -491,10 +697,10 @@
 </div>
 
 <h3>6.4 Derecho a la Portabilidad de Datos (Art. 20 RGPD)</h3>
-<p>Puedes solicitar tus datos en un formato estructurado y legible por máquina.</p>
+<p>Puedes exportar tus datos en formato JSON legible por máquina mediante el botón <strong>"Exportar tus datos (JSON)"</strong> en la pantalla de Privacidad. El archivo incluye datos locales (preferencias, aprendizaje) y datos en la nube (suscripción, historial, registros de actividad).</p>
 
 <h3>6.5 Derecho de Oposición (Art. 21 RGPD)</h3>
-<p>Puedes oponerte al procesamiento de datos por razones legítimas.</p>
+<p>Puedes oponerte al procesamiento de datos por razones legítimas. Puedes desactivar en cualquier momento la traducción, los informes de fallos y revocar el acceso a los contactos.</p>
 
 <h3>6.6 Derecho a Presentar una Reclamación</h3>
 <p>Puedes presentar una reclamación ante la autoridad de control competente:</p>
@@ -506,14 +712,15 @@
 
 <h2>7. Cómo Ejercer Tus Derechos</h2>
 
-<h3>7.1 Eliminación a Través de la Aplicación (Inmediata)</h3>
+<h3>7.1 A Través de la Aplicación (Inmediata)</h3>
 
 <p><strong>Ruta:</strong> Configuración → Privacidad y Seguridad</p>
 
 <ol>
-    <li><strong>Eliminar datos en la nube</strong>: Copia de seguridad de tokens + historial de compras + datos de suscripción (irreversible - requiere cancelación de suscripción si está activa)</li>
-    <li><strong>Eliminar datos de aprendizaje</strong>: Palabras aprendidas (11 idiomas)</li>
-    <li><strong>Eliminar todos los datos locales</strong>: Todas las preferencias (reinicia aplicación)</li>
+    <li><strong>Exportar tus datos (JSON)</strong>: Exportación completa de datos locales y en la nube en formato legible por máquina (Art. 15 + Art. 20)</li>
+    <li><strong>Eliminar datos en la nube</strong>: Copia de seguridad de tokens + historial de compras + datos de suscripción + historial de suscripciones + registros de actividad (irreversible - requiere cancelación de suscripción si está activa)</li>
+    <li><strong>Eliminar datos de aprendizaje</strong>: Palabras aprendidas (13 idiomas)</li>
+    <li><strong>Eliminar todos los datos locales</strong>: Todas las preferencias, modelos descargados, diccionarios, caché (reinicia aplicación)</li>
 </ol>
 
 <h3>7.2 Solicitud por Correo Electrónico</h3>
@@ -529,10 +736,12 @@
 <ul>
     <li>🔒 <strong>Cifrado en tránsito</strong>: HTTPS/TLS 1.3 para todas las comunicaciones</li>
     <li>🔒 <strong>Cifrado en reposo</strong>: Firebase usa cifrado AES-256</li>
-    <li>🔒 <strong>Reglas de Seguridad de Firebase</strong>: Acceso limitado solo al propietario de los datos</li>
+    <li>🔒 <strong>Cifrado de base de datos local</strong>: La base de datos de aprendizaje está cifrada con AES-256 mediante Android Keystore respaldado por hardware</li>
+    <li>🔒 <strong>Reglas de Seguridad de Firebase</strong>: Acceso limitado solo al propietario de los datos (denegación por defecto)</li>
     <li>🔒 <strong>ID Pseudónimo</strong>: Sin datos personales directos (nombre, email, teléfono)</li>
     <li>🔒 <strong>Minimización de datos</strong>: Solo recopilamos lo estrictamente necesario</li>
-    <li>🔒 <strong>Eliminación automática</strong>: Datos eliminados después de 365 días de inactividad</li>
+    <li>🔒 <strong>Eliminación automática</strong>: Datos eliminados después de 365 días de inactividad (90 días para historial de suscripciones y registros de actividad)</li>
+    <li>🔒 <strong>Clave API protegida</strong>: La clave API de OpenAI nunca se expone en el cliente, se almacena como secreto en el relé de Cloudflare</li>
 </ul>
 
 <h2>9. Identificadores de Dispositivo y Permisos de Android</h2>
@@ -633,7 +842,7 @@
 
 <p><strong>Base legal:</strong> Consentimiento explícito (Art. 6.1.a RGPD)</p>
 
-<p><strong>Cómo desactivar:</strong> Configuración → Informes de fallos (opcional) → Desactivar</p>
+<p><strong>Cómo desactivar:</strong> Configuración → Informes de fallos (opcional) → Desactivar. La desactivación detiene el envío futuro y elimina los informes no enviados presentes en el dispositivo. Los informes ya enviados a Firebase permanecen en el backend y no pueden eliminarse desde el teléfono.</p>
 
 <h2>11. Menores</h2>
 
@@ -664,13 +873,15 @@
 <p>El procesamiento de tus datos se basa en:</p>
 
 <ul>
-    <li><strong>Art. 6.1.b RGPD</strong> - Ejecución del contrato: Copia de seguridad de tokens, historial de compras, traducción</li>
+    <li><strong>Art. 6.1.b RGPD</strong> - Ejecución del contrato: Copia de seguridad de tokens, historial de compras, traducción, gestión de suscripciones</li>
     <li><strong>Art. 6.1.a RGPD</strong> - Consentimiento: Informes de fallos (opcional)</li>
     <li><strong>Art. 6.1.f RGPD</strong> - Interés legítimo:
         <ul>
             <li>Prevención de fraude (sistema anti-fraude de tokens)</li>
             <li>Seguridad de las compras</li>
             <li>Protección del sistema de facturación contra abusos</li>
+            <li>Sincronización multi-dispositivo</li>
+            <li>Registros de actividad administrativa (registro de auditoría)</li>
         </ul>
     </li>
 </ul>
@@ -692,7 +903,7 @@
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Versión 2.1 - Última actualización: 18 de enero de 2026</strong><br>
+    <strong>Versión 2.3 - Última actualización: 21 de febrero de 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 

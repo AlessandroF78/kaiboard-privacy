@@ -91,8 +91,8 @@
 
 <h1>Privacybeleid - kAIboard</h1>
 
-<p><strong>Laatst bijgewerkt:</strong> 18 januari 2026</p>
-<p><strong>Versie:</strong> 2.1</p>
+<p><strong>Laatst bijgewerkt:</strong> 21 februari 2026</p>
+<p><strong>Versie:</strong> 2.3</p>
 
 <div class="highlight">
     <strong>📱 kAIboard</strong> is een Android-toetsenbord met AI-aangedreven vertaalfuncties. Dit Privacybeleid legt uit welke gegevens we verzamelen, hoe we ze gebruiken en uw rechten onder de Algemene Verordening Gegevensbescherming (AVG - EU-verordening 2016/679).
@@ -122,10 +122,10 @@
         <th>Rechtsgrondslag</th>
     </tr>
     <tr>
-        <td><strong>Anoniem Apparaat-ID</strong></td>
-        <td>Identificatie gebaseerd op Android ID van het apparaat (bijv. android_e19d6c741afe8197)</td>
-        <td>Gekochte tokens herstellen en fraude voorkomen (slechts ÉÉN actief apparaat tegelijk)</td>
-        <td>Contractuitvoering (Art. 6.1.b) + Gerechtvaardigd belang fraudepreventie (Art. 6.1.f AVG)</td>
+        <td><strong>Apparaat-Array</strong></td>
+        <td>Lijst van identifiers (bijv. ["android_e19d6c...", "android_175be4..."])</td>
+        <td>Abonnement en tokens synchroniseren over meerdere apparaten met hetzelfde Google Play-account</td>
+        <td>Contractuitvoering (Art. 6.1.b) + Gerechtvaardigd belang multi-apparaat (Art. 6.1.f AVG)</td>
     </tr>
     <tr>
         <td><strong>Tokensaldo</strong></td>
@@ -153,7 +153,27 @@
     </tr>
 </table>
 
-<h3>2.1.1 Abonnementsgegevens</h3>
+<h4>Multi-Apparaat Synchronisatie</h4>
+
+<p>Als u kAIboard op meerdere apparaten gebruikt met hetzelfde <strong>Google Play-account</strong>:</p>
+
+<ul>
+    <li>✅ Abonnement automatisch gedeeld over alle apparaten</li>
+    <li>✅ Tokensaldo in realtime gesynchroniseerd</li>
+    <li>✅ Maandelijkse limiet gedeeld (bijv. 250.000 tokens TOTAAL, niet per apparaat)</li>
+    <li>✅ Firebase-listener werkt alle apparaten gelijktijdig bij</li>
+</ul>
+
+<p><strong>Gegevens opgeslagen voor multi-apparaat:</strong></p>
+<ul>
+    <li><strong>devices:</strong> Array van anonieme Android-ID's die hetzelfde abonnement gebruiken</li>
+    <li><strong>purchaseToken:</strong> Unieke sleutel van het Google Play-abonnement</li>
+    <li><strong>current_usage:</strong> Totaal tokenverbruik over alle apparaten</li>
+</ul>
+
+<p><strong>Privacy:</strong> Het <code>devices</code>-array bevat ALLEEN gepseudonimiseerde Android-ID's (bijv. "android_abc123..."). We verzamelen geen telefoonnummers, IMEI of andere persoonlijke identifiers.</p>
+
+<h3>2.1.1 Maandelijkse Abonnementsgegevens</h3>
 
 <p>Als u een <strong>maandabonnement</strong> neemt (bijv. PLUS-abonnement met 250.000 tokens/maand), slaan we de volgende aanvullende gegevens op:</p>
 
@@ -166,13 +186,13 @@
     </tr>
     <tr>
         <td><strong>Abonnementsplan</strong></td>
-        <td>Tekenreeks (bijv. "plus", "pro")</td>
+        <td>Tekenreeks (bijv. "plus", "pro", "max")</td>
         <td>Actief plan identificeren en correcte tokenlimiet toepassen</td>
         <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
     <tr>
         <td><strong>Maandelijkse Tokenlimiet</strong></td>
-        <td>Geheel getal (bijv. 250000)</td>
+        <td>Geheel getal (bijv. 250000, 500000, 1000000)</td>
         <td>Maximum tokens in abonnement toepassen</td>
         <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
@@ -206,6 +226,24 @@
         <td>Beheer factureringscyclus en geschillen</td>
         <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
+    <tr>
+        <td><strong>Einddatum Abonnement</strong></td>
+        <td>ISO 8601 Tijdstempel (bijv. "2026-02-28T14:30:00Z")</td>
+        <td>Respijtperiode beheren na annulering (abonnement blijft actief tot deze datum)</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
+    </tr>
+    <tr>
+        <td><strong>Vlag "Wordt niet verlengd"</strong></td>
+        <td>Boolean (will_not_renew)</td>
+        <td>Aangeven of abonnement is geannuleerd maar geldig blijft tot afloop</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
+    </tr>
+    <tr>
+        <td><strong>Annuleringsdatum</strong></td>
+        <td>Tijdstempel (cancelled_at)</td>
+        <td>Bijhouden wanneer de gebruiker het abonnement heeft geannuleerd</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
+    </tr>
 </table>
 
 <div class="highlight">
@@ -214,6 +252,144 @@
 
 <div class="important">
     <strong>⚠️ BELANGRIJK - ABONNEMENTSANNULERING:</strong> Als u uw abonnement annuleert, worden abonnementsgegevens bewaard tot het einde van de huidige factureringsperiode (Art. 6.1.b AVG - contractuitvoering). Na afloop kunt u alle cloudgegevens verwijderen via het Privacy-scherm.
+</div>
+
+<h3>2.1.2 Respijtperiode (Grace Period)</h3>
+
+<div class="info">
+    <strong>📅 ABONNEMENT GEANNULEERD MAAR NOG ACTIEF</strong>
+    <p>Als u uw abonnement annuleert via Google Play, blijft de premiumservice <strong>actief tot het einde van de reeds betaalde periode</strong>.</p>
+
+    <p><strong>Voorbeeld:</strong></p>
+    <ul>
+        <li>U koopt een PLUS-abonnement op 15 januari 2026</li>
+        <li>U annuleert op 20 januari 2026</li>
+        <li>✅ Premium blijft actief tot 15 februari 2026 (reeds betaald)</li>
+        <li>✅ Maandelijkse tokens beschikbaar tot afloop</li>
+        <li>❌ Abonnement wordt NIET automatisch verlengd</li>
+    </ul>
+
+    <p><strong>Gegevens opgeslagen tijdens de respijtperiode:</strong></p>
+    <ul>
+        <li><strong>subscription_end:</strong> Exacte datum tot wanneer u recht heeft op de service</li>
+        <li><strong>will_not_renew:</strong> Vlag die aangeeft "geannuleerd maar geldig"</li>
+        <li><strong>cancelled_at:</strong> Tijdstempel van de annulering</li>
+        <li><strong>monthly_limit:</strong> Tokenlimiet bewaard tot afloop</li>
+    </ul>
+
+    <p><strong>Wanneer de respijtperiode afloopt:</strong></p>
+    <ol>
+        <li>Premium wordt automatisch gedeactiveerd</li>
+        <li>Abonnementsgegevens verplaatst naar geschiedenis (user_subscriptions_history)</li>
+        <li>Actief document (user_subscriptions) verwijderd</li>
+        <li>U kunt de geschiedenis verwijderen via "Cloudgegevens verwijderen"</li>
+    </ol>
+</div>
+
+<h3>2.1.3 Abonnementsgeschiedenis</h3>
+
+<p>Wanneer een abonnement afloopt of wordt verwijderd, verplaatsen we de gegevens naar een geschiedenisdocument voor AVG-naleving en audit.</p>
+
+<table>
+    <tr>
+        <th>Gegeven</th>
+        <th>Type</th>
+        <th>Doel</th>
+        <th>Bewaring</th>
+    </tr>
+    <tr>
+        <td><strong>Abonnementsgeschiedenis</strong></td>
+        <td>Array van objecten in user_subscriptions_history/{purchaseToken}</td>
+        <td>Traceerbaarheid van aankopen, audittrail, AVG-naleving</td>
+        <td>90 dagen vanaf afloop</td>
+    </tr>
+    <tr>
+        <td><strong>Gegevens per Vermelding</strong></td>
+        <td>Plan, gebruikte tokens/limiet, start-/eind-/annuleringsdatums, annuleringsreden, apparaten</td>
+        <td>Audit, gebruikersondersteuning, terugbetalingsbeheer</td>
+        <td>90 dagen vanaf afloop</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔒 MULTI-APPARAAT CONSOLIDATIE:</strong> De geschiedenis wordt geconsolideerd per <strong>purchaseToken</strong>, niet per apparaat. Alle verlengingen en wijzigingen van hetzelfde abonnement worden gegroepeerd in één document, ongeacht het aantal gebruikte apparaten.
+</div>
+
+<div class="important">
+    <strong>⚠️ VERWIJDERING VAN GESCHIEDENIS:</strong> U kunt de geschiedenis op elk moment verwijderen via "Cloudgegevens verwijderen". De verwijdering is definitief en omvat:
+    <ul>
+        <li>✅ Actief document (user_subscriptions/{purchaseToken})</li>
+        <li>✅ Geschiedenisdocument (user_subscriptions_history/{purchaseToken})</li>
+        <li>✅ Administratieve activiteitenlogboeken (admin_activity_logs/{device_id})</li>
+        <li>✅ AVG-conform: zoeken op purchaseToken, terugval met devices-array</li>
+    </ul>
+</div>
+
+<h3>2.1.4 Administratieve Activiteitenlogboeken</h3>
+
+<p>Om traceerbaarheid en ondersteuning bij geschillen te garanderen, slaan we een logboek op van de belangrijkste abonnementsgerelateerde operaties.</p>
+
+<table>
+    <tr>
+        <th>Gegeven</th>
+        <th>Type</th>
+        <th>Doel</th>
+        <th>Bewaring</th>
+    </tr>
+    <tr>
+        <td><strong>Administratieve Activiteitenlogboeken</strong></td>
+        <td>Array van gebeurtenissen in admin_activity_logs/{device_id}</td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Audittrail voor gebruikersondersteuning</li>
+                <li>Google Play geschillenbeslechting (binnen 60 dagen)</li>
+                <li>Fraudepreventie en factureringsgeschillen</li>
+                <li>Beheer van respijtperiode en automatische verlengingen</li>
+            </ul>
+        </td>
+        <td>90 dagen vanaf laatste wijziging</td>
+    </tr>
+    <tr>
+        <td><strong>Geregistreerde Gebeurtenissen</strong></td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Abonnementsaanmaak</li>
+                <li>Abonnementsannulering</li>
+                <li>Abonnementsafloop</li>
+                <li>Automatische verlenging</li>
+                <li>Planwijzigingen</li>
+            </ul>
+        </td>
+        <td>Wijzigingsgeschiedenis bijhouden voor audit en ondersteuning</td>
+        <td>90 dagen vanaf laatste wijziging</td>
+    </tr>
+    <tr>
+        <td><strong>Details per Gebeurtenis</strong></td>
+        <td>Tijdstempel, actie, reden, plan, operatiedetails</td>
+        <td>Informatie nodig om tijdlijn te reconstrueren bij geschillen</td>
+        <td>90 dagen vanaf laatste wijziging</td>
+    </tr>
+</table>
+
+<div class="important">
+    <strong>⚠️ BELANGRIJK - ACTIVITEITENLOGBOEKEN:</strong> Activiteitenlogboeken bevatten ALLEEN operationele metadata (wanneer, wat, waarom). Ze bevatten GEEN gevoelige persoonlijke gegevens. Ze worden automatisch verwijderd na 90 dagen vanaf de laatste wijziging en zijn toegankelijk en verwijderbaar via "Cloudgegevens verwijderen".
+</div>
+
+<div class="highlight">
+    <strong>🔒 RECHTSGRONDSLAG:</strong> Gerechtvaardigd belang (Art. 6.1.f AVG) - Noodzakelijk voor:
+    <ul>
+        <li>Geschillenbeheer binnen 60 dagen (Google Play-vereiste)</li>
+        <li>Technische ondersteuning en probleemoplossing</li>
+        <li>Fraudepreventie in het factureringssysteem</li>
+        <li>Audittrail voor operationele naleving</li>
+    </ul>
+    <p>De impact op gebruikersrechten wordt geminimaliseerd omdat:</p>
+    <ul>
+        <li>✅ Gepseudonimiseerde gegevens (geen directe persoonlijke identifiers)</li>
+        <li>✅ Bewaring beperkt tot 90 dagen</li>
+        <li>✅ Automatische verwijdering elke 24 uur via achtergrondopruiming</li>
+        <li>✅ Handmatige verwijdering via "Cloudgegevens verwijderen"</li>
+    </ul>
 </div>
 
 <h3>2.2 Alleen Lokaal Opgeslagen Gegevens (Op Apparaat)</h3>
@@ -225,6 +401,10 @@
     <li>✅ <strong>Taal toegewezen aan elk contact</strong> (contact-ID + taalcode)</li>
     <li>✅ <strong>Getypte woorden</strong> voor gepersonaliseerde suggesties (max. 14 dagen, daarna automatisch verwijderd)</li>
     <li>✅ <strong>Vertaalcache</strong> (alleen RAM, verloren bij sluiten van app)</li>
+    <li>✅ <strong>Contact-disambiguatiecache</strong> (alleen RAM, verloren bij herstart van service)</li>
+    <li>✅ <strong>Voorspellende N-gram modellen</strong> (gedownload door gebruiker, lokaal opgeslagen)</li>
+    <li>✅ <strong>Hunspell-woordenboeken</strong> (gekopieerd uit assets, lokaal opgeslagen)</li>
+    <li>✅ <strong>Abonnementsmeldingen</strong> (lokale meldingen over gebruik)</li>
 </ul>
 
 <div class="highlight">
@@ -238,7 +418,7 @@
 </div>
 
 <div class="important">
-    <strong>⚠️ BELANGRIJK:</strong> kAIboard heeft ALLEEN toegang tot uw contacten om contactnamen weer te geven in de interface voor taalbeheer. <strong>Telefoonnummers en contactnamen worden NOOIT naar onze servers verzonden.</strong>
+    <strong>⚠️ BELANGRIJK:</strong> kAIboard heeft ALLEEN toegang tot uw contacten om contactnamen weer te geven in de interface voor taalbeheer en om de taal te bepalen aan de hand van het internationale telefoonnummervoorvoegsel. <strong>Telefoonnummers en contactnamen worden NOOIT naar onze servers verzonden.</strong>
 </div>
 
 <h3>2.3 Gegevens die We NIET Verzamelen</h3>
@@ -252,6 +432,7 @@
     <li>❌ E-mailadressen van contacten</li>
     <li>❌ Precieze geografische locatie</li>
     <li>❌ Biometrische gegevens</li>
+    <li>❌ Reclame-identifiers</li>
 </ul>
 
 <h2>3. Hoe We Uw Gegevens Gebruiken</h2>
@@ -341,8 +522,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>Anoniem ID, tokensaldo, aankoopgeschiedenis, migratie metadata</td>
-        <td>Back-up, synchronisatie en anti-fraudesysteem</td>
+        <td>Anoniem ID, tokensaldo, aankoopgeschiedenis, migratie metadata, abonnementsgegevens, activiteitenlogboeken</td>
+        <td>Back-up, synchronisatie, anti-fraudesysteem en audittrail</td>
         <td>EU (Europese servers)</td>
     </tr>
     <tr>
@@ -398,9 +579,19 @@
         <th>Verwijdering</th>
     </tr>
     <tr>
-        <td><strong>Abonnementsgegevens (Firebase)</strong></td>
-        <td>Tot einde factureringsperiode + 365 dagen na afloop</td>
-        <td>Automatisch + handmatige verwijdering</td>
+        <td><strong>Actieve Abonnementsgegevens (Firebase)</strong></td>
+        <td>Tot het einde van de huidige factureringsperiode</td>
+        <td>Automatische verwijdering bij afloop + verplaatsing naar geschiedenis</td>
+    </tr>
+    <tr>
+        <td><strong>Abonnementsgeschiedenis (Firebase)</strong></td>
+        <td>90 dagen vanaf afloop abonnement</td>
+        <td>Automatische verwijdering + handmatige verwijdering via "Cloudgegevens verwijderen"</td>
+    </tr>
+    <tr>
+        <td><strong>Activiteitenlogboeken (admin_activity_logs)</strong></td>
+        <td>90 dagen vanaf laatste wijziging</td>
+        <td>Automatische verwijdering (elke 24u) + handmatige verwijdering</td>
     </tr>
     <tr>
         <td><strong>Token Back-up (Firebase)</strong></td>
@@ -428,6 +619,16 @@
         <td>Knop "Alle lokale gegevens verwijderen"</td>
     </tr>
     <tr>
+        <td><strong>Voorspellende N-gram Modellen (Apparaat)</strong></td>
+        <td>Tot handmatige verwijdering of deïnstallatie</td>
+        <td>Knop "Alle lokale gegevens verwijderen" of verwijdering vanuit het scherm Offline Modellen</td>
+    </tr>
+    <tr>
+        <td><strong>Hunspell-woordenboeken (Apparaat)</strong></td>
+        <td>Tot handmatige verwijdering of deïnstallatie</td>
+        <td>Knop "Alle lokale gegevens verwijderen"</td>
+    </tr>
+    <tr>
         <td><strong>Geleerde Woorden (Voorspelling)</strong></td>
         <td>14 dagen (automatisch verval)</td>
         <td>Automatisch + handmatige verwijdering</td>
@@ -442,10 +643,15 @@
         <td>Tot app wordt gesloten</td>
         <td>Automatisch</td>
     </tr>
+    <tr>
+        <td><strong>Disambiguatiecache (RAM)</strong></td>
+        <td>Tot herstart van de toegankelijkheidsservice</td>
+        <td>Automatisch</td>
+    </tr>
 </table>
 
 <div class="highlight">
-    <strong>🗑️ AUTOMATISCHE OPRUIMING:</strong> De app voert automatisch elke 24 uur een opruiming uit. Gegevens ouder dan 365 dagen worden automatisch verwijderd, zelfs als u de app niet meer gebruikt.
+    <strong>🗑️ AUTOMATISCHE OPRUIMING:</strong> De app voert automatisch elke 24 uur een opruiming uit. Gegevens ouder dan 365 dagen (of 90 dagen voor abonnementsgeschiedenis en activiteitenlogboeken) worden automatisch verwijderd, zelfs als u de app niet meer gebruikt.
 </div>
 
 <h2>6. Uw Rechten (AVG)</h2>
@@ -453,18 +659,18 @@
 <p>Onder de AVG heeft u de volgende rechten:</p>
 
 <h3>6.1 Recht van Inzage (Art. 15 AVG)</h3>
-<p>U kunt een kopie aanvragen van alle gegevens die we over u bewaren.</p>
+<p>U kunt een kopie aanvragen van alle gegevens die we over u bewaren. Abonnementsgegevens zijn direct zichtbaar in de app.</p>
 
 <h3>6.2 Recht op Rectificatie (Art. 16 AVG)</h3>
-<p>U kunt onjuiste of onvolledige gegevens corrigeren.</p>
+<p>U kunt onjuiste of onvolledige gegevens corrigeren, bijvoorbeeld door de taal te wijzigen die aan een contact is toegewezen.</p>
 
 <h3>6.3 Recht op Gegevenswissing (Art. 17 AVG)</h3>
 <p>U kunt al uw gegevens op elk moment verwijderen via het <strong>Privacy-scherm</strong> in de app:</p>
 
 <ul>
-    <li>✅ <strong>Cloudgegevens verwijderen</strong>: Verwijdert tokenback-up, aankoopgeschiedenis en abonnementsgegevens uit Firebase</li>
-    <li>✅ <strong>Leergegevens verwijderen</strong>: Verwijdert geleerde woorden voor suggesties</li>
-    <li>✅ <strong>Alle lokale gegevens verwijderen</strong>: Verwijdert alle voorkeuren en gegevens op het apparaat</li>
+    <li>✅ <strong>Cloudgegevens verwijderen</strong>: Verwijdert tokenback-up, aankoopgeschiedenis, abonnementsgegevens, abonnementsgeschiedenis en activiteitenlogboeken uit Firebase</li>
+    <li>✅ <strong>Leergegevens verwijderen</strong>: Verwijdert geleerde woorden voor suggesties (alle 13 talen)</li>
+    <li>✅ <strong>Alle lokale gegevens verwijderen</strong>: Verwijdert alle voorkeuren, gegevens op het apparaat, gedownloade modellen, woordenboeken en cache</li>
 </ul>
 
 <div class="important">
@@ -491,10 +697,10 @@
 </div>
 
 <h3>6.4 Recht op Gegevensoverdraagbaarheid (Art. 20 AVG)</h3>
-<p>U kunt uw gegevens aanvragen in een gestructureerd, machineleesbaar formaat.</p>
+<p>U kunt uw gegevens exporteren in machineleesbaar JSON-formaat via de knop <strong>"Exporteer uw gegevens (JSON)"</strong> in het Privacy-scherm. Het bestand bevat lokale gegevens (voorkeuren, leergegevens) en cloudgegevens (abonnement, geschiedenis, activiteitenlogboeken).</p>
 
 <h3>6.5 Recht van Bezwaar (Art. 21 AVG)</h3>
-<p>U kunt bezwaar maken tegen gegevensverwerking om legitieme redenen.</p>
+<p>U kunt bezwaar maken tegen gegevensverwerking om legitieme redenen. U kunt op elk moment de vertaling, crashrapporten uitschakelen en de toegang tot contacten intrekken.</p>
 
 <h3>6.6 Recht om een Klacht in te Dienen</h3>
 <p>U kunt een klacht indienen bij de bevoegde toezichthoudende autoriteit:</p>
@@ -506,14 +712,15 @@
 
 <h2>7. Hoe Uw Rechten Uit te Oefenen</h2>
 
-<h3>7.1 Verwijdering via App (Direct)</h3>
+<h3>7.1 Via App (Direct)</h3>
 
 <p><strong>Pad:</strong> Instellingen → Privacy en Beveiliging</p>
 
 <ol>
-    <li><strong>Cloudgegevens verwijderen</strong>: Tokenback-up + aankoopgeschiedenis + abonnementsgegevens (onomkeerbaar - vereist abonnementsannulering indien actief)</li>
-    <li><strong>Leergegevens verwijderen</strong>: Geleerde woorden (11 talen)</li>
-    <li><strong>Alle lokale gegevens verwijderen</strong>: Alle voorkeuren (herstart app)</li>
+    <li><strong>Exporteer uw gegevens (JSON)</strong>: Volledige export van lokale en cloudgegevens in machineleesbaar formaat (Art. 15 + Art. 20)</li>
+    <li><strong>Cloudgegevens verwijderen</strong>: Tokenback-up + aankoopgeschiedenis + abonnementsgegevens + abonnementsgeschiedenis + activiteitenlogboeken (onomkeerbaar - vereist abonnementsannulering indien actief)</li>
+    <li><strong>Leergegevens verwijderen</strong>: Geleerde woorden (13 talen)</li>
+    <li><strong>Alle lokale gegevens verwijderen</strong>: Alle voorkeuren, gedownloade modellen, woordenboeken, cache (herstart app)</li>
 </ol>
 
 <h3>7.2 Aanvraag via E-mail</h3>
@@ -529,10 +736,12 @@
 <ul>
     <li>🔒 <strong>Versleuteling tijdens overdracht</strong>: HTTPS/TLS 1.3 voor alle communicatie</li>
     <li>🔒 <strong>Versleuteling in rust</strong>: Firebase gebruikt AES-256 versleuteling</li>
-    <li>🔒 <strong>Firebase Beveiligingsregels</strong>: Toegang beperkt tot alleen de eigenaar van de gegevens</li>
+    <li>🔒 <strong>Lokale databaseversleuteling</strong>: De leerdatabase is versleuteld met AES-256 via hardware-ondersteunde Android Keystore</li>
+    <li>🔒 <strong>Firebase Beveiligingsregels</strong>: Toegang beperkt tot alleen de eigenaar van de gegevens (standaard weigeren)</li>
     <li>🔒 <strong>Pseudoniem ID</strong>: Geen directe persoonlijke gegevens (naam, e-mail, telefoon)</li>
     <li>🔒 <strong>Gegevensminimalisatie</strong>: We verzamelen alleen wat strikt noodzakelijk is</li>
-    <li>🔒 <strong>Automatische verwijdering</strong>: Gegevens verwijderd na 365 dagen inactiviteit</li>
+    <li>🔒 <strong>Automatische verwijdering</strong>: Gegevens verwijderd na 365 dagen inactiviteit (90 dagen voor abonnementsgeschiedenis en activiteitenlogboeken)</li>
+    <li>🔒 <strong>Beschermde API-sleutel</strong>: De OpenAI API-sleutel wordt nooit blootgesteld in de client, deze is opgeslagen als secret in de Cloudflare-relay</li>
 </ul>
 
 <h2>9. Apparaat-Identifiers en Android-machtigingen</h2>
@@ -633,7 +842,7 @@
 
 <p><strong>Rechtsgrondslag:</strong> Expliciete toestemming (Art. 6.1.a AVG)</p>
 
-<p><strong>Hoe uit te schakelen:</strong> Instellingen → Crashrapporten (optioneel) → Uitschakelen</p>
+<p><strong>Hoe uit te schakelen:</strong> Instellingen → Crashrapporten (optioneel) → Uitschakelen. Het uitschakelen stopt toekomstige verzending en verwijdert nog niet verzonden rapporten op het apparaat. Rapporten die al naar Firebase zijn verzonden, blijven op de backend en kunnen niet vanaf de telefoon worden verwijderd.</p>
 
 <h2>11. Minderjarigen</h2>
 
@@ -664,13 +873,15 @@
 <p>De verwerking van uw gegevens is gebaseerd op:</p>
 
 <ul>
-    <li><strong>Art. 6.1.b AVG</strong> - Contractuitvoering: Token back-up, aankoopgeschiedenis, vertaling</li>
+    <li><strong>Art. 6.1.b AVG</strong> - Contractuitvoering: Token back-up, aankoopgeschiedenis, vertaling, abonnementsbeheer</li>
     <li><strong>Art. 6.1.a AVG</strong> - Toestemming: Crashrapporten (optioneel)</li>
     <li><strong>Art. 6.1.f AVG</strong> - Gerechtvaardigd belang:
         <ul>
             <li>Fraudepreventie (token anti-fraudesysteem)</li>
             <li>Aankoopbeveiliging</li>
             <li>Bescherming van het factureringssysteem tegen misbruik</li>
+            <li>Multi-apparaat synchronisatie</li>
+            <li>Administratieve activiteitenlogboeken (audittrail)</li>
         </ul>
     </li>
 </ul>
@@ -692,7 +903,7 @@
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Versie 2.1 - Laatst bijgewerkt: 18 januari 2026</strong><br>
+    <strong>Versie 2.3 - Laatst bijgewerkt: 21 februari 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 

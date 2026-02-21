@@ -91,8 +91,8 @@
 
 <h1>Informativa sulla Privacy - kAIboard</h1>
 
-<p><strong>Ultimo aggiornamento:</strong> 31 gennaio 2026</p>
-<p><strong>Versione:</strong> 2.2</p>
+<p><strong>Ultimo aggiornamento:</strong> 21 febbraio 2026</p>
+<p><strong>Versione:</strong> 2.3</p>
 
 <div class="highlight">
     <strong>📱 kAIboard</strong> è una tastiera Android con funzionalità di traduzione basate sull'intelligenza artificiale. Questa Informativa sulla Privacy spiega quali dati raccogliamo, come li utilizziamo e i tuoi diritti ai sensi del Regolamento Generale sulla Protezione dei Dati (GDPR - Regolamento UE 2016/679).
@@ -259,7 +259,7 @@
 <div class="info">
     <strong>📅 ABBONAMENTO CANCELLATO MA ANCORA ATTIVO</strong>
     <p>Se annulli l'abbonamento tramite Google Play, il servizio premium <strong>resta attivo fino alla fine del periodo già pagato</strong>.</p>
-    
+
     <p><strong>Esempio:</strong></p>
     <ul>
         <li>Acquisti abbonamento PLUS il 15 gennaio 2026</li>
@@ -268,7 +268,7 @@
         <li>✅ Token mensili disponibili fino alla scadenza</li>
         <li>❌ L'abbonamento NON si rinnova automaticamente</li>
     </ul>
-    
+
     <p><strong>Dati salvati durante il grace period:</strong></p>
     <ul>
         <li><strong>subscription_end:</strong> Data esatta fino a cui hai diritto al servizio</li>
@@ -276,7 +276,7 @@
         <li><strong>cancelled_at:</strong> Timestamp della cancellazione</li>
         <li><strong>monthly_limit:</strong> Limite token preservato fino a scadenza</li>
     </ul>
-    
+
     <p><strong>Quando scade il grace period:</strong></p>
     <ol>
         <li>Premium viene disattivato automaticamente</li>
@@ -320,7 +320,75 @@
     <ul>
         <li>✅ Documento attivo (user_subscriptions/{purchaseToken})</li>
         <li>✅ Documento cronologia (user_subscriptions_history/{purchaseToken})</li>
+        <li>✅ Log attività amministrativa (admin_activity_logs/{device_id})</li>
         <li>✅ GDPR compliant: ricerca con purchaseToken, fallback con devices array</li>
+    </ul>
+</div>
+
+<h3>2.1.4 Log Attività Amministrativa</h3>
+
+<p>Per garantire tracciabilità e supporto in caso di controversie, salviamo un registro delle operazioni principali relative agli abbonamenti.</p>
+
+<table>
+    <tr>
+        <th>Dato</th>
+        <th>Tipo</th>
+        <th>Finalità</th>
+        <th>Conservazione</th>
+    </tr>
+    <tr>
+        <td><strong>Log Attività Amministrativa</strong></td>
+        <td>Array di eventi in admin_activity_logs/{device_id}</td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Audit trail per supporto utente</li>
+                <li>Risoluzione controversie Google Play (entro 60 giorni)</li>
+                <li>Prevenzione frodi e dispute billing</li>
+                <li>Gestione grace period e rinnovi automatici</li>
+            </ul>
+        </td>
+        <td>90 giorni dall'ultima modifica</td>
+    </tr>
+    <tr>
+        <td><strong>Eventi Registrati</strong></td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Sottoscrizione abbonamento</li>
+                <li>Cancellazione abbonamento</li>
+                <li>Scadenza abbonamento</li>
+                <li>Rinnovo automatico</li>
+                <li>Modifiche piano</li>
+            </ul>
+        </td>
+        <td>Tracciare storia modifiche per audit e supporto</td>
+        <td>90 giorni dall'ultima modifica</td>
+    </tr>
+    <tr>
+        <td><strong>Dettagli per Evento</strong></td>
+        <td>Timestamp, azione, motivo, piano, dettagli operazione</td>
+        <td>Informazioni necessarie per ricostruire cronologia in caso di dispute</td>
+        <td>90 giorni dall'ultima modifica</td>
+    </tr>
+</table>
+
+<div class="important">
+    <strong>⚠️ IMPORTANTE - LOG ATTIVITÀ:</strong> I log di attività contengono SOLO metadati operazionali (quando, cosa, perché). NON contengono dati personali sensibili. Vengono eliminati automaticamente dopo 90 giorni dall'ultima modifica e sono accessibili e cancellabili tramite "Elimina dati cloud".
+</div>
+
+<div class="highlight">
+    <strong>🔒 BASE GIURIDICA:</strong> Interesse legittimo (Art. 6.1.f GDPR) - Necessario per:
+    <ul>
+        <li>Gestione contestazioni entro 60 giorni (requisito Google Play)</li>
+        <li>Supporto tecnico e risoluzione problemi</li>
+        <li>Prevenzione frodi nel sistema di billing</li>
+        <li>Audit trail per conformità operativa</li>
+    </ul>
+    <p>L'impatto sui diritti dell'utente è minimizzato perché:</p>
+    <ul>
+        <li>✅ Dati pseudonimizzati (nessun identificatore personale diretto)</li>
+        <li>✅ Retention limitato a 90 giorni</li>
+        <li>✅ Eliminazione automatica ogni 24 ore tramite pulizia in background</li>
+        <li>✅ Eliminazione manuale tramite "Elimina dati cloud"</li>
     </ul>
 </div>
 
@@ -333,6 +401,10 @@
     <li>✅ <strong>Lingua assegnata a ciascun contatto</strong> (ID contatto + codice lingua)</li>
     <li>✅ <strong>Parole digitate</strong> per suggerimenti personalizzati (max 14 giorni, poi eliminati automaticamente)</li>
     <li>✅ <strong>Cache traduzioni</strong> (solo RAM, persa alla chiusura dell'app)</li>
+    <li>✅ <strong>Cache disambiguazione contatti</strong> (solo RAM, persa al riavvio del servizio)</li>
+    <li>✅ <strong>Modelli predittivi N-gram</strong> (scaricati dall'utente, salvati localmente)</li>
+    <li>✅ <strong>Dizionari Hunspell</strong> (copiati da assets, salvati localmente)</li>
+    <li>✅ <strong>Alert abbonamento</strong> (notifiche locali su utilizzo)</li>
 </ul>
 
 <div class="highlight">
@@ -346,7 +418,7 @@
 </div>
 
 <div class="important">
-    <strong>⚠️ IMPORTANTE:</strong> kAIboard accede ai tuoi contatti SOLO per visualizzare i nomi dei contatti nell'interfaccia di gestione delle lingue. <strong>Numeri di telefono e nomi dei contatti NON vengono MAI inviati ai nostri server.</strong>
+    <strong>⚠️ IMPORTANTE:</strong> kAIboard accede ai tuoi contatti SOLO per visualizzare i nomi dei contatti nell'interfaccia di gestione delle lingue e per determinare la lingua dal prefisso internazionale del numero di telefono. <strong>Numeri di telefono e nomi dei contatti NON vengono MAI inviati ai nostri server.</strong>
 </div>
 
 <h3>2.3 Dati che NON Raccogliamo</h3>
@@ -360,6 +432,7 @@
     <li>❌ Indirizzi email dei contatti</li>
     <li>❌ Posizione geografica precisa</li>
     <li>❌ Dati biometrici</li>
+    <li>❌ Identificativi pubblicitari</li>
 </ul>
 
 <h2>3. Come Utilizziamo i Tuoi Dati</h2>
@@ -449,8 +522,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>ID anonimo, saldo token, cronologia acquisti, metadati migrazione, dati abbonamento</td>
-        <td>Backup, sincronizzazione e sistema anti-frode</td>
+        <td>ID anonimo, saldo token, cronologia acquisti, metadati migrazione, dati abbonamento, log attività</td>
+        <td>Backup, sincronizzazione, sistema anti-frode e audit trail</td>
         <td>UE (server europei)</td>
     </tr>
     <tr>
@@ -516,6 +589,11 @@
         <td>Eliminazione automatica + eliminazione manuale tramite "Elimina dati cloud"</td>
     </tr>
     <tr>
+        <td><strong>Log Attività (admin_activity_logs)</strong></td>
+        <td>90 giorni dall'ultima modifica</td>
+        <td>Eliminazione automatica (ogni 24h) + eliminazione manuale</td>
+    </tr>
+    <tr>
         <td><strong>Backup Token (Firebase)</strong></td>
         <td>365 giorni di inattività</td>
         <td>Automatica + eliminazione manuale</td>
@@ -541,6 +619,16 @@
         <td>Pulsante "Elimina tutti i dati locali"</td>
     </tr>
     <tr>
+        <td><strong>Modelli Predittivi N-gram (Dispositivo)</strong></td>
+        <td>Fino a eliminazione manuale o disinstallazione</td>
+        <td>Pulsante "Elimina tutti i dati locali" o rimozione dalla schermata Modelli Offline</td>
+    </tr>
+    <tr>
+        <td><strong>Dizionari Hunspell (Dispositivo)</strong></td>
+        <td>Fino a eliminazione manuale o disinstallazione</td>
+        <td>Pulsante "Elimina tutti i dati locali"</td>
+    </tr>
+    <tr>
         <td><strong>Parole Apprese (Predizione)</strong></td>
         <td>14 giorni (decadimento automatico)</td>
         <td>Automatica + eliminazione manuale</td>
@@ -555,10 +643,15 @@
         <td>Fino alla chiusura dell'app</td>
         <td>Automatica</td>
     </tr>
+    <tr>
+        <td><strong>Cache Disambiguazione (RAM)</strong></td>
+        <td>Fino al riavvio del servizio di accessibilità</td>
+        <td>Automatica</td>
+    </tr>
 </table>
 
 <div class="highlight">
-    <strong>🗑️ PULIZIA AUTOMATICA:</strong> L'app esegue automaticamente una pulizia ogni 24 ore. I dati più vecchi di 365 giorni (o 90 giorni per la cronologia abbonamenti) vengono eliminati automaticamente, anche se non usi più l'app.
+    <strong>🗑️ PULIZIA AUTOMATICA:</strong> L'app esegue automaticamente una pulizia ogni 24 ore. I dati più vecchi di 365 giorni (o 90 giorni per la cronologia abbonamenti e i log attività) vengono eliminati automaticamente, anche se non usi più l'app.
 </div>
 
 <h2>6. I Tuoi Diritti (GDPR)</h2>
@@ -566,18 +659,18 @@
 <p>Ai sensi del GDPR, hai i seguenti diritti:</p>
 
 <h3>6.1 Diritto di Accesso (Art. 15 GDPR)</h3>
-<p>Puoi richiedere una copia di tutti i dati che conserviamo su di te.</p>
+<p>Puoi richiedere una copia di tutti i dati che conserviamo su di te. I dati dell'abbonamento sono visibili direttamente nell'app.</p>
 
 <h3>6.2 Diritto di Rettifica (Art. 16 GDPR)</h3>
-<p>Puoi correggere dati inesatti o incompleti.</p>
+<p>Puoi correggere dati inesatti o incompleti, ad esempio modificando la lingua associata a un contatto.</p>
 
 <h3>6.3 Diritto alla Cancellazione (Art. 17 GDPR)</h3>
 <p>Puoi eliminare tutti i tuoi dati in qualsiasi momento tramite la <strong>schermata Privacy</strong> nell'app:</p>
 
 <ul>
-    <li>✅ <strong>Elimina dati cloud</strong>: Rimuove backup token, cronologia acquisti, dati abbonamento e cronologia abbonamenti da Firebase</li>
-    <li>✅ <strong>Elimina dati apprendimento</strong>: Rimuove parole apprese per suggerimenti</li>
-    <li>✅ <strong>Elimina tutti i dati locali</strong>: Rimuove tutte le preferenze e dati sul dispositivo</li>
+    <li>✅ <strong>Elimina dati cloud</strong>: Rimuove backup token, cronologia acquisti, dati abbonamento, cronologia abbonamenti e log attività da Firebase</li>
+    <li>✅ <strong>Elimina dati apprendimento</strong>: Rimuove parole apprese per suggerimenti (tutte le 13 lingue)</li>
+    <li>✅ <strong>Elimina tutti i dati locali</strong>: Rimuove tutte le preferenze, dati sul dispositivo, modelli scaricati, dizionari e cache</li>
 </ul>
 
 <div class="important">
@@ -604,10 +697,10 @@
 </div>
 
 <h3>6.4 Diritto alla Portabilità dei Dati (Art. 20 GDPR)</h3>
-<p>Puoi richiedere i tuoi dati in un formato strutturato e leggibile da macchina.</p>
+<p>Puoi esportare i tuoi dati in formato JSON leggibile da macchina tramite il pulsante <strong>"Esporta i tuoi dati (JSON)"</strong> nella schermata Privacy. Il file include dati locali (preferenze, apprendimento) e dati cloud (abbonamento, cronologia, log attività).</p>
 
 <h3>6.5 Diritto di Opposizione (Art. 21 GDPR)</h3>
-<p>Puoi opporti al trattamento dei dati per motivi legittimi.</p>
+<p>Puoi opporti al trattamento dei dati per motivi legittimi. Puoi disattivare in qualsiasi momento la traduzione, i report crash e revocare l'accesso ai contatti.</p>
 
 <h3>6.6 Diritto di Reclamo</h3>
 <p>Puoi presentare un reclamo all'autorità di controllo competente:</p>
@@ -619,14 +712,15 @@
 
 <h2>7. Come Esercitare i Tuoi Diritti</h2>
 
-<h3>7.1 Eliminazione Tramite App (Immediata)</h3>
+<h3>7.1 Tramite App (Immediato)</h3>
 
 <p><strong>Percorso:</strong> Impostazioni → Privacy & Sicurezza</p>
 
 <ol>
-    <li><strong>Elimina dati cloud</strong>: Backup token + cronologia acquisti + dati abbonamento + cronologia abbonamenti (irreversibile - richiede annullamento abbonamento se attivo)</li>
-    <li><strong>Elimina dati apprendimento</strong>: Parole apprese (11 lingue)</li>
-    <li><strong>Elimina tutti i dati locali</strong>: Tutte le preferenze (riavvia app)</li>
+    <li><strong>Esporta i tuoi dati (JSON)</strong>: Export completo dati locali e cloud in formato machine-readable (Art. 15 + Art. 20)</li>
+    <li><strong>Elimina dati cloud</strong>: Backup token + cronologia acquisti + dati abbonamento + cronologia abbonamenti + log attività (irreversibile - richiede annullamento abbonamento se attivo)</li>
+    <li><strong>Elimina dati apprendimento</strong>: Parole apprese (13 lingue)</li>
+    <li><strong>Elimina tutti i dati locali</strong>: Tutte le preferenze, modelli scaricati, dizionari, cache (riavvia app)</li>
 </ol>
 
 <h3>7.2 Richiesta via Email</h3>
@@ -642,10 +736,12 @@
 <ul>
     <li>🔒 <strong>Crittografia in transito</strong>: HTTPS/TLS 1.3 per tutte le comunicazioni</li>
     <li>🔒 <strong>Crittografia a riposo</strong>: Firebase utilizza crittografia AES-256</li>
-    <li>🔒 <strong>Regole di Sicurezza Firebase</strong>: Accesso limitato al solo proprietario dei dati</li>
+    <li>🔒 <strong>Crittografia database locale</strong>: Il database di apprendimento è crittografato con AES-256 tramite Android Keystore hardware-backed</li>
+    <li>🔒 <strong>Regole di Sicurezza Firebase</strong>: Accesso limitato al solo proprietario dei dati (default deny)</li>
     <li>🔒 <strong>ID Pseudonimo</strong>: Nessun dato personale diretto (nome, email, telefono)</li>
     <li>🔒 <strong>Minimizzazione dei dati</strong>: Raccogliamo solo lo strettamente necessario</li>
-    <li>🔒 <strong>Eliminazione automatica</strong>: Dati eliminati dopo 365 giorni di inattività (90 giorni per cronologia abbonamenti)</li>
+    <li>🔒 <strong>Eliminazione automatica</strong>: Dati eliminati dopo 365 giorni di inattività (90 giorni per cronologia abbonamenti e log attività)</li>
+    <li>🔒 <strong>API Key protetta</strong>: La chiave API OpenAI non è mai esposta nel client, è salvata come secret nel relay Cloudflare</li>
 </ul>
 
 <h2>9. Identificatori Dispositivo e Permessi Android</h2>
@@ -746,7 +842,7 @@
 
 <p><strong>Base giuridica:</strong> Consenso esplicito (Art. 6.1.a GDPR)</p>
 
-<p><strong>Come disattivare:</strong> Impostazioni → Report crash (opzionale) → Disattiva</p>
+<p><strong>Come disattivare:</strong> Impostazioni → Report crash (opzionale) → Disattiva. La disattivazione blocca l'invio futuro e cancella i report non ancora inviati presenti sul dispositivo. I report già inviati a Firebase restano sul backend e non possono essere eliminati dal telefono.</p>
 
 <h2>11. Minori</h2>
 
@@ -785,6 +881,7 @@
             <li>Sicurezza degli acquisti</li>
             <li>Protezione del sistema di billing da abusi</li>
             <li>Sincronizzazione multi-device</li>
+            <li>Log attività amministrativa (audit trail)</li>
         </ul>
     </li>
 </ul>
@@ -806,7 +903,7 @@
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Versione 2.2 - Ultimo aggiornamento: 31 gennaio 2026</strong><br>
+    <strong>Versione 2.3 - Ultimo aggiornamento: 21 febbraio 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 

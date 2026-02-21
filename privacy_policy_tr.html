@@ -91,8 +91,8 @@
 
 <h1>Gizlilik Politikası - kAIboard</h1>
 
-<p><strong>Son güncelleme:</strong> 18 Ocak 2026</p>
-<p><strong>Sürüm:</strong> 2.1</p>
+<p><strong>Son güncelleme:</strong> 21 Şubat 2026</p>
+<p><strong>Sürüm:</strong> 2.3</p>
 
 <div class="highlight">
     <strong>📱 kAIboard</strong>, yapay zeka destekli çeviri özellikleri olan bir Android klavyesidir. Bu Gizlilik Politikası, hangi verileri topladığımızı, bunları nasıl kullandığımızı ve Genel Veri Koruma Yönetmeliği (GDPR - AB Yönetmeliği 2016/679) kapsamındaki haklarınızı açıklar.
@@ -122,10 +122,10 @@
         <th>Yasal Dayanak</th>
     </tr>
     <tr>
-        <td><strong>Anonim Cihaz Kimliği</strong></td>
-        <td>Cihazın Android ID'sine dayalı tanımlayıcı (örn. android_e19d6c741afe8197)</td>
-        <td>Satın alınan token'ları geri yükleme ve dolandırıcılığı önleme (aynı anda yalnızca BİR aktif cihaz)</td>
-        <td>Sözleşme ifası (Mad. 6.1.b) + Dolandırıcılığı önleme için meşru menfaat (Mad. 6.1.f GDPR)</td>
+        <td><strong>Cihaz Dizisi</strong></td>
+        <td>Tanımlayıcılar listesi (örn. ["android_e19d6c...", "android_175be4..."])</td>
+        <td>Aynı Google Play hesabıyla birden fazla cihazda abonelik ve token'ları senkronize etme</td>
+        <td>Sözleşme ifası (Mad. 6.1.b) + Çoklu cihaz için meşru menfaat (Mad. 6.1.f GDPR)</td>
     </tr>
     <tr>
         <td><strong>Token Bakiyesi</strong></td>
@@ -153,7 +153,27 @@
     </tr>
 </table>
 
-<h3>2.1.1 Abonelik Verileri</h3>
+<h4>Çoklu Cihaz Senkronizasyonu</h4>
+
+<p>kAIboard'u <strong>aynı Google Play hesabıyla</strong> birden fazla cihazda kullanıyorsanız:</p>
+
+<ul>
+    <li>✅ Abonelik tüm cihazlar arasında otomatik olarak paylaşılır</li>
+    <li>✅ Token bakiyesi gerçek zamanlı olarak senkronize edilir</li>
+    <li>✅ Aylık limit paylaşımlıdır (örn. 250.000 token TOPLAM, cihaz başına değil)</li>
+    <li>✅ Firebase Listener tüm cihazları eşzamanlı olarak günceller</li>
+</ul>
+
+<p><strong>Çoklu cihaz için kaydedilen veriler:</strong></p>
+<ul>
+    <li><strong>devices:</strong> Aynı aboneliği kullanan anonim Android ID'leri dizisi</li>
+    <li><strong>purchaseToken:</strong> Google Play aboneliğinin benzersiz anahtarı</li>
+    <li><strong>current_usage:</strong> Tüm cihazlardaki toplam token tüketimi</li>
+</ul>
+
+<p><strong>Gizlilik:</strong> <code>devices</code> dizisi YALNIZCA pseudonimize edilmiş Android ID'leri içerir (örn. "android_abc123..."). Telefon numaraları, IMEI veya diğer kişisel tanımlayıcıları toplamıyoruz.</p>
+
+<h3>2.1.1 Aylık Abonelik Verileri</h3>
 
 <p><strong>Aylık aboneliğe</strong> abone olursanız (örn. ayda 250.000 token ile PLUS Planı), aşağıdaki ek verileri kaydederiz:</p>
 
@@ -166,45 +186,63 @@
     </tr>
     <tr>
         <td><strong>Abonelik Planı</strong></td>
-        <td>Dize (örn. "plus", "pro")</td>
+        <td>Dize (örn. "plus", "pro", "max")</td>
         <td>Aktif planı tanımla ve doğru token limitini uygula</td>
-        <td>Sözleşme ifası (Madde 6.1.b GDPR)</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
         <td><strong>Aylık Token Limiti</strong></td>
-        <td>Tam sayı (örn. 250000)</td>
+        <td>Tam sayı (örn. 250000, 500000, 1000000)</td>
         <td>Aboneliğe dahil maksimum token'ı uygula</td>
-        <td>Sözleşme ifası (Madde 6.1.b GDPR)</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
         <td><strong>Mevcut Token Kullanımı</strong></td>
         <td>Tam sayı</td>
         <td>Aylık tüketimi izle ve limiti uygula</td>
-        <td>Sözleşme ifası (Madde 6.1.b GDPR)</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
         <td><strong>Aylık Sıfırlama Tarihi</strong></td>
         <td>ISO Tarihi (örn. "2026-02-01")</td>
         <td>Ay başında otomatik kullanım sıfırlama</td>
-        <td>Sözleşme ifası (Madde 6.1.b GDPR)</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
         <td><strong>Google Play Ürün Kimliği</strong></td>
         <td>Dize (örn. "abbonamento_mensile_2500")</td>
         <td>Google Play Billing API üzerinden abonelik geçerliliğini doğrula</td>
-        <td>Sözleşme ifası (Madde 6.1.b GDPR)</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
         <td><strong>Otomatik Yenileme Durumu</strong></td>
         <td>Boolean</td>
         <td>Aboneliğin otomatik yenileneceğini kontrol et</td>
-        <td>Sözleşme ifası (Madde 6.1.b GDPR)</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
         <td><strong>Abonelik Satın Alma Tarihi</strong></td>
         <td>Zaman damgası</td>
         <td>Fatura döngüsü yönetimi ve anlaşmazlıklar</td>
-        <td>Sözleşme ifası (Madde 6.1.b GDPR)</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>Abonelik Bitiş Tarihi</strong></td>
+        <td>ISO 8601 zaman damgası (örn. "2026-02-28T14:30:00Z")</td>
+        <td>İptalden sonra ek süreyi yönetme (abonelik bu tarihe kadar aktif kalır)</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>"Yenilenmeyecek" İşareti</strong></td>
+        <td>Boolean (will_not_renew)</td>
+        <td>Aboneliğin iptal edildiğini ancak süresi dolana kadar geçerli kaldığını belirtme</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+    </tr>
+    <tr>
+        <td><strong>İptal Tarihi</strong></td>
+        <td>Zaman damgası (cancelled_at)</td>
+        <td>Kullanıcının aboneliği ne zaman iptal ettiğini izleme</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
 </table>
 
@@ -213,7 +251,146 @@
 </div>
 
 <div class="important">
-    <strong>⚠️ ÖNEMLİ - ABONELİK İPTALİ:</strong> Aboneliğinizi iptal ederseniz, abonelik verileri mevcut fatura döneminin sonuna kadar saklanır (Madde 6.1.b GDPR - sözleşme ifası). Süre dolduktan sonra t
+    <strong>⚠️ ÖNEMLİ - ABONELİK İPTALİ:</strong> Aboneliğinizi iptal ederseniz, abonelik verileri mevcut fatura döneminin sonuna kadar saklanır (Mad. 6.1.b GDPR - sözleşme ifası). Süre dolduktan sonra tüm bulut verilerini Gizlilik ekranı üzerinden silebilirsiniz.
+</div>
+
+<h3>2.1.2 Ek Süre (Grace Period)</h3>
+
+<div class="info">
+    <strong>📅 ABONELİK İPTAL EDİLDİ AMA HÂLÂ AKTİF</strong>
+    <p>Aboneliğinizi Google Play üzerinden iptal ederseniz, premium hizmet <strong>zaten ödenen sürenin sonuna kadar aktif kalır</strong>.</p>
+
+    <p><strong>Örnek:</strong></p>
+    <ul>
+        <li>15 Ocak 2026'da PLUS aboneliği satın alırsınız</li>
+        <li>20 Ocak 2026'da iptal edersiniz</li>
+        <li>✅ Premium 15 Şubat 2026'ya kadar aktif kalır (zaten ödenmiş)</li>
+        <li>✅ Aylık token'lar sona erme tarihine kadar kullanılabilir</li>
+        <li>❌ Abonelik otomatik olarak YENİLENMEYECEK</li>
+    </ul>
+
+    <p><strong>Ek süre boyunca kaydedilen veriler:</strong></p>
+    <ul>
+        <li><strong>subscription_end:</strong> Hizmete hakkınızın olduğu kesin tarih</li>
+        <li><strong>will_not_renew:</strong> "İptal edildi ama geçerli" anlamına gelen işaret</li>
+        <li><strong>cancelled_at:</strong> İptal zaman damgası</li>
+        <li><strong>monthly_limit:</strong> Sona erme tarihine kadar korunan token limiti</li>
+    </ul>
+
+    <p><strong>Ek süre sona erdiğinde:</strong></p>
+    <ol>
+        <li>Premium otomatik olarak devre dışı bırakılır</li>
+        <li>Abonelik verileri geçmişe taşınır (user_subscriptions_history)</li>
+        <li>Aktif belge (user_subscriptions) silinir</li>
+        <li>Geçmişi "Bulut verilerini sil" üzerinden silebilirsiniz</li>
+    </ol>
+</div>
+
+<h3>2.1.3 Abonelik Geçmişi</h3>
+
+<p>Bir abonelik sona erdiğinde veya silindiğinde, GDPR uyumluluğu ve denetim için verileri bir geçmiş belgesine taşırız.</p>
+
+<table>
+    <tr>
+        <th>Veri</th>
+        <th>Tür</th>
+        <th>Amaç</th>
+        <th>Saklama</th>
+    </tr>
+    <tr>
+        <td><strong>Abonelik Geçmişi</strong></td>
+        <td>user_subscriptions_history/{purchaseToken} içinde nesne dizisi</td>
+        <td>Satın alma izlenebilirliği, denetim izi, GDPR uyumluluğu</td>
+        <td>Sona ermeden itibaren 90 gün</td>
+    </tr>
+    <tr>
+        <td><strong>Giriş Başına Veriler</strong></td>
+        <td>Plan, kullanılan token/limit, başlangıç/bitiş/iptal tarihleri, iptal nedeni, cihazlar</td>
+        <td>Denetim, kullanıcı desteği, geri ödeme yönetimi</td>
+        <td>Sona ermeden itibaren 90 gün</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔒 ÇOKLU CİHAZ KONSOLİDASYONU:</strong> Geçmiş, cihaz başına değil <strong>purchaseToken</strong> başına konsolide edilir. Kullanılan cihaz sayısına bakılmaksızın, aynı aboneliğin tüm yenilemeleri ve değişiklikleri tek bir belgede gruplandırılır.
+</div>
+
+<div class="important">
+    <strong>⚠️ GEÇMİŞ SİLME:</strong> Geçmişi istediğiniz zaman "Bulut verilerini sil" üzerinden silebilirsiniz. Silme kesindir ve şunları içerir:
+    <ul>
+        <li>✅ Aktif belge (user_subscriptions/{purchaseToken})</li>
+        <li>✅ Geçmiş belgesi (user_subscriptions_history/{purchaseToken})</li>
+        <li>✅ Yönetim etkinlik günlükleri (admin_activity_logs/{device_id})</li>
+        <li>✅ GDPR uyumlu: purchaseToken ile arama, devices dizisi ile yedek</li>
+    </ul>
+</div>
+
+<h3>2.1.4 Yönetim Etkinlik Günlükleri</h3>
+
+<p>İzlenebilirlik ve anlaşmazlık durumunda destek sağlamak için, aboneliklerle ilgili ana işlemlerin kaydını tutarız.</p>
+
+<table>
+    <tr>
+        <th>Veri</th>
+        <th>Tür</th>
+        <th>Amaç</th>
+        <th>Saklama</th>
+    </tr>
+    <tr>
+        <td><strong>Yönetim Etkinlik Günlükleri</strong></td>
+        <td>admin_activity_logs/{device_id} içinde olay dizisi</td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Kullanıcı desteği için denetim izi</li>
+                <li>Google Play anlaşmazlık çözümü (60 gün içinde)</li>
+                <li>Dolandırıcılık ve faturalandırma anlaşmazlıklarını önleme</li>
+                <li>Ek süre ve otomatik yenileme yönetimi</li>
+            </ul>
+        </td>
+        <td>Son değişiklikten itibaren 90 gün</td>
+    </tr>
+    <tr>
+        <td><strong>Kaydedilen Olaylar</strong></td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Abonelik başlatma</li>
+                <li>Abonelik iptali</li>
+                <li>Abonelik sona ermesi</li>
+                <li>Otomatik yenileme</li>
+                <li>Plan değişiklikleri</li>
+            </ul>
+        </td>
+        <td>Denetim ve destek için değişiklik geçmişini izleme</td>
+        <td>Son değişiklikten itibaren 90 gün</td>
+    </tr>
+    <tr>
+        <td><strong>Olay Detayları</strong></td>
+        <td>Zaman damgası, eylem, neden, plan, işlem detayları</td>
+        <td>Anlaşmazlık durumunda kronolojinin yeniden oluşturulması için gerekli bilgiler</td>
+        <td>Son değişiklikten itibaren 90 gün</td>
+    </tr>
+</table>
+
+<div class="important">
+    <strong>⚠️ ÖNEMLİ - ETKİNLİK GÜNLÜKLERİ:</strong> Etkinlik günlükleri YALNIZCA operasyonel metadata içerir (ne zaman, ne, neden). Hassas kişisel veriler İÇERMEZ. Son değişiklikten 90 gün sonra otomatik olarak silinir ve "Bulut verilerini sil" üzerinden erişilebilir ve silinebilir.
+</div>
+
+<div class="highlight">
+    <strong>🔒 YASAL DAYANAK:</strong> Meşru menfaat (Mad. 6.1.f GDPR) - Şunlar için gereklidir:
+    <ul>
+        <li>60 gün içinde itirazların yönetimi (Google Play gereksinimi)</li>
+        <li>Teknik destek ve sorun çözümü</li>
+        <li>Faturalandırma sisteminde dolandırıcılığın önlenmesi</li>
+        <li>Operasyonel uyumluluk için denetim izi</li>
+    </ul>
+    <p>Kullanıcı hakları üzerindeki etki en aza indirilmiştir çünkü:</p>
+    <ul>
+        <li>✅ Pseudonimize edilmiş veriler (doğrudan kişisel tanımlayıcı yok)</li>
+        <li>✅ Saklama 90 gün ile sınırlı</li>
+        <li>✅ Arka plan temizliğiyle her 24 saatte otomatik silme</li>
+        <li>✅ "Bulut verilerini sil" üzerinden manuel silme</li>
+    </ul>
+</div>
 
 <h3>2.2 Yalnızca Yerel Olarak Saklanan Veriler (Cihazda)</h3>
 
@@ -224,6 +401,10 @@
     <li>✅ <strong>Her kişiye atanan dil</strong> (kişi kimliği + dil kodu)</li>
     <li>✅ <strong>Yazılan kelimeler</strong> kişiselleştirilmiş öneriler için (maks. 14 gün, sonra otomatik silinir)</li>
     <li>✅ <strong>Çeviri önbelleği</strong> (yalnızca RAM, uygulama kapatıldığında kaybolur)</li>
+    <li>✅ <strong>Kişi belirsizlik çözme önbelleği</strong> (yalnızca RAM, hizmet yeniden başlatıldığında kaybolur)</li>
+    <li>✅ <strong>Tahminsel N-gram modelleri</strong> (kullanıcı tarafından indirilir, yerel olarak kaydedilir)</li>
+    <li>✅ <strong>Hunspell sözlükleri</strong> (kaynaklardan kopyalanır, yerel olarak kaydedilir)</li>
+    <li>✅ <strong>Abonelik uyarıları</strong> (kullanım hakkında yerel bildirimler)</li>
 </ul>
 
 <div class="highlight">
@@ -236,7 +417,7 @@
 </div>
 
 <div class="important">
-    <strong>⚠️ ÖNEMLİ:</strong> kAIboard, kişilerinize YALNIZCA dil yönetimi arayüzünde kişi adlarını görüntülemek için erişir. <strong>Telefon numaraları ve kişi adları ASLA sunucularımıza gönderilmez.</strong>
+    <strong>⚠️ ÖNEMLİ:</strong> kAIboard, kişilerinize YALNIZCA dil yönetimi arayüzünde kişi adlarını görüntülemek ve telefon numarasının uluslararası ön ekinden dili belirlemek için erişir. <strong>Telefon numaraları ve kişi adları ASLA sunucularımıza gönderilmez.</strong>
 </div>
 
 <h3>2.3 Toplamadığımız Veriler</h3>
@@ -250,6 +431,7 @@
     <li>❌ Kişilerin e-posta adresleri</li>
     <li>❌ Kesin coğrafi konum</li>
     <li>❌ Biyometrik veriler</li>
+    <li>❌ Reklam tanımlayıcıları</li>
 </ul>
 
 <h2>3. Verilerinizi Nasıl Kullanıyoruz</h2>
@@ -339,8 +521,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>Anonim kimlik, token bakiyesi, satın alma geçmişi, taşıma metadata'ları</td>
-        <td>Yedekleme, senkronizasyon ve dolandırıcılık önleme sistemi</td>
+        <td>Anonim kimlik, token bakiyesi, satın alma geçmişi, taşıma metadata'ları, abonelik verileri, etkinlik günlükleri</td>
+        <td>Yedekleme, senkronizasyon, dolandırıcılık önleme sistemi ve denetim izi</td>
         <td>AB (Avrupa sunucuları)</td>
     </tr>
     <tr>
@@ -396,9 +578,19 @@
         <th>Silme</th>
     </tr>
     <tr>
-        <td><strong>Abonelik Verileri (Firebase)</strong></td>
-        <td>Fatura döneminin sonuna kadar + süresi dolduktan sonra 365 gün</td>
-        <td>Otomatik + manuel silme</td>
+        <td><strong>Aktif Abonelik Verileri (Firebase)</strong></td>
+        <td>Mevcut fatura döneminin sonuna kadar</td>
+        <td>Abonelik sona erdiğinde otomatik silme + geçmişe taşıma</td>
+    </tr>
+    <tr>
+        <td><strong>Abonelik Geçmişi (Firebase)</strong></td>
+        <td>Abonelik sona ermesinden itibaren 90 gün</td>
+        <td>Otomatik silme + "Bulut verilerini sil" ile manuel silme</td>
+    </tr>
+    <tr>
+        <td><strong>Etkinlik Günlükleri (admin_activity_logs)</strong></td>
+        <td>Son değişiklikten itibaren 90 gün</td>
+        <td>Otomatik silme (her 24 saatte) + manuel silme</td>
     </tr>
     <tr>
         <td><strong>Token Yedeği (Firebase)</strong></td>
@@ -426,6 +618,16 @@
         <td>"Tüm yerel verileri sil" düğmesi</td>
     </tr>
     <tr>
+        <td><strong>Tahminsel N-gram Modelleri (Cihaz)</strong></td>
+        <td>Manuel silme veya kaldırmaya kadar</td>
+        <td>"Tüm yerel verileri sil" düğmesi veya Çevrimdışı Modeller ekranından kaldırma</td>
+    </tr>
+    <tr>
+        <td><strong>Hunspell Sözlükleri (Cihaz)</strong></td>
+        <td>Manuel silme veya kaldırmaya kadar</td>
+        <td>"Tüm yerel verileri sil" düğmesi</td>
+    </tr>
+    <tr>
         <td><strong>Öğrenilen Kelimeler (Tahmin)</strong></td>
         <td>14 gün (otomatik bozunma)</td>
         <td>Otomatik + manuel silme</td>
@@ -440,10 +642,15 @@
         <td>Uygulama kapanana kadar</td>
         <td>Otomatik</td>
     </tr>
+    <tr>
+        <td><strong>Belirsizlik Çözme Önbelleği (RAM)</strong></td>
+        <td>Erişilebilirlik hizmeti yeniden başlatılana kadar</td>
+        <td>Otomatik</td>
+    </tr>
 </table>
 
 <div class="highlight">
-    <strong>🗑️ OTOMATİK TEMİZLİK:</strong> Uygulama her 24 saatte bir otomatik olarak temizlik yapar. 365 günden eski veriler, uygulamayı artık kullanmasanız bile otomatik olarak silinir.
+    <strong>🗑️ OTOMATİK TEMİZLİK:</strong> Uygulama her 24 saatte bir otomatik olarak temizlik yapar. 365 günden eski veriler (veya abonelik geçmişi ve etkinlik günlükleri için 90 gün) uygulamayı artık kullanmasanız bile otomatik olarak silinir.
 </div>
 
 <h2>6. Haklarınız (GDPR)</h2>
@@ -451,48 +658,48 @@
 <p>GDPR kapsamında aşağıdaki haklara sahipsiniz:</p>
 
 <h3>6.1 Erişim Hakkı (Mad. 15 GDPR)</h3>
-<p>Hakkınızda tuttuğumuz tüm verilerin bir kopyasını talep edebilirsiniz.</p>
+<p>Hakkınızda tuttuğumuz tüm verilerin bir kopyasını talep edebilirsiniz. Abonelik verileri doğrudan uygulamada görülebilir.</p>
 
 <h3>6.2 Düzeltme Hakkı (Mad. 16 GDPR)</h3>
-<p>Yanlış veya eksik verileri düzeltebilirsiniz.</p>
+<p>Yanlış veya eksik verileri düzeltebilirsiniz, örneğin bir kişiye atanan dili değiştirerek.</p>
 
-    <h3>6.3 Silme Hakkı (Madde 17 GDPR)</h3>
-    <p>Uygulamadaki <strong>Gizlilik ekranı</strong> üzerinden istediğiniz zaman tüm verilerinizi silebilirsiniz:</p>
+<h3>6.3 Silme Hakkı (Mad. 17 GDPR)</h3>
+<p>Uygulamadaki <strong>Gizlilik ekranı</strong> üzerinden istediğiniz zaman tüm verilerinizi silebilirsiniz:</p>
 
+<ul>
+    <li>✅ <strong>Bulut verilerini sil</strong>: Firebase'den token yedeğini, satın alma geçmişini, abonelik verilerini, abonelik geçmişini ve etkinlik günlüklerini kaldırır</li>
+    <li>✅ <strong>Öğrenme verilerini sil</strong>: Öneriler için öğrenilen kelimeleri kaldırır (tüm 13 dil)</li>
+    <li>✅ <strong>Tüm yerel verileri sil</strong>: Cihazdaki tüm tercihleri, verileri, indirilen modelleri, sözlükleri ve önbelleği kaldırır</li>
+</ul>
+
+<div class="important">
+    <strong>⚠️ AKTİF ABONELİKLE SİLME KISITLAMASI (Mad. 17.3.b GDPR):</strong>
+    <p><strong>Aktif aylık aboneliğiniz</strong> varsa, bulut verisi silme işlemi aboneliği iptal edene kadar <strong>geçici olarak engellenir</strong>.</p>
+
+    <p><strong>Sebep:</strong> Abonelik verileri (aktif plan, token limiti, sıfırlama tarihi) sözleşmenin yerine getirilmesi için gereklidir (Mad. 6.1.b GDPR). Erken silme şunları engelleyecektir:</p>
     <ul>
-        <li>✅ <strong>Bulut verilerini sil</strong>: Firebase'den token yedeğini, satın alma geçmişini ve abonelik verilerini kaldırır</li>
-        <li>✅ <strong>Öğrenme verilerini sil</strong>: Öneriler için öğrenilen kelimeleri kaldırır</li>
-        <li>✅ <strong>Tüm yerel verileri sil</strong>: Cihazdaki tüm tercihleri ve verileri kaldırır</li>
+        <li>❌ Satın alınan aylık hizmetin düzgün çalışması</li>
+        <li>❌ Cihazlar arası token limiti senkronizasyonu</li>
+        <li>❌ Ay başında otomatik token sıfırlama</li>
     </ul>
 
-    <div class="important">
-        <strong>⚠️ AKTİF ABONELİKLE SİLME KISITLAMASI (Madde 17.3.b GDPR):</strong>
-        <p><strong>Aktif aylık aboneliğiniz</strong> varsa, bulut verisi silme işlemi aboneliği iptal edene kadar <strong>geçici olarak engellenir</strong>.</p>
+    <p><strong>Nasıl devam edilir:</strong></p>
+    <ol>
+        <li>Google Play Store üzerinden aboneliği iptal edin</li>
+        <li>Mevcut fatura döneminin sonuna kadar bekleyin</li>
+        <li>Uygulama üzerinden bulut verilerini silin</li>
+    </ol>
 
-        <p><strong>Sebep:</strong> Abonelik verileri (aktif plan, token limiti, sıfırlama tarihi) sözleşmenin yerine getirilmesi için gereklidir (Madde 6.1.b GDPR). Erken silme şunları engelleyecektir:</p>
-        <ul>
-            <li>❌ Satın alınan aylık hizmetin düzgün çalışması</li>
-            <li>❌ Cihazlar arası token limiti senkronizasyonu</li>
-            <li>❌ Ay başında otomatik token sıfırlama</li>
-        </ul>
+    <p><strong>Anında silme:</strong> Uygulama, aboneliğinizi yönetmek için sizi otomatik olarak Google Play'e yönlendirir. İptal sonrası veri silme hemen kullanılabilir olacaktır.</p>
 
-        <p><strong>Nasıl devam edilir:</strong></p>
-        <ol>
-            <li>Google Play Store üzerinden aboneliği iptal edin</li>
-            <li>Mevcut fatura döneminin sonuna kadar bekleyin</li>
-            <li>Uygulama üzerinden bulut verilerini silin</li>
-        </ol>
-
-        <p><strong>Anında silme:</strong> Uygulama, aboneliğinizi yönetmek için sizi otomatik olarak Google Play'e yönlendirir. İptal sonrası veri silme hemen kullanılabilir olacaktır.</p>
-
-        <p><strong>Engellemenin yasal dayanağı:</strong> Madde 17.3.b GDPR - "Silme hakkı, işleme veri sahibinin taraf olduğu bir sözleşmenin ifası için gerekli olduğu ölçüde uygulanmaz".</p>
-    </div>
+    <p><strong>Engellemenin yasal dayanağı:</strong> Mad. 17.3.b GDPR - "Silme hakkı, işleme veri sahibinin taraf olduğu bir sözleşmenin ifası için gerekli olduğu ölçüde uygulanmaz".</p>
+</div>
 
 <h3>6.4 Veri Taşınabilirliği Hakkı (Mad. 20 GDPR)</h3>
-<p>Verilerinizi yapılandırılmış, makine tarafından okunabilir bir biçimde talep edebilirsiniz.</p>
+<p>Gizlilik ekranındaki <strong>"Verilerinizi dışa aktarın (JSON)"</strong> düğmesi aracılığıyla verilerinizi makine tarafından okunabilir JSON formatında dışa aktarabilirsiniz. Dosya, yerel veriler (tercihler, öğrenme) ve bulut verilerini (abonelik, geçmiş, etkinlik günlükleri) içerir.</p>
 
 <h3>6.5 İtiraz Hakkı (Mad. 21 GDPR)</h3>
-<p>Meşru nedenlerle veri işlemeye itiraz edebilirsiniz.</p>
+<p>Meşru nedenlerle veri işlemeye itiraz edebilirsiniz. Çeviriyi, çökme raporlarını istediğiniz zaman devre dışı bırakabilir ve kişi erişimini geri alabilirsiniz.</p>
 
 <h3>6.6 Şikayette Bulunma Hakkı</h3>
 <p>Yetkili denetim makamına şikayette bulunabilirsiniz:</p>
@@ -504,14 +711,15 @@
 
 <h2>7. Haklarınızı Nasıl Kullanırsınız</h2>
 
-<h3>7.1 Uygulama Üzerinden Silme (Anında)</h3>
+<h3>7.1 Uygulama Üzerinden (Anında)</h3>
 
 <p><strong>Yol:</strong> Ayarlar → Gizlilik ve Güvenlik</p>
 
-    <ol>
-        <li><strong>Bulut verilerini sil</strong>: Token yedeği + satın alma geçmişi + abonelik verileri (geri alınamaz - aktif ise abonelik iptali gerekir)</li>
-    <li><strong>Öğrenme verilerini sil</strong>: Öğrenilen kelimeler (11 dil)</li>
-    <li><strong>Tüm yerel verileri sil</strong>: Tüm tercihler (uygulamayı yeniden başlatır)</li>
+<ol>
+    <li><strong>Verilerinizi dışa aktarın (JSON)</strong>: Yerel ve bulut verilerinin makine tarafından okunabilir formatta tam dışa aktarımı (Mad. 15 + Mad. 20)</li>
+    <li><strong>Bulut verilerini sil</strong>: Token yedeği + satın alma geçmişi + abonelik verileri + abonelik geçmişi + etkinlik günlükleri (geri alınamaz - aktif ise abonelik iptali gerekir)</li>
+    <li><strong>Öğrenme verilerini sil</strong>: Öğrenilen kelimeler (13 dil)</li>
+    <li><strong>Tüm yerel verileri sil</strong>: Tüm tercihler, indirilen modeller, sözlükler, önbellek (uygulamayı yeniden başlatır)</li>
 </ol>
 
 <h3>7.2 E-posta ile Talep</h3>
@@ -527,10 +735,12 @@
 <ul>
     <li>🔒 <strong>Aktarım sırasında şifreleme</strong>: Tüm iletişimler için HTTPS/TLS 1.3</li>
     <li>🔒 <strong>Durağan şifreleme</strong>: Firebase, AES-256 şifreleme kullanır</li>
-    <li>🔒 <strong>Firebase Güvenlik Kuralları</strong>: Erişim yalnızca veri sahibi ile sınırlıdır</li>
+    <li>🔒 <strong>Yerel veritabanı şifreleme</strong>: Öğrenme veritabanı, donanım destekli Android Keystore aracılığıyla AES-256 ile şifrelenir</li>
+    <li>🔒 <strong>Firebase Güvenlik Kuralları</strong>: Erişim yalnızca veri sahibi ile sınırlıdır (varsayılan reddet)</li>
     <li>🔒 <strong>Takma Ad Kimliği</strong>: Doğrudan kişisel veri yok (ad, e-posta, telefon)</li>
     <li>🔒 <strong>Veri minimizasyonu</strong>: Yalnızca kesinlikle gerekli olanı topluyoruz</li>
-    <li>🔒 <strong>Otomatik silme</strong>: Veriler 365 gün hareketsizlikten sonra silinir</li>
+    <li>🔒 <strong>Otomatik silme</strong>: Veriler 365 gün hareketsizlikten sonra silinir (abonelik geçmişi ve etkinlik günlükleri için 90 gün)</li>
+    <li>🔒 <strong>Korumalı API anahtarı</strong>: OpenAI API anahtarı istemcide asla açığa çıkmaz, Cloudflare aktarıcısında secret olarak saklanır</li>
 </ul>
 
 <h2>9. Cihaz Tanımlayıcıları ve Android İzinleri</h2>
@@ -631,7 +841,7 @@
 
 <p><strong>Yasal dayanak:</strong> Açık rıza (Mad. 6.1.a GDPR)</p>
 
-<p><strong>Nasıl devre dışı bırakılır:</strong> Ayarlar → Çökme raporları (isteğe bağlı) → Devre dışı bırak</p>
+<p><strong>Nasıl devre dışı bırakılır:</strong> Ayarlar → Çökme raporları (isteğe bağlı) → Devre dışı bırak. Devre dışı bırakma gelecekteki gönderimi engeller ve cihazda henüz gönderilmemiş raporları siler. Firebase'e zaten gönderilmiş raporlar sunucuda kalır ve telefondan silinemez.</p>
 
 <h2>11. Küçükler</h2>
 
@@ -662,13 +872,15 @@
 <p>Verilerinizin işlenmesi şunlara dayanır:</p>
 
 <ul>
-    <li><strong>Mad. 6.1.b GDPR</strong> - Sözleşme ifası: Token yedeği, satın alma geçmişi, çeviri</li>
+    <li><strong>Mad. 6.1.b GDPR</strong> - Sözleşme ifası: Token yedeği, satın alma geçmişi, çeviri, abonelik yönetimi</li>
     <li><strong>Mad. 6.1.a GDPR</strong> - Rıza: Çökme raporları (isteğe bağlı)</li>
     <li><strong>Mad. 6.1.f GDPR</strong> - Meşru menfaat:
         <ul>
             <li>Dolandırıcılığı önleme (token dolandırıcılık önleme sistemi)</li>
             <li>Satın alma güvenliği</li>
             <li>Faturalandırma sistemini kötüye kullanımdan koruma</li>
+            <li>Çoklu cihaz senkronizasyonu</li>
+            <li>Yönetim etkinlik günlükleri (denetim izi)</li>
         </ul>
     </li>
 </ul>
@@ -690,7 +902,7 @@
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Sürüm 2.1 - Son güncelleme: 18 Ocak 2026</strong><br>
+    <strong>Sürüm 2.3 - Son güncelleme: 21 Şubat 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 
