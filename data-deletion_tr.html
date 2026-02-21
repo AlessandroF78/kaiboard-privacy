@@ -146,18 +146,39 @@
             </tr>
             <tr>
                 <td><strong>Bulut Verilerini Sil</strong></td>
-                <td>Firebase'de saklanan token bakiyesi, satın alma geçmişi ve abonelik verileri</td>
-                <td>Geri alınamaz. Token bakiyenizi kaybedeceksiniz. Aktifse abonelik iptali gerektirir.</td>
+                <td>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+                        <li>Aktif abonelik belgesi (user_subscriptions)</li>
+                        <li>Abonelik geçmişi (user_subscriptions_history)</li>
+                        <li>Yönetimsel etkinlik günlükleri (admin_activity_logs)</li>
+                        <li>Token bakiyesi (aktif abonelik yoksa)</li>
+                        <li>Satın alma geçmişi</li>
+                        <li>Cihazlar arası geçiş meta verileri</li>
+                        <li>Çoklu cihaz dizisi</li>
+                    </ul>
+                </td>
+                <td>Geri alınamaz. Token bakiyenizi, satın alma geçmişinizi, etkinlik günlüklerinizi ve abonelik geçmişinizi kaybedeceksiniz. Aktifse abonelik iptali gerektirir.</td>
             </tr>
             <tr>
                 <td><strong>Öğrenme Verilerini Sil</strong></td>
-                <td>Kişiselleştirilmiş öneriler için öğrenilen kelimeler (tüm 11 dil)</td>
+                <td>Kişiselleştirilmiş öneriler için öğrenilen kelimeler (tüm 13 dil)</td>
                 <td>Tahmin metni sıfırdan başlayacak.</td>
             </tr>
             <tr>
                 <td><strong>Tüm Yerel Verileri Sil</strong></td>
-                <td>Tüm tercihler, ayarlar ve yerel veriler</td>
-                <td>Uygulama varsayılan ayarlarla yeniden başlayacak.</td>
+                <td>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+                        <li>Öğrenme verileri (13 dil)</li>
+                        <li>Tüm tercihler ve ayarlar</li>
+                        <li>Uygulama durumu ve kişi-dil atamaları</li>
+                        <li>Abonelik uyarıları</li>
+                        <li>İndirilmiş N-gram tahmin modelleri</li>
+                        <li>Kopyalanmış Hunspell sözlükleri</li>
+                        <li>Bellek önbelleği (kelime dağarcıkları ve sözlükler)</li>
+                        <li>Tüm uygulama önbelleği (geçici dosyalar, yerel çökme raporları, WebView önbelleği)</li>
+                    </ul>
+                </td>
+                <td>Uygulama varsayılan ayarlarla yeniden başlayacak. Cihazda hiçbir kullanıcı dosyası kalmayacak. Bulut verileri korunur.</td>
             </tr>
         </table>
 
@@ -178,13 +199,13 @@
             <p><strong>Nasıl ilerleyeceğiniz:</strong></p>
             <ol>
                 <li>Google Play Store üzerinden aboneliği iptal edin</li>
-                <li>Mevcut fatura döneminin sonunu bekleyin</li>
+                <li>Mevcut fatura döneminin sonunu bekleyin (ek süre)</li>
                 <li>Uygulama üzerinden bulut verilerini silin</li>
             </ol>
             
-            <p><strong>Anında silme:</strong> Uygulama sizi otomatik olarak aboneliğinizi yönetmek için Google Play'e yönlendirir. İptalden sonra veri silme hemen kullanılabilir olacaktır.</p>
+            <p><strong>Anında silme:</strong> Uygulama sizi otomatik olarak aboneliğinizi yönetmek için Google Play'e yönlendirir. İptalden sonra veri silme, ödenmiş dönemin sonunda kullanılabilir olacaktır.</p>
             
-            <p><strong>Engellemenin yasal dayanağı:</strong> Madde 17.3.b GDPR - "Silme hakkı, işlemenin veri sahibinin taraf olduğu bir sözleşmenin yerine getirilmesi için gerekli olduğu ölçüde geçerli değildir".</p>
+            <p><strong>Engellemenin yasal dayanağı:</strong> Madde 17.3.b GDPR — «Silme hakkı, işlemenin veri sahibinin taraf olduğu bir sözleşmenin yerine getirilmesi için gerekli olduğu ölçüde geçerli değildir».</p>
         </div>
 
         <h2>Yöntem 2: E-posta İle Talep</h2>
@@ -193,7 +214,7 @@
 
         <div class="info-box">
             <p><strong>E-posta:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
-            <p><strong>Konu:</strong> "GDPR Veri Silme Talebi"</p>
+            <p><strong>Konu:</strong> «GDPR Veri Silme Talebi»</p>
             <p><strong>Eklenecek Bilgiler:</strong></p>
             <ul>
                 <li>Cihaz kimliği (biliniyorsa) veya cihaz açıklaması</li>
@@ -202,6 +223,18 @@
             </ul>
             <p><strong>Yanıt Süresi:</strong> Maksimum 30 gün (GDPR Madde 12'nin gerektirdiği şekilde)</p>
         </div>
+
+        <h2>Yöntem 3: Veri Dışa Aktarma (Madde 20 GDPR)</h2>
+
+        <p>Verilerinizi silmeden önce, makine tarafından okunabilir JSON formatında dışa aktarabilirsiniz:</p>
+
+        <ol>
+            <li>Android cihazınızda <strong>kAIboard</strong>'u açın</li>
+            <li><strong>Ayarlar → Gizlilik ve Güvenlik</strong>'e gidin</li>
+            <li><strong>«Verilerinizi dışa aktarın (JSON)»</strong>'a dokunun</li>
+        </ol>
+
+        <p>JSON dosyası şunları içerir: dışa aktarma meta verileri, yerel tercihler, öğrenme verileri (tüm 13 dil için) ve bulut verileri (abonelik, geçmiş, etkinlik günlükleri). Dosyayı cihazda yüklü herhangi bir uygulama aracılığıyla paylaşabilirsiniz.</p>
 
         <h2>Otomatik Veri Silme</h2>
 
@@ -214,35 +247,57 @@
                 <th>Detaylar</th>
             </tr>
             <tr>
-                <td><strong>Abonelik Verileri (Firebase)</strong></td>
-                <td>Fatura döneminin sonuna kadar + sona ermeden 365 gün sonra</td>
-                <td>Abonelik sona ermesi ve saklama süresinden sonra otomatik olarak silinir</td>
+                <td><strong>Aktif Abonelik Verileri (Firebase)</strong></td>
+                <td>Mevcut fatura döneminin sonuna kadar</td>
+                <td>Abonelik sona erdiğinde otomatik olarak geçmişe taşınır</td>
             </tr>
             <tr>
-                <td>Bulut Verileri (Firebase)</td>
+                <td><strong>Abonelik Geçmişi (Firebase)</strong></td>
+                <td>Sona ermeden 90 gün sonra</td>
+                <td>Abonelik bitiminden 90 gün sonra otomatik olarak silinir</td>
+            </tr>
+            <tr>
+                <td><strong>Yönetimsel Etkinlik Günlükleri (Firebase)</strong></td>
+                <td>Son değişiklikten 90 gün sonra</td>
+                <td>Her 24 saatte arka plan temizliğiyle otomatik olarak silinir</td>
+            </tr>
+            <tr>
+                <td><strong>Bulut Token Verileri (Firebase)</strong></td>
                 <td>365 gün hareketsizlik</td>
                 <td>Uygulamayı bir yıl kullanmadıktan sonra otomatik olarak silinir</td>
             </tr>
             <tr>
-                <td>Öğrenilen Kelimeler</td>
-                <td>Süresiz bozulma ile</td>
+                <td><strong>Satın Alma Geçmişi (Firebase)</strong></td>
+                <td>Satın alma tarihinden 365 gün sonra</td>
+                <td>Bir yıl sonra otomatik olarak silinir</td>
+            </tr>
+            <tr>
+                <td><strong>Geçiş Meta Verileri (Firebase)</strong></td>
+                <td>Son geçişten 365 gün sonra</td>
+                <td>Bir yıl sonra otomatik olarak silinir</td>
+            </tr>
+            <tr>
+                <td><strong>Öğrenilen Kelimeler</strong></td>
+                <td>14 gün bozulma ile</td>
                 <td>Sıklık puanları zamanla azalır; kullanılmayan kelimeler kaldırılır</td>
             </tr>
             <tr>
-                <td>Çeviri Önbelleği</td>
+                <td><strong>Çeviri Önbelleği</strong></td>
                 <td>Yalnızca oturum</td>
                 <td>Yalnızca RAM'de saklanır; uygulama kapandığında silinir</td>
             </tr>
             <tr>
-                <td>Çeviri Metni</td>
+                <td><strong>Çeviri Metni</strong></td>
                 <td>Hiçbir zaman saklanmaz</td>
                 <td>0 saniye saklama; yalnızca OpenAI API'sine geçiş</td>
             </tr>
         </table>
 
-        <h2>Veri Envanteri</h2>
+        <h2>Tam Veri Envanteri</h2>
 
-        <p>Aşağıdaki tablo, kAIboard tarafından toplanan tüm verileri ve bunların nasıl silineceğini detaylandırır:</p>
+        <p>Aşağıdaki tablolar, kAIboard tarafından toplanan tüm verileri ve bunların nasıl silineceğini detaylandırır:</p>
+
+        <h3>Bulut Verileri (Firebase)</h3>
 
         <table>
             <tr>
@@ -251,54 +306,139 @@
                 <th>Silme Yöntemi</th>
             </tr>
             <tr>
-                <td>Anonim Cihaz Kimliği</td>
+                <td>Cihaz Dizisi</td>
                 <td>Firebase (bulut)</td>
-                <td>"Bulut Verilerini Sil" düğmesi</td>
+                <td>«Bulut Verilerini Sil» düğmesi</td>
             </tr>
             <tr>
-                <td>Jeton Bakiyesi</td>
+                <td>Token Bakiyesi</td>
                 <td>Firebase (bulut)</td>
-                <td>"Bulut Verilerini Sil" düğmesi</td>
+                <td>«Bulut Verilerini Sil» düğmesi</td>
             </tr>
             <tr>
                 <td>Satın Alma Geçmişi</td>
                 <td>Firebase (bulut)</td>
-                <td>"Bulut Verilerini Sil" düğmesi</td>
+                <td>«Bulut Verilerini Sil» düğmesi</td>
+            </tr>
+            <tr>
+                <td>Geçiş Meta Verileri</td>
+                <td>Firebase (bulut)</td>
+                <td>«Bulut Verilerini Sil» düğmesi</td>
             </tr>
             <tr>
                 <td>Abonelik Planı</td>
                 <td>Firebase (bulut)</td>
-                <td>"Bulut Verilerini Sil" düğmesi (sadece abonelik iptali sonrası)</td>
+                <td>«Bulut Verilerini Sil» düğmesi (sadece abonelik iptali sonrası)</td>
             </tr>
             <tr>
                 <td>Aylık Token Limiti</td>
                 <td>Firebase (bulut)</td>
-                <td>"Bulut Verilerini Sil" düğmesi (sadece abonelik iptali sonrası)</td>
+                <td>«Bulut Verilerini Sil» düğmesi (sadece abonelik iptali sonrası)</td>
             </tr>
             <tr>
                 <td>Mevcut Token Kullanımı</td>
                 <td>Firebase (bulut)</td>
-                <td>"Bulut Verilerini Sil" düğmesi (sadece abonelik iptali sonrası)</td>
+                <td>«Bulut Verilerini Sil» düğmesi (sadece abonelik iptali sonrası)</td>
             </tr>
             <tr>
                 <td>Aylık Sıfırlama Tarihi</td>
                 <td>Firebase (bulut)</td>
-                <td>"Bulut Verilerini Sil" düğmesi (sadece abonelik iptali sonrası)</td>
+                <td>«Bulut Verilerini Sil» düğmesi (sadece abonelik iptali sonrası)</td>
+            </tr>
+            <tr>
+                <td>Abonelik Bitiş Tarihi</td>
+                <td>Firebase (bulut)</td>
+                <td>«Bulut Verilerini Sil» düğmesi (sadece ek süre bitiminden sonra)</td>
+            </tr>
+            <tr>
+                <td>«Yenilenmeyecek» İşareti</td>
+                <td>Firebase (bulut)</td>
+                <td>«Bulut Verilerini Sil» düğmesi (sadece ek süre bitiminden sonra)</td>
+            </tr>
+            <tr>
+                <td>Abonelik Geçmişi</td>
+                <td>Firebase (bulut)</td>
+                <td>«Bulut Verilerini Sil» düğmesi (tümünü siler: aktif + geçmiş)</td>
+            </tr>
+            <tr>
+                <td>Yönetimsel Etkinlik Günlükleri</td>
+                <td>Firebase (bulut)</td>
+                <td>«Bulut Verilerini Sil» düğmesi</td>
+            </tr>
+        </table>
+
+        <h3>Yerel Veriler (Cihaz)</h3>
+
+        <table>
+            <tr>
+                <th>Veri Türü</th>
+                <th>Depolama Konumu</th>
+                <th>Silme Yöntemi</th>
             </tr>
             <tr>
                 <td>Öğrenilen Kelimeler (Tahminler)</td>
                 <td>Yerel (cihaz)</td>
-                <td>"Öğrenme Verilerini Sil" düğmesi</td>
+                <td>«Öğrenme Verilerini Sil» veya «Tüm Yerel Verileri Sil» düğmesi</td>
             </tr>
             <tr>
                 <td>Uygulama Tercihleri</td>
                 <td>Yerel (cihaz)</td>
-                <td>"Tüm Yerel Verileri Sil" düğmesi</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
+            </tr>
+            <tr>
+                <td>Uygulama Durumu</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
             </tr>
             <tr>
                 <td>Kişi Dil Atamaları</td>
                 <td>Yerel (cihaz)</td>
-                <td>"Tüm Yerel Verileri Sil" düğmesi</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
+            </tr>
+            <tr>
+                <td>Öğrenme Meta Verileri</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
+            </tr>
+            <tr>
+                <td>Yedekleme Meta Verileri</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
+            </tr>
+            <tr>
+                <td>Abonelik Uyarıları</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
+            </tr>
+            <tr>
+                <td>N-gram Tahmin Modelleri (indirilmiş)</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
+            </tr>
+            <tr>
+                <td>Hunspell Sözlükleri (varlıklardan kopyalanmış)</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
+            </tr>
+            <tr>
+                <td>Kelime Dağarcığı ve Sözlük Önbelleği (bellekte)</td>
+                <td>RAM (geçici)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi veya uygulama kapatma</td>
+            </tr>
+            <tr>
+                <td>Uygulama Önbelleği (geçici dosyalar, yerel çökme raporları, WebView önbelleği)</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
+            </tr>
+            <tr>
+                <td>Kişi Belirsizlik Giderme Önbelleği</td>
+                <td>RAM (geçici)</td>
+                <td>Erişilebilirlik hizmeti yeniden başlatıldığında otomatik</td>
+            </tr>
+            <tr>
+                <td>Çeviri Önbelleği</td>
+                <td>RAM (geçici)</td>
+                <td>Uygulama kapatıldığında otomatik</td>
             </tr>
             <tr>
                 <td>Çeviri Metni</td>
@@ -313,7 +453,7 @@
 
         <ul>
             <li><strong>Google Play İşlemleri:</strong> Google tarafından politikalarına göre yönetilir (iade talepleri, dolandırıcılık önleme ve vergi uyumluluğu için)</li>
-            <li><strong>Anonim Sistem Günlükleri:</strong> Hata ayıklama amaçları için 90 güne kadar saklanır (kişisel olarak tanımlanabilir bilgi içermez)</li>
+            <li><strong>Firebase'e zaten gönderilmiş çökme raporları:</strong> Firebase Crashlytics'e zaten iletilmiş raporlar arka uçta kalır ve cihazdan silinemez. Henüz gönderilmemiş raporlar Ayarlar'dan (Crashlytics anahtarı KAPALI) veya «Tüm Yerel Verileri Sil» düğmesiyle silinebilir</li>
         </ul>
 
         <h2>Veri Silmenin Sonuçları</h2>
@@ -321,19 +461,19 @@
         <div class="warning">
             <p><strong>Önemli Uyarı:</strong> Bazı verilerin silinmesi <strong>geri alınamaz</strong>. Devam etmeden önce sonuçları anladığınızdan emin olun:</p>
             <ul>
-                <li><strong>Bulut Verilerini Sil:</strong> Token bakiyenizi, satın alma geçmişinizi ve abonelik verilerinizi kaybedeceksiniz. Uygulamayı yeniden yükledikten sonra bile onları geri ALAMAZSINIZ. Aktif bir aboneliğiniz varsa, önce Google Play Store üzerinden iptal etmelisiniz.</li>
+                <li><strong>Bulut Verilerini Sil:</strong> Token bakiyenizi, satın alma geçmişinizi, abonelik verilerinizi, abonelik geçmişinizi ve etkinlik günlüklerinizi kaybedeceksiniz. Uygulamayı yeniden yükledikten sonra bile onları geri ALAMAZSINIZ. Aktif bir aboneliğiniz varsa, önce Google Play Store üzerinden iptal etmeli ve ödenmiş dönemin sonunu beklemelisiniz.</li>
                 <li><strong>Öğrenme Verilerini Sil:</strong> Kişiselleştirilmiş metin tahminleri sıfırdan başlayacak</li>
-                <li><strong>Tüm Yerel Verileri Sil:</strong> Tüm tercihler ve ayarlar kaybolacak</li>
+                <li><strong>Tüm Yerel Verileri Sil:</strong> Tüm tercihler, ayarlar, indirilmiş tahmin modelleri, sözlükler ve önbellek kaybolacak. Uygulama yeni bir kurulum gibi yeniden başlayacak (bulut verileri korunur)</li>
             </ul>
         </div>
 
         <h2>Sıkça Sorulan Sorular</h2>
 
         <h3>Bulut verilerini silersem ne olur?</h3>
-        <p>Jeton bakiyenizi ve satın alma geçmişinizi kaybedersiniz. Uygulamayı yeniden yüklerseniz, sıfırdan başlarsınız.</p>
+        <p>Token bakiyenizi, satın alma geçmişinizi, aktif abonelik verilerinizi, geçmiş abonelik geçmişinizi ve etkinlik günlüklerinizi kaybedersiniz. Uygulamayı yeniden yüklerseniz, sıfırdan başlarsınız.</p>
 
         <h3>Yalnızca belirli verileri silebilir miyim?</h3>
-        <p>Evet. Yalnızca bulut verilerini, yalnızca öğrenme verilerini veya tüm verileri birlikte silmeyi seçebilirsiniz.</p>
+        <p>Evet. Yalnızca bulut verilerini, yalnızca öğrenme verilerini veya tüm yerel verileri silmeyi seçebilirsiniz. Ayrıca silmeden önce verilerinizi JSON formatında dışa aktarabilirsiniz.</p>
 
         <h3>Çevrilen mesajlarım kaydediliyor mu?</h3>
         <p>Hayır. Çeviri için yazdığınız metin <strong>hiçbir zaman kaydedilmez</strong>. Yalnızca çeviri işleme için OpenAI'ye gönderilir ve hemen atılır (0 saniye saklama).</p>
@@ -342,7 +482,16 @@
         <p>Uygulama içi silme <strong>anında</strong>dır (0-5 saniye). E-posta talepleri 30 gün içinde işlenir.</p>
 
         <h3>Silme işleminden sonra verileri kurtarabilir miyim?</h3>
-        <p>Hayır. Silme işlemi <strong>geri alınamaz</strong>. Devam etmeden önce verilerinizi silmek istediğinizden emin olun.</p>
+        <p>Hayır. Silme işlemi <strong>geri alınamaz</strong>. Devam etmeden önce verilerinizi silmek istediğinizden emin olun. Silmeden önce «Verilerinizi dışa aktarın (JSON)» özelliğini kullanmanızı öneririz.</p>
+
+        <h3>Silme işleminden sonra abonelik geçmişine ne olur?</h3>
+        <p>Abonelik geçmişi bulut verileriyle birlikte silinir. Tüm geçmiş abonelikleri (süresi dolmuş veya iptal edilmiş) token kullanım detayları, tarihler ve kullanılan cihazlarla birlikte içerir.</p>
+
+        <h3>Ek süre sırasında verileri silebilir miyim?</h3>
+        <p>Hayır. Aboneliğinizi iptal ettiyseniz ancak hizmet hâlâ aktifse (ek süre), bulut verilerini silebilmek için gerçek süre sonunu beklemeniz gerekir. Bu, ödenmiş dönem boyunca kullanıcı deneyiminizi korur.</p>
+
+        <h3>İndirilen tahmin modelleri ve sözlüklere ne olur?</h3>
+        <p>«Tüm Yerel Verileri Sil» düğmesiyle kaldırılırlar. Sonraki kullanımda, tahmin modelleri Çevrimdışı Modeller ekranından yeniden indirilmeli ve sözlükler dilin ilk kullanımında otomatik olarak yeniden kopyalanacaktır.</p>
 
         <h2>Ek Kaynaklar</h2>
 
@@ -352,11 +501,10 @@
         </p>
 
         <div class="footer">
-            <p><strong>Sürüm 1.1 - Son Güncelleme: 25 Ocak 2026</strong></p>
+            <p><strong>Sürüm 1.3 — Son Güncelleme: 21 Şubat 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>GDPR Uyumlu (AB Yönetmeliği 2016/679)</p>
         </div>
     </div>
 </body>
-
 </html>
