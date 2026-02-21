@@ -146,45 +146,66 @@
             </tr>
             <tr>
                 <td><strong>Eliminar Dados da Nuvem</strong></td>
-                <td>Saldo de tokens, histórico de compras e dados de assinatura armazenados no Firebase</td>
-                <td>Irreversível. Você perderá seu saldo de tokens. Requer cancelamento de assinatura se ativa.</td>
+                <td>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+                        <li>Documento de assinatura ativa (user_subscriptions)</li>
+                        <li>Histórico de assinaturas (user_subscriptions_history)</li>
+                        <li>Registos de atividade administrativa (admin_activity_logs)</li>
+                        <li>Saldo de tokens (se não houver assinatura ativa)</li>
+                        <li>Histórico de compras</li>
+                        <li>Metadados de migração entre dispositivos</li>
+                        <li>Array de dispositivos multi-device</li>
+                    </ul>
+                </td>
+                <td>Irreversível. Perderá o seu saldo de tokens, histórico de compras, registos de atividade e histórico de assinaturas. Requer cancelamento de assinatura se ativa.</td>
             </tr>
             <tr>
                 <td><strong>Eliminar Dados de Aprendizagem</strong></td>
-                <td>Palavras aprendidas para sugestões personalizadas (todos os 11 idiomas)</td>
+                <td>Palavras aprendidas para sugestões personalizadas (todos os 13 idiomas)</td>
                 <td>O texto preditivo começará do zero.</td>
             </tr>
             <tr>
                 <td><strong>Eliminar Todos os Dados Locais</strong></td>
-                <td>Todas as preferências, definições e dados locais</td>
-                <td>A aplicação reiniciará com as definições padrão.</td>
+                <td>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+                        <li>Dados de aprendizagem (13 idiomas)</li>
+                        <li>Todas as preferências e definições</li>
+                        <li>Estado da app e atribuições contacto-idioma</li>
+                        <li>Alertas de assinatura</li>
+                        <li>Modelos preditivos N-gram descarregados</li>
+                        <li>Dicionários Hunspell copiados</li>
+                        <li>Cache em memória (vocabulários e dicionários)</li>
+                        <li>Cache completa da app (ficheiros temporários, relatórios de erro locais, cache WebView)</li>
+                    </ul>
+                </td>
+                <td>A aplicação reiniciará com as definições padrão. Nenhum ficheiro de utilizador permanecerá no dispositivo. Os dados da nuvem são preservados.</td>
             </tr>
         </table>
 
         <p><strong>Tempo de Processamento:</strong> Imediato (0-5 segundos)</p>
 
         <div class="warning">
-            <h3>⚠️ Limitação de Exclusão com Assinatura Ativa (Art. 17.3.b RGPD)</h3>
+            <h3>⚠️ Limitação de Eliminação com Assinatura Ativa (Art. 17.3.b RGPD)</h3>
             
-            <p>Se você tiver uma <strong>assinatura mensal ativa</strong>, a exclusão de dados da nuvem fica <strong>temporariamente bloqueada</strong> até o cancelamento da assinatura.</p>
+            <p>Se tiver uma <strong>assinatura mensal ativa</strong>, a eliminação de dados da nuvem fica <strong>temporariamente bloqueada</strong> até ao cancelamento da assinatura.</p>
             
-            <p><strong>Motivo:</strong> Os dados relacionados à assinatura (plano ativo, limite de tokens, data de reset) são necessários para a execução do contrato em andamento (Art. 6.1.b RGPD). A exclusão antecipada impediria:</p>
+            <p><strong>Motivo:</strong> Os dados relacionados com a assinatura (plano ativo, limite de tokens, data de reinício) são necessários para a execução do contrato em curso (Art. 6.1.b RGPD). A eliminação antecipada impediria:</p>
             <ul>
                 <li>❌ O funcionamento correto do serviço mensal adquirido</li>
                 <li>❌ A sincronização do limite de tokens entre dispositivos</li>
-                <li>❌ O reset automático de tokens no início do mês</li>
+                <li>❌ O reinício automático de tokens no início do mês</li>
             </ul>
             
             <p><strong>Como proceder:</strong></p>
             <ol>
                 <li>Cancele a assinatura através da Google Play Store</li>
-                <li>Aguarde até o fim do período de faturamento atual</li>
-                <li>Exclua os dados da nuvem através do aplicativo</li>
+                <li>Aguarde até ao fim do período de faturação atual (período de carência)</li>
+                <li>Elimine os dados da nuvem através da app</li>
             </ol>
             
-            <p><strong>Exclusão imediata:</strong> O aplicativo redireciona você automaticamente para o Google Play para gerenciar sua assinatura. Após o cancelamento, a exclusão de dados estará imediatamente disponível.</p>
+            <p><strong>Eliminação imediata:</strong> A app redireciona-o automaticamente para o Google Play para gerir a sua assinatura. Após o cancelamento, a eliminação de dados estará disponível no final do período já pago.</p>
             
-            <p><strong>Base jurídica do bloqueio:</strong> Art. 17.3.b RGPD - "O direito ao apagamento não se aplica na medida em que o tratamento seja necessário para a execução de um contrato do qual o titular dos dados é parte".</p>
+            <p><strong>Base jurídica do bloqueio:</strong> Art. 17.3.b RGPD - «O direito ao apagamento não se aplica na medida em que o tratamento seja necessário para a execução de um contrato do qual o titular dos dados é parte».</p>
         </div>
 
         <h2>Método 2: Pedido por E-mail</h2>
@@ -193,7 +214,7 @@
 
         <div class="info-box">
             <p><strong>E-mail:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
-            <p><strong>Assunto:</strong> "Pedido de Eliminação de Dados RGPD"</p>
+            <p><strong>Assunto:</strong> «Pedido de Eliminação de Dados RGPD»</p>
             <p><strong>Informação a Incluir:</strong></p>
             <ul>
                 <li>ID do dispositivo (se conhecido) ou descrição do dispositivo</li>
@@ -202,6 +223,18 @@
             </ul>
             <p><strong>Tempo de Resposta:</strong> Máximo 30 dias (conforme exigido pelo Artigo 12 do RGPD)</p>
         </div>
+
+        <h2>Método 3: Exportação de Dados (Art. 20 RGPD)</h2>
+
+        <p>Antes de eliminar os seus dados, pode exportá-los num formato JSON legível por máquina:</p>
+
+        <ol>
+            <li>Abra o <strong>kAIboard</strong> no seu dispositivo Android</li>
+            <li>Vá a <strong>Definições → Privacidade e Segurança</strong></li>
+            <li>Toque em <strong>«Exportar os seus dados (JSON)»</strong></li>
+        </ol>
+
+        <p>O ficheiro JSON inclui: metadados de exportação, preferências locais, dados de aprendizagem (para todos os 13 idiomas) e dados da nuvem (assinatura, histórico, registos de atividade). Pode partilhar o ficheiro através de qualquer aplicação instalada no dispositivo.</p>
 
         <h2>Eliminação Automática de Dados</h2>
 
@@ -214,35 +247,57 @@
                 <th>Detalhes</th>
             </tr>
             <tr>
-                <td><strong>Dados de Assinatura (Firebase)</strong></td>
-                <td>Até o fim do período de faturamento + 365 dias após expiração</td>
-                <td>Excluídos automaticamente após expiração da assinatura e período de retenção</td>
+                <td><strong>Dados de Assinatura Ativa (Firebase)</strong></td>
+                <td>Até ao fim do período de faturação atual</td>
+                <td>Movidos automaticamente para o histórico quando a assinatura expira</td>
             </tr>
             <tr>
-                <td>Dados da Nuvem (Firebase)</td>
+                <td><strong>Histórico de Assinaturas (Firebase)</strong></td>
+                <td>90 dias após a expiração</td>
+                <td>Eliminado automaticamente 90 dias após o fim da assinatura</td>
+            </tr>
+            <tr>
+                <td><strong>Registos de Atividade Administrativa (Firebase)</strong></td>
+                <td>90 dias desde a última modificação</td>
+                <td>Eliminados automaticamente a cada 24 horas por limpeza em segundo plano</td>
+            </tr>
+            <tr>
+                <td><strong>Dados de Tokens da Nuvem (Firebase)</strong></td>
                 <td>365 dias de inatividade</td>
                 <td>Eliminados automaticamente após um ano sem uso da aplicação</td>
             </tr>
             <tr>
-                <td>Palavras Aprendidas</td>
-                <td>Indefinido com degradação</td>
+                <td><strong>Histórico de Compras (Firebase)</strong></td>
+                <td>365 dias desde a compra</td>
+                <td>Eliminado automaticamente após um ano</td>
+            </tr>
+            <tr>
+                <td><strong>Metadados de Migração (Firebase)</strong></td>
+                <td>365 dias desde a última migração</td>
+                <td>Eliminados automaticamente após um ano</td>
+            </tr>
+            <tr>
+                <td><strong>Palavras Aprendidas</strong></td>
+                <td>14 dias com degradação</td>
                 <td>As pontuações de frequência diminuem ao longo do tempo; palavras não utilizadas são removidas</td>
             </tr>
             <tr>
-                <td>Cache de Tradução</td>
+                <td><strong>Cache de Tradução</strong></td>
                 <td>Apenas sessão</td>
                 <td>Armazenado apenas na RAM; eliminado ao fechar a aplicação</td>
             </tr>
             <tr>
-                <td>Texto de Tradução</td>
+                <td><strong>Texto de Tradução</strong></td>
                 <td>Nunca armazenado</td>
                 <td>0 segundos de retenção; apenas trânsito para a API OpenAI</td>
             </tr>
         </table>
 
-        <h2>Inventário de Dados</h2>
+        <h2>Inventário Completo de Dados</h2>
 
-        <p>A seguinte tabela detalha todos os dados recolhidos pelo kAIboard e como eliminá-los:</p>
+        <p>As seguintes tabelas detalham todos os dados recolhidos pelo kAIboard e como eliminá-los:</p>
+
+        <h3>Dados da Nuvem (Firebase)</h3>
 
         <table>
             <tr>
@@ -251,54 +306,139 @@
                 <th>Método de Eliminação</th>
             </tr>
             <tr>
-                <td>ID de Dispositivo Anónimo</td>
+                <td>Array de Dispositivos</td>
                 <td>Firebase (nuvem)</td>
-                <td>Botão "Eliminar Dados da Nuvem"</td>
+                <td>Botão «Eliminar Dados da Nuvem»</td>
             </tr>
             <tr>
                 <td>Saldo de Tokens</td>
                 <td>Firebase (nuvem)</td>
-                <td>Botão "Eliminar Dados da Nuvem"</td>
+                <td>Botão «Eliminar Dados da Nuvem»</td>
             </tr>
             <tr>
                 <td>Histórico de Compras</td>
                 <td>Firebase (nuvem)</td>
-                <td>Botão "Eliminar Dados da Nuvem"</td>
+                <td>Botão «Eliminar Dados da Nuvem»</td>
+            </tr>
+            <tr>
+                <td>Metadados de Migração</td>
+                <td>Firebase (nuvem)</td>
+                <td>Botão «Eliminar Dados da Nuvem»</td>
             </tr>
             <tr>
                 <td>Plano de Assinatura</td>
                 <td>Firebase (nuvem)</td>
-                <td>Botão "Excluir Dados da Nuvem" (somente após cancelamento de assinatura)</td>
+                <td>Botão «Eliminar Dados da Nuvem» (apenas após cancelamento da assinatura)</td>
             </tr>
             <tr>
                 <td>Limite Mensal de Tokens</td>
                 <td>Firebase (nuvem)</td>
-                <td>Botão "Excluir Dados da Nuvem" (somente após cancelamento de assinatura)</td>
+                <td>Botão «Eliminar Dados da Nuvem» (apenas após cancelamento da assinatura)</td>
             </tr>
             <tr>
                 <td>Uso Atual de Tokens</td>
                 <td>Firebase (nuvem)</td>
-                <td>Botão "Excluir Dados da Nuvem" (somente após cancelamento de assinatura)</td>
+                <td>Botão «Eliminar Dados da Nuvem» (apenas após cancelamento da assinatura)</td>
             </tr>
             <tr>
-                <td>Data de Reset Mensal</td>
+                <td>Data de Reinício Mensal</td>
                 <td>Firebase (nuvem)</td>
-                <td>Botão "Excluir Dados da Nuvem" (somente após cancelamento de assinatura)</td>
+                <td>Botão «Eliminar Dados da Nuvem» (apenas após cancelamento da assinatura)</td>
+            </tr>
+            <tr>
+                <td>Data de Fim da Assinatura</td>
+                <td>Firebase (nuvem)</td>
+                <td>Botão «Eliminar Dados da Nuvem» (apenas após expiração do período de carência)</td>
+            </tr>
+            <tr>
+                <td>Flag «Não Será Renovada»</td>
+                <td>Firebase (nuvem)</td>
+                <td>Botão «Eliminar Dados da Nuvem» (apenas após expiração do período de carência)</td>
+            </tr>
+            <tr>
+                <td>Histórico de Assinaturas</td>
+                <td>Firebase (nuvem)</td>
+                <td>Botão «Eliminar Dados da Nuvem» (elimina tudo: ativa + histórico)</td>
+            </tr>
+            <tr>
+                <td>Registos de Atividade Administrativa</td>
+                <td>Firebase (nuvem)</td>
+                <td>Botão «Eliminar Dados da Nuvem»</td>
+            </tr>
+        </table>
+
+        <h3>Dados Locais (Dispositivo)</h3>
+
+        <table>
+            <tr>
+                <th>Tipo de Dados</th>
+                <th>Local de Armazenamento</th>
+                <th>Método de Eliminação</th>
             </tr>
             <tr>
                 <td>Palavras Aprendidas (Previsões)</td>
                 <td>Local (dispositivo)</td>
-                <td>Botão "Eliminar Dados de Aprendizagem"</td>
+                <td>Botão «Eliminar Dados de Aprendizagem» ou «Eliminar Todos os Dados Locais»</td>
             </tr>
             <tr>
                 <td>Preferências da Aplicação</td>
                 <td>Local (dispositivo)</td>
-                <td>Botão "Eliminar Todos os Dados Locais"</td>
+                <td>Botão «Eliminar Todos os Dados Locais»</td>
+            </tr>
+            <tr>
+                <td>Estado da Aplicação</td>
+                <td>Local (dispositivo)</td>
+                <td>Botão «Eliminar Todos os Dados Locais»</td>
             </tr>
             <tr>
                 <td>Atribuições de Idioma dos Contactos</td>
                 <td>Local (dispositivo)</td>
-                <td>Botão "Eliminar Todos os Dados Locais"</td>
+                <td>Botão «Eliminar Todos os Dados Locais»</td>
+            </tr>
+            <tr>
+                <td>Metadados de Aprendizagem</td>
+                <td>Local (dispositivo)</td>
+                <td>Botão «Eliminar Todos os Dados Locais»</td>
+            </tr>
+            <tr>
+                <td>Metadados de Backup</td>
+                <td>Local (dispositivo)</td>
+                <td>Botão «Eliminar Todos os Dados Locais»</td>
+            </tr>
+            <tr>
+                <td>Alertas de Assinatura</td>
+                <td>Local (dispositivo)</td>
+                <td>Botão «Eliminar Todos os Dados Locais»</td>
+            </tr>
+            <tr>
+                <td>Modelos Preditivos N-gram (descarregados)</td>
+                <td>Local (dispositivo)</td>
+                <td>Botão «Eliminar Todos os Dados Locais»</td>
+            </tr>
+            <tr>
+                <td>Dicionários Hunspell (copiados dos assets)</td>
+                <td>Local (dispositivo)</td>
+                <td>Botão «Eliminar Todos os Dados Locais»</td>
+            </tr>
+            <tr>
+                <td>Cache de Vocabulários e Dicionários (em memória)</td>
+                <td>RAM (volátil)</td>
+                <td>Botão «Eliminar Todos os Dados Locais» ou fecho da app</td>
+            </tr>
+            <tr>
+                <td>Cache da App (ficheiros temporários, relatórios de erro locais, cache WebView)</td>
+                <td>Local (dispositivo)</td>
+                <td>Botão «Eliminar Todos os Dados Locais»</td>
+            </tr>
+            <tr>
+                <td>Cache de Desambiguação de Contactos</td>
+                <td>RAM (volátil)</td>
+                <td>Automática ao reiniciar o serviço de acessibilidade</td>
+            </tr>
+            <tr>
+                <td>Cache de Tradução</td>
+                <td>RAM (volátil)</td>
+                <td>Automática ao fechar a app</td>
             </tr>
             <tr>
                 <td>Texto de Tradução</td>
@@ -313,7 +453,7 @@
 
         <ul>
             <li><strong>Transações do Google Play:</strong> Geridas pelo Google de acordo com as suas políticas (para pedidos de reembolso, prevenção de fraude e conformidade fiscal)</li>
-            <li><strong>Registos do Sistema Anónimos:</strong> Retidos até 90 dias para fins de depuração (não contêm informação pessoal identificável)</li>
+            <li><strong>Relatórios de erro já enviados ao Firebase:</strong> Os relatórios já transmitidos ao Firebase Crashlytics permanecem no backend e não podem ser eliminados a partir do dispositivo. Os relatórios ainda não enviados podem ser eliminados nas Definições (interruptor Crashlytics DESLIGADO) ou através do botão «Eliminar Todos os Dados Locais»</li>
         </ul>
 
         <h2>Consequências da Eliminação de Dados</h2>
@@ -321,19 +461,19 @@
         <div class="warning">
             <p><strong>Aviso Importante:</strong> A eliminação de certos dados é <strong>irreversível</strong>. Certifique-se de compreender as consequências antes de prosseguir:</p>
             <ul>
-                <li><strong>Excluir Dados da Nuvem:</strong> Você perderá seu saldo de tokens, histórico de compras e dados de assinatura. Você NÃO poderá recuperá-los, mesmo após reinstalar o aplicativo. Se você tiver uma assinatura ativa, deve primeiro cancelá-la através da Google Play Store.</li>
+                <li><strong>Eliminar Dados da Nuvem:</strong> Perderá o seu saldo de tokens, histórico de compras, dados de assinatura, histórico de assinaturas e registos de atividade. NÃO poderá recuperá-los, mesmo após reinstalar a aplicação. Se tiver uma assinatura ativa, deve primeiro cancelá-la através da Google Play Store e aguardar o fim do período já pago.</li>
                 <li><strong>Eliminar Dados de Aprendizagem:</strong> As previsões de texto personalizadas começarão do zero</li>
-                <li><strong>Eliminar Todos os Dados Locais:</strong> Todas as preferências e definições serão perdidas</li>
+                <li><strong>Eliminar Todos os Dados Locais:</strong> Todas as preferências, definições, modelos preditivos descarregados, dicionários e cache serão perdidos. A app reiniciará como uma nova instalação (os dados da nuvem são preservados)</li>
             </ul>
         </div>
 
         <h2>Perguntas Frequentes</h2>
 
         <h3>O que acontece se eu eliminar os dados da nuvem?</h3>
-        <p>Perderá o seu saldo de tokens e histórico de compras. Se reinstalar a aplicação, começará do zero.</p>
+        <p>Perderá o seu saldo de tokens, histórico de compras, dados de assinatura ativa, histórico de assinaturas anteriores e registos de atividade. Se reinstalar a aplicação, começará do zero.</p>
 
         <h3>Posso eliminar apenas dados específicos?</h3>
-        <p>Sim. Pode escolher eliminar apenas os dados da nuvem, apenas os dados de aprendizagem ou todos os dados juntos.</p>
+        <p>Sim. Pode escolher eliminar apenas os dados da nuvem, apenas os dados de aprendizagem ou todos os dados locais. Também pode exportar os seus dados em formato JSON antes de os eliminar.</p>
 
         <h3>As minhas mensagens traduzidas são guardadas?</h3>
         <p>Não. O texto que escreve para tradução <strong>nunca é guardado</strong>. É enviado para a OpenAI apenas para processamento de tradução e imediatamente descartado (0 segundos de retenção).</p>
@@ -342,7 +482,16 @@
         <p>A eliminação na aplicação é <strong>imediata</strong> (0-5 segundos). Os pedidos por e-mail são processados em 30 dias.</p>
 
         <h3>Posso recuperar os dados após a eliminação?</h3>
-        <p>Não. A eliminação é <strong>irreversível</strong>. Certifique-se de que deseja eliminar os seus dados antes de prosseguir.</p>
+        <p>Não. A eliminação é <strong>irreversível</strong>. Certifique-se de que deseja eliminar os seus dados antes de prosseguir. Recomendamos utilizar «Exportar os seus dados (JSON)» antes da eliminação.</p>
+
+        <h3>O que acontece com o histórico de assinaturas após a eliminação?</h3>
+        <p>O histórico de assinaturas é eliminado juntamente com os dados da nuvem. Inclui todas as assinaturas anteriores (expiradas ou canceladas) com detalhes de utilização de tokens, datas e dispositivos utilizados.</p>
+
+        <h3>Posso eliminar dados durante o período de carência?</h3>
+        <p>Não. Se cancelou a sua assinatura mas o serviço ainda está ativo (período de carência), deve aguardar a expiração efetiva antes de poder eliminar os dados da nuvem. Isto protege a sua experiência de utilizador durante o período já pago.</p>
+
+        <h3>O que acontece com os modelos preditivos e dicionários descarregados?</h3>
+        <p>São removidos pelo botão «Eliminar Todos os Dados Locais». Na próxima utilização, os modelos preditivos terão de ser novamente descarregados a partir do ecrã Modelos Offline e os dicionários serão automaticamente recopiados na primeira utilização do idioma.</p>
 
         <h2>Recursos Adicionais</h2>
 
@@ -352,11 +501,10 @@
         </p>
 
         <div class="footer">
-            <p><strong>Versão 1.1 - Última Atualização: 25 de janeiro de 2026</strong></p>
+            <p><strong>Versão 1.3 - Última Atualização: 21 de fevereiro de 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Conforme o RGPD (Regulamento UE 2016/679)</p>
         </div>
     </div>
 </body>
-
 </html>
