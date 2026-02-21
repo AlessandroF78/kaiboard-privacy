@@ -150,22 +150,35 @@
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>Documento abbonamento attivo (user_subscriptions)</li>
                         <li>Cronologia abbonamenti (user_subscriptions_history)</li>
+                        <li>Log attività amministrativa (admin_activity_logs)</li>
                         <li>Saldo token (se nessun abbonamento attivo)</li>
                         <li>Cronologia acquisti token</li>
+                        <li>Metadati migrazione cross-device</li>
                         <li>Array dispositivi multi-device</li>
                     </ul>
                 </td>
-                <td>Irreversibile. Perderai il tuo saldo token, cronologia acquisti e cronologia abbonamenti. Richiede annullamento abbonamento se attivo.</td>
+                <td>Irreversibile. Perderai il tuo saldo token, cronologia acquisti, log attività e cronologia abbonamenti. Richiede annullamento abbonamento se attivo.</td>
             </tr>
             <tr>
                 <td><strong>Elimina Dati Apprendimento</strong></td>
-                <td>Parole apprese per suggerimenti personalizzati (tutte le 11 lingue)</td>
+                <td>Parole apprese per suggerimenti personalizzati (tutte le 13 lingue)</td>
                 <td>Il testo predittivo ripartirà da zero.</td>
             </tr>
             <tr>
                 <td><strong>Elimina Tutti i Dati Locali</strong></td>
-                <td>Tutte le preferenze, impostazioni e dati locali</td>
-                <td>L'app si riavvierà con le impostazioni predefinite.</td>
+                <td>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+                        <li>Dati apprendimento (13 lingue)</li>
+                        <li>Tutte le preferenze e impostazioni</li>
+                        <li>Stato app e associazioni contatto-lingua</li>
+                        <li>Alert abbonamento</li>
+                        <li>Modelli predittivi N-gram scaricati</li>
+                        <li>Dizionari Hunspell copiati</li>
+                        <li>Cache in memoria (vocabolari e dizionari)</li>
+                        <li>Intera cache app (file temporanei, report crash locali, cache WebView)</li>
+                    </ul>
+                </td>
+                <td>L'app si riavvierà con le impostazioni predefinite. Nessun file utente rimarrà sul dispositivo. I dati cloud vengono preservati.</td>
             </tr>
         </table>
 
@@ -211,6 +224,18 @@
             <p><strong>Tempo di Risposta:</strong> Massimo 30 giorni (come richiesto dall'Articolo 12 del GDPR)</p>
         </div>
 
+        <h2>Metodo 3: Esportazione Dati (Art. 20 GDPR)</h2>
+
+        <p>Prima di eliminare i tuoi dati, puoi esportarli in formato JSON leggibile da macchina:</p>
+
+        <ol>
+            <li>Apri <strong>kAIboard</strong> sul tuo dispositivo Android</li>
+            <li>Vai su <strong>Impostazioni → Privacy e Sicurezza</strong></li>
+            <li>Tocca <strong>"Esporta i tuoi dati (JSON)"</strong></li>
+        </ol>
+
+        <p>Il file JSON include: metadati export, preferenze locali, dati apprendimento (per tutte le 13 lingue) e dati cloud (abbonamento, cronologia, log attività). Puoi condividere il file tramite qualsiasi app installata sul dispositivo.</p>
+
         <h2>Cancellazione Automatica dei Dati</h2>
 
         <p>kAIboard include meccanismi di pulizia automatica dei dati per proteggere la tua privacy:</p>
@@ -224,7 +249,7 @@
             <tr>
                 <td><strong>Dati Abbonamento Attivo (Firebase)</strong></td>
                 <td>Fino alla fine del periodo di fatturazione corrente</td>
-                <td>Spostati automaticamente in cronologia quando abbonamento scade</td>
+                <td>Spostati automaticamente in cronologia quando l'abbonamento scade</td>
             </tr>
             <tr>
                 <td><strong>Cronologia Abbonamenti (Firebase)</strong></td>
@@ -232,9 +257,24 @@
                 <td>Eliminati automaticamente dopo 90 giorni dalla fine dell'abbonamento</td>
             </tr>
             <tr>
+                <td><strong>Log Attività Amministrativa (Firebase)</strong></td>
+                <td>90 giorni dall'ultima modifica</td>
+                <td>Eliminati automaticamente ogni 24 ore tramite pulizia in background</td>
+            </tr>
+            <tr>
                 <td><strong>Dati Cloud Token (Firebase)</strong></td>
                 <td>365 giorni di inattività</td>
                 <td>Eliminati automaticamente dopo un anno senza utilizzo dell'app</td>
+            </tr>
+            <tr>
+                <td><strong>Cronologia Acquisti (Firebase)</strong></td>
+                <td>365 giorni dall'acquisto</td>
+                <td>Eliminati automaticamente dopo un anno</td>
+            </tr>
+            <tr>
+                <td><strong>Metadati Migrazione (Firebase)</strong></td>
+                <td>365 giorni dall'ultima migrazione</td>
+                <td>Eliminati automaticamente dopo un anno</td>
             </tr>
             <tr>
                 <td><strong>Parole Apprese</strong></td>
@@ -253,9 +293,11 @@
             </tr>
         </table>
 
-        <h2>Inventario dei Dati</h2>
+        <h2>Inventario Completo dei Dati</h2>
 
         <p>La seguente tabella elenca tutti i dati raccolti da kAIboard e come eliminarli:</p>
+
+        <h3>Dati Cloud (Firebase)</h3>
 
         <table>
             <tr>
@@ -275,6 +317,11 @@
             </tr>
             <tr>
                 <td>Cronologia Acquisti</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud"</td>
+            </tr>
+            <tr>
+                <td>Metadati Migrazione</td>
                 <td>Firebase (cloud)</td>
                 <td>Pulsante "Elimina Dati Cloud"</td>
             </tr>
@@ -314,9 +361,24 @@
                 <td>Pulsante "Elimina Dati Cloud" (elimina tutto: attivo + cronologia)</td>
             </tr>
             <tr>
+                <td>Log Attività Amministrativa</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud"</td>
+            </tr>
+        </table>
+
+        <h3>Dati Locali (Dispositivo)</h3>
+
+        <table>
+            <tr>
+                <th>Tipo di Dato</th>
+                <th>Posizione di Archiviazione</th>
+                <th>Metodo di Cancellazione</th>
+            </tr>
+            <tr>
                 <td>Parole Apprese (Predizioni)</td>
                 <td>Locale (dispositivo)</td>
-                <td>Pulsante "Elimina Dati Apprendimento"</td>
+                <td>Pulsante "Elimina Dati Apprendimento" oppure "Elimina Tutti i Dati Locali"</td>
             </tr>
             <tr>
                 <td>Preferenze App</td>
@@ -324,9 +386,59 @@
                 <td>Pulsante "Elimina Tutti i Dati Locali"</td>
             </tr>
             <tr>
+                <td>Stato App</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
                 <td>Assegnazione Lingua Contatti</td>
                 <td>Locale (dispositivo)</td>
                 <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Metadati Apprendimento</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Metadati Backup</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Alert Abbonamento</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Modelli Predittivi N-gram (scaricati)</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Dizionari Hunspell (copiati da assets)</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Cache Vocabolari e Dizionari (in memoria)</td>
+                <td>RAM (volatile)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali" oppure chiusura app</td>
+            </tr>
+            <tr>
+                <td>Cache App (file temporanei, report crash locali, cache WebView)</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Cache Disambiguazione Contatti</td>
+                <td>RAM (volatile)</td>
+                <td>Automatica al riavvio del servizio di accessibilità</td>
+            </tr>
+            <tr>
+                <td>Cache Traduzione</td>
+                <td>RAM (volatile)</td>
+                <td>Automatica alla chiusura dell'app</td>
             </tr>
             <tr>
                 <td>Testo Traduzione</td>
@@ -341,7 +453,7 @@
 
         <ul>
             <li><strong>Transazioni Google Play:</strong> Gestite da Google secondo le loro politiche (per richieste di rimborso, prevenzione frodi e conformità fiscale)</li>
-            <li><strong>Log di Sistema Anonimi:</strong> Conservati fino a 90 giorni per scopi di debugging (non contengono informazioni personali identificabili)</li>
+            <li><strong>Report Crash già inviati a Firebase:</strong> I report già trasmessi a Firebase Crashlytics restano sul backend e non possono essere eliminati dal dispositivo. I report non ancora inviati possono essere cancellati dalle Impostazioni (toggle Crashlytics OFF) o dal pulsante "Elimina Tutti i Dati Locali"</li>
         </ul>
 
         <h2>Conseguenze della Cancellazione Dati</h2>
@@ -349,19 +461,19 @@
         <div class="warning">
             <p><strong>Avviso Importante:</strong> La cancellazione di alcuni dati è <strong>irreversibile</strong>. Assicurati di comprendere le conseguenze prima di procedere:</p>
             <ul>
-                <li><strong>Elimina Dati Cloud:</strong> Perderai il tuo saldo token, la cronologia acquisti, i dati abbonamento e la cronologia abbonamenti. NON potrai recuperarli, anche dopo aver reinstallato l'app. Se hai un abbonamento attivo, dovrai prima annullarlo tramite Google Play Store e attendere la fine del periodo già pagato.</li>
+                <li><strong>Elimina Dati Cloud:</strong> Perderai il tuo saldo token, la cronologia acquisti, i dati abbonamento, la cronologia abbonamenti e i log attività. NON potrai recuperarli, anche dopo aver reinstallato l'app. Se hai un abbonamento attivo, dovrai prima annullarlo tramite Google Play Store e attendere la fine del periodo già pagato.</li>
                 <li><strong>Elimina Dati Apprendimento:</strong> Le predizioni di testo personalizzate ripartiranno da zero</li>
-                <li><strong>Elimina Tutti i Dati Locali:</strong> Tutte le preferenze e impostazioni andranno perse</li>
+                <li><strong>Elimina Tutti i Dati Locali:</strong> Tutte le preferenze, impostazioni, modelli predittivi scaricati, dizionari e cache andranno perse. L'app si riavvierà come una nuova installazione (i dati cloud vengono preservati)</li>
             </ul>
         </div>
 
         <h2>Domande Frequenti</h2>
 
         <h3>Cosa succede se elimino i dati cloud?</h3>
-        <p>Perderai il tuo saldo token, la cronologia acquisti, i dati abbonamento attivo e la cronologia degli abbonamenti passati. Se reinstalli l'app, ripartirai da zero.</p>
+        <p>Perderai il tuo saldo token, la cronologia acquisti, i dati abbonamento attivo, la cronologia degli abbonamenti passati e i log attività. Se reinstalli l'app, ripartirai da zero.</p>
 
         <h3>Posso eliminare solo dati specifici?</h3>
-        <p>Sì. Puoi scegliere di eliminare solo i dati cloud, solo i dati di apprendimento o tutti i dati insieme.</p>
+        <p>Sì. Puoi scegliere di eliminare solo i dati cloud, solo i dati di apprendimento o tutti i dati locali. Puoi anche esportare i dati in formato JSON prima di eliminarli.</p>
 
         <h3>I miei messaggi tradotti vengono salvati?</h3>
         <p>No. Il testo che digiti per la traduzione <strong>non viene mai salvato</strong>. Viene inviato a OpenAI solo per l'elaborazione della traduzione e immediatamente scartato (0 secondi di conservazione).</p>
@@ -370,13 +482,16 @@
         <p>La cancellazione tramite app è <strong>immediata</strong> (0-5 secondi). Le richieste via email vengono elaborate entro 30 giorni.</p>
 
         <h3>Posso recuperare i dati dopo la cancellazione?</h3>
-        <p>No. La cancellazione è <strong>irreversibile</strong>. Assicurati di voler eliminare i tuoi dati prima di procedere.</p>
+        <p>No. La cancellazione è <strong>irreversibile</strong>. Assicurati di voler eliminare i tuoi dati prima di procedere. Ti consigliamo di usare "Esporta i tuoi dati (JSON)" prima della cancellazione.</p>
 
         <h3>Cosa succede alla cronologia abbonamenti dopo la cancellazione?</h3>
         <p>La cronologia abbonamenti viene eliminata insieme ai dati cloud. Include tutti gli abbonamenti passati (scaduti o cancellati) con relativi dettagli di utilizzo token, date e dispositivi utilizzati.</p>
 
         <h3>Posso eliminare i dati durante il grace period?</h3>
         <p>No. Se hai annullato l'abbonamento ma il servizio è ancora attivo (grace period), dovrai attendere la scadenza effettiva prima di poter eliminare i dati cloud. Questo protegge la tua esperienza utente durante il periodo già pagato.</p>
+
+        <h3>Cosa succede ai modelli predittivi e ai dizionari scaricati?</h3>
+        <p>Vengono eliminati dal pulsante "Elimina Tutti i Dati Locali". Al successivo utilizzo, i modelli predittivi dovranno essere riscaricati dalla schermata Modelli Offline e i dizionari verranno ricopiati automaticamente al primo utilizzo della lingua.</p>
 
         <h2>Risorse Aggiuntive</h2>
 
@@ -386,7 +501,7 @@
         </p>
 
         <div class="footer">
-            <p><strong>Versione 1.2 - Ultimo Aggiornamento: 31 gennaio 2026</strong></p>
+            <p><strong>Versione 1.3 - Ultimo Aggiornamento: 21 febbraio 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Conforme al GDPR (Regolamento UE 2016/679)</p>
         </div>
