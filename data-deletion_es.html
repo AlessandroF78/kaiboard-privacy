@@ -146,18 +146,39 @@
             </tr>
             <tr>
                 <td><strong>Eliminar Datos en la Nube</strong></td>
-                <td>Saldo de tokens, historial de compras y datos de suscripción almacenados en Firebase</td>
-                <td>Irreversible. Perderás tu saldo de tokens. Requiere cancelación de suscripción si está activa.</td>
+                <td>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+                        <li>Documento de suscripción activa (user_subscriptions)</li>
+                        <li>Historial de suscripciones (user_subscriptions_history)</li>
+                        <li>Registros de actividad administrativa (admin_activity_logs)</li>
+                        <li>Saldo de tokens (si no hay suscripción activa)</li>
+                        <li>Historial de compras</li>
+                        <li>Metadatos de migración entre dispositivos</li>
+                        <li>Array de dispositivos multi-device</li>
+                    </ul>
+                </td>
+                <td>Irreversible. Perderás tu saldo de tokens, historial de compras, registros de actividad e historial de suscripciones. Requiere cancelación de suscripción si está activa.</td>
             </tr>
             <tr>
                 <td><strong>Eliminar Datos de Aprendizaje</strong></td>
-                <td>Palabras aprendidas para sugerencias personalizadas (los 11 idiomas)</td>
+                <td>Palabras aprendidas para sugerencias personalizadas (los 13 idiomas)</td>
                 <td>El texto predictivo comenzará desde cero.</td>
             </tr>
             <tr>
                 <td><strong>Eliminar Todos los Datos Locales</strong></td>
-                <td>Todas las preferencias, configuraciones y datos locales</td>
-                <td>La aplicación se reiniciará con la configuración predeterminada.</td>
+                <td>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+                        <li>Datos de aprendizaje (13 idiomas)</li>
+                        <li>Todas las preferencias y configuraciones</li>
+                        <li>Estado de la app y asignaciones contacto-idioma</li>
+                        <li>Alertas de suscripción</li>
+                        <li>Modelos predictivos N-gram descargados</li>
+                        <li>Diccionarios Hunspell copiados</li>
+                        <li>Caché en memoria (vocabularios y diccionarios)</li>
+                        <li>Caché completa de la app (archivos temporales, informes de errores locales, caché WebView)</li>
+                    </ul>
+                </td>
+                <td>La aplicación se reiniciará con la configuración predeterminada. No quedará ningún archivo de usuario en el dispositivo. Los datos en la nube se conservan.</td>
             </tr>
         </table>
 
@@ -178,11 +199,11 @@
             <p><strong>Cómo proceder:</strong></p>
             <ol>
                 <li>Cancela la suscripción a través de Google Play Store</li>
-                <li>Espera hasta el final del período de facturación actual</li>
+                <li>Espera hasta el final del período de facturación actual (período de gracia)</li>
                 <li>Elimina los datos en la nube a través de la app</li>
             </ol>
             
-            <p><strong>Eliminación inmediata:</strong> La app te redirige automáticamente a Google Play para gestionar tu suscripción. Después de la cancelación, la eliminación de datos estará inmediatamente disponible.</p>
+            <p><strong>Eliminación inmediata:</strong> La app te redirige automáticamente a Google Play para gestionar tu suscripción. Después de la cancelación, la eliminación de datos estará disponible al final del período ya pagado.</p>
             
             <p><strong>Base jurídica del bloqueo:</strong> Art. 17.3.b RGPD - "El derecho de supresión no se aplicará cuando el tratamiento sea necesario para la ejecución de un contrato en el que el interesado es parte".</p>
         </div>
@@ -203,6 +224,18 @@
             <p><strong>Tiempo de Respuesta:</strong> Máximo 30 días (según lo exigido por el Artículo 12 del RGPD)</p>
         </div>
 
+        <h2>Método 3: Exportación de Datos (Art. 20 RGPD)</h2>
+
+        <p>Antes de eliminar sus datos, puede exportarlos en formato JSON legible por máquinas:</p>
+
+        <ol>
+            <li>Abra <strong>kAIboard</strong> en su dispositivo Android</li>
+            <li>Vaya a <strong>Configuración → Privacidad y Seguridad</strong></li>
+            <li>Toque <strong>"Exportar tus datos (JSON)"</strong></li>
+        </ol>
+
+        <p>El archivo JSON incluye: metadatos de exportación, preferencias locales, datos de aprendizaje (para los 13 idiomas) y datos en la nube (suscripción, historial, registros de actividad). Puede compartir el archivo a través de cualquier aplicación instalada en el dispositivo.</p>
+
         <h2>Eliminación Automática de Datos</h2>
 
         <p>kAIboard incluye mecanismos de limpieza automática de datos para proteger su privacidad:</p>
@@ -214,35 +247,57 @@
                 <th>Detalles</th>
             </tr>
             <tr>
-                <td><strong>Datos de Suscripción (Firebase)</strong></td>
-                <td>Hasta el final del período de facturación + 365 días después del vencimiento</td>
-                <td>Eliminados automáticamente después del vencimiento de la suscripción y período de retención</td>
+                <td><strong>Datos de Suscripción Activa (Firebase)</strong></td>
+                <td>Hasta el final del período de facturación actual</td>
+                <td>Movidos automáticamente al historial cuando la suscripción expira</td>
             </tr>
             <tr>
-                <td>Datos en la Nube (Firebase)</td>
+                <td><strong>Historial de Suscripciones (Firebase)</strong></td>
+                <td>90 días después del vencimiento</td>
+                <td>Eliminados automáticamente 90 días después del fin de la suscripción</td>
+            </tr>
+            <tr>
+                <td><strong>Registros de Actividad Administrativa (Firebase)</strong></td>
+                <td>90 días desde la última modificación</td>
+                <td>Eliminados automáticamente cada 24 horas mediante limpieza en segundo plano</td>
+            </tr>
+            <tr>
+                <td><strong>Datos de Tokens en la Nube (Firebase)</strong></td>
                 <td>365 días de inactividad</td>
                 <td>Eliminados automáticamente después de un año sin uso de la aplicación</td>
             </tr>
             <tr>
-                <td>Palabras Aprendidas</td>
-                <td>Indefinido con degradación</td>
+                <td><strong>Historial de Compras (Firebase)</strong></td>
+                <td>365 días desde la compra</td>
+                <td>Eliminados automáticamente después de un año</td>
+            </tr>
+            <tr>
+                <td><strong>Metadatos de Migración (Firebase)</strong></td>
+                <td>365 días desde la última migración</td>
+                <td>Eliminados automáticamente después de un año</td>
+            </tr>
+            <tr>
+                <td><strong>Palabras Aprendidas</strong></td>
+                <td>14 días con degradación</td>
                 <td>Las puntuaciones de frecuencia disminuyen con el tiempo; las palabras no utilizadas se eliminan</td>
             </tr>
             <tr>
-                <td>Caché de Traducción</td>
+                <td><strong>Caché de Traducción</strong></td>
                 <td>Solo sesión</td>
                 <td>Almacenado solo en RAM; eliminado al cerrar la aplicación</td>
             </tr>
             <tr>
-                <td>Texto de Traducción</td>
+                <td><strong>Texto de Traducción</strong></td>
                 <td>Nunca almacenado</td>
                 <td>0 segundos de retención; solo tránsito a la API de OpenAI</td>
             </tr>
         </table>
 
-        <h2>Inventario de Datos</h2>
+        <h2>Inventario Completo de Datos</h2>
 
-        <p>La siguiente tabla detalla todos los datos recopilados por kAIboard y cómo eliminarlos:</p>
+        <p>Las siguientes tablas detallan todos los datos recopilados por kAIboard y cómo eliminarlos:</p>
+
+        <h3>Datos en la Nube (Firebase)</h3>
 
         <table>
             <tr>
@@ -251,7 +306,7 @@
                 <th>Método de Eliminación</th>
             </tr>
             <tr>
-                <td>ID de Dispositivo Anónimo</td>
+                <td>Array de Dispositivos</td>
                 <td>Firebase (nube)</td>
                 <td>Botón "Eliminar Datos en la Nube"</td>
             </tr>
@@ -262,6 +317,11 @@
             </tr>
             <tr>
                 <td>Historial de Compras</td>
+                <td>Firebase (nube)</td>
+                <td>Botón "Eliminar Datos en la Nube"</td>
+            </tr>
+            <tr>
+                <td>Metadatos de Migración</td>
                 <td>Firebase (nube)</td>
                 <td>Botón "Eliminar Datos en la Nube"</td>
             </tr>
@@ -286,9 +346,39 @@
                 <td>Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
             </tr>
             <tr>
+                <td>Fecha de Fin de Suscripción</td>
+                <td>Firebase (nube)</td>
+                <td>Botón "Eliminar Datos en la Nube" (solo después del vencimiento del período de gracia)</td>
+            </tr>
+            <tr>
+                <td>Flag "No se Renovará"</td>
+                <td>Firebase (nube)</td>
+                <td>Botón "Eliminar Datos en la Nube" (solo después del vencimiento del período de gracia)</td>
+            </tr>
+            <tr>
+                <td>Historial de Suscripciones</td>
+                <td>Firebase (nube)</td>
+                <td>Botón "Eliminar Datos en la Nube" (elimina todo: activo + historial)</td>
+            </tr>
+            <tr>
+                <td>Registros de Actividad Administrativa</td>
+                <td>Firebase (nube)</td>
+                <td>Botón "Eliminar Datos en la Nube"</td>
+            </tr>
+        </table>
+
+        <h3>Datos Locales (Dispositivo)</h3>
+
+        <table>
+            <tr>
+                <th>Tipo de Dato</th>
+                <th>Ubicación de Almacenamiento</th>
+                <th>Método de Eliminación</th>
+            </tr>
+            <tr>
                 <td>Palabras Aprendidas (Predicciones)</td>
                 <td>Local (dispositivo)</td>
-                <td>Botón "Eliminar Datos de Aprendizaje"</td>
+                <td>Botón "Eliminar Datos de Aprendizaje" o "Eliminar Todos los Datos Locales"</td>
             </tr>
             <tr>
                 <td>Preferencias de la Aplicación</td>
@@ -296,9 +386,59 @@
                 <td>Botón "Eliminar Todos los Datos Locales"</td>
             </tr>
             <tr>
+                <td>Estado de la Aplicación</td>
+                <td>Local (dispositivo)</td>
+                <td>Botón "Eliminar Todos los Datos Locales"</td>
+            </tr>
+            <tr>
                 <td>Asignaciones de Idioma de Contactos</td>
                 <td>Local (dispositivo)</td>
                 <td>Botón "Eliminar Todos los Datos Locales"</td>
+            </tr>
+            <tr>
+                <td>Metadatos de Aprendizaje</td>
+                <td>Local (dispositivo)</td>
+                <td>Botón "Eliminar Todos los Datos Locales"</td>
+            </tr>
+            <tr>
+                <td>Metadatos de Respaldo</td>
+                <td>Local (dispositivo)</td>
+                <td>Botón "Eliminar Todos los Datos Locales"</td>
+            </tr>
+            <tr>
+                <td>Alertas de Suscripción</td>
+                <td>Local (dispositivo)</td>
+                <td>Botón "Eliminar Todos los Datos Locales"</td>
+            </tr>
+            <tr>
+                <td>Modelos Predictivos N-gram (descargados)</td>
+                <td>Local (dispositivo)</td>
+                <td>Botón "Eliminar Todos los Datos Locales"</td>
+            </tr>
+            <tr>
+                <td>Diccionarios Hunspell (copiados desde assets)</td>
+                <td>Local (dispositivo)</td>
+                <td>Botón "Eliminar Todos los Datos Locales"</td>
+            </tr>
+            <tr>
+                <td>Caché de Vocabularios y Diccionarios (en memoria)</td>
+                <td>RAM (volátil)</td>
+                <td>Botón "Eliminar Todos los Datos Locales" o cierre de la app</td>
+            </tr>
+            <tr>
+                <td>Caché de la App (archivos temporales, informes de errores locales, caché WebView)</td>
+                <td>Local (dispositivo)</td>
+                <td>Botón "Eliminar Todos los Datos Locales"</td>
+            </tr>
+            <tr>
+                <td>Caché de Desambiguación de Contactos</td>
+                <td>RAM (volátil)</td>
+                <td>Automática al reiniciar el servicio de accesibilidad</td>
+            </tr>
+            <tr>
+                <td>Caché de Traducción</td>
+                <td>RAM (volátil)</td>
+                <td>Automática al cerrar la app</td>
             </tr>
             <tr>
                 <td>Texto de Traducción</td>
@@ -313,7 +453,7 @@
 
         <ul>
             <li><strong>Transacciones de Google Play:</strong> Gestionadas por Google según sus políticas (para solicitudes de reembolso, prevención de fraude y cumplimiento fiscal)</li>
-            <li><strong>Registros del Sistema Anónimos:</strong> Retenidos hasta 90 días con fines de depuración (no contienen información personal identificable)</li>
+            <li><strong>Informes de errores ya enviados a Firebase:</strong> Los informes ya transmitidos a Firebase Crashlytics permanecen en el backend y no pueden eliminarse desde el dispositivo. Los informes aún no enviados pueden eliminarse desde la Configuración (desactivar Crashlytics) o mediante el botón "Eliminar Todos los Datos Locales"</li>
         </ul>
 
         <h2>Consecuencias de la Eliminación de Datos</h2>
@@ -321,19 +461,19 @@
         <div class="warning">
             <p><strong>Aviso Importante:</strong> La eliminación de ciertos datos es <strong>irreversible</strong>. Asegúrese de comprender las consecuencias antes de continuar:</p>
             <ul>
-                <li><strong>Eliminar Datos en la Nube:</strong> Perderás tu saldo de tokens, el historial de compras y los datos de suscripción. NO podrás recuperarlos, incluso después de reinstalar la app. Si tienes una suscripción activa, primero debes cancelarla a través de Google Play Store.</li>
+                <li><strong>Eliminar Datos en la Nube:</strong> Perderás tu saldo de tokens, el historial de compras, los datos de suscripción, el historial de suscripciones y los registros de actividad. NO podrás recuperarlos, incluso después de reinstalar la app. Si tienes una suscripción activa, primero debes cancelarla a través de Google Play Store y esperar al final del período ya pagado.</li>
                 <li><strong>Eliminar Datos de Aprendizaje:</strong> Las predicciones de texto personalizadas comenzarán desde cero</li>
-                <li><strong>Eliminar Todos los Datos Locales:</strong> Todas las preferencias y configuraciones se perderán</li>
+                <li><strong>Eliminar Todos los Datos Locales:</strong> Todas las preferencias, configuraciones, modelos predictivos descargados, diccionarios y caché se perderán. La app se reiniciará como una instalación nueva (los datos en la nube se conservan)</li>
             </ul>
         </div>
 
         <h2>Preguntas Frecuentes</h2>
 
         <h3>¿Qué sucede si elimino los datos en la nube?</h3>
-        <p>Perderá su saldo de tokens e historial de compras. Si reinstala la aplicación, comenzará desde cero.</p>
+        <p>Perderá su saldo de tokens, el historial de compras, los datos de suscripción activa, el historial de suscripciones pasadas y los registros de actividad. Si reinstala la aplicación, comenzará desde cero.</p>
 
         <h3>¿Puedo eliminar solo datos específicos?</h3>
-        <p>Sí. Puede elegir eliminar solo los datos en la nube, solo los datos de aprendizaje o todos los datos juntos.</p>
+        <p>Sí. Puede elegir eliminar solo los datos en la nube, solo los datos de aprendizaje o todos los datos locales. También puede exportar sus datos en formato JSON antes de eliminarlos.</p>
 
         <h3>¿Se guardan mis mensajes traducidos?</h3>
         <p>No. El texto que escribe para traducción <strong>nunca se guarda</strong>. Se envía a OpenAI solo para el procesamiento de traducción e inmediatamente se descarta (0 segundos de retención).</p>
@@ -342,7 +482,16 @@
         <p>La eliminación en la aplicación es <strong>inmediata</strong> (0-5 segundos). Las solicitudes por correo electrónico se procesan en 30 días.</p>
 
         <h3>¿Puedo recuperar los datos después de la eliminación?</h3>
-        <p>No. La eliminación es <strong>irreversible</strong>. Asegúrese de querer eliminar sus datos antes de continuar.</p>
+        <p>No. La eliminación es <strong>irreversible</strong>. Asegúrese de querer eliminar sus datos antes de continuar. Recomendamos usar "Exportar tus datos (JSON)" antes de la eliminación.</p>
+
+        <h3>¿Qué sucede con el historial de suscripciones después de la eliminación?</h3>
+        <p>El historial de suscripciones se elimina junto con los datos en la nube. Incluye todas las suscripciones pasadas (expiradas o canceladas) con detalles de uso de tokens, fechas y dispositivos utilizados.</p>
+
+        <h3>¿Puedo eliminar datos durante el período de gracia?</h3>
+        <p>No. Si ha cancelado su suscripción pero el servicio sigue activo (período de gracia), debe esperar al vencimiento efectivo antes de poder eliminar los datos en la nube. Esto protege su experiencia de usuario durante el período ya pagado.</p>
+
+        <h3>¿Qué sucede con los modelos predictivos y diccionarios descargados?</h3>
+        <p>Se eliminan mediante el botón "Eliminar Todos los Datos Locales". En el siguiente uso, los modelos predictivos deberán descargarse nuevamente desde la pantalla de Modelos Offline y los diccionarios se copiarán automáticamente en el primer uso del idioma.</p>
 
         <h2>Recursos Adicionales</h2>
 
@@ -352,11 +501,10 @@
         </p>
 
         <div class="footer">
-            <p><strong>Versión 1.1 - Última Actualización: 25 de enero de 2026</strong></p>
+            <p><strong>Versión 1.3 - Última Actualización: 21 de febrero de 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Conforme al RGPD (Reglamento UE 2016/679)</p>
         </div>
     </div>
 </body>
-
 </html>
