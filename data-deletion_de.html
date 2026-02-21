@@ -146,18 +146,39 @@
             </tr>
             <tr>
                 <td><strong>Cloud-Daten löschen</strong></td>
-                <td>Token-Guthaben, Kaufhistorie und Abonnementdaten auf Firebase gespeichert</td>
-                <td>Unwiderruflich. Sie verlieren Ihr Token-Guthaben. Erfordert Abonnement-Kündigung falls aktiv.</td>
+                <td>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+                        <li>Aktives Abonnement-Dokument (user_subscriptions)</li>
+                        <li>Abonnement-Verlauf (user_subscriptions_history)</li>
+                        <li>Administrative Aktivitätsprotokolle (admin_activity_logs)</li>
+                        <li>Token-Guthaben (wenn kein aktives Abonnement)</li>
+                        <li>Kaufhistorie</li>
+                        <li>Migrationsmetadaten für geräteübergreifende Nutzung</li>
+                        <li>Multi-Device-Geräte-Array</li>
+                    </ul>
+                </td>
+                <td>Unwiderruflich. Sie verlieren Ihr Token-Guthaben, Kaufhistorie, Aktivitätsprotokolle und Abonnement-Verlauf. Erfordert Abonnement-Kündigung falls aktiv.</td>
             </tr>
             <tr>
                 <td><strong>Lerndaten löschen</strong></td>
-                <td>Gelernte Wörter für personalisierte Vorschläge (alle 11 Sprachen)</td>
+                <td>Gelernte Wörter für personalisierte Vorschläge (alle 13 Sprachen)</td>
                 <td>Vorhersagetext beginnt von vorne.</td>
             </tr>
             <tr>
                 <td><strong>Alle lokalen Daten löschen</strong></td>
-                <td>Alle Einstellungen und lokalen Daten</td>
-                <td>App startet mit Standardeinstellungen neu.</td>
+                <td>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+                        <li>Lerndaten (13 Sprachen)</li>
+                        <li>Alle Einstellungen und Präferenzen</li>
+                        <li>App-Status und Kontakt-Sprach-Zuweisungen</li>
+                        <li>Abonnement-Benachrichtigungen</li>
+                        <li>Heruntergeladene N-Gramm-Vorhersagemodelle</li>
+                        <li>Kopierte Hunspell-Wörterbücher</li>
+                        <li>Arbeitsspeicher-Cache (Vokabularien und Wörterbücher)</li>
+                        <li>Gesamter App-Cache (temporäre Dateien, lokale Absturzberichte, WebView-Cache)</li>
+                    </ul>
+                </td>
+                <td>Die App startet mit Standardeinstellungen neu. Keine Benutzerdateien verbleiben auf dem Gerät. Cloud-Daten bleiben erhalten.</td>
             </tr>
         </table>
 
@@ -178,13 +199,13 @@
             <p><strong>Vorgehensweise:</strong></p>
             <ol>
                 <li>Kündigen Sie das Abonnement über den Google Play Store</li>
-                <li>Warten Sie bis zum Ende des aktuellen Abrechnungszeitraums</li>
+                <li>Warten Sie bis zum Ende des aktuellen Abrechnungszeitraums (Kulanzfrist)</li>
                 <li>Löschen Sie die Cloud-Daten über die App</li>
             </ol>
             
-            <p><strong>Sofortige Löschung:</strong> Die App leitet Sie automatisch zum Google Play Store weiter, um das Abonnement zu verwalten. Nach der Kündigung ist die Datenlöschung sofort verfügbar.</p>
+            <p><strong>Sofortige Löschung:</strong> Die App leitet Sie automatisch zum Google Play Store weiter, um das Abonnement zu verwalten. Nach der Kündigung ist die Datenlöschung am Ende des bereits bezahlten Zeitraums verfügbar.</p>
             
-            <p><strong>Rechtsgrundlage der Blockierung:</strong> Art. 17.3.b DSGVO - "Das Recht auf Löschung gilt nicht, soweit die Verarbeitung zur Erfüllung eines Vertrags erforderlich ist, dessen Vertragspartei die betroffene Person ist".</p>
+            <p><strong>Rechtsgrundlage der Blockierung:</strong> Art. 17.3.b DSGVO - „Das Recht auf Löschung gilt nicht, soweit die Verarbeitung zur Erfüllung eines Vertrags erforderlich ist, dessen Vertragspartei die betroffene Person ist".</p>
         </div>
 
         <h2>Methode 2: E-Mail-Anfrage</h2>
@@ -193,7 +214,7 @@
 
         <div class="info-box">
             <p><strong>E-Mail:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
-            <p><strong>Betreff:</strong> "DSGVO-Datenlöschungsanfrage"</p>
+            <p><strong>Betreff:</strong> „DSGVO-Datenlöschungsanfrage"</p>
             <p><strong>Anzugebende Informationen:</strong></p>
             <ul>
                 <li>Geräte-ID (falls bekannt) oder Gerätebeschreibung</li>
@@ -203,9 +224,21 @@
             <p><strong>Antwortzeit:</strong> Maximal 30 Tage (wie von Artikel 12 DSGVO gefordert)</p>
         </div>
 
+        <h2>Methode 3: Datenexport (Art. 20 DSGVO)</h2>
+
+        <p>Bevor Sie Ihre Daten löschen, können Sie sie in einem maschinenlesbaren JSON-Format exportieren:</p>
+
+        <ol>
+            <li>Öffnen Sie <strong>kAIboard</strong> auf Ihrem Android-Gerät</li>
+            <li>Navigieren Sie zu <strong>Einstellungen → Datenschutz & Sicherheit</strong></li>
+            <li>Tippen Sie auf <strong>„Ihre Daten exportieren (JSON)"</strong></li>
+        </ol>
+
+        <p>Die JSON-Datei enthält: Export-Metadaten, lokale Einstellungen, Lerndaten (für alle 13 Sprachen) und Cloud-Daten (Abonnement, Verlauf, Aktivitätsprotokolle). Sie können die Datei über jede auf dem Gerät installierte App teilen.</p>
+
         <h2>Automatische Datenlöschung</h2>
 
-        <p>kAIboard enthält automatische Datenbereinigungs mechanismen zum Schutz Ihrer Privatsphäre:</p>
+        <p>kAIboard enthält automatische Datenbereinigungsmechanismen zum Schutz Ihrer Privatsphäre:</p>
 
         <table>
             <tr>
@@ -214,35 +247,57 @@
                 <th>Details</th>
             </tr>
             <tr>
-                <td><strong>Abonnementdaten (Firebase)</strong></td>
-                <td>Bis zum Ende des Abrechnungszeitraums + 365 Tage nach Ablauf</td>
-                <td>Automatisch gelöscht nach Ablauf des Abonnements und Aufbewahrungsfrist</td>
+                <td><strong>Aktive Abonnementdaten (Firebase)</strong></td>
+                <td>Bis zum Ende des aktuellen Abrechnungszeitraums</td>
+                <td>Automatisch in den Verlauf verschoben, wenn das Abonnement abläuft</td>
             </tr>
             <tr>
-                <td>Cloud-Daten (Firebase)</td>
+                <td><strong>Abonnement-Verlauf (Firebase)</strong></td>
+                <td>90 Tage nach Ablauf</td>
+                <td>Automatisch 90 Tage nach Ende des Abonnements gelöscht</td>
+            </tr>
+            <tr>
+                <td><strong>Administrative Aktivitätsprotokolle (Firebase)</strong></td>
+                <td>90 Tage nach letzter Änderung</td>
+                <td>Automatisch alle 24 Stunden durch Hintergrundbereinigung gelöscht</td>
+            </tr>
+            <tr>
+                <td><strong>Cloud-Token-Daten (Firebase)</strong></td>
                 <td>365 Tage Inaktivität</td>
-                <td>Automatisch gelöscht nach einem Jahr ohne App-Nutzung</td>
+                <td>Automatisch nach einem Jahr ohne App-Nutzung gelöscht</td>
             </tr>
             <tr>
-                <td>Gelernte Wörter</td>
-                <td>Unbegrenzt mit Verfall</td>
+                <td><strong>Kaufhistorie (Firebase)</strong></td>
+                <td>365 Tage nach Kauf</td>
+                <td>Automatisch nach einem Jahr gelöscht</td>
+            </tr>
+            <tr>
+                <td><strong>Migrationsmetadaten (Firebase)</strong></td>
+                <td>365 Tage nach letzter Migration</td>
+                <td>Automatisch nach einem Jahr gelöscht</td>
+            </tr>
+            <tr>
+                <td><strong>Gelernte Wörter</strong></td>
+                <td>14 Tage mit Verfall</td>
                 <td>Häufigkeitswerte nehmen mit der Zeit ab; ungenutzte Wörter werden entfernt</td>
             </tr>
             <tr>
-                <td>Übersetzungs-Cache</td>
+                <td><strong>Übersetzungs-Cache</strong></td>
                 <td>Nur Sitzung</td>
                 <td>Nur im RAM gespeichert; beim Schließen der App gelöscht</td>
             </tr>
             <tr>
-                <td>Übersetzungstext</td>
+                <td><strong>Übersetzungstext</strong></td>
                 <td>Nie gespeichert</td>
                 <td>0 Sekunden Speicherung; nur Transit zur OpenAI-API</td>
             </tr>
         </table>
 
-        <h2>Dateninventar</h2>
+        <h2>Vollständiges Dateninventar</h2>
 
-        <p>Die folgende Tabelle listet alle von kAIboard gesammelten Daten und deren Löschmethode auf:</p>
+        <p>Die folgenden Tabellen listen alle von kAIboard gesammelten Daten und deren Löschmethode auf:</p>
+
+        <h3>Cloud-Daten (Firebase)</h3>
 
         <table>
             <tr>
@@ -251,54 +306,139 @@
                 <th>Löschmethode</th>
             </tr>
             <tr>
-                <td>Anonyme Geräte-ID</td>
+                <td>Geräte-Array</td>
                 <td>Firebase (Cloud)</td>
-                <td>Schaltfläche "Cloud-Daten löschen"</td>
+                <td>Schaltfläche „Cloud-Daten löschen"</td>
             </tr>
             <tr>
                 <td>Token-Guthaben</td>
                 <td>Firebase (Cloud)</td>
-                <td>Schaltfläche "Cloud-Daten löschen"</td>
+                <td>Schaltfläche „Cloud-Daten löschen"</td>
             </tr>
             <tr>
                 <td>Kaufhistorie</td>
                 <td>Firebase (Cloud)</td>
-                <td>Schaltfläche "Cloud-Daten löschen"</td>
+                <td>Schaltfläche „Cloud-Daten löschen"</td>
+            </tr>
+            <tr>
+                <td>Migrationsmetadaten</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche „Cloud-Daten löschen"</td>
             </tr>
             <tr>
                 <td>Abonnementplan</td>
                 <td>Firebase (Cloud)</td>
-                <td>Schaltfläche "Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
+                <td>Schaltfläche „Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
             </tr>
             <tr>
                 <td>Monatliches Token-Limit</td>
                 <td>Firebase (Cloud)</td>
-                <td>Schaltfläche "Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
+                <td>Schaltfläche „Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
             </tr>
             <tr>
                 <td>Aktuelle Token-Nutzung</td>
                 <td>Firebase (Cloud)</td>
-                <td>Schaltfläche "Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
+                <td>Schaltfläche „Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
             </tr>
             <tr>
                 <td>Monatliches Reset-Datum</td>
                 <td>Firebase (Cloud)</td>
-                <td>Schaltfläche "Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
+                <td>Schaltfläche „Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
+            </tr>
+            <tr>
+                <td>Abonnement-Enddatum</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche „Cloud-Daten löschen" (nur nach Ablauf der Kulanzfrist)</td>
+            </tr>
+            <tr>
+                <td>Flag „Wird nicht verlängert"</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche „Cloud-Daten löschen" (nur nach Ablauf der Kulanzfrist)</td>
+            </tr>
+            <tr>
+                <td>Abonnement-Verlauf</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche „Cloud-Daten löschen" (löscht alles: aktiv + Verlauf)</td>
+            </tr>
+            <tr>
+                <td>Administrative Aktivitätsprotokolle</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche „Cloud-Daten löschen"</td>
+            </tr>
+        </table>
+
+        <h3>Lokale Daten (Gerät)</h3>
+
+        <table>
+            <tr>
+                <th>Datentyp</th>
+                <th>Speicherort</th>
+                <th>Löschmethode</th>
             </tr>
             <tr>
                 <td>Gelernte Wörter (Vorhersagen)</td>
                 <td>Lokal (Gerät)</td>
-                <td>Schaltfläche "Lerndaten löschen"</td>
+                <td>Schaltfläche „Lerndaten löschen" oder „Alle lokalen Daten löschen"</td>
             </tr>
             <tr>
                 <td>App-Einstellungen</td>
                 <td>Lokal (Gerät)</td>
-                <td>Schaltfläche "Alle lokalen Daten löschen"</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
             </tr>
             <tr>
-                <td>Kontaktsprachzuweisungen</td>
+                <td>App-Status</td>
                 <td>Lokal (Gerät)</td>
-                <td>Schaltfläche "Alle lokalen Daten löschen"</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
+            </tr>
+            <tr>
+                <td>Kontakt-Sprach-Zuweisungen</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
+            </tr>
+            <tr>
+                <td>Lernmetadaten</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
+            </tr>
+            <tr>
+                <td>Backup-Metadaten</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
+            </tr>
+            <tr>
+                <td>Abonnement-Benachrichtigungen</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
+            </tr>
+            <tr>
+                <td>N-Gramm-Vorhersagemodelle (heruntergeladen)</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
+            </tr>
+            <tr>
+                <td>Hunspell-Wörterbücher (aus Assets kopiert)</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
+            </tr>
+            <tr>
+                <td>Cache für Vokabularien und Wörterbücher (im Arbeitsspeicher)</td>
+                <td>RAM (flüchtig)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen" oder App-Schließung</td>
+            </tr>
+            <tr>
+                <td>App-Cache (temporäre Dateien, lokale Absturzberichte, WebView-Cache)</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
+            </tr>
+            <tr>
+                <td>Kontakt-Disambiguierungs-Cache</td>
+                <td>RAM (flüchtig)</td>
+                <td>Automatisch beim Neustart des Barrierefreiheitsdienstes</td>
+            </tr>
+            <tr>
+                <td>Übersetzungs-Cache</td>
+                <td>RAM (flüchtig)</td>
+                <td>Automatisch beim Schließen der App</td>
             </tr>
             <tr>
                 <td>Übersetzungstext</td>
@@ -313,7 +453,7 @@
 
         <ul>
             <li><strong>Google Play-Transaktionen:</strong> Von Google gemäß deren Richtlinien verwaltet (für Erstattungsanfragen, Betrugsverhinderung und Steuerkonformität)</li>
-            <li><strong>Anonyme Systemprotokolle:</strong> Bis zu 90 Tage für Debugging-Zwecke gespeichert (enthalten keine personenbezogenen identifizierbaren Informationen)</li>
+            <li><strong>Bereits an Firebase gesendete Absturzberichte:</strong> Bereits an Firebase Crashlytics übermittelte Berichte verbleiben im Backend und können nicht vom Gerät gelöscht werden. Noch nicht gesendete Berichte können über die Einstellungen (Crashlytics-Toggle AUS) oder über die Schaltfläche „Alle lokalen Daten löschen" gelöscht werden</li>
         </ul>
 
         <h2>Folgen der Datenlöschung</h2>
@@ -321,19 +461,19 @@
         <div class="warning">
             <p><strong>Wichtiger Hinweis:</strong> Die Löschung bestimmter Daten ist <strong>unwiderruflich</strong>. Stellen Sie sicher, dass Sie die Folgen verstehen, bevor Sie fortfahren:</p>
             <ul>
-                <li><strong>Cloud-Daten löschen:</strong> Sie verlieren Ihr Token-Guthaben, die Kaufhistorie und die Abonnementdaten. Sie können sie NICHT wiederherstellen, auch nicht nach einer Neuinstallation der App. Wenn Sie ein aktives Abonnement haben, müssen Sie es zuerst über den Google Play Store kündigen.</li>
+                <li><strong>Cloud-Daten löschen:</strong> Sie verlieren Ihr Token-Guthaben, die Kaufhistorie, die Abonnementdaten, den Abonnement-Verlauf und die Aktivitätsprotokolle. Sie können sie NICHT wiederherstellen, auch nicht nach einer Neuinstallation der App. Wenn Sie ein aktives Abonnement haben, müssen Sie es zuerst über den Google Play Store kündigen und das Ende des bereits bezahlten Zeitraums abwarten.</li>
                 <li><strong>Lerndaten löschen:</strong> Personalisierte Textvorhersagen beginnen von vorne</li>
-                <li><strong>Alle lokalen Daten löschen:</strong> Alle Einstellungen gehen verloren</li>
+                <li><strong>Alle lokalen Daten löschen:</strong> Alle Einstellungen, Präferenzen, heruntergeladene Vorhersagemodelle, Wörterbücher und Cache gehen verloren. Die App startet wie bei einer Neuinstallation (Cloud-Daten bleiben erhalten)</li>
             </ul>
         </div>
 
         <h2>Häufig gestellte Fragen</h2>
 
         <h3>Was passiert, wenn ich Cloud-Daten lösche?</h3>
-        <p>Sie verlieren Ihr Token-Guthaben und Ihre Kaufhistorie. Wenn Sie die App neu installieren, beginnen Sie bei Null.</p>
+        <p>Sie verlieren Ihr Token-Guthaben, die Kaufhistorie, die aktiven Abonnementdaten, den Verlauf vergangener Abonnements und die Aktivitätsprotokolle. Wenn Sie die App neu installieren, beginnen Sie bei Null.</p>
 
         <h3>Kann ich nur bestimmte Daten löschen?</h3>
-        <p>Ja. Sie können wählen, nur Cloud-Daten, nur Lerndaten oder alle Daten zusammen zu löschen.</p>
+        <p>Ja. Sie können wählen, nur Cloud-Daten, nur Lerndaten oder alle lokalen Daten zu löschen. Sie können Ihre Daten auch vor dem Löschen im JSON-Format exportieren.</p>
 
         <h3>Werden meine übersetzten Nachrichten gespeichert?</h3>
         <p>Nein. Der Text, den Sie zur Übersetzung eingeben, wird <strong>nie gespeichert</strong>. Er wird nur zur Übersetzungsverarbeitung an OpenAI gesendet und sofort verworfen (0 Sekunden Speicherung).</p>
@@ -342,7 +482,16 @@
         <p>Die Löschung in der App ist <strong>sofort</strong> (0-5 Sekunden). E-Mail-Anfragen werden innerhalb von 30 Tagen bearbeitet.</p>
 
         <h3>Kann ich Daten nach der Löschung wiederherstellen?</h3>
-        <p>Nein. Die Löschung ist <strong>unwiderruflich</strong>. Stellen Sie sicher, dass Sie Ihre Daten löschen möchten, bevor Sie fortfahren.</p>
+        <p>Nein. Die Löschung ist <strong>unwiderruflich</strong>. Stellen Sie sicher, dass Sie Ihre Daten löschen möchten, bevor Sie fortfahren. Wir empfehlen, „Ihre Daten exportieren (JSON)" vor der Löschung zu verwenden.</p>
+
+        <h3>Was passiert mit dem Abonnement-Verlauf nach der Löschung?</h3>
+        <p>Der Abonnement-Verlauf wird zusammen mit den Cloud-Daten gelöscht. Er umfasst alle vergangenen Abonnements (abgelaufen oder gekündigt) mit zugehörigen Details zur Token-Nutzung, Daten und verwendeten Geräten.</p>
+
+        <h3>Kann ich Daten während der Kulanzfrist löschen?</h3>
+        <p>Nein. Wenn Sie das Abonnement gekündigt haben, der Dienst aber noch aktiv ist (Kulanzfrist), müssen Sie den tatsächlichen Ablauf abwarten, bevor Sie Cloud-Daten löschen können. Dies schützt Ihre Benutzererfahrung während des bereits bezahlten Zeitraums.</p>
+
+        <h3>Was passiert mit heruntergeladenen Vorhersagemodellen und Wörterbüchern?</h3>
+        <p>Diese werden durch die Schaltfläche „Alle lokalen Daten löschen" entfernt. Bei der nächsten Verwendung müssen die Vorhersagemodelle über den Bildschirm „Offline-Modelle" erneut heruntergeladen werden, und die Wörterbücher werden bei der ersten Verwendung der Sprache automatisch wieder kopiert.</p>
 
         <h2>Zusätzliche Ressourcen</h2>
 
@@ -352,11 +501,10 @@
         </p>
 
         <div class="footer">
-            <p><strong>Version 1.1 - Letzte Aktualisierung: 25. Januar 2026</strong></p>
+            <p><strong>Version 1.3 - Letzte Aktualisierung: 21. Februar 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>DSGVO-konform (EU-Verordnung 2016/679)</p>
         </div>
     </div>
 </body>
-
 </html>
