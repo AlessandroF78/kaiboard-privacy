@@ -146,18 +146,39 @@
             </tr>
             <tr>
                 <td><strong>Supprimer les Données Cloud</strong></td>
-                <td>Solde de jetons, historique d'achats et données d'abonnement stockés sur Firebase</td>
-                <td>Irréversible. Vous perdrez votre solde de jetons. Nécessite l'annulation de l'abonnement s'il est actif.</td>
+                <td>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+                        <li>Document d'abonnement actif (user_subscriptions)</li>
+                        <li>Historique des abonnements (user_subscriptions_history)</li>
+                        <li>Journaux d'activité administrative (admin_activity_logs)</li>
+                        <li>Solde de jetons (si aucun abonnement actif)</li>
+                        <li>Historique d'achats</li>
+                        <li>Métadonnées de migration inter-appareils</li>
+                        <li>Tableau des appareils multi-device</li>
+                    </ul>
+                </td>
+                <td>Irréversible. Vous perdrez votre solde de jetons, historique d'achats, journaux d'activité et historique des abonnements. Nécessite l'annulation de l'abonnement s'il est actif.</td>
             </tr>
             <tr>
                 <td><strong>Supprimer les Données d'Apprentissage</strong></td>
-                <td>Mots appris pour les suggestions personnalisées (toutes les 11 langues)</td>
+                <td>Mots appris pour les suggestions personnalisées (toutes les 13 langues)</td>
                 <td>Le texte prédictif repartira de zéro.</td>
             </tr>
             <tr>
                 <td><strong>Supprimer Toutes les Données Locales</strong></td>
-                <td>Toutes les préférences, paramètres et données locales</td>
-                <td>L'application redémarrera avec les paramètres par défaut.</td>
+                <td>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+                        <li>Données d'apprentissage (13 langues)</li>
+                        <li>Toutes les préférences et paramètres</li>
+                        <li>État de l'app et affectations contact-langue</li>
+                        <li>Alertes d'abonnement</li>
+                        <li>Modèles prédictifs N-gram téléchargés</li>
+                        <li>Dictionnaires Hunspell copiés</li>
+                        <li>Cache en mémoire (vocabulaires et dictionnaires)</li>
+                        <li>Cache complète de l'app (fichiers temporaires, rapports de crash locaux, cache WebView)</li>
+                    </ul>
+                </td>
+                <td>L'application redémarrera avec les paramètres par défaut. Aucun fichier utilisateur ne restera sur l'appareil. Les données cloud sont conservées.</td>
             </tr>
         </table>
 
@@ -168,23 +189,23 @@
             
             <p>Si vous avez un <strong>abonnement mensuel actif</strong>, la suppression des données cloud est <strong>temporairement bloquée</strong> jusqu'à l'annulation de l'abonnement.</p>
             
-            <p><strong>Raison:</strong> Les données liées à l'abonnement (plan actif, limite de jetons, date de réinitialisation) sont nécessaires pour l'exécution du contrat en cours (Art. 6.1.b RGPD). La suppression anticipée empêcherait:</p>
+            <p><strong>Raison :</strong> Les données liées à l'abonnement (plan actif, limite de jetons, date de réinitialisation) sont nécessaires pour l'exécution du contrat en cours (Art. 6.1.b RGPD). La suppression anticipée empêcherait :</p>
             <ul>
                 <li>❌ Le bon fonctionnement du service mensuel acheté</li>
                 <li>❌ La synchronisation de la limite de jetons entre les appareils</li>
                 <li>❌ La réinitialisation automatique des jetons en début de mois</li>
             </ul>
             
-            <p><strong>Comment procéder:</strong></p>
+            <p><strong>Comment procéder :</strong></p>
             <ol>
                 <li>Annulez l'abonnement via Google Play Store</li>
-                <li>Attendez la fin de la période de facturation actuelle</li>
+                <li>Attendez la fin de la période de facturation actuelle (période de grâce)</li>
                 <li>Supprimez les données cloud via l'application</li>
             </ol>
             
-            <p><strong>Suppression immédiate:</strong> L'application vous redirige automatiquement vers Google Play pour gérer votre abonnement. Après l'annulation, la suppression des données sera immédiatement disponible.</p>
+            <p><strong>Suppression immédiate :</strong> L'application vous redirige automatiquement vers Google Play pour gérer votre abonnement. Après l'annulation, la suppression des données sera disponible à la fin de la période déjà payée.</p>
             
-            <p><strong>Base juridique du blocage:</strong> Art. 17.3.b RGPD - "Le droit à l'effacement ne s'applique pas dans la mesure où le traitement est nécessaire à l'exécution d'un contrat auquel la personne concernée est partie".</p>
+            <p><strong>Base juridique du blocage :</strong> Art. 17.3.b RGPD - « Le droit à l'effacement ne s'applique pas dans la mesure où le traitement est nécessaire à l'exécution d'un contrat auquel la personne concernée est partie ».</p>
         </div>
 
         <h2>Méthode 2 : Demande par E-mail</h2>
@@ -193,7 +214,7 @@
 
         <div class="info-box">
             <p><strong>E-mail :</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
-            <p><strong>Objet :</strong> "Demande de Suppression de Données RGPD"</p>
+            <p><strong>Objet :</strong> « Demande de Suppression de Données RGPD »</p>
             <p><strong>Informations à Inclure :</strong></p>
             <ul>
                 <li>ID de l'appareil (si connu) ou description de l'appareil</li>
@@ -202,6 +223,18 @@
             </ul>
             <p><strong>Délai de Réponse :</strong> Maximum 30 jours (comme l'exige l'article 12 du RGPD)</p>
         </div>
+
+        <h2>Méthode 3 : Exportation des Données (Art. 20 RGPD)</h2>
+
+        <p>Avant de supprimer vos données, vous pouvez les exporter dans un format JSON lisible par machine :</p>
+
+        <ol>
+            <li>Ouvrez <strong>kAIboard</strong> sur votre appareil Android</li>
+            <li>Accédez à <strong>Paramètres → Confidentialité et Sécurité</strong></li>
+            <li>Appuyez sur <strong>« Exporter vos données (JSON) »</strong></li>
+        </ol>
+
+        <p>Le fichier JSON inclut : métadonnées d'export, préférences locales, données d'apprentissage (pour les 13 langues) et données cloud (abonnement, historique, journaux d'activité). Vous pouvez partager le fichier via n'importe quelle application installée sur l'appareil.</p>
 
         <h2>Suppression Automatique des Données</h2>
 
@@ -214,35 +247,57 @@
                 <th>Détails</th>
             </tr>
             <tr>
-                <td><strong>Données d'Abonnement (Firebase)</strong></td>
-                <td>Jusqu'à la fin de la période de facturation + 365 jours après expiration</td>
-                <td>Supprimées automatiquement après expiration de l'abonnement et période de conservation</td>
+                <td><strong>Données d'Abonnement Actif (Firebase)</strong></td>
+                <td>Jusqu'à la fin de la période de facturation actuelle</td>
+                <td>Déplacées automatiquement dans l'historique à l'expiration de l'abonnement</td>
             </tr>
             <tr>
-                <td>Données Cloud (Firebase)</td>
+                <td><strong>Historique des Abonnements (Firebase)</strong></td>
+                <td>90 jours après expiration</td>
+                <td>Supprimé automatiquement 90 jours après la fin de l'abonnement</td>
+            </tr>
+            <tr>
+                <td><strong>Journaux d'Activité Administrative (Firebase)</strong></td>
+                <td>90 jours depuis la dernière modification</td>
+                <td>Supprimés automatiquement toutes les 24 heures par nettoyage en arrière-plan</td>
+            </tr>
+            <tr>
+                <td><strong>Données de Jetons Cloud (Firebase)</strong></td>
                 <td>365 jours d'inactivité</td>
                 <td>Supprimées automatiquement après un an sans utilisation de l'application</td>
             </tr>
             <tr>
-                <td>Mots Appris</td>
-                <td>Indéfini avec dégradation</td>
+                <td><strong>Historique d'Achats (Firebase)</strong></td>
+                <td>365 jours depuis l'achat</td>
+                <td>Supprimé automatiquement après un an</td>
+            </tr>
+            <tr>
+                <td><strong>Métadonnées de Migration (Firebase)</strong></td>
+                <td>365 jours depuis la dernière migration</td>
+                <td>Supprimées automatiquement après un an</td>
+            </tr>
+            <tr>
+                <td><strong>Mots Appris</strong></td>
+                <td>14 jours avec dégradation</td>
                 <td>Les scores de fréquence diminuent avec le temps ; les mots inutilisés sont supprimés</td>
             </tr>
             <tr>
-                <td>Cache de Traduction</td>
+                <td><strong>Cache de Traduction</strong></td>
                 <td>Session uniquement</td>
                 <td>Stocké uniquement en RAM ; supprimé à la fermeture de l'application</td>
             </tr>
             <tr>
-                <td>Texte de Traduction</td>
+                <td><strong>Texte de Traduction</strong></td>
                 <td>Jamais stocké</td>
                 <td>0 seconde de conservation ; transit uniquement vers l'API OpenAI</td>
             </tr>
         </table>
 
-        <h2>Inventaire des Données</h2>
+        <h2>Inventaire Complet des Données</h2>
 
-        <p>Le tableau suivant détaille toutes les données collectées par kAIboard et comment les supprimer :</p>
+        <p>Les tableaux suivants détaillent toutes les données collectées par kAIboard et comment les supprimer :</p>
+
+        <h3>Données Cloud (Firebase)</h3>
 
         <table>
             <tr>
@@ -251,54 +306,139 @@
                 <th>Méthode de Suppression</th>
             </tr>
             <tr>
-                <td>ID d'Appareil Anonyme</td>
+                <td>Tableau des Appareils</td>
                 <td>Firebase (cloud)</td>
-                <td>Bouton "Supprimer les Données Cloud"</td>
+                <td>Bouton « Supprimer les Données Cloud »</td>
             </tr>
             <tr>
                 <td>Solde de Jetons</td>
                 <td>Firebase (cloud)</td>
-                <td>Bouton "Supprimer les Données Cloud"</td>
+                <td>Bouton « Supprimer les Données Cloud »</td>
             </tr>
             <tr>
-                <td>Historique d'Achat</td>
+                <td>Historique d'Achats</td>
                 <td>Firebase (cloud)</td>
-                <td>Bouton "Supprimer les Données Cloud"</td>
+                <td>Bouton « Supprimer les Données Cloud »</td>
+            </tr>
+            <tr>
+                <td>Métadonnées de Migration</td>
+                <td>Firebase (cloud)</td>
+                <td>Bouton « Supprimer les Données Cloud »</td>
             </tr>
             <tr>
                 <td>Plan d'Abonnement</td>
                 <td>Firebase (cloud)</td>
-                <td>Bouton "Supprimer les Données Cloud" (seulement après annulation de l'abonnement)</td>
+                <td>Bouton « Supprimer les Données Cloud » (seulement après annulation de l'abonnement)</td>
             </tr>
             <tr>
                 <td>Limite Mensuelle de Jetons</td>
                 <td>Firebase (cloud)</td>
-                <td>Bouton "Supprimer les Données Cloud" (seulement après annulation de l'abonnement)</td>
+                <td>Bouton « Supprimer les Données Cloud » (seulement après annulation de l'abonnement)</td>
             </tr>
             <tr>
                 <td>Utilisation Actuelle de Jetons</td>
                 <td>Firebase (cloud)</td>
-                <td>Bouton "Supprimer les Données Cloud" (seulement après annulation de l'abonnement)</td>
+                <td>Bouton « Supprimer les Données Cloud » (seulement après annulation de l'abonnement)</td>
             </tr>
             <tr>
                 <td>Date de Réinitialisation Mensuelle</td>
                 <td>Firebase (cloud)</td>
-                <td>Bouton "Supprimer les Données Cloud" (seulement après annulation de l'abonnement)</td>
+                <td>Bouton « Supprimer les Données Cloud » (seulement après annulation de l'abonnement)</td>
+            </tr>
+            <tr>
+                <td>Date de Fin d'Abonnement</td>
+                <td>Firebase (cloud)</td>
+                <td>Bouton « Supprimer les Données Cloud » (seulement après expiration de la période de grâce)</td>
+            </tr>
+            <tr>
+                <td>Flag « Ne sera pas Renouvelé »</td>
+                <td>Firebase (cloud)</td>
+                <td>Bouton « Supprimer les Données Cloud » (seulement après expiration de la période de grâce)</td>
+            </tr>
+            <tr>
+                <td>Historique des Abonnements</td>
+                <td>Firebase (cloud)</td>
+                <td>Bouton « Supprimer les Données Cloud » (supprime tout : actif + historique)</td>
+            </tr>
+            <tr>
+                <td>Journaux d'Activité Administrative</td>
+                <td>Firebase (cloud)</td>
+                <td>Bouton « Supprimer les Données Cloud »</td>
+            </tr>
+        </table>
+
+        <h3>Données Locales (Appareil)</h3>
+
+        <table>
+            <tr>
+                <th>Type de Donnée</th>
+                <th>Lieu de Stockage</th>
+                <th>Méthode de Suppression</th>
             </tr>
             <tr>
                 <td>Mots Appris (Prédictions)</td>
                 <td>Local (appareil)</td>
-                <td>Bouton "Supprimer les Données d'Apprentissage"</td>
+                <td>Bouton « Supprimer les Données d'Apprentissage » ou « Supprimer Toutes les Données Locales »</td>
             </tr>
             <tr>
                 <td>Préférences de l'Application</td>
                 <td>Local (appareil)</td>
-                <td>Bouton "Supprimer Toutes les Données Locales"</td>
+                <td>Bouton « Supprimer Toutes les Données Locales »</td>
+            </tr>
+            <tr>
+                <td>État de l'Application</td>
+                <td>Local (appareil)</td>
+                <td>Bouton « Supprimer Toutes les Données Locales »</td>
             </tr>
             <tr>
                 <td>Affectations de Langue des Contacts</td>
                 <td>Local (appareil)</td>
-                <td>Bouton "Supprimer Toutes les Données Locales"</td>
+                <td>Bouton « Supprimer Toutes les Données Locales »</td>
+            </tr>
+            <tr>
+                <td>Métadonnées d'Apprentissage</td>
+                <td>Local (appareil)</td>
+                <td>Bouton « Supprimer Toutes les Données Locales »</td>
+            </tr>
+            <tr>
+                <td>Métadonnées de Sauvegarde</td>
+                <td>Local (appareil)</td>
+                <td>Bouton « Supprimer Toutes les Données Locales »</td>
+            </tr>
+            <tr>
+                <td>Alertes d'Abonnement</td>
+                <td>Local (appareil)</td>
+                <td>Bouton « Supprimer Toutes les Données Locales »</td>
+            </tr>
+            <tr>
+                <td>Modèles Prédictifs N-gram (téléchargés)</td>
+                <td>Local (appareil)</td>
+                <td>Bouton « Supprimer Toutes les Données Locales »</td>
+            </tr>
+            <tr>
+                <td>Dictionnaires Hunspell (copiés depuis les assets)</td>
+                <td>Local (appareil)</td>
+                <td>Bouton « Supprimer Toutes les Données Locales »</td>
+            </tr>
+            <tr>
+                <td>Cache de Vocabulaires et Dictionnaires (en mémoire)</td>
+                <td>RAM (volatile)</td>
+                <td>Bouton « Supprimer Toutes les Données Locales » ou fermeture de l'app</td>
+            </tr>
+            <tr>
+                <td>Cache de l'App (fichiers temporaires, rapports de crash locaux, cache WebView)</td>
+                <td>Local (appareil)</td>
+                <td>Bouton « Supprimer Toutes les Données Locales »</td>
+            </tr>
+            <tr>
+                <td>Cache de Désambiguïsation des Contacts</td>
+                <td>RAM (volatile)</td>
+                <td>Automatique au redémarrage du service d'accessibilité</td>
+            </tr>
+            <tr>
+                <td>Cache de Traduction</td>
+                <td>RAM (volatile)</td>
+                <td>Automatique à la fermeture de l'app</td>
             </tr>
             <tr>
                 <td>Texte de Traduction</td>
@@ -313,7 +453,7 @@
 
         <ul>
             <li><strong>Transactions Google Play :</strong> Gérées par Google selon leurs politiques (pour les demandes de remboursement, la prévention de la fraude et la conformité fiscale)</li>
-            <li><strong>Journaux Système Anonymes :</strong> Conservés jusqu'à 90 jours à des fins de débogage (ne contiennent aucune information personnelle identifiable)</li>
+            <li><strong>Rapports de crash déjà envoyés à Firebase :</strong> Les rapports déjà transmis à Firebase Crashlytics restent sur le backend et ne peuvent pas être supprimés depuis l'appareil. Les rapports non encore envoyés peuvent être supprimés depuis les Paramètres (désactiver Crashlytics) ou via le bouton « Supprimer Toutes les Données Locales »</li>
         </ul>
 
         <h2>Conséquences de la Suppression des Données</h2>
@@ -321,19 +461,19 @@
         <div class="warning">
             <p><strong>Avis Important :</strong> La suppression de certaines données est <strong>irréversible</strong>. Assurez-vous de comprendre les conséquences avant de continuer :</p>
             <ul>
-                <li><strong>Supprimer les Données Cloud:</strong> Vous perdrez votre solde de jetons, l'historique d'achats et les données d'abonnement. Vous ne pourrez PAS les récupérer, même après avoir réinstallé l'application. Si vous avez un abonnement actif, vous devez d'abord l'annuler via Google Play Store.</li>
+                <li><strong>Supprimer les Données Cloud :</strong> Vous perdrez votre solde de jetons, l'historique d'achats, les données d'abonnement, l'historique des abonnements et les journaux d'activité. Vous ne pourrez PAS les récupérer, même après avoir réinstallé l'application. Si vous avez un abonnement actif, vous devez d'abord l'annuler via Google Play Store et attendre la fin de la période déjà payée.</li>
                 <li><strong>Supprimer les Données d'Apprentissage :</strong> Les prédictions de texte personnalisées repartiront de zéro</li>
-                <li><strong>Supprimer Toutes les Données Locales :</strong> Toutes les préférences et paramètres seront perdus</li>
+                <li><strong>Supprimer Toutes les Données Locales :</strong> Toutes les préférences, paramètres, modèles prédictifs téléchargés, dictionnaires et cache seront perdus. L'app redémarrera comme une nouvelle installation (les données cloud sont conservées)</li>
             </ul>
         </div>
 
         <h2>Questions Fréquemment Posées</h2>
 
         <h3>Que se passe-t-il si je supprime les données cloud ?</h3>
-        <p>Vous perdrez votre solde de jetons et votre historique d'achat. Si vous réinstallez l'application, vous repartirez de zéro.</p>
+        <p>Vous perdrez votre solde de jetons, votre historique d'achats, les données d'abonnement actif, l'historique des abonnements passés et les journaux d'activité. Si vous réinstallez l'application, vous repartirez de zéro.</p>
 
         <h3>Puis-je supprimer uniquement des données spécifiques ?</h3>
-        <p>Oui. Vous pouvez choisir de supprimer uniquement les données cloud, uniquement les données d'apprentissage ou toutes les données ensemble.</p>
+        <p>Oui. Vous pouvez choisir de supprimer uniquement les données cloud, uniquement les données d'apprentissage ou toutes les données locales. Vous pouvez également exporter vos données au format JSON avant de les supprimer.</p>
 
         <h3>Mes messages traduits sont-ils enregistrés ?</h3>
         <p>Non. Le texte que vous saisissez pour la traduction n'est <strong>jamais enregistré</strong>. Il est envoyé à OpenAI uniquement pour le traitement de la traduction et immédiatement supprimé (0 seconde de conservation).</p>
@@ -342,7 +482,16 @@
         <p>La suppression dans l'application est <strong>immédiate</strong> (0-5 secondes). Les demandes par e-mail sont traitées dans un délai de 30 jours.</p>
 
         <h3>Puis-je récupérer les données après la suppression ?</h3>
-        <p>Non. La suppression est <strong>irréversible</strong>. Assurez-vous de vouloir supprimer vos données avant de continuer.</p>
+        <p>Non. La suppression est <strong>irréversible</strong>. Assurez-vous de vouloir supprimer vos données avant de continuer. Nous recommandons d'utiliser « Exporter vos données (JSON) » avant la suppression.</p>
+
+        <h3>Qu'advient-il de l'historique des abonnements après la suppression ?</h3>
+        <p>L'historique des abonnements est supprimé avec les données cloud. Il comprend tous les abonnements passés (expirés ou annulés) avec les détails d'utilisation de jetons, dates et appareils utilisés.</p>
+
+        <h3>Puis-je supprimer les données pendant la période de grâce ?</h3>
+        <p>Non. Si vous avez annulé votre abonnement mais que le service est toujours actif (période de grâce), vous devez attendre l'expiration effective avant de pouvoir supprimer les données cloud. Cela protège votre expérience utilisateur pendant la période déjà payée.</p>
+
+        <h3>Qu'advient-il des modèles prédictifs et dictionnaires téléchargés ?</h3>
+        <p>Ils sont supprimés par le bouton « Supprimer Toutes les Données Locales ». Lors de la prochaine utilisation, les modèles prédictifs devront être retéléchargés depuis l'écran Modèles Hors Ligne et les dictionnaires seront automatiquement recopiés lors de la première utilisation de la langue.</p>
 
         <h2>Ressources Supplémentaires</h2>
 
@@ -352,11 +501,10 @@
         </p>
 
         <div class="footer">
-            <p><strong>Version 1.1 - Dernière Mise à Jour: 25 janvier 2026</strong></p>
+            <p><strong>Version 1.3 - Dernière Mise à Jour : 21 février 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Conforme au RGPD (Règlement UE 2016/679)</p>
         </div>
     </div>
 </body>
-
 </html>
