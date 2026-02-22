@@ -151,13 +151,11 @@
                         <li>Documento abbonamento attivo (user_subscriptions)</li>
                         <li>Cronologia abbonamenti (user_subscriptions_history)</li>
                         <li>Log attività amministrativa (admin_activity_logs)</li>
-                        <li>Saldo token (se nessun abbonamento attivo)</li>
-                        <li>Cronologia acquisti token</li>
-                        <li>Metadati migrazione cross-device</li>
+                        <li>Cronologia acquisti</li>
                         <li>Array dispositivi multi-device</li>
                     </ul>
                 </td>
-                <td>Irreversibile. Perderai il tuo saldo token, cronologia acquisti, log attività e cronologia abbonamenti. Richiede annullamento abbonamento se attivo.</td>
+                <td>Irreversibile. Perderai i dati abbonamento, cronologia acquisti, log attività e cronologia abbonamenti. Richiede annullamento abbonamento se attivo.</td>
             </tr>
             <tr>
                 <td><strong>Elimina Dati Apprendimento</strong></td>
@@ -262,18 +260,8 @@
                 <td>Eliminati automaticamente ogni 24 ore tramite pulizia in background</td>
             </tr>
             <tr>
-                <td><strong>Dati Cloud Token (Firebase)</strong></td>
-                <td>365 giorni di inattività</td>
-                <td>Eliminati automaticamente dopo un anno senza utilizzo dell'app</td>
-            </tr>
-            <tr>
                 <td><strong>Cronologia Acquisti (Firebase)</strong></td>
                 <td>365 giorni dall'acquisto</td>
-                <td>Eliminati automaticamente dopo un anno</td>
-            </tr>
-            <tr>
-                <td><strong>Metadati Migrazione (Firebase)</strong></td>
-                <td>365 giorni dall'ultima migrazione</td>
                 <td>Eliminati automaticamente dopo un anno</td>
             </tr>
             <tr>
@@ -311,17 +299,12 @@
                 <td>Pulsante "Elimina Dati Cloud"</td>
             </tr>
             <tr>
-                <td>Saldo Token</td>
+                <td>Utilizzo Token Corrente</td>
                 <td>Firebase (cloud)</td>
-                <td>Pulsante "Elimina Dati Cloud"</td>
+                <td>Pulsante "Elimina Dati Cloud" (solo dopo annullamento abbonamento)</td>
             </tr>
             <tr>
                 <td>Cronologia Acquisti</td>
-                <td>Firebase (cloud)</td>
-                <td>Pulsante "Elimina Dati Cloud"</td>
-            </tr>
-            <tr>
-                <td>Metadati Migrazione</td>
                 <td>Firebase (cloud)</td>
                 <td>Pulsante "Elimina Dati Cloud"</td>
             </tr>
@@ -332,11 +315,6 @@
             </tr>
             <tr>
                 <td>Limite Token Mensile</td>
-                <td>Firebase (cloud)</td>
-                <td>Pulsante "Elimina Dati Cloud" (solo dopo annullamento abbonamento)</td>
-            </tr>
-            <tr>
-                <td>Utilizzo Token Corrente</td>
                 <td>Firebase (cloud)</td>
                 <td>Pulsante "Elimina Dati Cloud" (solo dopo annullamento abbonamento)</td>
             </tr>
@@ -461,7 +439,7 @@
         <div class="warning">
             <p><strong>Avviso Importante:</strong> La cancellazione di alcuni dati è <strong>irreversibile</strong>. Assicurati di comprendere le conseguenze prima di procedere:</p>
             <ul>
-                <li><strong>Elimina Dati Cloud:</strong> Perderai il tuo saldo token, la cronologia acquisti, i dati abbonamento, la cronologia abbonamenti e i log attività. NON potrai recuperarli, anche dopo aver reinstallato l'app. Se hai un abbonamento attivo, dovrai prima annullarlo tramite Google Play Store e attendere la fine del periodo già pagato.</li>
+                <li><strong>Elimina Dati Cloud:</strong> Perderai i dati abbonamento, la cronologia acquisti, la cronologia abbonamenti e i log attività. NON potrai recuperarli, anche dopo aver reinstallato l'app. Se hai un abbonamento attivo, dovrai prima annullarlo tramite Google Play Store e attendere la fine del periodo già pagato.</li>
                 <li><strong>Elimina Dati Apprendimento:</strong> Le predizioni di testo personalizzate ripartiranno da zero</li>
                 <li><strong>Elimina Tutti i Dati Locali:</strong> Tutte le preferenze, impostazioni, modelli predittivi scaricati, dizionari e cache andranno perse. L'app si riavvierà come una nuova installazione (i dati cloud vengono preservati)</li>
             </ul>
@@ -470,7 +448,7 @@
         <h2>Domande Frequenti</h2>
 
         <h3>Cosa succede se elimino i dati cloud?</h3>
-        <p>Perderai il tuo saldo token, la cronologia acquisti, i dati abbonamento attivo, la cronologia degli abbonamenti passati e i log attività. Se reinstalli l'app, ripartirai da zero.</p>
+        <p>Perderai i dati abbonamento, la cronologia acquisti, la cronologia degli abbonamenti passati e i log attività. Se reinstalli l'app, l'abbonamento verrà comunque rilevato tramite Google Play ma i dati storici non saranno recuperabili.</p>
 
         <h3>Posso eliminare solo dati specifici?</h3>
         <p>Sì. Puoi scegliere di eliminare solo i dati cloud, solo i dati di apprendimento o tutti i dati locali. Puoi anche esportare i dati in formato JSON prima di eliminarli.</p>
@@ -501,7 +479,7 @@
         </p>
 
         <div class="footer">
-            <p><strong>Versione 1.3 - Ultimo Aggiornamento: 21 febbraio 2026</strong></p>
+            <p><strong>Versione 1.4 - Ultimo Aggiornamento: 22 febbraio 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Conforme al GDPR (Regolamento UE 2016/679)</p>
         </div>
