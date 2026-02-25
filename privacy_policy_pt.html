@@ -91,11 +91,11 @@
 
 <h1>Política de Privacidade - kAIboard</h1>
 
-<p><strong>Última atualização:</strong> 21 de fevereiro de 2026</p>
-<p><strong>Versão:</strong> 2.3</p>
+<p><strong>Última atualização:</strong> 25 de fevereiro de 2026</p>
+<p><strong>Versão:</strong> 2.5</p>
 
 <div class="highlight">
-    <strong>📱 kAIboard</strong> é um teclado Android com recursos de tradução alimentados por IA. Esta Política de Privacidade explica quais dados coletamos, como os usamos e seus direitos sob o Regulamento Geral de Proteção de Dados (RGPD - Regulamento UE 2016/679).
+    <strong>🔄 RENOVAÇÃO AUTOMÁTICA MENSAL:</strong> O contador de uso de tokens é automaticamente renovado na data de renovação da sua assinatura (a cada 30 dias a partir da data de compra). A renovação ocorre em segundo plano, mesmo que o aplicativo esteja fechado ou não tenha sido usado por semanas, através de um worker automático agendado para as 3:00 da manhã. O limite mensal é restaurado sem intervenção manual.
 </div>
 
 <h2>1. Controlador de Dados</h2>
@@ -125,12 +125,12 @@
         <td><strong>Array de Dispositivos</strong></td>
         <td>Lista de identificadores (ex. ["android_e19d6c...", "android_175be4..."])</td>
         <td>Sincronizar assinatura e tokens em múltiplos dispositivos com a mesma conta Google Play</td>
-        <td>Execução de contrato (Art. 6.1.b) + Interesse legítimo multi-dispositivo (Art. 6.1.f RGPD)</td>
+        <td>Execução de contrato (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Saldo de Tokens</strong></td>
-        <td>Número inteiro</td>
-        <td>Backup de créditos de tradução comprados</td>
+        <td><strong>Uso Atual de Tokens</strong></td>
+        <td>Número inteiro (current_usage)</td>
+        <td>Rastrear o consumo mensal compartilhado entre todos os dispositivos</td>
         <td>Execução de contrato (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
@@ -138,12 +138,6 @@
         <td>ID do produto, data de compra, ID do pedido</td>
         <td>Verificar compras e prevenir fraude</td>
         <td>Execução de contrato (Art. 6.1.b RGPD)</td>
-    </tr>
-    <tr>
-        <td><strong>Metadados de Migração</strong></td>
-        <td>Dispositivo ativo, carimbo de data/hora da migração, dispositivo de origem</td>
-        <td>Sistema antifraude para prevenir duplicação de tokens em múltiplos dispositivos</td>
-        <td>Interesse legítimo (Art. 6.1.f RGPD)</td>
     </tr>
     <tr>
         <td><strong>Texto a Traduzir</strong></td>
@@ -167,8 +161,8 @@
 <p><strong>Dados salvos para multi-dispositivo:</strong></p>
 <ul>
     <li><strong>devices:</strong> Array de Android IDs anônimos que usam a mesma assinatura</li>
-    <li><strong>purchaseToken:</strong> Chave única da assinatura Google Play</li>
-    <li><strong>current_usage:</strong> Consumo total de tokens entre todos os dispositivos</li>
+    <li><strong>purchaseToken:</strong> Chave única da assinatura Google Play (ID do documento Firestore)</li>
+    <li><strong>current_usage:</strong> Consumo total de tokens entre todos os dispositivos (contador único)</li>
 </ul>
 
 <p><strong>Privacidade:</strong> O array <code>devices</code> contém APENAS Android IDs pseudonimizados (ex. "android_abc123..."). Não coletamos números de telefone, IMEI ou outros identificadores pessoais.</p>
@@ -448,55 +442,68 @@
     <li><strong>⚠️ IMPORTANTE: O texto NUNCA é salvo em nossos servidores ou na OpenAI</strong> (apenas trânsito em memória)</li>
 </ol>
 
-<h3>3.2 Backup e Restauração de Tokens</h3>
+<h3>3.2 Backup e Sincronização de Assinatura</h3>
 
-<p>Os tokens comprados são salvos no Firebase (Google Cloud) para permitir que você:</p>
+<p>Os dados da assinatura são salvos no Firebase (Google Cloud) para permitir que você:</p>
 
 <ul>
-    <li>✅ Restaure tokens se reinstalar o aplicativo</li>
-    <li>✅ Sincronize tokens em múltiplos dispositivos</li>
+    <li>✅ Use a assinatura em todos os seus dispositivos com a mesma conta Google Play</li>
+    <li>✅ Sincronize o consumo de tokens em tempo real entre todos os dispositivos</li>
+    <li>✅ Restaure a assinatura se reinstalar o aplicativo</li>
     <li>✅ Mantenha seu saldo mesmo após trocar de telefone</li>
 </ul>
 
 <div class="important">
-    <strong>⚠️ CONTA GOOGLE NECESSÁRIA:</strong> A restauração de tokens em vários dispositivos
+    <strong>⚠️ CONTA GOOGLE NECESSÁRIA:</strong> A sincronização da assinatura em vários dispositivos
     funciona APENAS se todos os dispositivos utilizarem a mesma conta do Google Play com a qual
-    você fez as compras. Este requisito é imposto pela API de faturamento do Google Play por
+    você fez a compra. Este requisito é imposto pela API de faturamento do Google Play por
     motivos de segurança e para prevenir fraudes. Se você mudar de conta do Google, precisará
-    recomprar os tokens na nova conta.
+    readquirir a assinatura na nova conta.
 </div>
 
-<h3>3.3 Sistema Antifraude para Tokens</h3>
+<h3>3.3 Proteção Antifraude para Assinaturas</h3>
 
-<div class="important">
-    <strong>⚠️ IMPORTANTE - COMO FUNCIONA A RESTAURAÇÃO DE TOKENS:</strong>
+<div class="info">
+    <strong>🔒 COMO FUNCIONA A PROTEÇÃO ANTIFRAUDE</strong>
+    <p>O kAIboard usa um sistema de proteção baseado em um <strong>contador compartilhado</strong> para garantir a integridade do consumo de tokens em todos os dispositivos.</p>
 </div>
 
-<p>Para prevenir abusos e fraudes, o kAIboard implementa um sistema antifraude no qual <strong>apenas UM dispositivo por vez pode usar os tokens comprados</strong>.</p>
+<h4>Princípio de funcionamento:</h4>
 
-<h4>Comportamento durante a restauração:</h4>
+<p>Cada assinatura está associada a um <strong>único documento Firestore</strong> identificado pelo <code>purchaseToken</code> do Google Play. Todos os dispositivos com a mesma conta Google leem e escrevem no mesmo documento, garantindo um contador de uso único e compartilhado.</p>
+
+<h4>Comportamento prático:</h4>
 
 <ol>
-    <li><strong>Dispositivo A</strong> compra 50.000 tokens → Dispositivo A está "ativo" ✅</li>
-    <li><strong>Dispositivo B</strong> (mesma conta Google Play) clica em "Restaurar compras" → Dispositivo B torna-se "ativo" ✅</li>
-    <li><strong>Dispositivo A</strong> é automaticamente "invalidado" → Os tokens no Dispositivo A são zerados ❌</li>
-    <li>Para reativar o Dispositivo A: clique novamente em "Restaurar compras" no Dispositivo A</li>
+    <li><strong>Dispositivo A</strong> compra assinatura PLUS (250.000 tokens/mês) → Documento Firestore criado ✅</li>
+    <li><strong>Dispositivo B</strong> (mesma conta Google Play) abre o aplicativo → Detecta a mesma assinatura, conecta-se ao mesmo documento ✅</li>
+    <li><strong>Dispositivo A</strong> usa 1.000 tokens → <code>current_usage</code> passa a 1.000 no Firestore</li>
+    <li><strong>Dispositivo B</strong> recebe a atualização em tempo real → Vê 249.000 tokens disponíveis ✅</li>
+    <li>Ambos os dispositivos permanecem ativos simultaneamente, sem invalidação ✅</li>
 </ol>
 
-<p><strong>Metadados salvos para o sistema antifraude:</strong></p>
+<h4>Por que é seguro:</h4>
 
 <ul>
-    <li><strong>active_device</strong>: ID do dispositivo atualmente ativo</li>
-    <li><strong>invalidated_at</strong>: Carimbo de data/hora quando um dispositivo foi desativado</li>
-    <li><strong>invalidated_reason</strong>: Motivo da desativação (ex. "migrated_to_android_xxx")</li>
-    <li><strong>migrated_from</strong>: Dispositivo de origem dos tokens</li>
-    <li><strong>migration_timestamp</strong>: Data/hora da migração</li>
+    <li>✅ <strong>Contador único:</strong> Existe apenas um valor <code>current_usage</code> por assinatura, impossível de duplicar</li>
+    <li>✅ <strong>Sincronização em tempo real:</strong> Cada consumo é escrito imediatamente no Firestore e propagado a todos os dispositivos via listener</li>
+    <li>✅ <strong>Validade gerenciada pelo Google Play:</strong> A validade da assinatura é verificada via Google Play Billing API, não modificável pelo usuário</li>
+    <li>✅ <strong>purchaseToken único:</strong> O Google Play atribui um token imutável para cada compra, usado como chave do documento Firestore</li>
 </ul>
 
-<p><strong>Base legal:</strong> Interesse legítimo para prevenir fraudes e abusos do sistema de compras (Art. 6.1.f RGPD)</p>
+<p><strong>Dados salvos para proteção antifraude:</strong></p>
+
+<ul>
+    <li><strong>purchaseToken:</strong> Chave única da assinatura (ID do documento Firestore)</li>
+    <li><strong>devices:</strong> Array de Android IDs pseudonimizados que utilizaram a assinatura</li>
+    <li><strong>current_usage:</strong> Contador compartilhado de tokens consumidos no mês atual</li>
+    <li><strong>monthly_limit:</strong> Número máximo de tokens para o plano assinado</li>
+</ul>
+
+<p><strong>Base legal:</strong> Execução de contrato (Art. 6.1.b RGPD) — o contador compartilhado é parte integrante do serviço de assinatura adquirido, necessário para aplicar corretamente o limite mensal em todos os dispositivos.</p>
 
 <div class="highlight">
-    <strong>💡 NOTA:</strong> Este sistema garante que os tokens comprados não sejam duplicados fraudulentamente em múltiplos dispositivos. A migração de tokens é <strong>irreversível</strong>: quando você restaura no Dispositivo B, o Dispositivo A perde permanentemente os tokens até que você realize uma nova restauração no Dispositivo A.
+    <strong>💡 NOTA:</strong> Ao contrário de outros sistemas que limitam o uso a um único dispositivo, o kAIboard permite que você use sua assinatura em <strong>todos os seus dispositivos</strong> simultaneamente, com a mesma conta Google Play. O único limite é o consumo mensal total previsto no seu plano.
 </div>
 
 <h3>3.4 Verificação de Compras</h3>
@@ -522,8 +529,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>ID anônimo, saldo de tokens, histórico de compras, metadados de migração, dados de assinatura, logs de atividade</td>
-        <td>Backup, sincronização, sistema antifraude e trilha de auditoria</td>
+        <td>ID anônimo, uso atual de tokens, histórico de compras, dados de assinatura, logs de atividade</td>
+        <td>Backup, sincronização e trilha de auditoria</td>
         <td>UE (servidores europeus)</td>
     </tr>
     <tr>
@@ -594,18 +601,8 @@
         <td>Eliminação automática (a cada 24h) + eliminação manual</td>
     </tr>
     <tr>
-        <td><strong>Backup de Tokens (Firebase)</strong></td>
-        <td>365 dias de inatividade</td>
-        <td>Automática + exclusão manual</td>
-    </tr>
-    <tr>
         <td><strong>Histórico de Compras (Firebase)</strong></td>
         <td>365 dias a partir da compra</td>
-        <td>Automática + exclusão manual</td>
-    </tr>
-    <tr>
-        <td><strong>Metadados de Migração (Firebase)</strong></td>
-        <td>365 dias a partir da última migração</td>
         <td>Automática + exclusão manual</td>
     </tr>
     <tr>
@@ -668,7 +665,7 @@
 <p>Você pode excluir todos os seus dados a qualquer momento através da <strong>tela de Privacidade</strong> no aplicativo:</p>
 
 <ul>
-    <li>✅ <strong>Excluir dados na nuvem</strong>: Remove backup de tokens, histórico de compras, dados de assinatura, histórico de assinaturas e logs de atividade do Firebase</li>
+    <li>✅ <strong>Excluir dados na nuvem</strong>: Remove dados de assinatura, histórico de assinaturas, histórico de compras e logs de atividade do Firebase</li>
     <li>✅ <strong>Excluir dados de aprendizagem</strong>: Remove palavras aprendidas para sugestões (todos os 13 idiomas)</li>
     <li>✅ <strong>Excluir todos os dados locais</strong>: Remove todas as preferências, dados no dispositivo, modelos baixados, dicionários e cache</li>
 </ul>
@@ -718,7 +715,7 @@
 
 <ol>
     <li><strong>Exportar seus dados (JSON)</strong>: Exportação completa de dados locais e na nuvem em formato machine-readable (Art. 15 + Art. 20)</li>
-    <li><strong>Excluir dados na nuvem</strong>: Backup de tokens + histórico de compras + dados de assinatura + histórico de assinaturas + logs de atividade (irreversível - requer cancelamento da assinatura se ativa)</li>
+    <li><strong>Excluir dados na nuvem</strong>: Dados de assinatura + histórico de assinaturas + histórico de compras + logs de atividade (irreversível - requer cancelamento da assinatura se ativa)</li>
     <li><strong>Excluir dados de aprendizagem</strong>: Palavras aprendidas (13 idiomas)</li>
     <li><strong>Excluir todos os dados locais</strong>: Todas as preferências, modelos baixados, dicionários, cache (reinicia aplicativo)</li>
 </ol>
@@ -740,7 +737,7 @@
     <li>🔒 <strong>Regras de Segurança do Firebase</strong>: Acesso limitado apenas ao proprietário dos dados (negação padrão)</li>
     <li>🔒 <strong>ID Pseudônimo</strong>: Sem dados pessoais diretos (nome, email, telefone)</li>
     <li>🔒 <strong>Minimização de dados</strong>: Coletamos apenas o estritamente necessário</li>
-    <li>🔒 <strong>Exclusão automática</strong>: Dados excluídos após 365 dias de inatividade (90 dias para histórico de assinaturas e logs de atividade)</li>
+    <li>🔒 <strong>Exclusão automática</strong>: Dados excluídos após os períodos de retenção previstos (90-365 dias)</li>
     <li>🔒 <strong>Chave API protegida</strong>: A chave API da OpenAI nunca é exposta no cliente, é salva como secret no relé Cloudflare</li>
 </ul>
 
@@ -873,14 +870,12 @@
 <p>O processamento de seus dados é baseado em:</p>
 
 <ul>
-    <li><strong>Art. 6.1.b RGPD</strong> - Execução de contrato: Backup de tokens, histórico de compras, tradução, gerenciamento de assinaturas</li>
+    <li><strong>Art. 6.1.b RGPD</strong> - Execução de contrato: Gerenciamento de assinaturas, sincronização multi-dispositivo, contador de tokens compartilhado, histórico de compras, tradução</li>
     <li><strong>Art. 6.1.a RGPD</strong> - Consentimento: Relatórios de falhas (opcional)</li>
     <li><strong>Art. 6.1.f RGPD</strong> - Interesse legítimo:
         <ul>
-            <li>Prevenção de fraude (sistema antifraude de tokens)</li>
             <li>Segurança de compras</li>
             <li>Proteção do sistema de faturamento contra abusos</li>
-            <li>Sincronização multi-dispositivo</li>
             <li>Logs de atividade administrativa (trilha de auditoria)</li>
         </ul>
     </li>
@@ -888,22 +883,23 @@
 
 <div class="info">
     <strong>📋 AVALIAÇÃO DE INTERESSE LEGÍTIMO (Art. 6.1.f RGPD):</strong>
-    <p>O sistema antifraude é necessário para:</p>
+    <p>Os logs de atividade administrativa são necessários para:</p>
     <ul>
-        <li>✅ Proteger a sustentabilidade econômica do aplicativo</li>
-        <li>✅ Prevenir abusos do sistema de compras no aplicativo</li>
-        <li>✅ Garantir equidade entre os usuários</li>
+        <li>✅ Gestão de contestações dentro de 60 dias (requisito Google Play)</li>
+        <li>✅ Suporte técnico e resolução de problemas</li>
+        <li>✅ Prevenção de fraudes no sistema de cobrança</li>
     </ul>
     <p>O impacto nos direitos do usuário é minimizado porque:</p>
     <ul>
-        <li>✅ O usuário sempre pode reativar qualquer dispositivo através de "Restaurar compras"</li>
+        <li>✅ O usuário pode excluir os logs através de "Excluir dados na nuvem"</li>
         <li>✅ O sistema usa apenas dados pseudonimizados (sem dados pessoais diretos)</li>
         <li>✅ A lógica é transparente e documentada nesta Política de Privacidade</li>
+        <li>✅ Retenção limitada a 90 dias com exclusão automática</li>
     </ul>
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Versão 2.3 - Última atualização: 21 de fevereiro de 2026</strong><br>
+    <strong>Versão 2.5 - Última atualização: 25 de fevereiro de 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 

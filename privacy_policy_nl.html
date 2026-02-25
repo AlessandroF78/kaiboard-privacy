@@ -91,11 +91,11 @@
 
 <h1>Privacybeleid - kAIboard</h1>
 
-<p><strong>Laatst bijgewerkt:</strong> 21 februari 2026</p>
-<p><strong>Versie:</strong> 2.3</p>
+<p><strong>Laatst bijgewerkt:</strong> 25 februari 2026</p>
+<p><strong>Versie:</strong> 2.5</p>
 
 <div class="highlight">
-    <strong>📱 kAIboard</strong> is een Android-toetsenbord met AI-aangedreven vertaalfuncties. Dit Privacybeleid legt uit welke gegevens we verzamelen, hoe we ze gebruiken en uw rechten onder de Algemene Verordening Gegevensbescherming (AVG - EU-verordening 2016/679).
+    <strong>🔄 AUTOMATISCHE MAANDELIJKSE RESET:</strong> De tokengebruiksteller wordt automatisch gereset op de verlengingsdatum van uw abonnement (elke 30 dagen vanaf de aankoopdatum). De reset gebeurt op de achtergrond, zelfs als de app gesloten is of weken niet is gebruikt, via een automatische worker die is gepland om 3:00 uur 's nachts. De maandelijkse limiet wordt hersteld zonder handmatige interventie.
 </div>
 
 <h2>1. Verwerkingsverantwoordelijke</h2>
@@ -125,12 +125,12 @@
         <td><strong>Apparaat-Array</strong></td>
         <td>Lijst van identifiers (bijv. ["android_e19d6c...", "android_175be4..."])</td>
         <td>Abonnement en tokens synchroniseren over meerdere apparaten met hetzelfde Google Play-account</td>
-        <td>Contractuitvoering (Art. 6.1.b) + Gerechtvaardigd belang multi-apparaat (Art. 6.1.f AVG)</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
     <tr>
-        <td><strong>Tokensaldo</strong></td>
-        <td>Geheel getal</td>
-        <td>Back-up van gekochte vertaalcredits</td>
+        <td><strong>Huidig Tokengebruik</strong></td>
+        <td>Geheel getal (current_usage)</td>
+        <td>Het maandelijkse verbruik bijhouden dat gedeeld wordt over alle apparaten</td>
         <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
     <tr>
@@ -138,12 +138,6 @@
         <td>Product-ID, aankoopdatum, bestelnummer</td>
         <td>Aankopen verifiëren en fraude voorkomen</td>
         <td>Contractuitvoering (Art. 6.1.b AVG)</td>
-    </tr>
-    <tr>
-        <td><strong>Migratie Metadata</strong></td>
-        <td>Actief apparaat, migratie tijdstempel, bronapparaat</td>
-        <td>Anti-fraudesysteem om tokenduplicatie op meerdere apparaten te voorkomen</td>
-        <td>Gerechtvaardigd belang (Art. 6.1.f AVG)</td>
     </tr>
     <tr>
         <td><strong>Te Vertalen Tekst</strong></td>
@@ -167,8 +161,8 @@
 <p><strong>Gegevens opgeslagen voor multi-apparaat:</strong></p>
 <ul>
     <li><strong>devices:</strong> Array van anonieme Android-ID's die hetzelfde abonnement gebruiken</li>
-    <li><strong>purchaseToken:</strong> Unieke sleutel van het Google Play-abonnement</li>
-    <li><strong>current_usage:</strong> Totaal tokenverbruik over alle apparaten</li>
+    <li><strong>purchaseToken:</strong> Unieke sleutel van het Google Play-abonnement (Firestore document-ID)</li>
+    <li><strong>current_usage:</strong> Totaal tokenverbruik over alle apparaten (unieke teller)</li>
 </ul>
 
 <p><strong>Privacy:</strong> Het <code>devices</code>-array bevat ALLEEN gepseudonimiseerde Android-ID's (bijv. "android_abc123..."). We verzamelen geen telefoonnummers, IMEI of andere persoonlijke identifiers.</p>
@@ -448,55 +442,68 @@
     <li><strong>⚠️ BELANGRIJK: De tekst wordt NOOIT opgeslagen op onze servers of bij OpenAI</strong> (alleen doorvoer in geheugen)</li>
 </ol>
 
-<h3>3.2 Back-up en Herstel van Tokens</h3>
+<h3>3.2 Back-up en Synchronisatie van Abonnement</h3>
 
-<p>Gekochte tokens worden opgeslagen in Firebase (Google Cloud) om u te laten:</p>
+<p>Abonnementsgegevens worden opgeslagen in Firebase (Google Cloud) om u te laten:</p>
 
 <ul>
-    <li>✅ Tokens herstellen als u de app opnieuw installeert</li>
-    <li>✅ Tokens synchroniseren over meerdere apparaten</li>
+    <li>✅ Het abonnement gebruiken op al uw apparaten met hetzelfde Google Play-account</li>
+    <li>✅ Tokenverbruik in realtime synchroniseren tussen alle apparaten</li>
+    <li>✅ Het abonnement herstellen als u de app opnieuw installeert</li>
     <li>✅ Uw saldo behouden zelfs na het wisselen van telefoon</li>
 </ul>
 
 <div class="important">
-    <strong>⚠️ GOOGLE-ACCOUNT VEREIST:</strong> Het herstellen van tokens op meerdere apparaten
+    <strong>⚠️ GOOGLE-ACCOUNT VEREIST:</strong> De synchronisatie van het abonnement op meerdere apparaten
     werkt ALLEEN als alle apparaten hetzelfde Google Play-account gebruiken waarmee u de aankopen
     hebt gedaan. Deze vereiste wordt afgedwongen door de Google Play Billing API om veiligheidsredenen
-    en ter voorkoming van fraude. Als u van Google-account verandert, moet u de tokens opnieuw kopen
+    en ter voorkoming van fraude. Als u van Google-account verandert, moet u het abonnement opnieuw kopen
     op het nieuwe account.
 </div>
 
-<h3>3.3 Anti-Fraudesysteem voor Tokens</h3>
+<h3>3.3 Anti-Fraudebescherming voor Abonnementen</h3>
 
-<div class="important">
-    <strong>⚠️ BELANGRIJK - HOE TOKENHERSTEL WERKT:</strong>
+<div class="info">
+    <strong>🔒 HOE DE ANTI-FRAUDEBESCHERMING WERKT</strong>
+    <p>kAIboard gebruikt een beschermingssysteem gebaseerd op een <strong>gedeelde teller</strong> om de integriteit van het tokenverbruik over alle apparaten te garanderen.</p>
 </div>
 
-<p>Om misbruik en fraude te voorkomen, implementeert kAIboard een anti-fraudesysteem waarbij <strong>slechts ÉÉN apparaat tegelijk de gekochte tokens kan gebruiken</strong>.</p>
+<h4>Werkingsprincipe:</h4>
 
-<h4>Gedrag tijdens herstel:</h4>
+<p>Elk abonnement is gekoppeld aan een <strong>enkel Firestore-document</strong> geïdentificeerd door de <code>purchaseToken</code> van Google Play. Alle apparaten met hetzelfde Google-account lezen en schrijven naar hetzelfde document, waardoor een unieke en gedeelde gebruiksteller wordt gegarandeerd.</p>
+
+<h4>Praktisch gedrag:</h4>
 
 <ol>
-    <li><strong>Apparaat A</strong> koopt 50.000 tokens → Apparaat A is "actief" ✅</li>
-    <li><strong>Apparaat B</strong> (zelfde Google Play-account) klikt op "Aankopen herstellen" → Apparaat B wordt "actief" ✅</li>
-    <li><strong>Apparaat A</strong> wordt automatisch "geïnvalideerd" → Tokens op Apparaat A worden op nul gezet ❌</li>
-    <li>Om Apparaat A te heractiveren: klik opnieuw op "Aankopen herstellen" op Apparaat A</li>
+    <li><strong>Apparaat A</strong> koopt PLUS-abonnement (250.000 tokens/maand) → Firestore-document aangemaakt ✅</li>
+    <li><strong>Apparaat B</strong> (zelfde Google Play-account) opent de app → Detecteert hetzelfde abonnement, verbindt met hetzelfde document ✅</li>
+    <li><strong>Apparaat A</strong> gebruikt 1.000 tokens → <code>current_usage</code> wordt 1.000 op Firestore</li>
+    <li><strong>Apparaat B</strong> ontvangt de update in realtime → Ziet 249.000 tokens beschikbaar ✅</li>
+    <li>Beide apparaten blijven tegelijkertijd actief, zonder invalidatie ✅</li>
 </ol>
 
-<p><strong>Metadata opgeslagen voor het anti-fraudesysteem:</strong></p>
+<h4>Waarom het veilig is:</h4>
 
 <ul>
-    <li><strong>active_device</strong>: ID van het momenteel actieve apparaat</li>
-    <li><strong>invalidated_at</strong>: Tijdstempel wanneer een apparaat werd gedeactiveerd</li>
-    <li><strong>invalidated_reason</strong>: Reden voor deactivatie (bijv. "migrated_to_android_xxx")</li>
-    <li><strong>migrated_from</strong>: Bronapparaat van de tokens</li>
-    <li><strong>migration_timestamp</strong>: Datum/tijd van migratie</li>
+    <li>✅ <strong>Unieke teller:</strong> Er bestaat slechts één <code>current_usage</code>-waarde per abonnement, onmogelijk te dupliceren</li>
+    <li>✅ <strong>Realtime synchronisatie:</strong> Elk verbruik wordt onmiddellijk naar Firestore geschreven en via listener naar alle apparaten doorgegeven</li>
+    <li>✅ <strong>Geldigheid beheerd door Google Play:</strong> De geldigheid van het abonnement wordt geverifieerd via de Google Play Billing API, niet door de gebruiker te wijzigen</li>
+    <li>✅ <strong>Unieke purchaseToken:</strong> Google Play wijst een onveranderlijke token toe voor elke aankoop, gebruikt als sleutel van het Firestore-document</li>
 </ul>
 
-<p><strong>Rechtsgrondslag:</strong> Gerechtvaardigd belang om fraude en misbruik van het aankoopsysteem te voorkomen (Art. 6.1.f AVG)</p>
+<p><strong>Gegevens opgeslagen voor anti-fraudebescherming:</strong></p>
+
+<ul>
+    <li><strong>purchaseToken:</strong> Unieke sleutel van het abonnement (Firestore document-ID)</li>
+    <li><strong>devices:</strong> Array van gepseudonimiseerde Android-ID's die het abonnement hebben gebruikt</li>
+    <li><strong>current_usage:</strong> Gedeelde teller van verbruikte tokens in de huidige maand</li>
+    <li><strong>monthly_limit:</strong> Maximaal aantal tokens voor het geabonneerde plan</li>
+</ul>
+
+<p><strong>Rechtsgrondslag:</strong> Contractuitvoering (Art. 6.1.b AVG) — de gedeelde teller is een integraal onderdeel van de gekochte abonnementsservice, noodzakelijk om de maandelijkse limiet correct toe te passen op alle apparaten.</p>
 
 <div class="highlight">
-    <strong>💡 OPMERKING:</strong> Dit systeem garandeert dat gekochte tokens niet frauduleus worden gedupliceerd op meerdere apparaten. Tokenmigratie is <strong>onomkeerbaar</strong>: wanneer u herstelt op Apparaat B, verliest Apparaat A de tokens permanent totdat u een nieuw herstel uitvoert op Apparaat A.
+    <strong>💡 OPMERKING:</strong> In tegenstelling tot andere systemen die gebruik beperken tot één apparaat, kunt u met kAIboard uw abonnement gebruiken op <strong>al uw apparaten</strong> tegelijkertijd, met hetzelfde Google Play-account. De enige limiet is het totale maandelijkse verbruik dat is inbegrepen in uw plan.
 </div>
 
 <h3>3.4 Verificatie van Aankopen</h3>
@@ -522,8 +529,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>Anoniem ID, tokensaldo, aankoopgeschiedenis, migratie metadata, abonnementsgegevens, activiteitenlogboeken</td>
-        <td>Back-up, synchronisatie, anti-fraudesysteem en audittrail</td>
+        <td>Anoniem ID, huidig tokengebruik, aankoopgeschiedenis, abonnementsgegevens, activiteitenlogboeken</td>
+        <td>Back-up, synchronisatie en audittrail</td>
         <td>EU (Europese servers)</td>
     </tr>
     <tr>
@@ -594,18 +601,8 @@
         <td>Automatische verwijdering (elke 24u) + handmatige verwijdering</td>
     </tr>
     <tr>
-        <td><strong>Token Back-up (Firebase)</strong></td>
-        <td>365 dagen inactiviteit</td>
-        <td>Automatisch + handmatige verwijdering</td>
-    </tr>
-    <tr>
         <td><strong>Aankoopgeschiedenis (Firebase)</strong></td>
         <td>365 dagen vanaf aankoop</td>
-        <td>Automatisch + handmatige verwijdering</td>
-    </tr>
-    <tr>
-        <td><strong>Migratie Metadata (Firebase)</strong></td>
-        <td>365 dagen vanaf laatste migratie</td>
         <td>Automatisch + handmatige verwijdering</td>
     </tr>
     <tr>
@@ -668,7 +665,7 @@
 <p>U kunt al uw gegevens op elk moment verwijderen via het <strong>Privacy-scherm</strong> in de app:</p>
 
 <ul>
-    <li>✅ <strong>Cloudgegevens verwijderen</strong>: Verwijdert tokenback-up, aankoopgeschiedenis, abonnementsgegevens, abonnementsgeschiedenis en activiteitenlogboeken uit Firebase</li>
+    <li>✅ <strong>Cloudgegevens verwijderen</strong>: Verwijdert abonnementsgegevens, abonnementsgeschiedenis, aankoopgeschiedenis en activiteitenlogboeken uit Firebase</li>
     <li>✅ <strong>Leergegevens verwijderen</strong>: Verwijdert geleerde woorden voor suggesties (alle 13 talen)</li>
     <li>✅ <strong>Alle lokale gegevens verwijderen</strong>: Verwijdert alle voorkeuren, gegevens op het apparaat, gedownloade modellen, woordenboeken en cache</li>
 </ul>
@@ -718,7 +715,7 @@
 
 <ol>
     <li><strong>Exporteer uw gegevens (JSON)</strong>: Volledige export van lokale en cloudgegevens in machineleesbaar formaat (Art. 15 + Art. 20)</li>
-    <li><strong>Cloudgegevens verwijderen</strong>: Tokenback-up + aankoopgeschiedenis + abonnementsgegevens + abonnementsgeschiedenis + activiteitenlogboeken (onomkeerbaar - vereist abonnementsannulering indien actief)</li>
+    <li><strong>Cloudgegevens verwijderen</strong>: Abonnementsgegevens + abonnementsgeschiedenis + aankoopgeschiedenis + activiteitenlogboeken (onomkeerbaar - vereist abonnementsannulering indien actief)</li>
     <li><strong>Leergegevens verwijderen</strong>: Geleerde woorden (13 talen)</li>
     <li><strong>Alle lokale gegevens verwijderen</strong>: Alle voorkeuren, gedownloade modellen, woordenboeken, cache (herstart app)</li>
 </ol>
@@ -740,7 +737,7 @@
     <li>🔒 <strong>Firebase Beveiligingsregels</strong>: Toegang beperkt tot alleen de eigenaar van de gegevens (standaard weigeren)</li>
     <li>🔒 <strong>Pseudoniem ID</strong>: Geen directe persoonlijke gegevens (naam, e-mail, telefoon)</li>
     <li>🔒 <strong>Gegevensminimalisatie</strong>: We verzamelen alleen wat strikt noodzakelijk is</li>
-    <li>🔒 <strong>Automatische verwijdering</strong>: Gegevens verwijderd na 365 dagen inactiviteit (90 dagen voor abonnementsgeschiedenis en activiteitenlogboeken)</li>
+    <li>🔒 <strong>Automatische verwijdering</strong>: Gegevens verwijderd na de voorziene bewaarperiodes (90-365 dagen)</li>
     <li>🔒 <strong>Beschermde API-sleutel</strong>: De OpenAI API-sleutel wordt nooit blootgesteld in de client, deze is opgeslagen als secret in de Cloudflare-relay</li>
 </ul>
 
@@ -873,14 +870,12 @@
 <p>De verwerking van uw gegevens is gebaseerd op:</p>
 
 <ul>
-    <li><strong>Art. 6.1.b AVG</strong> - Contractuitvoering: Token back-up, aankoopgeschiedenis, vertaling, abonnementsbeheer</li>
+    <li><strong>Art. 6.1.b AVG</strong> - Contractuitvoering: Abonnementsbeheer, multi-device synchronisatie, gedeelde tokenteller, aankoopgeschiedenis, vertaling</li>
     <li><strong>Art. 6.1.a AVG</strong> - Toestemming: Crashrapporten (optioneel)</li>
     <li><strong>Art. 6.1.f AVG</strong> - Gerechtvaardigd belang:
         <ul>
-            <li>Fraudepreventie (token anti-fraudesysteem)</li>
             <li>Aankoopbeveiliging</li>
             <li>Bescherming van het factureringssysteem tegen misbruik</li>
-            <li>Multi-apparaat synchronisatie</li>
             <li>Administratieve activiteitenlogboeken (audittrail)</li>
         </ul>
     </li>
@@ -888,22 +883,23 @@
 
 <div class="info">
     <strong>📋 BEOORDELING GERECHTVAARDIGD BELANG (Art. 6.1.f AVG):</strong>
-    <p>Het anti-fraudesysteem is noodzakelijk om:</p>
+    <p>De administratieve activiteitenlogboeken zijn noodzakelijk voor:</p>
     <ul>
-        <li>✅ De economische duurzaamheid van de app te beschermen</li>
-        <li>✅ Misbruik van het in-app-aankoopsysteem te voorkomen</li>
-        <li>✅ Eerlijkheid tussen gebruikers te garanderen</li>
+        <li>✅ Geschillenbeheer binnen 60 dagen (Google Play-vereiste)</li>
+        <li>✅ Technische ondersteuning en probleemoplossing</li>
+        <li>✅ Fraudepreventie in het factureringssysteem</li>
     </ul>
     <p>De impact op gebruikersrechten wordt geminimaliseerd omdat:</p>
     <ul>
-        <li>✅ Gebruikers altijd elk apparaat kunnen heractiveren via "Aankopen herstellen"</li>
+        <li>✅ De gebruiker logboeken kan verwijderen via "Cloudgegevens verwijderen"</li>
         <li>✅ Het systeem alleen gepseudonimiseerde gegevens gebruikt (geen directe persoonlijke gegevens)</li>
         <li>✅ De logica transparant is en gedocumenteerd in dit Privacybeleid</li>
+        <li>✅ Bewaring beperkt tot 90 dagen met automatische verwijdering</li>
     </ul>
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Versie 2.3 - Laatst bijgewerkt: 21 februari 2026</strong><br>
+    <strong>Versie 2.5 - Laatst bijgewerkt: 25 februari 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 

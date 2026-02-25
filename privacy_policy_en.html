@@ -91,11 +91,11 @@
 
 <h1>Privacy Policy - kAIboard</h1>
 
-<p><strong>Last updated:</strong> February 21, 2026</p>
-<p><strong>Version:</strong> 2.3</p>
+<p><strong>Last updated:</strong> February 25, 2026</p>
+<p><strong>Version:</strong> 2.5</p>
 
 <div class="highlight">
-    <strong>📱 kAIboard</strong> is an Android keyboard with AI-powered translation features. This Privacy Policy explains what data we collect, how we use it, and your rights under the General Data Protection Regulation (GDPR - EU Regulation 2016/679).
+    <strong>🔄 AUTOMATIC MONTHLY RESET:</strong> The token usage counter is automatically reset on your subscription renewal date (every 30 days from purchase date). The reset happens in the background even if the app is closed or hasn't been used for weeks, via an automatic worker scheduled at 3:00 AM. The monthly limit is restored without manual intervention.
 </div>
 
 <h2>1. Data Controller</h2>
@@ -125,12 +125,12 @@
         <td><strong>Device Array</strong></td>
         <td>List of identifiers (e.g., ["android_e19d6c...", "android_175be4..."])</td>
         <td>Synchronize subscription and tokens across multiple devices with the same Google Play account</td>
-        <td>Contract performance (Art. 6.1.b) + Legitimate interest multi-device (Art. 6.1.f GDPR)</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td><strong>Token Balance</strong></td>
-        <td>Integer number</td>
-        <td>Backup purchased translation credits</td>
+        <td><strong>Current Token Usage</strong></td>
+        <td>Integer (current_usage)</td>
+        <td>Track shared monthly consumption across all devices</td>
         <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
@@ -138,12 +138,6 @@
         <td>Product ID, purchase date, order ID</td>
         <td>Verify purchases and prevent fraud</td>
         <td>Contract performance (Art. 6.1.b GDPR)</td>
-    </tr>
-    <tr>
-        <td><strong>Migration Metadata</strong></td>
-        <td>Active device, migration timestamp, source device</td>
-        <td>Anti-fraud system to prevent token duplication across multiple devices</td>
-        <td>Legitimate interest (Art. 6.1.f GDPR)</td>
     </tr>
     <tr>
         <td><strong>Text to Translate</strong></td>
@@ -167,8 +161,8 @@
 <p><strong>Data saved for multi-device:</strong></p>
 <ul>
     <li><strong>devices:</strong> Array of anonymous Android IDs using the same subscription</li>
-    <li><strong>purchaseToken:</strong> Unique key of the Google Play subscription</li>
-    <li><strong>current_usage:</strong> Total token consumption across all devices</li>
+    <li><strong>purchaseToken:</strong> Unique key of the Google Play subscription (Firestore document ID)</li>
+    <li><strong>current_usage:</strong> Total token consumption across all devices (single shared counter)</li>
 </ul>
 
 <p><strong>Privacy:</strong> The <code>devices</code> array contains ONLY pseudonymized Android IDs (e.g., "android_abc123..."). We do not collect phone numbers, IMEI, or other personal identifiers.</p>
@@ -199,7 +193,7 @@
     <tr>
         <td><strong>Current Token Usage</strong></td>
         <td>Integer</td>
-        <td>Track monthly consumption and apply limit</td>
+        <td>Track shared monthly consumption and apply limit</td>
         <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
@@ -447,55 +441,68 @@
     <li><strong>⚠️ IMPORTANT: The text is NEVER saved on our servers or OpenAI</strong> (transit only in memory)</li>
 </ol>
 
-<h3>3.2 Token Backup and Restore</h3>
+<h3>3.2 Subscription Backup and Synchronization</h3>
 
-<p>Purchased tokens are saved on Firebase (Google Cloud) to allow you to:</p>
+<p>Subscription data is saved on Firebase (Google Cloud) to allow you to:</p>
 
 <ul>
-    <li>✅ Restore tokens if you reinstall the app</li>
-    <li>✅ Sync tokens across multiple devices</li>
+    <li>✅ Use your subscription on all your devices with the same Google Play account</li>
+    <li>✅ Synchronize token consumption in real time across all devices</li>
+    <li>✅ Restore your subscription if you reinstall the app</li>
     <li>✅ Keep your balance even after changing phones</li>
 </ul>
 
 <div class="important">
-    <strong>⚠️ GOOGLE ACCOUNT REQUIREMENT:</strong> Token restoration across multiple devices
+    <strong>⚠️ GOOGLE ACCOUNT REQUIREMENT:</strong> Subscription synchronization across multiple devices
     works ONLY if all devices use the same Google Play account with which you made the
     purchases. This requirement is enforced by the Google Play Billing API for security
     reasons and to prevent fraud. If you change your Google account, you will need to
-    repurchase tokens on the new account.
+    repurchase the subscription on the new account.
 </div>
 
-<h3>3.3 Anti-Fraud System for Tokens</h3>
+<h3>3.3 Anti-Fraud Protection for Subscriptions</h3>
 
-<div class="important">
-    <strong>⚠️ IMPORTANT - HOW TOKEN RESTORATION WORKS:</strong>
+<div class="info">
+    <strong>🔒 HOW THE ANTI-FRAUD PROTECTION WORKS</strong>
+    <p>kAIboard uses a protection system based on a <strong>shared counter</strong> to ensure the integrity of token consumption across all devices.</p>
 </div>
 
-<p>To prevent abuse and fraud, kAIboard implements an anti-fraud system whereby <strong>only ONE device at a time can use purchased tokens</strong>.</p>
+<h4>How it works:</h4>
 
-<h4>Behavior during restoration:</h4>
+<p>Each subscription is linked to a <strong>single Firestore document</strong> identified by the <code>purchaseToken</code> from Google Play. All devices with the same Google account read and write the same document, ensuring a single shared consumption counter.</p>
+
+<h4>Practical behavior:</h4>
 
 <ol>
-    <li><strong>Device A</strong> purchases 50,000 tokens → Device A is "active" ✅</li>
-    <li><strong>Device B</strong> (same Google Play account) clicks "Restore purchases" → Device B becomes "active" ✅</li>
-    <li><strong>Device A</strong> is automatically "invalidated" → Tokens on Device A are zeroed ❌</li>
-    <li>To reactivate Device A: click "Restore purchases" again on Device A</li>
+    <li><strong>Device A</strong> purchases PLUS subscription (250,000 tokens/month) → Firestore document created ✅</li>
+    <li><strong>Device B</strong> (same Google Play account) opens the app → Detects the same subscription, connects to the same document ✅</li>
+    <li><strong>Device A</strong> uses 1,000 tokens → <code>current_usage</code> is set to 1,000 in Firestore</li>
+    <li><strong>Device B</strong> receives the update in real time → Sees 249,000 available tokens ✅</li>
+    <li>Both devices remain active simultaneously, without invalidation ✅</li>
 </ol>
 
-<p><strong>Metadata saved for the anti-fraud system:</strong></p>
+<h4>Why it is secure:</h4>
 
 <ul>
-    <li><strong>active_device</strong>: ID of the currently active device</li>
-    <li><strong>invalidated_at</strong>: Timestamp when a device was deactivated</li>
-    <li><strong>invalidated_reason</strong>: Reason for deactivation (e.g., "migrated_to_android_xxx")</li>
-    <li><strong>migrated_from</strong>: Source device of the tokens</li>
-    <li><strong>migration_timestamp</strong>: Date/time of migration</li>
+    <li>✅ <strong>Single counter:</strong> There is only one <code>current_usage</code> value per subscription, impossible to duplicate</li>
+    <li>✅ <strong>Real-time synchronization:</strong> Every consumption is written immediately to Firestore and propagated to all devices via listener</li>
+    <li>✅ <strong>Validity managed by Google Play:</strong> Subscription validity is verified through the Google Play Billing API, not modifiable by the user</li>
+    <li>✅ <strong>Unique purchaseToken:</strong> Google Play assigns an immutable token to each purchase, used as the key of the Firestore document</li>
 </ul>
 
-<p><strong>Legal basis:</strong> Legitimate interest to prevent fraud and abuse of the purchase system (Art. 6.1.f GDPR)</p>
+<p><strong>Data saved for anti-fraud protection:</strong></p>
+
+<ul>
+    <li><strong>purchaseToken:</strong> Unique subscription key (Firestore document ID)</li>
+    <li><strong>devices:</strong> Array of pseudonymized Android IDs that have used the subscription</li>
+    <li><strong>current_usage:</strong> Shared counter of tokens consumed in the current month</li>
+    <li><strong>monthly_limit:</strong> Maximum token limit for the subscribed plan</li>
+</ul>
+
+<p><strong>Legal basis:</strong> Contract performance (Art. 6.1.b GDPR) — The shared counter is an integral part of the purchased subscription service, necessary to correctly apply the monthly limit across all devices.</p>
 
 <div class="highlight">
-    <strong>💡 NOTE:</strong> This system ensures that purchased tokens are not fraudulently duplicated across multiple devices. Token migration is <strong>irreversible</strong>: when you restore on Device B, Device A permanently loses the tokens until you perform a new restoration on Device A.
+    <strong>💡 NOTE:</strong> Unlike other systems that limit usage to a single device, kAIboard allows you to use your subscription on <strong>all your devices</strong> simultaneously with the same Google Play account. The only limit is the total monthly consumption included in your plan.
 </div>
 
 <h3>3.4 Purchase Verification</h3>
@@ -521,8 +528,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>Anonymous ID, token balance, purchase history, migration metadata, subscription data, activity logs</td>
-        <td>Backup, synchronization, anti-fraud system and audit trail</td>
+        <td>Anonymous ID, token usage, purchase history, subscription data, activity logs</td>
+        <td>Backup, synchronization, audit trail</td>
         <td>EU (European servers)</td>
     </tr>
     <tr>
@@ -593,18 +600,8 @@
         <td>Automatic deletion (every 24h) + manual deletion</td>
     </tr>
     <tr>
-        <td><strong>Token Backup (Firebase)</strong></td>
-        <td>365 days of inactivity</td>
-        <td>Automatic + manual deletion</td>
-    </tr>
-    <tr>
         <td><strong>Purchase History (Firebase)</strong></td>
         <td>365 days from purchase</td>
-        <td>Automatic + manual deletion</td>
-    </tr>
-    <tr>
-        <td><strong>Migration Metadata (Firebase)</strong></td>
-        <td>365 days from last migration</td>
         <td>Automatic + manual deletion</td>
     </tr>
     <tr>
@@ -650,7 +647,7 @@
 </table>
 
 <div class="highlight">
-    <strong>🗑️ AUTOMATIC CLEANUP:</strong> The app automatically performs cleanup every 24 hours. Data older than 365 days (or 90 days for subscription history and activity logs) is automatically deleted, even if you no longer use the app.
+    <strong>🗑️ AUTOMATIC CLEANUP:</strong> The app automatically performs cleanup every 24 hours. Data older than the indicated periods is automatically deleted, even if you no longer use the app.
 </div>
 
 <h2>6. Your Rights (GDPR)</h2>
@@ -667,7 +664,7 @@
 <p>You can delete all your data at any time through the <strong>Privacy screen</strong> in the app:</p>
 
 <ul>
-    <li>✅ <strong>Delete cloud data</strong>: Removes token backup, purchase history, subscription data, subscription history and activity logs from Firebase</li>
+    <li>✅ <strong>Delete cloud data</strong>: Removes subscription data, subscription history, purchase history and activity logs from Firebase</li>
     <li>✅ <strong>Delete learning data</strong>: Removes learned words for suggestions (all 13 languages)</li>
     <li>✅ <strong>Delete all local data</strong>: Removes all preferences, data on the device, downloaded models, dictionaries and cache</li>
 </ul>
@@ -717,7 +714,7 @@
 
 <ol>
     <li><strong>Export your data (JSON)</strong>: Complete export of local and cloud data in machine-readable format (Art. 15 + Art. 20)</li>
-    <li><strong>Delete cloud data</strong>: Token backup + purchase history + subscription data + subscription history + activity logs (irreversible - requires subscription cancellation if active)</li>
+    <li><strong>Delete cloud data</strong>: Subscription data + subscription history + purchase history + activity logs (irreversible - requires subscription cancellation if active)</li>
     <li><strong>Delete learning data</strong>: Learned words (13 languages)</li>
     <li><strong>Delete all local data</strong>: All preferences, downloaded models, dictionaries, cache (restarts app)</li>
 </ol>
@@ -739,7 +736,7 @@
     <li>🔒 <strong>Firebase Security Rules</strong>: Access limited to data owner only (default deny)</li>
     <li>🔒 <strong>Pseudonymous ID</strong>: No direct personal data (name, email, phone)</li>
     <li>🔒 <strong>Data minimization</strong>: We only collect what's strictly necessary</li>
-    <li>🔒 <strong>Automatic deletion</strong>: Data deleted after 365 days of inactivity (90 days for subscription history and activity logs)</li>
+    <li>🔒 <strong>Automatic deletion</strong>: Data deleted after the indicated retention periods (90-365 days)</li>
     <li>🔒 <strong>Protected API Key</strong>: The OpenAI API key is never exposed in the client, it is stored as a secret in the Cloudflare relay</li>
 </ul>
 
@@ -872,14 +869,12 @@
 <p>Processing of your data is based on:</p>
 
 <ul>
-    <li><strong>Art. 6.1.b GDPR</strong> - Contract performance: Token backup, purchase history, translation, subscription management</li>
+    <li><strong>Art. 6.1.b GDPR</strong> - Contract performance: Subscription management, multi-device synchronization, shared token counter, purchase history, translation</li>
     <li><strong>Art. 6.1.a GDPR</strong> - Consent: Crash reports (optional)</li>
     <li><strong>Art. 6.1.f GDPR</strong> - Legitimate interest:
         <ul>
-            <li>Fraud prevention (token anti-fraud system)</li>
             <li>Purchase security</li>
             <li>Protection of billing system from abuse</li>
-            <li>Multi-device synchronization</li>
             <li>Administrative activity logs (audit trail)</li>
         </ul>
     </li>
@@ -887,22 +882,23 @@
 
 <div class="info">
     <strong>📋 LEGITIMATE INTEREST ASSESSMENT (Art. 6.1.f GDPR):</strong>
-    <p>The anti-fraud system is necessary to:</p>
+    <p>Administrative activity logs are necessary for:</p>
     <ul>
-        <li>✅ Protect the app's economic sustainability</li>
-        <li>✅ Prevent abuse of the in-app purchase system</li>
-        <li>✅ Ensure fairness among users</li>
+        <li>✅ Dispute management within 60 days (Google Play requirement)</li>
+        <li>✅ Technical support and troubleshooting</li>
+        <li>✅ Fraud prevention in the billing system</li>
     </ul>
     <p>Impact on user rights is minimized because:</p>
     <ul>
-        <li>✅ Users can always reactivate any device via "Restore purchases"</li>
+        <li>✅ Users can delete the logs via "Delete cloud data"</li>
         <li>✅ The system uses only pseudonymized data (no direct personal data)</li>
         <li>✅ The logic is transparent and documented in this Privacy Policy</li>
+        <li>✅ Retention limited to 90 days with automatic deletion</li>
     </ul>
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Version 2.3 - Last updated: February 21, 2026</strong><br>
+    <strong>Version 2.5 - Last updated: February 25, 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 

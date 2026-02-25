@@ -91,11 +91,11 @@
 
 <h1>Datenschutzerklärung - kAIboard</h1>
 
-<p><strong>Letzte Aktualisierung:</strong> 21. Februar 2026</p>
-<p><strong>Version:</strong> 2.3</p>
+<p><strong>Letzte Aktualisierung:</strong> 25. Februar 2026</p>
+<p><strong>Version:</strong> 2.5</p>
 
 <div class="highlight">
-    <strong>📱 kAIboard</strong> ist eine Android-Tastatur mit KI-gestützten Übersetzungsfunktionen. Diese Datenschutzerklärung erklärt, welche Daten wir sammeln, wie wir sie verwenden und welche Rechte Sie gemäß der Datenschutz-Grundverordnung (DSGVO - EU-Verordnung 2016/679) haben.
+    <strong>🔄 AUTOMATISCHES MONATLICHES ZURÜCKSETZEN:</strong> Der Token-Verbrauchszähler wird automatisch zum Verlängerungsdatum Ihres Abonnements zurückgesetzt (alle 30 Tage ab Kaufdatum). Das Zurücksetzen erfolgt im Hintergrund, auch wenn die App geschlossen oder seit Wochen nicht genutzt wird, über einen automatischen Worker, der um 3:00 Uhr geplant ist. Das monatliche Limit wird ohne manuellen Eingriff wiederhergestellt.
 </div>
 
 <h2>1. Verantwortlicher</h2>
@@ -125,12 +125,12 @@
         <td><strong>Geräte-Array</strong></td>
         <td>Liste von Identifikatoren (z.B. ["android_e19d6c...", "android_175be4..."])</td>
         <td>Abonnement und Token über mehrere Geräte mit demselben Google Play-Konto synchronisieren</td>
-        <td>Vertragserfüllung (Art. 6 Abs. 1 lit. b) + Berechtigtes Interesse Multi-Device (Art. 6 Abs. 1 lit. f DSGVO)</td>
+        <td>Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO)</td>
     </tr>
     <tr>
-        <td><strong>Token-Guthaben</strong></td>
-        <td>Ganzzahl</td>
-        <td>Sicherung gekaufter Übersetzungsguthaben</td>
+        <td><strong>Aktueller Token-Verbrauch</strong></td>
+        <td>Ganzzahl (current_usage)</td>
+        <td>Gemeinsamen monatlichen Verbrauch aller Geräte nachverfolgen</td>
         <td>Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO)</td>
     </tr>
     <tr>
@@ -138,12 +138,6 @@
         <td>Produkt-ID, Kaufdatum, Bestell-ID</td>
         <td>Überprüfung von Käufen und Betrugsprävention</td>
         <td>Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO)</td>
-    </tr>
-    <tr>
-        <td><strong>Migrations-Metadaten</strong></td>
-        <td>Aktives Gerät, Migrations-Zeitstempel, Ursprungsgerät</td>
-        <td>Anti-Betrugs-System zur Verhinderung von Token-Duplizierung auf mehreren Geräten</td>
-        <td>Berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO)</td>
     </tr>
     <tr>
         <td><strong>Zu übersetzender Text</strong></td>
@@ -167,8 +161,8 @@
 <p><strong>Für Multi-Device gespeicherte Daten:</strong></p>
 <ul>
     <li><strong>devices:</strong> Array anonymer Android-IDs, die dasselbe Abonnement nutzen</li>
-    <li><strong>purchaseToken:</strong> Eindeutiger Schlüssel des Google Play-Abonnements</li>
-    <li><strong>current_usage:</strong> Gesamter Token-Verbrauch über alle Geräte</li>
+    <li><strong>purchaseToken:</strong> Eindeutiger Schlüssel des Google Play-Abonnements (Firestore-Dokument-ID)</li>
+    <li><strong>current_usage:</strong> Gesamter Token-Verbrauch über alle Geräte (einziger gemeinsamer Zähler)</li>
 </ul>
 
 <p><strong>Datenschutz:</strong> Das <code>devices</code>-Array enthält AUSSCHLIESSLICH pseudonymisierte Android-IDs (z.B. "android_abc123..."). Wir sammeln keine Telefonnummern, IMEI oder andere persönliche Identifikatoren.</p>
@@ -199,7 +193,7 @@
     <tr>
         <td><strong>Aktueller Token-Verbrauch</strong></td>
         <td>Ganzzahl</td>
-        <td>Verfolgung des monatlichen Verbrauchs und Anwendung des Limits</td>
+        <td>Verfolgung des gemeinsamen monatlichen Verbrauchs und Anwendung des Limits</td>
         <td>Vertragserfüllung (Art. 6.1.b DSGVO)</td>
     </tr>
     <tr>
@@ -448,55 +442,68 @@
     <li><strong>⚠️ WICHTIG: Der Text wird NIEMALS auf unseren Servern oder bei OpenAI gespeichert</strong> (nur Durchleitung im Speicher)</li>
 </ol>
 
-<h3>3.2 Token-Backup und Wiederherstellung</h3>
+<h3>3.2 Backup und Synchronisierung des Abonnements</h3>
 
-<p>Gekaufte Token werden auf Firebase (Google Cloud) gespeichert, um Ihnen Folgendes zu ermöglichen:</p>
+<p>Die Abonnementdaten werden auf Firebase (Google Cloud) gespeichert, um Ihnen Folgendes zu ermöglichen:</p>
 
 <ul>
-    <li>✅ Wiederherstellung von Token bei Neuinstallation der App</li>
-    <li>✅ Synchronisierung von Token über mehrere Geräte</li>
-    <li>✅ Beibehaltung des Guthabens auch nach Gerätewechsel</li>
+    <li>✅ Das Abonnement auf allen Ihren Geräten mit demselben Google Play-Konto nutzen</li>
+    <li>✅ Token-Verbrauch in Echtzeit zwischen allen Geräten synchronisieren</li>
+    <li>✅ Abonnement bei Neuinstallation der App wiederherstellen</li>
+    <li>✅ Guthaben auch nach Gerätewechsel behalten</li>
 </ul>
 
 <div class="important">
-    <strong>⚠️ GOOGLE-KONTO ERFORDERLICH:</strong> Die Wiederherstellung von Token auf mehreren
+    <strong>⚠️ GOOGLE-KONTO ERFORDERLICH:</strong> Die Synchronisierung des Abonnements auf mehreren
     Geräten funktioniert NUR, wenn alle Geräte dasselbe Google Play-Konto verwenden, mit dem
     Sie die Käufe getätigt haben. Diese Anforderung wird von der Google Play Billing API aus
     Sicherheitsgründen und zur Betrugsprävention durchgesetzt. Wenn Sie Ihr Google-Konto
-    wechseln, müssen Sie die Token im neuen Konto erneut kaufen.
+    wechseln, müssen Sie das Abonnement im neuen Konto erneut kaufen.
 </div>
 
-<h3>3.3 Anti-Betrugs-System für Token</h3>
+<h3>3.3 Anti-Betrugs-Schutz für Abonnements</h3>
 
-<div class="important">
-    <strong>⚠️ WICHTIG - WIE DIE TOKEN-WIEDERHERSTELLUNG FUNKTIONIERT:</strong>
+<div class="info">
+    <strong>🔒 WIE DER ANTI-BETRUGS-SCHUTZ FUNKTIONIERT</strong>
+    <p>kAIboard verwendet ein auf einem <strong>gemeinsamen Zähler</strong> basierendes Schutzsystem, um die Integrität des Token-Verbrauchs über alle Geräte hinweg zu gewährleisten.</p>
 </div>
 
-<p>Um Missbrauch und Betrug zu verhindern, implementiert kAIboard ein Anti-Betrugs-System, bei dem <strong>nur EIN Gerät gleichzeitig die gekauften Token verwenden kann</strong>.</p>
+<h4>Funktionsprinzip:</h4>
 
-<h4>Verhalten während der Wiederherstellung:</h4>
+<p>Jedes Abonnement ist mit einem <strong>einzigen Firestore-Dokument</strong> verknüpft, das durch den <code>purchaseToken</code> von Google Play identifiziert wird. Alle Geräte mit demselben Google-Konto lesen und schreiben dasselbe Dokument und gewährleisten so einen einzigen gemeinsamen Verbrauchszähler.</p>
+
+<h4>Praktisches Verhalten:</h4>
 
 <ol>
-    <li><strong>Gerät A</strong> kauft 50.000 Token → Gerät A ist „aktiv" ✅</li>
-    <li><strong>Gerät B</strong> (gleiches Google Play-Konto) klickt „Käufe wiederherstellen" → Gerät B wird „aktiv" ✅</li>
-    <li><strong>Gerät A</strong> wird automatisch „invalidiert" → Token auf Gerät A werden auf Null gesetzt ❌</li>
-    <li>Um Gerät A zu reaktivieren: Klicken Sie erneut auf „Käufe wiederherstellen" auf Gerät A</li>
+    <li><strong>Gerät A</strong> kauft PLUS-Abonnement (250.000 Token/Monat) → Firestore-Dokument erstellt ✅</li>
+    <li><strong>Gerät B</strong> (gleiches Google Play-Konto) öffnet die App → Erkennt dasselbe Abonnement, verbindet sich mit demselben Dokument ✅</li>
+    <li><strong>Gerät A</strong> verbraucht 1.000 Token → <code>current_usage</code> wird in Firestore auf 1.000 gesetzt</li>
+    <li><strong>Gerät B</strong> erhält die Aktualisierung in Echtzeit → Sieht 249.000 verfügbare Token ✅</li>
+    <li>Beide Geräte bleiben gleichzeitig aktiv, ohne Invalidierung ✅</li>
 </ol>
 
-<p><strong>Für das Anti-Betrugs-System gespeicherte Metadaten:</strong></p>
+<h4>Warum es sicher ist:</h4>
 
 <ul>
-    <li><strong>active_device</strong>: ID des aktuell aktiven Geräts</li>
-    <li><strong>invalidated_at</strong>: Zeitstempel, wann ein Gerät deaktiviert wurde</li>
-    <li><strong>invalidated_reason</strong>: Grund für die Deaktivierung (z.B. „migrated_to_android_xxx")</li>
-    <li><strong>migrated_from</strong>: Ursprungsgerät der Token</li>
-    <li><strong>migration_timestamp</strong>: Datum/Uhrzeit der Migration</li>
+    <li>✅ <strong>Einziger Zähler:</strong> Es gibt nur einen <code>current_usage</code>-Wert pro Abonnement, der nicht dupliziert werden kann</li>
+    <li>✅ <strong>Echtzeit-Synchronisierung:</strong> Jeder Verbrauch wird sofort in Firestore geschrieben und über Listener an alle Geräte weitergegeben</li>
+    <li>✅ <strong>Gültigkeit über Google Play verwaltet:</strong> Die Gültigkeit des Abonnements wird über die Google Play Billing API überprüft und ist vom Nutzer nicht änderbar</li>
+    <li>✅ <strong>Eindeutiger purchaseToken:</strong> Google Play weist jedem Kauf einen unveränderlichen Token zu, der als Schlüssel des Firestore-Dokuments verwendet wird</li>
 </ul>
 
-<p><strong>Rechtsgrundlage:</strong> Berechtigtes Interesse zur Verhinderung von Betrug und Missbrauch des Kaufsystems (Art. 6 Abs. 1 lit. f DSGVO)</p>
+<p><strong>Für den Anti-Betrugs-Schutz gespeicherte Daten:</strong></p>
+
+<ul>
+    <li><strong>purchaseToken:</strong> Eindeutiger Schlüssel des Abonnements (Firestore-Dokument-ID)</li>
+    <li><strong>devices:</strong> Array pseudonymisierter Android-IDs, die das Abonnement genutzt haben</li>
+    <li><strong>current_usage:</strong> Gemeinsamer Zähler der im aktuellen Monat verbrauchten Token</li>
+    <li><strong>monthly_limit:</strong> Maximales Token-Limit für den abonnierten Plan</li>
+</ul>
+
+<p><strong>Rechtsgrundlage:</strong> Vertragserfüllung (Art. 6.1.b DSGVO) — Der gemeinsame Zähler ist integraler Bestandteil des erworbenen Abonnementdienstes, notwendig um das monatliche Limit korrekt auf allen Geräten anzuwenden.</p>
 
 <div class="highlight">
-    <strong>💡 HINWEIS:</strong> Dieses System stellt sicher, dass gekaufte Token nicht betrügerisch auf mehrere Geräte dupliziert werden. Die Token-Migration ist <strong>irreversibel</strong>: Wenn Sie auf Gerät B wiederherstellen, verliert Gerät A die Token dauerhaft, bis Sie eine neue Wiederherstellung auf Gerät A durchführen.
+    <strong>💡 HINWEIS:</strong> Im Gegensatz zu anderen Systemen, die die Nutzung auf ein einzelnes Gerät beschränken, ermöglicht kAIboard die Nutzung des Abonnements auf <strong>allen Ihren Geräten</strong> gleichzeitig mit demselben Google Play-Konto. Die einzige Einschränkung ist der im Plan enthaltene monatliche Gesamtverbrauch.
 </div>
 
 <h3>3.4 Kaufüberprüfung</h3>
@@ -522,8 +529,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>Anonyme ID, Token-Guthaben, Kaufhistorie, Migrations-Metadaten, Abonnementdaten, Aktivitätsprotokolle</td>
-        <td>Backup, Synchronisierung, Anti-Betrugs-System und Audit Trail</td>
+        <td>Anonyme ID, Token-Verbrauch, Kaufhistorie, Abonnementdaten, Aktivitätsprotokolle</td>
+        <td>Backup, Synchronisierung, Audit Trail</td>
         <td>EU (europäische Server)</td>
     </tr>
     <tr>
@@ -594,18 +601,8 @@
         <td>Automatische Löschung (alle 24h) + manuelle Löschung</td>
     </tr>
     <tr>
-        <td><strong>Token-Backup (Firebase)</strong></td>
-        <td>365 Tage Inaktivität</td>
-        <td>Automatisch + manuelle Löschung</td>
-    </tr>
-    <tr>
         <td><strong>Kaufhistorie (Firebase)</strong></td>
         <td>365 Tage ab Kauf</td>
-        <td>Automatisch + manuelle Löschung</td>
-    </tr>
-    <tr>
-        <td><strong>Migrations-Metadaten (Firebase)</strong></td>
-        <td>365 Tage ab letzter Migration</td>
         <td>Automatisch + manuelle Löschung</td>
     </tr>
     <tr>
@@ -651,7 +648,7 @@
 </table>
 
 <div class="highlight">
-    <strong>🗑️ AUTOMATISCHE BEREINIGUNG:</strong> Die App führt automatisch alle 24 Stunden eine Bereinigung durch. Daten, die älter als 365 Tage (oder 90 Tage für Abonnement-Historie und Aktivitätsprotokolle) sind, werden automatisch gelöscht, auch wenn Sie die App nicht mehr verwenden.
+    <strong>🗑️ AUTOMATISCHE BEREINIGUNG:</strong> Die App führt automatisch alle 24 Stunden eine Bereinigung durch. Daten, die älter als die angegebenen Zeiträume sind, werden automatisch gelöscht, auch wenn Sie die App nicht mehr verwenden.
 </div>
 
 <h2>6. Ihre Rechte (DSGVO)</h2>
@@ -668,7 +665,7 @@
 <p>Sie können alle Ihre Daten jederzeit über den <strong>Datenschutz-Bildschirm</strong> in der App löschen:</p>
 
 <ul>
-    <li>✅ <strong>Cloud-Daten löschen</strong>: Entfernt Token-Backup, Kaufhistorie, Abonnementdaten, Abonnement-Historie und Aktivitätsprotokolle aus Firebase</li>
+    <li>✅ <strong>Cloud-Daten löschen</strong>: Entfernt Abonnementdaten, Abonnement-Historie, Kaufhistorie und Aktivitätsprotokolle aus Firebase</li>
     <li>✅ <strong>Lerndaten löschen</strong>: Entfernt gelernte Wörter für Vorschläge (alle 13 Sprachen)</li>
     <li>✅ <strong>Alle lokalen Daten löschen</strong>: Entfernt alle Einstellungen, Daten auf dem Gerät, heruntergeladene Modelle, Wörterbücher und Cache</li>
 </ul>
@@ -718,7 +715,7 @@
 
 <ol>
     <li><strong>Daten exportieren (JSON)</strong>: Vollständiger Export lokaler und Cloud-Daten im maschinenlesbaren Format (Art. 15 + Art. 20)</li>
-    <li><strong>Cloud-Daten löschen</strong>: Token-Backup + Kaufhistorie + Abonnementdaten + Abonnement-Historie + Aktivitätsprotokolle (unwiderruflich - erfordert Abonnementkündigung falls aktiv)</li>
+    <li><strong>Cloud-Daten löschen</strong>: Abonnementdaten + Abonnement-Historie + Kaufhistorie + Aktivitätsprotokolle (unwiderruflich - erfordert Abonnementkündigung falls aktiv)</li>
     <li><strong>Lerndaten löschen</strong>: Gelernte Wörter (13 Sprachen)</li>
     <li><strong>Alle lokalen Daten löschen</strong>: Alle Einstellungen, heruntergeladene Modelle, Wörterbücher, Cache (startet App neu)</li>
 </ol>
@@ -740,7 +737,7 @@
     <li>🔒 <strong>Firebase-Sicherheitsregeln</strong>: Zugriff nur für den Dateneigentümer (Standard: verweigert)</li>
     <li>🔒 <strong>Pseudonyme ID</strong>: Keine direkten persönlichen Daten (Name, E-Mail, Telefon)</li>
     <li>🔒 <strong>Datenminimierung</strong>: Wir sammeln nur das absolut Notwendige</li>
-    <li>🔒 <strong>Automatische Löschung</strong>: Daten werden nach 365 Tagen Inaktivität gelöscht (90 Tage für Abonnement-Historie und Aktivitätsprotokolle)</li>
+    <li>🔒 <strong>Automatische Löschung</strong>: Daten werden nach den vorgesehenen Aufbewahrungszeiträumen gelöscht (90-365 Tage)</li>
     <li>🔒 <strong>Geschützter API-Schlüssel</strong>: Der OpenAI-API-Schlüssel wird niemals im Client offengelegt, er wird als Secret im Cloudflare-Relais gespeichert</li>
 </ul>
 
@@ -873,14 +870,12 @@
 <p>Die Verarbeitung Ihrer Daten basiert auf:</p>
 
 <ul>
-    <li><strong>Art. 6 Abs. 1 lit. b DSGVO</strong> - Vertragserfüllung: Token-Backup, Kaufhistorie, Übersetzung, Abonnementverwaltung</li>
+    <li><strong>Art. 6 Abs. 1 lit. b DSGVO</strong> - Vertragserfüllung: Abonnementverwaltung, Multi-Device-Synchronisierung, gemeinsamer Token-Zähler, Kaufhistorie, Übersetzung</li>
     <li><strong>Art. 6 Abs. 1 lit. a DSGVO</strong> - Einwilligung: Absturzberichte (optional)</li>
     <li><strong>Art. 6 Abs. 1 lit. f DSGVO</strong> - Berechtigtes Interesse:
         <ul>
-            <li>Betrugsprävention (Anti-Betrugs-System für Token)</li>
             <li>Sicherheit der Käufe</li>
             <li>Schutz des Billing-Systems vor Missbrauch</li>
-            <li>Multi-Device-Synchronisierung</li>
             <li>Administrative Aktivitätsprotokolle (Audit Trail)</li>
         </ul>
     </li>
@@ -888,22 +883,23 @@
 
 <div class="info">
     <strong>📋 BEWERTUNG DES BERECHTIGTEN INTERESSES (Art. 6 Abs. 1 lit. f DSGVO):</strong>
-    <p>Das Anti-Betrugs-System ist notwendig für:</p>
+    <p>Die administrativen Aktivitätsprotokolle sind notwendig für:</p>
     <ul>
-        <li>✅ Schutz der wirtschaftlichen Nachhaltigkeit der App</li>
-        <li>✅ Verhinderung von Missbrauch des In-App-Kaufsystems</li>
-        <li>✅ Gewährleistung von Fairness zwischen Nutzern</li>
+        <li>✅ Streitbeilegung innerhalb von 60 Tagen (Google Play-Anforderung)</li>
+        <li>✅ Technischer Support und Fehlerbehebung</li>
+        <li>✅ Betrugsprävention im Billing-System</li>
     </ul>
     <p>Die Auswirkungen auf die Rechte der Nutzer werden minimiert, weil:</p>
     <ul>
-        <li>✅ Nutzer können jedes Gerät jederzeit über „Käufe wiederherstellen" reaktivieren</li>
+        <li>✅ Nutzer können die Protokolle über „Cloud-Daten löschen" entfernen</li>
         <li>✅ Das System verwendet nur pseudonymisierte Daten (keine direkten personenbezogenen Daten)</li>
         <li>✅ Die Logik ist transparent und in dieser Datenschutzerklärung dokumentiert</li>
+        <li>✅ Aufbewahrung auf 90 Tage mit automatischer Löschung begrenzt</li>
     </ul>
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Version 2.3 - Letzte Aktualisierung: 21. Februar 2026</strong><br>
+    <strong>Version 2.5 - Letzte Aktualisierung: 25. Februar 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 

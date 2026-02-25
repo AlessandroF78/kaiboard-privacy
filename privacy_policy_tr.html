@@ -91,11 +91,11 @@
 
 <h1>Gizlilik Politikası - kAIboard</h1>
 
-<p><strong>Son güncelleme:</strong> 21 Şubat 2026</p>
-<p><strong>Sürüm:</strong> 2.3</p>
+<p><strong>Son güncelleme:</strong> 25 Şubat 2026</p>
+<p><strong>Sürüm:</strong> 2.5</p>
 
 <div class="highlight">
-    <strong>📱 kAIboard</strong>, yapay zeka destekli çeviri özellikleri olan bir Android klavyesidir. Bu Gizlilik Politikası, hangi verileri topladığımızı, bunları nasıl kullandığımızı ve Genel Veri Koruma Yönetmeliği (GDPR - AB Yönetmeliği 2016/679) kapsamındaki haklarınızı açıklar.
+    <strong>🔄 OTOMATİK AYLIK SIFIRLAMA:</strong> Token kullanım sayacı, abonelik yenileme tarihinizde (satın alma tarihinden itibaren her 30 günde bir) otomatik olarak sıfırlanır. Sıfırlama, uygulama kapalı olsa veya haftalardır kullanılmasa bile sabah 3:00'te zamanlanan otomatik bir worker aracılığıyla arka planda gerçekleşir. Aylık limit manuel müdahale olmadan geri yüklenir.
 </div>
 
 <h2>1. Veri Sorumlusu</h2>
@@ -125,12 +125,12 @@
         <td><strong>Cihaz Dizisi</strong></td>
         <td>Tanımlayıcılar listesi (örn. ["android_e19d6c...", "android_175be4..."])</td>
         <td>Aynı Google Play hesabıyla birden fazla cihazda abonelik ve token'ları senkronize etme</td>
-        <td>Sözleşme ifası (Mad. 6.1.b) + Çoklu cihaz için meşru menfaat (Mad. 6.1.f GDPR)</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td><strong>Token Bakiyesi</strong></td>
-        <td>Tamsayı</td>
-        <td>Satın alınan çeviri kredilerinin yedeği</td>
+        <td><strong>Mevcut Token Kullanımı</strong></td>
+        <td>Tam sayı (current_usage)</td>
+        <td>Tüm cihazlar arasında paylaşılan aylık tüketimi izleme</td>
         <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
@@ -138,12 +138,6 @@
         <td>Ürün kimliği, satın alma tarihi, sipariş kimliği</td>
         <td>Satın almaları doğrulama ve dolandırıcılığı önleme</td>
         <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
-    </tr>
-    <tr>
-        <td><strong>Taşıma Metadata'ları</strong></td>
-        <td>Aktif cihaz, taşıma zaman damgası, kaynak cihaz</td>
-        <td>Birden fazla cihazda token kopyalanmasını önlemek için dolandırıcılık önleme sistemi</td>
-        <td>Meşru menfaat (Mad. 6.1.f GDPR)</td>
     </tr>
     <tr>
         <td><strong>Çevrilecek Metin</strong></td>
@@ -167,8 +161,8 @@
 <p><strong>Çoklu cihaz için kaydedilen veriler:</strong></p>
 <ul>
     <li><strong>devices:</strong> Aynı aboneliği kullanan anonim Android ID'leri dizisi</li>
-    <li><strong>purchaseToken:</strong> Google Play aboneliğinin benzersiz anahtarı</li>
-    <li><strong>current_usage:</strong> Tüm cihazlardaki toplam token tüketimi</li>
+    <li><strong>purchaseToken:</strong> Google Play aboneliğinin benzersiz anahtarı (Firestore belge kimliği)</li>
+    <li><strong>current_usage:</strong> Tüm cihazlardaki toplam token tüketimi (benzersiz sayaç)</li>
 </ul>
 
 <p><strong>Gizlilik:</strong> <code>devices</code> dizisi YALNIZCA pseudonimize edilmiş Android ID'leri içerir (örn. "android_abc123..."). Telefon numaraları, IMEI veya diğer kişisel tanımlayıcıları toplamıyoruz.</p>
@@ -199,7 +193,7 @@
     <tr>
         <td><strong>Mevcut Token Kullanımı</strong></td>
         <td>Tam sayı</td>
-        <td>Aylık tüketimi izle ve limiti uygula</td>
+        <td>Paylaşılan aylık tüketimi izle ve limiti uygula</td>
         <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
@@ -447,55 +441,68 @@
     <li><strong>⚠️ ÖNEMLİ: Metin ASLA sunucularımızda veya OpenAI'de saklanmaz</strong> (yalnızca bellekte geçiş)</li>
 </ol>
 
-<h3>3.2 Token Yedekleme ve Geri Yükleme</h3>
+<h3>3.2 Abonelik Yedekleme ve Senkronizasyonu</h3>
 
-<p>Satın alınan token'lar Firebase'de (Google Cloud) saklanır ve şunları yapmanızı sağlar:</p>
+<p>Abonelik verileri Firebase'de (Google Cloud) saklanır ve şunları yapmanızı sağlar:</p>
 
 <ul>
-    <li>✅ Uygulamayı yeniden yüklerseniz token'ları geri yükleme</li>
-    <li>✅ Token'ları birden fazla cihazda senkronize etme</li>
+    <li>✅ Aboneliği aynı Google Play hesabıyla tüm cihazlarınızda kullanma</li>
+    <li>✅ Token tüketimini tüm cihazlar arasında gerçek zamanlı olarak senkronize etme</li>
+    <li>✅ Uygulamayı yeniden yüklerseniz aboneliği geri yükleme</li>
     <li>✅ Telefon değiştirdikten sonra bile bakiyenizi koruma</li>
 </ul>
 
 <div class="important">
-    <strong>⚠️ GOOGLE HESABI GEREKLİDİR:</strong> Token'ların birden fazla cihazda geri yüklenmesi,
+    <strong>⚠️ GOOGLE HESABI GEREKLİDİR:</strong> Aboneliğin birden fazla cihazda senkronizasyonu,
     YALNIZCA tüm cihazların satın alımları yaptığınız aynı Google Play hesabını kullanması durumunda
     çalışır. Bu gereklilik, güvenlik nedenleriyle ve sahtekarlığı önlemek için Google Play Faturalandırma
-    API'si tarafından uygulanmaktadır. Google hesabınızı değiştirirseniz, token'ları yeni hesapta
+    API'si tarafından uygulanmaktadır. Google hesabınızı değiştirirseniz, aboneliği yeni hesapta
     yeniden satın almanız gerekecektir.
 </div>
 
-<h3>3.3 Token'lar için Dolandırıcılık Önleme Sistemi</h3>
+<h3>3.3 Abonelikler İçin Dolandırıcılık Önleme Sistemi</h3>
 
-<div class="important">
-    <strong>⚠️ ÖNEMLİ - TOKEN GERİ YÜKLEME NASIL ÇALIŞIR:</strong>
+<div class="info">
+    <strong>🔒 DOLANDIRICILIK ÖNLEME NASIL ÇALIŞIR</strong>
+    <p>kAIboard, tüm cihazlar arasında token tüketiminin bütünlüğünü sağlamak için <strong>paylaşılan sayaç</strong> tabanlı bir koruma sistemi kullanır.</p>
 </div>
 
-<p>Kötüye kullanımı ve dolandırıcılığı önlemek için, kAIboard <strong>aynı anda yalnızca BİR cihazın satın alınan token'ları kullanabileceği</strong> bir dolandırıcılık önleme sistemi uygular.</p>
+<h4>Çalışma prensibi:</h4>
 
-<h4>Geri yükleme sırasında davranış:</h4>
+<p>Her abonelik, Google Play'in <code>purchaseToken</code>'ı ile tanımlanan <strong>tek bir Firestore belgesiyle</strong> ilişkilendirilir. Aynı Google hesabına sahip tüm cihazlar aynı belgeyi okur ve yazar, bu da benzersiz ve paylaşılan bir kullanım sayacını garanti eder.</p>
+
+<h4>Pratik davranış:</h4>
 
 <ol>
-    <li><strong>Cihaz A</strong> 50.000 token satın alır → Cihaz A "aktif" ✅</li>
-    <li><strong>Cihaz B</strong> (aynı Google Play hesabı) "Satın alımları geri yükle"ye tıklar → Cihaz B "aktif" olur ✅</li>
-    <li><strong>Cihaz A</strong> otomatik olarak "geçersiz kılınır" → Cihaz A'daki token'lar sıfırlanır ❌</li>
-    <li>Cihaz A'yı yeniden etkinleştirmek için: Cihaz A'da tekrar "Satın alımları geri yükle"ye tıklayın</li>
+    <li><strong>Cihaz A</strong> PLUS aboneliği satın alır (250.000 token/ay) → Firestore belgesi oluşturulur ✅</li>
+    <li><strong>Cihaz B</strong> (aynı Google Play hesabı) uygulamayı açar → Aynı aboneliği tespit eder, aynı belgeye bağlanır ✅</li>
+    <li><strong>Cihaz A</strong> 1.000 token kullanır → Firestore'da <code>current_usage</code> 1.000'e yükselir</li>
+    <li><strong>Cihaz B</strong> gerçek zamanlı güncellemeyi alır → 249.000 kullanılabilir token görür ✅</li>
+    <li>Her iki cihaz da herhangi bir geçersiz kılma olmadan aynı anda aktif kalır ✅</li>
 </ol>
 
-<p><strong>Dolandırıcılık önleme sistemi için kaydedilen metadata'lar:</strong></p>
+<h4>Neden güvenlidir:</h4>
 
 <ul>
-    <li><strong>active_device</strong>: Şu anda aktif olan cihazın ID'si</li>
-    <li><strong>invalidated_at</strong>: Cihazın devre dışı bırakıldığı zaman damgası</li>
-    <li><strong>invalidated_reason</strong>: Devre dışı bırakma nedeni (örn. "migrated_to_android_xxx")</li>
-    <li><strong>migrated_from</strong>: Token'ların kaynak cihazı</li>
-    <li><strong>migration_timestamp</strong>: Taşıma tarihi/saati</li>
+    <li>✅ <strong>Benzersiz sayaç:</strong> Abonelik başına yalnızca bir <code>current_usage</code> değeri vardır, kopyalanamaz</li>
+    <li>✅ <strong>Gerçek zamanlı senkronizasyon:</strong> Her tüketim anında Firestore'a yazılır ve listener aracılığıyla tüm cihazlara yayılır</li>
+    <li>✅ <strong>Google Play tarafından yönetilen geçerlilik:</strong> Abonelik geçerliliği Google Play Billing API aracılığıyla doğrulanır, kullanıcı tarafından değiştirilemez</li>
+    <li>✅ <strong>Benzersiz purchaseToken:</strong> Google Play, her satın alma için değiştirilemez bir token atar, bu token Firestore belge anahtarı olarak kullanılır</li>
 </ul>
 
-<p><strong>Yasal dayanak:</strong> Satın alma sisteminin dolandırıcılığını ve kötüye kullanımını önlemek için meşru menfaat (Mad. 6.1.f GDPR)</p>
+<p><strong>Dolandırıcılık önleme için kaydedilen veriler:</strong></p>
+
+<ul>
+    <li><strong>purchaseToken:</strong> Aboneliğin benzersiz anahtarı (Firestore belge kimliği)</li>
+    <li><strong>devices:</strong> Aboneliği kullanan pseudonimize edilmiş Android ID'leri dizisi</li>
+    <li><strong>current_usage:</strong> Mevcut ayda tüketilen token'ların paylaşılan sayacı</li>
+    <li><strong>monthly_limit:</strong> Abone olunan plan için maksimum token limiti</li>
+</ul>
+
+<p><strong>Yasal dayanak:</strong> Sözleşme ifası (Mad. 6.1.b GDPR) — paylaşılan sayaç, satın alınan abonelik hizmetinin ayrılmaz bir parçasıdır; aylık limitin tüm cihazlarda doğru şekilde uygulanması için gereklidir.</p>
 
 <div class="highlight">
-    <strong>💡 NOT:</strong> Bu sistem, satın alınan token'ların birden fazla cihazda dolandırıcı şekilde kopyalanmamasını garanti eder. Token taşıma işlemi <strong>geri alınamaz</strong>: Cihaz B'de geri yüklediğinizde, Cihaz A'da yeni bir geri yükleme yapana kadar Cihaz A token'ları kalıcı olarak kaybeder.
+    <strong>💡 NOT:</strong> Kullanımı tek bir cihazla sınırlayan diğer sistemlerin aksine, kAIboard aboneliğinizi aynı Google Play hesabıyla <strong>tüm cihazlarınızda</strong> aynı anda kullanmanıza olanak tanır. Tek sınır, planınızın öngördüğü toplam aylık tüketimdir.
 </div>
 
 <h3>3.4 Satın Alma Doğrulama</h3>
@@ -521,8 +528,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>Anonim kimlik, token bakiyesi, satın alma geçmişi, taşıma metadata'ları, abonelik verileri, etkinlik günlükleri</td>
-        <td>Yedekleme, senkronizasyon, dolandırıcılık önleme sistemi ve denetim izi</td>
+        <td>Anonim kimlik, token kullanımı, satın alma geçmişi, abonelik verileri, etkinlik günlükleri</td>
+        <td>Yedekleme, senkronizasyon ve denetim izi</td>
         <td>AB (Avrupa sunucuları)</td>
     </tr>
     <tr>
@@ -593,18 +600,8 @@
         <td>Otomatik silme (her 24 saatte) + manuel silme</td>
     </tr>
     <tr>
-        <td><strong>Token Yedeği (Firebase)</strong></td>
-        <td>365 gün hareketsizlik</td>
-        <td>Otomatik + manuel silme</td>
-    </tr>
-    <tr>
         <td><strong>Satın Alma Geçmişi (Firebase)</strong></td>
         <td>Satın almadan itibaren 365 gün</td>
-        <td>Otomatik + manuel silme</td>
-    </tr>
-    <tr>
-        <td><strong>Taşıma Metadata'ları (Firebase)</strong></td>
-        <td>Son taşımadan itibaren 365 gün</td>
         <td>Otomatik + manuel silme</td>
     </tr>
     <tr>
@@ -650,7 +647,7 @@
 </table>
 
 <div class="highlight">
-    <strong>🗑️ OTOMATİK TEMİZLİK:</strong> Uygulama her 24 saatte bir otomatik olarak temizlik yapar. 365 günden eski veriler (veya abonelik geçmişi ve etkinlik günlükleri için 90 gün) uygulamayı artık kullanmasanız bile otomatik olarak silinir.
+    <strong>🗑️ OTOMATİK TEMİZLİK:</strong> Uygulama her 24 saatte bir otomatik olarak temizlik yapar. Belirtilen saklama sürelerini aşan veriler (90-365 gün) uygulamayı artık kullanmasanız bile otomatik olarak silinir.
 </div>
 
 <h2>6. Haklarınız (GDPR)</h2>
@@ -667,7 +664,7 @@
 <p>Uygulamadaki <strong>Gizlilik ekranı</strong> üzerinden istediğiniz zaman tüm verilerinizi silebilirsiniz:</p>
 
 <ul>
-    <li>✅ <strong>Bulut verilerini sil</strong>: Firebase'den token yedeğini, satın alma geçmişini, abonelik verilerini, abonelik geçmişini ve etkinlik günlüklerini kaldırır</li>
+    <li>✅ <strong>Bulut verilerini sil</strong>: Firebase'den abonelik verilerini, abonelik geçmişini, satın alma geçmişini ve etkinlik günlüklerini kaldırır</li>
     <li>✅ <strong>Öğrenme verilerini sil</strong>: Öneriler için öğrenilen kelimeleri kaldırır (tüm 13 dil)</li>
     <li>✅ <strong>Tüm yerel verileri sil</strong>: Cihazdaki tüm tercihleri, verileri, indirilen modelleri, sözlükleri ve önbelleği kaldırır</li>
 </ul>
@@ -717,7 +714,7 @@
 
 <ol>
     <li><strong>Verilerinizi dışa aktarın (JSON)</strong>: Yerel ve bulut verilerinin makine tarafından okunabilir formatta tam dışa aktarımı (Mad. 15 + Mad. 20)</li>
-    <li><strong>Bulut verilerini sil</strong>: Token yedeği + satın alma geçmişi + abonelik verileri + abonelik geçmişi + etkinlik günlükleri (geri alınamaz - aktif ise abonelik iptali gerekir)</li>
+    <li><strong>Bulut verilerini sil</strong>: Abonelik verileri + abonelik geçmişi + satın alma geçmişi + etkinlik günlükleri (geri alınamaz - aktif ise abonelik iptali gerekir)</li>
     <li><strong>Öğrenme verilerini sil</strong>: Öğrenilen kelimeler (13 dil)</li>
     <li><strong>Tüm yerel verileri sil</strong>: Tüm tercihler, indirilen modeller, sözlükler, önbellek (uygulamayı yeniden başlatır)</li>
 </ol>
@@ -739,7 +736,7 @@
     <li>🔒 <strong>Firebase Güvenlik Kuralları</strong>: Erişim yalnızca veri sahibi ile sınırlıdır (varsayılan reddet)</li>
     <li>🔒 <strong>Takma Ad Kimliği</strong>: Doğrudan kişisel veri yok (ad, e-posta, telefon)</li>
     <li>🔒 <strong>Veri minimizasyonu</strong>: Yalnızca kesinlikle gerekli olanı topluyoruz</li>
-    <li>🔒 <strong>Otomatik silme</strong>: Veriler 365 gün hareketsizlikten sonra silinir (abonelik geçmişi ve etkinlik günlükleri için 90 gün)</li>
+    <li>🔒 <strong>Otomatik silme</strong>: Veriler belirlenen saklama sürelerinden sonra silinir (90-365 gün)</li>
     <li>🔒 <strong>Korumalı API anahtarı</strong>: OpenAI API anahtarı istemcide asla açığa çıkmaz, Cloudflare aktarıcısında secret olarak saklanır</li>
 </ul>
 
@@ -872,14 +869,12 @@
 <p>Verilerinizin işlenmesi şunlara dayanır:</p>
 
 <ul>
-    <li><strong>Mad. 6.1.b GDPR</strong> - Sözleşme ifası: Token yedeği, satın alma geçmişi, çeviri, abonelik yönetimi</li>
+    <li><strong>Mad. 6.1.b GDPR</strong> - Sözleşme ifası: Abonelik yönetimi, çoklu cihaz senkronizasyonu, paylaşılan token sayacı, satın alma geçmişi, çeviri</li>
     <li><strong>Mad. 6.1.a GDPR</strong> - Rıza: Çökme raporları (isteğe bağlı)</li>
     <li><strong>Mad. 6.1.f GDPR</strong> - Meşru menfaat:
         <ul>
-            <li>Dolandırıcılığı önleme (token dolandırıcılık önleme sistemi)</li>
             <li>Satın alma güvenliği</li>
             <li>Faturalandırma sistemini kötüye kullanımdan koruma</li>
-            <li>Çoklu cihaz senkronizasyonu</li>
             <li>Yönetim etkinlik günlükleri (denetim izi)</li>
         </ul>
     </li>
@@ -887,22 +882,23 @@
 
 <div class="info">
     <strong>📋 MEŞRU MENFAAT DEĞERLENDİRMESİ (Mad. 6.1.f GDPR):</strong>
-    <p>Dolandırıcılık önleme sistemi şunlar için gereklidir:</p>
+    <p>Yönetim etkinlik günlükleri şunlar için gereklidir:</p>
     <ul>
-        <li>✅ Uygulamanın ekonomik sürdürülebilirliğini korumak</li>
-        <li>✅ Uygulama içi satın alma sisteminin kötüye kullanımını önlemek</li>
-        <li>✅ Kullanıcılar arasında adaleti sağlamak</li>
+        <li>✅ 60 gün içinde itirazların yönetimi (Google Play gereksinimi)</li>
+        <li>✅ Teknik destek ve sorun çözümü</li>
+        <li>✅ Faturalandırma sisteminde dolandırıcılığın önlenmesi</li>
     </ul>
     <p>Kullanıcı hakları üzerindeki etki en aza indirilmiştir çünkü:</p>
     <ul>
-        <li>✅ Kullanıcı "Satın alımları geri yükle" ile her zaman herhangi bir cihazı yeniden etkinleştirebilir</li>
+        <li>✅ Kullanıcı "Bulut verilerini sil" üzerinden günlükleri silebilir</li>
         <li>✅ Sistem yalnızca takma adlı veriler kullanır (doğrudan kişisel veri yok)</li>
         <li>✅ Mantık şeffaftır ve bu Gizlilik Politikasında belgelenmiştir</li>
+        <li>✅ Saklama 90 gün ile sınırlı, otomatik silme ile</li>
     </ul>
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Sürüm 2.3 - Son güncelleme: 21 Şubat 2026</strong><br>
+    <strong>Sürüm 2.5 - Son güncelleme: 25 Şubat 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 

@@ -91,11 +91,11 @@
 
 <h1>Polityka Prywatności - kAIboard</h1>
 
-<p><strong>Ostatnia aktualizacja:</strong> 21 lutego 2026</p>
-<p><strong>Wersja:</strong> 2.3</p>
+<p><strong>Ostatnia aktualizacja:</strong> 25 lutego 2026</p>
+<p><strong>Wersja:</strong> 2.5</p>
 
 <div class="highlight">
-    <strong>📱 kAIboard</strong> to klawiatura Android z funkcjami tłumaczenia opartymi na sztucznej inteligencji. Ta Polityka Prywatności wyjaśnia, jakie dane zbieramy, jak ich używamy oraz Twoje prawa wynikające z Ogólnego Rozporządzenia o Ochronie Danych (RODO - Rozporządzenie UE 2016/679).
+    <strong>🔄 AUTOMATYCZNY MIESIĘCZNY RESET:</strong> Licznik użycia tokenów jest automatycznie resetowany w dniu odnowienia subskrypcji (co 30 dni od daty zakupu). Reset odbywa się w tle, nawet jeśli aplikacja jest zamknięta lub nie była używana od tygodni, za pomocą automatycznego workera zaplanowanego na godzinę 3:00 w nocy. Miesięczny limit jest przywracany bez ręcznej interwencji.
 </div>
 
 <h2>1. Administrator Danych</h2>
@@ -125,12 +125,12 @@
         <td><strong>Tablica Urządzeń</strong></td>
         <td>Lista identyfikatorów (np. ["android_e19d6c...", "android_175be4..."])</td>
         <td>Synchronizacja subskrypcji i tokenów na wielu urządzeniach z tym samym kontem Google Play</td>
-        <td>Wykonanie umowy (Art. 6.1.b) + Uzasadniony interes wielourządzeniowy (Art. 6.1.f RODO)</td>
+        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
     <tr>
-        <td><strong>Saldo Tokenów</strong></td>
-        <td>Liczba całkowita</td>
-        <td>Kopia zapasowa zakupionych kredytów tłumaczeniowych</td>
+        <td><strong>Bieżące Użycie Tokenów</strong></td>
+        <td>Liczba całkowita (current_usage)</td>
+        <td>Śledzenie miesięcznego zużycia współdzielonego między wszystkimi urządzeniami</td>
         <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
     <tr>
@@ -138,12 +138,6 @@
         <td>ID produktu, data zakupu, ID zamówienia</td>
         <td>Weryfikacja zakupów i zapobieganie oszustwom</td>
         <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
-    </tr>
-    <tr>
-        <td><strong>Metadane Migracji</strong></td>
-        <td>Aktywne urządzenie, znacznik czasu migracji, urządzenie źródłowe</td>
-        <td>System antyfraudowy zapobiegający duplikacji tokenów na wielu urządzeniach</td>
-        <td>Uzasadniony interes (Art. 6.1.f RODO)</td>
     </tr>
     <tr>
         <td><strong>Tekst do Tłumaczenia</strong></td>
@@ -167,8 +161,8 @@
 <p><strong>Dane zapisane dla wielourządzeniowości:</strong></p>
 <ul>
     <li><strong>devices:</strong> Tablica anonimowych Android ID korzystających z tej samej subskrypcji</li>
-    <li><strong>purchaseToken:</strong> Unikalny klucz subskrypcji Google Play</li>
-    <li><strong>current_usage:</strong> Całkowite zużycie tokenów na wszystkich urządzeniach</li>
+    <li><strong>purchaseToken:</strong> Unikalny klucz subskrypcji Google Play (ID dokumentu Firestore)</li>
+    <li><strong>current_usage:</strong> Całkowite zużycie tokenów na wszystkich urządzeniach (unikalny licznik)</li>
 </ul>
 
 <p><strong>Prywatność:</strong> Tablica <code>devices</code> zawiera TYLKO pseudonimizowane Android ID (np. "android_abc123..."). Nie zbieramy numerów telefonów, IMEI ani innych identyfikatorów osobowych.</p>
@@ -448,55 +442,68 @@
     <li><strong>⚠️ WAŻNE: Tekst NIGDY nie jest zapisywany na naszych serwerach ani w OpenAI</strong> (tylko przesyłanie w pamięci)</li>
 </ol>
 
-<h3>3.2 Kopia Zapasowa i Przywracanie Tokenów</h3>
+<h3>3.2 Kopia Zapasowa i Synchronizacja Subskrypcji</h3>
 
-<p>Zakupione tokeny są zapisywane w Firebase (Google Cloud), aby umożliwić Ci:</p>
+<p>Dane subskrypcji są zapisywane w Firebase (Google Cloud), aby umożliwić Ci:</p>
 
 <ul>
-    <li>✅ Przywrócenie tokenów po ponownej instalacji aplikacji</li>
-    <li>✅ Synchronizację tokenów między wieloma urządzeniami</li>
+    <li>✅ Korzystanie z subskrypcji na wszystkich urządzeniach z tym samym kontem Google Play</li>
+    <li>✅ Synchronizację zużycia tokenów w czasie rzeczywistym między wszystkimi urządzeniami</li>
+    <li>✅ Przywrócenie subskrypcji po ponownej instalacji aplikacji</li>
     <li>✅ Zachowanie salda nawet po zmianie telefonu</li>
 </ul>
 
 <div class="important">
-    <strong>⚠️ WYMAGANE KONTO GOOGLE:</strong> Przywracanie tokenów na wielu urządzeniach działa
+    <strong>⚠️ WYMAGANE KONTO GOOGLE:</strong> Synchronizacja subskrypcji na wielu urządzeniach działa
     TYLKO wtedy, gdy wszystkie urządzenia używają tego samego konta Google Play, za pomocą którego
-    dokonano zakupów. To wymaganie jest narzucone przez API rozliczeń Google Play ze względów
+    dokonano zakupu. To wymaganie jest narzucone przez API rozliczeń Google Play ze względów
     bezpieczeństwa i zapobiegania oszustwom. Jeśli zmienisz konto Google, będziesz musiał ponownie
-    kupić tokeny na nowym koncie.
+    kupić subskrypcję na nowym koncie.
 </div>
 
-<h3>3.3 System Antyfraudowy dla Tokenów</h3>
+<h3>3.3 Ochrona Antyfraudowa dla Subskrypcji</h3>
 
-<div class="important">
-    <strong>⚠️ WAŻNE - JAK DZIAŁA PRZYWRACANIE TOKENÓW:</strong>
+<div class="info">
+    <strong>🔒 JAK DZIAŁA OCHRONA ANTYFRAUDOWA</strong>
+    <p>kAIboard używa systemu ochrony opartego na <strong>wspólnym liczniku</strong>, aby zagwarantować integralność zużycia tokenów na wszystkich urządzeniach.</p>
 </div>
 
-<p>Aby zapobiec nadużyciom i oszustwom, kAIboard wdraża system antyfraudowy, w którym <strong>tylko JEDNO urządzenie na raz może używać zakupionych tokenów</strong>.</p>
+<h4>Zasada działania:</h4>
 
-<h4>Zachowanie podczas przywracania:</h4>
+<p>Każda subskrypcja jest powiązana z <strong>jednym dokumentem Firestore</strong> identyfikowanym przez <code>purchaseToken</code> Google Play. Wszystkie urządzenia z tym samym kontem Google odczytują i zapisują do tego samego dokumentu, gwarantując unikalny i współdzielony licznik użycia.</p>
+
+<h4>Praktyczne zachowanie:</h4>
 
 <ol>
-    <li><strong>Urządzenie A</strong> kupuje 50 000 tokenów → Urządzenie A jest "aktywne" ✅</li>
-    <li><strong>Urządzenie B</strong> (to samo konto Google Play) klika "Przywróć zakupy" → Urządzenie B staje się "aktywne" ✅</li>
-    <li><strong>Urządzenie A</strong> zostaje automatycznie "unieważnione" → Tokeny na Urządzeniu A są zerowane ❌</li>
-    <li>Aby ponownie aktywować Urządzenie A: kliknij ponownie "Przywróć zakupy" na Urządzeniu A</li>
+    <li><strong>Urządzenie A</strong> kupuje subskrypcję PLUS (250 000 tokenów/miesiąc) → Dokument Firestore utworzony ✅</li>
+    <li><strong>Urządzenie B</strong> (to samo konto Google Play) otwiera aplikację → Wykrywa tę samą subskrypcję, łączy się z tym samym dokumentem ✅</li>
+    <li><strong>Urządzenie A</strong> używa 1 000 tokenów → <code>current_usage</code> wynosi 1 000 na Firestore</li>
+    <li><strong>Urządzenie B</strong> otrzymuje aktualizację w czasie rzeczywistym → Widzi 249 000 dostępnych tokenów ✅</li>
+    <li>Oba urządzenia pozostają aktywne jednocześnie, bez unieważnienia ✅</li>
 </ol>
 
-<p><strong>Metadane zapisane dla systemu antyfraudowego:</strong></p>
+<h4>Dlaczego jest bezpieczne:</h4>
 
 <ul>
-    <li><strong>active_device</strong>: ID aktualnie aktywnego urządzenia</li>
-    <li><strong>invalidated_at</strong>: Znacznik czasu, gdy urządzenie zostało dezaktywowane</li>
-    <li><strong>invalidated_reason</strong>: Powód dezaktywacji (np. "migrated_to_android_xxx")</li>
-    <li><strong>migrated_from</strong>: Urządzenie źródłowe tokenów</li>
-    <li><strong>migration_timestamp</strong>: Data/godzina migracji</li>
+    <li>✅ <strong>Unikalny licznik:</strong> Istnieje tylko jedna wartość <code>current_usage</code> dla subskrypcji, niemożliwa do zduplikowania</li>
+    <li>✅ <strong>Synchronizacja w czasie rzeczywistym:</strong> Każde zużycie jest natychmiast zapisywane na Firestore i propagowane do wszystkich urządzeń przez listener</li>
+    <li>✅ <strong>Ważność zarządzana przez Google Play:</strong> Ważność subskrypcji jest weryfikowana przez Google Play Billing API, niemodyfikowalna przez użytkownika</li>
+    <li>✅ <strong>Unikalny purchaseToken:</strong> Google Play przypisuje niezmienny token dla każdego zakupu, używany jako klucz dokumentu Firestore</li>
 </ul>
 
-<p><strong>Podstawa prawna:</strong> Uzasadniony interes zapobiegania oszustwom i nadużyciom systemu zakupów (Art. 6.1.f RODO)</p>
+<p><strong>Dane zapisane dla ochrony antyfraudowej:</strong></p>
+
+<ul>
+    <li><strong>purchaseToken:</strong> Unikalny klucz subskrypcji (ID dokumentu Firestore)</li>
+    <li><strong>devices:</strong> Tablica pseudonimizowanych Android ID, które korzystały z subskrypcji</li>
+    <li><strong>current_usage:</strong> Wspólny licznik tokenów zużytych w bieżącym miesiącu</li>
+    <li><strong>monthly_limit:</strong> Maksymalna liczba tokenów dla subskrybowanego planu</li>
+</ul>
+
+<p><strong>Podstawa prawna:</strong> Wykonanie umowy (Art. 6.1.b RODO) — wspólny licznik jest integralną częścią zakupionej usługi subskrypcji, niezbędną do prawidłowego stosowania miesięcznego limitu na wszystkich urządzeniach.</p>
 
 <div class="highlight">
-    <strong>💡 UWAGA:</strong> Ten system gwarantuje, że zakupione tokeny nie są oszukańczo duplikowane na wielu urządzeniach. Migracja tokenów jest <strong>nieodwracalna</strong>: gdy przywracasz na Urządzeniu B, Urządzenie A traci trwale tokeny do momentu wykonania nowego przywracania na Urządzeniu A.
+    <strong>💡 UWAGA:</strong> W przeciwieństwie do innych systemów, które ograniczają użycie do jednego urządzenia, kAIboard pozwala Ci korzystać z subskrypcji na <strong>wszystkich Twoich urządzeniach</strong> jednocześnie, z tym samym kontem Google Play. Jedynym limitem jest całkowite miesięczne zużycie przewidziane w Twoim planie.
 </div>
 
 <h3>3.4 Weryfikacja Zakupów</h3>
@@ -522,8 +529,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>Anonimowy ID, saldo tokenów, historia zakupów, metadane migracji, dane subskrypcji, logi aktywności</td>
-        <td>Kopia zapasowa, synchronizacja, system antyfraudowy i ścieżka audytu</td>
+        <td>Anonimowy ID, bieżące użycie tokenów, historia zakupów, dane subskrypcji, logi aktywności</td>
+        <td>Kopia zapasowa, synchronizacja i ścieżka audytu</td>
         <td>UE (serwery europejskie)</td>
     </tr>
     <tr>
@@ -594,18 +601,8 @@
         <td>Automatyczne usunięcie (co 24h) + ręczne usunięcie</td>
     </tr>
     <tr>
-        <td><strong>Kopia Zapasowa Tokenów (Firebase)</strong></td>
-        <td>365 dni nieaktywności</td>
-        <td>Automatyczne + ręczne usuwanie</td>
-    </tr>
-    <tr>
         <td><strong>Historia Zakupów (Firebase)</strong></td>
         <td>365 dni od zakupu</td>
-        <td>Automatyczne + ręczne usuwanie</td>
-    </tr>
-    <tr>
-        <td><strong>Metadane Migracji (Firebase)</strong></td>
-        <td>365 dni od ostatniej migracji</td>
         <td>Automatyczne + ręczne usuwanie</td>
     </tr>
     <tr>
@@ -668,7 +665,7 @@
 <p>Możesz usunąć wszystkie swoje dane w dowolnym momencie przez <strong>ekran Prywatności</strong> w aplikacji:</p>
 
 <ul>
-    <li>✅ <strong>Usuń dane w chmurze</strong>: Usuwa kopię zapasową tokenów, historię zakupów, dane subskrypcji, historię subskrypcji i logi aktywności z Firebase</li>
+    <li>✅ <strong>Usuń dane w chmurze</strong>: Usuwa dane subskrypcji, historię subskrypcji, historię zakupów i logi aktywności z Firebase</li>
     <li>✅ <strong>Usuń dane uczenia</strong>: Usuwa nauczone słowa do sugestii (wszystkie 13 języków)</li>
     <li>✅ <strong>Usuń wszystkie dane lokalne</strong>: Usuwa wszystkie preferencje, dane na urządzeniu, pobrane modele, słowniki i pamięć podręczną</li>
 </ul>
@@ -718,7 +715,7 @@
 
 <ol>
     <li><strong>Eksportuj swoje dane (JSON)</strong>: Pełny eksport danych lokalnych i w chmurze w formacie machine-readable (Art. 15 + Art. 20)</li>
-    <li><strong>Usuń dane w chmurze</strong>: Kopia zapasowa tokenów + historia zakupów + dane subskrypcji + historia subskrypcji + logi aktywności (nieodwracalne - wymaga anulowania subskrypcji jeśli aktywna)</li>
+    <li><strong>Usuń dane w chmurze</strong>: Dane subskrypcji + historia subskrypcji + historia zakupów + logi aktywności (nieodwracalne - wymaga anulowania subskrypcji jeśli aktywna)</li>
     <li><strong>Usuń dane uczenia</strong>: Nauczone słowa (13 języków)</li>
     <li><strong>Usuń wszystkie dane lokalne</strong>: Wszystkie preferencje, pobrane modele, słowniki, pamięć podręczna (restartuje aplikację)</li>
 </ol>
@@ -740,7 +737,7 @@
     <li>🔒 <strong>Reguły Bezpieczeństwa Firebase</strong>: Dostęp ograniczony tylko do właściciela danych (domyślna odmowa)</li>
     <li>🔒 <strong>ID Pseudonimowy</strong>: Brak bezpośrednich danych osobowych (imię, email, telefon)</li>
     <li>🔒 <strong>Minimalizacja danych</strong>: Zbieramy tylko to, co ściśle niezbędne</li>
-    <li>🔒 <strong>Automatyczne usuwanie</strong>: Dane usuwane po 365 dniach nieaktywności (90 dni dla historii subskrypcji i logów aktywności)</li>
+    <li>🔒 <strong>Automatyczne usuwanie</strong>: Dane usuwane po przewidzianych okresach przechowywania (90-365 dni)</li>
     <li>🔒 <strong>Chroniony klucz API</strong>: Klucz API OpenAI nigdy nie jest eksponowany w kliencie, jest zapisany jako secret w przekaźniku Cloudflare</li>
 </ul>
 
@@ -873,14 +870,12 @@
 <p>Przetwarzanie Twoich danych opiera się na:</p>
 
 <ul>
-    <li><strong>Art. 6.1.b RODO</strong> - Wykonanie umowy: Kopia zapasowa tokenów, historia zakupów, tłumaczenie, zarządzanie subskrypcjami</li>
+    <li><strong>Art. 6.1.b RODO</strong> - Wykonanie umowy: Zarządzanie subskrypcjami, synchronizacja wielourządzeniowa, wspólny licznik tokenów, historia zakupów, tłumaczenie</li>
     <li><strong>Art. 6.1.a RODO</strong> - Zgoda: Raporty o awariach (opcjonalne)</li>
     <li><strong>Art. 6.1.f RODO</strong> - Uzasadniony interes:
         <ul>
-            <li>Zapobieganie oszustwom (system antyfraudowy tokenów)</li>
             <li>Bezpieczeństwo zakupów</li>
-            <li>Ochrona systemu rozliczeń przed nadużyciami</li>
-            <li>Synchronizacja wielourządzeniowa</li>
+            <li>Ochrona systemu rozliczeniowego przed nadużyciami</li>
             <li>Logi aktywności administracyjnej (ścieżka audytu)</li>
         </ul>
     </li>
@@ -888,22 +883,23 @@
 
 <div class="info">
     <strong>📋 OCENA UZASADNIONEGO INTERESU (Art. 6.1.f RODO):</strong>
-    <p>System antyfraudowy jest niezbędny do:</p>
+    <p>Logi aktywności administracyjnej są niezbędne do:</p>
     <ul>
-        <li>✅ Ochrony ekonomicznej stabilności aplikacji</li>
-        <li>✅ Zapobiegania nadużyciom systemu zakupów w aplikacji</li>
-        <li>✅ Zapewnienia uczciwości między użytkownikami</li>
+        <li>✅ Zarządzania reklamacjami w ciągu 60 dni (wymóg Google Play)</li>
+        <li>✅ Wsparcia technicznego i rozwiązywania problemów</li>
+        <li>✅ Zapobiegania oszustwom w systemie rozliczeniowym</li>
     </ul>
     <p>Wpływ na prawa użytkownika jest minimalizowany, ponieważ:</p>
     <ul>
-        <li>✅ Użytkownik zawsze może ponownie aktywować dowolne urządzenie poprzez "Przywróć zakupy"</li>
-        <li>✅ System używa tylko danych pseudonimizowanych (bez bezpośrednich danych osobowych)</li>
+        <li>✅ Użytkownik może usunąć logi przez "Usuń dane w chmurze"</li>
+        <li>✅ System używa tylko danych pseudonimizowanych (brak bezpośrednich danych osobowych)</li>
         <li>✅ Logika jest przejrzysta i udokumentowana w tej Polityce Prywatności</li>
+        <li>✅ Przechowywanie ograniczone do 90 dni z automatycznym usuwaniem</li>
     </ul>
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Wersja 2.3 - Ostatnia aktualizacja: 21 lutego 2026</strong><br>
+    <strong>Wersja 2.5 - Ostatnia aktualizacja: 25 lutego 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 

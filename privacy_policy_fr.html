@@ -91,11 +91,11 @@
 
 <h1>Politique de Confidentialité - kAIboard</h1>
 
-<p><strong>Dernière mise à jour :</strong> 21 février 2026</p>
-<p><strong>Version :</strong> 2.3</p>
+<p><strong>Dernière mise à jour :</strong> 25 février 2026</p>
+<p><strong>Version :</strong> 2.5</p>
 
 <div class="highlight">
-    <strong>📱 kAIboard</strong> est un clavier Android avec des fonctionnalités de traduction alimentées par l'IA. Cette Politique de Confidentialité explique quelles données nous collectons, comment nous les utilisons et vos droits en vertu du Règlement Général sur la Protection des Données (RGPD - Règlement UE 2016/679).
+    <strong>🔄 RÉINITIALISATION AUTOMATIQUE MENSUELLE :</strong> Le compteur d'utilisation de jetons est réinitialisé automatiquement à la date de renouvellement de votre abonnement (tous les 30 jours à partir de la date d'achat). La réinitialisation s'effectue en arrière-plan même si l'application est fermée ou n'a pas été utilisée depuis des semaines, via un worker automatique programmé à 3h00 du matin. La limite mensuelle est restaurée sans intervention manuelle.
 </div>
 
 <h2>1. Responsable du Traitement</h2>
@@ -124,13 +124,13 @@
     <tr>
         <td><strong>Tableau de Dispositifs</strong></td>
         <td>Liste d'identifiants (ex. ["android_e19d6c...", "android_175be4..."])</td>
-        <td>Synchroniser l'abonnement et les jetons sur plusieurs appareils avec le même compte Google Play</td>
-        <td>Exécution du contrat (Art. 6.1.b) + Intérêt légitime multi-appareil (Art. 6.1.f RGPD)</td>
+        <td>Synchroniser l'abonnement et le solde de jetons sur plusieurs appareils avec le même compte Google Play</td>
+        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Solde de Jetons</strong></td>
-        <td>Nombre entier</td>
-        <td>Sauvegarde des crédits de traduction achetés</td>
+        <td><strong>Utilisation Actuelle de Jetons</strong></td>
+        <td>Nombre entier (current_usage)</td>
+        <td>Suivre la consommation mensuelle partagée entre tous les appareils</td>
         <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
@@ -138,12 +138,6 @@
         <td>ID de produit, date d'achat, ID de commande</td>
         <td>Vérifier les achats et prévenir la fraude</td>
         <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
-    </tr>
-    <tr>
-        <td><strong>Métadonnées de Migration</strong></td>
-        <td>Appareil actif, horodatage de migration, appareil source</td>
-        <td>Système anti-fraude pour prévenir la duplication de jetons sur plusieurs appareils</td>
-        <td>Intérêt légitime (Art. 6.1.f RGPD)</td>
     </tr>
     <tr>
         <td><strong>Texte à Traduire</strong></td>
@@ -167,8 +161,8 @@
 <p><strong>Données sauvegardées pour multi-appareil :</strong></p>
 <ul>
     <li><strong>devices :</strong> Tableau d'Android IDs anonymes utilisant le même abonnement</li>
-    <li><strong>purchaseToken :</strong> Clé unique de l'abonnement Google Play</li>
-    <li><strong>current_usage :</strong> Consommation totale de jetons sur tous les appareils</li>
+    <li><strong>purchaseToken :</strong> Clé unique de l'abonnement Google Play (ID document Firestore)</li>
+    <li><strong>current_usage :</strong> Consommation totale de jetons sur tous les appareils (compteur unique)</li>
 </ul>
 
 <p><strong>Confidentialité :</strong> Le tableau <code>devices</code> contient UNIQUEMENT des Android IDs pseudonymisés (ex. "android_abc123..."). Nous ne collectons pas de numéros de téléphone, IMEI ou autres identifiants personnels.</p>
@@ -179,7 +173,7 @@
 
 <table>
     <tr>
-        <th>Données</th>
+        <th>Donnée</th>
         <th>Type</th>
         <th>Finalité</th>
         <th>Base Juridique</th>
@@ -199,13 +193,13 @@
     <tr>
         <td><strong>Utilisation Actuelle de Jetons</strong></td>
         <td>Entier</td>
-        <td>Suivre la consommation mensuelle et appliquer la limite</td>
+        <td>Suivre la consommation mensuelle partagée et appliquer la limite</td>
         <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
         <td><strong>Date de Réinitialisation Mensuelle</strong></td>
         <td>Date ISO (ex. "2026-02-01")</td>
-        <td>Réinitialisation automatique de l'utilisation en début de mois</td>
+        <td>Réinitialisation automatique de l'utilisation au début du cycle de facturation</td>
         <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
@@ -247,7 +241,7 @@
 </table>
 
 <div class="highlight">
-    <strong>🔄 RÉINITIALISATION AUTOMATIQUE MENSUELLE :</strong> Le compteur d'utilisation de jetons est automatiquement réinitialisé le premier jour de chaque mois. La limite mensuelle est restaurée sans intervention manuelle.
+    <strong>🔄 RÉINITIALISATION AUTOMATIQUE MENSUELLE :</strong> Le compteur d'utilisation de jetons est automatiquement réinitialisé à la date de renouvellement de l'abonnement (tous les 30 jours à partir de la date d'achat). La limite mensuelle est restaurée sans intervention manuelle.
 </div>
 
 <div class="important">
@@ -448,55 +442,68 @@
     <li><strong>⚠️ IMPORTANT : Le texte n'est JAMAIS sauvegardé sur nos serveurs ou chez OpenAI</strong> (transit uniquement en mémoire)</li>
 </ol>
 
-<h3>3.2 Sauvegarde et Restauration des Jetons</h3>
+<h3>3.2 Sauvegarde et Synchronisation de l'Abonnement</h3>
 
-<p>Les jetons achetés sont sauvegardés sur Firebase (Google Cloud) pour vous permettre de :</p>
+<p>Les données d'abonnement sont sauvegardées sur Firebase (Google Cloud) pour vous permettre de :</p>
 
 <ul>
-    <li>✅ Restaurer les jetons si vous réinstallez l'application</li>
-    <li>✅ Synchroniser les jetons sur plusieurs appareils</li>
+    <li>✅ Utiliser l'abonnement sur tous vos appareils avec le même compte Google Play</li>
+    <li>✅ Synchroniser la consommation de jetons en temps réel entre tous les appareils</li>
+    <li>✅ Restaurer l'abonnement si vous réinstallez l'application</li>
     <li>✅ Conserver votre solde même après avoir changé de téléphone</li>
 </ul>
 
 <div class="important">
-    <strong>⚠️ COMPTE GOOGLE REQUIS :</strong> La restauration des jetons sur plusieurs appareils
+    <strong>⚠️ COMPTE GOOGLE REQUIS :</strong> La synchronisation de l'abonnement sur plusieurs appareils
     fonctionne UNIQUEMENT si tous les appareils utilisent le même compte Google Play avec lequel
-    vous avez effectué les achats. Cette exigence est imposée par l'API de facturation Google Play
+    vous avez effectué l'achat. Cette exigence est imposée par l'API de facturation Google Play
     pour des raisons de sécurité et pour prévenir la fraude. Si vous changez de compte Google,
-    vous devrez racheter les jetons sur le nouveau compte.
+    vous devrez racheter l'abonnement sur le nouveau compte.
 </div>
 
-<h3>3.3 Système Anti-Fraude pour les Jetons</h3>
+<h3>3.3 Protection Anti-Fraude pour les Abonnements</h3>
 
-<div class="important">
-    <strong>⚠️ IMPORTANT - COMMENT FONCTIONNE LA RESTAURATION DES JETONS :</strong>
+<div class="info">
+    <strong>🔒 COMMENT FONCTIONNE LA PROTECTION ANTI-FRAUDE</strong>
+    <p>kAIboard utilise un système de protection basé sur un <strong>compteur partagé</strong> pour garantir l'intégrité de la consommation de jetons entre tous les appareils.</p>
 </div>
 
-<p>Pour prévenir les abus et la fraude, kAIboard implémente un système anti-fraude selon lequel <strong>UN SEUL appareil à la fois peut utiliser les jetons achetés</strong>.</p>
+<h4>Principe de fonctionnement :</h4>
 
-<h4>Comportement lors de la restauration :</h4>
+<p>Chaque abonnement est associé à un <strong>unique document Firestore</strong> identifié par le <code>purchaseToken</code> de Google Play. Tous les appareils avec le même compte Google lisent et écrivent sur le même document, garantissant un compteur d'utilisation unique et partagé.</p>
+
+<h4>Comportement pratique :</h4>
 
 <ol>
-    <li><strong>Appareil A</strong> achète 50 000 jetons → Appareil A est « actif » ✅</li>
-    <li><strong>Appareil B</strong> (même compte Google Play) clique sur « Restaurer les achats » → Appareil B devient « actif » ✅</li>
-    <li><strong>Appareil A</strong> est automatiquement « invalidé » → Les jetons sur Appareil A sont remis à zéro ❌</li>
-    <li>Pour réactiver Appareil A : cliquez à nouveau sur « Restaurer les achats » sur Appareil A</li>
+    <li><strong>Appareil A</strong> achète un abonnement PLUS (250 000 jetons/mois) → Document Firestore créé ✅</li>
+    <li><strong>Appareil B</strong> (même compte Google Play) ouvre l'application → Détecte le même abonnement, se connecte au même document ✅</li>
+    <li><strong>Appareil A</strong> utilise 1 000 jetons → <code>current_usage</code> passe à 1 000 sur Firestore</li>
+    <li><strong>Appareil B</strong> reçoit la mise à jour en temps réel → Voit 249 000 jetons disponibles ✅</li>
+    <li>Les deux appareils restent actifs simultanément, sans invalidation ✅</li>
 </ol>
 
-<p><strong>Métadonnées sauvegardées pour le système anti-fraude :</strong></p>
+<h4>Pourquoi c'est sécurisé :</h4>
 
 <ul>
-    <li><strong>active_device</strong> : ID de l'appareil actuellement actif</li>
-    <li><strong>invalidated_at</strong> : Horodatage lorsqu'un appareil a été désactivé</li>
-    <li><strong>invalidated_reason</strong> : Raison de la désactivation (ex. « migrated_to_android_xxx »)</li>
-    <li><strong>migrated_from</strong> : Appareil source des jetons</li>
-    <li><strong>migration_timestamp</strong> : Date/heure de la migration</li>
+    <li>✅ <strong>Compteur unique :</strong> Il n'existe qu'une seule valeur <code>current_usage</code> par abonnement, impossible à dupliquer</li>
+    <li>✅ <strong>Synchronisation en temps réel :</strong> Chaque consommation est écrite immédiatement sur Firestore et propagée à tous les appareils via listener</li>
+    <li>✅ <strong>Validité gérée par Google Play :</strong> La validité de l'abonnement est vérifiée via Google Play Billing API, non modifiable par l'utilisateur</li>
+    <li>✅ <strong>purchaseToken unique :</strong> Google Play attribue un token immuable pour chaque achat, utilisé comme clé du document Firestore</li>
 </ul>
 
-<p><strong>Base légale :</strong> Intérêt légitime pour prévenir la fraude et les abus du système d'achats (Art. 6.1.f RGPD)</p>
+<p><strong>Données sauvegardées pour la protection anti-fraude :</strong></p>
+
+<ul>
+    <li><strong>purchaseToken :</strong> Clé unique de l'abonnement (ID document Firestore)</li>
+    <li><strong>devices :</strong> Tableau d'Android IDs pseudonymisés ayant utilisé l'abonnement</li>
+    <li><strong>current_usage :</strong> Compteur partagé de jetons consommés dans le mois en cours</li>
+    <li><strong>monthly_limit :</strong> Limite maximale de jetons pour le plan souscrit</li>
+</ul>
+
+<p><strong>Base légale :</strong> Exécution du contrat (Art. 6.1.b RGPD) — le compteur partagé fait partie intégrante du service d'abonnement acheté, nécessaire pour appliquer correctement la limite mensuelle sur tous les appareils.</p>
 
 <div class="highlight">
-    <strong>💡 NOTE :</strong> Ce système garantit que les jetons achetés ne sont pas dupliqués frauduleusement sur plusieurs appareils. La migration des jetons est <strong>irréversible</strong> : lorsque vous restaurez sur Appareil B, Appareil A perd définitivement les jetons jusqu'à ce que vous effectuiez une nouvelle restauration sur Appareil A.
+    <strong>💡 NOTE :</strong> Contrairement à d'autres systèmes qui limitent l'utilisation à un seul appareil, kAIboard vous permet d'utiliser votre abonnement sur <strong>tous vos appareils</strong> simultanément, avec le même compte Google Play. La seule limite est la consommation mensuelle totale prévue dans votre plan.
 </div>
 
 <h3>3.4 Vérification des Achats</h3>
@@ -522,8 +529,8 @@
     </tr>
     <tr>
         <td><strong>Firebase (Google)</strong></td>
-        <td>ID anonyme, solde de jetons, historique des achats, métadonnées de migration, données d'abonnement, journaux d'activité</td>
-        <td>Sauvegarde, synchronisation, système anti-fraude et piste d'audit</td>
+        <td>ID anonyme, utilisation actuelle de jetons, historique des achats, données d'abonnement, journaux d'activité</td>
+        <td>Sauvegarde, synchronisation, piste d'audit</td>
         <td>UE (serveurs européens)</td>
     </tr>
     <tr>
@@ -594,18 +601,8 @@
         <td>Suppression automatique (toutes les 24h) + suppression manuelle</td>
     </tr>
     <tr>
-        <td><strong>Sauvegarde des Jetons (Firebase)</strong></td>
-        <td>365 jours d'inactivité</td>
-        <td>Automatique + suppression manuelle</td>
-    </tr>
-    <tr>
         <td><strong>Historique des Achats (Firebase)</strong></td>
         <td>365 jours à partir de l'achat</td>
-        <td>Automatique + suppression manuelle</td>
-    </tr>
-    <tr>
-        <td><strong>Métadonnées de Migration (Firebase)</strong></td>
-        <td>365 jours à partir de la dernière migration</td>
         <td>Automatique + suppression manuelle</td>
     </tr>
     <tr>
@@ -651,7 +648,7 @@
 </table>
 
 <div class="highlight">
-    <strong>🗑️ NETTOYAGE AUTOMATIQUE :</strong> L'application effectue automatiquement un nettoyage toutes les 24 heures. Les données de plus de 365 jours (ou 90 jours pour l'historique des abonnements et les journaux d'activité) sont automatiquement supprimées, même si vous n'utilisez plus l'application.
+    <strong>🗑️ NETTOYAGE AUTOMATIQUE :</strong> L'application effectue automatiquement un nettoyage toutes les 24 heures. Les données plus anciennes que les périodes indiquées sont automatiquement supprimées, même si vous n'utilisez plus l'application.
 </div>
 
 <h2>6. Vos Droits (RGPD)</h2>
@@ -668,7 +665,7 @@
 <p>Vous pouvez supprimer toutes vos données à tout moment via l'<strong>écran Confidentialité</strong> dans l'application :</p>
 
 <ul>
-    <li>✅ <strong>Supprimer les données cloud</strong> : Supprime la sauvegarde des jetons, l'historique des achats, les données d'abonnement, l'historique des abonnements et les journaux d'activité de Firebase</li>
+    <li>✅ <strong>Supprimer les données cloud</strong> : Supprime les données d'abonnement, l'historique des abonnements, l'historique des achats et les journaux d'activité de Firebase</li>
     <li>✅ <strong>Supprimer les données d'apprentissage</strong> : Supprime les mots appris pour les suggestions (les 13 langues)</li>
     <li>✅ <strong>Supprimer toutes les données locales</strong> : Supprime toutes les préférences, données sur l'appareil, modèles téléchargés, dictionnaires et cache</li>
 </ul>
@@ -681,7 +678,7 @@
     <ul>
         <li>❌ Le bon fonctionnement du service mensuel acheté</li>
         <li>❌ La synchronisation de la limite de jetons entre appareils</li>
-        <li>❌ La réinitialisation automatique des jetons en début de mois</li>
+        <li>❌ La réinitialisation automatique des jetons au début du cycle de facturation</li>
     </ul>
 
     <p><strong>Comment procéder :</strong></p>
@@ -718,7 +715,7 @@
 
 <ol>
     <li><strong>Exporter vos données (JSON)</strong> : Export complet des données locales et cloud au format lisible par machine (Art. 15 + Art. 20)</li>
-    <li><strong>Supprimer les données cloud</strong> : Sauvegarde des jetons + historique des achats + données d'abonnement + historique des abonnements + journaux d'activité (irréversible - nécessite l'annulation de l'abonnement si actif)</li>
+    <li><strong>Supprimer les données cloud</strong> : Données d'abonnement + historique des abonnements + historique des achats + journaux d'activité (irréversible - nécessite l'annulation de l'abonnement si actif)</li>
     <li><strong>Supprimer les données d'apprentissage</strong> : Mots appris (13 langues)</li>
     <li><strong>Supprimer toutes les données locales</strong> : Toutes les préférences, modèles téléchargés, dictionnaires, cache (redémarre l'application)</li>
 </ol>
@@ -740,7 +737,7 @@
     <li>🔒 <strong>Règles de Sécurité Firebase</strong> : Accès limité au propriétaire des données uniquement (refus par défaut)</li>
     <li>🔒 <strong>ID Pseudonyme</strong> : Aucune donnée personnelle directe (nom, email, téléphone)</li>
     <li>🔒 <strong>Minimisation des données</strong> : Nous ne collectons que le strict nécessaire</li>
-    <li>🔒 <strong>Suppression automatique</strong> : Données supprimées après 365 jours d'inactivité (90 jours pour l'historique des abonnements et les journaux d'activité)</li>
+    <li>🔒 <strong>Suppression automatique</strong> : Données supprimées après les périodes de conservation prévues (90-365 jours)</li>
     <li>🔒 <strong>Clé API protégée</strong> : La clé API OpenAI n'est jamais exposée dans le client, elle est stockée comme secret dans le relais Cloudflare</li>
 </ul>
 
@@ -873,14 +870,12 @@
 <p>Le traitement de vos données est basé sur :</p>
 
 <ul>
-    <li><strong>Art. 6.1.b RGPD</strong> - Exécution du contrat : Sauvegarde des jetons, historique des achats, traduction, gestion des abonnements</li>
+    <li><strong>Art. 6.1.b RGPD</strong> - Exécution du contrat : Gestion des abonnements, synchronisation multi-appareil, compteur de jetons partagé, historique des achats, traduction</li>
     <li><strong>Art. 6.1.a RGPD</strong> - Consentement : Rapports de plantage (optionnel)</li>
     <li><strong>Art. 6.1.f RGPD</strong> - Intérêt légitime :
         <ul>
-            <li>Prévention de la fraude (système anti-fraude pour jetons)</li>
             <li>Sécurité des achats</li>
             <li>Protection du système de facturation contre les abus</li>
-            <li>Synchronisation multi-appareil</li>
             <li>Journaux d'activité administrative (piste d'audit)</li>
         </ul>
     </li>
@@ -888,22 +883,23 @@
 
 <div class="info">
     <strong>📋 ÉVALUATION DE L'INTÉRÊT LÉGITIME (Art. 6.1.f RGPD) :</strong>
-    <p>Le système anti-fraude est nécessaire pour :</p>
+    <p>Les journaux d'activité administrative sont nécessaires pour :</p>
     <ul>
-        <li>✅ Protéger la viabilité économique de l'application</li>
-        <li>✅ Prévenir les abus du système d'achats intégrés</li>
-        <li>✅ Garantir l'équité entre les utilisateurs</li>
+        <li>✅ Gestion des litiges dans les 60 jours (exigence Google Play)</li>
+        <li>✅ Support technique et résolution de problèmes</li>
+        <li>✅ Prévention de la fraude dans le système de facturation</li>
     </ul>
     <p>L'impact sur les droits de l'utilisateur est minimisé car :</p>
     <ul>
-        <li>✅ L'utilisateur peut toujours réactiver n'importe quel appareil via « Restaurer les achats »</li>
+        <li>✅ L'utilisateur peut supprimer les journaux via « Supprimer les données cloud »</li>
         <li>✅ Le système utilise uniquement des données pseudonymisées (pas de données personnelles directes)</li>
         <li>✅ La logique est transparente et documentée dans cette Politique de Confidentialité</li>
+        <li>✅ Conservation limitée à 90 jours avec suppression automatique</li>
     </ul>
 </div>
 
 <p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
-    <strong>Version 2.3 - Dernière mise à jour : 21 février 2026</strong><br>
+    <strong>Version 2.5 - Dernière mise à jour : 25 février 2026</strong><br>
     © 2026 Alessandro Faedda - kAIboard
 </p>
 
