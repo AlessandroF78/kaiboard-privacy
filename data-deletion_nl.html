@@ -151,13 +151,11 @@
                         <li>Actief abonnementsdocument (user_subscriptions)</li>
                         <li>Abonnementsgeschiedenis (user_subscriptions_history)</li>
                         <li>Administratieve activiteitslogboeken (admin_activity_logs)</li>
-                        <li>Tokensaldo (als er geen actief abonnement is)</li>
                         <li>Aankoopgeschiedenis</li>
-                        <li>Migratiemetagegevens voor gebruik op meerdere apparaten</li>
                         <li>Multi-device apparatenarray</li>
                     </ul>
                 </td>
-                <td>Onomkeerbaar. U verliest uw tokensaldo, aankoopgeschiedenis, activiteitslogboeken en abonnementsgeschiedenis. Vereist annulering van abonnement indien actief.</td>
+                <td>Onomkeerbaar. U verliest uw aankoopgeschiedenis, activiteitslogboeken en abonnementsgeschiedenis. Vereist annulering van abonnement indien actief.</td>
             </tr>
             <tr>
                 <td><strong>Leergegevens Verwijderen</strong></td>
@@ -262,18 +260,8 @@
                 <td>Automatisch elke 24 uur verwijderd door achtergrondopschoning</td>
             </tr>
             <tr>
-                <td><strong>Cloud Token-gegevens (Firebase)</strong></td>
-                <td>365 dagen inactiviteit</td>
-                <td>Automatisch verwijderd na een jaar zonder app-gebruik</td>
-            </tr>
-            <tr>
                 <td><strong>Aankoopgeschiedenis (Firebase)</strong></td>
                 <td>365 dagen na aankoop</td>
-                <td>Automatisch verwijderd na een jaar</td>
-            </tr>
-            <tr>
-                <td><strong>Migratiemetagegevens (Firebase)</strong></td>
-                <td>365 dagen na laatste migratie</td>
                 <td>Automatisch verwijderd na een jaar</td>
             </tr>
             <tr>
@@ -311,17 +299,12 @@
                 <td>Knop „Cloudgegevens Verwijderen"</td>
             </tr>
             <tr>
-                <td>Tokensaldo</td>
+                <td>Huidig Tokengebruik</td>
                 <td>Firebase (cloud)</td>
-                <td>Knop „Cloudgegevens Verwijderen"</td>
+                <td>Knop „Cloudgegevens Verwijderen" (alleen na annulering abonnement)</td>
             </tr>
             <tr>
                 <td>Aankoopgeschiedenis</td>
-                <td>Firebase (cloud)</td>
-                <td>Knop „Cloudgegevens Verwijderen"</td>
-            </tr>
-            <tr>
-                <td>Migratiemetagegevens</td>
                 <td>Firebase (cloud)</td>
                 <td>Knop „Cloudgegevens Verwijderen"</td>
             </tr>
@@ -332,11 +315,6 @@
             </tr>
             <tr>
                 <td>Maandelijkse Tokenlimiet</td>
-                <td>Firebase (cloud)</td>
-                <td>Knop „Cloudgegevens Verwijderen" (alleen na annulering abonnement)</td>
-            </tr>
-            <tr>
-                <td>Huidig Tokengebruik</td>
                 <td>Firebase (cloud)</td>
                 <td>Knop „Cloudgegevens Verwijderen" (alleen na annulering abonnement)</td>
             </tr>
@@ -461,7 +439,7 @@
         <div class="warning">
             <p><strong>Belangrijke Kennisgeving:</strong> Verwijdering van bepaalde gegevens is <strong>onomkeerbaar</strong>. Zorg ervoor dat u de gevolgen begrijpt voordat u doorgaat:</p>
             <ul>
-                <li><strong>Cloudgegevens Verwijderen:</strong> U verliest uw tokensaldo, aankoopgeschiedenis, abonnementsgegevens, abonnementsgeschiedenis en activiteitslogboeken. U kunt ze NIET herstellen, zelfs niet na herinstallatie van de app. Als u een actief abonnement heeft, moet u dit eerst annuleren via Google Play Store en wachten tot het einde van de reeds betaalde periode.</li>
+                <li><strong>Cloudgegevens Verwijderen:</strong> U verliest uw aankoopgeschiedenis, abonnementsgegevens, abonnementsgeschiedenis en activiteitslogboeken. U kunt ze NIET herstellen, zelfs niet na herinstallatie van de app. Als u een actief abonnement heeft, moet u dit eerst annuleren via Google Play Store en wachten tot het einde van de reeds betaalde periode.</li>
                 <li><strong>Leergegevens Verwijderen:</strong> Gepersonaliseerde tekstvoorspellingen beginnen opnieuw vanaf nul</li>
                 <li><strong>Alle Lokale Gegevens Verwijderen:</strong> Alle voorkeuren, instellingen, gedownloade voorspellingsmodellen, woordenboeken en cache gaan verloren. De app herstart als een nieuwe installatie (cloudgegevens blijven bewaard)</li>
             </ul>
@@ -470,7 +448,7 @@
         <h2>Veelgestelde Vragen</h2>
 
         <h3>Wat gebeurt er als ik cloudgegevens verwijder?</h3>
-        <p>U verliest uw tokensaldo, aankoopgeschiedenis, actieve abonnementsgegevens, geschiedenis van eerdere abonnementen en activiteitslogboeken. Als u de app opnieuw installeert, begint u vanaf nul.</p>
+        <p>U verliest uw aankoopgeschiedenis, actieve abonnementsgegevens, geschiedenis van eerdere abonnementen en activiteitslogboeken. Als u de app opnieuw installeert, wordt het abonnement nog steeds gedetecteerd via Google Play, maar historische gegevens zijn niet meer herstelbaar.</p>
 
         <h3>Kan ik alleen specifieke gegevens verwijderen?</h3>
         <p>Ja. U kunt ervoor kiezen om alleen cloudgegevens, alleen leergegevens of alle lokale gegevens te verwijderen. U kunt uw gegevens ook exporteren in JSON-formaat voordat u ze verwijdert.</p>
@@ -501,7 +479,7 @@
         </p>
 
         <div class="footer">
-            <p><strong>Versie 1.3 - Laatste Update: 21 februari 2026</strong></p>
+            <p><strong>Versie 1.4 - Laatste Update: 25 februari 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Conform AVG (EU Verordening 2016/679)</p>
         </div>
