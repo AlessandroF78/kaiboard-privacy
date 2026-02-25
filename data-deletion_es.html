@@ -151,13 +151,11 @@
                         <li>Documento de suscripción activa (user_subscriptions)</li>
                         <li>Historial de suscripciones (user_subscriptions_history)</li>
                         <li>Registros de actividad administrativa (admin_activity_logs)</li>
-                        <li>Saldo de tokens (si no hay suscripción activa)</li>
                         <li>Historial de compras</li>
-                        <li>Metadatos de migración entre dispositivos</li>
                         <li>Array de dispositivos multi-device</li>
                     </ul>
                 </td>
-                <td>Irreversible. Perderás tu saldo de tokens, historial de compras, registros de actividad e historial de suscripciones. Requiere cancelación de suscripción si está activa.</td>
+                <td>Irreversible. Perderás el historial de compras, los registros de actividad y el historial de suscripciones. Requiere cancelación de suscripción si está activa.</td>
             </tr>
             <tr>
                 <td><strong>Eliminar Datos de Aprendizaje</strong></td>
@@ -262,18 +260,8 @@
                 <td>Eliminados automáticamente cada 24 horas mediante limpieza en segundo plano</td>
             </tr>
             <tr>
-                <td><strong>Datos de Tokens en la Nube (Firebase)</strong></td>
-                <td>365 días de inactividad</td>
-                <td>Eliminados automáticamente después de un año sin uso de la aplicación</td>
-            </tr>
-            <tr>
                 <td><strong>Historial de Compras (Firebase)</strong></td>
                 <td>365 días desde la compra</td>
-                <td>Eliminados automáticamente después de un año</td>
-            </tr>
-            <tr>
-                <td><strong>Metadatos de Migración (Firebase)</strong></td>
-                <td>365 días desde la última migración</td>
                 <td>Eliminados automáticamente después de un año</td>
             </tr>
             <tr>
@@ -311,17 +299,12 @@
                 <td>Botón "Eliminar Datos en la Nube"</td>
             </tr>
             <tr>
-                <td>Saldo de Tokens</td>
+                <td>Uso Actual de Tokens</td>
                 <td>Firebase (nube)</td>
-                <td>Botón "Eliminar Datos en la Nube"</td>
+                <td>Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
             </tr>
             <tr>
                 <td>Historial de Compras</td>
-                <td>Firebase (nube)</td>
-                <td>Botón "Eliminar Datos en la Nube"</td>
-            </tr>
-            <tr>
-                <td>Metadatos de Migración</td>
                 <td>Firebase (nube)</td>
                 <td>Botón "Eliminar Datos en la Nube"</td>
             </tr>
@@ -332,11 +315,6 @@
             </tr>
             <tr>
                 <td>Límite Mensual de Tokens</td>
-                <td>Firebase (nube)</td>
-                <td>Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
-            </tr>
-            <tr>
-                <td>Uso Actual de Tokens</td>
                 <td>Firebase (nube)</td>
                 <td>Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
             </tr>
@@ -461,7 +439,7 @@
         <div class="warning">
             <p><strong>Aviso Importante:</strong> La eliminación de ciertos datos es <strong>irreversible</strong>. Asegúrese de comprender las consecuencias antes de continuar:</p>
             <ul>
-                <li><strong>Eliminar Datos en la Nube:</strong> Perderás tu saldo de tokens, el historial de compras, los datos de suscripción, el historial de suscripciones y los registros de actividad. NO podrás recuperarlos, incluso después de reinstalar la app. Si tienes una suscripción activa, primero debes cancelarla a través de Google Play Store y esperar al final del período ya pagado.</li>
+                <li><strong>Eliminar Datos en la Nube:</strong> Perderás el historial de compras, los datos de suscripción, el historial de suscripciones y los registros de actividad. NO podrás recuperarlos, incluso después de reinstalar la app. Si tienes una suscripción activa, primero debes cancelarla a través de Google Play Store y esperar al final del período ya pagado.</li>
                 <li><strong>Eliminar Datos de Aprendizaje:</strong> Las predicciones de texto personalizadas comenzarán desde cero</li>
                 <li><strong>Eliminar Todos los Datos Locales:</strong> Todas las preferencias, configuraciones, modelos predictivos descargados, diccionarios y caché se perderán. La app se reiniciará como una instalación nueva (los datos en la nube se conservan)</li>
             </ul>
@@ -470,7 +448,7 @@
         <h2>Preguntas Frecuentes</h2>
 
         <h3>¿Qué sucede si elimino los datos en la nube?</h3>
-        <p>Perderá su saldo de tokens, el historial de compras, los datos de suscripción activa, el historial de suscripciones pasadas y los registros de actividad. Si reinstala la aplicación, comenzará desde cero.</p>
+        <p>Perderá el historial de compras, los datos de suscripción activa, el historial de suscripciones pasadas y los registros de actividad. Si reinstala la aplicación, la suscripción seguirá siendo detectada a través de Google Play, pero los datos históricos no serán recuperables.</p>
 
         <h3>¿Puedo eliminar solo datos específicos?</h3>
         <p>Sí. Puede elegir eliminar solo los datos en la nube, solo los datos de aprendizaje o todos los datos locales. También puede exportar sus datos en formato JSON antes de eliminarlos.</p>
@@ -501,7 +479,7 @@
         </p>
 
         <div class="footer">
-            <p><strong>Versión 1.3 - Última Actualización: 21 de febrero de 2026</strong></p>
+            <p><strong>Versión 1.4 - Última Actualización: 25 de febrero de 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Conforme al RGPD (Reglamento UE 2016/679)</p>
         </div>
