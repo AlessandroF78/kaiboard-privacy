@@ -151,13 +151,11 @@
                         <li>Aktives Abonnement-Dokument (user_subscriptions)</li>
                         <li>Abonnement-Verlauf (user_subscriptions_history)</li>
                         <li>Administrative Aktivitätsprotokolle (admin_activity_logs)</li>
-                        <li>Token-Guthaben (wenn kein aktives Abonnement)</li>
                         <li>Kaufhistorie</li>
-                        <li>Migrationsmetadaten für geräteübergreifende Nutzung</li>
                         <li>Multi-Device-Geräte-Array</li>
                     </ul>
                 </td>
-                <td>Unwiderruflich. Sie verlieren Ihr Token-Guthaben, Kaufhistorie, Aktivitätsprotokolle und Abonnement-Verlauf. Erfordert Abonnement-Kündigung falls aktiv.</td>
+                <td>Unwiderruflich. Sie verlieren die Abonnementdaten, Kaufhistorie, Aktivitätsprotokolle und Abonnement-Verlauf. Erfordert Abonnement-Kündigung falls aktiv.</td>
             </tr>
             <tr>
                 <td><strong>Lerndaten löschen</strong></td>
@@ -262,18 +260,8 @@
                 <td>Automatisch alle 24 Stunden durch Hintergrundbereinigung gelöscht</td>
             </tr>
             <tr>
-                <td><strong>Cloud-Token-Daten (Firebase)</strong></td>
-                <td>365 Tage Inaktivität</td>
-                <td>Automatisch nach einem Jahr ohne App-Nutzung gelöscht</td>
-            </tr>
-            <tr>
                 <td><strong>Kaufhistorie (Firebase)</strong></td>
                 <td>365 Tage nach Kauf</td>
-                <td>Automatisch nach einem Jahr gelöscht</td>
-            </tr>
-            <tr>
-                <td><strong>Migrationsmetadaten (Firebase)</strong></td>
-                <td>365 Tage nach letzter Migration</td>
                 <td>Automatisch nach einem Jahr gelöscht</td>
             </tr>
             <tr>
@@ -311,17 +299,12 @@
                 <td>Schaltfläche „Cloud-Daten löschen"</td>
             </tr>
             <tr>
-                <td>Token-Guthaben</td>
+                <td>Aktuelle Token-Nutzung</td>
                 <td>Firebase (Cloud)</td>
-                <td>Schaltfläche „Cloud-Daten löschen"</td>
+                <td>Schaltfläche „Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
             </tr>
             <tr>
                 <td>Kaufhistorie</td>
-                <td>Firebase (Cloud)</td>
-                <td>Schaltfläche „Cloud-Daten löschen"</td>
-            </tr>
-            <tr>
-                <td>Migrationsmetadaten</td>
                 <td>Firebase (Cloud)</td>
                 <td>Schaltfläche „Cloud-Daten löschen"</td>
             </tr>
@@ -332,11 +315,6 @@
             </tr>
             <tr>
                 <td>Monatliches Token-Limit</td>
-                <td>Firebase (Cloud)</td>
-                <td>Schaltfläche „Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
-            </tr>
-            <tr>
-                <td>Aktuelle Token-Nutzung</td>
                 <td>Firebase (Cloud)</td>
                 <td>Schaltfläche „Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
             </tr>
@@ -461,7 +439,7 @@
         <div class="warning">
             <p><strong>Wichtiger Hinweis:</strong> Die Löschung bestimmter Daten ist <strong>unwiderruflich</strong>. Stellen Sie sicher, dass Sie die Folgen verstehen, bevor Sie fortfahren:</p>
             <ul>
-                <li><strong>Cloud-Daten löschen:</strong> Sie verlieren Ihr Token-Guthaben, die Kaufhistorie, die Abonnementdaten, den Abonnement-Verlauf und die Aktivitätsprotokolle. Sie können sie NICHT wiederherstellen, auch nicht nach einer Neuinstallation der App. Wenn Sie ein aktives Abonnement haben, müssen Sie es zuerst über den Google Play Store kündigen und das Ende des bereits bezahlten Zeitraums abwarten.</li>
+                <li><strong>Cloud-Daten löschen:</strong> Sie verlieren die Abonnementdaten, die Kaufhistorie, den Abonnement-Verlauf und die Aktivitätsprotokolle. Sie können sie NICHT wiederherstellen, auch nicht nach einer Neuinstallation der App. Wenn Sie ein aktives Abonnement haben, müssen Sie es zuerst über den Google Play Store kündigen und das Ende des bereits bezahlten Zeitraums abwarten.</li>
                 <li><strong>Lerndaten löschen:</strong> Personalisierte Textvorhersagen beginnen von vorne</li>
                 <li><strong>Alle lokalen Daten löschen:</strong> Alle Einstellungen, Präferenzen, heruntergeladene Vorhersagemodelle, Wörterbücher und Cache gehen verloren. Die App startet wie bei einer Neuinstallation (Cloud-Daten bleiben erhalten)</li>
             </ul>
@@ -470,7 +448,7 @@
         <h2>Häufig gestellte Fragen</h2>
 
         <h3>Was passiert, wenn ich Cloud-Daten lösche?</h3>
-        <p>Sie verlieren Ihr Token-Guthaben, die Kaufhistorie, die aktiven Abonnementdaten, den Verlauf vergangener Abonnements und die Aktivitätsprotokolle. Wenn Sie die App neu installieren, beginnen Sie bei Null.</p>
+        <p>Sie verlieren die Abonnementdaten, die Kaufhistorie, den Verlauf vergangener Abonnements und die Aktivitätsprotokolle. Wenn Sie die App neu installieren, wird das Abonnement über Google Play erkannt, aber historische Daten sind nicht wiederherstellbar.</p>
 
         <h3>Kann ich nur bestimmte Daten löschen?</h3>
         <p>Ja. Sie können wählen, nur Cloud-Daten, nur Lerndaten oder alle lokalen Daten zu löschen. Sie können Ihre Daten auch vor dem Löschen im JSON-Format exportieren.</p>
@@ -501,7 +479,7 @@
         </p>
 
         <div class="footer">
-            <p><strong>Version 1.3 - Letzte Aktualisierung: 21. Februar 2026</strong></p>
+            <p><strong>Version 1.4 - Letzte Aktualisierung: 25. Februar 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>DSGVO-konform (EU-Verordnung 2016/679)</p>
         </div>
