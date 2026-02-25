@@ -151,13 +151,11 @@
                         <li>Document d'abonnement actif (user_subscriptions)</li>
                         <li>Historique des abonnements (user_subscriptions_history)</li>
                         <li>Journaux d'activité administrative (admin_activity_logs)</li>
-                        <li>Solde de jetons (si aucun abonnement actif)</li>
                         <li>Historique d'achats</li>
-                        <li>Métadonnées de migration inter-appareils</li>
                         <li>Tableau des appareils multi-device</li>
                     </ul>
                 </td>
-                <td>Irréversible. Vous perdrez votre solde de jetons, historique d'achats, journaux d'activité et historique des abonnements. Nécessite l'annulation de l'abonnement s'il est actif.</td>
+                <td>Irréversible. Vous perdrez l'historique d'achats, les journaux d'activité et l'historique des abonnements. Nécessite l'annulation de l'abonnement s'il est actif.</td>
             </tr>
             <tr>
                 <td><strong>Supprimer les Données d'Apprentissage</strong></td>
@@ -262,19 +260,9 @@
                 <td>Supprimés automatiquement toutes les 24 heures par nettoyage en arrière-plan</td>
             </tr>
             <tr>
-                <td><strong>Données de Jetons Cloud (Firebase)</strong></td>
-                <td>365 jours d'inactivité</td>
-                <td>Supprimées automatiquement après un an sans utilisation de l'application</td>
-            </tr>
-            <tr>
                 <td><strong>Historique d'Achats (Firebase)</strong></td>
                 <td>365 jours depuis l'achat</td>
                 <td>Supprimé automatiquement après un an</td>
-            </tr>
-            <tr>
-                <td><strong>Métadonnées de Migration (Firebase)</strong></td>
-                <td>365 jours depuis la dernière migration</td>
-                <td>Supprimées automatiquement après un an</td>
             </tr>
             <tr>
                 <td><strong>Mots Appris</strong></td>
@@ -311,17 +299,12 @@
                 <td>Bouton « Supprimer les Données Cloud »</td>
             </tr>
             <tr>
-                <td>Solde de Jetons</td>
+                <td>Utilisation Actuelle de Jetons</td>
                 <td>Firebase (cloud)</td>
-                <td>Bouton « Supprimer les Données Cloud »</td>
+                <td>Bouton « Supprimer les Données Cloud » (seulement après annulation de l'abonnement)</td>
             </tr>
             <tr>
                 <td>Historique d'Achats</td>
-                <td>Firebase (cloud)</td>
-                <td>Bouton « Supprimer les Données Cloud »</td>
-            </tr>
-            <tr>
-                <td>Métadonnées de Migration</td>
                 <td>Firebase (cloud)</td>
                 <td>Bouton « Supprimer les Données Cloud »</td>
             </tr>
@@ -332,11 +315,6 @@
             </tr>
             <tr>
                 <td>Limite Mensuelle de Jetons</td>
-                <td>Firebase (cloud)</td>
-                <td>Bouton « Supprimer les Données Cloud » (seulement après annulation de l'abonnement)</td>
-            </tr>
-            <tr>
-                <td>Utilisation Actuelle de Jetons</td>
                 <td>Firebase (cloud)</td>
                 <td>Bouton « Supprimer les Données Cloud » (seulement après annulation de l'abonnement)</td>
             </tr>
@@ -461,7 +439,7 @@
         <div class="warning">
             <p><strong>Avis Important :</strong> La suppression de certaines données est <strong>irréversible</strong>. Assurez-vous de comprendre les conséquences avant de continuer :</p>
             <ul>
-                <li><strong>Supprimer les Données Cloud :</strong> Vous perdrez votre solde de jetons, l'historique d'achats, les données d'abonnement, l'historique des abonnements et les journaux d'activité. Vous ne pourrez PAS les récupérer, même après avoir réinstallé l'application. Si vous avez un abonnement actif, vous devez d'abord l'annuler via Google Play Store et attendre la fin de la période déjà payée.</li>
+                <li><strong>Supprimer les Données Cloud :</strong> Vous perdrez l'historique d'achats, les données d'abonnement, l'historique des abonnements et les journaux d'activité. Vous ne pourrez PAS les récupérer, même après avoir réinstallé l'application. Si vous avez un abonnement actif, vous devez d'abord l'annuler via Google Play Store et attendre la fin de la période déjà payée.</li>
                 <li><strong>Supprimer les Données d'Apprentissage :</strong> Les prédictions de texte personnalisées repartiront de zéro</li>
                 <li><strong>Supprimer Toutes les Données Locales :</strong> Toutes les préférences, paramètres, modèles prédictifs téléchargés, dictionnaires et cache seront perdus. L'app redémarrera comme une nouvelle installation (les données cloud sont conservées)</li>
             </ul>
@@ -470,7 +448,7 @@
         <h2>Questions Fréquemment Posées</h2>
 
         <h3>Que se passe-t-il si je supprime les données cloud ?</h3>
-        <p>Vous perdrez votre solde de jetons, votre historique d'achats, les données d'abonnement actif, l'historique des abonnements passés et les journaux d'activité. Si vous réinstallez l'application, vous repartirez de zéro.</p>
+        <p>Vous perdrez l'historique d'achats, les données d'abonnement actif, l'historique des abonnements passés et les journaux d'activité. Si vous réinstallez l'application, l'abonnement sera toujours détecté via Google Play, mais les données historiques ne seront pas récupérables.</p>
 
         <h3>Puis-je supprimer uniquement des données spécifiques ?</h3>
         <p>Oui. Vous pouvez choisir de supprimer uniquement les données cloud, uniquement les données d'apprentissage ou toutes les données locales. Vous pouvez également exporter vos données au format JSON avant de les supprimer.</p>
@@ -501,7 +479,7 @@
         </p>
 
         <div class="footer">
-            <p><strong>Version 1.3 - Dernière Mise à Jour : 21 février 2026</strong></p>
+            <p><strong>Version 1.4 - Dernière Mise à Jour : 25 février 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Conforme au RGPD (Règlement UE 2016/679)</p>
         </div>
