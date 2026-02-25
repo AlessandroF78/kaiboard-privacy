@@ -151,13 +151,11 @@
                         <li>Documento de assinatura ativa (user_subscriptions)</li>
                         <li>Histórico de assinaturas (user_subscriptions_history)</li>
                         <li>Registos de atividade administrativa (admin_activity_logs)</li>
-                        <li>Saldo de tokens (se não houver assinatura ativa)</li>
                         <li>Histórico de compras</li>
-                        <li>Metadados de migração entre dispositivos</li>
                         <li>Array de dispositivos multi-device</li>
                     </ul>
                 </td>
-                <td>Irreversível. Perderá o seu saldo de tokens, histórico de compras, registos de atividade e histórico de assinaturas. Requer cancelamento de assinatura se ativa.</td>
+                <td>Irreversível. Perderá o histórico de compras, registos de atividade e histórico de assinaturas. Requer cancelamento de assinatura se ativa.</td>
             </tr>
             <tr>
                 <td><strong>Eliminar Dados de Aprendizagem</strong></td>
@@ -262,19 +260,9 @@
                 <td>Eliminados automaticamente a cada 24 horas por limpeza em segundo plano</td>
             </tr>
             <tr>
-                <td><strong>Dados de Tokens da Nuvem (Firebase)</strong></td>
-                <td>365 dias de inatividade</td>
-                <td>Eliminados automaticamente após um ano sem uso da aplicação</td>
-            </tr>
-            <tr>
                 <td><strong>Histórico de Compras (Firebase)</strong></td>
                 <td>365 dias desde a compra</td>
                 <td>Eliminado automaticamente após um ano</td>
-            </tr>
-            <tr>
-                <td><strong>Metadados de Migração (Firebase)</strong></td>
-                <td>365 dias desde a última migração</td>
-                <td>Eliminados automaticamente após um ano</td>
             </tr>
             <tr>
                 <td><strong>Palavras Aprendidas</strong></td>
@@ -311,17 +299,12 @@
                 <td>Botão «Eliminar Dados da Nuvem»</td>
             </tr>
             <tr>
-                <td>Saldo de Tokens</td>
+                <td>Uso Atual de Tokens</td>
                 <td>Firebase (nuvem)</td>
-                <td>Botão «Eliminar Dados da Nuvem»</td>
+                <td>Botão «Eliminar Dados da Nuvem» (apenas após cancelamento da assinatura)</td>
             </tr>
             <tr>
                 <td>Histórico de Compras</td>
-                <td>Firebase (nuvem)</td>
-                <td>Botão «Eliminar Dados da Nuvem»</td>
-            </tr>
-            <tr>
-                <td>Metadados de Migração</td>
                 <td>Firebase (nuvem)</td>
                 <td>Botão «Eliminar Dados da Nuvem»</td>
             </tr>
@@ -332,11 +315,6 @@
             </tr>
             <tr>
                 <td>Limite Mensal de Tokens</td>
-                <td>Firebase (nuvem)</td>
-                <td>Botão «Eliminar Dados da Nuvem» (apenas após cancelamento da assinatura)</td>
-            </tr>
-            <tr>
-                <td>Uso Atual de Tokens</td>
                 <td>Firebase (nuvem)</td>
                 <td>Botão «Eliminar Dados da Nuvem» (apenas após cancelamento da assinatura)</td>
             </tr>
@@ -461,7 +439,7 @@
         <div class="warning">
             <p><strong>Aviso Importante:</strong> A eliminação de certos dados é <strong>irreversível</strong>. Certifique-se de compreender as consequências antes de prosseguir:</p>
             <ul>
-                <li><strong>Eliminar Dados da Nuvem:</strong> Perderá o seu saldo de tokens, histórico de compras, dados de assinatura, histórico de assinaturas e registos de atividade. NÃO poderá recuperá-los, mesmo após reinstalar a aplicação. Se tiver uma assinatura ativa, deve primeiro cancelá-la através da Google Play Store e aguardar o fim do período já pago.</li>
+                <li><strong>Eliminar Dados da Nuvem:</strong> Perderá o histórico de compras, dados de assinatura, histórico de assinaturas e registos de atividade. NÃO poderá recuperá-los, mesmo após reinstalar a aplicação. Se tiver uma assinatura ativa, deve primeiro cancelá-la através da Google Play Store e aguardar o fim do período já pago.</li>
                 <li><strong>Eliminar Dados de Aprendizagem:</strong> As previsões de texto personalizadas começarão do zero</li>
                 <li><strong>Eliminar Todos os Dados Locais:</strong> Todas as preferências, definições, modelos preditivos descarregados, dicionários e cache serão perdidos. A app reiniciará como uma nova instalação (os dados da nuvem são preservados)</li>
             </ul>
@@ -470,7 +448,7 @@
         <h2>Perguntas Frequentes</h2>
 
         <h3>O que acontece se eu eliminar os dados da nuvem?</h3>
-        <p>Perderá o seu saldo de tokens, histórico de compras, dados de assinatura ativa, histórico de assinaturas anteriores e registos de atividade. Se reinstalar a aplicação, começará do zero.</p>
+        <p>Perderá o histórico de compras, dados de assinatura ativa, histórico de assinaturas anteriores e registos de atividade. Se reinstalar a aplicação, a assinatura continuará a ser detetada através do Google Play, mas os dados históricos não serão recuperáveis.</p>
 
         <h3>Posso eliminar apenas dados específicos?</h3>
         <p>Sim. Pode escolher eliminar apenas os dados da nuvem, apenas os dados de aprendizagem ou todos os dados locais. Também pode exportar os seus dados em formato JSON antes de os eliminar.</p>
@@ -501,7 +479,7 @@
         </p>
 
         <div class="footer">
-            <p><strong>Versão 1.3 - Última Atualização: 21 de fevereiro de 2026</strong></p>
+            <p><strong>Versão 1.4 - Última Atualização: 25 de fevereiro de 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Conforme o RGPD (Regulamento UE 2016/679)</p>
         </div>
