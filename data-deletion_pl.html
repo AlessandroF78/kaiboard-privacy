@@ -151,13 +151,11 @@
                         <li>Dokument aktywnej subskrypcji (user_subscriptions)</li>
                         <li>Historia subskrypcji (user_subscriptions_history)</li>
                         <li>Dzienniki aktywności administracyjnej (admin_activity_logs)</li>
-                        <li>Saldo tokenów (jeśli brak aktywnej subskrypcji)</li>
                         <li>Historia zakupów</li>
-                        <li>Metadane migracji między urządzeniami</li>
                         <li>Tablica urządzeń multi-device</li>
                     </ul>
                 </td>
-                <td>Nieodwracalne. Stracisz swoje saldo tokenów, historię zakupów, dzienniki aktywności i historię subskrypcji. Wymaga anulowania subskrypcji jeśli aktywna.</td>
+                <td>Nieodwracalne. Stracisz historię zakupów, dzienniki aktywności i historię subskrypcji. Wymaga anulowania subskrypcji jeśli aktywna.</td>
             </tr>
             <tr>
                 <td><strong>Usuń Dane Uczenia</strong></td>
@@ -262,19 +260,9 @@
                 <td>Automatycznie usuwane co 24 godziny przez czyszczenie w tle</td>
             </tr>
             <tr>
-                <td><strong>Dane Tokenów w Chmurze (Firebase)</strong></td>
-                <td>365 dni braku aktywności</td>
-                <td>Automatycznie usuwane po roku bez korzystania z aplikacji</td>
-            </tr>
-            <tr>
                 <td><strong>Historia Zakupów (Firebase)</strong></td>
                 <td>365 dni od zakupu</td>
                 <td>Automatycznie usuwana po roku</td>
-            </tr>
-            <tr>
-                <td><strong>Metadane Migracji (Firebase)</strong></td>
-                <td>365 dni od ostatniej migracji</td>
-                <td>Automatycznie usuwane po roku</td>
             </tr>
             <tr>
                 <td><strong>Nauczone Słowa</strong></td>
@@ -311,17 +299,12 @@
                 <td>Przycisk „Usuń Dane w Chmurze"</td>
             </tr>
             <tr>
-                <td>Saldo Tokenów</td>
+                <td>Bieżące Wykorzystanie Tokenów</td>
                 <td>Firebase (chmura)</td>
-                <td>Przycisk „Usuń Dane w Chmurze"</td>
+                <td>Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
             </tr>
             <tr>
                 <td>Historia Zakupów</td>
-                <td>Firebase (chmura)</td>
-                <td>Przycisk „Usuń Dane w Chmurze"</td>
-            </tr>
-            <tr>
-                <td>Metadane Migracji</td>
                 <td>Firebase (chmura)</td>
                 <td>Przycisk „Usuń Dane w Chmurze"</td>
             </tr>
@@ -332,11 +315,6 @@
             </tr>
             <tr>
                 <td>Miesięczny Limit Tokenów</td>
-                <td>Firebase (chmura)</td>
-                <td>Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
-            </tr>
-            <tr>
-                <td>Bieżące Wykorzystanie Tokenów</td>
                 <td>Firebase (chmura)</td>
                 <td>Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
             </tr>
@@ -461,7 +439,7 @@
         <div class="warning">
             <p><strong>Ważne Powiadomienie:</strong> Usunięcie niektórych danych jest <strong>nieodwracalne</strong>. Upewnij się, że rozumiesz konsekwencje przed kontynuowaniem:</p>
             <ul>
-                <li><strong>Usuń Dane w Chmurze:</strong> Stracisz swoje saldo tokenów, historię zakupów, dane subskrypcji, historię subskrypcji i dzienniki aktywności. NIE będziesz mógł ich odzyskać, nawet po ponownej instalacji aplikacji. Jeśli masz aktywną subskrypcję, musisz ją najpierw anulować przez Google Play Store i poczekać do końca już opłaconego okresu.</li>
+                <li><strong>Usuń Dane w Chmurze:</strong> Stracisz historię zakupów, dane subskrypcji, historię subskrypcji i dzienniki aktywności. NIE będziesz mógł ich odzyskać, nawet po ponownej instalacji aplikacji. Jeśli masz aktywną subskrypcję, musisz ją najpierw anulować przez Google Play Store i poczekać do końca już opłaconego okresu.</li>
                 <li><strong>Usuń Dane Uczenia:</strong> Spersonalizowane predykcje tekstu zaczną od nowa</li>
                 <li><strong>Usuń Wszystkie Dane Lokalne:</strong> Wszystkie preferencje, ustawienia, pobrane modele predykcyjne, słowniki i pamięć podręczna zostaną utracone. Aplikacja uruchomi się jak nowa instalacja (dane w chmurze zostają zachowane)</li>
             </ul>
@@ -470,7 +448,7 @@
         <h2>Często Zadawane Pytania</h2>
 
         <h3>Co się stanie, jeśli usunę dane w chmurze?</h3>
-        <p>Stracisz saldo tokenów, historię zakupów, dane aktywnej subskrypcji, historię poprzednich subskrypcji i dzienniki aktywności. Jeśli ponownie zainstalujesz aplikację, zaczniesz od zera.</p>
+        <p>Stracisz historię zakupów, dane aktywnej subskrypcji, historię poprzednich subskrypcji i dzienniki aktywności. Jeśli ponownie zainstalujesz aplikację, subskrypcja nadal zostanie wykryta przez Google Play, ale danych historycznych nie będzie można odzyskać.</p>
 
         <h3>Czy mogę usunąć tylko określone dane?</h3>
         <p>Tak. Możesz wybrać usunięcie tylko danych w chmurze, tylko danych uczenia lub wszystkich danych lokalnych. Możesz również wyeksportować swoje dane w formacie JSON przed usunięciem.</p>
@@ -501,7 +479,7 @@
         </p>
 
         <div class="footer">
-            <p><strong>Wersja 1.3 - Ostatnia Aktualizacja: 21 lutego 2026</strong></p>
+            <p><strong>Wersja 1.4 - Ostatnia Aktualizacja: 25 lutego 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>Zgodne z RODO (Rozporządzenie UE 2016/679)</p>
         </div>
