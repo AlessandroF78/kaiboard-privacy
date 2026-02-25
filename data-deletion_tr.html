@@ -151,13 +151,11 @@
                         <li>Aktif abonelik belgesi (user_subscriptions)</li>
                         <li>Abonelik geçmişi (user_subscriptions_history)</li>
                         <li>Yönetimsel etkinlik günlükleri (admin_activity_logs)</li>
-                        <li>Token bakiyesi (aktif abonelik yoksa)</li>
                         <li>Satın alma geçmişi</li>
-                        <li>Cihazlar arası geçiş meta verileri</li>
                         <li>Çoklu cihaz dizisi</li>
                     </ul>
                 </td>
-                <td>Geri alınamaz. Token bakiyenizi, satın alma geçmişinizi, etkinlik günlüklerinizi ve abonelik geçmişinizi kaybedeceksiniz. Aktifse abonelik iptali gerektirir.</td>
+                <td>Geri alınamaz. Abonelik verilerinizi, satın alma geçmişinizi, etkinlik günlüklerinizi ve abonelik geçmişinizi kaybedeceksiniz. Aktifse abonelik iptali gerektirir.</td>
             </tr>
             <tr>
                 <td><strong>Öğrenme Verilerini Sil</strong></td>
@@ -262,18 +260,8 @@
                 <td>Her 24 saatte arka plan temizliğiyle otomatik olarak silinir</td>
             </tr>
             <tr>
-                <td><strong>Bulut Token Verileri (Firebase)</strong></td>
-                <td>365 gün hareketsizlik</td>
-                <td>Uygulamayı bir yıl kullanmadıktan sonra otomatik olarak silinir</td>
-            </tr>
-            <tr>
                 <td><strong>Satın Alma Geçmişi (Firebase)</strong></td>
                 <td>Satın alma tarihinden 365 gün sonra</td>
-                <td>Bir yıl sonra otomatik olarak silinir</td>
-            </tr>
-            <tr>
-                <td><strong>Geçiş Meta Verileri (Firebase)</strong></td>
-                <td>Son geçişten 365 gün sonra</td>
                 <td>Bir yıl sonra otomatik olarak silinir</td>
             </tr>
             <tr>
@@ -311,17 +299,12 @@
                 <td>«Bulut Verilerini Sil» düğmesi</td>
             </tr>
             <tr>
-                <td>Token Bakiyesi</td>
+                <td>Mevcut Token Kullanımı</td>
                 <td>Firebase (bulut)</td>
-                <td>«Bulut Verilerini Sil» düğmesi</td>
+                <td>«Bulut Verilerini Sil» düğmesi (sadece abonelik iptali sonrası)</td>
             </tr>
             <tr>
                 <td>Satın Alma Geçmişi</td>
-                <td>Firebase (bulut)</td>
-                <td>«Bulut Verilerini Sil» düğmesi</td>
-            </tr>
-            <tr>
-                <td>Geçiş Meta Verileri</td>
                 <td>Firebase (bulut)</td>
                 <td>«Bulut Verilerini Sil» düğmesi</td>
             </tr>
@@ -332,11 +315,6 @@
             </tr>
             <tr>
                 <td>Aylık Token Limiti</td>
-                <td>Firebase (bulut)</td>
-                <td>«Bulut Verilerini Sil» düğmesi (sadece abonelik iptali sonrası)</td>
-            </tr>
-            <tr>
-                <td>Mevcut Token Kullanımı</td>
                 <td>Firebase (bulut)</td>
                 <td>«Bulut Verilerini Sil» düğmesi (sadece abonelik iptali sonrası)</td>
             </tr>
@@ -461,7 +439,7 @@
         <div class="warning">
             <p><strong>Önemli Uyarı:</strong> Bazı verilerin silinmesi <strong>geri alınamaz</strong>. Devam etmeden önce sonuçları anladığınızdan emin olun:</p>
             <ul>
-                <li><strong>Bulut Verilerini Sil:</strong> Token bakiyenizi, satın alma geçmişinizi, abonelik verilerinizi, abonelik geçmişinizi ve etkinlik günlüklerinizi kaybedeceksiniz. Uygulamayı yeniden yükledikten sonra bile onları geri ALAMAZSINIZ. Aktif bir aboneliğiniz varsa, önce Google Play Store üzerinden iptal etmeli ve ödenmiş dönemin sonunu beklemelisiniz.</li>
+                <li><strong>Bulut Verilerini Sil:</strong> Abonelik verilerinizi, satın alma geçmişinizi, abonelik geçmişinizi ve etkinlik günlüklerinizi kaybedeceksiniz. Uygulamayı yeniden yükledikten sonra bile onları geri ALAMAZSINIZ. Aktif bir aboneliğiniz varsa, önce Google Play Store üzerinden iptal etmeli ve ödenmiş dönemin sonunu beklemelisiniz.</li>
                 <li><strong>Öğrenme Verilerini Sil:</strong> Kişiselleştirilmiş metin tahminleri sıfırdan başlayacak</li>
                 <li><strong>Tüm Yerel Verileri Sil:</strong> Tüm tercihler, ayarlar, indirilmiş tahmin modelleri, sözlükler ve önbellek kaybolacak. Uygulama yeni bir kurulum gibi yeniden başlayacak (bulut verileri korunur)</li>
             </ul>
@@ -470,7 +448,7 @@
         <h2>Sıkça Sorulan Sorular</h2>
 
         <h3>Bulut verilerini silersem ne olur?</h3>
-        <p>Token bakiyenizi, satın alma geçmişinizi, aktif abonelik verilerinizi, geçmiş abonelik geçmişinizi ve etkinlik günlüklerinizi kaybedersiniz. Uygulamayı yeniden yüklerseniz, sıfırdan başlarsınız.</p>
+        <p>Abonelik verilerinizi, satın alma geçmişinizi, geçmiş abonelik geçmişinizi ve etkinlik günlüklerinizi kaybedersiniz. Uygulamayı yeniden yüklerseniz, aboneliğiniz Google Play üzerinden yeniden tanınacak ancak geçmiş veriler geri alınamaz.</p>
 
         <h3>Yalnızca belirli verileri silebilir miyim?</h3>
         <p>Evet. Yalnızca bulut verilerini, yalnızca öğrenme verilerini veya tüm yerel verileri silmeyi seçebilirsiniz. Ayrıca silmeden önce verilerinizi JSON formatında dışa aktarabilirsiniz.</p>
@@ -501,7 +479,7 @@
         </p>
 
         <div class="footer">
-            <p><strong>Sürüm 1.3 — Son Güncelleme: 21 Şubat 2026</strong></p>
+            <p><strong>Sürüm 1.4 — Son Güncelleme: 25 Şubat 2026</strong></p>
             <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
             <p>GDPR Uyumlu (AB Yönetmeliği 2016/679)</p>
         </div>
