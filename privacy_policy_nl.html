@@ -758,7 +758,7 @@
         <td><strong>Android ID</strong></td>
         <td>Settings.Secure.ANDROID_ID</td>
         <td>Unieke en stabiele apparaat-ID genereren</td>
-        <td>Blijft zelfs na factory reset bestaan</td>
+        <td>Blijft bestaan bij herinstallaties van de app (zelfde ondertekeningssleutel). <strong>Verandert na een fabrieksreset van het apparaat.</strong></td>
     </tr>
     <tr>
         <td><strong>Install Referrer ID</strong></td>
@@ -773,6 +773,10 @@
         <td>Blijft NIET bestaan (verloren bij deïnstallatie)</td>
     </tr>
 </table>
+
+<div class="important">
+    <strong>⚠️ FABRIEKSRESET:</strong> Na een fabrieksreset van het apparaat wordt de anonieme identificatie (Install ID) opnieuw gegenereerd. Het actieve abonnement wordt automatisch hersteld door Google Play bij de eerste start van de app. Lokale gegevens (voorkeuren, contacttalen, aangeleerde woorden) gaan verloren en zijn niet herstelbaar, tenzij er vóór de reset een back-up is gemaakt.
+</div>
 
 <p><strong>⚠️ PRIVACYOPMERKING:</strong> De Android ID is een unieke apparaat-identifier. kAIboard gebruikt deze ALLEEN om het geanonimiseerde pseudonieme ID te genereren (formaat: "android_[hash]"). De ruwe Android ID wordt NOOIT naar onze servers of derden verzonden.</p>
 

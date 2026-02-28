@@ -758,7 +758,7 @@
         <td><strong>Android ID</strong></td>
         <td>Settings.Secure.ANDROID_ID</td>
         <td>Eindeutige und stabile Geräte-ID generieren</td>
-        <td>Bleibt auch nach Factory Reset erhalten</td>
+        <td>Bleibt bei Neuinstallationen der App bestehen (gleicher Signaturschlüssel). <strong>Ändert sich nach einem Werksreset des Geräts.</strong></td>
     </tr>
     <tr>
         <td><strong>Install Referrer ID</strong></td>
@@ -773,6 +773,10 @@
         <td>Bleibt NICHT erhalten (geht bei Deinstallation verloren)</td>
     </tr>
 </table>
+
+<div class="important">
+    <strong>⚠️ WERKSRESET:</strong> Nach einem Zurücksetzen auf die Werkseinstellungen wird die anonyme Kennung (Install ID) neu generiert. Das aktive Abonnement wird beim ersten Start der App automatisch von Google Play wiederhergestellt. Lokale Daten (Einstellungen, Kontaktsprachen, erlernte Wörter) gehen verloren und sind nicht wiederherstellbar, es sei denn, vor dem Reset wurde ein Backup erstellt.
+</div>
 
 <p><strong>⚠️ DATENSCHUTZHINWEIS:</strong> Die Android ID ist ein eindeutiger Geräte-Identifikator. kAIboard verwendet sie NUR zur Generierung der anonymisierten pseudonymen ID (Format: „android_[hash]"). Die rohe Android ID wird NIEMALS an unsere Server oder Dritte gesendet.</p>
 

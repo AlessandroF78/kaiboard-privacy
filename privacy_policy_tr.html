@@ -757,7 +757,7 @@
         <td><strong>Android ID</strong></td>
         <td>Settings.Secure.ANDROID_ID</td>
         <td>Benzersiz ve kararlı cihaz kimliği oluşturma</td>
-        <td>Fabrika ayarlarına döndürmeden sonra bile devam eder</td>
+        <td>Uygulama yeniden yüklemelerinde kalıcıdır (aynı imza anahtarı). <strong>Cihaz fabrika sıfırlamasından sonra değişir.</strong></td>
     </tr>
     <tr>
         <td><strong>Install Referrer ID</strong></td>
@@ -772,6 +772,10 @@
         <td>Devam ETMİYOR (kaldırmayla kaybolur)</td>
     </tr>
 </table>
+
+<div class="important">
+    <strong>⚠️ FABRİKA SIFIRLAMASI:</strong> Cihaz fabrika sıfırlamasından sonra anonim tanımlayıcı (Install ID) yeniden oluşturulur. Aktif abonelik, uygulamanın ilk başlatılmasında Google Play tarafından otomatik olarak geri yüklenir. Yerel veriler (tercihler, kişi dilleri, öğrenilen kelimeler) kaybolur ve sıfırlama öncesinde yedekleme yapılmadıysa kurtarılamaz.
+</div>
 
 <p><strong>⚠️ GİZLİLİK NOTU:</strong> Android ID, cihazın benzersiz bir tanımlayıcısıdır. kAIboard bunu YALNIZCA anonim takma adlı kimlik oluşturmak için kullanır (format: "android_[hash]"). Ham Android ID sunucularımıza veya üçüncü taraflara ASLA gönderilmez.</p>
 
