@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隐私政策 - kAIboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-bottom: 1px solid #ecf0f1;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #7f8c8d;
+            margin-top: 20px;
+        }
+        h4 {
+            color: #95a5a6;
+            margin-top: 15px;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        .important {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 20px 0;
+        }
+        .info {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border-left: 4px solid #17a2b8;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .contact-box {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin: 10px 0;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>隐私政策 - kAIboard</h1>
+
+<p><strong>最后更新：</strong>2026年3月7日</p>
+<p><strong>版本：</strong>2.5</p>
+
+<h2>1. 数据控制者</h2>
+
+<div class="contact-box">
+    <p><strong>姓名：</strong>Alessandro Faedda</p>
+    <p><strong>电子邮件：</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+    <p><strong>类型：</strong>自然人（独立开发者）</p>
+</div>
+
+<p>Alessandro Faedda 是通过 kAIboard 应用收集的个人数据的数据控制者。</p>
+
+<h2>2. 我们收集哪些数据</h2>
+
+<p>kAIboard 遵循<strong>数据最小化</strong>原则进行设计。我们仅收集应用正常运行所必需的数据。</p>
+
+<h3>2.1 自动收集的数据</h3>
+
+<table>
+    <tr>
+        <th>数据</th>
+        <th>类型</th>
+        <th>目的</th>
+        <th>法律依据</th>
+    </tr>
+    <tr>
+        <td><strong>设备数组</strong></td>
+        <td>标识符列表（例如 ["android_e19d6c...", "android_175be4..."]）</td>
+        <td>在使用相同 Google Play 账户的多台设备间同步订阅和 Token 余额</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
+    </tr>
+    <tr>
+        <td><strong>当前 Token 用量</strong></td>
+        <td>整数 (current_usage)</td>
+        <td>追踪所有设备间的共享月度消耗</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
+    </tr>
+    <tr>
+        <td><strong>购买历史记录</strong></td>
+        <td>产品 ID、购买日期、订单 ID</td>
+        <td>验证购买并防止欺诈</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
+    </tr>
+    <tr>
+        <td><strong>待翻译文本</strong></td>
+        <td>文本内容</td>
+        <td>实时翻译</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
+    </tr>
+</table>
+
+<h4>多设备同步</h4>
+
+<p>如果您在多台设备上使用 kAIboard 并登录<strong>相同的 Google Play 账户</strong>：</p>
+
+<ul>
+    <li>✅ 订阅在所有设备间自动共享</li>
+    <li>✅ Token 余额实时同步</li>
+    <li>✅ 月度限额为共享额度（例如 250,000 个 Token 为总量，而非每台设备的限额）</li>
+    <li>✅ Firebase 监听器同时更新所有设备</li>
+</ul>
+
+<p><strong>多设备保存的数据：</strong></p>
+<ul>
+    <li><strong>devices：</strong>使用同一订阅的匿名 Android ID 数组</li>
+    <li><strong>purchaseToken：</strong>Google Play 订阅的唯一密钥（Firestore 文档 ID）</li>
+    <li><strong>current_usage：</strong>所有设备间的 Token 总消耗量（单一计数器）</li>
+</ul>
+
+<p><strong>隐私说明：</strong><code>devices</code> 数组仅包含经过假名化处理的 Android ID（例如 "android_abc123..."）。我们不收集电话号码、IMEI 或其他个人标识符。</p>
+
+<h3>2.1.1 月度订阅数据</h3>
+
+<p>如果您订阅了<strong>月度订阅</strong>（例如包含 250,000 Token/月的 PLUS 方案），我们会保存以下额外数据：</p>
+
+<table>
+    <tr>
+        <th>数据</th>
+        <th>类型</th>
+        <th>目的</th>
+        <th>法律依据</th>
+    </tr>
+    <tr>
+        <td><strong>订阅方案</strong></td>
+        <td>字符串（例如 "plus"、"pro"、"max"）</td>
+        <td>识别活跃方案并应用正确的 Token 限额</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
+    </tr>
+    <tr>
+        <td><strong>每月 Token 限额</strong></td>
+        <td>整数（例如 250000、500000、1000000）</td>
+        <td>应用订阅包含的最大 Token 上限</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
+    </tr>
+    <tr>
+        <td><strong>当前 Token 用量</strong></td>
+        <td>整数</td>
+        <td>追踪共享的月度消耗并执行限额</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
+    </tr>
+    <tr>
+        <td><strong>每月重置日期</strong></td>
+        <td>ISO 日期（例如 "2026-02-01"）</td>
+        <td>每月自动重置用量</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
+    </tr>
+    <tr>
+        <td><strong>Google Play 产品 ID</strong></td>
+        <td>字符串（例如 "abbonamento_mensile_2500"）</td>
+        <td>通过 Google Play Billing API 验证订阅有效性</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
+    </tr>
+    <tr>
+        <td><strong>自动续订状态</strong></td>
+        <td>布尔值</td>
+        <td>验证订阅是否将自动续订</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
+    </tr>
+    <tr>
+        <td><strong>订阅购买日期</strong></td>
+        <td>时间戳</td>
+        <td>管理计费周期和争议处理</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
+    </tr>
+    <tr>
+        <td><strong>订阅到期日期</strong></td>
+        <td>ISO 8601 时间戳（例如 "2026-02-28T14:30:00Z"）</td>
+        <td>管理取消后的宽限期（订阅在此日期前保持有效）</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
+    </tr>
+    <tr>
+        <td><strong>"不再续订"标记</strong></td>
+        <td>布尔值 (will_not_renew)</td>
+        <td>标识订阅已取消但在到期前仍然有效</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
+    </tr>
+    <tr>
+        <td><strong>取消日期</strong></td>
+        <td>时间戳 (cancelled_at)</td>
+        <td>追踪用户取消订阅的时间</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔄 每月自动重置：</strong>Token 用量计数器会在您的订阅续订日期（自购买之日起每 30 天）自动归零。即使应用处于关闭状态或数周未使用，重置也会通过计划在凌晨 3:00 运行的后台自动任务完成。月度限额无需手动操作即可恢复。
+</div>
+
+<div class="important">
+    <strong>⚠️ 重要提示 - 取消订阅：</strong>如果您取消订阅，与订阅相关的数据将保留至当前计费周期结束（GDPR 第 6.1(b) 条 - 合同履行）。到期后，您可以通过隐私设置界面删除所有云端数据。
+</div>
+
+<h3>2.1.2 宽限期</h3>
+
+<div class="info">
+    <strong>📅 订阅已取消但仍然有效</strong>
+    <p>如果您通过 Google Play 取消订阅，高级服务将<strong>在已付费周期结束前保持有效</strong>。</p>
+
+    <p><strong>示例：</strong></p>
+    <ul>
+        <li>您于 2026 年 1 月 15 日购买 PLUS 订阅</li>
+        <li>您于 2026 年 1 月 20 日取消订阅</li>
+        <li>✅ 高级服务在 2026 年 2 月 15 日前保持有效（已付费）</li>
+        <li>✅ 月度 Token 在到期前均可使用</li>
+        <li>❌ 订阅不会自动续订</li>
+    </ul>
+
+    <p><strong>宽限期内保存的数据：</strong></p>
+    <ul>
+        <li><strong>subscription_end：</strong>您有权享受服务的确切截止日期</li>
+        <li><strong>will_not_renew：</strong>表示"已取消但仍有效"的标记</li>
+        <li><strong>cancelled_at：</strong>取消操作的时间戳</li>
+        <li><strong>monthly_limit：</strong>在到期前保留的 Token 限额</li>
+    </ul>
+
+    <p><strong>宽限期结束时：</strong></p>
+    <ol>
+        <li>高级功能自动停用</li>
+        <li>订阅数据转入历史记录 (user_subscriptions_history)</li>
+        <li>活跃文档 (user_subscriptions) 被删除</li>
+        <li>您可以通过"删除云端数据"删除历史记录</li>
+    </ol>
+</div>
+
+<div class="important">
+    <strong>⚠️ 警告 - 宽限期内重新安装或恢复出厂设置：</strong>
+    <p>如果您在取消订阅后卸载应用或恢复出厂设置，已付费的剩余有效期和当前 Token 余额将<strong>无法恢复</strong>。</p>
+    <p>这是因为重新安装后，应用无法将设备重新关联到已取消的订阅。Google Play 不会恢复已主动取消的订阅，即使仍在有效期内。</p>
+    <p><strong>建议：</strong>在订阅剩余有效期结束之前，请勿卸载应用或恢复出厂设置。</p>
+</div>
+
+<h3>2.1.3 订阅历史记录</h3>
+
+<p>当订阅到期或被删除时，我们会将数据转移到历史记录文档中，以符合 GDPR 合规和审计要求。</p>
+
+<table>
+    <tr>
+        <th>数据</th>
+        <th>类型</th>
+        <th>目的</th>
+        <th>保留期限</th>
+    </tr>
+    <tr>
+        <td><strong>订阅历史记录</strong></td>
+        <td>user_subscriptions_history/{purchaseToken} 中的对象数组</td>
+        <td>购买可追溯性、审计轨迹、GDPR 合规</td>
+        <td>到期后 90 天</td>
+    </tr>
+    <tr>
+        <td><strong>每条记录的数据</strong></td>
+        <td>方案、已用/限额 Token、开始/结束/取消日期、取消原因、设备</td>
+        <td>审计、用户支持、退款管理</td>
+        <td>到期后 90 天</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🔒 多设备合并：</strong>历史记录按 <strong>purchaseToken</strong> 合并，而非按设备合并。同一订阅的所有续订和修改都归入单一文档，与使用的设备数量无关。
+</div>
+
+<div class="important">
+    <strong>⚠️ 删除历史记录：</strong>您可以随时通过"删除云端数据"删除历史记录。删除是永久性的，包括：
+    <ul>
+        <li>✅ 活跃文档 (user_subscriptions/{purchaseToken})</li>
+        <li>✅ 历史记录文档 (user_subscriptions_history/{purchaseToken})</li>
+        <li>✅ 管理操作日志 (admin_activity_logs/{device_id})</li>
+        <li>✅ GDPR 合规：通过 purchaseToken 搜索，以 devices 数组为备选</li>
+    </ul>
+</div>
+
+<h3>2.1.4 管理操作日志</h3>
+
+<p>为确保可追溯性并在争议情况下提供支持，我们保存与订阅相关的主要操作记录。</p>
+
+<table>
+    <tr>
+        <th>数据</th>
+        <th>类型</th>
+        <th>目的</th>
+        <th>保留期限</th>
+    </tr>
+    <tr>
+        <td><strong>管理操作日志</strong></td>
+        <td>admin_activity_logs/{device_id} 中的事件数组</td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>用户支持的审计轨迹</li>
+                <li>Google Play 争议解决（60 天内）</li>
+                <li>防欺诈和计费争议处理</li>
+                <li>宽限期和自动续订管理</li>
+            </ul>
+        </td>
+        <td>最后修改后 90 天</td>
+    </tr>
+    <tr>
+        <td><strong>记录的事件</strong></td>
+        <td>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>订阅购买</li>
+                <li>订阅取消</li>
+                <li>订阅到期</li>
+                <li>自动续订</li>
+                <li>方案变更</li>
+            </ul>
+        </td>
+        <td>追踪修改历史以供审计和支持</td>
+        <td>最后修改后 90 天</td>
+    </tr>
+    <tr>
+        <td><strong>每个事件的详细信息</strong></td>
+        <td>时间戳、操作、原因、方案、操作详情</td>
+        <td>在争议情况下重建事件时间线所需的信息</td>
+        <td>最后修改后 90 天</td>
+    </tr>
+</table>
+
+<div class="important">
+    <strong>⚠️ 重要提示 - 操作日志：</strong>操作日志仅包含运营元数据（何时、何事、为何）。不包含任何敏感个人数据。日志在最后修改后 90 天自动删除，可通过"删除云端数据"访问和删除。
+</div>
+
+<div class="highlight">
+    <strong>🔒 法律依据：</strong>合法利益（GDPR 第 6.1(f) 条）——必要用于：
+    <ul>
+        <li>60 天内的争议管理（Google Play 要求）</li>
+        <li>技术支持和问题解决</li>
+        <li>计费系统的防欺诈</li>
+        <li>运营合规的审计轨迹</li>
+    </ul>
+    <p>对用户权利的影响已最小化，因为：</p>
+    <ul>
+        <li>✅ 数据经过假名化处理（无直接个人标识符）</li>
+        <li>✅ 保留期限限定为 90 天</li>
+        <li>✅ 通过后台清理任务每 24 小时自动删除</li>
+        <li>✅ 可通过"删除云端数据"手动删除</li>
+    </ul>
+</div>
+
+<h3>2.2 仅存储在本地的数据（设备上）</h3>
+
+<p>以下数据<strong>绝不会发送到外部服务器</strong>：</p>
+
+<ul>
+    <li>✅ <strong>应用偏好和设置</strong></li>
+    <li>✅ <strong>每位联系人的语言分配</strong>（联系人 ID + 语言代码）</li>
+    <li>✅ <strong>输入的词汇</strong>，用于个性化建议（最多保留 14 天，之后自动删除）</li>
+    <li>✅ <strong>翻译缓存</strong>（仅存于内存，关闭应用后清除）</li>
+    <li>✅ <strong>联系人消歧缓存</strong>（仅存于内存，服务重启后清除）</li>
+    <li>✅ <strong>N-gram 预测模型</strong>（用户下载，本地保存）</li>
+    <li>✅ <strong>Hunspell 词典</strong>（从 assets 复制，本地保存）</li>
+    <li>✅ <strong>订阅提醒</strong>（关于使用量的本地通知）</li>
+</ul>
+
+<div class="highlight">
+    <strong>📌 性能缓存：</strong>为避免在切换对话时出现延迟，kAIboard 会记录您与最常联系人（约 25-30 位）使用的语言。此缓存保留在您的设备上，占用空间不到 1 MB。缓存保留至卸载应用或通过"删除所有本地数据"按钮手动删除。这种较长的保留时间是为了确保流畅的使用体验，避免每次切换聊天时出现 1-3 秒的延迟。
+</div>
+
+<div class="important">
+    <strong>⚠️ 重要提示：</strong>kAIboard 访问您的通讯录仅用于在语言管理界面中显示联系人姓名，以及通过电话号码的国际区号确定语言。<strong>电话号码和联系人姓名绝不会发送到我们的服务器。</strong>
+</div>
+
+<h3>2.3 我们不收集的数据</h3>
+
+<p>kAIboard <strong>不收集</strong>：</p>
+
+<ul>
+    <li>❌ 消息历史记录</li>
+    <li>❌ 聊天的完整内容</li>
+    <li>❌ 电话号码</li>
+    <li>❌ 联系人的电子邮件地址</li>
+    <li>❌ 精确地理位置</li>
+    <li>❌ 生物识别数据</li>
+    <li>❌ 广告标识符</li>
+</ul>
+
+<h2>3. 我们如何使用您的数据</h2>
+
+<h3>3.1 实时翻译</h3>
+
+<p>当您使用翻译功能时：</p>
+
+<ol>
+    <li>您输入的文本被发送至我们的 Cloudflare Worker 服务器（安全中转）</li>
+    <li>Worker 将文本转发至 OpenAI 进行翻译</li>
+    <li>翻译结果返回至应用</li>
+    <li><strong>⚠️ 重要提示：文本绝不会保存在我们的服务器或 OpenAI 上</strong>（仅在内存中中转）</li>
+</ol>
+
+<h3>3.2 备份与订阅同步</h3>
+
+<p>订阅数据保存在 Firebase（Google Cloud）上，以便您：</p>
+
+<ul>
+    <li>✅ 在使用相同 Google Play 账户的所有设备上使用订阅</li>
+    <li>✅ 在所有设备间实时同步 Token 消耗</li>
+    <li>✅ 重新安装应用后恢复订阅（仅在订阅处于活跃状态且自动续订时）</li>
+    <li>✅ 更换手机后保留您的余额</li>
+</ul>
+
+<div class="important">
+    <strong>⚠️ Google 账户要求：</strong>多设备订阅同步仅在所有设备使用购买时的同一 Google Play 账户时有效。此限制由 Google Play Billing API 出于安全和防欺诈目的施加。如果您更换 Google 账户，需要在新账户上重新购买订阅。
+</div>
+
+<h3>3.3 订阅防欺诈保护</h3>
+
+<div class="info">
+    <strong>🔒 防欺诈保护的工作原理</strong>
+    <p>kAIboard 使用基于<strong>共享计数器</strong>的保护系统，确保所有设备间的 Token 消耗完整性。</p>
+</div>
+
+<h4>工作原理：</h4>
+
+<p>每个订阅关联到一个<strong>唯一的 Firestore 文档</strong>，以 Google Play 的 <code>purchaseToken</code> 为标识。使用相同 Google 账户的所有设备对同一文档进行读写，确保共享且唯一的用量计数器。</p>
+
+<h4>实际运行方式：</h4>
+
+<ol>
+    <li><strong>设备 A</strong> 购买 PLUS 订阅（250,000 Token/月）→ 创建 Firestore 文档 ✅</li>
+    <li><strong>设备 B</strong>（相同 Google Play 账户）打开应用 → 检测到相同订阅，连接至同一文档 ✅</li>
+    <li><strong>设备 A</strong> 使用 1,000 个 Token → Firestore 上的 <code>current_usage</code> 变为 1,000</li>
+    <li><strong>设备 B</strong> 实时接收更新 → 显示 249,000 个可用 Token ✅</li>
+    <li>两台设备可同时保持活跃，无需使任何设备失效 ✅</li>
+</ol>
+
+<h4>安全性保障：</h4>
+
+<ul>
+    <li>✅ <strong>唯一计数器：</strong>每个订阅仅存在一个 <code>current_usage</code> 值，无法复制</li>
+    <li>✅ <strong>实时同步：</strong>每次消耗立即写入 Firestore 并通过监听器传播至所有设备</li>
+    <li>✅ <strong>由 Google Play 管理有效性：</strong>订阅有效性通过 Google Play Billing API 验证，用户无法修改</li>
+    <li>✅ <strong>唯一的 purchaseToken：</strong>Google Play 为每次购买分配不可变的 Token，用作 Firestore 文档的键</li>
+</ul>
+
+<p><strong>防欺诈保护保存的数据：</strong></p>
+
+<ul>
+    <li><strong>purchaseToken：</strong>订阅的唯一密钥（Firestore 文档 ID）</li>
+    <li><strong>devices：</strong>使用过该订阅的假名化 Android ID 数组</li>
+    <li><strong>current_usage：</strong>当月已消耗 Token 的共享计数器</li>
+    <li><strong>monthly_limit：</strong>所订阅方案的最大 Token 限额</li>
+</ul>
+
+<p><strong>法律依据：</strong>合同履行（GDPR 第 6.1(b) 条）——共享计数器是所购订阅服务的组成部分，是在所有设备上正确执行月度限额所必需的。</p>
+
+<div class="highlight">
+    <strong>💡 备注：</strong>与其他将使用限制在单台设备上的系统不同，kAIboard 允许您使用相同的 Google Play 账户在<strong>所有设备</strong>上同时使用订阅。唯一的限制是您的方案所规定的每月总消耗量。
+</div>
+
+<h3>3.4 购买验证</h3>
+
+<p>购买历史记录用于：</p>
+
+<ul>
+    <li>✅ 验证应用内购买的有效性</li>
+    <li>✅ 防止欺诈和滥用</li>
+    <li>✅ 管理 Google Play 的退款和争议</li>
+</ul>
+
+<h2>4. 我们将数据发送到哪里</h2>
+
+<h3>4.1 第三方服务</h3>
+
+<table>
+    <tr>
+        <th>服务</th>
+        <th>发送的数据</th>
+        <th>目的</th>
+        <th>服务器位置</th>
+    </tr>
+    <tr>
+        <td><strong>Firebase (Google)</strong></td>
+        <td>匿名 ID、Token 余额、购买历史记录、订阅数据、操作日志</td>
+        <td>备份、同步、审计轨迹</td>
+        <td>欧盟（欧洲服务器）</td>
+    </tr>
+    <tr>
+        <td><strong>Cloudflare Worker</strong></td>
+        <td>待翻译文本（仅中转）</td>
+        <td>翻译的安全中转</td>
+        <td>欧盟（欧洲服务器）</td>
+    </tr>
+    <tr>
+        <td><strong>OpenAI</strong></td>
+        <td>待翻译文本（仅中转）</td>
+        <td>翻译处理</td>
+        <td>美国（使用标准合同条款）</td>
+    </tr>
+    <tr>
+        <td><strong>Google Play Billing</strong></td>
+        <td>订单 ID、购买的产品</td>
+        <td>应用内购买管理</td>
+        <td>欧盟（Google 服务器）</td>
+    </tr>
+</table>
+
+<h3>4.2 欧盟境外传输</h3>
+
+<p>待翻译文本被发送至 OpenAI（美国）进行处理。传输基于：</p>
+
+<ul>
+    <li>✅ 经欧盟委员会批准的标准合同条款 (SCC)</li>
+    <li>✅ OpenAI 公开的隐私政策声明不将 API 数据用于模型训练</li>
+    <li>✅ 临时中转：文本不会被保存（存储时间为 0 秒）</li>
+</ul>
+
+<p><strong>⚠️ 重要提示：</strong>kAIboard 通过 API 使用 OpenAI 作为翻译服务提供商。尽管 OpenAI 公开声明不将 API 数据用于训练，但我们与 OpenAI 之间没有正式的数据处理协议 (DPA)。建议您避免翻译高度敏感的信息（健康、财务、法律数据）。</p>
+
+<p><strong>参考链接：</strong></p>
+<ul>
+    <li><a href="https://openai.com/privacy" target="_blank">OpenAI 隐私政策</a></li>
+    <li><a href="https://openai.com/enterprise-privacy" target="_blank">OpenAI API 数据使用政策</a></li>
+    <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Cloudflare 隐私政策</a></li>
+</ul>
+
+<h2>5. 我们保留数据多长时间</h2>
+
+<h3>5.1 自动保留政策</h3>
+
+<table>
+    <tr>
+        <th>数据类型</th>
+        <th>保留期限</th>
+        <th>删除方式</th>
+    </tr>
+    <tr>
+        <td><strong>活跃订阅数据 (Firebase)</strong></td>
+        <td>直到当前计费周期结束</td>
+        <td>订阅到期后自动删除 + 转入历史记录</td>
+    </tr>
+    <tr>
+        <td><strong>订阅历史记录 (Firebase)</strong></td>
+        <td>订阅到期后 90 天</td>
+        <td>自动删除 + 通过"删除云端数据"手动删除</td>
+    </tr>
+    <tr>
+        <td><strong>操作日志 (admin_activity_logs)</strong></td>
+        <td>最后修改后 90 天</td>
+        <td>自动删除（每 24 小时）+ 手动删除</td>
+    </tr>
+    <tr>
+        <td><strong>购买历史记录 (Firebase)</strong></td>
+        <td>购买后 365 天</td>
+        <td>自动删除 + 手动删除</td>
+    </tr>
+    <tr>
+        <td><strong>本地数据（设备）</strong></td>
+        <td>直到卸载</td>
+        <td>卸载应用 + 手动删除</td>
+    </tr>
+    <tr>
+        <td><strong>联系人-语言缓存（设备）</strong></td>
+        <td>直到手动删除或卸载</td>
+        <td>"删除所有本地数据"按钮</td>
+    </tr>
+    <tr>
+        <td><strong>N-gram 预测模型（设备）</strong></td>
+        <td>直到手动删除或卸载</td>
+        <td>"删除所有本地数据"按钮或从离线模型界面移除</td>
+    </tr>
+    <tr>
+        <td><strong>Hunspell 词典（设备）</strong></td>
+        <td>直到手动删除或卸载</td>
+        <td>"删除所有本地数据"按钮</td>
+    </tr>
+    <tr>
+        <td><strong>已学习的词汇（预测输入）</strong></td>
+        <td>14 天（自动衰减）</td>
+        <td>自动删除 + 手动删除</td>
+    </tr>
+    <tr>
+        <td><strong>翻译文本</strong></td>
+        <td>0 秒（从不保存）</td>
+        <td>自动（仅在内存中中转）</td>
+    </tr>
+    <tr>
+        <td><strong>翻译缓存 (RAM)</strong></td>
+        <td>直到关闭应用</td>
+        <td>自动</td>
+    </tr>
+    <tr>
+        <td><strong>消歧缓存 (RAM)</strong></td>
+        <td>直到无障碍服务重启</td>
+        <td>自动</td>
+    </tr>
+</table>
+
+<div class="highlight">
+    <strong>🗑️ 自动清理：</strong>应用每 24 小时自动执行一次清理。超过指定保留期限的数据将自动删除，即使您不再使用该应用。
+</div>
+
+<h2>6. 您的权利 (GDPR)</h2>
+
+<p>根据 GDPR，您享有以下权利：</p>
+
+<h3>6.1 访问权（GDPR 第 15 条）</h3>
+<p>您可以请求获取我们保留的关于您的所有数据的副本。订阅数据可直接在应用内查看。</p>
+
+<h3>6.2 更正权（GDPR 第 16 条）</h3>
+<p>您可以更正不准确或不完整的数据，例如修改联系人关联的语言。</p>
+
+<h3>6.3 删除权（GDPR 第 17 条）</h3>
+<p>您可以随时通过应用内的<strong>隐私设置</strong>界面删除所有数据：</p>
+
+<ul>
+    <li>✅ <strong>删除云端数据</strong>：从 Firebase 移除订阅数据、订阅历史记录、购买历史记录和操作日志</li>
+    <li>✅ <strong>删除学习数据</strong>：移除用于输入建议的已学习词汇（全部 13 种语言）</li>
+    <li>✅ <strong>删除所有本地数据</strong>：移除设备上的所有偏好设置、数据、已下载的模型、词典和缓存</li>
+</ul>
+
+<div class="important">
+    <strong>⚠️ 活跃订阅期间的删除限制（GDPR 第 17.3(b) 条）：</strong>
+    <p>如果您有<strong>活跃的月度订阅</strong>，云端数据的删除将<strong>暂时被阻止</strong>，直到您取消订阅。</p>
+
+    <p><strong>原因：</strong>与订阅相关的数据（活跃方案、Token 限额、重置日期）是履行现有合同所必需的（GDPR 第 6.1(b) 条）。提前删除将导致：</p>
+    <ul>
+        <li>❌ 已购买的月度服务无法正常运行</li>
+        <li>❌ Token 限额无法在多台设备间同步</li>
+        <li>❌ Token 无法在月初自动重置</li>
+    </ul>
+
+    <p><strong>操作步骤：</strong></p>
+    <ol>
+        <li>通过 Google Play 商店取消订阅</li>
+        <li>等待当前计费周期结束</li>
+        <li>通过应用删除云端数据</li>
+    </ol>
+
+    <p><strong>立即取消：</strong>应用会自动跳转到 Google Play 以管理您的订阅。取消后，数据删除功能将立即可用。</p>
+
+    <p><strong>宽限期内删除：</strong>取消订阅后，即使在已付费的剩余有效期（宽限期）内，您也可以随时删除云端数据。删除立即生效，意味着您<strong>永久放弃</strong>剩余有效期和当前 Token 余额。此操作不可撤销。</p>
+
+    <p><strong>阻止删除的法律依据：</strong>GDPR 第 17.3(b) 条——"在数据处理对于履行数据主体所参与的合同是必要的情况下，删除权不适用"。</p>
+</div>
+
+<h3>6.4 数据可携权（GDPR 第 20 条）</h3>
+<p>您可以通过隐私设置界面中的<strong>"导出您的数据 (JSON)"</strong>按钮，将数据导出为机器可读的 JSON 格式。文件包括本地数据（偏好设置、学习数据）和云端数据（订阅、历史记录、操作日志）。</p>
+
+<h3>6.5 反对权（GDPR 第 21 条）</h3>
+<p>您可以基于正当理由反对数据处理。您可以随时停用翻译功能、关闭崩溃报告以及撤销通讯录访问权限。</p>
+
+<h3>6.6 投诉权</h3>
+<p>您可以向有管辖权的监管机构提出投诉：</p>
+
+<ul>
+    <li><strong>德国：</strong>联邦数据保护和信息自由专员 (BfDI) - <a href="https://www.bfdi.bund.de">www.bfdi.bund.de</a></li>
+    <li><strong>意大利：</strong>个人数据保护局 - <a href="https://www.garanteprivacy.it">www.garanteprivacy.it</a></li>
+</ul>
+
+<h2>7. 如何行使您的权利</h2>
+
+<h3>7.1 通过应用（立即生效）</h3>
+
+<p><strong>路径：</strong>设置 → 隐私与安全</p>
+
+<ol>
+    <li><strong>导出您的数据 (JSON)</strong>：以机器可读格式完整导出本地和云端数据（第 15 条 + 第 20 条）</li>
+    <li><strong>删除云端数据</strong>：订阅数据 + 订阅历史记录 + 购买历史记录 + 操作日志（不可撤销 - 如有活跃订阅需先取消）</li>
+    <li><strong>删除学习数据</strong>：已学习的词汇（13 种语言）</li>
+    <li><strong>删除所有本地数据</strong>：所有偏好设置、已下载的模型、词典、缓存（应用重启）</li>
+</ol>
+
+<h3>7.2 通过电子邮件请求</h3>
+
+<p>如需行使其他权利，请发送邮件至：<a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+
+<p>我们将在收到请求后 <strong>30 天</strong>内回复（GDPR 第 12 条）。</p>
+
+<h2>8. 数据安全</h2>
+
+<p>我们实施技术和组织措施来保护您的数据：</p>
+
+<ul>
+    <li>🔒 <strong>传输加密</strong>：所有通信使用 HTTPS/TLS 1.3</li>
+    <li>🔒 <strong>静态加密</strong>：Firebase 使用 AES-256 加密</li>
+    <li>🔒 <strong>本地数据库加密</strong>：学习数据库通过 Android Keystore 硬件支持的 AES-256 加密</li>
+    <li>🔒 <strong>Firebase 安全规则</strong>：仅限数据所有者访问（默认拒绝）</li>
+    <li>🔒 <strong>假名化 ID</strong>：无直接个人数据（姓名、电子邮件、电话）</li>
+    <li>🔒 <strong>数据最小化</strong>：仅收集绝对必要的数据</li>
+    <li>🔒 <strong>自动删除</strong>：数据在规定的保留期限（90-365 天）后自动删除</li>
+    <li>🔒 <strong>API 密钥保护</strong>：OpenAI API 密钥从不暴露在客户端，以密钥形式保存在 Cloudflare 中转服务器中</li>
+</ul>
+
+<h2>9. 设备标识符与 Android 权限</h2>
+
+<h3>9.1 使用的设备标识符</h3>
+
+<p>kAIboard 使用以下标识符生成匿名设备 ID：</p>
+
+<table>
+    <tr>
+        <th>标识符</th>
+        <th>类型</th>
+        <th>目的</th>
+        <th>持久性</th>
+    </tr>
+    <tr>
+        <td><strong>Android ID</strong></td>
+        <td>Settings.Secure.ANDROID_ID</td>
+        <td>生成唯一且稳定的设备 ID</td>
+        <td>在应用重新安装间保持不变（相同签名密钥）。<strong>恢复出厂设置后会改变。</strong></td>
+    </tr>
+    <tr>
+        <td><strong>Install Referrer ID</strong></td>
+        <td>Google Play Install Referrer API</td>
+        <td>Android ID 不可用时的备选方案</td>
+        <td>在重新安装间保持不变（如从 Play 商店安装）</td>
+    </tr>
+    <tr>
+        <td><strong>本地 UUID</strong></td>
+        <td>java.util.UUID</td>
+        <td>最终备选方案（仅用于侧载安装）</td>
+        <td>不持久（卸载后丢失）</td>
+    </tr>
+</table>
+
+<div class="important">
+    <strong>⚠️ 恢复出厂设置：</strong>恢复出厂设置后，匿名标识符 (Install ID) 将被重新生成。活跃订阅将在首次启动应用时由 Google Play 自动恢复。本地数据（偏好设置、联系人语言、已学习词汇）将丢失且无法恢复，除非在重置前进行了备份。
+</div>
+
+<p><strong>⚠️ 隐私说明：</strong>Android ID 是设备的唯一标识符。kAIboard 仅用它来生成假名化的匿名 ID（格式："android_[hash]"）。原始 Android ID 绝不会发送到我们的服务器或第三方。</p>
+
+<h3>9.2 应用权限</h3>
+
+<table>
+    <tr>
+        <th>权限</th>
+        <th>目的</th>
+        <th>是否必需</th>
+    </tr>
+    <tr>
+        <td><strong>通讯录</strong></td>
+        <td>为每位联系人分配语言以自动切换键盘</td>
+        <td>❌ 否（可选）</td>
+    </tr>
+    <tr>
+        <td><strong>无障碍服务</strong></td>
+        <td>检测当前活跃的聊天应用以自动切换语言</td>
+        <td>❌ 否（可选）</td>
+    </tr>
+    <tr>
+        <td><strong>通知</strong></td>
+        <td>在锁屏快捷回复中使用正确语言</td>
+        <td>❌ 否（可选）</td>
+    </tr>
+    <tr>
+        <td><strong>麦克风</strong></td>
+        <td>语音输入（仅在按下麦克风按钮时录音）</td>
+        <td>❌ 否（可选）</td>
+    </tr>
+    <tr>
+        <td><strong>互联网</strong></td>
+        <td>实时翻译和云端备份</td>
+        <td>✅ 是（翻译功能需要）</td>
+    </tr>
+</table>
+
+<div class="important">
+    <strong>⚠️ 安全说明：</strong>Android 系统对所有第三方键盘显示的安全警告是标准提示，并不意味着 kAIboard 会读取或保存您的消息。您可以查阅源代码或联系我们获取更多信息。
+</div>
+
+<h2>10. 崩溃报告（可选）</h2>
+
+<p>kAIboard 可以向 Firebase Crashlytics 发送匿名崩溃报告，但<strong>仅在您明确开启此选项后</strong>才会发送。</p>
+
+<h3>崩溃报告包含的内容：</h3>
+
+<ul>
+    <li>✅ 堆栈跟踪（代码中的错误路径）</li>
+    <li>✅ 应用版本和操作系统版本</li>
+    <li>✅ 设备型号</li>
+    <li>✅ 运行时信息（内存、CPU）</li>
+</ul>
+
+<h3>崩溃报告不包含的内容：</h3>
+
+<ul>
+    <li>❌ 输入的文本</li>
+    <li>❌ 聊天内容</li>
+    <li>❌ 联系人姓名</li>
+    <li>❌ 消息</li>
+</ul>
+
+<p><strong>法律依据：</strong>明确同意（GDPR 第 6.1(a) 条）</p>
+
+<p><strong>如何关闭：</strong>设置 → 崩溃报告（可选）→ 关闭。关闭后将停止未来的发送，并删除设备上尚未发送的报告。已发送至 Firebase 的报告保留在后端，无法从手机上删除。</p>
+
+<h2>11. 未成年人</h2>
+
+<p>kAIboard 不面向 13 岁以下的儿童。我们不会有意收集未成年人的数据。如果您是家长并发现您的孩子提供了数据，请联系我们进行删除。</p>
+
+<h2>12. 隐私政策变更</h2>
+
+<p>我们可能会不定期更新本隐私政策。如有重大变更，我们将通过以下方式通知您：</p>
+
+<ul>
+    <li>📧 电子邮件（如已提供）</li>
+    <li>📱 应用内通知</li>
+    <li>🌐 更新本文档顶部的日期</li>
+</ul>
+
+<p>变更后继续使用应用即表示接受新的隐私政策。</p>
+
+<h2>13. 数据处理的法律依据</h2>
+
+<p>我们处理您的数据基于以下法律依据：</p>
+
+<ul>
+    <li><strong>GDPR 第 6.1(b) 条</strong> - 合同履行：订阅管理、多设备同步、共享 Token 计数器、购买历史记录、翻译</li>
+    <li><strong>GDPR 第 6.1(a) 条</strong> - 同意：崩溃报告（可选）</li>
+    <li><strong>GDPR 第 6.1(f) 条</strong> - 合法利益：
+        <ul>
+            <li>购买安全</li>
+            <li>保护计费系统免受滥用</li>
+            <li>管理操作日志（审计轨迹）</li>
+        </ul>
+    </li>
+</ul>
+
+<div class="info">
+    <strong>📋 合法利益评估（GDPR 第 6.1(f) 条）：</strong>
+    <p>管理操作日志的必要性在于：</p>
+    <ul>
+        <li>✅ 60 天内的争议管理（Google Play 要求）</li>
+        <li>✅ 技术支持和问题解决</li>
+        <li>✅ 计费系统的防欺诈</li>
+    </ul>
+    <p>对用户权利的影响已最小化，因为：</p>
+    <ul>
+        <li>✅ 用户可通过"删除云端数据"删除日志</li>
+        <li>✅ 系统仅使用假名化数据（无直接个人数据）</li>
+        <li>✅ 逻辑透明并在本隐私政策中有完整记录</li>
+        <li>✅ 保留期限限定为 90 天，到期自动删除</li>
+    </ul>
+</div>
+
+<h2>14. 联系方式</h2>
+
+<div class="contact-box">
+    <p>如有任何问题、GDPR 请求或反馈：</p>
+    <p><strong>电子邮件：</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+    <p><strong>响应时间：</strong>30 天内（GDPR 第 12 条）</p>
+    <p style="margin-top: 10px;"><a href="https://alessandrof78.github.io/kaiboard-privacy/">🌐 其他语言的隐私政策</a></p>
+</div>
+
+<p style="text-align: center; color: #7f8c8d; margin-top: 50px;">
+    <strong>版本 2.5 - 最后更新：2026年3月7日</strong><br>
+    © 2026 Alessandro Faedda - kAIboard
+</p>
+
+</body>
+</html>
