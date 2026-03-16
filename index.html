@@ -10,131 +10,195 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 20px;
         }
+
         .container {
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 800px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
             width: 100%;
-            padding: 50px;
             text-align: center;
         }
-        h1 {
-            color: #2c3e50;
-            font-size: 2.5em;
+
+        .logo {
+            font-size: 48px;
             margin-bottom: 10px;
         }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
         .subtitle {
             color: #7f8c8d;
-            font-size: 1.2em;
+            font-size: 18px;
             margin-bottom: 40px;
         }
+
         .language-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 15px;
-            margin-top: 30px;
+            margin-bottom: 40px;
         }
-        .language-button {
+
+        .lang-button {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            padding: 20px;
+            padding: 18px 15px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-decoration: none;
-            border-radius: 10px;
-            font-size: 1.1em;
+            border-radius: 12px;
             font-weight: 600;
+            font-size: 15px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
-        .language-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+
+        .lang-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
         }
+
         .flag {
-            font-size: 1.5em;
+            font-size: 24px;
         }
+
         .footer {
-            margin-top: 50px;
-            color: #95a5a6;
-            font-size: 0.9em;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #ecf0f1;
+            color: #7f8c8d;
+            font-size: 14px;
         }
+
         .footer a {
-            color: #667eea;
+            color: #3498db;
             text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .language-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🔐 kAIboard</h1>
+        <div class="logo">🔐</div>
+        <h1>kAIboard</h1>
         <p class="subtitle">Privacy Policy - Select your language</p>
-        
+
         <div class="language-grid">
-            <a href="privacy_policy_en.html" class="language-button">
-                <span class="flag">🇬🇧</span> English
+            <a href="privacy_policy_en.html" class="lang-button">
+                <span class="flag">🇬🇧</span>
+                <span>English</span>
             </a>
-            <a href="privacy_policy_de.html" class="language-button">
-                <span class="flag">🇩🇪</span> Deutsch
+
+            <a href="privacy_policy_de.html" class="lang-button">
+                <span class="flag">🇩🇪</span>
+                <span>Deutsch</span>
             </a>
-            <a href="privacy_policy_it.html" class="language-button">
-                <span class="flag">🇮🇹</span> Italiano
+
+            <a href="privacy_policy_it.html" class="lang-button">
+                <span class="flag">🇮🇹</span>
+                <span>Italiano</span>
             </a>
-            <a href="privacy_policy_es.html" class="language-button">
-                <span class="flag">🇪🇸</span> Español
+
+            <a href="privacy_policy_es.html" class="lang-button">
+                <span class="flag">🇪🇸</span>
+                <span>Español</span>
             </a>
-            <a href="privacy_policy_fr.html" class="language-button">
-                <span class="flag">🇫🇷</span> Français
+
+            <a href="privacy_policy_fr.html" class="lang-button">
+                <span class="flag">🇫🇷</span>
+                <span>Français</span>
             </a>
-            <a href="privacy_policy_pt.html" class="language-button">
-                <span class="flag">🇵🇹</span> Português
+
+            <a href="privacy_policy_pt.html" class="lang-button">
+                <span class="flag">🇵🇹</span>
+                <span>Português</span>
             </a>
-            <a href="privacy_policy_nl.html" class="language-button">
-                <span class="flag">🇳🇱</span> Nederlands
+
+            <a href="privacy_policy_nl.html" class="lang-button">
+                <span class="flag">🇳🇱</span>
+                <span>Nederlands</span>
             </a>
-            <a href="privacy_policy_pl.html" class="language-button">
-                <span class="flag">🇵🇱</span> Polski
+
+            <a href="privacy_policy_pl.html" class="lang-button">
+                <span class="flag">🇵🇱</span>
+                <span>Polski</span>
             </a>
-            <a href="privacy_policy_el.html" class="language-button">
-                <span class="flag">🇬🇷</span> Ελληνικά
+
+            <a href="privacy_policy_el.html" class="lang-button">
+                <span class="flag">🇬🇷</span>
+                <span>Ελληνικά</span>
             </a>
-            <a href="privacy_policy_tr.html" class="language-button">
-                <span class="flag">🇹🇷</span> Türkçe
+
+            <a href="privacy_policy_tr.html" class="lang-button">
+                <span class="flag">🇹🇷</span>
+                <span>Türkçe</span>
             </a>
-            <a href="privacy_policy_ka.html" class="language-button">
-                <span class="flag">🇬🇪</span> ქართული
+
+            <a href="privacy_policy_ka.html" class="lang-button">
+                <span class="flag">🇬🇪</span>
+                <span>ქართული</span>
             </a>
-            <a href="privacy_policy_ru.html" class="language-button">
-                <span class="flag">🇷🇺</span> Русский
+
+            <a href="privacy_policy_ru.html" class="lang-button">
+                <span class="flag">🇷🇺</span>
+                <span>Русский</span>
             </a>
-            <a href="privacy_policy_uk.html" class="language-button">
-                <span class="flag">🇺🇦</span> Українська
+
+            <a href="privacy_policy_uk.html" class="lang-button">
+                <span class="flag">🇺🇦</span>
+                <span>Українська</span>
             </a>
-            <a href="privacy_policy_zh.html" class="language-button">
-                <span class="flag">🇨🇳</span> 中文
+
+            <a href="privacy_policy_zh.html" class="lang-button">
+                <span class="flag">🇨🇳</span>
+                <span>中文</span>
             </a>
         </div>
-        
+
         <div class="footer">
-    <p><strong>Version 2.5</strong> - Last updated: March 7, 2026</p>
-    <p>© 2026 Alessandro Faedda - kAIboard</p>
-    <p>
-        🌐 <a href="https://www.kaiboard.eu" target="_blank">www.kaiboard.eu</a> | 
-        📧 <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a>
-    </p>
-</div>
+            <p><strong>Version 2.5</strong> - Last updated: March 7, 2026</p>
+            <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
+            <p>
+                <a href="https://www.kaiboard.eu" target="_blank">www.kaiboard.eu</a> | 
+                <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a>
+            </p>
+        </div>
     </div>
 </body>
 </html>
