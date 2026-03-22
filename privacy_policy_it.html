@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -85,6 +85,21 @@
         ol li {
             margin: 10px 0;
         }
+
+        /* ── MOBILE RESPONSIVE FIX ── */
+        html, body { overflow-x: hidden; }
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+        }
+        table { margin: 0; }
+        th, td { word-break: break-word; min-width: 80px; }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            .container { padding: 20px; }
+            th, td { padding: 8px; font-size: 13px; }
+        }
     </style>
 </head>
 <body>
@@ -110,7 +125,7 @@
 
 <h3>2.1 Dati Raccolti Automaticamente</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Dato</th>
         <th>Tipo</th>
@@ -141,7 +156,7 @@
         <td>Traduzione in tempo reale</td>
         <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
-</table>
+</table></div>
 
 <h4>Sincronizzazione Multi-Device</h4>
 
@@ -167,7 +182,7 @@
 
 <p>Se sottoscrivi un <strong>abbonamento mensile</strong> (es. Piano PLUS con 250.000 token/mese), salviamo i seguenti dati aggiuntivi:</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Dato</th>
         <th>Tipo</th>
@@ -234,7 +249,7 @@
         <td>Tracciare quando l'utente ha annullato l'abbonamento</td>
         <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
-</table>
+</table></div>
 
 <div class="highlight">
     <strong>🔄 RESET AUTOMATICO MENSILE:</strong> Il contatore di utilizzo token viene azzerato automaticamente alla data di rinnovo del tuo abbonamento (ogni 30 giorni dalla data di acquisto). Il reset avviene in background anche se l'app è chiusa o non utilizzata da settimane, tramite un worker automatico schedulato alle 3:00 AM. Il limite mensile viene ripristinato senza intervento manuale.
@@ -287,7 +302,7 @@
 
 <p>Quando un abbonamento scade o viene eliminato, spostiamo i dati in un documento di cronologia per conformità GDPR e audit.</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Dato</th>
         <th>Tipo</th>
@@ -306,7 +321,7 @@
         <td>Audit, supporto utente, gestione rimborsi</td>
         <td>90 giorni dalla scadenza</td>
     </tr>
-</table>
+</table></div>
 
 <div class="highlight">
     <strong>🔒 CONSOLIDAMENTO MULTI-DEVICE:</strong> La cronologia viene consolidata per <strong>purchaseToken</strong>, non per device. Tutti i rinnovi e modifiche dello stesso abbonamento sono raggruppati in un unico documento, indipendentemente dal numero di dispositivi utilizzati.
@@ -326,7 +341,7 @@
 
 <p>Per garantire tracciabilità e supporto in caso di controversie, salviamo un registro delle operazioni principali relative agli abbonamenti.</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Dato</th>
         <th>Tipo</th>
@@ -366,7 +381,7 @@
         <td>Informazioni necessarie per ricostruire cronologia in caso di dispute</td>
         <td>90 giorni dall'ultima modifica</td>
     </tr>
-</table>
+</table></div>
 
 <div class="important">
     <strong>⚠️ IMPORTANTE - LOG ATTIVITÀ:</strong> I log di attività contengono SOLO metadati operazionali (quando, cosa, perché). NON contengono dati personali sensibili. Vengono eliminati automaticamente dopo 90 giorni dall'ultima modifica e sono accessibili e cancellabili tramite "Elimina dati cloud".
@@ -523,7 +538,7 @@
 
 <h3>4.1 Servizi di Terze Parti</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Servizio</th>
         <th>Dati Inviati</th>
@@ -554,7 +569,7 @@
         <td>Gestione acquisti in-app</td>
         <td>UE (server Google)</td>
     </tr>
-</table>
+</table></div>
 
 <h3>4.2 Trasferimenti Extra-UE</h3>
 
@@ -582,7 +597,7 @@
 
 <h3>5.1 Politica di Conservazione Automatica</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Tipo di Dato</th>
         <th>Periodo di Conservazione</th>
@@ -648,7 +663,7 @@
         <td>Fino al riavvio del servizio di accessibilità</td>
         <td>Automatica</td>
     </tr>
-</table>
+</table></div>
 
 <div class="highlight">
     <strong>🗑️ PULIZIA AUTOMATICA:</strong> L'app esegue automaticamente una pulizia ogni 24 ore. I dati più vecchi dei periodi indicati vengono eliminati automaticamente, anche se non usi più l'app.
@@ -752,7 +767,7 @@
 
 <p>kAIboard utilizza i seguenti identificatori per generare l'ID dispositivo anonimo:</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Identificatore</th>
         <th>Tipo</th>
@@ -777,7 +792,7 @@
         <td>Fallback finale (solo per sideload)</td>
         <td>NON persiste (si perde con disinstallazione)</td>
     </tr>
-</table>
+</table></div>
 
 <div class="important">
     <strong>⚠️ FACTORY RESET:</strong> Dopo un ripristino alle impostazioni di fabbrica del dispositivo, l'identificativo anonimo (Install ID) viene rigenerato. L'abbonamento attivo viene ripristinato automaticamente da Google Play al primo avvio dell'app. I dati locali (preferenze, lingue contatti, parole apprese) vengono persi e non sono recuperabili, a meno che non sia stato effettuato un backup prima del reset.
@@ -787,7 +802,7 @@
 
 <h3>9.2 Permessi App</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Permesso</th>
         <th>Finalità</th>
@@ -818,7 +833,7 @@
         <td>Traduzione in tempo reale e backup cloud</td>
         <td>✅ Sì (per funzionalità di traduzione)</td>
     </tr>
-</table>
+</table></div>
 
 <div class="important">
     <strong>⚠️ NOTA SULLA SICUREZZA:</strong> L'avviso di sicurezza di Android per le tastiere è standard per tutte le tastiere di terze parti, non significa che kAIboard legge o salva i tuoi messaggi. Puoi verificare il codice sorgente o contattarci per maggiori informazioni.
