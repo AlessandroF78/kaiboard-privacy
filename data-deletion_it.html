@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -117,6 +117,21 @@
         strong {
             font-weight: 600;
         }
+
+        /* ── MOBILE RESPONSIVE FIX ── */
+        html, body { overflow-x: hidden; }
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+        }
+        table { margin: 0; }
+        th, td { word-break: break-word; min-width: 80px; }
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            .container { padding: 20px; }
+            th, td { padding: 8px; font-size: 13px; }
+        }
     </style>
 </head>
 <body>
@@ -140,7 +155,7 @@
 
         <h3>Opzioni di Cancellazione Disponibili</h3>
         
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Opzione</th>
                 <th>Cosa Viene Eliminato</th>
@@ -180,7 +195,7 @@
                 </td>
                 <td>L'app si riavvierà con le impostazioni predefinite. Nessun file utente rimarrà sul dispositivo. I dati cloud vengono preservati.</td>
             </tr>
-        </table>
+        </table></div>
 
         <p><strong>Tempo di Elaborazione:</strong> Immediato (0-5 secondi)</p>
         
@@ -240,7 +255,7 @@
 
         <p>kAIboard include meccanismi di pulizia automatica dei dati per proteggere la tua privacy:</p>
 
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Tipo di Dato</th>
                 <th>Periodo di Conservazione</th>
@@ -281,7 +296,7 @@
                 <td>Mai memorizzato</td>
                 <td>0 secondi di conservazione; solo transito verso API OpenAI</td>
             </tr>
-        </table>
+        </table></div>
 
         <h2>Inventario Completo dei Dati</h2>
 
@@ -289,7 +304,7 @@
 
         <h3>Dati Cloud (Firebase)</h3>
 
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Tipo di Dato</th>
                 <th>Posizione di Archiviazione</th>
@@ -345,11 +360,11 @@
                 <td>Firebase (cloud)</td>
                 <td>Pulsante "Elimina Dati Cloud"</td>
             </tr>
-        </table>
+        </table></div>
 
         <h3>Dati Locali (Dispositivo)</h3>
 
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Tipo di Dato</th>
                 <th>Posizione di Archiviazione</th>
@@ -425,7 +440,7 @@
                 <td>Mai memorizzato</td>
                 <td>Nessuna azione richiesta (0 secondi di conservazione)</td>
             </tr>
-        </table>
+        </table></div>
 
         <h2>Dati Non Eliminabili</h2>
 
@@ -490,10 +505,3 @@
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
