@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -85,6 +85,49 @@
         ol li {
             margin: 10px 0;
         }
+
+        /* -- MOBILE RESPONSIVE FIX -- */
+        * { box-sizing: border-box; }
+        html { overflow-x: hidden; }
+        body { overflow-x: hidden; max-width: 100%; }
+
+        @media (max-width: 650px) {
+            body { padding: 15px; }
+            .container { padding: 20px; }
+            .table-wrapper thead { display: none; }
+            .table-wrapper table,
+            .table-wrapper tbody,
+            .table-wrapper tr { display: block; width: 100%; }
+            .table-wrapper tr {
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                margin-bottom: 12px;
+                background: #fff;
+                overflow: hidden;
+            }
+            .table-wrapper td {
+                display: block;
+                width: 100%;
+                padding: 10px 12px;
+                font-size: 13px;
+                line-height: 1.5;
+                border: none;
+                border-bottom: 1px solid #f0f0f0;
+                text-align: left;
+            }
+            .table-wrapper td:last-child { border-bottom: none; }
+            .table-wrapper td::before {
+                content: attr(data-label);
+                display: block;
+                font-weight: 600;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: #0FA3A3;
+                margin-bottom: 4px;
+            }
+            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+        }
     </style>
 </head>
 <body>
@@ -110,7 +153,7 @@
 
 <h3>2.1 Données Collectées Automatiquement</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Donnée</th>
         <th>Type</th>
@@ -118,30 +161,30 @@
         <th>Base Légale</th>
     </tr>
     <tr>
-        <td><strong>Tableau de Dispositifs</strong></td>
-        <td>Liste d'identifiants (ex. ["android_e19d6c...", "android_175be4..."])</td>
-        <td>Synchroniser l'abonnement et le solde de jetons sur plusieurs appareils avec le même compte Google Play</td>
-        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+        <td data-label="Donnée"><strong>Tableau de Dispositifs</strong></td>
+        <td data-label="Type">Liste d'identifiants (ex. ["android_e19d6c...", "android_175be4..."])</td>
+        <td data-label="Finalité">Synchroniser l'abonnement et le solde de jetons sur plusieurs appareils avec le même compte Google Play</td>
+        <td data-label="Base Légale">Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Utilisation Actuelle de Jetons</strong></td>
-        <td>Nombre entier (current_usage)</td>
-        <td>Suivre la consommation mensuelle partagée entre tous les appareils</td>
-        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+        <td data-label="Donnée"><strong>Utilisation Actuelle de Jetons</strong></td>
+        <td data-label="Type">Nombre entier (current_usage)</td>
+        <td data-label="Finalité">Suivre la consommation mensuelle partagée entre tous les appareils</td>
+        <td data-label="Base Légale">Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Historique des Achats</strong></td>
-        <td>ID de produit, date d'achat, ID de commande</td>
-        <td>Vérifier les achats et prévenir la fraude</td>
-        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+        <td data-label="Donnée"><strong>Historique des Achats</strong></td>
+        <td data-label="Type">ID de produit, date d'achat, ID de commande</td>
+        <td data-label="Finalité">Vérifier les achats et prévenir la fraude</td>
+        <td data-label="Base Légale">Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Texte à Traduire</strong></td>
-        <td>Contenu textuel</td>
-        <td>Traduction en temps réel</td>
-        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+        <td data-label="Donnée"><strong>Texte à Traduire</strong></td>
+        <td data-label="Type">Contenu textuel</td>
+        <td data-label="Finalité">Traduction en temps réel</td>
+        <td data-label="Base Légale">Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
-</table>
+</table></div>
 
 <h4>Synchronisation Multi-Appareil</h4>
 
@@ -167,7 +210,7 @@
 
 <p>Si vous souscrivez à un <strong>abonnement mensuel</strong> (par exemple, Plan PLUS avec 250 000 jetons/mois), nous enregistrons les données supplémentaires suivantes :</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Donnée</th>
         <th>Type</th>
@@ -175,66 +218,66 @@
         <th>Base Juridique</th>
     </tr>
     <tr>
-        <td><strong>Plan d'Abonnement</strong></td>
-        <td>Chaîne (ex. "plus", "pro", "max")</td>
-        <td>Identifier le plan actif et appliquer la limite de jetons correcte</td>
-        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+        <td data-label="Donnée"><strong>Plan d'Abonnement</strong></td>
+        <td data-label="Type">Chaîne (ex. "plus", "pro", "max")</td>
+        <td data-label="Finalité">Identifier le plan actif et appliquer la limite de jetons correcte</td>
+        <td data-label="Base Juridique">Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Limite Mensuelle de Jetons</strong></td>
-        <td>Entier (ex. 250000, 500000, 1000000)</td>
-        <td>Appliquer le maximum de jetons inclus dans l'abonnement</td>
-        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+        <td data-label="Donnée"><strong>Limite Mensuelle de Jetons</strong></td>
+        <td data-label="Type">Entier (ex. 250000, 500000, 1000000)</td>
+        <td data-label="Finalité">Appliquer le maximum de jetons inclus dans l'abonnement</td>
+        <td data-label="Base Juridique">Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Utilisation Actuelle de Jetons</strong></td>
-        <td>Entier</td>
-        <td>Suivre la consommation mensuelle partagée et appliquer la limite</td>
-        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+        <td data-label="Donnée"><strong>Utilisation Actuelle de Jetons</strong></td>
+        <td data-label="Type">Entier</td>
+        <td data-label="Finalité">Suivre la consommation mensuelle partagée et appliquer la limite</td>
+        <td data-label="Base Juridique">Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Date de Réinitialisation Mensuelle</strong></td>
-        <td>Date ISO (ex. "2026-02-01")</td>
-        <td>Réinitialisation automatique de l'utilisation au début du cycle de facturation</td>
-        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+        <td data-label="Donnée"><strong>Date de Réinitialisation Mensuelle</strong></td>
+        <td data-label="Type">Date ISO (ex. "2026-02-01")</td>
+        <td data-label="Finalité">Réinitialisation automatique de l'utilisation au début du cycle de facturation</td>
+        <td data-label="Base Juridique">Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>ID Produit Google Play</strong></td>
-        <td>Chaîne (ex. "abbonamento_mensile_2500")</td>
-        <td>Vérifier la validité de l'abonnement via Google Play Billing API</td>
-        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+        <td data-label="Donnée"><strong>ID Produit Google Play</strong></td>
+        <td data-label="Type">Chaîne (ex. "abbonamento_mensile_2500")</td>
+        <td data-label="Finalité">Vérifier la validité de l'abonnement via Google Play Billing API</td>
+        <td data-label="Base Juridique">Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Statut de Renouvellement Automatique</strong></td>
-        <td>Booléen</td>
-        <td>Vérifier si l'abonnement se renouvellera automatiquement</td>
-        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+        <td data-label="Donnée"><strong>Statut de Renouvellement Automatique</strong></td>
+        <td data-label="Type">Booléen</td>
+        <td data-label="Finalité">Vérifier si l'abonnement se renouvellera automatiquement</td>
+        <td data-label="Base Juridique">Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Date d'Achat de l'Abonnement</strong></td>
-        <td>Horodatage</td>
-        <td>Gestion du cycle de facturation et litiges</td>
-        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+        <td data-label="Donnée"><strong>Date d'Achat de l'Abonnement</strong></td>
+        <td data-label="Type">Horodatage</td>
+        <td data-label="Finalité">Gestion du cycle de facturation et litiges</td>
+        <td data-label="Base Juridique">Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Date de Fin d'Abonnement</strong></td>
-        <td>Horodatage ISO 8601 (ex. "2026-02-28T14:30:00Z")</td>
-        <td>Gérer la période de grâce après annulation (l'abonnement reste actif jusqu'à cette date)</td>
-        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+        <td data-label="Donnée"><strong>Date de Fin d'Abonnement</strong></td>
+        <td data-label="Type">Horodatage ISO 8601 (ex. "2026-02-28T14:30:00Z")</td>
+        <td data-label="Finalité">Gérer la période de grâce après annulation (l'abonnement reste actif jusqu'à cette date)</td>
+        <td data-label="Base Juridique">Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Flag « Ne sera pas renouvelé »</strong></td>
-        <td>Booléen (will_not_renew)</td>
-        <td>Indiquer si l'abonnement a été annulé mais reste valide jusqu'à expiration</td>
-        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+        <td data-label="Donnée"><strong>Flag « Ne sera pas renouvelé »</strong></td>
+        <td data-label="Type">Booléen (will_not_renew)</td>
+        <td data-label="Finalité">Indiquer si l'abonnement a été annulé mais reste valide jusqu'à expiration</td>
+        <td data-label="Base Juridique">Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Date d'Annulation</strong></td>
-        <td>Horodatage (cancelled_at)</td>
-        <td>Enregistrer quand l'utilisateur a annulé l'abonnement</td>
-        <td>Exécution du contrat (Art. 6.1.b RGPD)</td>
+        <td data-label="Donnée"><strong>Date d'Annulation</strong></td>
+        <td data-label="Type">Horodatage (cancelled_at)</td>
+        <td data-label="Finalité">Enregistrer quand l'utilisateur a annulé l'abonnement</td>
+        <td data-label="Base Juridique">Exécution du contrat (Art. 6.1.b RGPD)</td>
     </tr>
-</table>
+</table></div>
 
 <div class="highlight">
     <strong>🔄 RÉINITIALISATION MENSUELLE AUTOMATIQUE :</strong> Le compteur d'utilisation de tokens est automatiquement remis à zéro à la date de renouvellement de votre abonnement (tous les 30 jours à partir de la date d'achat). La réinitialisation se fait en arrière-plan même si l'application est fermée ou inutilisée depuis des semaines, via un worker automatique programmé à 3h00 du matin. La limite mensuelle est restaurée sans intervention manuelle.
@@ -287,7 +330,7 @@
 
 <p>Lorsqu'un abonnement expire ou est supprimé, nous déplaçons les données vers un document d'historique pour la conformité RGPD et l'audit.</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Donnée</th>
         <th>Type</th>
@@ -295,18 +338,18 @@
         <th>Conservation</th>
     </tr>
     <tr>
-        <td><strong>Historique des Abonnements</strong></td>
-        <td>Tableau d'objets dans user_subscriptions_history/{purchaseToken}</td>
-        <td>Traçabilité des achats, piste d'audit, conformité RGPD</td>
-        <td>90 jours à partir de l'expiration</td>
+        <td data-label="Donnée"><strong>Historique des Abonnements</strong></td>
+        <td data-label="Type">Tableau d'objets dans user_subscriptions_history/{purchaseToken}</td>
+        <td data-label="Finalité">Traçabilité des achats, piste d'audit, conformité RGPD</td>
+        <td data-label="Conservation">90 jours à partir de l'expiration</td>
     </tr>
     <tr>
-        <td><strong>Données par Entrée</strong></td>
-        <td>Plan, jetons utilisés/limite, dates début/fin/annulation, motif annulation, appareils</td>
-        <td>Audit, support utilisateur, gestion des remboursements</td>
-        <td>90 jours à partir de l'expiration</td>
+        <td data-label="Donnée"><strong>Données par Entrée</strong></td>
+        <td data-label="Type">Plan, jetons utilisés/limite, dates début/fin/annulation, motif annulation, appareils</td>
+        <td data-label="Finalité">Audit, support utilisateur, gestion des remboursements</td>
+        <td data-label="Conservation">90 jours à partir de l'expiration</td>
     </tr>
-</table>
+</table></div>
 
 <div class="highlight">
     <strong>🔒 CONSOLIDATION MULTI-APPAREIL :</strong> L'historique est consolidé par <strong>purchaseToken</strong>, pas par appareil. Tous les renouvellements et modifications du même abonnement sont regroupés dans un seul document, quel que soit le nombre d'appareils utilisés.
@@ -326,7 +369,7 @@
 
 <p>Pour garantir la traçabilité et le support en cas de litiges, nous sauvegardons un journal des opérations principales liées aux abonnements.</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Donnée</th>
         <th>Type</th>
@@ -334,9 +377,9 @@
         <th>Conservation</th>
     </tr>
     <tr>
-        <td><strong>Journaux d'Activité Administrative</strong></td>
-        <td>Tableau d'événements dans admin_activity_logs/{device_id}</td>
-        <td>
+        <td data-label="Donnée"><strong>Journaux d'Activité Administrative</strong></td>
+        <td data-label="Type">Tableau d'événements dans admin_activity_logs/{device_id}</td>
+        <td data-label="Finalité">
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Piste d'audit pour le support utilisateur</li>
                 <li>Résolution de litiges Google Play (dans les 60 jours)</li>
@@ -344,11 +387,11 @@
                 <li>Gestion de la période de grâce et des renouvellements automatiques</li>
             </ul>
         </td>
-        <td>90 jours à partir de la dernière modification</td>
+        <td data-label="Conservation">90 jours à partir de la dernière modification</td>
     </tr>
     <tr>
-        <td><strong>Événements Enregistrés</strong></td>
-        <td>
+        <td data-label="Donnée"><strong>Événements Enregistrés</strong></td>
+        <td data-label="Type">
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Création d'abonnement</li>
                 <li>Annulation d'abonnement</li>
@@ -357,16 +400,16 @@
                 <li>Changements de plan</li>
             </ul>
         </td>
-        <td>Suivre l'historique des modifications pour audit et support</td>
-        <td>90 jours à partir de la dernière modification</td>
+        <td data-label="Finalité">Suivre l'historique des modifications pour audit et support</td>
+        <td data-label="Conservation">90 jours à partir de la dernière modification</td>
     </tr>
     <tr>
-        <td><strong>Détails par Événement</strong></td>
-        <td>Horodatage, action, motif, plan, détails de l'opération</td>
-        <td>Informations nécessaires pour reconstituer la chronologie en cas de litiges</td>
-        <td>90 jours à partir de la dernière modification</td>
+        <td data-label="Donnée"><strong>Détails par Événement</strong></td>
+        <td data-label="Type">Horodatage, action, motif, plan, détails de l'opération</td>
+        <td data-label="Finalité">Informations nécessaires pour reconstituer la chronologie en cas de litiges</td>
+        <td data-label="Conservation">90 jours à partir de la dernière modification</td>
     </tr>
-</table>
+</table></div>
 
 <div class="important">
     <strong>⚠️ IMPORTANT - JOURNAUX D'ACTIVITÉ :</strong> Les journaux d'activité contiennent UNIQUEMENT des métadonnées opérationnelles (quand, quoi, pourquoi). Ils ne contiennent PAS de données personnelles sensibles. Ils sont automatiquement supprimés après 90 jours à partir de la dernière modification et sont accessibles et supprimables via « Supprimer les données cloud ».
@@ -523,7 +566,7 @@
 
 <h3>4.1 Services Tiers</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Service</th>
         <th>Données Envoyées</th>
@@ -531,30 +574,30 @@
         <th>Localisation</th>
     </tr>
     <tr>
-        <td><strong>Firebase (Google)</strong></td>
-        <td>ID anonyme, utilisation actuelle de jetons, historique des achats, données d'abonnement, journaux d'activité</td>
-        <td>Sauvegarde, synchronisation, piste d'audit</td>
-        <td>UE (serveurs européens)</td>
+        <td data-label="Service"><strong>Firebase (Google)</strong></td>
+        <td data-label="Données Envoyées">ID anonyme, utilisation actuelle de jetons, historique des achats, données d'abonnement, journaux d'activité</td>
+        <td data-label="Finalité">Sauvegarde, synchronisation, piste d'audit</td>
+        <td data-label="Localisation">UE (serveurs européens)</td>
     </tr>
     <tr>
-        <td><strong>Cloudflare Worker</strong></td>
-        <td>Texte à traduire (transit uniquement)</td>
-        <td>Relais sécurisé pour la traduction</td>
-        <td>UE (serveurs européens)</td>
+        <td data-label="Service"><strong>Cloudflare Worker</strong></td>
+        <td data-label="Données Envoyées">Texte à traduire (transit uniquement)</td>
+        <td data-label="Finalité">Relais sécurisé pour la traduction</td>
+        <td data-label="Localisation">UE (serveurs européens)</td>
     </tr>
     <tr>
-        <td><strong>OpenAI</strong></td>
-        <td>Texte à traduire (transit uniquement)</td>
-        <td>Traitement de la traduction</td>
-        <td>États-Unis (avec Clauses Contractuelles Types)</td>
+        <td data-label="Service"><strong>OpenAI</strong></td>
+        <td data-label="Données Envoyées">Texte à traduire (transit uniquement)</td>
+        <td data-label="Finalité">Traitement de la traduction</td>
+        <td data-label="Localisation">États-Unis (avec Clauses Contractuelles Types)</td>
     </tr>
     <tr>
-        <td><strong>Google Play Billing</strong></td>
-        <td>ID de commande, produit acheté</td>
-        <td>Gestion des achats intégrés</td>
-        <td>UE (serveurs Google)</td>
+        <td data-label="Service"><strong>Google Play Billing</strong></td>
+        <td data-label="Données Envoyées">ID de commande, produit acheté</td>
+        <td data-label="Finalité">Gestion des achats intégrés</td>
+        <td data-label="Localisation">UE (serveurs Google)</td>
     </tr>
-</table>
+</table></div>
 
 <h3>4.2 Transferts hors UE</h3>
 
@@ -582,73 +625,73 @@
 
 <h3>5.1 Politique de Conservation Automatique</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Type de Donnée</th>
         <th>Période de Conservation</th>
         <th>Suppression</th>
     </tr>
     <tr>
-        <td><strong>Données d'Abonnement Actif (Firebase)</strong></td>
-        <td>Jusqu'à la fin de la période de facturation actuelle</td>
-        <td>Suppression automatique à l'expiration + déplacement vers l'historique</td>
+        <td data-label="Type de Donnée"><strong>Données d'Abonnement Actif (Firebase)</strong></td>
+        <td data-label="Période de Conservation">Jusqu'à la fin de la période de facturation actuelle</td>
+        <td data-label="Suppression">Suppression automatique à l'expiration + déplacement vers l'historique</td>
     </tr>
     <tr>
-        <td><strong>Historique des Abonnements (Firebase)</strong></td>
-        <td>90 jours à partir de l'expiration de l'abonnement</td>
-        <td>Suppression automatique + suppression manuelle via « Supprimer les données cloud »</td>
+        <td data-label="Type de Donnée"><strong>Historique des Abonnements (Firebase)</strong></td>
+        <td data-label="Période de Conservation">90 jours à partir de l'expiration de l'abonnement</td>
+        <td data-label="Suppression">Suppression automatique + suppression manuelle via « Supprimer les données cloud »</td>
     </tr>
     <tr>
-        <td><strong>Journaux d'Activité (admin_activity_logs)</strong></td>
-        <td>90 jours à partir de la dernière modification</td>
-        <td>Suppression automatique (toutes les 24h) + suppression manuelle</td>
+        <td data-label="Type de Donnée"><strong>Journaux d'Activité (admin_activity_logs)</strong></td>
+        <td data-label="Période de Conservation">90 jours à partir de la dernière modification</td>
+        <td data-label="Suppression">Suppression automatique (toutes les 24h) + suppression manuelle</td>
     </tr>
     <tr>
-        <td><strong>Historique des Achats (Firebase)</strong></td>
-        <td>365 jours à partir de l'achat</td>
-        <td>Automatique + suppression manuelle</td>
+        <td data-label="Type de Donnée"><strong>Historique des Achats (Firebase)</strong></td>
+        <td data-label="Période de Conservation">365 jours à partir de l'achat</td>
+        <td data-label="Suppression">Automatique + suppression manuelle</td>
     </tr>
     <tr>
-        <td><strong>Données Locales (Appareil)</strong></td>
-        <td>Jusqu'à la désinstallation</td>
-        <td>Désinstallation + suppression manuelle</td>
+        <td data-label="Type de Donnée"><strong>Données Locales (Appareil)</strong></td>
+        <td data-label="Période de Conservation">Jusqu'à la désinstallation</td>
+        <td data-label="Suppression">Désinstallation + suppression manuelle</td>
     </tr>
     <tr>
-        <td><strong>Cache Contact-Langue (Appareil)</strong></td>
-        <td>Jusqu'à suppression manuelle ou désinstallation</td>
-        <td>Bouton « Supprimer toutes les données locales »</td>
+        <td data-label="Type de Donnée"><strong>Cache Contact-Langue (Appareil)</strong></td>
+        <td data-label="Période de Conservation">Jusqu'à suppression manuelle ou désinstallation</td>
+        <td data-label="Suppression">Bouton « Supprimer toutes les données locales »</td>
     </tr>
     <tr>
-        <td><strong>Modèles Prédictifs N-grammes (Appareil)</strong></td>
-        <td>Jusqu'à suppression manuelle ou désinstallation</td>
-        <td>Bouton « Supprimer toutes les données locales » ou suppression depuis l'écran Modèles Hors Ligne</td>
+        <td data-label="Type de Donnée"><strong>Modèles Prédictifs N-grammes (Appareil)</strong></td>
+        <td data-label="Période de Conservation">Jusqu'à suppression manuelle ou désinstallation</td>
+        <td data-label="Suppression">Bouton « Supprimer toutes les données locales » ou suppression depuis l'écran Modèles Hors Ligne</td>
     </tr>
     <tr>
-        <td><strong>Dictionnaires Hunspell (Appareil)</strong></td>
-        <td>Jusqu'à suppression manuelle ou désinstallation</td>
-        <td>Bouton « Supprimer toutes les données locales »</td>
+        <td data-label="Type de Donnée"><strong>Dictionnaires Hunspell (Appareil)</strong></td>
+        <td data-label="Période de Conservation">Jusqu'à suppression manuelle ou désinstallation</td>
+        <td data-label="Suppression">Bouton « Supprimer toutes les données locales »</td>
     </tr>
     <tr>
-        <td><strong>Mots Appris (Prédiction)</strong></td>
-        <td>14 jours (expiration automatique)</td>
-        <td>Automatique + suppression manuelle</td>
+        <td data-label="Type de Donnée"><strong>Mots Appris (Prédiction)</strong></td>
+        <td data-label="Période de Conservation">14 jours (expiration automatique)</td>
+        <td data-label="Suppression">Automatique + suppression manuelle</td>
     </tr>
     <tr>
-        <td><strong>Texte Traduit</strong></td>
-        <td>0 seconde (JAMAIS sauvegardé)</td>
-        <td>Automatique (transit en mémoire uniquement)</td>
+        <td data-label="Type de Donnée"><strong>Texte Traduit</strong></td>
+        <td data-label="Période de Conservation">0 seconde (JAMAIS sauvegardé)</td>
+        <td data-label="Suppression">Automatique (transit en mémoire uniquement)</td>
     </tr>
     <tr>
-        <td><strong>Cache de Traduction (RAM)</strong></td>
-        <td>Jusqu'à la fermeture de l'application</td>
-        <td>Automatique</td>
+        <td data-label="Type de Donnée"><strong>Cache de Traduction (RAM)</strong></td>
+        <td data-label="Période de Conservation">Jusqu'à la fermeture de l'application</td>
+        <td data-label="Suppression">Automatique</td>
     </tr>
     <tr>
-        <td><strong>Cache de Désambiguïsation (RAM)</strong></td>
-        <td>Jusqu'au redémarrage du service d'accessibilité</td>
-        <td>Automatique</td>
+        <td data-label="Type de Donnée"><strong>Cache de Désambiguïsation (RAM)</strong></td>
+        <td data-label="Période de Conservation">Jusqu'au redémarrage du service d'accessibilité</td>
+        <td data-label="Suppression">Automatique</td>
     </tr>
-</table>
+</table></div>
 
 <div class="highlight">
     <strong>🗑️ NETTOYAGE AUTOMATIQUE :</strong> L'application effectue automatiquement un nettoyage toutes les 24 heures. Les données plus anciennes que les périodes indiquées sont automatiquement supprimées, même si vous n'utilisez plus l'application.
@@ -753,7 +796,7 @@
 
 <p>kAIboard utilise les identifiants suivants pour générer l'ID de dispositif anonyme :</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Identifiant</th>
         <th>Type</th>
@@ -761,24 +804,24 @@
         <th>Persistance</th>
     </tr>
     <tr>
-        <td><strong>Android ID</strong></td>
-        <td>Settings.Secure.ANDROID_ID</td>
-        <td>Générer un ID de dispositif unique et stable</td>
-        <td>Persiste entre les réinstallations de l'application (même clé de signature). <strong>Change après une réinitialisation d'usine de l'appareil.</strong></td>
+        <td data-label="Identifiant"><strong>Android ID</strong></td>
+        <td data-label="Type">Settings.Secure.ANDROID_ID</td>
+        <td data-label="Finalité">Générer un ID de dispositif unique et stable</td>
+        <td data-label="Persistance">Persiste entre les réinstallations de l'application (même clé de signature). <strong>Change après une réinitialisation d'usine de l'appareil.</strong></td>
     </tr>
     <tr>
-        <td><strong>Install Referrer ID</strong></td>
-        <td>Google Play Install Referrer API</td>
-        <td>Solution de secours si Android ID non disponible</td>
-        <td>Persiste entre les réinstallations (si installé depuis Play Store)</td>
+        <td data-label="Identifiant"><strong>Install Referrer ID</strong></td>
+        <td data-label="Type">Google Play Install Referrer API</td>
+        <td data-label="Finalité">Solution de secours si Android ID non disponible</td>
+        <td data-label="Persistance">Persiste entre les réinstallations (si installé depuis Play Store)</td>
     </tr>
     <tr>
-        <td><strong>UUID Local</strong></td>
-        <td>java.util.UUID</td>
-        <td>Solution de secours finale (sideload uniquement)</td>
-        <td>Ne persiste PAS (perdu lors de la désinstallation)</td>
+        <td data-label="Identifiant"><strong>UUID Local</strong></td>
+        <td data-label="Type">java.util.UUID</td>
+        <td data-label="Finalité">Solution de secours finale (sideload uniquement)</td>
+        <td data-label="Persistance">Ne persiste PAS (perdu lors de la désinstallation)</td>
     </tr>
-</table>
+</table></div>
 
 <div class="important">
     <strong>⚠️ RÉINITIALISATION D'USINE :</strong> Après une réinitialisation d'usine de l'appareil, l'identifiant anonyme (Install ID) est régénéré. L'abonnement actif est automatiquement restauré par Google Play au premier lancement de l'application. Les données locales (préférences, langues des contacts, mots appris) sont perdues et non récupérables, sauf si une sauvegarde a été effectuée avant la réinitialisation.
@@ -788,38 +831,38 @@
 
 <h3>9.2 Autorisations de l'Application</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Autorisation</th>
         <th>Finalité</th>
         <th>Obligatoire</th>
     </tr>
     <tr>
-        <td><strong>Contacts</strong></td>
-        <td>Attribuer une langue à chaque contact pour le changement automatique de clavier</td>
-        <td>❌ Non (optionnel)</td>
+        <td data-label="Autorisation"><strong>Contacts</strong></td>
+        <td data-label="Finalité">Attribuer une langue à chaque contact pour le changement automatique de clavier</td>
+        <td data-label="Obligatoire">❌ Non (optionnel)</td>
     </tr>
     <tr>
-        <td><strong>Accessibilité</strong></td>
-        <td>Détecter l'application de chat active pour changer automatiquement de langue</td>
-        <td>❌ Non (optionnel)</td>
+        <td data-label="Autorisation"><strong>Accessibilité</strong></td>
+        <td data-label="Finalité">Détecter l'application de chat active pour changer automatiquement de langue</td>
+        <td data-label="Obligatoire">❌ Non (optionnel)</td>
     </tr>
     <tr>
-        <td><strong>Notifications</strong></td>
-        <td>Réponses rapides depuis l'écran de verrouillage avec la bonne langue</td>
-        <td>❌ Non (optionnel)</td>
+        <td data-label="Autorisation"><strong>Notifications</strong></td>
+        <td data-label="Finalité">Réponses rapides depuis l'écran de verrouillage avec la bonne langue</td>
+        <td data-label="Obligatoire">❌ Non (optionnel)</td>
     </tr>
     <tr>
-        <td><strong>Microphone</strong></td>
-        <td>Dictée vocale (enregistrement uniquement lorsque vous appuyez sur le bouton microphone)</td>
-        <td>❌ Non (optionnel)</td>
+        <td data-label="Autorisation"><strong>Microphone</strong></td>
+        <td data-label="Finalité">Dictée vocale (enregistrement uniquement lorsque vous appuyez sur le bouton microphone)</td>
+        <td data-label="Obligatoire">❌ Non (optionnel)</td>
     </tr>
     <tr>
-        <td><strong>Internet</strong></td>
-        <td>Traduction en temps réel et sauvegarde cloud</td>
-        <td>✅ Oui (pour les fonctions de traduction)</td>
+        <td data-label="Autorisation"><strong>Internet</strong></td>
+        <td data-label="Finalité">Traduction en temps réel et sauvegarde cloud</td>
+        <td data-label="Obligatoire">✅ Oui (pour les fonctions de traduction)</td>
     </tr>
-</table>
+</table></div>
 
 <div class="important">
     <strong>⚠️ NOTE DE SÉCURITÉ :</strong> L'avertissement de sécurité d'Android pour les claviers est standard pour tous les claviers tiers, cela ne signifie pas que kAIboard lit ou sauvegarde vos messages. Vous pouvez vérifier le code source ou nous contacter pour plus d'informations.

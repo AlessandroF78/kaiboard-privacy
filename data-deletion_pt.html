@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -117,6 +117,49 @@
         strong {
             font-weight: 600;
         }
+
+        /* -- MOBILE RESPONSIVE FIX -- */
+        * { box-sizing: border-box; }
+        html { overflow-x: hidden; }
+        body { overflow-x: hidden; max-width: 100%; }
+
+        @media (max-width: 650px) {
+            body { padding: 15px; }
+            .container { padding: 20px; }
+            .table-wrapper thead { display: none; }
+            .table-wrapper table,
+            .table-wrapper tbody,
+            .table-wrapper tr { display: block; width: 100%; }
+            .table-wrapper tr {
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                margin-bottom: 12px;
+                background: #fff;
+                overflow: hidden;
+            }
+            .table-wrapper td {
+                display: block;
+                width: 100%;
+                padding: 10px 12px;
+                font-size: 13px;
+                line-height: 1.5;
+                border: none;
+                border-bottom: 1px solid #f0f0f0;
+                text-align: left;
+            }
+            .table-wrapper td:last-child { border-bottom: none; }
+            .table-wrapper td::before {
+                content: attr(data-label);
+                display: block;
+                font-weight: 600;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: #0FA3A3;
+                margin-bottom: 4px;
+            }
+            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+        }
     </style>
 </head>
 <body>
@@ -140,15 +183,15 @@
 
         <h3>Opções de Eliminação Disponíveis</h3>
         
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Opção</th>
                 <th>O Que é Eliminado</th>
                 <th>Efeito</th>
             </tr>
             <tr>
-                <td><strong>Eliminar Dados da Nuvem</strong></td>
-                <td>
+                <td data-label="Opção"><strong>Eliminar Dados da Nuvem</strong></td>
+                <td data-label="O Que é Eliminado">
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>Documento de assinatura ativa (user_subscriptions)</li>
                         <li>Histórico de assinaturas (user_subscriptions_history)</li>
@@ -157,16 +200,16 @@
                         <li>Array de dispositivos multi-device</li>
                     </ul>
                 </td>
-                <td>Irreversível. Perderá o histórico de compras, registos de atividade e histórico de assinaturas. Requer cancelamento de assinatura se ativa.</td>
+                <td data-label="Efeito">Irreversível. Perderá o histórico de compras, registos de atividade e histórico de assinaturas. Requer cancelamento de assinatura se ativa.</td>
             </tr>
             <tr>
-                <td><strong>Eliminar Dados de Aprendizagem</strong></td>
-                <td>Palavras aprendidas para sugestões personalizadas (todos os 13 idiomas)</td>
-                <td>O texto preditivo começará do zero.</td>
+                <td data-label="Opção"><strong>Eliminar Dados de Aprendizagem</strong></td>
+                <td data-label="O Que é Eliminado">Palavras aprendidas para sugestões personalizadas (todos os 13 idiomas)</td>
+                <td data-label="Efeito">O texto preditivo começará do zero.</td>
             </tr>
             <tr>
-                <td><strong>Eliminar Todos os Dados Locais</strong></td>
-                <td>
+                <td data-label="Opção"><strong>Eliminar Todos os Dados Locais</strong></td>
+                <td data-label="O Que é Eliminado">
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>Dados de aprendizagem (13 idiomas)</li>
                         <li>Todas as preferências e definições</li>
@@ -178,9 +221,9 @@
                         <li>Cache completa da app (ficheiros temporários, relatórios de erro locais, cache WebView)</li>
                     </ul>
                 </td>
-                <td>A aplicação reiniciará com as definições padrão. Nenhum ficheiro de utilizador permanecerá no dispositivo. Os dados da nuvem são preservados.</td>
+                <td data-label="Efeito">A aplicação reiniciará com as definições padrão. Nenhum ficheiro de utilizador permanecerá no dispositivo. Os dados da nuvem são preservados.</td>
             </tr>
-        </table>
+        </table></div>
 
         <p><strong>Tempo de Processamento:</strong> Imediato (0-5 segundos)</p>
 
@@ -240,48 +283,48 @@
 
         <p>O kAIboard inclui mecanismos de limpeza automática de dados para proteger a sua privacidade:</p>
 
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Tipo de Dados</th>
                 <th>Período de Retenção</th>
                 <th>Detalhes</th>
             </tr>
             <tr>
-                <td><strong>Dados de Assinatura Ativa (Firebase)</strong></td>
-                <td>Até ao fim do período de faturação atual</td>
-                <td>Movidos automaticamente para o histórico quando a assinatura expira</td>
+                <td data-label="Tipo de Dados"><strong>Dados de Assinatura Ativa (Firebase)</strong></td>
+                <td data-label="Período de Retenção">Até ao fim do período de faturação atual</td>
+                <td data-label="Detalhes">Movidos automaticamente para o histórico quando a assinatura expira</td>
             </tr>
             <tr>
-                <td><strong>Histórico de Assinaturas (Firebase)</strong></td>
-                <td>90 dias após a expiração</td>
-                <td>Eliminado automaticamente 90 dias após o fim da assinatura</td>
+                <td data-label="Tipo de Dados"><strong>Histórico de Assinaturas (Firebase)</strong></td>
+                <td data-label="Período de Retenção">90 dias após a expiração</td>
+                <td data-label="Detalhes">Eliminado automaticamente 90 dias após o fim da assinatura</td>
             </tr>
             <tr>
-                <td><strong>Registos de Atividade Administrativa (Firebase)</strong></td>
-                <td>90 dias desde a última modificação</td>
-                <td>Eliminados automaticamente a cada 24 horas por limpeza em segundo plano</td>
+                <td data-label="Tipo de Dados"><strong>Registos de Atividade Administrativa (Firebase)</strong></td>
+                <td data-label="Período de Retenção">90 dias desde a última modificação</td>
+                <td data-label="Detalhes">Eliminados automaticamente a cada 24 horas por limpeza em segundo plano</td>
             </tr>
             <tr>
-                <td><strong>Histórico de Compras (Firebase)</strong></td>
-                <td>365 dias desde a compra</td>
-                <td>Eliminado automaticamente após um ano</td>
+                <td data-label="Tipo de Dados"><strong>Histórico de Compras (Firebase)</strong></td>
+                <td data-label="Período de Retenção">365 dias desde a compra</td>
+                <td data-label="Detalhes">Eliminado automaticamente após um ano</td>
             </tr>
             <tr>
-                <td><strong>Palavras Aprendidas</strong></td>
-                <td>14 dias com degradação</td>
-                <td>As pontuações de frequência diminuem ao longo do tempo; palavras não utilizadas são removidas</td>
+                <td data-label="Tipo de Dados"><strong>Palavras Aprendidas</strong></td>
+                <td data-label="Período de Retenção">14 dias com degradação</td>
+                <td data-label="Detalhes">As pontuações de frequência diminuem ao longo do tempo; palavras não utilizadas são removidas</td>
             </tr>
             <tr>
-                <td><strong>Cache de Tradução</strong></td>
-                <td>Apenas sessão</td>
-                <td>Armazenado apenas na RAM; eliminado ao fechar a aplicação</td>
+                <td data-label="Tipo de Dados"><strong>Cache de Tradução</strong></td>
+                <td data-label="Período de Retenção">Apenas sessão</td>
+                <td data-label="Detalhes">Armazenado apenas na RAM; eliminado ao fechar a aplicação</td>
             </tr>
             <tr>
-                <td><strong>Texto de Tradução</strong></td>
-                <td>Nunca armazenado</td>
-                <td>0 segundos de retenção; apenas trânsito para a API OpenAI</td>
+                <td data-label="Tipo de Dados"><strong>Texto de Tradução</strong></td>
+                <td data-label="Período de Retenção">Nunca armazenado</td>
+                <td data-label="Detalhes">0 segundos de retenção; apenas trânsito para a API OpenAI</td>
             </tr>
-        </table>
+        </table></div>
 
         <h2>Inventário Completo de Dados</h2>
 
@@ -289,143 +332,143 @@
 
         <h3>Dados da Nuvem (Firebase)</h3>
 
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Tipo de Dados</th>
                 <th>Local de Armazenamento</th>
                 <th>Método de Eliminação</th>
             </tr>
             <tr>
-                <td>Array de Dispositivos</td>
-                <td>Firebase (nuvem)</td>
-                <td>Botão «Eliminar Dados da Nuvem»</td>
+                <td data-label="Tipo de Dados">Array de Dispositivos</td>
+                <td data-label="Local de Armazenamento">Firebase (nuvem)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Dados da Nuvem»</td>
             </tr>
             <tr>
-                <td>Uso Atual de Tokens</td>
-                <td>Firebase (nuvem)</td>
-                <td>Botão «Eliminar Dados da Nuvem» (apenas após cancelamento da assinatura)</td>
+                <td data-label="Tipo de Dados">Uso Atual de Tokens</td>
+                <td data-label="Local de Armazenamento">Firebase (nuvem)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Dados da Nuvem» (apenas após cancelamento da assinatura)</td>
             </tr>
             <tr>
-                <td>Histórico de Compras</td>
-                <td>Firebase (nuvem)</td>
-                <td>Botão «Eliminar Dados da Nuvem»</td>
+                <td data-label="Tipo de Dados">Histórico de Compras</td>
+                <td data-label="Local de Armazenamento">Firebase (nuvem)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Dados da Nuvem»</td>
             </tr>
             <tr>
-                <td>Plano de Assinatura</td>
-                <td>Firebase (nuvem)</td>
-                <td>Botão «Eliminar Dados da Nuvem» (apenas após cancelamento da assinatura)</td>
+                <td data-label="Tipo de Dados">Plano de Assinatura</td>
+                <td data-label="Local de Armazenamento">Firebase (nuvem)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Dados da Nuvem» (apenas após cancelamento da assinatura)</td>
             </tr>
             <tr>
-                <td>Limite Mensal de Tokens</td>
-                <td>Firebase (nuvem)</td>
-                <td>Botão «Eliminar Dados da Nuvem» (apenas após cancelamento da assinatura)</td>
+                <td data-label="Tipo de Dados">Limite Mensal de Tokens</td>
+                <td data-label="Local de Armazenamento">Firebase (nuvem)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Dados da Nuvem» (apenas após cancelamento da assinatura)</td>
             </tr>
             <tr>
-                <td>Data de Reinício Mensal</td>
-                <td>Firebase (nuvem)</td>
-                <td>Botão «Eliminar Dados da Nuvem» (apenas após cancelamento da assinatura)</td>
+                <td data-label="Tipo de Dados">Data de Reinício Mensal</td>
+                <td data-label="Local de Armazenamento">Firebase (nuvem)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Dados da Nuvem» (apenas após cancelamento da assinatura)</td>
             </tr>
             <tr>
-                <td>Data de Fim da Assinatura</td>
-                <td>Firebase (nuvem)</td>
-                <td>Botão «Eliminar Dados da Nuvem» (apenas após expiração do período de carência)</td>
+                <td data-label="Tipo de Dados">Data de Fim da Assinatura</td>
+                <td data-label="Local de Armazenamento">Firebase (nuvem)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Dados da Nuvem» (apenas após expiração do período de carência)</td>
             </tr>
             <tr>
-                <td>Flag «Não Será Renovada»</td>
-                <td>Firebase (nuvem)</td>
-                <td>Botão «Eliminar Dados da Nuvem» (apenas após expiração do período de carência)</td>
+                <td data-label="Tipo de Dados">Flag «Não Será Renovada»</td>
+                <td data-label="Local de Armazenamento">Firebase (nuvem)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Dados da Nuvem» (apenas após expiração do período de carência)</td>
             </tr>
             <tr>
-                <td>Histórico de Assinaturas</td>
-                <td>Firebase (nuvem)</td>
-                <td>Botão «Eliminar Dados da Nuvem» (elimina tudo: ativa + histórico)</td>
+                <td data-label="Tipo de Dados">Histórico de Assinaturas</td>
+                <td data-label="Local de Armazenamento">Firebase (nuvem)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Dados da Nuvem» (elimina tudo: ativa + histórico)</td>
             </tr>
             <tr>
-                <td>Registos de Atividade Administrativa</td>
-                <td>Firebase (nuvem)</td>
-                <td>Botão «Eliminar Dados da Nuvem»</td>
+                <td data-label="Tipo de Dados">Registos de Atividade Administrativa</td>
+                <td data-label="Local de Armazenamento">Firebase (nuvem)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Dados da Nuvem»</td>
             </tr>
-        </table>
+        </table></div>
 
         <h3>Dados Locais (Dispositivo)</h3>
 
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Tipo de Dados</th>
                 <th>Local de Armazenamento</th>
                 <th>Método de Eliminação</th>
             </tr>
             <tr>
-                <td>Palavras Aprendidas (Previsões)</td>
-                <td>Local (dispositivo)</td>
-                <td>Botão «Eliminar Dados de Aprendizagem» ou «Eliminar Todos os Dados Locais»</td>
+                <td data-label="Tipo de Dados">Palavras Aprendidas (Previsões)</td>
+                <td data-label="Local de Armazenamento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Dados de Aprendizagem» ou «Eliminar Todos os Dados Locais»</td>
             </tr>
             <tr>
-                <td>Preferências da Aplicação</td>
-                <td>Local (dispositivo)</td>
-                <td>Botão «Eliminar Todos os Dados Locais»</td>
+                <td data-label="Tipo de Dados">Preferências da Aplicação</td>
+                <td data-label="Local de Armazenamento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Todos os Dados Locais»</td>
             </tr>
             <tr>
-                <td>Estado da Aplicação</td>
-                <td>Local (dispositivo)</td>
-                <td>Botão «Eliminar Todos os Dados Locais»</td>
+                <td data-label="Tipo de Dados">Estado da Aplicação</td>
+                <td data-label="Local de Armazenamento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Todos os Dados Locais»</td>
             </tr>
             <tr>
-                <td>Atribuições de Idioma dos Contactos</td>
-                <td>Local (dispositivo)</td>
-                <td>Botão «Eliminar Todos os Dados Locais»</td>
+                <td data-label="Tipo de Dados">Atribuições de Idioma dos Contactos</td>
+                <td data-label="Local de Armazenamento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Todos os Dados Locais»</td>
             </tr>
             <tr>
-                <td>Metadados de Aprendizagem</td>
-                <td>Local (dispositivo)</td>
-                <td>Botão «Eliminar Todos os Dados Locais»</td>
+                <td data-label="Tipo de Dados">Metadados de Aprendizagem</td>
+                <td data-label="Local de Armazenamento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Todos os Dados Locais»</td>
             </tr>
             <tr>
-                <td>Metadados de Backup</td>
-                <td>Local (dispositivo)</td>
-                <td>Botão «Eliminar Todos os Dados Locais»</td>
+                <td data-label="Tipo de Dados">Metadados de Backup</td>
+                <td data-label="Local de Armazenamento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Todos os Dados Locais»</td>
             </tr>
             <tr>
-                <td>Alertas de Assinatura</td>
-                <td>Local (dispositivo)</td>
-                <td>Botão «Eliminar Todos os Dados Locais»</td>
+                <td data-label="Tipo de Dados">Alertas de Assinatura</td>
+                <td data-label="Local de Armazenamento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Todos os Dados Locais»</td>
             </tr>
             <tr>
-                <td>Modelos Preditivos N-gram (descarregados)</td>
-                <td>Local (dispositivo)</td>
-                <td>Botão «Eliminar Todos os Dados Locais»</td>
+                <td data-label="Tipo de Dados">Modelos Preditivos N-gram (descarregados)</td>
+                <td data-label="Local de Armazenamento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Todos os Dados Locais»</td>
             </tr>
             <tr>
-                <td>Dicionários Hunspell (copiados dos assets)</td>
-                <td>Local (dispositivo)</td>
-                <td>Botão «Eliminar Todos os Dados Locais»</td>
+                <td data-label="Tipo de Dados">Dicionários Hunspell (copiados dos assets)</td>
+                <td data-label="Local de Armazenamento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Todos os Dados Locais»</td>
             </tr>
             <tr>
-                <td>Cache de Vocabulários e Dicionários (em memória)</td>
-                <td>RAM (volátil)</td>
-                <td>Botão «Eliminar Todos os Dados Locais» ou fecho da app</td>
+                <td data-label="Tipo de Dados">Cache de Vocabulários e Dicionários (em memória)</td>
+                <td data-label="Local de Armazenamento">RAM (volátil)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Todos os Dados Locais» ou fecho da app</td>
             </tr>
             <tr>
-                <td>Cache da App (ficheiros temporários, relatórios de erro locais, cache WebView)</td>
-                <td>Local (dispositivo)</td>
-                <td>Botão «Eliminar Todos os Dados Locais»</td>
+                <td data-label="Tipo de Dados">Cache da App (ficheiros temporários, relatórios de erro locais, cache WebView)</td>
+                <td data-label="Local de Armazenamento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminação">Botão «Eliminar Todos os Dados Locais»</td>
             </tr>
             <tr>
-                <td>Cache de Desambiguação de Contactos</td>
-                <td>RAM (volátil)</td>
-                <td>Automática ao reiniciar o serviço de acessibilidade</td>
+                <td data-label="Tipo de Dados">Cache de Desambiguação de Contactos</td>
+                <td data-label="Local de Armazenamento">RAM (volátil)</td>
+                <td data-label="Método de Eliminação">Automática ao reiniciar o serviço de acessibilidade</td>
             </tr>
             <tr>
-                <td>Cache de Tradução</td>
-                <td>RAM (volátil)</td>
-                <td>Automática ao fechar a app</td>
+                <td data-label="Tipo de Dados">Cache de Tradução</td>
+                <td data-label="Local de Armazenamento">RAM (volátil)</td>
+                <td data-label="Método de Eliminação">Automática ao fechar a app</td>
             </tr>
             <tr>
-                <td>Texto de Tradução</td>
-                <td>Nunca armazenado</td>
-                <td>Nenhuma ação necessária (0 segundos de retenção)</td>
+                <td data-label="Tipo de Dados">Texto de Tradução</td>
+                <td data-label="Local de Armazenamento">Nunca armazenado</td>
+                <td data-label="Método de Eliminação">Nenhuma ação necessária (0 segundos de retenção)</td>
             </tr>
-        </table>
+        </table></div>
 
         <h2>Dados Não Elimináveis</h2>
 

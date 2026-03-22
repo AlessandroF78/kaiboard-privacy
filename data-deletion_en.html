@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -117,6 +117,49 @@
         strong {
             font-weight: 600;
         }
+
+        /* -- MOBILE RESPONSIVE FIX -- */
+        * { box-sizing: border-box; }
+        html { overflow-x: hidden; }
+        body { overflow-x: hidden; max-width: 100%; }
+
+        @media (max-width: 650px) {
+            body { padding: 15px; }
+            .container { padding: 20px; }
+            .table-wrapper thead { display: none; }
+            .table-wrapper table,
+            .table-wrapper tbody,
+            .table-wrapper tr { display: block; width: 100%; }
+            .table-wrapper tr {
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                margin-bottom: 12px;
+                background: #fff;
+                overflow: hidden;
+            }
+            .table-wrapper td {
+                display: block;
+                width: 100%;
+                padding: 10px 12px;
+                font-size: 13px;
+                line-height: 1.5;
+                border: none;
+                border-bottom: 1px solid #f0f0f0;
+                text-align: left;
+            }
+            .table-wrapper td:last-child { border-bottom: none; }
+            .table-wrapper td::before {
+                content: attr(data-label);
+                display: block;
+                font-weight: 600;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: #0FA3A3;
+                margin-bottom: 4px;
+            }
+            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+        }
     </style>
 </head>
 <body>
@@ -140,15 +183,15 @@
 
         <h3>Available Deletion Options</h3>
         
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Option</th>
                 <th>What Gets Deleted</th>
                 <th>Effect</th>
             </tr>
             <tr>
-                <td><strong>Delete Cloud Data</strong></td>
-                <td>
+                <td data-label="Option"><strong>Delete Cloud Data</strong></td>
+                <td data-label="What Gets Deleted">
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>Active subscription document (user_subscriptions)</li>
                         <li>Subscription history (user_subscriptions_history)</li>
@@ -157,16 +200,16 @@
                         <li>Multi-device array</li>
                     </ul>
                 </td>
-                <td>Irreversible. You will lose your purchase history, activity logs and subscription history. Requires subscription cancellation if active.</td>
+                <td data-label="Effect">Irreversible. You will lose your purchase history, activity logs and subscription history. Requires subscription cancellation if active.</td>
             </tr>
             <tr>
-                <td><strong>Delete Learning Data</strong></td>
-                <td>Learned words for personalized suggestions (all 13 languages)</td>
-                <td>Predictive text will restart from scratch.</td>
+                <td data-label="Option"><strong>Delete Learning Data</strong></td>
+                <td data-label="What Gets Deleted">Learned words for personalized suggestions (all 13 languages)</td>
+                <td data-label="Effect">Predictive text will restart from scratch.</td>
             </tr>
             <tr>
-                <td><strong>Delete All Local Data</strong></td>
-                <td>
+                <td data-label="Option"><strong>Delete All Local Data</strong></td>
+                <td data-label="What Gets Deleted">
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>Learning data (13 languages)</li>
                         <li>All preferences and settings</li>
@@ -178,9 +221,9 @@
                         <li>Entire app cache (temporary files, local crash reports, WebView cache)</li>
                     </ul>
                 </td>
-                <td>The app will restart with default settings. No user files will remain on the device. Cloud data is preserved.</td>
+                <td data-label="Effect">The app will restart with default settings. No user files will remain on the device. Cloud data is preserved.</td>
             </tr>
-        </table>
+        </table></div>
 
         <p><strong>Processing Time:</strong> Immediate (0-5 seconds)</p>
 
@@ -240,48 +283,48 @@
 
         <p>kAIboard includes automated data cleanup mechanisms to protect your privacy:</p>
 
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Data Type</th>
                 <th>Retention Period</th>
                 <th>Details</th>
             </tr>
             <tr>
-                <td><strong>Active Subscription Data (Firebase)</strong></td>
-                <td>Until the end of the current billing period</td>
-                <td>Automatically moved to history when the subscription expires</td>
+                <td data-label="Data Type"><strong>Active Subscription Data (Firebase)</strong></td>
+                <td data-label="Retention Period">Until the end of the current billing period</td>
+                <td data-label="Details">Automatically moved to history when the subscription expires</td>
             </tr>
             <tr>
-                <td><strong>Subscription History (Firebase)</strong></td>
-                <td>90 days after expiration</td>
-                <td>Automatically deleted 90 days after the subscription ends</td>
+                <td data-label="Data Type"><strong>Subscription History (Firebase)</strong></td>
+                <td data-label="Retention Period">90 days after expiration</td>
+                <td data-label="Details">Automatically deleted 90 days after the subscription ends</td>
             </tr>
             <tr>
-                <td><strong>Administrative Activity Logs (Firebase)</strong></td>
-                <td>90 days from last modification</td>
-                <td>Automatically deleted every 24 hours through background cleanup</td>
+                <td data-label="Data Type"><strong>Administrative Activity Logs (Firebase)</strong></td>
+                <td data-label="Retention Period">90 days from last modification</td>
+                <td data-label="Details">Automatically deleted every 24 hours through background cleanup</td>
             </tr>
             <tr>
-                <td><strong>Purchase History (Firebase)</strong></td>
-                <td>365 days from purchase</td>
-                <td>Automatically deleted after one year</td>
+                <td data-label="Data Type"><strong>Purchase History (Firebase)</strong></td>
+                <td data-label="Retention Period">365 days from purchase</td>
+                <td data-label="Details">Automatically deleted after one year</td>
             </tr>
             <tr>
-                <td><strong>Learned Words</strong></td>
-                <td>14 days with decay</td>
-                <td>Frequency scores decrease over time; unused words are removed</td>
+                <td data-label="Data Type"><strong>Learned Words</strong></td>
+                <td data-label="Retention Period">14 days with decay</td>
+                <td data-label="Details">Frequency scores decrease over time; unused words are removed</td>
             </tr>
             <tr>
-                <td><strong>Translation Cache</strong></td>
-                <td>Session only</td>
-                <td>Stored in RAM only; deleted when app closes</td>
+                <td data-label="Data Type"><strong>Translation Cache</strong></td>
+                <td data-label="Retention Period">Session only</td>
+                <td data-label="Details">Stored in RAM only; deleted when app closes</td>
             </tr>
             <tr>
-                <td><strong>Translation Text</strong></td>
-                <td>Never stored</td>
-                <td>0 seconds storage; transit only to OpenAI API</td>
+                <td data-label="Data Type"><strong>Translation Text</strong></td>
+                <td data-label="Retention Period">Never stored</td>
+                <td data-label="Details">0 seconds storage; transit only to OpenAI API</td>
             </tr>
-        </table>
+        </table></div>
 
         <h2>Complete Data Inventory</h2>
 
@@ -289,143 +332,143 @@
 
         <h3>Cloud Data (Firebase)</h3>
 
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Data Type</th>
                 <th>Storage Location</th>
                 <th>Deletion Method</th>
             </tr>
             <tr>
-                <td>Device Array</td>
-                <td>Firebase (cloud)</td>
-                <td>"Delete Cloud Data" button</td>
+                <td data-label="Data Type">Device Array</td>
+                <td data-label="Storage Location">Firebase (cloud)</td>
+                <td data-label="Deletion Method">"Delete Cloud Data" button</td>
             </tr>
             <tr>
-                <td>Current Token Usage</td>
-                <td>Firebase (cloud)</td>
-                <td>"Delete Cloud Data" button (only after subscription cancellation)</td>
+                <td data-label="Data Type">Current Token Usage</td>
+                <td data-label="Storage Location">Firebase (cloud)</td>
+                <td data-label="Deletion Method">"Delete Cloud Data" button (only after subscription cancellation)</td>
             </tr>
             <tr>
-                <td>Purchase History</td>
-                <td>Firebase (cloud)</td>
-                <td>"Delete Cloud Data" button</td>
+                <td data-label="Data Type">Purchase History</td>
+                <td data-label="Storage Location">Firebase (cloud)</td>
+                <td data-label="Deletion Method">"Delete Cloud Data" button</td>
             </tr>
             <tr>
-                <td>Subscription Plan</td>
-                <td>Firebase (cloud)</td>
-                <td>"Delete Cloud Data" button (only after subscription cancellation)</td>
+                <td data-label="Data Type">Subscription Plan</td>
+                <td data-label="Storage Location">Firebase (cloud)</td>
+                <td data-label="Deletion Method">"Delete Cloud Data" button (only after subscription cancellation)</td>
             </tr>
             <tr>
-                <td>Monthly Token Limit</td>
-                <td>Firebase (cloud)</td>
-                <td>"Delete Cloud Data" button (only after subscription cancellation)</td>
+                <td data-label="Data Type">Monthly Token Limit</td>
+                <td data-label="Storage Location">Firebase (cloud)</td>
+                <td data-label="Deletion Method">"Delete Cloud Data" button (only after subscription cancellation)</td>
             </tr>
             <tr>
-                <td>Monthly Reset Date</td>
-                <td>Firebase (cloud)</td>
-                <td>"Delete Cloud Data" button (only after subscription cancellation)</td>
+                <td data-label="Data Type">Monthly Reset Date</td>
+                <td data-label="Storage Location">Firebase (cloud)</td>
+                <td data-label="Deletion Method">"Delete Cloud Data" button (only after subscription cancellation)</td>
             </tr>
             <tr>
-                <td>Subscription End Date</td>
-                <td>Firebase (cloud)</td>
-                <td>"Delete Cloud Data" button (only after grace period expiration)</td>
+                <td data-label="Data Type">Subscription End Date</td>
+                <td data-label="Storage Location">Firebase (cloud)</td>
+                <td data-label="Deletion Method">"Delete Cloud Data" button (only after grace period expiration)</td>
             </tr>
             <tr>
-                <td>"Will Not Renew" Flag</td>
-                <td>Firebase (cloud)</td>
-                <td>"Delete Cloud Data" button (only after grace period expiration)</td>
+                <td data-label="Data Type">"Will Not Renew" Flag</td>
+                <td data-label="Storage Location">Firebase (cloud)</td>
+                <td data-label="Deletion Method">"Delete Cloud Data" button (only after grace period expiration)</td>
             </tr>
             <tr>
-                <td>Subscription History</td>
-                <td>Firebase (cloud)</td>
-                <td>"Delete Cloud Data" button (deletes all: active + history)</td>
+                <td data-label="Data Type">Subscription History</td>
+                <td data-label="Storage Location">Firebase (cloud)</td>
+                <td data-label="Deletion Method">"Delete Cloud Data" button (deletes all: active + history)</td>
             </tr>
             <tr>
-                <td>Administrative Activity Logs</td>
-                <td>Firebase (cloud)</td>
-                <td>"Delete Cloud Data" button</td>
+                <td data-label="Data Type">Administrative Activity Logs</td>
+                <td data-label="Storage Location">Firebase (cloud)</td>
+                <td data-label="Deletion Method">"Delete Cloud Data" button</td>
             </tr>
-        </table>
+        </table></div>
 
         <h3>Local Data (Device)</h3>
 
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Data Type</th>
                 <th>Storage Location</th>
                 <th>Deletion Method</th>
             </tr>
             <tr>
-                <td>Learned Words (Predictions)</td>
-                <td>Local (device)</td>
-                <td>"Delete Learning Data" or "Delete All Local Data" button</td>
+                <td data-label="Data Type">Learned Words (Predictions)</td>
+                <td data-label="Storage Location">Local (device)</td>
+                <td data-label="Deletion Method">"Delete Learning Data" or "Delete All Local Data" button</td>
             </tr>
             <tr>
-                <td>App Preferences</td>
-                <td>Local (device)</td>
-                <td>"Delete All Local Data" button</td>
+                <td data-label="Data Type">App Preferences</td>
+                <td data-label="Storage Location">Local (device)</td>
+                <td data-label="Deletion Method">"Delete All Local Data" button</td>
             </tr>
             <tr>
-                <td>App State</td>
-                <td>Local (device)</td>
-                <td>"Delete All Local Data" button</td>
+                <td data-label="Data Type">App State</td>
+                <td data-label="Storage Location">Local (device)</td>
+                <td data-label="Deletion Method">"Delete All Local Data" button</td>
             </tr>
             <tr>
-                <td>Contact Language Assignments</td>
-                <td>Local (device)</td>
-                <td>"Delete All Local Data" button</td>
+                <td data-label="Data Type">Contact Language Assignments</td>
+                <td data-label="Storage Location">Local (device)</td>
+                <td data-label="Deletion Method">"Delete All Local Data" button</td>
             </tr>
             <tr>
-                <td>Learning Metadata</td>
-                <td>Local (device)</td>
-                <td>"Delete All Local Data" button</td>
+                <td data-label="Data Type">Learning Metadata</td>
+                <td data-label="Storage Location">Local (device)</td>
+                <td data-label="Deletion Method">"Delete All Local Data" button</td>
             </tr>
             <tr>
-                <td>Backup Metadata</td>
-                <td>Local (device)</td>
-                <td>"Delete All Local Data" button</td>
+                <td data-label="Data Type">Backup Metadata</td>
+                <td data-label="Storage Location">Local (device)</td>
+                <td data-label="Deletion Method">"Delete All Local Data" button</td>
             </tr>
             <tr>
-                <td>Subscription Alerts</td>
-                <td>Local (device)</td>
-                <td>"Delete All Local Data" button</td>
+                <td data-label="Data Type">Subscription Alerts</td>
+                <td data-label="Storage Location">Local (device)</td>
+                <td data-label="Deletion Method">"Delete All Local Data" button</td>
             </tr>
             <tr>
-                <td>N-gram Predictive Models (downloaded)</td>
-                <td>Local (device)</td>
-                <td>"Delete All Local Data" button</td>
+                <td data-label="Data Type">N-gram Predictive Models (downloaded)</td>
+                <td data-label="Storage Location">Local (device)</td>
+                <td data-label="Deletion Method">"Delete All Local Data" button</td>
             </tr>
             <tr>
-                <td>Hunspell Dictionaries (copied from assets)</td>
-                <td>Local (device)</td>
-                <td>"Delete All Local Data" button</td>
+                <td data-label="Data Type">Hunspell Dictionaries (copied from assets)</td>
+                <td data-label="Storage Location">Local (device)</td>
+                <td data-label="Deletion Method">"Delete All Local Data" button</td>
             </tr>
             <tr>
-                <td>Vocabulary and Dictionary Cache (in memory)</td>
-                <td>RAM (volatile)</td>
-                <td>"Delete All Local Data" button or app closure</td>
+                <td data-label="Data Type">Vocabulary and Dictionary Cache (in memory)</td>
+                <td data-label="Storage Location">RAM (volatile)</td>
+                <td data-label="Deletion Method">"Delete All Local Data" button or app closure</td>
             </tr>
             <tr>
-                <td>App Cache (temporary files, local crash reports, WebView cache)</td>
-                <td>Local (device)</td>
-                <td>"Delete All Local Data" button</td>
+                <td data-label="Data Type">App Cache (temporary files, local crash reports, WebView cache)</td>
+                <td data-label="Storage Location">Local (device)</td>
+                <td data-label="Deletion Method">"Delete All Local Data" button</td>
             </tr>
             <tr>
-                <td>Contact Disambiguation Cache</td>
-                <td>RAM (volatile)</td>
-                <td>Automatic on accessibility service restart</td>
+                <td data-label="Data Type">Contact Disambiguation Cache</td>
+                <td data-label="Storage Location">RAM (volatile)</td>
+                <td data-label="Deletion Method">Automatic on accessibility service restart</td>
             </tr>
             <tr>
-                <td>Translation Cache</td>
-                <td>RAM (volatile)</td>
-                <td>Automatic on app closure</td>
+                <td data-label="Data Type">Translation Cache</td>
+                <td data-label="Storage Location">RAM (volatile)</td>
+                <td data-label="Deletion Method">Automatic on app closure</td>
             </tr>
             <tr>
-                <td>Translation Text</td>
-                <td>Never stored</td>
-                <td>No action required (0 seconds retention)</td>
+                <td data-label="Data Type">Translation Text</td>
+                <td data-label="Storage Location">Never stored</td>
+                <td data-label="Deletion Method">No action required (0 seconds retention)</td>
             </tr>
-        </table>
+        </table></div>
 
         <h2>Non-Deletable Data</h2>
 

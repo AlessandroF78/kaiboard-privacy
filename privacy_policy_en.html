@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -85,6 +85,49 @@
         ol li {
             margin: 10px 0;
         }
+
+        /* -- MOBILE RESPONSIVE FIX -- */
+        * { box-sizing: border-box; }
+        html { overflow-x: hidden; }
+        body { overflow-x: hidden; max-width: 100%; }
+
+        @media (max-width: 650px) {
+            body { padding: 15px; }
+            .container { padding: 20px; }
+            .table-wrapper thead { display: none; }
+            .table-wrapper table,
+            .table-wrapper tbody,
+            .table-wrapper tr { display: block; width: 100%; }
+            .table-wrapper tr {
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                margin-bottom: 12px;
+                background: #fff;
+                overflow: hidden;
+            }
+            .table-wrapper td {
+                display: block;
+                width: 100%;
+                padding: 10px 12px;
+                font-size: 13px;
+                line-height: 1.5;
+                border: none;
+                border-bottom: 1px solid #f0f0f0;
+                text-align: left;
+            }
+            .table-wrapper td:last-child { border-bottom: none; }
+            .table-wrapper td::before {
+                content: attr(data-label);
+                display: block;
+                font-weight: 600;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: #0FA3A3;
+                margin-bottom: 4px;
+            }
+            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+        }
     </style>
 </head>
 <body>
@@ -110,7 +153,7 @@
 
 <h3>2.1 Automatically Collected Data</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Data</th>
         <th>Type</th>
@@ -118,30 +161,30 @@
         <th>Legal Basis</th>
     </tr>
     <tr>
-        <td><strong>Device Array</strong></td>
-        <td>List of identifiers (e.g., ["android_e19d6c...", "android_175be4..."])</td>
-        <td>Synchronize subscription and tokens across multiple devices with the same Google Play account</td>
-        <td>Contract performance (Art. 6.1.b GDPR)</td>
+        <td data-label="Data"><strong>Device Array</strong></td>
+        <td data-label="Type">List of identifiers (e.g., ["android_e19d6c...", "android_175be4..."])</td>
+        <td data-label="Purpose">Synchronize subscription and tokens across multiple devices with the same Google Play account</td>
+        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td><strong>Current Token Usage</strong></td>
-        <td>Integer (current_usage)</td>
-        <td>Track shared monthly consumption across all devices</td>
-        <td>Contract performance (Art. 6.1.b GDPR)</td>
+        <td data-label="Data"><strong>Current Token Usage</strong></td>
+        <td data-label="Type">Integer (current_usage)</td>
+        <td data-label="Purpose">Track shared monthly consumption across all devices</td>
+        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td><strong>Purchase History</strong></td>
-        <td>Product ID, purchase date, order ID</td>
-        <td>Verify purchases and prevent fraud</td>
-        <td>Contract performance (Art. 6.1.b GDPR)</td>
+        <td data-label="Data"><strong>Purchase History</strong></td>
+        <td data-label="Type">Product ID, purchase date, order ID</td>
+        <td data-label="Purpose">Verify purchases and prevent fraud</td>
+        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td><strong>Text to Translate</strong></td>
-        <td>Text content</td>
-        <td>Real-time translation</td>
-        <td>Contract performance (Art. 6.1.b GDPR)</td>
+        <td data-label="Data"><strong>Text to Translate</strong></td>
+        <td data-label="Type">Text content</td>
+        <td data-label="Purpose">Real-time translation</td>
+        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
-</table>
+</table></div>
 
 <h4>Multi-Device Synchronization</h4>
 
@@ -167,7 +210,7 @@
 
 <p>If you subscribe to a <strong>monthly subscription</strong> (e.g., PLUS Plan with 250,000 tokens/month), we save the following additional data:</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Data</th>
         <th>Type</th>
@@ -175,66 +218,66 @@
         <th>Legal Basis</th>
     </tr>
     <tr>
-        <td><strong>Subscription Plan</strong></td>
-        <td>String (e.g., "plus", "pro", "max")</td>
-        <td>Identify active plan and apply correct token limit</td>
-        <td>Contract performance (Art. 6.1.b GDPR)</td>
+        <td data-label="Data"><strong>Subscription Plan</strong></td>
+        <td data-label="Type">String (e.g., "plus", "pro", "max")</td>
+        <td data-label="Purpose">Identify active plan and apply correct token limit</td>
+        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td><strong>Monthly Token Limit</strong></td>
-        <td>Integer (e.g., 250000, 500000, 1000000)</td>
-        <td>Apply maximum tokens included in subscription</td>
-        <td>Contract performance (Art. 6.1.b GDPR)</td>
+        <td data-label="Data"><strong>Monthly Token Limit</strong></td>
+        <td data-label="Type">Integer (e.g., 250000, 500000, 1000000)</td>
+        <td data-label="Purpose">Apply maximum tokens included in subscription</td>
+        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td><strong>Current Token Usage</strong></td>
-        <td>Integer</td>
-        <td>Track shared monthly consumption and apply limit</td>
-        <td>Contract performance (Art. 6.1.b GDPR)</td>
+        <td data-label="Data"><strong>Current Token Usage</strong></td>
+        <td data-label="Type">Integer</td>
+        <td data-label="Purpose">Track shared monthly consumption and apply limit</td>
+        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td><strong>Monthly Reset Date</strong></td>
-        <td>ISO Date (e.g., "2026-02-01")</td>
-        <td>Automatic usage reset at beginning of month</td>
-        <td>Contract performance (Art. 6.1.b GDPR)</td>
+        <td data-label="Data"><strong>Monthly Reset Date</strong></td>
+        <td data-label="Type">ISO Date (e.g., "2026-02-01")</td>
+        <td data-label="Purpose">Automatic usage reset at beginning of month</td>
+        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td><strong>Google Play Product ID</strong></td>
-        <td>String (e.g., "abbonamento_mensile_2500")</td>
-        <td>Verify subscription validity through Google Play Billing API</td>
-        <td>Contract performance (Art. 6.1.b GDPR)</td>
+        <td data-label="Data"><strong>Google Play Product ID</strong></td>
+        <td data-label="Type">String (e.g., "abbonamento_mensile_2500")</td>
+        <td data-label="Purpose">Verify subscription validity through Google Play Billing API</td>
+        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td><strong>Auto-Renewal Status</strong></td>
-        <td>Boolean</td>
-        <td>Check if subscription will renew automatically</td>
-        <td>Contract performance (Art. 6.1.b GDPR)</td>
+        <td data-label="Data"><strong>Auto-Renewal Status</strong></td>
+        <td data-label="Type">Boolean</td>
+        <td data-label="Purpose">Check if subscription will renew automatically</td>
+        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td><strong>Subscription Purchase Date</strong></td>
-        <td>Timestamp</td>
-        <td>Billing cycle management and disputes</td>
-        <td>Contract performance (Art. 6.1.b GDPR)</td>
+        <td data-label="Data"><strong>Subscription Purchase Date</strong></td>
+        <td data-label="Type">Timestamp</td>
+        <td data-label="Purpose">Billing cycle management and disputes</td>
+        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td><strong>Subscription End Date</strong></td>
-        <td>ISO 8601 Timestamp (e.g., "2026-02-28T14:30:00Z")</td>
-        <td>Manage grace period after cancellation (subscription remains active until this date)</td>
-        <td>Contract performance (Art. 6.1.b GDPR)</td>
+        <td data-label="Data"><strong>Subscription End Date</strong></td>
+        <td data-label="Type">ISO 8601 Timestamp (e.g., "2026-02-28T14:30:00Z")</td>
+        <td data-label="Purpose">Manage grace period after cancellation (subscription remains active until this date)</td>
+        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td><strong>"Will Not Renew" Flag</strong></td>
-        <td>Boolean (will_not_renew)</td>
-        <td>Indicate if subscription was cancelled but remains valid until expiration</td>
-        <td>Contract performance (Art. 6.1.b GDPR)</td>
+        <td data-label="Data"><strong>"Will Not Renew" Flag</strong></td>
+        <td data-label="Type">Boolean (will_not_renew)</td>
+        <td data-label="Purpose">Indicate if subscription was cancelled but remains valid until expiration</td>
+        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td><strong>Cancellation Date</strong></td>
-        <td>Timestamp (cancelled_at)</td>
-        <td>Track when the user cancelled the subscription</td>
-        <td>Contract performance (Art. 6.1.b GDPR)</td>
+        <td data-label="Data"><strong>Cancellation Date</strong></td>
+        <td data-label="Type">Timestamp (cancelled_at)</td>
+        <td data-label="Purpose">Track when the user cancelled the subscription</td>
+        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
-</table>
+</table></div>
 
 <div class="highlight">
     <strong>🔄 AUTOMATIC MONTHLY RESET:</strong> The token usage counter is automatically reset on your subscription renewal date (every 30 days from the purchase date). The reset happens in the background even if the app is closed or unused for weeks, via an automatic worker scheduled at 3:00 AM. The monthly limit is restored without any manual intervention.
@@ -287,7 +330,7 @@
 
 <p>When a subscription expires or is deleted, we move the data to a history document for GDPR compliance and audit.</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Data</th>
         <th>Type</th>
@@ -295,18 +338,18 @@
         <th>Retention</th>
     </tr>
     <tr>
-        <td><strong>Subscription History</strong></td>
-        <td>Array of objects in user_subscriptions_history/{purchaseToken}</td>
-        <td>Purchase traceability, audit trail, GDPR compliance</td>
-        <td>90 days from expiration</td>
+        <td data-label="Data"><strong>Subscription History</strong></td>
+        <td data-label="Type">Array of objects in user_subscriptions_history/{purchaseToken}</td>
+        <td data-label="Purpose">Purchase traceability, audit trail, GDPR compliance</td>
+        <td data-label="Retention">90 days from expiration</td>
     </tr>
     <tr>
-        <td><strong>Data per Entry</strong></td>
-        <td>Plan, tokens used/limit, start/end/cancellation dates, cancellation reason, devices</td>
-        <td>Audit, user support, refund management</td>
-        <td>90 days from expiration</td>
+        <td data-label="Data"><strong>Data per Entry</strong></td>
+        <td data-label="Type">Plan, tokens used/limit, start/end/cancellation dates, cancellation reason, devices</td>
+        <td data-label="Purpose">Audit, user support, refund management</td>
+        <td data-label="Retention">90 days from expiration</td>
     </tr>
-</table>
+</table></div>
 
 <div class="highlight">
     <strong>🔒 MULTI-DEVICE CONSOLIDATION:</strong> History is consolidated by <strong>purchaseToken</strong>, not by device. All renewals and modifications of the same subscription are grouped in a single document, regardless of the number of devices used.
@@ -326,7 +369,7 @@
 
 <p>To ensure traceability and support in case of disputes, we save a log of main operations related to subscriptions.</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Data</th>
         <th>Type</th>
@@ -334,9 +377,9 @@
         <th>Retention</th>
     </tr>
     <tr>
-        <td><strong>Administrative Activity Logs</strong></td>
-        <td>Array of events in admin_activity_logs/{device_id}</td>
-        <td>
+        <td data-label="Data"><strong>Administrative Activity Logs</strong></td>
+        <td data-label="Type">Array of events in admin_activity_logs/{device_id}</td>
+        <td data-label="Purpose">
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Audit trail for user support</li>
                 <li>Google Play dispute resolution (within 60 days)</li>
@@ -344,11 +387,11 @@
                 <li>Grace period and auto-renewal management</li>
             </ul>
         </td>
-        <td>90 days from last modification</td>
+        <td data-label="Retention">90 days from last modification</td>
     </tr>
     <tr>
-        <td><strong>Logged Events</strong></td>
-        <td>
+        <td data-label="Data"><strong>Logged Events</strong></td>
+        <td data-label="Type">
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Subscription creation</li>
                 <li>Subscription cancellation</li>
@@ -357,16 +400,16 @@
                 <li>Plan changes</li>
             </ul>
         </td>
-        <td>Track modification history for audit and support</td>
-        <td>90 days from last modification</td>
+        <td data-label="Purpose">Track modification history for audit and support</td>
+        <td data-label="Retention">90 days from last modification</td>
     </tr>
     <tr>
-        <td><strong>Details per Event</strong></td>
-        <td>Timestamp, action, reason, plan, operation details</td>
-        <td>Information needed to reconstruct timeline in case of disputes</td>
-        <td>90 days from last modification</td>
+        <td data-label="Data"><strong>Details per Event</strong></td>
+        <td data-label="Type">Timestamp, action, reason, plan, operation details</td>
+        <td data-label="Purpose">Information needed to reconstruct timeline in case of disputes</td>
+        <td data-label="Retention">90 days from last modification</td>
     </tr>
-</table>
+</table></div>
 
 <div class="important">
     <strong>⚠️ IMPORTANT - ACTIVITY LOGS:</strong> Activity logs contain ONLY operational metadata (when, what, why). They do NOT contain sensitive personal data. They are automatically deleted after 90 days from the last modification and are accessible and deletable via "Delete cloud data".
@@ -522,7 +565,7 @@
 
 <h3>4.1 Third-Party Services</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Service</th>
         <th>Data Sent</th>
@@ -530,30 +573,30 @@
         <th>Location</th>
     </tr>
     <tr>
-        <td><strong>Firebase (Google)</strong></td>
-        <td>Anonymous ID, token usage, purchase history, subscription data, activity logs</td>
-        <td>Backup, synchronization, audit trail</td>
-        <td>EU (European servers)</td>
+        <td data-label="Service"><strong>Firebase (Google)</strong></td>
+        <td data-label="Data Sent">Anonymous ID, token usage, purchase history, subscription data, activity logs</td>
+        <td data-label="Purpose">Backup, synchronization, audit trail</td>
+        <td data-label="Location">EU (European servers)</td>
     </tr>
     <tr>
-        <td><strong>Cloudflare Worker</strong></td>
-        <td>Text to translate (transit only)</td>
-        <td>Secure relay for translation</td>
-        <td>EU (European servers)</td>
+        <td data-label="Service"><strong>Cloudflare Worker</strong></td>
+        <td data-label="Data Sent">Text to translate (transit only)</td>
+        <td data-label="Purpose">Secure relay for translation</td>
+        <td data-label="Location">EU (European servers)</td>
     </tr>
     <tr>
-        <td><strong>OpenAI</strong></td>
-        <td>Text to translate (transit only)</td>
-        <td>Translation processing</td>
-        <td>USA (with Standard Contractual Clauses)</td>
+        <td data-label="Service"><strong>OpenAI</strong></td>
+        <td data-label="Data Sent">Text to translate (transit only)</td>
+        <td data-label="Purpose">Translation processing</td>
+        <td data-label="Location">USA (with Standard Contractual Clauses)</td>
     </tr>
     <tr>
-        <td><strong>Google Play Billing</strong></td>
-        <td>Order ID, purchased product</td>
-        <td>In-app purchase management</td>
-        <td>EU (Google servers)</td>
+        <td data-label="Service"><strong>Google Play Billing</strong></td>
+        <td data-label="Data Sent">Order ID, purchased product</td>
+        <td data-label="Purpose">In-app purchase management</td>
+        <td data-label="Location">EU (Google servers)</td>
     </tr>
-</table>
+</table></div>
 
 <h3>4.2 Transfers Outside the EU</h3>
 
@@ -581,73 +624,73 @@
 
 <h3>5.1 Automatic Retention Policy</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Data Type</th>
         <th>Retention Period</th>
         <th>Deletion</th>
     </tr>
     <tr>
-        <td><strong>Active Subscription Data (Firebase)</strong></td>
-        <td>Until end of current billing period</td>
-        <td>Automatic deletion when subscription expires + moved to history</td>
+        <td data-label="Data Type"><strong>Active Subscription Data (Firebase)</strong></td>
+        <td data-label="Retention Period">Until end of current billing period</td>
+        <td data-label="Deletion">Automatic deletion when subscription expires + moved to history</td>
     </tr>
     <tr>
-        <td><strong>Subscription History (Firebase)</strong></td>
-        <td>90 days from subscription expiration</td>
-        <td>Automatic deletion + manual deletion via "Delete cloud data"</td>
+        <td data-label="Data Type"><strong>Subscription History (Firebase)</strong></td>
+        <td data-label="Retention Period">90 days from subscription expiration</td>
+        <td data-label="Deletion">Automatic deletion + manual deletion via "Delete cloud data"</td>
     </tr>
     <tr>
-        <td><strong>Activity Logs (admin_activity_logs)</strong></td>
-        <td>90 days from last modification</td>
-        <td>Automatic deletion (every 24h) + manual deletion</td>
+        <td data-label="Data Type"><strong>Activity Logs (admin_activity_logs)</strong></td>
+        <td data-label="Retention Period">90 days from last modification</td>
+        <td data-label="Deletion">Automatic deletion (every 24h) + manual deletion</td>
     </tr>
     <tr>
-        <td><strong>Purchase History (Firebase)</strong></td>
-        <td>365 days from purchase</td>
-        <td>Automatic + manual deletion</td>
+        <td data-label="Data Type"><strong>Purchase History (Firebase)</strong></td>
+        <td data-label="Retention Period">365 days from purchase</td>
+        <td data-label="Deletion">Automatic + manual deletion</td>
     </tr>
     <tr>
-        <td><strong>Local Data (Device)</strong></td>
-        <td>Until uninstall</td>
-        <td>App uninstall + manual deletion</td>
+        <td data-label="Data Type"><strong>Local Data (Device)</strong></td>
+        <td data-label="Retention Period">Until uninstall</td>
+        <td data-label="Deletion">App uninstall + manual deletion</td>
     </tr>
     <tr>
-        <td><strong>Contact Language Cache (Device)</strong></td>
-        <td>Until manual deletion or uninstall</td>
-        <td>"Delete all local data" button</td>
+        <td data-label="Data Type"><strong>Contact Language Cache (Device)</strong></td>
+        <td data-label="Retention Period">Until manual deletion or uninstall</td>
+        <td data-label="Deletion">"Delete all local data" button</td>
     </tr>
     <tr>
-        <td><strong>Predictive N-gram Models (Device)</strong></td>
-        <td>Until manual deletion or uninstall</td>
-        <td>"Delete all local data" button or removal from Offline Models screen</td>
+        <td data-label="Data Type"><strong>Predictive N-gram Models (Device)</strong></td>
+        <td data-label="Retention Period">Until manual deletion or uninstall</td>
+        <td data-label="Deletion">"Delete all local data" button or removal from Offline Models screen</td>
     </tr>
     <tr>
-        <td><strong>Hunspell Dictionaries (Device)</strong></td>
-        <td>Until manual deletion or uninstall</td>
-        <td>"Delete all local data" button</td>
+        <td data-label="Data Type"><strong>Hunspell Dictionaries (Device)</strong></td>
+        <td data-label="Retention Period">Until manual deletion or uninstall</td>
+        <td data-label="Deletion">"Delete all local data" button</td>
     </tr>
     <tr>
-        <td><strong>Learned Words (Prediction)</strong></td>
-        <td>14 days (automatic decay)</td>
-        <td>Automatic + manual deletion</td>
+        <td data-label="Data Type"><strong>Learned Words (Prediction)</strong></td>
+        <td data-label="Retention Period">14 days (automatic decay)</td>
+        <td data-label="Deletion">Automatic + manual deletion</td>
     </tr>
     <tr>
-        <td><strong>Translated Text</strong></td>
-        <td>0 seconds (NEVER saved)</td>
-        <td>Automatic (memory transit only)</td>
+        <td data-label="Data Type"><strong>Translated Text</strong></td>
+        <td data-label="Retention Period">0 seconds (NEVER saved)</td>
+        <td data-label="Deletion">Automatic (memory transit only)</td>
     </tr>
     <tr>
-        <td><strong>Translation Cache (RAM)</strong></td>
-        <td>Until app closes</td>
-        <td>Automatic</td>
+        <td data-label="Data Type"><strong>Translation Cache (RAM)</strong></td>
+        <td data-label="Retention Period">Until app closes</td>
+        <td data-label="Deletion">Automatic</td>
     </tr>
     <tr>
-        <td><strong>Disambiguation Cache (RAM)</strong></td>
-        <td>Until accessibility service restarts</td>
-        <td>Automatic</td>
+        <td data-label="Data Type"><strong>Disambiguation Cache (RAM)</strong></td>
+        <td data-label="Retention Period">Until accessibility service restarts</td>
+        <td data-label="Deletion">Automatic</td>
     </tr>
-</table>
+</table></div>
 
 <div class="highlight">
     <strong>🗑️ AUTOMATIC CLEANUP:</strong> The app automatically performs cleanup every 24 hours. Data older than the indicated periods is automatically deleted, even if you no longer use the app.
@@ -751,7 +794,7 @@
 
 <p>kAIboard uses the following identifiers to generate the anonymous device ID:</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Identifier</th>
         <th>Type</th>
@@ -759,24 +802,24 @@
         <th>Persistence</th>
     </tr>
     <tr>
-        <td><strong>Android ID</strong></td>
-        <td>Settings.Secure.ANDROID_ID</td>
-        <td>Generate unique and stable device ID</td>
-        <td>Persists across app reinstallations (same signing key). <strong>Changes after a device factory reset.</strong></td>
+        <td data-label="Identifier"><strong>Android ID</strong></td>
+        <td data-label="Type">Settings.Secure.ANDROID_ID</td>
+        <td data-label="Purpose">Generate unique and stable device ID</td>
+        <td data-label="Persistence">Persists across app reinstallations (same signing key). <strong>Changes after a device factory reset.</strong></td>
     </tr>
     <tr>
-        <td><strong>Install Referrer ID</strong></td>
-        <td>Google Play Install Referrer API</td>
-        <td>Fallback if Android ID unavailable</td>
-        <td>Persists across reinstalls (if installed from Play Store)</td>
+        <td data-label="Identifier"><strong>Install Referrer ID</strong></td>
+        <td data-label="Type">Google Play Install Referrer API</td>
+        <td data-label="Purpose">Fallback if Android ID unavailable</td>
+        <td data-label="Persistence">Persists across reinstalls (if installed from Play Store)</td>
     </tr>
     <tr>
-        <td><strong>Local UUID</strong></td>
-        <td>java.util.UUID</td>
-        <td>Final fallback (sideload only)</td>
-        <td>Does NOT persist (lost on uninstall)</td>
+        <td data-label="Identifier"><strong>Local UUID</strong></td>
+        <td data-label="Type">java.util.UUID</td>
+        <td data-label="Purpose">Final fallback (sideload only)</td>
+        <td data-label="Persistence">Does NOT persist (lost on uninstall)</td>
     </tr>
-</table>
+</table></div>
 
 <div class="important">
     <strong>⚠️ FACTORY RESET:</strong> After a device factory reset, the anonymous identifier (Install ID) is regenerated. The active subscription is automatically restored by Google Play on the first app launch. Local data (preferences, contact languages, learned words) are lost and not recoverable, unless a backup was made before the reset.
@@ -786,38 +829,38 @@
 
 <h3>9.2 App Permissions</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Permission</th>
         <th>Purpose</th>
         <th>Mandatory</th>
     </tr>
     <tr>
-        <td><strong>Contacts</strong></td>
-        <td>Assign language to each contact for automatic keyboard switching</td>
-        <td>❌ No (optional)</td>
+        <td data-label="Permission"><strong>Contacts</strong></td>
+        <td data-label="Purpose">Assign language to each contact for automatic keyboard switching</td>
+        <td data-label="Mandatory">❌ No (optional)</td>
     </tr>
     <tr>
-        <td><strong>Accessibility</strong></td>
-        <td>Detect active chat app to automatically change language</td>
-        <td>❌ No (optional)</td>
+        <td data-label="Permission"><strong>Accessibility</strong></td>
+        <td data-label="Purpose">Detect active chat app to automatically change language</td>
+        <td data-label="Mandatory">❌ No (optional)</td>
     </tr>
     <tr>
-        <td><strong>Notifications</strong></td>
-        <td>Quick replies from lockscreen with correct language</td>
-        <td>❌ No (optional)</td>
+        <td data-label="Permission"><strong>Notifications</strong></td>
+        <td data-label="Purpose">Quick replies from lockscreen with correct language</td>
+        <td data-label="Mandatory">❌ No (optional)</td>
     </tr>
     <tr>
-        <td><strong>Microphone</strong></td>
-        <td>Voice dictation (recording only when you press microphone button)</td>
-        <td>❌ No (optional)</td>
+        <td data-label="Permission"><strong>Microphone</strong></td>
+        <td data-label="Purpose">Voice dictation (recording only when you press microphone button)</td>
+        <td data-label="Mandatory">❌ No (optional)</td>
     </tr>
     <tr>
-        <td><strong>Internet</strong></td>
-        <td>Real-time translation and cloud backup</td>
-        <td>✅ Yes (for translation features)</td>
+        <td data-label="Permission"><strong>Internet</strong></td>
+        <td data-label="Purpose">Real-time translation and cloud backup</td>
+        <td data-label="Mandatory">✅ Yes (for translation features)</td>
     </tr>
-</table>
+</table></div>
 
 <div class="important">
     <strong>⚠️ SECURITY NOTE:</strong> Android's security warning for keyboards is standard for all third-party keyboards, it does not mean kAIboard reads or saves your messages. You can verify the source code or contact us for more information.

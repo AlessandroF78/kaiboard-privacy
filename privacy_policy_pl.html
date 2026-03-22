@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
@@ -85,6 +85,49 @@
         ol li {
             margin: 10px 0;
         }
+
+        /* -- MOBILE RESPONSIVE FIX -- */
+        * { box-sizing: border-box; }
+        html { overflow-x: hidden; }
+        body { overflow-x: hidden; max-width: 100%; }
+
+        @media (max-width: 650px) {
+            body { padding: 15px; }
+            .container { padding: 20px; }
+            .table-wrapper thead { display: none; }
+            .table-wrapper table,
+            .table-wrapper tbody,
+            .table-wrapper tr { display: block; width: 100%; }
+            .table-wrapper tr {
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                margin-bottom: 12px;
+                background: #fff;
+                overflow: hidden;
+            }
+            .table-wrapper td {
+                display: block;
+                width: 100%;
+                padding: 10px 12px;
+                font-size: 13px;
+                line-height: 1.5;
+                border: none;
+                border-bottom: 1px solid #f0f0f0;
+                text-align: left;
+            }
+            .table-wrapper td:last-child { border-bottom: none; }
+            .table-wrapper td::before {
+                content: attr(data-label);
+                display: block;
+                font-weight: 600;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: #0FA3A3;
+                margin-bottom: 4px;
+            }
+            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+        }
     </style>
 </head>
 <body>
@@ -110,7 +153,7 @@
 
 <h3>2.1 Automatycznie Zbierane Dane</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Dane</th>
         <th>Typ</th>
@@ -118,30 +161,30 @@
         <th>Podstawa Prawna</th>
     </tr>
     <tr>
-        <td><strong>Tablica Urządzeń</strong></td>
-        <td>Lista identyfikatorów (np. ["android_e19d6c...", "android_175be4..."])</td>
-        <td>Synchronizacja subskrypcji i tokenów na wielu urządzeniach z tym samym kontem Google Play</td>
-        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+        <td data-label="Dane"><strong>Tablica Urządzeń</strong></td>
+        <td data-label="Typ">Lista identyfikatorów (np. ["android_e19d6c...", "android_175be4..."])</td>
+        <td data-label="Cel">Synchronizacja subskrypcji i tokenów na wielu urządzeniach z tym samym kontem Google Play</td>
+        <td data-label="Podstawa Prawna">Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
     <tr>
-        <td><strong>Bieżące Użycie Tokenów</strong></td>
-        <td>Liczba całkowita (current_usage)</td>
-        <td>Śledzenie miesięcznego zużycia współdzielonego między wszystkimi urządzeniami</td>
-        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+        <td data-label="Dane"><strong>Bieżące Użycie Tokenów</strong></td>
+        <td data-label="Typ">Liczba całkowita (current_usage)</td>
+        <td data-label="Cel">Śledzenie miesięcznego zużycia współdzielonego między wszystkimi urządzeniami</td>
+        <td data-label="Podstawa Prawna">Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
     <tr>
-        <td><strong>Historia Zakupów</strong></td>
-        <td>ID produktu, data zakupu, ID zamówienia</td>
-        <td>Weryfikacja zakupów i zapobieganie oszustwom</td>
-        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+        <td data-label="Dane"><strong>Historia Zakupów</strong></td>
+        <td data-label="Typ">ID produktu, data zakupu, ID zamówienia</td>
+        <td data-label="Cel">Weryfikacja zakupów i zapobieganie oszustwom</td>
+        <td data-label="Podstawa Prawna">Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
     <tr>
-        <td><strong>Tekst do Tłumaczenia</strong></td>
-        <td>Treść tekstowa</td>
-        <td>Tłumaczenie w czasie rzeczywistym</td>
-        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+        <td data-label="Dane"><strong>Tekst do Tłumaczenia</strong></td>
+        <td data-label="Typ">Treść tekstowa</td>
+        <td data-label="Cel">Tłumaczenie w czasie rzeczywistym</td>
+        <td data-label="Podstawa Prawna">Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
-</table>
+</table></div>
 
 <h4>Synchronizacja Wielourządzeniowa</h4>
 
@@ -167,7 +210,7 @@
 
 <p>Jeśli subskrybujesz <strong>miesięczną subskrypcję</strong> (np. Plan PLUS z 250 000 tokenów/miesiąc), zapisujemy następujące dodatkowe dane:</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Dane</th>
         <th>Typ</th>
@@ -175,66 +218,66 @@
         <th>Podstawa Prawna</th>
     </tr>
     <tr>
-        <td><strong>Plan Subskrypcji</strong></td>
-        <td>Ciąg znaków (np. "plus", "pro", "max")</td>
-        <td>Identyfikacja aktywnego planu i zastosowanie prawidłowego limitu tokenów</td>
-        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+        <td data-label="Dane"><strong>Plan Subskrypcji</strong></td>
+        <td data-label="Typ">Ciąg znaków (np. "plus", "pro", "max")</td>
+        <td data-label="Cel">Identyfikacja aktywnego planu i zastosowanie prawidłowego limitu tokenów</td>
+        <td data-label="Podstawa Prawna">Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
     <tr>
-        <td><strong>Miesięczny Limit Tokenów</strong></td>
-        <td>Liczba całkowita (np. 250000, 500000, 1000000)</td>
-        <td>Zastosowanie maksymalnej liczby tokenów w subskrypcji</td>
-        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+        <td data-label="Dane"><strong>Miesięczny Limit Tokenów</strong></td>
+        <td data-label="Typ">Liczba całkowita (np. 250000, 500000, 1000000)</td>
+        <td data-label="Cel">Zastosowanie maksymalnej liczby tokenów w subskrypcji</td>
+        <td data-label="Podstawa Prawna">Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
     <tr>
-        <td><strong>Bieżące Użycie Tokenów</strong></td>
-        <td>Liczba całkowita</td>
-        <td>Śledzenie miesięcznego zużycia i zastosowanie limitu</td>
-        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+        <td data-label="Dane"><strong>Bieżące Użycie Tokenów</strong></td>
+        <td data-label="Typ">Liczba całkowita</td>
+        <td data-label="Cel">Śledzenie miesięcznego zużycia i zastosowanie limitu</td>
+        <td data-label="Podstawa Prawna">Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
     <tr>
-        <td><strong>Data Miesięcznego Resetu</strong></td>
-        <td>Data ISO (np. "2026-02-01")</td>
-        <td>Automatyczny reset użycia na początku miesiąca</td>
-        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+        <td data-label="Dane"><strong>Data Miesięcznego Resetu</strong></td>
+        <td data-label="Typ">Data ISO (np. "2026-02-01")</td>
+        <td data-label="Cel">Automatyczny reset użycia na początku miesiąca</td>
+        <td data-label="Podstawa Prawna">Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
     <tr>
-        <td><strong>ID Produktu Google Play</strong></td>
-        <td>Ciąg znaków (np. "abbonamento_mensile_2500")</td>
-        <td>Weryfikacja ważności subskrypcji przez Google Play Billing API</td>
-        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+        <td data-label="Dane"><strong>ID Produktu Google Play</strong></td>
+        <td data-label="Typ">Ciąg znaków (np. "abbonamento_mensile_2500")</td>
+        <td data-label="Cel">Weryfikacja ważności subskrypcji przez Google Play Billing API</td>
+        <td data-label="Podstawa Prawna">Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
     <tr>
-        <td><strong>Status Automatycznego Odnowienia</strong></td>
-        <td>Boolean</td>
-        <td>Sprawdzenie czy subskrypcja będzie automatycznie odnawiana</td>
-        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+        <td data-label="Dane"><strong>Status Automatycznego Odnowienia</strong></td>
+        <td data-label="Typ">Boolean</td>
+        <td data-label="Cel">Sprawdzenie czy subskrypcja będzie automatycznie odnawiana</td>
+        <td data-label="Podstawa Prawna">Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
     <tr>
-        <td><strong>Data Zakupu Subskrypcji</strong></td>
-        <td>Znacznik czasu</td>
-        <td>Zarządzanie cyklem rozliczeniowym i sporami</td>
-        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+        <td data-label="Dane"><strong>Data Zakupu Subskrypcji</strong></td>
+        <td data-label="Typ">Znacznik czasu</td>
+        <td data-label="Cel">Zarządzanie cyklem rozliczeniowym i sporami</td>
+        <td data-label="Podstawa Prawna">Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
     <tr>
-        <td><strong>Data Zakończenia Subskrypcji</strong></td>
-        <td>Znacznik czasu ISO 8601 (np. "2026-02-28T14:30:00Z")</td>
-        <td>Zarządzanie okresem karencji po anulowaniu (subskrypcja pozostaje aktywna do tej daty)</td>
-        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+        <td data-label="Dane"><strong>Data Zakończenia Subskrypcji</strong></td>
+        <td data-label="Typ">Znacznik czasu ISO 8601 (np. "2026-02-28T14:30:00Z")</td>
+        <td data-label="Cel">Zarządzanie okresem karencji po anulowaniu (subskrypcja pozostaje aktywna do tej daty)</td>
+        <td data-label="Podstawa Prawna">Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
     <tr>
-        <td><strong>Flaga "Nie Odnowi Się"</strong></td>
-        <td>Boolean (will_not_renew)</td>
-        <td>Wskazanie czy subskrypcja została anulowana, ale pozostaje ważna do wygaśnięcia</td>
-        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+        <td data-label="Dane"><strong>Flaga "Nie Odnowi Się"</strong></td>
+        <td data-label="Typ">Boolean (will_not_renew)</td>
+        <td data-label="Cel">Wskazanie czy subskrypcja została anulowana, ale pozostaje ważna do wygaśnięcia</td>
+        <td data-label="Podstawa Prawna">Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
     <tr>
-        <td><strong>Data Anulowania</strong></td>
-        <td>Znacznik czasu (cancelled_at)</td>
-        <td>Śledzenie kiedy użytkownik anulował subskrypcję</td>
-        <td>Wykonanie umowy (Art. 6.1.b RODO)</td>
+        <td data-label="Dane"><strong>Data Anulowania</strong></td>
+        <td data-label="Typ">Znacznik czasu (cancelled_at)</td>
+        <td data-label="Cel">Śledzenie kiedy użytkownik anulował subskrypcję</td>
+        <td data-label="Podstawa Prawna">Wykonanie umowy (Art. 6.1.b RODO)</td>
     </tr>
-</table>
+</table></div>
 
 <div class="highlight">
     <strong>🔄 AUTOMATYCZNY MIESIĘCZNY RESET:</strong> Licznik wykorzystania tokenów jest automatycznie zerowany w dniu odnowienia subskrypcji (co 30 dni od daty zakupu). Reset odbywa się w tle, nawet jeśli aplikacja jest zamknięta lub nieużywana przez tygodnie, za pomocą automatycznego workera zaplanowanego na godzinę 3:00 w nocy. Miesięczny limit jest przywracany bez ręcznej interwencji.
@@ -288,7 +331,7 @@
 
 <p>Gdy subskrypcja wygasa lub zostaje usunięta, przenosimy dane do dokumentu historii w celu zgodności z RODO i audytu.</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Dane</th>
         <th>Typ</th>
@@ -296,18 +339,18 @@
         <th>Przechowywanie</th>
     </tr>
     <tr>
-        <td><strong>Historia Subskrypcji</strong></td>
-        <td>Tablica obiektów w user_subscriptions_history/{purchaseToken}</td>
-        <td>Śledzenie zakupów, ścieżka audytu, zgodność z RODO</td>
-        <td>90 dni od wygaśnięcia</td>
+        <td data-label="Dane"><strong>Historia Subskrypcji</strong></td>
+        <td data-label="Typ">Tablica obiektów w user_subscriptions_history/{purchaseToken}</td>
+        <td data-label="Cel">Śledzenie zakupów, ścieżka audytu, zgodność z RODO</td>
+        <td data-label="Przechowywanie">90 dni od wygaśnięcia</td>
     </tr>
     <tr>
-        <td><strong>Dane dla Wpisu</strong></td>
-        <td>Plan, użyte tokeny/limit, daty rozpoczęcia/zakończenia/anulowania, powód anulowania, urządzenia</td>
-        <td>Audyt, wsparcie użytkownika, zarządzanie zwrotami</td>
-        <td>90 dni od wygaśnięcia</td>
+        <td data-label="Dane"><strong>Dane dla Wpisu</strong></td>
+        <td data-label="Typ">Plan, użyte tokeny/limit, daty rozpoczęcia/zakończenia/anulowania, powód anulowania, urządzenia</td>
+        <td data-label="Cel">Audyt, wsparcie użytkownika, zarządzanie zwrotami</td>
+        <td data-label="Przechowywanie">90 dni od wygaśnięcia</td>
     </tr>
-</table>
+</table></div>
 
 <div class="highlight">
     <strong>🔒 KONSOLIDACJA WIELOURZĄDZENIOWA:</strong> Historia jest konsolidowana według <strong>purchaseToken</strong>, nie według urządzenia. Wszystkie odnowienia i zmiany tej samej subskrypcji są grupowane w jednym dokumencie, niezależnie od liczby używanych urządzeń.
@@ -327,7 +370,7 @@
 
 <p>Aby zapewnić śledzenie i wsparcie w przypadku sporów, zapisujemy rejestr głównych operacji związanych z subskrypcjami.</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Dane</th>
         <th>Typ</th>
@@ -335,9 +378,9 @@
         <th>Przechowywanie</th>
     </tr>
     <tr>
-        <td><strong>Logi Aktywności Administracyjnej</strong></td>
-        <td>Tablica zdarzeń w admin_activity_logs/{device_id}</td>
-        <td>
+        <td data-label="Dane"><strong>Logi Aktywności Administracyjnej</strong></td>
+        <td data-label="Typ">Tablica zdarzeń w admin_activity_logs/{device_id}</td>
+        <td data-label="Cel">
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Ścieżka audytu dla wsparcia użytkownika</li>
                 <li>Rozwiązywanie sporów Google Play (w ciągu 60 dni)</li>
@@ -345,11 +388,11 @@
                 <li>Zarządzanie okresem karencji i automatycznymi odnowieniami</li>
             </ul>
         </td>
-        <td>90 dni od ostatniej modyfikacji</td>
+        <td data-label="Przechowywanie">90 dni od ostatniej modyfikacji</td>
     </tr>
     <tr>
-        <td><strong>Zarejestrowane Zdarzenia</strong></td>
-        <td>
+        <td data-label="Dane"><strong>Zarejestrowane Zdarzenia</strong></td>
+        <td data-label="Typ">
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Subskrypcja</li>
                 <li>Anulowanie subskrypcji</li>
@@ -358,16 +401,16 @@
                 <li>Zmiany planu</li>
             </ul>
         </td>
-        <td>Śledzenie historii zmian dla audytu i wsparcia</td>
-        <td>90 dni od ostatniej modyfikacji</td>
+        <td data-label="Cel">Śledzenie historii zmian dla audytu i wsparcia</td>
+        <td data-label="Przechowywanie">90 dni od ostatniej modyfikacji</td>
     </tr>
     <tr>
-        <td><strong>Szczegóły Zdarzenia</strong></td>
-        <td>Znacznik czasu, akcja, powód, plan, szczegóły operacji</td>
-        <td>Informacje niezbędne do odtworzenia chronologii w przypadku sporów</td>
-        <td>90 dni od ostatniej modyfikacji</td>
+        <td data-label="Dane"><strong>Szczegóły Zdarzenia</strong></td>
+        <td data-label="Typ">Znacznik czasu, akcja, powód, plan, szczegóły operacji</td>
+        <td data-label="Cel">Informacje niezbędne do odtworzenia chronologii w przypadku sporów</td>
+        <td data-label="Przechowywanie">90 dni od ostatniej modyfikacji</td>
     </tr>
-</table>
+</table></div>
 
 <div class="important">
     <strong>⚠️ WAŻNE - LOGI AKTYWNOŚCI:</strong> Logi aktywności zawierają TYLKO metadane operacyjne (kiedy, co, dlaczego). NIE zawierają wrażliwych danych osobowych. Są automatycznie usuwane po 90 dniach od ostatniej modyfikacji i są dostępne oraz usuwalne przez "Usuń dane w chmurze".
@@ -524,7 +567,7 @@
 
 <h3>4.1 Usługi Stron Trzecich</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Usługa</th>
         <th>Wysyłane Dane</th>
@@ -532,30 +575,30 @@
         <th>Lokalizacja</th>
     </tr>
     <tr>
-        <td><strong>Firebase (Google)</strong></td>
-        <td>Anonimowy ID, bieżące użycie tokenów, historia zakupów, dane subskrypcji, logi aktywności</td>
-        <td>Kopia zapasowa, synchronizacja i ścieżka audytu</td>
-        <td>UE (serwery europejskie)</td>
+        <td data-label="Usługa"><strong>Firebase (Google)</strong></td>
+        <td data-label="Wysyłane Dane">Anonimowy ID, bieżące użycie tokenów, historia zakupów, dane subskrypcji, logi aktywności</td>
+        <td data-label="Cel">Kopia zapasowa, synchronizacja i ścieżka audytu</td>
+        <td data-label="Lokalizacja">UE (serwery europejskie)</td>
     </tr>
     <tr>
-        <td><strong>Cloudflare Worker</strong></td>
-        <td>Tekst do tłumaczenia (tylko przesyłanie)</td>
-        <td>Bezpieczny przekaźnik dla tłumaczenia</td>
-        <td>UE (serwery europejskie)</td>
+        <td data-label="Usługa"><strong>Cloudflare Worker</strong></td>
+        <td data-label="Wysyłane Dane">Tekst do tłumaczenia (tylko przesyłanie)</td>
+        <td data-label="Cel">Bezpieczny przekaźnik dla tłumaczenia</td>
+        <td data-label="Lokalizacja">UE (serwery europejskie)</td>
     </tr>
     <tr>
-        <td><strong>OpenAI</strong></td>
-        <td>Tekst do tłumaczenia (tylko przesyłanie)</td>
-        <td>Przetwarzanie tłumaczenia</td>
-        <td>USA (ze Standardowymi Klauzulami Umownymi)</td>
+        <td data-label="Usługa"><strong>OpenAI</strong></td>
+        <td data-label="Wysyłane Dane">Tekst do tłumaczenia (tylko przesyłanie)</td>
+        <td data-label="Cel">Przetwarzanie tłumaczenia</td>
+        <td data-label="Lokalizacja">USA (ze Standardowymi Klauzulami Umownymi)</td>
     </tr>
     <tr>
-        <td><strong>Google Play Billing</strong></td>
-        <td>ID zamówienia, zakupiony produkt</td>
-        <td>Zarządzanie zakupami w aplikacji</td>
-        <td>UE (serwery Google)</td>
+        <td data-label="Usługa"><strong>Google Play Billing</strong></td>
+        <td data-label="Wysyłane Dane">ID zamówienia, zakupiony produkt</td>
+        <td data-label="Cel">Zarządzanie zakupami w aplikacji</td>
+        <td data-label="Lokalizacja">UE (serwery Google)</td>
     </tr>
-</table>
+</table></div>
 
 <h3>4.2 Transfery poza UE</h3>
 
@@ -583,73 +626,73 @@
 
 <h3>5.1 Automatyczna Polityka Przechowywania</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Typ Danych</th>
         <th>Okres Przechowywania</th>
         <th>Usuwanie</th>
     </tr>
     <tr>
-        <td><strong>Aktywne Dane Subskrypcji (Firebase)</strong></td>
-        <td>Do końca bieżącego okresu rozliczeniowego</td>
-        <td>Automatyczne usunięcie po wygaśnięciu subskrypcji + przeniesienie do historii</td>
+        <td data-label="Typ Danych"><strong>Aktywne Dane Subskrypcji (Firebase)</strong></td>
+        <td data-label="Okres Przechowywania">Do końca bieżącego okresu rozliczeniowego</td>
+        <td data-label="Usuwanie">Automatyczne usunięcie po wygaśnięciu subskrypcji + przeniesienie do historii</td>
     </tr>
     <tr>
-        <td><strong>Historia Subskrypcji (Firebase)</strong></td>
-        <td>90 dni od wygaśnięcia subskrypcji</td>
-        <td>Automatyczne usunięcie + ręczne usunięcie przez "Usuń dane w chmurze"</td>
+        <td data-label="Typ Danych"><strong>Historia Subskrypcji (Firebase)</strong></td>
+        <td data-label="Okres Przechowywania">90 dni od wygaśnięcia subskrypcji</td>
+        <td data-label="Usuwanie">Automatyczne usunięcie + ręczne usunięcie przez "Usuń dane w chmurze"</td>
     </tr>
     <tr>
-        <td><strong>Logi Aktywności (admin_activity_logs)</strong></td>
-        <td>90 dni od ostatniej modyfikacji</td>
-        <td>Automatyczne usunięcie (co 24h) + ręczne usunięcie</td>
+        <td data-label="Typ Danych"><strong>Logi Aktywności (admin_activity_logs)</strong></td>
+        <td data-label="Okres Przechowywania">90 dni od ostatniej modyfikacji</td>
+        <td data-label="Usuwanie">Automatyczne usunięcie (co 24h) + ręczne usunięcie</td>
     </tr>
     <tr>
-        <td><strong>Historia Zakupów (Firebase)</strong></td>
-        <td>365 dni od zakupu</td>
-        <td>Automatyczne + ręczne usuwanie</td>
+        <td data-label="Typ Danych"><strong>Historia Zakupów (Firebase)</strong></td>
+        <td data-label="Okres Przechowywania">365 dni od zakupu</td>
+        <td data-label="Usuwanie">Automatyczne + ręczne usuwanie</td>
     </tr>
     <tr>
-        <td><strong>Dane Lokalne (Urządzenie)</strong></td>
-        <td>Do odinstalowania</td>
-        <td>Odinstalowanie aplikacji + ręczne usuwanie</td>
+        <td data-label="Typ Danych"><strong>Dane Lokalne (Urządzenie)</strong></td>
+        <td data-label="Okres Przechowywania">Do odinstalowania</td>
+        <td data-label="Usuwanie">Odinstalowanie aplikacji + ręczne usuwanie</td>
     </tr>
     <tr>
-        <td><strong>Pamięć Kontakt-Język (Urządzenie)</strong></td>
-        <td>Do ręcznego usunięcia lub odinstalowania</td>
-        <td>Przycisk "Usuń wszystkie dane lokalne"</td>
+        <td data-label="Typ Danych"><strong>Pamięć Kontakt-Język (Urządzenie)</strong></td>
+        <td data-label="Okres Przechowywania">Do ręcznego usunięcia lub odinstalowania</td>
+        <td data-label="Usuwanie">Przycisk "Usuń wszystkie dane lokalne"</td>
     </tr>
     <tr>
-        <td><strong>Modele Predykcyjne N-gram (Urządzenie)</strong></td>
-        <td>Do ręcznego usunięcia lub odinstalowania</td>
-        <td>Przycisk "Usuń wszystkie dane lokalne" lub usunięcie z ekranu Modele Offline</td>
+        <td data-label="Typ Danych"><strong>Modele Predykcyjne N-gram (Urządzenie)</strong></td>
+        <td data-label="Okres Przechowywania">Do ręcznego usunięcia lub odinstalowania</td>
+        <td data-label="Usuwanie">Przycisk "Usuń wszystkie dane lokalne" lub usunięcie z ekranu Modele Offline</td>
     </tr>
     <tr>
-        <td><strong>Słowniki Hunspell (Urządzenie)</strong></td>
-        <td>Do ręcznego usunięcia lub odinstalowania</td>
-        <td>Przycisk "Usuń wszystkie dane lokalne"</td>
+        <td data-label="Typ Danych"><strong>Słowniki Hunspell (Urządzenie)</strong></td>
+        <td data-label="Okres Przechowywania">Do ręcznego usunięcia lub odinstalowania</td>
+        <td data-label="Usuwanie">Przycisk "Usuń wszystkie dane lokalne"</td>
     </tr>
     <tr>
-        <td><strong>Nauczone Słowa (Przewidywanie)</strong></td>
-        <td>14 dni (automatyczny zanik)</td>
-        <td>Automatyczne + ręczne usuwanie</td>
+        <td data-label="Typ Danych"><strong>Nauczone Słowa (Przewidywanie)</strong></td>
+        <td data-label="Okres Przechowywania">14 dni (automatyczny zanik)</td>
+        <td data-label="Usuwanie">Automatyczne + ręczne usuwanie</td>
     </tr>
     <tr>
-        <td><strong>Przetłumaczony Tekst</strong></td>
-        <td>0 sekund (NIGDY nie zapisywany)</td>
-        <td>Automatyczne (tylko przesyłanie w pamięci)</td>
+        <td data-label="Typ Danych"><strong>Przetłumaczony Tekst</strong></td>
+        <td data-label="Okres Przechowywania">0 sekund (NIGDY nie zapisywany)</td>
+        <td data-label="Usuwanie">Automatyczne (tylko przesyłanie w pamięci)</td>
     </tr>
     <tr>
-        <td><strong>Pamięć Podręczna Tłumaczeń (RAM)</strong></td>
-        <td>Do zamknięcia aplikacji</td>
-        <td>Automatyczne</td>
+        <td data-label="Typ Danych"><strong>Pamięć Podręczna Tłumaczeń (RAM)</strong></td>
+        <td data-label="Okres Przechowywania">Do zamknięcia aplikacji</td>
+        <td data-label="Usuwanie">Automatyczne</td>
     </tr>
     <tr>
-        <td><strong>Pamięć Podręczna Disambiguacji (RAM)</strong></td>
-        <td>Do restartu usługi dostępności</td>
-        <td>Automatyczne</td>
+        <td data-label="Typ Danych"><strong>Pamięć Podręczna Disambiguacji (RAM)</strong></td>
+        <td data-label="Okres Przechowywania">Do restartu usługi dostępności</td>
+        <td data-label="Usuwanie">Automatyczne</td>
     </tr>
-</table>
+</table></div>
 
 <div class="highlight">
     <strong>🗑️ AUTOMATYCZNE CZYSZCZENIE:</strong> Aplikacja automatycznie przeprowadza czyszczenie co 24 godziny. Dane starsze niż 365 dni (lub 90 dni dla historii subskrypcji i logów aktywności) są automatycznie usuwane, nawet jeśli nie korzystasz już z aplikacji.
@@ -753,7 +796,7 @@
 
 <p>kAIboard używa następujących identyfikatorów do generowania anonimowego ID urządzenia:</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Identyfikator</th>
         <th>Typ</th>
@@ -761,24 +804,24 @@
         <th>Trwałość</th>
     </tr>
     <tr>
-        <td><strong>Android ID</strong></td>
-        <td>Settings.Secure.ANDROID_ID</td>
-        <td>Generowanie unikalnego i stabilnego ID urządzenia</td>
-        <td>Utrzymuje się między reinstalacjami aplikacji (ten sam klucz podpisu). <strong>Zmienia się po przywróceniu ustawień fabrycznych urządzenia.</strong></td>
+        <td data-label="Identyfikator"><strong>Android ID</strong></td>
+        <td data-label="Typ">Settings.Secure.ANDROID_ID</td>
+        <td data-label="Cel">Generowanie unikalnego i stabilnego ID urządzenia</td>
+        <td data-label="Trwałość">Utrzymuje się między reinstalacjami aplikacji (ten sam klucz podpisu). <strong>Zmienia się po przywróceniu ustawień fabrycznych urządzenia.</strong></td>
     </tr>
     <tr>
-        <td><strong>Install Referrer ID</strong></td>
-        <td>Google Play Install Referrer API</td>
-        <td>Alternatywa gdy Android ID niedostępny</td>
-        <td>Pozostaje między reinstalacjami (jeśli zainstalowano z Play Store)</td>
+        <td data-label="Identyfikator"><strong>Install Referrer ID</strong></td>
+        <td data-label="Typ">Google Play Install Referrer API</td>
+        <td data-label="Cel">Alternatywa gdy Android ID niedostępny</td>
+        <td data-label="Trwałość">Pozostaje między reinstalacjami (jeśli zainstalowano z Play Store)</td>
     </tr>
     <tr>
-        <td><strong>Lokalny UUID</strong></td>
-        <td>java.util.UUID</td>
-        <td>Ostatnia alternatywa (tylko instalacja manualna)</td>
-        <td>NIE pozostaje (tracony przy deinstalacji)</td>
+        <td data-label="Identyfikator"><strong>Lokalny UUID</strong></td>
+        <td data-label="Typ">java.util.UUID</td>
+        <td data-label="Cel">Ostatnia alternatywa (tylko instalacja manualna)</td>
+        <td data-label="Trwałość">NIE pozostaje (tracony przy deinstalacji)</td>
     </tr>
-</table>
+</table></div>
 
 <div class="important">
     <strong>⚠️ PRZYWRÓCENIE USTAWIEŃ FABRYCZNYCH:</strong> Po przywróceniu ustawień fabrycznych urządzenia, anonimowy identyfikator (Install ID) jest generowany ponownie. Aktywna subskrypcja jest automatycznie przywracana przez Google Play przy pierwszym uruchomieniu aplikacji. Dane lokalne (ustawienia, języki kontaktów, nauczone słowa) zostają utracone i nie są możliwe do odzyskania, chyba że przed resetem wykonano kopię zapasową.
@@ -788,38 +831,38 @@
 
 <h3>9.2 Uprawnienia Aplikacji</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Uprawnienie</th>
         <th>Cel</th>
         <th>Obowiązkowe</th>
     </tr>
     <tr>
-        <td><strong>Kontakty</strong></td>
-        <td>Przypisanie języka do każdego kontaktu dla automatycznej zmiany klawiatury</td>
-        <td>❌ Nie (opcjonalne)</td>
+        <td data-label="Uprawnienie"><strong>Kontakty</strong></td>
+        <td data-label="Cel">Przypisanie języka do każdego kontaktu dla automatycznej zmiany klawiatury</td>
+        <td data-label="Obowiązkowe">❌ Nie (opcjonalne)</td>
     </tr>
     <tr>
-        <td><strong>Dostępność</strong></td>
-        <td>Wykrywanie aktywnej aplikacji czatu w celu automatycznej zmiany języka</td>
-        <td>❌ Nie (opcjonalne)</td>
+        <td data-label="Uprawnienie"><strong>Dostępność</strong></td>
+        <td data-label="Cel">Wykrywanie aktywnej aplikacji czatu w celu automatycznej zmiany języka</td>
+        <td data-label="Obowiązkowe">❌ Nie (opcjonalne)</td>
     </tr>
     <tr>
-        <td><strong>Powiadomienia</strong></td>
-        <td>Szybkie odpowiedzi z ekranu blokady w poprawnym języku</td>
-        <td>❌ Nie (opcjonalne)</td>
+        <td data-label="Uprawnienie"><strong>Powiadomienia</strong></td>
+        <td data-label="Cel">Szybkie odpowiedzi z ekranu blokady w poprawnym języku</td>
+        <td data-label="Obowiązkowe">❌ Nie (opcjonalne)</td>
     </tr>
     <tr>
-        <td><strong>Mikrofon</strong></td>
-        <td>Dyktowanie głosowe (nagrywanie tylko gdy naciskasz przycisk mikrofonu)</td>
-        <td>❌ Nie (opcjonalne)</td>
+        <td data-label="Uprawnienie"><strong>Mikrofon</strong></td>
+        <td data-label="Cel">Dyktowanie głosowe (nagrywanie tylko gdy naciskasz przycisk mikrofonu)</td>
+        <td data-label="Obowiązkowe">❌ Nie (opcjonalne)</td>
     </tr>
     <tr>
-        <td><strong>Internet</strong></td>
-        <td>Tłumaczenie w czasie rzeczywistym i kopia zapasowa w chmurze</td>
-        <td>✅ Tak (dla funkcji tłumaczenia)</td>
+        <td data-label="Uprawnienie"><strong>Internet</strong></td>
+        <td data-label="Cel">Tłumaczenie w czasie rzeczywistym i kopia zapasowa w chmurze</td>
+        <td data-label="Obowiązkowe">✅ Tak (dla funkcji tłumaczenia)</td>
     </tr>
-</table>
+</table></div>
 
 <div class="important">
     <strong>⚠️ UWAGA DOTYCZĄCA BEZPIECZEŃSTWA:</strong> Ostrzeżenie bezpieczeństwa Androida dla klawiatur jest standardowe dla wszystkich klawiatur firm trzecich, nie oznacza to, że kAIboard czyta lub zapisuje Twoje wiadomości. Możesz zweryfikować kod źródłowy lub skontaktować się z nami w celu uzyskania więcej informacji.

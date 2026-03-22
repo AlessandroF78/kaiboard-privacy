@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -85,6 +85,49 @@
         ol li {
             margin: 10px 0;
         }
+
+        /* -- MOBILE RESPONSIVE FIX -- */
+        * { box-sizing: border-box; }
+        html { overflow-x: hidden; }
+        body { overflow-x: hidden; max-width: 100%; }
+
+        @media (max-width: 650px) {
+            body { padding: 15px; }
+            .container { padding: 20px; }
+            .table-wrapper thead { display: none; }
+            .table-wrapper table,
+            .table-wrapper tbody,
+            .table-wrapper tr { display: block; width: 100%; }
+            .table-wrapper tr {
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                margin-bottom: 12px;
+                background: #fff;
+                overflow: hidden;
+            }
+            .table-wrapper td {
+                display: block;
+                width: 100%;
+                padding: 10px 12px;
+                font-size: 13px;
+                line-height: 1.5;
+                border: none;
+                border-bottom: 1px solid #f0f0f0;
+                text-align: left;
+            }
+            .table-wrapper td:last-child { border-bottom: none; }
+            .table-wrapper td::before {
+                content: attr(data-label);
+                display: block;
+                font-weight: 600;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: #0FA3A3;
+                margin-bottom: 4px;
+            }
+            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+        }
     </style>
 </head>
 <body>
@@ -110,7 +153,7 @@
 
 <h3>2.1 Dados Coletados Automaticamente</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Dado</th>
         <th>Tipo</th>
@@ -118,30 +161,30 @@
         <th>Base Legal</th>
     </tr>
     <tr>
-        <td><strong>Array de Dispositivos</strong></td>
-        <td>Lista de identificadores (ex. ["android_e19d6c...", "android_175be4..."])</td>
-        <td>Sincronizar assinatura e tokens em múltiplos dispositivos com a mesma conta Google Play</td>
-        <td>Execução de contrato (Art. 6.1.b RGPD)</td>
+        <td data-label="Dado"><strong>Array de Dispositivos</strong></td>
+        <td data-label="Tipo">Lista de identificadores (ex. ["android_e19d6c...", "android_175be4..."])</td>
+        <td data-label="Finalidade">Sincronizar assinatura e tokens em múltiplos dispositivos com a mesma conta Google Play</td>
+        <td data-label="Base Legal">Execução de contrato (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Uso Atual de Tokens</strong></td>
-        <td>Número inteiro (current_usage)</td>
-        <td>Rastrear o consumo mensal compartilhado entre todos os dispositivos</td>
-        <td>Execução de contrato (Art. 6.1.b RGPD)</td>
+        <td data-label="Dado"><strong>Uso Atual de Tokens</strong></td>
+        <td data-label="Tipo">Número inteiro (current_usage)</td>
+        <td data-label="Finalidade">Rastrear o consumo mensal compartilhado entre todos os dispositivos</td>
+        <td data-label="Base Legal">Execução de contrato (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Histórico de Compras</strong></td>
-        <td>ID do produto, data de compra, ID do pedido</td>
-        <td>Verificar compras e prevenir fraude</td>
-        <td>Execução de contrato (Art. 6.1.b RGPD)</td>
+        <td data-label="Dado"><strong>Histórico de Compras</strong></td>
+        <td data-label="Tipo">ID do produto, data de compra, ID do pedido</td>
+        <td data-label="Finalidade">Verificar compras e prevenir fraude</td>
+        <td data-label="Base Legal">Execução de contrato (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Texto a Traduzir</strong></td>
-        <td>Conteúdo de texto</td>
-        <td>Tradução em tempo real</td>
-        <td>Execução de contrato (Art. 6.1.b RGPD)</td>
+        <td data-label="Dado"><strong>Texto a Traduzir</strong></td>
+        <td data-label="Tipo">Conteúdo de texto</td>
+        <td data-label="Finalidade">Tradução em tempo real</td>
+        <td data-label="Base Legal">Execução de contrato (Art. 6.1.b RGPD)</td>
     </tr>
-</table>
+</table></div>
 
 <h4>Sincronização Multi-Dispositivo</h4>
 
@@ -167,7 +210,7 @@
 
 <p>Se você assinar uma <strong>assinatura mensal</strong> (por exemplo, Plano PLUS com 250.000 tokens/mês), salvamos os seguintes dados adicionais:</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Dados</th>
         <th>Tipo</th>
@@ -175,66 +218,66 @@
         <th>Base Legal</th>
     </tr>
     <tr>
-        <td><strong>Plano de Assinatura</strong></td>
-        <td>String (ex. "plus", "pro", "max")</td>
-        <td>Identificar plano ativo e aplicar limite correto de tokens</td>
-        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+        <td data-label="Dados"><strong>Plano de Assinatura</strong></td>
+        <td data-label="Tipo">String (ex. "plus", "pro", "max")</td>
+        <td data-label="Finalidade">Identificar plano ativo e aplicar limite correto de tokens</td>
+        <td data-label="Base Legal">Execução do contrato (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Limite Mensal de Tokens</strong></td>
-        <td>Inteiro (ex. 250000, 500000, 1000000)</td>
-        <td>Aplicar máximo de tokens incluídos na assinatura</td>
-        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+        <td data-label="Dados"><strong>Limite Mensal de Tokens</strong></td>
+        <td data-label="Tipo">Inteiro (ex. 250000, 500000, 1000000)</td>
+        <td data-label="Finalidade">Aplicar máximo de tokens incluídos na assinatura</td>
+        <td data-label="Base Legal">Execução do contrato (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Uso Atual de Tokens</strong></td>
-        <td>Inteiro</td>
-        <td>Rastrear consumo mensal e aplicar limite</td>
-        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+        <td data-label="Dados"><strong>Uso Atual de Tokens</strong></td>
+        <td data-label="Tipo">Inteiro</td>
+        <td data-label="Finalidade">Rastrear consumo mensal e aplicar limite</td>
+        <td data-label="Base Legal">Execução do contrato (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Data de Renovação Mensal</strong></td>
-        <td>Data ISO (ex. "2026-02-01")</td>
-        <td>Renovação automática do uso no início do mês</td>
-        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+        <td data-label="Dados"><strong>Data de Renovação Mensal</strong></td>
+        <td data-label="Tipo">Data ISO (ex. "2026-02-01")</td>
+        <td data-label="Finalidade">Renovação automática do uso no início do mês</td>
+        <td data-label="Base Legal">Execução do contrato (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>ID do Produto Google Play</strong></td>
-        <td>String (ex. "abbonamento_mensile_2500")</td>
-        <td>Verificar validade da assinatura através da Google Play Billing API</td>
-        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+        <td data-label="Dados"><strong>ID do Produto Google Play</strong></td>
+        <td data-label="Tipo">String (ex. "abbonamento_mensile_2500")</td>
+        <td data-label="Finalidade">Verificar validade da assinatura através da Google Play Billing API</td>
+        <td data-label="Base Legal">Execução do contrato (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Status de Renovação Automática</strong></td>
-        <td>Boolean</td>
-        <td>Verificar se a assinatura será renovada automaticamente</td>
-        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+        <td data-label="Dados"><strong>Status de Renovação Automática</strong></td>
+        <td data-label="Tipo">Boolean</td>
+        <td data-label="Finalidade">Verificar se a assinatura será renovada automaticamente</td>
+        <td data-label="Base Legal">Execução do contrato (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Data de Compra da Assinatura</strong></td>
-        <td>Timestamp</td>
-        <td>Gerenciamento do ciclo de cobrança e disputas</td>
-        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+        <td data-label="Dados"><strong>Data de Compra da Assinatura</strong></td>
+        <td data-label="Tipo">Timestamp</td>
+        <td data-label="Finalidade">Gerenciamento do ciclo de cobrança e disputas</td>
+        <td data-label="Base Legal">Execução do contrato (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Data de Término da Assinatura</strong></td>
-        <td>Timestamp ISO 8601 (ex. "2026-02-28T14:30:00Z")</td>
-        <td>Gerenciar período de carência após cancelamento (assinatura permanece ativa até esta data)</td>
-        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+        <td data-label="Dados"><strong>Data de Término da Assinatura</strong></td>
+        <td data-label="Tipo">Timestamp ISO 8601 (ex. "2026-02-28T14:30:00Z")</td>
+        <td data-label="Finalidade">Gerenciar período de carência após cancelamento (assinatura permanece ativa até esta data)</td>
+        <td data-label="Base Legal">Execução do contrato (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Flag "Não Renovará"</strong></td>
-        <td>Boolean (will_not_renew)</td>
-        <td>Indicar se a assinatura foi cancelada mas permanece válida até expirar</td>
-        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+        <td data-label="Dados"><strong>Flag "Não Renovará"</strong></td>
+        <td data-label="Tipo">Boolean (will_not_renew)</td>
+        <td data-label="Finalidade">Indicar se a assinatura foi cancelada mas permanece válida até expirar</td>
+        <td data-label="Base Legal">Execução do contrato (Art. 6.1.b RGPD)</td>
     </tr>
     <tr>
-        <td><strong>Data de Cancelamento</strong></td>
-        <td>Timestamp (cancelled_at)</td>
-        <td>Rastrear quando o usuário cancelou a assinatura</td>
-        <td>Execução do contrato (Art. 6.1.b RGPD)</td>
+        <td data-label="Dados"><strong>Data de Cancelamento</strong></td>
+        <td data-label="Tipo">Timestamp (cancelled_at)</td>
+        <td data-label="Finalidade">Rastrear quando o usuário cancelou a assinatura</td>
+        <td data-label="Base Legal">Execução do contrato (Art. 6.1.b RGPD)</td>
     </tr>
-</table>
+</table></div>
 
 <div class="highlight">
     <strong>🔄 REINÍCIO MENSAL AUTOMÁTICO:</strong> O contador de utilização de tokens é reposto automaticamente na data de renovação da sua subscrição (a cada 30 dias a partir da data de compra). O reinício ocorre em segundo plano, mesmo que a aplicação esteja fechada ou sem utilização durante semanas, através de um worker automático agendado para as 3:00 da manhã. O limite mensal é restaurado sem intervenção manual.
@@ -287,7 +330,7 @@
 
 <p>Quando uma assinatura expira ou é eliminada, movemos os dados para um documento de histórico para conformidade com RGPD e auditoria.</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Dados</th>
         <th>Tipo</th>
@@ -295,18 +338,18 @@
         <th>Retenção</th>
     </tr>
     <tr>
-        <td><strong>Histórico de Assinaturas</strong></td>
-        <td>Array de objetos em user_subscriptions_history/{purchaseToken}</td>
-        <td>Rastreabilidade de compras, trilha de auditoria, conformidade RGPD</td>
-        <td>90 dias após expiração</td>
+        <td data-label="Dados"><strong>Histórico de Assinaturas</strong></td>
+        <td data-label="Tipo">Array de objetos em user_subscriptions_history/{purchaseToken}</td>
+        <td data-label="Finalidade">Rastreabilidade de compras, trilha de auditoria, conformidade RGPD</td>
+        <td data-label="Retenção">90 dias após expiração</td>
     </tr>
     <tr>
-        <td><strong>Dados por Entrada</strong></td>
-        <td>Plano, tokens usados/limite, datas início/fim/cancelamento, motivo do cancelamento, dispositivos</td>
-        <td>Auditoria, suporte ao usuário, gerenciamento de reembolsos</td>
-        <td>90 dias após expiração</td>
+        <td data-label="Dados"><strong>Dados por Entrada</strong></td>
+        <td data-label="Tipo">Plano, tokens usados/limite, datas início/fim/cancelamento, motivo do cancelamento, dispositivos</td>
+        <td data-label="Finalidade">Auditoria, suporte ao usuário, gerenciamento de reembolsos</td>
+        <td data-label="Retenção">90 dias após expiração</td>
     </tr>
-</table>
+</table></div>
 
 <div class="highlight">
     <strong>🔒 CONSOLIDAÇÃO MULTI-DISPOSITIVO:</strong> O histórico é consolidado por <strong>purchaseToken</strong>, não por dispositivo. Todas as renovações e alterações da mesma assinatura são agrupadas em um único documento, independentemente do número de dispositivos utilizados.
@@ -326,7 +369,7 @@
 
 <p>Para garantir rastreabilidade e suporte em caso de disputas, salvamos um registro das operações principais relacionadas às assinaturas.</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Dados</th>
         <th>Tipo</th>
@@ -334,9 +377,9 @@
         <th>Retenção</th>
     </tr>
     <tr>
-        <td><strong>Logs de Atividade Administrativa</strong></td>
-        <td>Array de eventos em admin_activity_logs/{device_id}</td>
-        <td>
+        <td data-label="Dados"><strong>Logs de Atividade Administrativa</strong></td>
+        <td data-label="Tipo">Array de eventos em admin_activity_logs/{device_id}</td>
+        <td data-label="Finalidade">
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Trilha de auditoria para suporte ao usuário</li>
                 <li>Resolução de disputas Google Play (dentro de 60 dias)</li>
@@ -344,11 +387,11 @@
                 <li>Gerenciamento de período de carência e renovações automáticas</li>
             </ul>
         </td>
-        <td>90 dias após última modificação</td>
+        <td data-label="Retenção">90 dias após última modificação</td>
     </tr>
     <tr>
-        <td><strong>Eventos Registrados</strong></td>
-        <td>
+        <td data-label="Dados"><strong>Eventos Registrados</strong></td>
+        <td data-label="Tipo">
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Subscrição de assinatura</li>
                 <li>Cancelamento de assinatura</li>
@@ -357,16 +400,16 @@
                 <li>Alterações de plano</li>
             </ul>
         </td>
-        <td>Rastrear histórico de alterações para auditoria e suporte</td>
-        <td>90 dias após última modificação</td>
+        <td data-label="Finalidade">Rastrear histórico de alterações para auditoria e suporte</td>
+        <td data-label="Retenção">90 dias após última modificação</td>
     </tr>
     <tr>
-        <td><strong>Detalhes por Evento</strong></td>
-        <td>Timestamp, ação, motivo, plano, detalhes da operação</td>
-        <td>Informações necessárias para reconstruir cronologia em caso de disputas</td>
-        <td>90 dias após última modificação</td>
+        <td data-label="Dados"><strong>Detalhes por Evento</strong></td>
+        <td data-label="Tipo">Timestamp, ação, motivo, plano, detalhes da operação</td>
+        <td data-label="Finalidade">Informações necessárias para reconstruir cronologia em caso de disputas</td>
+        <td data-label="Retenção">90 dias após última modificação</td>
     </tr>
-</table>
+</table></div>
 
 <div class="important">
     <strong>⚠️ IMPORTANTE - LOGS DE ATIVIDADE:</strong> Os logs de atividade contêm APENAS metadados operacionais (quando, o quê, por quê). NÃO contêm dados pessoais sensíveis. São automaticamente eliminados após 90 dias da última modificação e são acessíveis e elimináveis através de "Excluir dados na nuvem".
@@ -523,7 +566,7 @@
 
 <h3>4.1 Serviços de Terceiros</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Serviço</th>
         <th>Dados Enviados</th>
@@ -531,30 +574,30 @@
         <th>Localização</th>
     </tr>
     <tr>
-        <td><strong>Firebase (Google)</strong></td>
-        <td>ID anônimo, uso atual de tokens, histórico de compras, dados de assinatura, logs de atividade</td>
-        <td>Backup, sincronização e trilha de auditoria</td>
-        <td>UE (servidores europeus)</td>
+        <td data-label="Serviço"><strong>Firebase (Google)</strong></td>
+        <td data-label="Dados Enviados">ID anônimo, uso atual de tokens, histórico de compras, dados de assinatura, logs de atividade</td>
+        <td data-label="Finalidade">Backup, sincronização e trilha de auditoria</td>
+        <td data-label="Localização">UE (servidores europeus)</td>
     </tr>
     <tr>
-        <td><strong>Cloudflare Worker</strong></td>
-        <td>Texto a traduzir (apenas trânsito)</td>
-        <td>Relé seguro para tradução</td>
-        <td>UE (servidores europeus)</td>
+        <td data-label="Serviço"><strong>Cloudflare Worker</strong></td>
+        <td data-label="Dados Enviados">Texto a traduzir (apenas trânsito)</td>
+        <td data-label="Finalidade">Relé seguro para tradução</td>
+        <td data-label="Localização">UE (servidores europeus)</td>
     </tr>
     <tr>
-        <td><strong>OpenAI</strong></td>
-        <td>Texto a traduzir (apenas trânsito)</td>
-        <td>Processamento de tradução</td>
-        <td>EUA (com Cláusulas Contratuais Padrão)</td>
+        <td data-label="Serviço"><strong>OpenAI</strong></td>
+        <td data-label="Dados Enviados">Texto a traduzir (apenas trânsito)</td>
+        <td data-label="Finalidade">Processamento de tradução</td>
+        <td data-label="Localização">EUA (com Cláusulas Contratuais Padrão)</td>
     </tr>
     <tr>
-        <td><strong>Google Play Billing</strong></td>
-        <td>ID do pedido, produto comprado</td>
-        <td>Gerenciamento de compras no aplicativo</td>
-        <td>UE (servidores Google)</td>
+        <td data-label="Serviço"><strong>Google Play Billing</strong></td>
+        <td data-label="Dados Enviados">ID do pedido, produto comprado</td>
+        <td data-label="Finalidade">Gerenciamento de compras no aplicativo</td>
+        <td data-label="Localização">UE (servidores Google)</td>
     </tr>
-</table>
+</table></div>
 
 <h3>4.2 Transferências fora da UE</h3>
 
@@ -582,73 +625,73 @@
 
 <h3>5.1 Política de Retenção Automática</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Tipo de Dado</th>
         <th>Período de Retenção</th>
         <th>Exclusão</th>
     </tr>
     <tr>
-        <td><strong>Dados de Assinatura Ativa (Firebase)</strong></td>
-        <td>Até o fim do período de cobrança atual</td>
-        <td>Eliminação automática quando assinatura expira + transferência para histórico</td>
+        <td data-label="Tipo de Dado"><strong>Dados de Assinatura Ativa (Firebase)</strong></td>
+        <td data-label="Período de Retenção">Até o fim do período de cobrança atual</td>
+        <td data-label="Exclusão">Eliminação automática quando assinatura expira + transferência para histórico</td>
     </tr>
     <tr>
-        <td><strong>Histórico de Assinaturas (Firebase)</strong></td>
-        <td>90 dias após expiração da assinatura</td>
-        <td>Eliminação automática + eliminação manual através de "Excluir dados na nuvem"</td>
+        <td data-label="Tipo de Dado"><strong>Histórico de Assinaturas (Firebase)</strong></td>
+        <td data-label="Período de Retenção">90 dias após expiração da assinatura</td>
+        <td data-label="Exclusão">Eliminação automática + eliminação manual através de "Excluir dados na nuvem"</td>
     </tr>
     <tr>
-        <td><strong>Logs de Atividade (admin_activity_logs)</strong></td>
-        <td>90 dias após última modificação</td>
-        <td>Eliminação automática (a cada 24h) + eliminação manual</td>
+        <td data-label="Tipo de Dado"><strong>Logs de Atividade (admin_activity_logs)</strong></td>
+        <td data-label="Período de Retenção">90 dias após última modificação</td>
+        <td data-label="Exclusão">Eliminação automática (a cada 24h) + eliminação manual</td>
     </tr>
     <tr>
-        <td><strong>Histórico de Compras (Firebase)</strong></td>
-        <td>365 dias a partir da compra</td>
-        <td>Automática + exclusão manual</td>
+        <td data-label="Tipo de Dado"><strong>Histórico de Compras (Firebase)</strong></td>
+        <td data-label="Período de Retenção">365 dias a partir da compra</td>
+        <td data-label="Exclusão">Automática + exclusão manual</td>
     </tr>
     <tr>
-        <td><strong>Dados Locais (Dispositivo)</strong></td>
-        <td>Até desinstalar</td>
-        <td>Desinstalação + exclusão manual</td>
+        <td data-label="Tipo de Dado"><strong>Dados Locais (Dispositivo)</strong></td>
+        <td data-label="Período de Retenção">Até desinstalar</td>
+        <td data-label="Exclusão">Desinstalação + exclusão manual</td>
     </tr>
     <tr>
-        <td><strong>Cache Contato-Idioma (Dispositivo)</strong></td>
-        <td>Até exclusão manual ou desinstalação</td>
-        <td>Botão "Excluir todos os dados locais"</td>
+        <td data-label="Tipo de Dado"><strong>Cache Contato-Idioma (Dispositivo)</strong></td>
+        <td data-label="Período de Retenção">Até exclusão manual ou desinstalação</td>
+        <td data-label="Exclusão">Botão "Excluir todos os dados locais"</td>
     </tr>
     <tr>
-        <td><strong>Modelos Preditivos N-gram (Dispositivo)</strong></td>
-        <td>Até exclusão manual ou desinstalação</td>
-        <td>Botão "Excluir todos os dados locais" ou remoção da tela Modelos Offline</td>
+        <td data-label="Tipo de Dado"><strong>Modelos Preditivos N-gram (Dispositivo)</strong></td>
+        <td data-label="Período de Retenção">Até exclusão manual ou desinstalação</td>
+        <td data-label="Exclusão">Botão "Excluir todos os dados locais" ou remoção da tela Modelos Offline</td>
     </tr>
     <tr>
-        <td><strong>Dicionários Hunspell (Dispositivo)</strong></td>
-        <td>Até exclusão manual ou desinstalação</td>
-        <td>Botão "Excluir todos os dados locais"</td>
+        <td data-label="Tipo de Dado"><strong>Dicionários Hunspell (Dispositivo)</strong></td>
+        <td data-label="Período de Retenção">Até exclusão manual ou desinstalação</td>
+        <td data-label="Exclusão">Botão "Excluir todos os dados locais"</td>
     </tr>
     <tr>
-        <td><strong>Palavras Aprendidas (Previsão)</strong></td>
-        <td>14 dias (decadência automática)</td>
-        <td>Automática + exclusão manual</td>
+        <td data-label="Tipo de Dado"><strong>Palavras Aprendidas (Previsão)</strong></td>
+        <td data-label="Período de Retenção">14 dias (decadência automática)</td>
+        <td data-label="Exclusão">Automática + exclusão manual</td>
     </tr>
     <tr>
-        <td><strong>Texto Traduzido</strong></td>
-        <td>0 segundos (NUNCA salvo)</td>
-        <td>Automática (apenas trânsito em memória)</td>
+        <td data-label="Tipo de Dado"><strong>Texto Traduzido</strong></td>
+        <td data-label="Período de Retenção">0 segundos (NUNCA salvo)</td>
+        <td data-label="Exclusão">Automática (apenas trânsito em memória)</td>
     </tr>
     <tr>
-        <td><strong>Cache de Tradução (RAM)</strong></td>
-        <td>Até fechar o aplicativo</td>
-        <td>Automática</td>
+        <td data-label="Tipo de Dado"><strong>Cache de Tradução (RAM)</strong></td>
+        <td data-label="Período de Retenção">Até fechar o aplicativo</td>
+        <td data-label="Exclusão">Automática</td>
     </tr>
     <tr>
-        <td><strong>Cache de Desambiguação (RAM)</strong></td>
-        <td>Até reinício do serviço de acessibilidade</td>
-        <td>Automática</td>
+        <td data-label="Tipo de Dado"><strong>Cache de Desambiguação (RAM)</strong></td>
+        <td data-label="Período de Retenção">Até reinício do serviço de acessibilidade</td>
+        <td data-label="Exclusão">Automática</td>
     </tr>
-</table>
+</table></div>
 
 <div class="highlight">
     <strong>🗑️ LIMPEZA AUTOMÁTICA:</strong> O aplicativo executa automaticamente uma limpeza a cada 24 horas. Dados com mais de 365 dias (ou 90 dias para histórico de assinaturas e logs de atividade) são automaticamente excluídos, mesmo que você não use mais o aplicativo.
@@ -752,7 +795,7 @@
 
 <p>kAIboard utiliza os seguintes identificadores para gerar o ID de dispositivo anônimo:</p>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Identificador</th>
         <th>Tipo</th>
@@ -760,24 +803,24 @@
         <th>Persistência</th>
     </tr>
     <tr>
-        <td><strong>Android ID</strong></td>
-        <td>Settings.Secure.ANDROID_ID</td>
-        <td>Gerar ID de dispositivo único e estável</td>
-        <td>Persiste entre reinstalações do aplicativo (mesma chave de assinatura). <strong>Muda após uma redefinição de fábrica do dispositivo.</strong></td>
+        <td data-label="Identificador"><strong>Android ID</strong></td>
+        <td data-label="Tipo">Settings.Secure.ANDROID_ID</td>
+        <td data-label="Finalidade">Gerar ID de dispositivo único e estável</td>
+        <td data-label="Persistência">Persiste entre reinstalações do aplicativo (mesma chave de assinatura). <strong>Muda após uma redefinição de fábrica do dispositivo.</strong></td>
     </tr>
     <tr>
-        <td><strong>Install Referrer ID</strong></td>
-        <td>Google Play Install Referrer API</td>
-        <td>Alternativa se Android ID não disponível</td>
-        <td>Persiste entre reinstalações (se instalado da Play Store)</td>
+        <td data-label="Identificador"><strong>Install Referrer ID</strong></td>
+        <td data-label="Tipo">Google Play Install Referrer API</td>
+        <td data-label="Finalidade">Alternativa se Android ID não disponível</td>
+        <td data-label="Persistência">Persiste entre reinstalações (se instalado da Play Store)</td>
     </tr>
     <tr>
-        <td><strong>UUID Local</strong></td>
-        <td>java.util.UUID</td>
-        <td>Alternativa final (apenas instalação manual)</td>
-        <td>NÃO persiste (perdido na desinstalação)</td>
+        <td data-label="Identificador"><strong>UUID Local</strong></td>
+        <td data-label="Tipo">java.util.UUID</td>
+        <td data-label="Finalidade">Alternativa final (apenas instalação manual)</td>
+        <td data-label="Persistência">NÃO persiste (perdido na desinstalação)</td>
     </tr>
-</table>
+</table></div>
 
 <div class="important">
     <strong>⚠️ REDEFINIÇÃO DE FÁBRICA:</strong> Após uma redefinição de fábrica do dispositivo, o identificador anônimo (Install ID) é regenerado. A assinatura ativa é restaurada automaticamente pelo Google Play na primeira inicialização do aplicativo. Os dados locais (preferências, idiomas dos contatos, palavras aprendidas) são perdidos e não recuperáveis, a menos que um backup tenha sido feito antes da redefinição.
@@ -787,38 +830,38 @@
 
 <h3>9.2 Permissões do Aplicativo</h3>
 
-<table>
+<div class="table-wrapper"><table>
     <tr>
         <th>Permissão</th>
         <th>Finalidade</th>
         <th>Obrigatória</th>
     </tr>
     <tr>
-        <td><strong>Contatos</strong></td>
-        <td>Atribuir idioma a cada contato para troca automática de teclado</td>
-        <td>❌ Não (opcional)</td>
+        <td data-label="Permissão"><strong>Contatos</strong></td>
+        <td data-label="Finalidade">Atribuir idioma a cada contato para troca automática de teclado</td>
+        <td data-label="Obrigatória">❌ Não (opcional)</td>
     </tr>
     <tr>
-        <td><strong>Acessibilidade</strong></td>
-        <td>Detectar aplicativo de chat ativo para mudar idioma automaticamente</td>
-        <td>❌ Não (opcional)</td>
+        <td data-label="Permissão"><strong>Acessibilidade</strong></td>
+        <td data-label="Finalidade">Detectar aplicativo de chat ativo para mudar idioma automaticamente</td>
+        <td data-label="Obrigatória">❌ Não (opcional)</td>
     </tr>
     <tr>
-        <td><strong>Notificações</strong></td>
-        <td>Respostas rápidas da tela de bloqueio com idioma correto</td>
-        <td>❌ Não (opcional)</td>
+        <td data-label="Permissão"><strong>Notificações</strong></td>
+        <td data-label="Finalidade">Respostas rápidas da tela de bloqueio com idioma correto</td>
+        <td data-label="Obrigatória">❌ Não (opcional)</td>
     </tr>
     <tr>
-        <td><strong>Microfone</strong></td>
-        <td>Ditado por voz (gravação apenas quando você pressiona o botão do microfone)</td>
-        <td>❌ Não (opcional)</td>
+        <td data-label="Permissão"><strong>Microfone</strong></td>
+        <td data-label="Finalidade">Ditado por voz (gravação apenas quando você pressiona o botão do microfone)</td>
+        <td data-label="Obrigatória">❌ Não (opcional)</td>
     </tr>
     <tr>
-        <td><strong>Internet</strong></td>
-        <td>Tradução em tempo real e backup na nuvem</td>
-        <td>✅ Sim (para recursos de tradução)</td>
+        <td data-label="Permissão"><strong>Internet</strong></td>
+        <td data-label="Finalidade">Tradução em tempo real e backup na nuvem</td>
+        <td data-label="Obrigatória">✅ Sim (para recursos de tradução)</td>
     </tr>
-</table>
+</table></div>
 
 <div class="important">
     <strong>⚠️ NOTA DE SEGURANÇA:</strong> O aviso de segurança do Android para teclados é padrão para todos os teclados de terceiros, não significa que o kAIboard lê ou salva suas mensagens. Você pode verificar o código-fonte ou nos contatar para mais informações.

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -117,6 +117,49 @@
         strong {
             font-weight: 600;
         }
+
+        /* -- MOBILE RESPONSIVE FIX -- */
+        * { box-sizing: border-box; }
+        html { overflow-x: hidden; }
+        body { overflow-x: hidden; max-width: 100%; }
+
+        @media (max-width: 650px) {
+            body { padding: 15px; }
+            .container { padding: 20px; }
+            .table-wrapper thead { display: none; }
+            .table-wrapper table,
+            .table-wrapper tbody,
+            .table-wrapper tr { display: block; width: 100%; }
+            .table-wrapper tr {
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                margin-bottom: 12px;
+                background: #fff;
+                overflow: hidden;
+            }
+            .table-wrapper td {
+                display: block;
+                width: 100%;
+                padding: 10px 12px;
+                font-size: 13px;
+                line-height: 1.5;
+                border: none;
+                border-bottom: 1px solid #f0f0f0;
+                text-align: left;
+            }
+            .table-wrapper td:last-child { border-bottom: none; }
+            .table-wrapper td::before {
+                content: attr(data-label);
+                display: block;
+                font-weight: 600;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: #0FA3A3;
+                margin-bottom: 4px;
+            }
+            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+        }
     </style>
 </head>
 <body>
@@ -140,15 +183,15 @@
 
         <h3>Opciones de Eliminación Disponibles</h3>
         
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Opción</th>
                 <th>Qué se Elimina</th>
                 <th>Efecto</th>
             </tr>
             <tr>
-                <td><strong>Eliminar Datos en la Nube</strong></td>
-                <td>
+                <td data-label="Opción"><strong>Eliminar Datos en la Nube</strong></td>
+                <td data-label="Qué se Elimina">
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>Documento de suscripción activa (user_subscriptions)</li>
                         <li>Historial de suscripciones (user_subscriptions_history)</li>
@@ -157,16 +200,16 @@
                         <li>Array de dispositivos multi-device</li>
                     </ul>
                 </td>
-                <td>Irreversible. Perderás el historial de compras, los registros de actividad y el historial de suscripciones. Requiere cancelación de suscripción si está activa.</td>
+                <td data-label="Efecto">Irreversible. Perderás el historial de compras, los registros de actividad y el historial de suscripciones. Requiere cancelación de suscripción si está activa.</td>
             </tr>
             <tr>
-                <td><strong>Eliminar Datos de Aprendizaje</strong></td>
-                <td>Palabras aprendidas para sugerencias personalizadas (los 13 idiomas)</td>
-                <td>El texto predictivo comenzará desde cero.</td>
+                <td data-label="Opción"><strong>Eliminar Datos de Aprendizaje</strong></td>
+                <td data-label="Qué se Elimina">Palabras aprendidas para sugerencias personalizadas (los 13 idiomas)</td>
+                <td data-label="Efecto">El texto predictivo comenzará desde cero.</td>
             </tr>
             <tr>
-                <td><strong>Eliminar Todos los Datos Locales</strong></td>
-                <td>
+                <td data-label="Opción"><strong>Eliminar Todos los Datos Locales</strong></td>
+                <td data-label="Qué se Elimina">
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>Datos de aprendizaje (13 idiomas)</li>
                         <li>Todas las preferencias y configuraciones</li>
@@ -178,9 +221,9 @@
                         <li>Caché completa de la app (archivos temporales, informes de errores locales, caché WebView)</li>
                     </ul>
                 </td>
-                <td>La aplicación se reiniciará con la configuración predeterminada. No quedará ningún archivo de usuario en el dispositivo. Los datos en la nube se conservan.</td>
+                <td data-label="Efecto">La aplicación se reiniciará con la configuración predeterminada. No quedará ningún archivo de usuario en el dispositivo. Los datos en la nube se conservan.</td>
             </tr>
-        </table>
+        </table></div>
 
         <p><strong>Tiempo de Procesamiento:</strong> Inmediato (0-5 segundos)</p>
 
@@ -240,48 +283,48 @@
 
         <p>kAIboard incluye mecanismos de limpieza automática de datos para proteger su privacidad:</p>
 
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Tipo de Dato</th>
                 <th>Período de Retención</th>
                 <th>Detalles</th>
             </tr>
             <tr>
-                <td><strong>Datos de Suscripción Activa (Firebase)</strong></td>
-                <td>Hasta el final del período de facturación actual</td>
-                <td>Movidos automáticamente al historial cuando la suscripción expira</td>
+                <td data-label="Tipo de Dato"><strong>Datos de Suscripción Activa (Firebase)</strong></td>
+                <td data-label="Período de Retención">Hasta el final del período de facturación actual</td>
+                <td data-label="Detalles">Movidos automáticamente al historial cuando la suscripción expira</td>
             </tr>
             <tr>
-                <td><strong>Historial de Suscripciones (Firebase)</strong></td>
-                <td>90 días después del vencimiento</td>
-                <td>Eliminados automáticamente 90 días después del fin de la suscripción</td>
+                <td data-label="Tipo de Dato"><strong>Historial de Suscripciones (Firebase)</strong></td>
+                <td data-label="Período de Retención">90 días después del vencimiento</td>
+                <td data-label="Detalles">Eliminados automáticamente 90 días después del fin de la suscripción</td>
             </tr>
             <tr>
-                <td><strong>Registros de Actividad Administrativa (Firebase)</strong></td>
-                <td>90 días desde la última modificación</td>
-                <td>Eliminados automáticamente cada 24 horas mediante limpieza en segundo plano</td>
+                <td data-label="Tipo de Dato"><strong>Registros de Actividad Administrativa (Firebase)</strong></td>
+                <td data-label="Período de Retención">90 días desde la última modificación</td>
+                <td data-label="Detalles">Eliminados automáticamente cada 24 horas mediante limpieza en segundo plano</td>
             </tr>
             <tr>
-                <td><strong>Historial de Compras (Firebase)</strong></td>
-                <td>365 días desde la compra</td>
-                <td>Eliminados automáticamente después de un año</td>
+                <td data-label="Tipo de Dato"><strong>Historial de Compras (Firebase)</strong></td>
+                <td data-label="Período de Retención">365 días desde la compra</td>
+                <td data-label="Detalles">Eliminados automáticamente después de un año</td>
             </tr>
             <tr>
-                <td><strong>Palabras Aprendidas</strong></td>
-                <td>14 días con degradación</td>
-                <td>Las puntuaciones de frecuencia disminuyen con el tiempo; las palabras no utilizadas se eliminan</td>
+                <td data-label="Tipo de Dato"><strong>Palabras Aprendidas</strong></td>
+                <td data-label="Período de Retención">14 días con degradación</td>
+                <td data-label="Detalles">Las puntuaciones de frecuencia disminuyen con el tiempo; las palabras no utilizadas se eliminan</td>
             </tr>
             <tr>
-                <td><strong>Caché de Traducción</strong></td>
-                <td>Solo sesión</td>
-                <td>Almacenado solo en RAM; eliminado al cerrar la aplicación</td>
+                <td data-label="Tipo de Dato"><strong>Caché de Traducción</strong></td>
+                <td data-label="Período de Retención">Solo sesión</td>
+                <td data-label="Detalles">Almacenado solo en RAM; eliminado al cerrar la aplicación</td>
             </tr>
             <tr>
-                <td><strong>Texto de Traducción</strong></td>
-                <td>Nunca almacenado</td>
-                <td>0 segundos de retención; solo tránsito a la API de OpenAI</td>
+                <td data-label="Tipo de Dato"><strong>Texto de Traducción</strong></td>
+                <td data-label="Período de Retención">Nunca almacenado</td>
+                <td data-label="Detalles">0 segundos de retención; solo tránsito a la API de OpenAI</td>
             </tr>
-        </table>
+        </table></div>
 
         <h2>Inventario Completo de Datos</h2>
 
@@ -289,143 +332,143 @@
 
         <h3>Datos en la Nube (Firebase)</h3>
 
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Tipo de Dato</th>
                 <th>Ubicación de Almacenamiento</th>
                 <th>Método de Eliminación</th>
             </tr>
             <tr>
-                <td>Array de Dispositivos</td>
-                <td>Firebase (nube)</td>
-                <td>Botón "Eliminar Datos en la Nube"</td>
+                <td data-label="Tipo de Dato">Array de Dispositivos</td>
+                <td data-label="Ubicación de Almacenamiento">Firebase (nube)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Datos en la Nube"</td>
             </tr>
             <tr>
-                <td>Uso Actual de Tokens</td>
-                <td>Firebase (nube)</td>
-                <td>Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
+                <td data-label="Tipo de Dato">Uso Actual de Tokens</td>
+                <td data-label="Ubicación de Almacenamiento">Firebase (nube)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
             </tr>
             <tr>
-                <td>Historial de Compras</td>
-                <td>Firebase (nube)</td>
-                <td>Botón "Eliminar Datos en la Nube"</td>
+                <td data-label="Tipo de Dato">Historial de Compras</td>
+                <td data-label="Ubicación de Almacenamiento">Firebase (nube)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Datos en la Nube"</td>
             </tr>
             <tr>
-                <td>Plan de Suscripción</td>
-                <td>Firebase (nube)</td>
-                <td>Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
+                <td data-label="Tipo de Dato">Plan de Suscripción</td>
+                <td data-label="Ubicación de Almacenamiento">Firebase (nube)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
             </tr>
             <tr>
-                <td>Límite Mensual de Tokens</td>
-                <td>Firebase (nube)</td>
-                <td>Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
+                <td data-label="Tipo de Dato">Límite Mensual de Tokens</td>
+                <td data-label="Ubicación de Almacenamiento">Firebase (nube)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
             </tr>
             <tr>
-                <td>Fecha de Reinicio Mensual</td>
-                <td>Firebase (nube)</td>
-                <td>Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
+                <td data-label="Tipo de Dato">Fecha de Reinicio Mensual</td>
+                <td data-label="Ubicación de Almacenamiento">Firebase (nube)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Datos en la Nube" (solo después de cancelar suscripción)</td>
             </tr>
             <tr>
-                <td>Fecha de Fin de Suscripción</td>
-                <td>Firebase (nube)</td>
-                <td>Botón "Eliminar Datos en la Nube" (solo después del vencimiento del período de gracia)</td>
+                <td data-label="Tipo de Dato">Fecha de Fin de Suscripción</td>
+                <td data-label="Ubicación de Almacenamiento">Firebase (nube)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Datos en la Nube" (solo después del vencimiento del período de gracia)</td>
             </tr>
             <tr>
-                <td>Flag "No se Renovará"</td>
-                <td>Firebase (nube)</td>
-                <td>Botón "Eliminar Datos en la Nube" (solo después del vencimiento del período de gracia)</td>
+                <td data-label="Tipo de Dato">Flag "No se Renovará"</td>
+                <td data-label="Ubicación de Almacenamiento">Firebase (nube)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Datos en la Nube" (solo después del vencimiento del período de gracia)</td>
             </tr>
             <tr>
-                <td>Historial de Suscripciones</td>
-                <td>Firebase (nube)</td>
-                <td>Botón "Eliminar Datos en la Nube" (elimina todo: activo + historial)</td>
+                <td data-label="Tipo de Dato">Historial de Suscripciones</td>
+                <td data-label="Ubicación de Almacenamiento">Firebase (nube)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Datos en la Nube" (elimina todo: activo + historial)</td>
             </tr>
             <tr>
-                <td>Registros de Actividad Administrativa</td>
-                <td>Firebase (nube)</td>
-                <td>Botón "Eliminar Datos en la Nube"</td>
+                <td data-label="Tipo de Dato">Registros de Actividad Administrativa</td>
+                <td data-label="Ubicación de Almacenamiento">Firebase (nube)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Datos en la Nube"</td>
             </tr>
-        </table>
+        </table></div>
 
         <h3>Datos Locales (Dispositivo)</h3>
 
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>Tipo de Dato</th>
                 <th>Ubicación de Almacenamiento</th>
                 <th>Método de Eliminación</th>
             </tr>
             <tr>
-                <td>Palabras Aprendidas (Predicciones)</td>
-                <td>Local (dispositivo)</td>
-                <td>Botón "Eliminar Datos de Aprendizaje" o "Eliminar Todos los Datos Locales"</td>
+                <td data-label="Tipo de Dato">Palabras Aprendidas (Predicciones)</td>
+                <td data-label="Ubicación de Almacenamiento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Datos de Aprendizaje" o "Eliminar Todos los Datos Locales"</td>
             </tr>
             <tr>
-                <td>Preferencias de la Aplicación</td>
-                <td>Local (dispositivo)</td>
-                <td>Botón "Eliminar Todos los Datos Locales"</td>
+                <td data-label="Tipo de Dato">Preferencias de la Aplicación</td>
+                <td data-label="Ubicación de Almacenamiento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Todos los Datos Locales"</td>
             </tr>
             <tr>
-                <td>Estado de la Aplicación</td>
-                <td>Local (dispositivo)</td>
-                <td>Botón "Eliminar Todos los Datos Locales"</td>
+                <td data-label="Tipo de Dato">Estado de la Aplicación</td>
+                <td data-label="Ubicación de Almacenamiento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Todos los Datos Locales"</td>
             </tr>
             <tr>
-                <td>Asignaciones de Idioma de Contactos</td>
-                <td>Local (dispositivo)</td>
-                <td>Botón "Eliminar Todos los Datos Locales"</td>
+                <td data-label="Tipo de Dato">Asignaciones de Idioma de Contactos</td>
+                <td data-label="Ubicación de Almacenamiento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Todos los Datos Locales"</td>
             </tr>
             <tr>
-                <td>Metadatos de Aprendizaje</td>
-                <td>Local (dispositivo)</td>
-                <td>Botón "Eliminar Todos los Datos Locales"</td>
+                <td data-label="Tipo de Dato">Metadatos de Aprendizaje</td>
+                <td data-label="Ubicación de Almacenamiento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Todos los Datos Locales"</td>
             </tr>
             <tr>
-                <td>Metadatos de Respaldo</td>
-                <td>Local (dispositivo)</td>
-                <td>Botón "Eliminar Todos los Datos Locales"</td>
+                <td data-label="Tipo de Dato">Metadatos de Respaldo</td>
+                <td data-label="Ubicación de Almacenamiento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Todos los Datos Locales"</td>
             </tr>
             <tr>
-                <td>Alertas de Suscripción</td>
-                <td>Local (dispositivo)</td>
-                <td>Botón "Eliminar Todos los Datos Locales"</td>
+                <td data-label="Tipo de Dato">Alertas de Suscripción</td>
+                <td data-label="Ubicación de Almacenamiento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Todos los Datos Locales"</td>
             </tr>
             <tr>
-                <td>Modelos Predictivos N-gram (descargados)</td>
-                <td>Local (dispositivo)</td>
-                <td>Botón "Eliminar Todos los Datos Locales"</td>
+                <td data-label="Tipo de Dato">Modelos Predictivos N-gram (descargados)</td>
+                <td data-label="Ubicación de Almacenamiento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Todos los Datos Locales"</td>
             </tr>
             <tr>
-                <td>Diccionarios Hunspell (copiados desde assets)</td>
-                <td>Local (dispositivo)</td>
-                <td>Botón "Eliminar Todos los Datos Locales"</td>
+                <td data-label="Tipo de Dato">Diccionarios Hunspell (copiados desde assets)</td>
+                <td data-label="Ubicación de Almacenamiento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Todos los Datos Locales"</td>
             </tr>
             <tr>
-                <td>Caché de Vocabularios y Diccionarios (en memoria)</td>
-                <td>RAM (volátil)</td>
-                <td>Botón "Eliminar Todos los Datos Locales" o cierre de la app</td>
+                <td data-label="Tipo de Dato">Caché de Vocabularios y Diccionarios (en memoria)</td>
+                <td data-label="Ubicación de Almacenamiento">RAM (volátil)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Todos los Datos Locales" o cierre de la app</td>
             </tr>
             <tr>
-                <td>Caché de la App (archivos temporales, informes de errores locales, caché WebView)</td>
-                <td>Local (dispositivo)</td>
-                <td>Botón "Eliminar Todos los Datos Locales"</td>
+                <td data-label="Tipo de Dato">Caché de la App (archivos temporales, informes de errores locales, caché WebView)</td>
+                <td data-label="Ubicación de Almacenamiento">Local (dispositivo)</td>
+                <td data-label="Método de Eliminación">Botón "Eliminar Todos los Datos Locales"</td>
             </tr>
             <tr>
-                <td>Caché de Desambiguación de Contactos</td>
-                <td>RAM (volátil)</td>
-                <td>Automática al reiniciar el servicio de accesibilidad</td>
+                <td data-label="Tipo de Dato">Caché de Desambiguación de Contactos</td>
+                <td data-label="Ubicación de Almacenamiento">RAM (volátil)</td>
+                <td data-label="Método de Eliminación">Automática al reiniciar el servicio de accesibilidad</td>
             </tr>
             <tr>
-                <td>Caché de Traducción</td>
-                <td>RAM (volátil)</td>
-                <td>Automática al cerrar la app</td>
+                <td data-label="Tipo de Dato">Caché de Traducción</td>
+                <td data-label="Ubicación de Almacenamiento">RAM (volátil)</td>
+                <td data-label="Método de Eliminación">Automática al cerrar la app</td>
             </tr>
             <tr>
-                <td>Texto de Traducción</td>
-                <td>Nunca almacenado</td>
-                <td>No se requiere acción (0 segundos de retención)</td>
+                <td data-label="Tipo de Dato">Texto de Traducción</td>
+                <td data-label="Ubicación de Almacenamiento">Nunca almacenado</td>
+                <td data-label="Método de Eliminación">No se requiere acción (0 segundos de retención)</td>
             </tr>
-        </table>
+        </table></div>
 
         <h2>Datos No Eliminables</h2>
 

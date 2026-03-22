@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -117,6 +117,49 @@
         strong {
             font-weight: 600;
         }
+
+        /* -- MOBILE RESPONSIVE FIX -- */
+        * { box-sizing: border-box; }
+        html { overflow-x: hidden; }
+        body { overflow-x: hidden; max-width: 100%; }
+
+        @media (max-width: 650px) {
+            body { padding: 15px; }
+            .container { padding: 20px; }
+            .table-wrapper thead { display: none; }
+            .table-wrapper table,
+            .table-wrapper tbody,
+            .table-wrapper tr { display: block; width: 100%; }
+            .table-wrapper tr {
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                margin-bottom: 12px;
+                background: #fff;
+                overflow: hidden;
+            }
+            .table-wrapper td {
+                display: block;
+                width: 100%;
+                padding: 10px 12px;
+                font-size: 13px;
+                line-height: 1.5;
+                border: none;
+                border-bottom: 1px solid #f0f0f0;
+                text-align: left;
+            }
+            .table-wrapper td:last-child { border-bottom: none; }
+            .table-wrapper td::before {
+                content: attr(data-label);
+                display: block;
+                font-weight: 600;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: #0FA3A3;
+                margin-bottom: 4px;
+            }
+            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+        }
     </style>
 </head>
 <body>
@@ -140,15 +183,15 @@
 
         <h3>可用的删除选项</h3>
         
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>选项</th>
                 <th>删除内容</th>
                 <th>影响</th>
             </tr>
             <tr>
-                <td><strong>删除云端数据</strong></td>
-                <td>
+                <td data-label="选项"><strong>删除云端数据</strong></td>
+                <td data-label="删除内容">
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>活跃的订阅文档 (user_subscriptions)</li>
                         <li>订阅历史记录 (user_subscriptions_history)</li>
@@ -157,16 +200,16 @@
                         <li>多设备的设备数组</li>
                     </ul>
                 </td>
-                <td>不可撤销。您将丢失订阅数据、购买历史记录、操作日志和订阅历史记录。如果订阅仍处于活跃状态，需要先取消订阅。</td>
+                <td data-label="影响">不可撤销。您将丢失订阅数据、购买历史记录、操作日志和订阅历史记录。如果订阅仍处于活跃状态，需要先取消订阅。</td>
             </tr>
             <tr>
-                <td><strong>删除学习数据</strong></td>
-                <td>用于个性化输入建议的已学习词汇（全部 13 种语言）</td>
-                <td>预测输入将从零开始重新学习。</td>
+                <td data-label="选项"><strong>删除学习数据</strong></td>
+                <td data-label="删除内容">用于个性化输入建议的已学习词汇（全部 13 种语言）</td>
+                <td data-label="影响">预测输入将从零开始重新学习。</td>
             </tr>
             <tr>
-                <td><strong>删除所有本地数据</strong></td>
-                <td>
+                <td data-label="选项"><strong>删除所有本地数据</strong></td>
+                <td data-label="删除内容">
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>学习数据（13 种语言）</li>
                         <li>所有偏好设置和配置</li>
@@ -178,9 +221,9 @@
                         <li>全部应用缓存（临时文件、本地崩溃报告、WebView 缓存）</li>
                     </ul>
                 </td>
-                <td>应用将恢复为默认设置重新启动。设备上不会保留任何用户文件。云端数据将被保留。</td>
+                <td data-label="影响">应用将恢复为默认设置重新启动。设备上不会保留任何用户文件。云端数据将被保留。</td>
             </tr>
-        </table>
+        </table></div>
 
         <p><strong>处理时间：</strong>立即生效（0-5 秒）</p>
         
@@ -240,48 +283,48 @@
 
         <p>kAIboard 内置自动数据清理机制，以保护您的隐私：</p>
 
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>数据类型</th>
                 <th>保留期限</th>
                 <th>详情</th>
             </tr>
             <tr>
-                <td><strong>活跃订阅数据 (Firebase)</strong></td>
-                <td>直到当前计费周期结束</td>
-                <td>订阅到期后自动转入历史记录</td>
+                <td data-label="数据类型"><strong>活跃订阅数据 (Firebase)</strong></td>
+                <td data-label="保留期限">直到当前计费周期结束</td>
+                <td data-label="详情">订阅到期后自动转入历史记录</td>
             </tr>
             <tr>
-                <td><strong>订阅历史记录 (Firebase)</strong></td>
-                <td>到期后 90 天</td>
-                <td>订阅结束后 90 天自动删除</td>
+                <td data-label="数据类型"><strong>订阅历史记录 (Firebase)</strong></td>
+                <td data-label="保留期限">到期后 90 天</td>
+                <td data-label="详情">订阅结束后 90 天自动删除</td>
             </tr>
             <tr>
-                <td><strong>管理操作日志 (Firebase)</strong></td>
-                <td>最后修改后 90 天</td>
-                <td>通过后台清理任务每 24 小时自动删除</td>
+                <td data-label="数据类型"><strong>管理操作日志 (Firebase)</strong></td>
+                <td data-label="保留期限">最后修改后 90 天</td>
+                <td data-label="详情">通过后台清理任务每 24 小时自动删除</td>
             </tr>
             <tr>
-                <td><strong>购买历史记录 (Firebase)</strong></td>
-                <td>购买后 365 天</td>
-                <td>一年后自动删除</td>
+                <td data-label="数据类型"><strong>购买历史记录 (Firebase)</strong></td>
+                <td data-label="保留期限">购买后 365 天</td>
+                <td data-label="详情">一年后自动删除</td>
             </tr>
             <tr>
-                <td><strong>已学习的词汇</strong></td>
-                <td>14 天衰减机制</td>
-                <td>频率分数随时间递减；未使用的词汇将被自动移除</td>
+                <td data-label="数据类型"><strong>已学习的词汇</strong></td>
+                <td data-label="保留期限">14 天衰减机制</td>
+                <td data-label="详情">频率分数随时间递减；未使用的词汇将被自动移除</td>
             </tr>
             <tr>
-                <td><strong>翻译缓存</strong></td>
-                <td>仅限当前会话</td>
-                <td>仅保存在内存 (RAM) 中；关闭应用后即被清除</td>
+                <td data-label="数据类型"><strong>翻译缓存</strong></td>
+                <td data-label="保留期限">仅限当前会话</td>
+                <td data-label="详情">仅保存在内存 (RAM) 中；关闭应用后即被清除</td>
             </tr>
             <tr>
-                <td><strong>翻译文本</strong></td>
-                <td>从不存储</td>
-                <td>保留时间为 0 秒；仅经由 OpenAI API 中转传输</td>
+                <td data-label="数据类型"><strong>翻译文本</strong></td>
+                <td data-label="保留期限">从不存储</td>
+                <td data-label="详情">保留时间为 0 秒；仅经由 OpenAI API 中转传输</td>
             </tr>
-        </table>
+        </table></div>
 
         <h2>完整数据清单</h2>
 
@@ -289,143 +332,143 @@
 
         <h3>云端数据 (Firebase)</h3>
 
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>数据类型</th>
                 <th>存储位置</th>
                 <th>删除方式</th>
             </tr>
             <tr>
-                <td>设备数组</td>
-                <td>Firebase（云端）</td>
-                <td>"删除云端数据"按钮</td>
+                <td data-label="数据类型">设备数组</td>
+                <td data-label="存储位置">Firebase（云端）</td>
+                <td data-label="删除方式">"删除云端数据"按钮</td>
             </tr>
             <tr>
-                <td>当前 Token 用量</td>
-                <td>Firebase（云端）</td>
-                <td>"删除云端数据"按钮（仅在取消订阅后可用）</td>
+                <td data-label="数据类型">当前 Token 用量</td>
+                <td data-label="存储位置">Firebase（云端）</td>
+                <td data-label="删除方式">"删除云端数据"按钮（仅在取消订阅后可用）</td>
             </tr>
             <tr>
-                <td>购买历史记录</td>
-                <td>Firebase（云端）</td>
-                <td>"删除云端数据"按钮</td>
+                <td data-label="数据类型">购买历史记录</td>
+                <td data-label="存储位置">Firebase（云端）</td>
+                <td data-label="删除方式">"删除云端数据"按钮</td>
             </tr>
             <tr>
-                <td>订阅方案</td>
-                <td>Firebase（云端）</td>
-                <td>"删除云端数据"按钮（仅在取消订阅后可用）</td>
+                <td data-label="数据类型">订阅方案</td>
+                <td data-label="存储位置">Firebase（云端）</td>
+                <td data-label="删除方式">"删除云端数据"按钮（仅在取消订阅后可用）</td>
             </tr>
             <tr>
-                <td>每月 Token 限额</td>
-                <td>Firebase（云端）</td>
-                <td>"删除云端数据"按钮（仅在取消订阅后可用）</td>
+                <td data-label="数据类型">每月 Token 限额</td>
+                <td data-label="存储位置">Firebase（云端）</td>
+                <td data-label="删除方式">"删除云端数据"按钮（仅在取消订阅后可用）</td>
             </tr>
             <tr>
-                <td>每月重置日期</td>
-                <td>Firebase（云端）</td>
-                <td>"删除云端数据"按钮（仅在取消订阅后可用）</td>
+                <td data-label="数据类型">每月重置日期</td>
+                <td data-label="存储位置">Firebase（云端）</td>
+                <td data-label="删除方式">"删除云端数据"按钮（仅在取消订阅后可用）</td>
             </tr>
             <tr>
-                <td>订阅到期日期</td>
-                <td>Firebase（云端）</td>
-                <td>"删除云端数据"按钮（仅在宽限期结束后可用）</td>
+                <td data-label="数据类型">订阅到期日期</td>
+                <td data-label="存储位置">Firebase（云端）</td>
+                <td data-label="删除方式">"删除云端数据"按钮（仅在宽限期结束后可用）</td>
             </tr>
             <tr>
-                <td>"不再续订"标记</td>
-                <td>Firebase（云端）</td>
-                <td>"删除云端数据"按钮（仅在宽限期结束后可用）</td>
+                <td data-label="数据类型">"不再续订"标记</td>
+                <td data-label="存储位置">Firebase（云端）</td>
+                <td data-label="删除方式">"删除云端数据"按钮（仅在宽限期结束后可用）</td>
             </tr>
             <tr>
-                <td>订阅历史记录</td>
-                <td>Firebase（云端）</td>
-                <td>"删除云端数据"按钮（同时删除活跃记录和历史记录）</td>
+                <td data-label="数据类型">订阅历史记录</td>
+                <td data-label="存储位置">Firebase（云端）</td>
+                <td data-label="删除方式">"删除云端数据"按钮（同时删除活跃记录和历史记录）</td>
             </tr>
             <tr>
-                <td>管理操作日志</td>
-                <td>Firebase（云端）</td>
-                <td>"删除云端数据"按钮</td>
+                <td data-label="数据类型">管理操作日志</td>
+                <td data-label="存储位置">Firebase（云端）</td>
+                <td data-label="删除方式">"删除云端数据"按钮</td>
             </tr>
-        </table>
+        </table></div>
 
         <h3>本地数据（设备）</h3>
 
-        <table>
+        <div class="table-wrapper"><table>
             <tr>
                 <th>数据类型</th>
                 <th>存储位置</th>
                 <th>删除方式</th>
             </tr>
             <tr>
-                <td>已学习的词汇（预测输入）</td>
-                <td>本地（设备）</td>
-                <td>"删除学习数据"按钮 或 "删除所有本地数据"按钮</td>
+                <td data-label="数据类型">已学习的词汇（预测输入）</td>
+                <td data-label="存储位置">本地（设备）</td>
+                <td data-label="删除方式">"删除学习数据"按钮 或 "删除所有本地数据"按钮</td>
             </tr>
             <tr>
-                <td>应用偏好设置</td>
-                <td>本地（设备）</td>
-                <td>"删除所有本地数据"按钮</td>
+                <td data-label="数据类型">应用偏好设置</td>
+                <td data-label="存储位置">本地（设备）</td>
+                <td data-label="删除方式">"删除所有本地数据"按钮</td>
             </tr>
             <tr>
-                <td>应用状态</td>
-                <td>本地（设备）</td>
-                <td>"删除所有本地数据"按钮</td>
+                <td data-label="数据类型">应用状态</td>
+                <td data-label="存储位置">本地（设备）</td>
+                <td data-label="删除方式">"删除所有本地数据"按钮</td>
             </tr>
             <tr>
-                <td>联系人语言分配</td>
-                <td>本地（设备）</td>
-                <td>"删除所有本地数据"按钮</td>
+                <td data-label="数据类型">联系人语言分配</td>
+                <td data-label="存储位置">本地（设备）</td>
+                <td data-label="删除方式">"删除所有本地数据"按钮</td>
             </tr>
             <tr>
-                <td>学习元数据</td>
-                <td>本地（设备）</td>
-                <td>"删除所有本地数据"按钮</td>
+                <td data-label="数据类型">学习元数据</td>
+                <td data-label="存储位置">本地（设备）</td>
+                <td data-label="删除方式">"删除所有本地数据"按钮</td>
             </tr>
             <tr>
-                <td>备份元数据</td>
-                <td>本地（设备）</td>
-                <td>"删除所有本地数据"按钮</td>
+                <td data-label="数据类型">备份元数据</td>
+                <td data-label="存储位置">本地（设备）</td>
+                <td data-label="删除方式">"删除所有本地数据"按钮</td>
             </tr>
             <tr>
-                <td>订阅提醒</td>
-                <td>本地（设备）</td>
-                <td>"删除所有本地数据"按钮</td>
+                <td data-label="数据类型">订阅提醒</td>
+                <td data-label="存储位置">本地（设备）</td>
+                <td data-label="删除方式">"删除所有本地数据"按钮</td>
             </tr>
             <tr>
-                <td>已下载的 N-gram 预测模型</td>
-                <td>本地（设备）</td>
-                <td>"删除所有本地数据"按钮</td>
+                <td data-label="数据类型">已下载的 N-gram 预测模型</td>
+                <td data-label="存储位置">本地（设备）</td>
+                <td data-label="删除方式">"删除所有本地数据"按钮</td>
             </tr>
             <tr>
-                <td>Hunspell 词典（从 assets 复制）</td>
-                <td>本地（设备）</td>
-                <td>"删除所有本地数据"按钮</td>
+                <td data-label="数据类型">Hunspell 词典（从 assets 复制）</td>
+                <td data-label="存储位置">本地（设备）</td>
+                <td data-label="删除方式">"删除所有本地数据"按钮</td>
             </tr>
             <tr>
-                <td>词汇和词典缓存（内存中）</td>
-                <td>RAM（易失性）</td>
-                <td>"删除所有本地数据"按钮 或 关闭应用</td>
+                <td data-label="数据类型">词汇和词典缓存（内存中）</td>
+                <td data-label="存储位置">RAM（易失性）</td>
+                <td data-label="删除方式">"删除所有本地数据"按钮 或 关闭应用</td>
             </tr>
             <tr>
-                <td>应用缓存（临时文件、本地崩溃报告、WebView 缓存）</td>
-                <td>本地（设备）</td>
-                <td>"删除所有本地数据"按钮</td>
+                <td data-label="数据类型">应用缓存（临时文件、本地崩溃报告、WebView 缓存）</td>
+                <td data-label="存储位置">本地（设备）</td>
+                <td data-label="删除方式">"删除所有本地数据"按钮</td>
             </tr>
             <tr>
-                <td>联系人消歧缓存</td>
-                <td>RAM（易失性）</td>
-                <td>无障碍服务重启时自动清除</td>
+                <td data-label="数据类型">联系人消歧缓存</td>
+                <td data-label="存储位置">RAM（易失性）</td>
+                <td data-label="删除方式">无障碍服务重启时自动清除</td>
             </tr>
             <tr>
-                <td>翻译缓存</td>
-                <td>RAM（易失性）</td>
-                <td>关闭应用时自动清除</td>
+                <td data-label="数据类型">翻译缓存</td>
+                <td data-label="存储位置">RAM（易失性）</td>
+                <td data-label="删除方式">关闭应用时自动清除</td>
             </tr>
             <tr>
-                <td>翻译文本</td>
-                <td>从不存储</td>
-                <td>无需任何操作（保留时间为 0 秒）</td>
+                <td data-label="数据类型">翻译文本</td>
+                <td data-label="存储位置">从不存储</td>
+                <td data-label="删除方式">无需任何操作（保留时间为 0 秒）</td>
             </tr>
-        </table>
+        </table></div>
 
         <h2>无法删除的数据</h2>
 
