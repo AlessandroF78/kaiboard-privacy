@@ -85,7 +85,7 @@
             text-align: left;
         }
         th {
-            background-color: #F4F7FA;
+            background-color: #0FA3A3;
             font-weight: 600;
             color: white;
         }
@@ -118,47 +118,22 @@
             font-weight: 600;
         }
 
-        /* -- MOBILE RESPONSIVE FIX -- */
-        * { box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { overflow-x: hidden; max-width: 100%; }
-
+        /* -- MOBILE FIX -- */
+        html, body { overflow-x: hidden; }
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+        }
+        .table-wrapper table {
+            width: auto;
+            min-width: 480px;
+            margin: 0;
+        }
         @media (max-width: 650px) {
             body { padding: 15px; }
             .container { padding: 20px; }
-            .table-wrapper thead { display: none; }
-            .table-wrapper table,
-            .table-wrapper tbody,
-            .table-wrapper tr { display: block; width: 100%; }
-            .table-wrapper tr {
-                border: 1px solid #ddd;
-                border-radius: 6px;
-                margin-bottom: 12px;
-                background: #fff;
-                overflow: hidden;
-            }
-            .table-wrapper td {
-                display: block;
-                width: 100%;
-                padding: 10px 12px;
-                font-size: 13px;
-                line-height: 1.5;
-                border: none;
-                border-bottom: 1px solid #f0f0f0;
-                text-align: left;
-            }
-            .table-wrapper td:last-child { border-bottom: none; }
-            .table-wrapper td::before {
-                content: attr(data-label);
-                display: block;
-                font-weight: 600;
-                font-size: 11px;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                color: #0FA3A3;
-                margin-bottom: 4px;
-            }
-            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+            th, td { padding: 8px; font-size: 13px; }
         }
     </style>
 </head>
@@ -190,8 +165,8 @@
                 <th>Auswirkung</th>
             </tr>
             <tr>
-                <td data-label="Option"><strong>Cloud-Daten löschen</strong></td>
-                <td data-label="Was wird gelöscht">
+                <td><strong>Cloud-Daten löschen</strong></td>
+                <td>
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>Aktives Abonnement-Dokument (user_subscriptions)</li>
                         <li>Abonnement-Verlauf (user_subscriptions_history)</li>
@@ -200,16 +175,16 @@
                         <li>Multi-Device-Geräte-Array</li>
                     </ul>
                 </td>
-                <td data-label="Auswirkung">Unwiderruflich. Sie verlieren die Abonnementdaten, Kaufhistorie, Aktivitätsprotokolle und Abonnement-Verlauf. Erfordert Abonnement-Kündigung falls aktiv.</td>
+                <td>Unwiderruflich. Sie verlieren die Abonnementdaten, Kaufhistorie, Aktivitätsprotokolle und Abonnement-Verlauf. Erfordert Abonnement-Kündigung falls aktiv.</td>
             </tr>
             <tr>
-                <td data-label="Option"><strong>Lerndaten löschen</strong></td>
-                <td data-label="Was wird gelöscht">Gelernte Wörter für personalisierte Vorschläge (alle 13 Sprachen)</td>
-                <td data-label="Auswirkung">Vorhersagetext beginnt von vorne.</td>
+                <td><strong>Lerndaten löschen</strong></td>
+                <td>Gelernte Wörter für personalisierte Vorschläge (alle 13 Sprachen)</td>
+                <td>Vorhersagetext beginnt von vorne.</td>
             </tr>
             <tr>
-                <td data-label="Option"><strong>Alle lokalen Daten löschen</strong></td>
-                <td data-label="Was wird gelöscht">
+                <td><strong>Alle lokalen Daten löschen</strong></td>
+                <td>
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>Lerndaten (13 Sprachen)</li>
                         <li>Alle Einstellungen und Präferenzen</li>
@@ -221,7 +196,7 @@
                         <li>Gesamter App-Cache (temporäre Dateien, lokale Absturzberichte, WebView-Cache)</li>
                     </ul>
                 </td>
-                <td data-label="Auswirkung">Die App startet mit Standardeinstellungen neu. Keine Benutzerdateien verbleiben auf dem Gerät. Cloud-Daten bleiben erhalten.</td>
+                <td>Die App startet mit Standardeinstellungen neu. Keine Benutzerdateien verbleiben auf dem Gerät. Cloud-Daten bleiben erhalten.</td>
             </tr>
         </table></div>
 
@@ -256,7 +231,7 @@
         <p>Wenn Sie Unterstützung wünschen oder Fragen zur Datenlöschung haben, können Sie uns per E-Mail kontaktieren:</p>
 
         <div class="info-box">
-            <p><strong>E-Mail:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+            <p><strong>E-Mail:</strong> <a href="/cdn-cgi/l/email-protection#02717772726d70764269636b606d6370662c6777"><span class="__cf_email__" data-cfemail="2e5d5b5e5e415c5a6e454f474c414f5c4a004b5b">[email&#160;protected]</span></a></p>
             <p><strong>Betreff:</strong> „DSGVO-Datenlöschungsanfrage"</p>
             <p><strong>Anzugebende Informationen:</strong></p>
             <ul>
@@ -290,39 +265,39 @@
                 <th>Details</th>
             </tr>
             <tr>
-                <td data-label="Datentyp"><strong>Aktive Abonnementdaten (Firebase)</strong></td>
-                <td data-label="Aufbewahrungsfrist">Bis zum Ende des aktuellen Abrechnungszeitraums</td>
-                <td data-label="Details">Automatisch in den Verlauf verschoben, wenn das Abonnement abläuft</td>
+                <td><strong>Aktive Abonnementdaten (Firebase)</strong></td>
+                <td>Bis zum Ende des aktuellen Abrechnungszeitraums</td>
+                <td>Automatisch in den Verlauf verschoben, wenn das Abonnement abläuft</td>
             </tr>
             <tr>
-                <td data-label="Datentyp"><strong>Abonnement-Verlauf (Firebase)</strong></td>
-                <td data-label="Aufbewahrungsfrist">90 Tage nach Ablauf</td>
-                <td data-label="Details">Automatisch 90 Tage nach Ende des Abonnements gelöscht</td>
+                <td><strong>Abonnement-Verlauf (Firebase)</strong></td>
+                <td>90 Tage nach Ablauf</td>
+                <td>Automatisch 90 Tage nach Ende des Abonnements gelöscht</td>
             </tr>
             <tr>
-                <td data-label="Datentyp"><strong>Administrative Aktivitätsprotokolle (Firebase)</strong></td>
-                <td data-label="Aufbewahrungsfrist">90 Tage nach letzter Änderung</td>
-                <td data-label="Details">Automatisch alle 24 Stunden durch Hintergrundbereinigung gelöscht</td>
+                <td><strong>Administrative Aktivitätsprotokolle (Firebase)</strong></td>
+                <td>90 Tage nach letzter Änderung</td>
+                <td>Automatisch alle 24 Stunden durch Hintergrundbereinigung gelöscht</td>
             </tr>
             <tr>
-                <td data-label="Datentyp"><strong>Kaufhistorie (Firebase)</strong></td>
-                <td data-label="Aufbewahrungsfrist">365 Tage nach Kauf</td>
-                <td data-label="Details">Automatisch nach einem Jahr gelöscht</td>
+                <td><strong>Kaufhistorie (Firebase)</strong></td>
+                <td>365 Tage nach Kauf</td>
+                <td>Automatisch nach einem Jahr gelöscht</td>
             </tr>
             <tr>
-                <td data-label="Datentyp"><strong>Gelernte Wörter</strong></td>
-                <td data-label="Aufbewahrungsfrist">14 Tage mit Verfall</td>
-                <td data-label="Details">Häufigkeitswerte nehmen mit der Zeit ab; ungenutzte Wörter werden entfernt</td>
+                <td><strong>Gelernte Wörter</strong></td>
+                <td>14 Tage mit Verfall</td>
+                <td>Häufigkeitswerte nehmen mit der Zeit ab; ungenutzte Wörter werden entfernt</td>
             </tr>
             <tr>
-                <td data-label="Datentyp"><strong>Übersetzungs-Cache</strong></td>
-                <td data-label="Aufbewahrungsfrist">Nur Sitzung</td>
-                <td data-label="Details">Nur im RAM gespeichert; beim Schließen der App gelöscht</td>
+                <td><strong>Übersetzungs-Cache</strong></td>
+                <td>Nur Sitzung</td>
+                <td>Nur im RAM gespeichert; beim Schließen der App gelöscht</td>
             </tr>
             <tr>
-                <td data-label="Datentyp"><strong>Übersetzungstext</strong></td>
-                <td data-label="Aufbewahrungsfrist">Nie gespeichert</td>
-                <td data-label="Details">0 Sekunden Speicherung; nur Transit zur OpenAI-API</td>
+                <td><strong>Übersetzungstext</strong></td>
+                <td>Nie gespeichert</td>
+                <td>0 Sekunden Speicherung; nur Transit zur OpenAI-API</td>
             </tr>
         </table></div>
 
@@ -339,54 +314,54 @@
                 <th>Löschmethode</th>
             </tr>
             <tr>
-                <td data-label="Datentyp">Geräte-Array</td>
-                <td data-label="Speicherort">Firebase (Cloud)</td>
-                <td data-label="Löschmethode">Schaltfläche „Cloud-Daten löschen"</td>
+                <td>Geräte-Array</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche „Cloud-Daten löschen"</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Aktuelle Token-Nutzung</td>
-                <td data-label="Speicherort">Firebase (Cloud)</td>
-                <td data-label="Löschmethode">Schaltfläche „Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
+                <td>Aktuelle Token-Nutzung</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche „Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Kaufhistorie</td>
-                <td data-label="Speicherort">Firebase (Cloud)</td>
-                <td data-label="Löschmethode">Schaltfläche „Cloud-Daten löschen"</td>
+                <td>Kaufhistorie</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche „Cloud-Daten löschen"</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Abonnementplan</td>
-                <td data-label="Speicherort">Firebase (Cloud)</td>
-                <td data-label="Löschmethode">Schaltfläche „Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
+                <td>Abonnementplan</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche „Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Monatliches Token-Limit</td>
-                <td data-label="Speicherort">Firebase (Cloud)</td>
-                <td data-label="Löschmethode">Schaltfläche „Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
+                <td>Monatliches Token-Limit</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche „Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Monatliches Reset-Datum</td>
-                <td data-label="Speicherort">Firebase (Cloud)</td>
-                <td data-label="Löschmethode">Schaltfläche „Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
+                <td>Monatliches Reset-Datum</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche „Cloud-Daten löschen" (nur nach Abonnement-Kündigung)</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Abonnement-Enddatum</td>
-                <td data-label="Speicherort">Firebase (Cloud)</td>
-                <td data-label="Löschmethode">Schaltfläche „Cloud-Daten löschen" (nur nach Ablauf der Kulanzfrist)</td>
+                <td>Abonnement-Enddatum</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche „Cloud-Daten löschen" (nur nach Ablauf der Kulanzfrist)</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Flag „Wird nicht verlängert"</td>
-                <td data-label="Speicherort">Firebase (Cloud)</td>
-                <td data-label="Löschmethode">Schaltfläche „Cloud-Daten löschen" (nur nach Ablauf der Kulanzfrist)</td>
+                <td>Flag „Wird nicht verlängert"</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche „Cloud-Daten löschen" (nur nach Ablauf der Kulanzfrist)</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Abonnement-Verlauf</td>
-                <td data-label="Speicherort">Firebase (Cloud)</td>
-                <td data-label="Löschmethode">Schaltfläche „Cloud-Daten löschen" (löscht alles: aktiv + Verlauf)</td>
+                <td>Abonnement-Verlauf</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche „Cloud-Daten löschen" (löscht alles: aktiv + Verlauf)</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Administrative Aktivitätsprotokolle</td>
-                <td data-label="Speicherort">Firebase (Cloud)</td>
-                <td data-label="Löschmethode">Schaltfläche „Cloud-Daten löschen"</td>
+                <td>Administrative Aktivitätsprotokolle</td>
+                <td>Firebase (Cloud)</td>
+                <td>Schaltfläche „Cloud-Daten löschen"</td>
             </tr>
         </table></div>
 
@@ -399,74 +374,74 @@
                 <th>Löschmethode</th>
             </tr>
             <tr>
-                <td data-label="Datentyp">Gelernte Wörter (Vorhersagen)</td>
-                <td data-label="Speicherort">Lokal (Gerät)</td>
-                <td data-label="Löschmethode">Schaltfläche „Lerndaten löschen" oder „Alle lokalen Daten löschen"</td>
+                <td>Gelernte Wörter (Vorhersagen)</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Lerndaten löschen" oder „Alle lokalen Daten löschen"</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">App-Einstellungen</td>
-                <td data-label="Speicherort">Lokal (Gerät)</td>
-                <td data-label="Löschmethode">Schaltfläche „Alle lokalen Daten löschen"</td>
+                <td>App-Einstellungen</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">App-Status</td>
-                <td data-label="Speicherort">Lokal (Gerät)</td>
-                <td data-label="Löschmethode">Schaltfläche „Alle lokalen Daten löschen"</td>
+                <td>App-Status</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Kontakt-Sprach-Zuweisungen</td>
-                <td data-label="Speicherort">Lokal (Gerät)</td>
-                <td data-label="Löschmethode">Schaltfläche „Alle lokalen Daten löschen"</td>
+                <td>Kontakt-Sprach-Zuweisungen</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Lernmetadaten</td>
-                <td data-label="Speicherort">Lokal (Gerät)</td>
-                <td data-label="Löschmethode">Schaltfläche „Alle lokalen Daten löschen"</td>
+                <td>Lernmetadaten</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Backup-Metadaten</td>
-                <td data-label="Speicherort">Lokal (Gerät)</td>
-                <td data-label="Löschmethode">Schaltfläche „Alle lokalen Daten löschen"</td>
+                <td>Backup-Metadaten</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Abonnement-Benachrichtigungen</td>
-                <td data-label="Speicherort">Lokal (Gerät)</td>
-                <td data-label="Löschmethode">Schaltfläche „Alle lokalen Daten löschen"</td>
+                <td>Abonnement-Benachrichtigungen</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">N-Gramm-Vorhersagemodelle (heruntergeladen)</td>
-                <td data-label="Speicherort">Lokal (Gerät)</td>
-                <td data-label="Löschmethode">Schaltfläche „Alle lokalen Daten löschen"</td>
+                <td>N-Gramm-Vorhersagemodelle (heruntergeladen)</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Hunspell-Wörterbücher (aus Assets kopiert)</td>
-                <td data-label="Speicherort">Lokal (Gerät)</td>
-                <td data-label="Löschmethode">Schaltfläche „Alle lokalen Daten löschen"</td>
+                <td>Hunspell-Wörterbücher (aus Assets kopiert)</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Cache für Vokabularien und Wörterbücher (im Arbeitsspeicher)</td>
-                <td data-label="Speicherort">RAM (flüchtig)</td>
-                <td data-label="Löschmethode">Schaltfläche „Alle lokalen Daten löschen" oder App-Schließung</td>
+                <td>Cache für Vokabularien und Wörterbücher (im Arbeitsspeicher)</td>
+                <td>RAM (flüchtig)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen" oder App-Schließung</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">App-Cache (temporäre Dateien, lokale Absturzberichte, WebView-Cache)</td>
-                <td data-label="Speicherort">Lokal (Gerät)</td>
-                <td data-label="Löschmethode">Schaltfläche „Alle lokalen Daten löschen"</td>
+                <td>App-Cache (temporäre Dateien, lokale Absturzberichte, WebView-Cache)</td>
+                <td>Lokal (Gerät)</td>
+                <td>Schaltfläche „Alle lokalen Daten löschen"</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Kontakt-Disambiguierungs-Cache</td>
-                <td data-label="Speicherort">RAM (flüchtig)</td>
-                <td data-label="Löschmethode">Automatisch beim Neustart des Barrierefreiheitsdienstes</td>
+                <td>Kontakt-Disambiguierungs-Cache</td>
+                <td>RAM (flüchtig)</td>
+                <td>Automatisch beim Neustart des Barrierefreiheitsdienstes</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Übersetzungs-Cache</td>
-                <td data-label="Speicherort">RAM (flüchtig)</td>
-                <td data-label="Löschmethode">Automatisch beim Schließen der App</td>
+                <td>Übersetzungs-Cache</td>
+                <td>RAM (flüchtig)</td>
+                <td>Automatisch beim Schließen der App</td>
             </tr>
             <tr>
-                <td data-label="Datentyp">Übersetzungstext</td>
-                <td data-label="Speicherort">Nie gespeichert</td>
-                <td data-label="Löschmethode">Keine Aktion erforderlich (0 Sekunden Speicherung)</td>
+                <td>Übersetzungstext</td>
+                <td>Nie gespeichert</td>
+                <td>Keine Aktion erforderlich (0 Sekunden Speicherung)</td>
             </tr>
         </table></div>
 
@@ -521,19 +496,13 @@
 
         <p>
             <a href="https://alessandrof78.github.io/kaiboard-privacy/" class="button">Vollständige Datenschutzerklärung lesen</a>
-            <a href="mailto:support@kaiboard.eu" class="button">Support kontaktieren</a>
+            <a href="/cdn-cgi/l/email-protection#14676164647b6660547f757d767b7566703a7161" class="button">Support kontaktieren</a>
             <a href="https://alessandrof78.github.io/kaiboard-privacy/data-deletion.html" class="button">Andere Sprachen</a>
         </p>
 
         <div class="footer">
-            <p><strong>Version 2.0 - Letzte Aktualisierung: 21. März 2026</strong></p>
-            <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
-            <p>DSGVO-konform (EU-Verordnung 2016/679)</p>
+            <p><strong>Version 2.0 - Letzte Aktualisierung: 21. März 2026</strong></p
         </div>
     </div>
 </body>
 </html>
-
-
-
-
