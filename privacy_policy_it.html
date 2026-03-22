@@ -87,7 +87,10 @@
         }
 
         /* ── MOBILE RESPONSIVE FIX ── */
-        html, body { overflow-x: hidden; }
+        * { box-sizing: border-box; }
+        html, body { overflow-x: hidden; max-width: 100%; width: 100%; }
+        table { max-width: 100%; table-layout: fixed; }
+        td, th { overflow-wrap: break-word; word-wrap: break-word; }
         .table-wrapper {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
