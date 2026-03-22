@@ -85,7 +85,7 @@
             text-align: left;
         }
         th {
-            background-color: #F4F7FA;
+            background-color: #0FA3A3;
             font-weight: 600;
             color: white;
         }
@@ -118,47 +118,22 @@
             font-weight: 600;
         }
 
-        /* -- MOBILE RESPONSIVE FIX -- */
-        * { box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { overflow-x: hidden; max-width: 100%; }
-
+        /* -- MOBILE FIX -- */
+        html, body { overflow-x: hidden; }
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+        }
+        .table-wrapper table {
+            width: auto;
+            min-width: 480px;
+            margin: 0;
+        }
         @media (max-width: 650px) {
             body { padding: 15px; }
             .container { padding: 20px; }
-            .table-wrapper thead { display: none; }
-            .table-wrapper table,
-            .table-wrapper tbody,
-            .table-wrapper tr { display: block; width: 100%; }
-            .table-wrapper tr {
-                border: 1px solid #ddd;
-                border-radius: 6px;
-                margin-bottom: 12px;
-                background: #fff;
-                overflow: hidden;
-            }
-            .table-wrapper td {
-                display: block;
-                width: 100%;
-                padding: 10px 12px;
-                font-size: 13px;
-                line-height: 1.5;
-                border: none;
-                border-bottom: 1px solid #f0f0f0;
-                text-align: left;
-            }
-            .table-wrapper td:last-child { border-bottom: none; }
-            .table-wrapper td::before {
-                content: attr(data-label);
-                display: block;
-                font-weight: 600;
-                font-size: 11px;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                color: #0FA3A3;
-                margin-bottom: 4px;
-            }
-            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+            th, td { padding: 8px; font-size: 13px; }
         }
     </style>
 </head>
@@ -190,8 +165,8 @@
                 <th>Etki</th>
             </tr>
             <tr>
-                <td data-label="Seçenek"><strong>Bulut Verilerini Sil</strong></td>
-                <td data-label="Ne Silinir">
+                <td><strong>Bulut Verilerini Sil</strong></td>
+                <td>
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>Aktif abonelik belgesi (user_subscriptions)</li>
                         <li>Abonelik geçmişi (user_subscriptions_history)</li>
@@ -200,16 +175,16 @@
                         <li>Çoklu cihaz dizisi</li>
                     </ul>
                 </td>
-                <td data-label="Etki">Geri alınamaz. Abonelik verilerinizi, satın alma geçmişinizi, etkinlik günlüklerinizi ve abonelik geçmişinizi kaybedeceksiniz. Aktifse abonelik iptali gerektirir.</td>
+                <td>Geri alınamaz. Abonelik verilerinizi, satın alma geçmişinizi, etkinlik günlüklerinizi ve abonelik geçmişinizi kaybedeceksiniz. Aktifse abonelik iptali gerektirir.</td>
             </tr>
             <tr>
-                <td data-label="Seçenek"><strong>Öğrenme Verilerini Sil</strong></td>
-                <td data-label="Ne Silinir">Kişiselleştirilmiş öneriler için öğrenilen kelimeler (tüm 13 dil)</td>
-                <td data-label="Etki">Tahmin metni sıfırdan başlayacak.</td>
+                <td><strong>Öğrenme Verilerini Sil</strong></td>
+                <td>Kişiselleştirilmiş öneriler için öğrenilen kelimeler (tüm 13 dil)</td>
+                <td>Tahmin metni sıfırdan başlayacak.</td>
             </tr>
             <tr>
-                <td data-label="Seçenek"><strong>Tüm Yerel Verileri Sil</strong></td>
-                <td data-label="Ne Silinir">
+                <td><strong>Tüm Yerel Verileri Sil</strong></td>
+                <td>
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>Öğrenme verileri (13 dil)</li>
                         <li>Tüm tercihler ve ayarlar</li>
@@ -221,7 +196,7 @@
                         <li>Tüm uygulama önbelleği (geçici dosyalar, yerel çökme raporları, WebView önbelleği)</li>
                     </ul>
                 </td>
-                <td data-label="Etki">Uygulama varsayılan ayarlarla yeniden başlayacak. Cihazda hiçbir kullanıcı dosyası kalmayacak. Bulut verileri korunur.</td>
+                <td>Uygulama varsayılan ayarlarla yeniden başlayacak. Cihazda hiçbir kullanıcı dosyası kalmayacak. Bulut verileri korunur.</td>
             </tr>
         </table></div>
 
@@ -256,7 +231,7 @@
         <p>Yardım isterseniz veya veri silme hakkında sorularınız varsa, bize e-posta ile ulaşabilirsiniz:</p>
 
         <div class="info-box">
-            <p><strong>E-posta:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+            <p><strong>E-posta:</strong> <a href="/cdn-cgi/l/email-protection#1d6e686d6d726f695d767c747f727c6f79337868"><span class="__cf_email__" data-cfemail="a8dbddd8d8c7dadce8c3c9c1cac7c9dacc86cddd">[email&#160;protected]</span></a></p>
             <p><strong>Konu:</strong> «GDPR Veri Silme Talebi»</p>
             <p><strong>Eklenecek Bilgiler:</strong></p>
             <ul>
@@ -290,39 +265,39 @@
                 <th>Detaylar</th>
             </tr>
             <tr>
-                <td data-label="Veri Türü"><strong>Aktif Abonelik Verileri (Firebase)</strong></td>
-                <td data-label="Saklama Süresi">Mevcut fatura döneminin sonuna kadar</td>
-                <td data-label="Detaylar">Abonelik sona erdiğinde otomatik olarak geçmişe taşınır</td>
+                <td><strong>Aktif Abonelik Verileri (Firebase)</strong></td>
+                <td>Mevcut fatura döneminin sonuna kadar</td>
+                <td>Abonelik sona erdiğinde otomatik olarak geçmişe taşınır</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü"><strong>Abonelik Geçmişi (Firebase)</strong></td>
-                <td data-label="Saklama Süresi">Sona ermeden 90 gün sonra</td>
-                <td data-label="Detaylar">Abonelik bitiminden 90 gün sonra otomatik olarak silinir</td>
+                <td><strong>Abonelik Geçmişi (Firebase)</strong></td>
+                <td>Sona ermeden 90 gün sonra</td>
+                <td>Abonelik bitiminden 90 gün sonra otomatik olarak silinir</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü"><strong>Yönetimsel Etkinlik Günlükleri (Firebase)</strong></td>
-                <td data-label="Saklama Süresi">Son değişiklikten 90 gün sonra</td>
-                <td data-label="Detaylar">Her 24 saatte arka plan temizliğiyle otomatik olarak silinir</td>
+                <td><strong>Yönetimsel Etkinlik Günlükleri (Firebase)</strong></td>
+                <td>Son değişiklikten 90 gün sonra</td>
+                <td>Her 24 saatte arka plan temizliğiyle otomatik olarak silinir</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü"><strong>Satın Alma Geçmişi (Firebase)</strong></td>
-                <td data-label="Saklama Süresi">Satın alma tarihinden 365 gün sonra</td>
-                <td data-label="Detaylar">Bir yıl sonra otomatik olarak silinir</td>
+                <td><strong>Satın Alma Geçmişi (Firebase)</strong></td>
+                <td>Satın alma tarihinden 365 gün sonra</td>
+                <td>Bir yıl sonra otomatik olarak silinir</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü"><strong>Öğrenilen Kelimeler</strong></td>
-                <td data-label="Saklama Süresi">14 gün bozulma ile</td>
-                <td data-label="Detaylar">Sıklık puanları zamanla azalır; kullanılmayan kelimeler kaldırılır</td>
+                <td><strong>Öğrenilen Kelimeler</strong></td>
+                <td>14 gün bozulma ile</td>
+                <td>Sıklık puanları zamanla azalır; kullanılmayan kelimeler kaldırılır</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü"><strong>Çeviri Önbelleği</strong></td>
-                <td data-label="Saklama Süresi">Yalnızca oturum</td>
-                <td data-label="Detaylar">Yalnızca RAM'de saklanır; uygulama kapandığında silinir</td>
+                <td><strong>Çeviri Önbelleği</strong></td>
+                <td>Yalnızca oturum</td>
+                <td>Yalnızca RAM'de saklanır; uygulama kapandığında silinir</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü"><strong>Çeviri Metni</strong></td>
-                <td data-label="Saklama Süresi">Hiçbir zaman saklanmaz</td>
-                <td data-label="Detaylar">0 saniye saklama; yalnızca OpenAI API'sine geçiş</td>
+                <td><strong>Çeviri Metni</strong></td>
+                <td>Hiçbir zaman saklanmaz</td>
+                <td>0 saniye saklama; yalnızca OpenAI API'sine geçiş</td>
             </tr>
         </table></div>
 
@@ -339,54 +314,54 @@
                 <th>Silme Yöntemi</th>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Cihaz Dizisi</td>
-                <td data-label="Depolama Konumu">Firebase (bulut)</td>
-                <td data-label="Silme Yöntemi">«Bulut Verilerini Sil» düğmesi</td>
+                <td>Cihaz Dizisi</td>
+                <td>Firebase (bulut)</td>
+                <td>«Bulut Verilerini Sil» düğmesi</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Mevcut Token Kullanımı</td>
-                <td data-label="Depolama Konumu">Firebase (bulut)</td>
-                <td data-label="Silme Yöntemi">«Bulut Verilerini Sil» düğmesi (sadece abonelik iptali sonrası)</td>
+                <td>Mevcut Token Kullanımı</td>
+                <td>Firebase (bulut)</td>
+                <td>«Bulut Verilerini Sil» düğmesi (sadece abonelik iptali sonrası)</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Satın Alma Geçmişi</td>
-                <td data-label="Depolama Konumu">Firebase (bulut)</td>
-                <td data-label="Silme Yöntemi">«Bulut Verilerini Sil» düğmesi</td>
+                <td>Satın Alma Geçmişi</td>
+                <td>Firebase (bulut)</td>
+                <td>«Bulut Verilerini Sil» düğmesi</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Abonelik Planı</td>
-                <td data-label="Depolama Konumu">Firebase (bulut)</td>
-                <td data-label="Silme Yöntemi">«Bulut Verilerini Sil» düğmesi (sadece abonelik iptali sonrası)</td>
+                <td>Abonelik Planı</td>
+                <td>Firebase (bulut)</td>
+                <td>«Bulut Verilerini Sil» düğmesi (sadece abonelik iptali sonrası)</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Aylık Token Limiti</td>
-                <td data-label="Depolama Konumu">Firebase (bulut)</td>
-                <td data-label="Silme Yöntemi">«Bulut Verilerini Sil» düğmesi (sadece abonelik iptali sonrası)</td>
+                <td>Aylık Token Limiti</td>
+                <td>Firebase (bulut)</td>
+                <td>«Bulut Verilerini Sil» düğmesi (sadece abonelik iptali sonrası)</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Aylık Sıfırlama Tarihi</td>
-                <td data-label="Depolama Konumu">Firebase (bulut)</td>
-                <td data-label="Silme Yöntemi">«Bulut Verilerini Sil» düğmesi (sadece abonelik iptali sonrası)</td>
+                <td>Aylık Sıfırlama Tarihi</td>
+                <td>Firebase (bulut)</td>
+                <td>«Bulut Verilerini Sil» düğmesi (sadece abonelik iptali sonrası)</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Abonelik Bitiş Tarihi</td>
-                <td data-label="Depolama Konumu">Firebase (bulut)</td>
-                <td data-label="Silme Yöntemi">«Bulut Verilerini Sil» düğmesi (sadece ek süre bitiminden sonra)</td>
+                <td>Abonelik Bitiş Tarihi</td>
+                <td>Firebase (bulut)</td>
+                <td>«Bulut Verilerini Sil» düğmesi (sadece ek süre bitiminden sonra)</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">«Yenilenmeyecek» İşareti</td>
-                <td data-label="Depolama Konumu">Firebase (bulut)</td>
-                <td data-label="Silme Yöntemi">«Bulut Verilerini Sil» düğmesi (sadece ek süre bitiminden sonra)</td>
+                <td>«Yenilenmeyecek» İşareti</td>
+                <td>Firebase (bulut)</td>
+                <td>«Bulut Verilerini Sil» düğmesi (sadece ek süre bitiminden sonra)</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Abonelik Geçmişi</td>
-                <td data-label="Depolama Konumu">Firebase (bulut)</td>
-                <td data-label="Silme Yöntemi">«Bulut Verilerini Sil» düğmesi (tümünü siler: aktif + geçmiş)</td>
+                <td>Abonelik Geçmişi</td>
+                <td>Firebase (bulut)</td>
+                <td>«Bulut Verilerini Sil» düğmesi (tümünü siler: aktif + geçmiş)</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Yönetimsel Etkinlik Günlükleri</td>
-                <td data-label="Depolama Konumu">Firebase (bulut)</td>
-                <td data-label="Silme Yöntemi">«Bulut Verilerini Sil» düğmesi</td>
+                <td>Yönetimsel Etkinlik Günlükleri</td>
+                <td>Firebase (bulut)</td>
+                <td>«Bulut Verilerini Sil» düğmesi</td>
             </tr>
         </table></div>
 
@@ -399,74 +374,74 @@
                 <th>Silme Yöntemi</th>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Öğrenilen Kelimeler (Tahminler)</td>
-                <td data-label="Depolama Konumu">Yerel (cihaz)</td>
-                <td data-label="Silme Yöntemi">«Öğrenme Verilerini Sil» veya «Tüm Yerel Verileri Sil» düğmesi</td>
+                <td>Öğrenilen Kelimeler (Tahminler)</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Öğrenme Verilerini Sil» veya «Tüm Yerel Verileri Sil» düğmesi</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Uygulama Tercihleri</td>
-                <td data-label="Depolama Konumu">Yerel (cihaz)</td>
-                <td data-label="Silme Yöntemi">«Tüm Yerel Verileri Sil» düğmesi</td>
+                <td>Uygulama Tercihleri</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Uygulama Durumu</td>
-                <td data-label="Depolama Konumu">Yerel (cihaz)</td>
-                <td data-label="Silme Yöntemi">«Tüm Yerel Verileri Sil» düğmesi</td>
+                <td>Uygulama Durumu</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Kişi Dil Atamaları</td>
-                <td data-label="Depolama Konumu">Yerel (cihaz)</td>
-                <td data-label="Silme Yöntemi">«Tüm Yerel Verileri Sil» düğmesi</td>
+                <td>Kişi Dil Atamaları</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Öğrenme Meta Verileri</td>
-                <td data-label="Depolama Konumu">Yerel (cihaz)</td>
-                <td data-label="Silme Yöntemi">«Tüm Yerel Verileri Sil» düğmesi</td>
+                <td>Öğrenme Meta Verileri</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Yedekleme Meta Verileri</td>
-                <td data-label="Depolama Konumu">Yerel (cihaz)</td>
-                <td data-label="Silme Yöntemi">«Tüm Yerel Verileri Sil» düğmesi</td>
+                <td>Yedekleme Meta Verileri</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Abonelik Uyarıları</td>
-                <td data-label="Depolama Konumu">Yerel (cihaz)</td>
-                <td data-label="Silme Yöntemi">«Tüm Yerel Verileri Sil» düğmesi</td>
+                <td>Abonelik Uyarıları</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">N-gram Tahmin Modelleri (indirilmiş)</td>
-                <td data-label="Depolama Konumu">Yerel (cihaz)</td>
-                <td data-label="Silme Yöntemi">«Tüm Yerel Verileri Sil» düğmesi</td>
+                <td>N-gram Tahmin Modelleri (indirilmiş)</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Hunspell Sözlükleri (varlıklardan kopyalanmış)</td>
-                <td data-label="Depolama Konumu">Yerel (cihaz)</td>
-                <td data-label="Silme Yöntemi">«Tüm Yerel Verileri Sil» düğmesi</td>
+                <td>Hunspell Sözlükleri (varlıklardan kopyalanmış)</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Kelime Dağarcığı ve Sözlük Önbelleği (bellekte)</td>
-                <td data-label="Depolama Konumu">RAM (geçici)</td>
-                <td data-label="Silme Yöntemi">«Tüm Yerel Verileri Sil» düğmesi veya uygulama kapatma</td>
+                <td>Kelime Dağarcığı ve Sözlük Önbelleği (bellekte)</td>
+                <td>RAM (geçici)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi veya uygulama kapatma</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Uygulama Önbelleği (geçici dosyalar, yerel çökme raporları, WebView önbelleği)</td>
-                <td data-label="Depolama Konumu">Yerel (cihaz)</td>
-                <td data-label="Silme Yöntemi">«Tüm Yerel Verileri Sil» düğmesi</td>
+                <td>Uygulama Önbelleği (geçici dosyalar, yerel çökme raporları, WebView önbelleği)</td>
+                <td>Yerel (cihaz)</td>
+                <td>«Tüm Yerel Verileri Sil» düğmesi</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Kişi Belirsizlik Giderme Önbelleği</td>
-                <td data-label="Depolama Konumu">RAM (geçici)</td>
-                <td data-label="Silme Yöntemi">Erişilebilirlik hizmeti yeniden başlatıldığında otomatik</td>
+                <td>Kişi Belirsizlik Giderme Önbelleği</td>
+                <td>RAM (geçici)</td>
+                <td>Erişilebilirlik hizmeti yeniden başlatıldığında otomatik</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Çeviri Önbelleği</td>
-                <td data-label="Depolama Konumu">RAM (geçici)</td>
-                <td data-label="Silme Yöntemi">Uygulama kapatıldığında otomatik</td>
+                <td>Çeviri Önbelleği</td>
+                <td>RAM (geçici)</td>
+                <td>Uygulama kapatıldığında otomatik</td>
             </tr>
             <tr>
-                <td data-label="Veri Türü">Çeviri Metni</td>
-                <td data-label="Depolama Konumu">Hiçbir zaman saklanmaz</td>
-                <td data-label="Silme Yöntemi">İşlem gerekmez (0 saniye saklama)</td>
+                <td>Çeviri Metni</td>
+                <td>Hiçbir zaman saklanmaz</td>
+                <td>İşlem gerekmez (0 saniye saklama)</td>
             </tr>
         </table></div>
 
@@ -521,19 +496,13 @@
 
         <p>
             <a href="https://alessandrof78.github.io/kaiboard-privacy/" class="button">Tam Gizlilik Politikasını Okuyun</a>
-            <a href="mailto:support@kaiboard.eu" class="button">Destek ile İletişime Geçin</a>
+            <a href="/cdn-cgi/l/email-protection#bac9cfcacad5c8cefad1dbd3d8d5dbc8de94dfcf" class="button">Destek ile İletişime Geçin</a>
             <a href="https://alessandrof78.github.io/kaiboard-privacy/data-deletion.html" class="button">Diğer diller</a>
         </p>
 
         <div class="footer">
             <p><strong>Sürüm 2.0 — Son Güncelleme: 21 Mart 2026</strong></p>
-            <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
-            <p>GDPR Uyumlu (AB Yönetmeliği 2016/679)</p>
         </div>
     </div>
 </body>
 </html>
-
-
-
-
