@@ -86,47 +86,22 @@
             margin: 10px 0;
         }
 
-        /* -- MOBILE RESPONSIVE FIX -- */
-        * { box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { overflow-x: hidden; max-width: 100%; }
-
+        /* ── MOBILE FIX ── */
+        html, body { overflow-x: hidden; }
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+        }
+        .table-wrapper table {
+            width: auto;
+            min-width: 480px;
+            margin: 0;
+        }
         @media (max-width: 650px) {
             body { padding: 15px; }
             .container { padding: 20px; }
-            .table-wrapper thead { display: none; }
-            .table-wrapper table,
-            .table-wrapper tbody,
-            .table-wrapper tr { display: block; width: 100%; }
-            .table-wrapper tr {
-                border: 1px solid #ddd;
-                border-radius: 6px;
-                margin-bottom: 12px;
-                background: #fff;
-                overflow: hidden;
-            }
-            .table-wrapper td {
-                display: block;
-                width: 100%;
-                padding: 10px 12px;
-                font-size: 13px;
-                line-height: 1.5;
-                border: none;
-                border-bottom: 1px solid #f0f0f0;
-                text-align: left;
-            }
-            .table-wrapper td:last-child { border-bottom: none; }
-            .table-wrapper td::before {
-                content: attr(data-label);
-                display: block;
-                font-weight: 600;
-                font-size: 11px;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                color: #0FA3A3;
-                margin-bottom: 4px;
-            }
-            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+            th, td { padding: 8px; font-size: 13px; }
         }
     </style>
 </head>
@@ -141,7 +116,7 @@
 
 <div class="contact-box">
     <p><strong>Name:</strong> Alessandro Faedda</p>
-    <p><strong>Email:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+    <p><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#3b484e4b4b54494f7b505a5259545a495f155e4e"><span class="__cf_email__" data-cfemail="40333530302f3234002b2129222f2132246e2535">[email&#160;protected]</span></a></p>
     <p><strong>Type:</strong> Individual (independent developer)</p>
 </div>
 
@@ -161,28 +136,28 @@
         <th>Legal Basis</th>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Device Array</strong></td>
-        <td data-label="Type">List of identifiers (e.g., ["android_e19d6c...", "android_175be4..."])</td>
-        <td data-label="Purpose">Synchronize subscription and tokens across multiple devices with the same Google Play account</td>
-        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
+        <td><strong>Device Array</strong></td>
+        <td>List of identifiers (e.g., ["android_e19d6c...", "android_175be4..."])</td>
+        <td>Synchronize subscription and tokens across multiple devices with the same Google Play account</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Current Token Usage</strong></td>
-        <td data-label="Type">Integer (current_usage)</td>
-        <td data-label="Purpose">Track shared monthly consumption across all devices</td>
-        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
+        <td><strong>Current Token Usage</strong></td>
+        <td>Integer (current_usage)</td>
+        <td>Track shared monthly consumption across all devices</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Purchase History</strong></td>
-        <td data-label="Type">Product ID, purchase date, order ID</td>
-        <td data-label="Purpose">Verify purchases and prevent fraud</td>
-        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
+        <td><strong>Purchase History</strong></td>
+        <td>Product ID, purchase date, order ID</td>
+        <td>Verify purchases and prevent fraud</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Text to Translate</strong></td>
-        <td data-label="Type">Text content</td>
-        <td data-label="Purpose">Real-time translation</td>
-        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
+        <td><strong>Text to Translate</strong></td>
+        <td>Text content</td>
+        <td>Real-time translation</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
 </table></div>
 
@@ -218,64 +193,64 @@
         <th>Legal Basis</th>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Subscription Plan</strong></td>
-        <td data-label="Type">String (e.g., "plus", "pro", "max")</td>
-        <td data-label="Purpose">Identify active plan and apply correct token limit</td>
-        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
+        <td><strong>Subscription Plan</strong></td>
+        <td>String (e.g., "plus", "pro", "max")</td>
+        <td>Identify active plan and apply correct token limit</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Monthly Token Limit</strong></td>
-        <td data-label="Type">Integer (e.g., 250000, 500000, 1000000)</td>
-        <td data-label="Purpose">Apply maximum tokens included in subscription</td>
-        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
+        <td><strong>Monthly Token Limit</strong></td>
+        <td>Integer (e.g., 250000, 500000, 1000000)</td>
+        <td>Apply maximum tokens included in subscription</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Current Token Usage</strong></td>
-        <td data-label="Type">Integer</td>
-        <td data-label="Purpose">Track shared monthly consumption and apply limit</td>
-        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
+        <td><strong>Current Token Usage</strong></td>
+        <td>Integer</td>
+        <td>Track shared monthly consumption and apply limit</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Monthly Reset Date</strong></td>
-        <td data-label="Type">ISO Date (e.g., "2026-02-01")</td>
-        <td data-label="Purpose">Automatic usage reset at beginning of month</td>
-        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
+        <td><strong>Monthly Reset Date</strong></td>
+        <td>ISO Date (e.g., "2026-02-01")</td>
+        <td>Automatic usage reset at beginning of month</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Google Play Product ID</strong></td>
-        <td data-label="Type">String (e.g., "abbonamento_mensile_2500")</td>
-        <td data-label="Purpose">Verify subscription validity through Google Play Billing API</td>
-        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
+        <td><strong>Google Play Product ID</strong></td>
+        <td>String (e.g., "abbonamento_mensile_2500")</td>
+        <td>Verify subscription validity through Google Play Billing API</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Auto-Renewal Status</strong></td>
-        <td data-label="Type">Boolean</td>
-        <td data-label="Purpose">Check if subscription will renew automatically</td>
-        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
+        <td><strong>Auto-Renewal Status</strong></td>
+        <td>Boolean</td>
+        <td>Check if subscription will renew automatically</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Subscription Purchase Date</strong></td>
-        <td data-label="Type">Timestamp</td>
-        <td data-label="Purpose">Billing cycle management and disputes</td>
-        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
+        <td><strong>Subscription Purchase Date</strong></td>
+        <td>Timestamp</td>
+        <td>Billing cycle management and disputes</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Subscription End Date</strong></td>
-        <td data-label="Type">ISO 8601 Timestamp (e.g., "2026-02-28T14:30:00Z")</td>
-        <td data-label="Purpose">Manage grace period after cancellation (subscription remains active until this date)</td>
-        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
+        <td><strong>Subscription End Date</strong></td>
+        <td>ISO 8601 Timestamp (e.g., "2026-02-28T14:30:00Z")</td>
+        <td>Manage grace period after cancellation (subscription remains active until this date)</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Data"><strong>"Will Not Renew" Flag</strong></td>
-        <td data-label="Type">Boolean (will_not_renew)</td>
-        <td data-label="Purpose">Indicate if subscription was cancelled but remains valid until expiration</td>
-        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
+        <td><strong>"Will Not Renew" Flag</strong></td>
+        <td>Boolean (will_not_renew)</td>
+        <td>Indicate if subscription was cancelled but remains valid until expiration</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Cancellation Date</strong></td>
-        <td data-label="Type">Timestamp (cancelled_at)</td>
-        <td data-label="Purpose">Track when the user cancelled the subscription</td>
-        <td data-label="Legal Basis">Contract performance (Art. 6.1.b GDPR)</td>
+        <td><strong>Cancellation Date</strong></td>
+        <td>Timestamp (cancelled_at)</td>
+        <td>Track when the user cancelled the subscription</td>
+        <td>Contract performance (Art. 6.1.b GDPR)</td>
     </tr>
 </table></div>
 
@@ -338,16 +313,16 @@
         <th>Retention</th>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Subscription History</strong></td>
-        <td data-label="Type">Array of objects in user_subscriptions_history/{purchaseToken}</td>
-        <td data-label="Purpose">Purchase traceability, audit trail, GDPR compliance</td>
-        <td data-label="Retention">90 days from expiration</td>
+        <td><strong>Subscription History</strong></td>
+        <td>Array of objects in user_subscriptions_history/{purchaseToken}</td>
+        <td>Purchase traceability, audit trail, GDPR compliance</td>
+        <td>90 days from expiration</td>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Data per Entry</strong></td>
-        <td data-label="Type">Plan, tokens used/limit, start/end/cancellation dates, cancellation reason, devices</td>
-        <td data-label="Purpose">Audit, user support, refund management</td>
-        <td data-label="Retention">90 days from expiration</td>
+        <td><strong>Data per Entry</strong></td>
+        <td>Plan, tokens used/limit, start/end/cancellation dates, cancellation reason, devices</td>
+        <td>Audit, user support, refund management</td>
+        <td>90 days from expiration</td>
     </tr>
 </table></div>
 
@@ -377,9 +352,9 @@
         <th>Retention</th>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Administrative Activity Logs</strong></td>
-        <td data-label="Type">Array of events in admin_activity_logs/{device_id}</td>
-        <td data-label="Purpose">
+        <td><strong>Administrative Activity Logs</strong></td>
+        <td>Array of events in admin_activity_logs/{device_id}</td>
+        <td>
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Audit trail for user support</li>
                 <li>Google Play dispute resolution (within 60 days)</li>
@@ -387,11 +362,11 @@
                 <li>Grace period and auto-renewal management</li>
             </ul>
         </td>
-        <td data-label="Retention">90 days from last modification</td>
+        <td>90 days from last modification</td>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Logged Events</strong></td>
-        <td data-label="Type">
+        <td><strong>Logged Events</strong></td>
+        <td>
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Subscription creation</li>
                 <li>Subscription cancellation</li>
@@ -400,14 +375,14 @@
                 <li>Plan changes</li>
             </ul>
         </td>
-        <td data-label="Purpose">Track modification history for audit and support</td>
-        <td data-label="Retention">90 days from last modification</td>
+        <td>Track modification history for audit and support</td>
+        <td>90 days from last modification</td>
     </tr>
     <tr>
-        <td data-label="Data"><strong>Details per Event</strong></td>
-        <td data-label="Type">Timestamp, action, reason, plan, operation details</td>
-        <td data-label="Purpose">Information needed to reconstruct timeline in case of disputes</td>
-        <td data-label="Retention">90 days from last modification</td>
+        <td><strong>Details per Event</strong></td>
+        <td>Timestamp, action, reason, plan, operation details</td>
+        <td>Information needed to reconstruct timeline in case of disputes</td>
+        <td>90 days from last modification</td>
     </tr>
 </table></div>
 
@@ -573,28 +548,28 @@
         <th>Location</th>
     </tr>
     <tr>
-        <td data-label="Service"><strong>Firebase (Google)</strong></td>
-        <td data-label="Data Sent">Anonymous ID, token usage, purchase history, subscription data, activity logs</td>
-        <td data-label="Purpose">Backup, synchronization, audit trail</td>
-        <td data-label="Location">EU (European servers)</td>
+        <td><strong>Firebase (Google)</strong></td>
+        <td>Anonymous ID, token usage, purchase history, subscription data, activity logs</td>
+        <td>Backup, synchronization, audit trail</td>
+        <td>EU (European servers)</td>
     </tr>
     <tr>
-        <td data-label="Service"><strong>Cloudflare Worker</strong></td>
-        <td data-label="Data Sent">Text to translate (transit only)</td>
-        <td data-label="Purpose">Secure relay for translation</td>
-        <td data-label="Location">EU (European servers)</td>
+        <td><strong>Cloudflare Worker</strong></td>
+        <td>Text to translate (transit only)</td>
+        <td>Secure relay for translation</td>
+        <td>EU (European servers)</td>
     </tr>
     <tr>
-        <td data-label="Service"><strong>OpenAI</strong></td>
-        <td data-label="Data Sent">Text to translate (transit only)</td>
-        <td data-label="Purpose">Translation processing</td>
-        <td data-label="Location">USA (with Standard Contractual Clauses)</td>
+        <td><strong>OpenAI</strong></td>
+        <td>Text to translate (transit only)</td>
+        <td>Translation processing</td>
+        <td>USA (with Standard Contractual Clauses)</td>
     </tr>
     <tr>
-        <td data-label="Service"><strong>Google Play Billing</strong></td>
-        <td data-label="Data Sent">Order ID, purchased product</td>
-        <td data-label="Purpose">In-app purchase management</td>
-        <td data-label="Location">EU (Google servers)</td>
+        <td><strong>Google Play Billing</strong></td>
+        <td>Order ID, purchased product</td>
+        <td>In-app purchase management</td>
+        <td>EU (Google servers)</td>
     </tr>
 </table></div>
 
@@ -631,64 +606,64 @@
         <th>Deletion</th>
     </tr>
     <tr>
-        <td data-label="Data Type"><strong>Active Subscription Data (Firebase)</strong></td>
-        <td data-label="Retention Period">Until end of current billing period</td>
-        <td data-label="Deletion">Automatic deletion when subscription expires + moved to history</td>
+        <td><strong>Active Subscription Data (Firebase)</strong></td>
+        <td>Until end of current billing period</td>
+        <td>Automatic deletion when subscription expires + moved to history</td>
     </tr>
     <tr>
-        <td data-label="Data Type"><strong>Subscription History (Firebase)</strong></td>
-        <td data-label="Retention Period">90 days from subscription expiration</td>
-        <td data-label="Deletion">Automatic deletion + manual deletion via "Delete cloud data"</td>
+        <td><strong>Subscription History (Firebase)</strong></td>
+        <td>90 days from subscription expiration</td>
+        <td>Automatic deletion + manual deletion via "Delete cloud data"</td>
     </tr>
     <tr>
-        <td data-label="Data Type"><strong>Activity Logs (admin_activity_logs)</strong></td>
-        <td data-label="Retention Period">90 days from last modification</td>
-        <td data-label="Deletion">Automatic deletion (every 24h) + manual deletion</td>
+        <td><strong>Activity Logs (admin_activity_logs)</strong></td>
+        <td>90 days from last modification</td>
+        <td>Automatic deletion (every 24h) + manual deletion</td>
     </tr>
     <tr>
-        <td data-label="Data Type"><strong>Purchase History (Firebase)</strong></td>
-        <td data-label="Retention Period">365 days from purchase</td>
-        <td data-label="Deletion">Automatic + manual deletion</td>
+        <td><strong>Purchase History (Firebase)</strong></td>
+        <td>365 days from purchase</td>
+        <td>Automatic + manual deletion</td>
     </tr>
     <tr>
-        <td data-label="Data Type"><strong>Local Data (Device)</strong></td>
-        <td data-label="Retention Period">Until uninstall</td>
-        <td data-label="Deletion">App uninstall + manual deletion</td>
+        <td><strong>Local Data (Device)</strong></td>
+        <td>Until uninstall</td>
+        <td>App uninstall + manual deletion</td>
     </tr>
     <tr>
-        <td data-label="Data Type"><strong>Contact Language Cache (Device)</strong></td>
-        <td data-label="Retention Period">Until manual deletion or uninstall</td>
-        <td data-label="Deletion">"Delete all local data" button</td>
+        <td><strong>Contact Language Cache (Device)</strong></td>
+        <td>Until manual deletion or uninstall</td>
+        <td>"Delete all local data" button</td>
     </tr>
     <tr>
-        <td data-label="Data Type"><strong>Predictive N-gram Models (Device)</strong></td>
-        <td data-label="Retention Period">Until manual deletion or uninstall</td>
-        <td data-label="Deletion">"Delete all local data" button or removal from Offline Models screen</td>
+        <td><strong>Predictive N-gram Models (Device)</strong></td>
+        <td>Until manual deletion or uninstall</td>
+        <td>"Delete all local data" button or removal from Offline Models screen</td>
     </tr>
     <tr>
-        <td data-label="Data Type"><strong>Hunspell Dictionaries (Device)</strong></td>
-        <td data-label="Retention Period">Until manual deletion or uninstall</td>
-        <td data-label="Deletion">"Delete all local data" button</td>
+        <td><strong>Hunspell Dictionaries (Device)</strong></td>
+        <td>Until manual deletion or uninstall</td>
+        <td>"Delete all local data" button</td>
     </tr>
     <tr>
-        <td data-label="Data Type"><strong>Learned Words (Prediction)</strong></td>
-        <td data-label="Retention Period">14 days (automatic decay)</td>
-        <td data-label="Deletion">Automatic + manual deletion</td>
+        <td><strong>Learned Words (Prediction)</strong></td>
+        <td>14 days (automatic decay)</td>
+        <td>Automatic + manual deletion</td>
     </tr>
     <tr>
-        <td data-label="Data Type"><strong>Translated Text</strong></td>
-        <td data-label="Retention Period">0 seconds (NEVER saved)</td>
-        <td data-label="Deletion">Automatic (memory transit only)</td>
+        <td><strong>Translated Text</strong></td>
+        <td>0 seconds (NEVER saved)</td>
+        <td>Automatic (memory transit only)</td>
     </tr>
     <tr>
-        <td data-label="Data Type"><strong>Translation Cache (RAM)</strong></td>
-        <td data-label="Retention Period">Until app closes</td>
-        <td data-label="Deletion">Automatic</td>
+        <td><strong>Translation Cache (RAM)</strong></td>
+        <td>Until app closes</td>
+        <td>Automatic</td>
     </tr>
     <tr>
-        <td data-label="Data Type"><strong>Disambiguation Cache (RAM)</strong></td>
-        <td data-label="Retention Period">Until accessibility service restarts</td>
-        <td data-label="Deletion">Automatic</td>
+        <td><strong>Disambiguation Cache (RAM)</strong></td>
+        <td>Until accessibility service restarts</td>
+        <td>Automatic</td>
     </tr>
 </table></div>
 
@@ -769,7 +744,7 @@
 
 <h3>7.2 Request via Email</h3>
 
-<p>To exercise other rights, write to: <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+<p>To exercise other rights, write to: <a href="/cdn-cgi/l/email-protection#dcafa9acacb3aea89cb7bdb5beb3bdaeb8f2b9a9"><span class="__cf_email__" data-cfemail="becdcbceced1cccafed5dfd7dcd1dfccda90dbcb">[email&#160;protected]</span></a></p>
 
 <p>We will respond within <strong>30 days</strong> of your request (Art. 12 GDPR).</p>
 
@@ -802,22 +777,22 @@
         <th>Persistence</th>
     </tr>
     <tr>
-        <td data-label="Identifier"><strong>Android ID</strong></td>
-        <td data-label="Type">Settings.Secure.ANDROID_ID</td>
-        <td data-label="Purpose">Generate unique and stable device ID</td>
-        <td data-label="Persistence">Persists across app reinstallations (same signing key). <strong>Changes after a device factory reset.</strong></td>
+        <td><strong>Android ID</strong></td>
+        <td>Settings.Secure.ANDROID_ID</td>
+        <td>Generate unique and stable device ID</td>
+        <td>Persists across app reinstallations (same signing key). <strong>Changes after a device factory reset.</strong></td>
     </tr>
     <tr>
-        <td data-label="Identifier"><strong>Install Referrer ID</strong></td>
-        <td data-label="Type">Google Play Install Referrer API</td>
-        <td data-label="Purpose">Fallback if Android ID unavailable</td>
-        <td data-label="Persistence">Persists across reinstalls (if installed from Play Store)</td>
+        <td><strong>Install Referrer ID</strong></td>
+        <td>Google Play Install Referrer API</td>
+        <td>Fallback if Android ID unavailable</td>
+        <td>Persists across reinstalls (if installed from Play Store)</td>
     </tr>
     <tr>
-        <td data-label="Identifier"><strong>Local UUID</strong></td>
-        <td data-label="Type">java.util.UUID</td>
-        <td data-label="Purpose">Final fallback (sideload only)</td>
-        <td data-label="Persistence">Does NOT persist (lost on uninstall)</td>
+        <td><strong>Local UUID</strong></td>
+        <td>java.util.UUID</td>
+        <td>Final fallback (sideload only)</td>
+        <td>Does NOT persist (lost on uninstall)</td>
     </tr>
 </table></div>
 
@@ -836,29 +811,29 @@
         <th>Mandatory</th>
     </tr>
     <tr>
-        <td data-label="Permission"><strong>Contacts</strong></td>
-        <td data-label="Purpose">Assign language to each contact for automatic keyboard switching</td>
-        <td data-label="Mandatory">❌ No (optional)</td>
+        <td><strong>Contacts</strong></td>
+        <td>Assign language to each contact for automatic keyboard switching</td>
+        <td>❌ No (optional)</td>
     </tr>
     <tr>
-        <td data-label="Permission"><strong>Accessibility</strong></td>
-        <td data-label="Purpose">Detect active chat app to automatically change language</td>
-        <td data-label="Mandatory">❌ No (optional)</td>
+        <td><strong>Accessibility</strong></td>
+        <td>Detect active chat app to automatically change language</td>
+        <td>❌ No (optional)</td>
     </tr>
     <tr>
-        <td data-label="Permission"><strong>Notifications</strong></td>
-        <td data-label="Purpose">Quick replies from lockscreen with correct language</td>
-        <td data-label="Mandatory">❌ No (optional)</td>
+        <td><strong>Notifications</strong></td>
+        <td>Quick replies from lockscreen with correct language</td>
+        <td>❌ No (optional)</td>
     </tr>
     <tr>
-        <td data-label="Permission"><strong>Microphone</strong></td>
-        <td data-label="Purpose">Voice dictation (recording only when you press microphone button)</td>
-        <td data-label="Mandatory">❌ No (optional)</td>
+        <td><strong>Microphone</strong></td>
+        <td>Voice dictation (recording only when you press microphone button)</td>
+        <td>❌ No (optional)</td>
     </tr>
     <tr>
-        <td data-label="Permission"><strong>Internet</strong></td>
-        <td data-label="Purpose">Real-time translation and cloud backup</td>
-        <td data-label="Mandatory">✅ Yes (for translation features)</td>
+        <td><strong>Internet</strong></td>
+        <td>Real-time translation and cloud backup</td>
+        <td>✅ Yes (for translation features)</td>
     </tr>
 </table></div>
 
@@ -945,10 +920,7 @@
 <h2>14. Contact</h2>
 
 <div class="contact-box">
-    <p>For questions, GDPR requests, or reports:</p>
-    <p><strong>Email:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
-    <p><strong>Response time:</strong> Within 30 days (Art. 12 GDPR)</p>
-    <p style="margin-top: 10px;"><a href="https://alessandrof78.github.io/kaiboard-privacy/">🌐 Privacy Policy in other languages</a></p>
+    <p>For questions, GDb.io/kaiboard-privacy/">🌐 Privacy Policy in other languages</a></p>
 </div>
 
 <p style="text-align: center; color: #4B5563; margin-top: 50px;">
