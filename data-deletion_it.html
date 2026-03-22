@@ -3,970 +3,507 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informativa sulla Privacy - kAIboard</title>
+    <title>Cancellazione Dati - kAIboard</title>
     <style>
         body {
             font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
+            line-height: 1.8;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
-            color: #111827; background-color: #F4F7FA;
+            padding: 40px 20px;
+            color: #111827;
+            background-color: #F4F7FA;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         h1 {
             color: #111827;
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
             border-bottom: 3px solid #0FA3A3;
-            padding-bottom: 10px;
+            hyphens: auto;
+            -webkit-hyphens: auto;
         }
         h2 {
             color: #111827;
-            margin-top: 30px;
-            border-bottom: 1px solid #E2E8F0;
-            padding-bottom: 5px;
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 15px;
         }
         h3 {
-            color: #4B5563;
-            margin-top: 20px;
+            color: #111827;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 10px;
         }
-        h4 {
-            color: #6B7280;
-            margin-top: 15px;
+        p {
+            margin-bottom: 15px;
         }
-        .highlight {
-            background-color: #EDF7F7;
-            padding: 15px;
+        .intro {
+            background-color: #F4F7FA;
+            padding: 20px;
             border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
+            margin: 25px 0;
         }
-        .important {
-            background-color: #f8d7da;
-            padding: 15px;
-            border-left: 4px solid #dc3545;
-            margin: 20px 0;
-        }
-        .info {
+        .warning {
             background-color: #EDF7F7;
-            padding: 15px;
+            padding: 20px;
             border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
+            margin: 25px 0;
+        }
+        .info-box {
+            background-color: #EDF7F7;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 25px 0;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 25px 0;
+            font-size: 15px;
         }
         th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
+            border: 1px solid #dee2e6;
+            padding: 12px 15px;
             text-align: left;
         }
         th {
             background-color: #0FA3A3;
+            font-weight: 600;
             color: white;
         }
         tr:nth-child(even) {
             background-color: #F8FAFA;
         }
-        .contact-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 5px;
+        .button {
+            display: inline-block;
+            background-color: #0FA3A3;
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px 10px 10px 0;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0D8F8F;
+        }
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #4B5563;
+            font-size: 14px;
+        }
+        strong {
+            font-weight: 600;
+        }
+
+        /* -- MOBILE FIX -- */
+        html, body { overflow-x: hidden; }
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
             margin: 20px 0;
         }
-        ul {
-            padding-left: 20px;
+        .table-wrapper table {
+            width: auto;
+            min-width: 480px;
+            margin: 0;
         }
-        li {
-            margin: 10px 0;
-        }
-        ol {
-            padding-left: 20px;
-        }
-        ol li {
-            margin: 10px 0;
-        }
-
-        /* ── MOBILE RESPONSIVE FIX ── */
-        * { box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { overflow-x: hidden; max-width: 100%; }
-
         @media (max-width: 650px) {
             body { padding: 15px; }
             .container { padding: 20px; }
-
-            /* Nascondi header tabella su mobile */
-            .table-wrapper thead { display: none; }
-
-            /* Ogni riga diventa una card */
-            .table-wrapper table,
-            .table-wrapper tbody,
-            .table-wrapper tr { display: block; width: 100%; }
-
-            .table-wrapper tr {
-                border: 1px solid #ddd;
-                border-radius: 6px;
-                margin-bottom: 12px;
-                background: #fff;
-                overflow: hidden;
-            }
-
-            /* Ogni cella occupa tutta la larghezza */
-            .table-wrapper td {
-                display: block;
-                width: 100%;
-                padding: 10px 12px;
-                font-size: 13px;
-                line-height: 1.5;
-                border: none;
-                border-bottom: 1px solid #f0f0f0;
-                text-align: left;
-            }
-
-            .table-wrapper td:last-child { border-bottom: none; }
-
-            /* Etichetta colonna prima del valore */
-            .table-wrapper td::before {
-                content: attr(data-label);
-                display: block;
-                font-weight: 600;
-                font-size: 11px;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                color: #0FA3A3;
-                margin-bottom: 4px;
-            }
-
-            /* Righe alternate */
-            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+            th, td { padding: 8px; font-size: 13px; }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Politica di Cancellazione Dati</h1>
+        
+        <div class="intro">
+            <p><strong>kAIboard</strong> rispetta il tuo diritto alla cancellazione dei dati ai sensi dell'Articolo 17 del GDPR (Diritto alla Cancellazione). Puoi eliminare i tuoi dati personali in qualsiasi momento, direttamente tramite l'app o contattandoci via email.</p>
+        </div>
 
-<h1>Informativa sulla Privacy - k<span style="color:#0FA3A3">AI</span>board</h1>
+        <h2>Metodo 1: Cancellazione tramite App (Immediata)</h2>
+        
+        <p>Il modo più rapido per eliminare i tuoi dati è direttamente tramite l'app:</p>
+        
+        <ol>
+            <li>Apri <strong>kAIboard</strong> sul tuo dispositivo Android</li>
+            <li>Vai su <strong>Impostazioni</strong></li>
+            <li>Seleziona <strong>Privacy e Sicurezza</strong></li>
+            <li>Scegli una delle tre opzioni di cancellazione</li>
+        </ol>
 
-<p><strong>Ultimo aggiornamento:</strong> 21 Marzo 2026</p>
-<p><strong>Versione:</strong> 2.0</p>
+        <h3>Opzioni di Cancellazione Disponibili</h3>
+        
+        <div class="table-wrapper"><table>
+            <tr>
+                <th>Opzione</th>
+                <th>Cosa Viene Eliminato</th>
+                <th>Effetto</th>
+            </tr>
+            <tr>
+                <td><strong>Elimina Dati Cloud</strong></td>
+                <td>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+                        <li>Documento abbonamento attivo (user_subscriptions)</li>
+                        <li>Cronologia abbonamenti (user_subscriptions_history)</li>
+                        <li>Log attività amministrativa (admin_activity_logs)</li>
+                        <li>Cronologia acquisti</li>
+                        <li>Array dispositivi multi-device</li>
+                    </ul>
+                </td>
+                <td>Irreversibile. Perderai i dati abbonamento, cronologia acquisti, log attività e cronologia abbonamenti. Richiede annullamento abbonamento se attivo.</td>
+            </tr>
+            <tr>
+                <td><strong>Elimina Dati Apprendimento</strong></td>
+                <td>Parole apprese per suggerimenti personalizzati (tutte le 13 lingue)</td>
+                <td>Il testo predittivo ripartirà da zero.</td>
+            </tr>
+            <tr>
+                <td><strong>Elimina Tutti i Dati Locali</strong></td>
+                <td>
+                    <ul style="margin: 5px 0; padding-left: 20px;">
+                        <li>Dati apprendimento (13 lingue)</li>
+                        <li>Tutte le preferenze e impostazioni</li>
+                        <li>Stato app e associazioni contatto-lingua</li>
+                        <li>Alert abbonamento</li>
+                        <li>Modelli predittivi N-gram scaricati</li>
+                        <li>Dizionari Hunspell copiati</li>
+                        <li>Cache in memoria (vocabolari e dizionari)</li>
+                        <li>Intera cache app (file temporanei, report crash locali, cache WebView)</li>
+                    </ul>
+                </td>
+                <td>L'app si riavvierà con le impostazioni predefinite. Nessun file utente rimarrà sul dispositivo. I dati cloud vengono preservati.</td>
+            </tr>
+        </table></div>
 
-<h2>1. Titolare del Trattamento</h2>
-
-<div class="contact-box">
-    <p><strong>Nome:</strong> Alessandro Faedda</p>
-    <p><strong>Email:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
-    <p><strong>Tipo:</strong> Persona fisica (sviluppatore indipendente)</p>
-</div>
-
-<p>Alessandro Faedda è il titolare del trattamento dei dati personali raccolti tramite l'app kAIboard.</p>
-
-<h2>2. Quali Dati Raccogliamo</h2>
-
-<p>kAIboard è progettata seguendo il principio della <strong>minimizzazione dei dati</strong>. Raccogliamo solo i dati strettamente necessari per il funzionamento dell'app.</p>
-
-<h3>2.1 Dati Raccolti Automaticamente</h3>
-
-<div class="table-wrapper"><table>
-    <tr>
-        <th>Dato</th>
-        <th>Tipo</th>
-        <th>Finalità</th>
-        <th>Base Giuridica</th>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Array Dispositivi</strong></td>
-        <td data-label="Tipo">Lista di identificatori (es. ["android_e19d6c...", "android_175be4..."])</td>
-        <td data-label="Finalità">Sincronizzare abbonamento e saldo token su più dispositivi con stesso account Google Play</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Utilizzo Token Corrente</strong></td>
-        <td data-label="Tipo">Numero intero (current_usage)</td>
-        <td data-label="Finalità">Tracciare il consumo mensile condiviso tra tutti i dispositivi</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Cronologia Acquisti</strong></td>
-        <td data-label="Tipo">ID prodotto, data acquisto, ID ordine</td>
-        <td data-label="Finalità">Verificare gli acquisti e prevenire frodi</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Testo da Tradurre</strong></td>
-        <td data-label="Tipo">Contenuto testuale</td>
-        <td data-label="Finalità">Traduzione in tempo reale</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
-    </tr>
-</table></div>
-
-<h4>Sincronizzazione Multi-Device</h4>
-
-<p>Se utilizzi kAIboard su più dispositivi con lo <strong>stesso account Google Play</strong>:</p>
-
-<ul>
-    <li>✅ Abbonamento condiviso automaticamente tra tutti i device</li>
-    <li>✅ Saldo token sincronizzato in tempo reale</li>
-    <li>✅ Limite mensile condiviso (es. 250.000 token TOTALI, non per device)</li>
-    <li>✅ Listener Firebase aggiorna tutti i device simultaneamente</li>
-</ul>
-
-<p><strong>Dati salvati per multi-device:</strong></p>
-<ul>
-    <li><strong>devices:</strong> Array di Android ID anonimi che usano lo stesso abbonamento</li>
-    <li><strong>purchaseToken:</strong> Chiave unica dell'abbonamento Google Play (ID documento Firestore)</li>
-    <li><strong>current_usage:</strong> Consumo token totale tra tutti i device (contatore unico)</li>
-</ul>
-
-<p><strong>Privacy:</strong> L'array <code>devices</code> contiene SOLO Android ID pseudonimizzati (es. "android_abc123..."). Non raccogliamo numeri di telefono, IMEI o altri identificatori personali.</p>
-
-<h3>2.1.1 Dati Abbonamento Mensile</h3>
-
-<p>Se sottoscrivi un <strong>abbonamento mensile</strong> (es. Piano PLUS con 250.000 token/mese), salviamo i seguenti dati aggiuntivi:</p>
-
-<div class="table-wrapper"><table>
-    <tr>
-        <th>Dato</th>
-        <th>Tipo</th>
-        <th>Finalità</th>
-        <th>Base Giuridica</th>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Piano Abbonamento</strong></td>
-        <td data-label="Tipo">String (es. "plus", "pro", "max")</td>
-        <td data-label="Finalità">Identificare il piano attivo e applicare il limite token corretto</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Limite Token Mensile</strong></td>
-        <td data-label="Tipo">Numero intero (es. 250000, 500000, 1000000)</td>
-        <td data-label="Finalità">Applicare il massimale di token inclusi nell'abbonamento</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Utilizzo Token Corrente</strong></td>
-        <td data-label="Tipo">Numero intero</td>
-        <td data-label="Finalità">Tracciare il consumo mensile condiviso e applicare il limite</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Data Reset Mensile</strong></td>
-        <td data-label="Tipo">Data ISO (es. "2026-02-01")</td>
-        <td data-label="Finalità">Reset automatico dell'utilizzo a inizio mese</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>ID Prodotto Google Play</strong></td>
-        <td data-label="Tipo">String (es. "abbonamento_mensile_2500")</td>
-        <td data-label="Finalità">Verificare validità abbonamento tramite Google Play Billing API</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Stato Rinnovo Automatico</strong></td>
-        <td data-label="Tipo">Boolean</td>
-        <td data-label="Finalità">Verificare se l'abbonamento si rinnoverà automaticamente</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Data Acquisto Abbonamento</strong></td>
-        <td data-label="Tipo">Timestamp</td>
-        <td data-label="Finalità">Gestione ciclo di fatturazione e controversie</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Data Fine Abbonamento</strong></td>
-        <td data-label="Tipo">Timestamp ISO 8601 (es. "2026-02-28T14:30:00Z")</td>
-        <td data-label="Finalità">Gestire periodo di grazia dopo cancellazione (abbonamento resta attivo fino a questa data)</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Flag "Non si Rinnoverà"</strong></td>
-        <td data-label="Tipo">Boolean (will_not_renew)</td>
-        <td data-label="Finalità">Indicare se l'abbonamento è stato cancellato ma resta valido fino a scadenza</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Data Cancellazione</strong></td>
-        <td data-label="Tipo">Timestamp (cancelled_at)</td>
-        <td data-label="Finalità">Tracciare quando l'utente ha annullato l'abbonamento</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
-    </tr>
-</table></div>
-
-<div class="highlight">
-    <strong>🔄 RESET AUTOMATICO MENSILE:</strong> Il contatore di utilizzo token viene azzerato automaticamente alla data di rinnovo del tuo abbonamento (ogni 30 giorni dalla data di acquisto). Il reset avviene in background anche se l'app è chiusa o non utilizzata da settimane, tramite un worker automatico schedulato alle 3:00 AM. Il limite mensile viene ripristinato senza intervento manuale.
-</div>
-
-<div class="important">
-    <strong>⚠️ IMPORTANTE - CANCELLAZIONE ABBONAMENTO:</strong> Se annulli l'abbonamento, i dati relativi all'abbonamento vengono mantenuti fino alla fine del periodo di fatturazione corrente (Art. 6.1.b GDPR - esecuzione contratto). Dopo la scadenza, puoi eliminare tutti i dati cloud tramite la schermata Privacy.
-</div>
-
-<h3>2.1.2 Grace Period (Periodo di Grazia)</h3>
-
-<div class="info">
-    <strong>📅 ABBONAMENTO CANCELLATO MA ANCORA ATTIVO</strong>
-    <p>Se annulli l'abbonamento tramite Google Play, il servizio premium <strong>resta attivo fino alla fine del periodo già pagato</strong>.</p>
-
-    <p><strong>Esempio:</strong></p>
-    <ul>
-        <li>Acquisti abbonamento PLUS il 15 gennaio 2026</li>
-        <li>Annulli il 20 gennaio 2026</li>
-        <li>✅ Premium resta attivo fino al 15 febbraio 2026 (hai già pagato)</li>
-        <li>✅ Token mensili disponibili fino alla scadenza</li>
-        <li>❌ L'abbonamento NON si rinnova automaticamente</li>
-    </ul>
-
-    <p><strong>Dati salvati durante il grace period:</strong></p>
-    <ul>
-        <li><strong>subscription_end:</strong> Data esatta fino a cui hai diritto al servizio</li>
-        <li><strong>will_not_renew:</strong> Flag che indica "cancellato ma valido"</li>
-        <li><strong>cancelled_at:</strong> Timestamp della cancellazione</li>
-        <li><strong>monthly_limit:</strong> Limite token preservato fino a scadenza</li>
-    </ul>
-
-    <p><strong>Quando scade il grace period:</strong></p>
-    <ol>
-        <li>Premium viene disattivato automaticamente</li>
-        <li>Dati abbonamento spostati in cronologia (user_subscriptions_history)</li>
-        <li>Documento attivo (user_subscriptions) eliminato</li>
-        <li>Puoi eliminare la cronologia tramite "Elimina dati cloud"</li>
-    </ol>
-</div>
-
-<div class="important">
-    <strong>⚠️ AVVERTENZA - REINSTALLAZIONE O CAMBIO DISPOSITIVO DURANTE IL GRACE PERIOD:</strong>
-    <p><strong>Con abbonamento attivo (non cancellato):</strong> Se disinstalli e reinstalli l'app, oppure la installi su un nuovo dispositivo o su più dispositivi con lo stesso account Google, l'abbonamento e il saldo token si sincronizzano automaticamente. Non devi fare nulla — il ripristino avviene in automatico al primo avvio.</p>
-    <p><strong>Con abbonamento cancellato (grace period):</strong> Se reinstalli l'app sullo stesso dispositivo, il sistema ritrova l'abbonamento e il saldo token tramite Firebase e li ripristina automaticamente, anche durante il grace period. Su altri dispositivi che avevano già l'app installata con lo stesso account, il ripristino dovrebbe avvenire automaticamente se il dispositivo era già registrato nel sistema.</p>
-    <p><strong>Importante:</strong> Se durante il grace period installi l'app su un dispositivo completamente nuovo che non ha mai avuto kAIboard con il tuo account, i giorni rimanenti e il saldo token potrebbero non essere recuperabili per motivi di sicurezza, in quanto il nuovo dispositivo non è ancora registrato nel sistema. Allo stesso modo, se elimini i dati cloud dall'app durante il grace period, l'eliminazione è immediata e comporta la rinuncia definitiva al periodo residuo e al saldo token.</p>
-</div>
-
-<h3>2.1.3 Cronologia Abbonamenti</h3>
-
-<p>Quando un abbonamento scade o viene eliminato, spostiamo i dati in un documento di cronologia per conformità GDPR e audit.</p>
-
-<div class="table-wrapper"><table>
-    <tr>
-        <th>Dato</th>
-        <th>Tipo</th>
-        <th>Finalità</th>
-        <th>Conservazione</th>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Cronologia Abbonamenti</strong></td>
-        <td data-label="Tipo">Array di oggetti in user_subscriptions_history/{purchaseToken}</td>
-        <td data-label="Finalità">Tracciabilità acquisti, audit trail, GDPR compliance</td>
-        <td data-label="Conservazione">90 giorni dalla scadenza</td>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Dati per Entry</strong></td>
-        <td data-label="Tipo">Piano, token usati/limite, date inizio/fine/cancellazione, motivo cancellazione, dispositivi</td>
-        <td data-label="Finalità">Audit, supporto utente, gestione rimborsi</td>
-        <td data-label="Conservazione">90 giorni dalla scadenza</td>
-    </tr>
-</table></div>
-
-<div class="highlight">
-    <strong>🔒 CONSOLIDAMENTO MULTI-DEVICE:</strong> La cronologia viene consolidata per <strong>purchaseToken</strong>, non per device. Tutti i rinnovi e modifiche dello stesso abbonamento sono raggruppati in un unico documento, indipendentemente dal numero di dispositivi utilizzati.
-</div>
-
-<div class="important">
-    <strong>⚠️ ELIMINAZIONE CRONOLOGIA:</strong> Puoi eliminare la cronologia in qualsiasi momento tramite "Elimina dati cloud". L'eliminazione è definitiva e include:
-    <ul>
-        <li>✅ Documento attivo (user_subscriptions/{purchaseToken})</li>
-        <li>✅ Documento cronologia (user_subscriptions_history/{purchaseToken})</li>
-        <li>✅ Log attività amministrativa (admin_activity_logs/{device_id})</li>
-        <li>✅ GDPR compliant: ricerca con purchaseToken, fallback con devices array</li>
-    </ul>
-</div>
-
-<h3>2.1.4 Log Attività Amministrativa</h3>
-
-<p>Per garantire tracciabilità e supporto in caso di controversie, salviamo un registro delle operazioni principali relative agli abbonamenti.</p>
-
-<div class="table-wrapper"><table>
-    <tr>
-        <th>Dato</th>
-        <th>Tipo</th>
-        <th>Finalità</th>
-        <th>Conservazione</th>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Log Attività Amministrativa</strong></td>
-        <td data-label="Tipo">Array di eventi in admin_activity_logs/{device_id}</td>
-        <td data-label="Finalità">
-            <ul style="margin: 5px 0; padding-left: 20px;">
-                <li>Audit trail per supporto utente</li>
-                <li>Risoluzione controversie Google Play (entro 60 giorni)</li>
-                <li>Prevenzione frodi e dispute billing</li>
-                <li>Gestione grace period e rinnovi automatici</li>
+        <p><strong>Tempo di Elaborazione:</strong> Immediato (0-5 secondi)</p>
+        
+        <div class="warning">
+            <h3>⚠️ Limitazione Cancellazione con Abbonamento Attivo (Art. 17.3.b GDPR)</h3>
+            
+            <p>Se hai un <strong>abbonamento mensile attivo</strong>, la cancellazione dei dati cloud viene <strong>temporaneamente bloccata</strong> fino all'annullamento dell'abbonamento.</p>
+            
+            <p><strong>Motivo:</strong> I dati relativi all'abbonamento (piano attivo, limite token, data reset) sono necessari per l'esecuzione del contratto in corso (Art. 6.1.b GDPR). La cancellazione anticipata impedirebbe:</p>
+            <ul>
+                <li>❌ Il corretto funzionamento del servizio mensile acquistato</li>
+                <li>❌ La sincronizzazione del limite token tra dispositivi</li>
+                <li>❌ Il reset automatico dei token a inizio mese</li>
             </ul>
-        </td>
-        <td data-label="Conservazione">90 giorni dall'ultima modifica</td>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Eventi Registrati</strong></td>
-        <td data-label="Tipo">
-            <ul style="margin: 5px 0; padding-left: 20px;">
-                <li>Sottoscrizione abbonamento</li>
-                <li>Cancellazione abbonamento</li>
-                <li>Scadenza abbonamento</li>
-                <li>Rinnovo automatico</li>
-                <li>Modifiche piano</li>
+            
+            <p><strong>Come procedere:</strong></p>
+            <ol>
+                <li>Annulla l'abbonamento tramite Google Play Store</li>
+                <li>Attendi la fine del periodo di fatturazione corrente (grace period)</li>
+                <li>Elimina i dati cloud tramite l'app</li>
+            </ol>
+            
+            <p><strong>Cancellazione immediata:</strong> L'app ti reindirizza automaticamente a Google Play per gestire l'abbonamento. Dopo l'annullamento, la cancellazione dati sarà disponibile al termine del periodo già pagato.</p>
+            
+            <p><strong>Base giuridica del blocco:</strong> Art. 17.3.b GDPR - "Il diritto alla cancellazione non si applica nella misura in cui il trattamento sia necessario per l'esecuzione di un contratto di cui l'interessato è parte".</p>
+        </div>
+
+        <h2>Metodo 2: Richiesta via Email</h2>
+
+        <p>Se preferisci assistenza o hai domande sulla cancellazione dei dati, puoi contattarci via email:</p>
+
+        <div class="info-box">
+            <p><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#02717772726d70764269636b606d6370662c6777"><span class="__cf_email__" data-cfemail="01727471716e7375416a6068636e6073652f6474">[email&#160;protected]</span></a></p>
+            <p><strong>Oggetto:</strong> "Richiesta Cancellazione Dati GDPR"</p>
+            <p><strong>Informazioni da Includere:</strong></p>
+            <ul>
+                <li>ID dispositivo (se noto) o descrizione del dispositivo</li>
+                <li>Tipo di dati che desideri eliminare (cloud, dati apprendimento o tutti)</li>
+                <li>Conferma della tua identità (per motivi di sicurezza)</li>
             </ul>
-        </td>
-        <td data-label="Finalità">Tracciare storia modifiche per audit e supporto</td>
-        <td data-label="Conservazione">90 giorni dall'ultima modifica</td>
-    </tr>
-    <tr>
-        <td data-label="Dato"><strong>Dettagli per Evento</strong></td>
-        <td data-label="Tipo">Timestamp, azione, motivo, piano, dettagli operazione</td>
-        <td data-label="Finalità">Informazioni necessarie per ricostruire cronologia in caso di dispute</td>
-        <td data-label="Conservazione">90 giorni dall'ultima modifica</td>
-    </tr>
-</table></div>
+            <p><strong>Tempo di Risposta:</strong> Massimo 30 giorni (come richiesto dall'Articolo 12 del GDPR)</p>
+        </div>
+
+        <h2>Metodo 3: Esportazione Dati (Art. 20 GDPR)</h2>
+
+        <p>Prima di eliminare i tuoi dati, puoi esportarli in formato JSON leggibile da macchina:</p>
+
+        <ol>
+            <li>Apri <strong>kAIboard</strong> sul tuo dispositivo Android</li>
+            <li>Vai su <strong>Impostazioni → Privacy e Sicurezza</strong></li>
+            <li>Tocca <strong>"Esporta i tuoi dati (JSON)"</strong></li>
+        </ol>
+
+        <p>Il file JSON include: metadati export, preferenze locali, dati apprendimento (per tutte le 13 lingue) e dati cloud (abbonamento, cronologia, log attività). Puoi condividere il file tramite qualsiasi app installata sul dispositivo.</p>
+
+        <h2>Cancellazione Automatica dei Dati</h2>
+
+        <p>kAIboard include meccanismi di pulizia automatica dei dati per proteggere la tua privacy:</p>
+
+        <div class="table-wrapper"><table>
+            <tr>
+                <th>Tipo di Dato</th>
+                <th>Periodo di Conservazione</th>
+                <th>Dettagli</th>
+            </tr>
+            <tr>
+                <td><strong>Dati Abbonamento Attivo (Firebase)</strong></td>
+                <td>Fino alla fine del periodo di fatturazione corrente</td>
+                <td>Spostati automaticamente in cronologia quando l'abbonamento scade</td>
+            </tr>
+            <tr>
+                <td><strong>Cronologia Abbonamenti (Firebase)</strong></td>
+                <td>90 giorni dalla scadenza</td>
+                <td>Eliminati automaticamente dopo 90 giorni dalla fine dell'abbonamento</td>
+            </tr>
+            <tr>
+                <td><strong>Log Attività Amministrativa (Firebase)</strong></td>
+                <td>90 giorni dall'ultima modifica</td>
+                <td>Eliminati automaticamente ogni 24 ore tramite pulizia in background</td>
+            </tr>
+            <tr>
+                <td><strong>Cronologia Acquisti (Firebase)</strong></td>
+                <td>365 giorni dall'acquisto</td>
+                <td>Eliminati automaticamente dopo un anno</td>
+            </tr>
+            <tr>
+                <td><strong>Parole Apprese</strong></td>
+                <td>14 giorni con decadimento</td>
+                <td>I punteggi di frequenza diminuiscono nel tempo; le parole inutilizzate vengono rimosse</td>
+            </tr>
+            <tr>
+                <td><strong>Cache Traduzione</strong></td>
+                <td>Solo sessione</td>
+                <td>Memorizzata solo in RAM; eliminata alla chiusura dell'app</td>
+            </tr>
+            <tr>
+                <td><strong>Testo Tradotto</strong></td>
+                <td>Mai memorizzato</td>
+                <td>0 secondi di conservazione; solo transito verso API OpenAI</td>
+            </tr>
+        </table></div>
+
+        <h2>Inventario Completo dei Dati</h2>
+
+        <p>La seguente tabella elenca tutti i dati raccolti da kAIboard e come eliminarli:</p>
+
+        <h3>Dati Cloud (Firebase)</h3>
+
+        <div class="table-wrapper"><table>
+            <tr>
+                <th>Tipo di Dato</th>
+                <th>Posizione di Archiviazione</th>
+                <th>Metodo di Cancellazione</th>
+            </tr>
+            <tr>
+                <td>Array Dispositivi</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud"</td>
+            </tr>
+            <tr>
+                <td>Utilizzo Token Corrente</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud" (solo dopo annullamento abbonamento)</td>
+            </tr>
+            <tr>
+                <td>Cronologia Acquisti</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud"</td>
+            </tr>
+            <tr>
+                <td>Piano Abbonamento</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud" (solo dopo annullamento abbonamento)</td>
+            </tr>
+            <tr>
+                <td>Limite Token Mensile</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud" (solo dopo annullamento abbonamento)</td>
+            </tr>
+            <tr>
+                <td>Data Reset Mensile</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud" (solo dopo annullamento abbonamento)</td>
+            </tr>
+            <tr>
+                <td>Data Fine Abbonamento</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud" (solo dopo scadenza grace period)</td>
+            </tr>
+            <tr>
+                <td>Flag "Non si Rinnoverà"</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud" (solo dopo scadenza grace period)</td>
+            </tr>
+            <tr>
+                <td>Cronologia Abbonamenti</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud" (elimina tutto: attivo + cronologia)</td>
+            </tr>
+            <tr>
+                <td>Log Attività Amministrativa</td>
+                <td>Firebase (cloud)</td>
+                <td>Pulsante "Elimina Dati Cloud"</td>
+            </tr>
+        </table></div>
+
+        <h3>Dati Locali (Dispositivo)</h3>
+
+        <div class="table-wrapper"><table>
+            <tr>
+                <th>Tipo di Dato</th>
+                <th>Posizione di Archiviazione</th>
+                <th>Metodo di Cancellazione</th>
+            </tr>
+            <tr>
+                <td>Parole Apprese (Predizioni)</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Dati Apprendimento" oppure "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Preferenze App</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Stato App</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Assegnazione Lingua Contatti</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Metadati Apprendimento</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Metadati Backup</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Alert Abbonamento</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Modelli Predittivi N-gram (scaricati)</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Dizionari Hunspell (copiati da assets)</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Cache Vocabolari e Dizionari (in memoria)</td>
+                <td>RAM (volatile)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali" oppure chiusura app</td>
+            </tr>
+            <tr>
+                <td>Cache App (file temporanei, report crash locali, cache WebView)</td>
+                <td>Locale (dispositivo)</td>
+                <td>Pulsante "Elimina Tutti i Dati Locali"</td>
+            </tr>
+            <tr>
+                <td>Cache Disambiguazione Contatti</td>
+                <td>RAM (volatile)</td>
+                <td>Automatica al riavvio del servizio di accessibilità</td>
+            </tr>
+            <tr>
+                <td>Cache Traduzione</td>
+                <td>RAM (volatile)</td>
+                <td>Automatica alla chiusura dell'app</td>
+            </tr>
+            <tr>
+                <td>Testo Traduzione</td>
+                <td>Mai memorizzato</td>
+                <td>Nessuna azione richiesta (0 secondi di conservazione)</td>
+            </tr>
+        </table></div>
+
+        <h2>Dati Non Eliminabili</h2>
+
+        <p>Per motivi legali e tecnici, alcuni dati non possono essere eliminati immediatamente:</p>
 
-<div class="important">
-    <strong>⚠️ IMPORTANTE - LOG ATTIVITÀ:</strong> I log di attività contengono SOLO metadati operazionali (quando, cosa, perché). NON contengono dati personali sensibili. Vengono eliminati automaticamente dopo 90 giorni dall'ultima modifica e sono accessibili e cancellabili tramite "Elimina dati cloud".
-</div>
-
-<div class="highlight">
-    <strong>🔒 BASE GIURIDICA:</strong> Interesse legittimo (Art. 6.1.f GDPR) - Necessario per:
-    <ul>
-        <li>Gestione contestazioni entro 60 giorni (requisito Google Play)</li>
-        <li>Supporto tecnico e risoluzione problemi</li>
-        <li>Prevenzione frodi nel sistema di billing</li>
-        <li>Audit trail per conformità operativa</li>
-    </ul>
-    <p>L'impatto sui diritti dell'utente è minimizzato perché:</p>
-    <ul>
-        <li>✅ Dati pseudonimizzati (nessun identificatore personale diretto)</li>
-        <li>✅ Retention limitato a 90 giorni</li>
-        <li>✅ Eliminazione automatica ogni 24 ore tramite pulizia in background</li>
-        <li>✅ Eliminazione manuale tramite "Elimina dati cloud"</li>
-    </ul>
-</div>
-
-<h3>2.2 Dati Memorizzati Solo Localmente (Sul Dispositivo)</h3>
-
-<p>I seguenti dati <strong>NON vengono MAI inviati a server esterni</strong>:</p>
-
-<ul>
-    <li>✅ <strong>Preferenze e impostazioni dell'app</strong></li>
-    <li>✅ <strong>Lingua assegnata a ciascun contatto</strong> (ID contatto + codice lingua)</li>
-    <li>✅ <strong>Parole digitate</strong> per suggerimenti personalizzati (max 14 giorni, poi eliminati automaticamente)</li>
-    <li>✅ <strong>Cache traduzioni</strong> (solo RAM, persa alla chiusura dell'app)</li>
-    <li>✅ <strong>Cache disambiguazione contatti</strong> (solo RAM, persa al riavvio del servizio)</li>
-    <li>✅ <strong>Modelli predittivi N-gram</strong> (scaricati dall'utente, salvati localmente)</li>
-    <li>✅ <strong>Dizionari Hunspell</strong> (copiati da assets, salvati localmente)</li>
-    <li>✅ <strong>Alert abbonamento</strong> (notifiche locali su utilizzo)</li>
-</ul>
-
-<div class="highlight">
-    <strong>📌 CACHE PER LE PRESTAZIONI:</strong> Per evitare lag durante il cambio tra conversazioni,
-    kAIboard memorizza quale lingua usi con i tuoi contatti più frequenti (~25-30).
-    Questa cache rimane sul tuo dispositivo e occupa meno di 1 MB di spazio.
-    Viene conservata fino alla disinstallazione dell'app o all'eliminazione manuale
-    tramite il pulsante "Elimina tutti i dati locali". Questa conservazione prolungata
-    è necessaria per garantire un'esperienza fluida senza ritardi di 1-3 secondi
-    ogni volta che cambi chat.
-</div>
-
-<div class="important">
-    <strong>⚠️ IMPORTANTE:</strong> kAIboard accede ai tuoi contatti SOLO per visualizzare i nomi dei contatti nell'interfaccia di gestione delle lingue e per determinare la lingua dal prefisso internazionale del numero di telefono. <strong>Numeri di telefono e nomi dei contatti NON vengono MAI inviati ai nostri server.</strong>
-</div>
-
-<h3>2.3 Dati che NON Raccogliamo</h3>
-
-<p>kAIboard <strong>NON raccoglie</strong>:</p>
-
-<ul>
-    <li>❌ Cronologia messaggi</li>
-    <li>❌ Contenuto completo delle chat</li>
-    <li>❌ Numeri di telefono</li>
-    <li>❌ Indirizzi email dei contatti</li>
-    <li>❌ Posizione geografica precisa</li>
-    <li>❌ Dati biometrici</li>
-    <li>❌ Identificativi pubblicitari</li>
-</ul>
-
-<h2>3. Come Utilizziamo i Tuoi Dati</h2>
-
-<h3>3.1 Traduzione in Tempo Reale</h3>
-
-<p>Quando utilizzi la funzione di traduzione:</p>
-
-<ol>
-    <li>Il testo che digiti viene inviato al nostro server Cloudflare Worker (relay sicuro)</li>
-    <li>Il Worker inoltra il testo a OpenAI per la traduzione</li>
-    <li>La traduzione viene restituita all'app</li>
-    <li><strong>⚠️ IMPORTANTE: Il testo NON viene MAI salvato sui nostri server o su OpenAI</strong> (solo transito in memoria)</li>
-</ol>
-
-<h3>3.2 Backup e Sincronizzazione Abbonamento</h3>
-
-<p>I dati dell'abbonamento vengono salvati su Firebase (Google Cloud) per permetterti di:</p>
-
-<ul>
-    <li>✅ Utilizzare l'abbonamento su tutti i tuoi dispositivi con lo stesso account Google Play</li>
-    <li>✅ Sincronizzare il consumo token in tempo reale tra tutti i dispositivi</li>
-    <li>✅ Ripristinare l'abbonamento se reinstalli l'app (solo se l'abbonamento è attivo e in rinnovo automatico)</li>
-    <li>✅ Mantenere il tuo saldo anche dopo aver cambiato telefono</li>
-</ul>
-
-<div class="important">
-    <strong>⚠️ REQUISITO ACCOUNT GOOGLE:</strong> La sincronizzazione dell'abbonamento su più dispositivi
-    funziona SOLO se tutti i dispositivi utilizzano lo stesso account Google Play con cui
-    hai effettuato l'acquisto. Questo vincolo è imposto dalla Google Play Billing API
-    per motivi di sicurezza e per prevenire frodi. Se cambi account Google, dovrai
-    riacquistare l'abbonamento sul nuovo account.
-</div>
-
-<h3>3.3 Protezione Anti-Frode per Abbonamenti</h3>
-
-<div class="info">
-    <strong>🔒 COME FUNZIONA LA PROTEZIONE ANTI-FRODE</strong>
-    <p>kAIboard utilizza un sistema di protezione basato su <strong>contatore condiviso</strong> per garantire l'integrità del consumo token tra tutti i dispositivi.</p>
-</div>
-
-<h4>Principio di funzionamento:</h4>
-
-<p>Ogni abbonamento è associato a un <strong>unico documento Firestore</strong> identificato dal <code>purchaseToken</code> di Google Play. Tutti i dispositivi con lo stesso account Google leggono e scrivono sullo stesso documento, garantendo un contatore di utilizzo unico e condiviso.</p>
-
-<h4>Comportamento pratico:</h4>
-
-<ol>
-    <li><strong>Device A</strong> acquista abbonamento PLUS (250.000 token/mese) → Documento Firestore creato ✅</li>
-    <li><strong>Device B</strong> (stesso account Google Play) apre l'app → Rileva lo stesso abbonamento, si collega allo stesso documento ✅</li>
-    <li><strong>Device A</strong> usa 1.000 token → <code>current_usage</code> passa a 1.000 su Firestore</li>
-    <li><strong>Device B</strong> riceve l'aggiornamento in tempo reale → Vede 249.000 token disponibili ✅</li>
-    <li>Entrambi i device restano attivi contemporaneamente, senza invalidazione ✅</li>
-</ol>
-
-<h4>Perché è sicuro:</h4>
-
-<ul>
-    <li>✅ <strong>Contatore unico:</strong> Esiste un solo valore <code>current_usage</code> per abbonamento, impossibile da duplicare</li>
-    <li>✅ <strong>Sincronizzazione in tempo reale:</strong> Ogni consumo viene scritto immediatamente su Firestore e propagato a tutti i device tramite listener</li>
-    <li>✅ <strong>Validità gestita da Google Play:</strong> La validità dell'abbonamento è verificata tramite Google Play Billing API, non modificabile dall'utente</li>
-    <li>✅ <strong>purchaseToken univoco:</strong> Google Play assegna un token immutabile per ogni acquisto, utilizzato come chiave del documento Firestore</li>
-</ul>
-
-<p><strong>Dati salvati per la protezione anti-frode:</strong></p>
-
-<ul>
-    <li><strong>purchaseToken:</strong> Chiave univoca dell'abbonamento (ID documento Firestore)</li>
-    <li><strong>devices:</strong> Array di Android ID pseudonimizzati che hanno utilizzato l'abbonamento</li>
-    <li><strong>current_usage:</strong> Contatore condiviso dei token consumati nel mese corrente</li>
-    <li><strong>monthly_limit:</strong> Limite massimo di token per il piano sottoscritto</li>
-</ul>
-
-<p><strong>Base giuridica:</strong> Esecuzione contratto (Art. 6.1.b GDPR) — il contatore condiviso è parte integrante del servizio di abbonamento acquistato, necessario per applicare correttamente il limite mensile su tutti i dispositivi.</p>
-
-<div class="highlight">
-    <strong>💡 NOTA:</strong> A differenza di altri sistemi che limitano l'uso a un singolo dispositivo, kAIboard ti permette di utilizzare il tuo abbonamento su <strong>tutti i tuoi dispositivi</strong> contemporaneamente, con lo stesso account Google Play. L'unico limite è il consumo mensile totale previsto dal tuo piano.
-</div>
-
-<h3>3.4 Verifica Acquisti</h3>
-
-<p>La cronologia degli acquisti viene salvata per:</p>
-
-<ul>
-    <li>✅ Verificare la validità degli acquisti in-app</li>
-    <li>✅ Prevenire frodi e abusi</li>
-    <li>✅ Gestire rimborsi e controversie con Google Play</li>
-</ul>
-
-<h2>4. Dove Inviamo i Tuoi Dati</h2>
-
-<h3>4.1 Servizi di Terze Parti</h3>
-
-<div class="table-wrapper"><table>
-    <tr>
-        <th>Servizio</th>
-        <th>Dati Inviati</th>
-        <th>Finalità</th>
-        <th>Localizzazione</th>
-    </tr>
-    <tr>
-        <td data-label="Servizio"><strong>Firebase (Google)</strong></td>
-        <td data-label="Dati Inviati">ID anonimo, saldo token, cronologia acquisti, dati abbonamento, log attività</td>
-        <td data-label="Finalità">Backup, sincronizzazione, audit trail</td>
-        <td data-label="Localizzazione">UE (server europei)</td>
-    </tr>
-    <tr>
-        <td data-label="Servizio"><strong>Cloudflare Worker</strong></td>
-        <td data-label="Dati Inviati">Testo da tradurre (solo transito)</td>
-        <td data-label="Finalità">Relay sicuro per traduzione</td>
-        <td data-label="Localizzazione">UE (server europei)</td>
-    </tr>
-    <tr>
-        <td data-label="Servizio"><strong>OpenAI</strong></td>
-        <td data-label="Dati Inviati">Testo da tradurre (solo transito)</td>
-        <td data-label="Finalità">Elaborazione traduzione</td>
-        <td data-label="Localizzazione">USA (con Clausole Contrattuali Standard)</td>
-    </tr>
-    <tr>
-        <td data-label="Servizio"><strong>Google Play Billing</strong></td>
-        <td data-label="Dati Inviati">ID ordine, prodotto acquistato</td>
-        <td data-label="Finalità">Gestione acquisti in-app</td>
-        <td data-label="Localizzazione">UE (server Google)</td>
-    </tr>
-</table></div>
-
-<h3>4.2 Trasferimenti Extra-UE</h3>
-
-<p>Il testo da tradurre viene inviato a OpenAI (USA) per l'elaborazione. Il trasferimento si basa su:</p>
-
-<ul>
-    <li>✅ Clausole Contrattuali Standard (SCC) approvate dalla Commissione Europea</li>
-    <li>✅ OpenAI Privacy Policy pubblica che dichiara il non utilizzo dei dati API per training</li>
-    <li>✅ Transito temporaneo: il testo NON viene salvato (0 secondi di storage)</li>
-</ul>
-
-<p><strong>⚠️ IMPORTANTE:</strong> kAIboard utilizza OpenAI come fornitore di servizi di traduzione tramite API.
-    Sebbene OpenAI dichiari pubblicamente di non utilizzare i dati API per l'addestramento,
-    non abbiamo un Data Processing Agreement (DPA) formale con OpenAI.
-    Ti consigliamo di evitare di tradurre informazioni altamente sensibili (dati sanitari, finanziari, legali).</p>
-
-<p><strong>Riferimenti:</strong></p>
-<ul>
-    <li><a href="https://openai.com/privacy" target="_blank">OpenAI Privacy Policy</a></li>
-    <li><a href="https://openai.com/enterprise-privacy" target="_blank">OpenAI API Data Usage Policy</a></li>
-    <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Cloudflare Privacy Policy</a></li>
-</ul>
-
-<h2>5. Per Quanto Tempo Conserviamo i Tuoi Dati</h2>
-
-<h3>5.1 Politica di Conservazione Automatica</h3>
-
-<div class="table-wrapper"><table>
-    <tr>
-        <th>Tipo di Dato</th>
-        <th>Periodo di Conservazione</th>
-        <th>Eliminazione</th>
-    </tr>
-    <tr>
-        <td data-label="Tipo di Dato"><strong>Dati Abbonamento Attivo (Firebase)</strong></td>
-        <td data-label="Periodo di Conservazione">Fino alla fine del periodo di fatturazione corrente</td>
-        <td data-label="Eliminazione">Eliminazione automatica quando abbonamento scade + spostamento in cronologia</td>
-    </tr>
-    <tr>
-        <td data-label="Tipo di Dato"><strong>Cronologia Abbonamenti (Firebase)</strong></td>
-        <td data-label="Periodo di Conservazione">90 giorni dalla scadenza abbonamento</td>
-        <td data-label="Eliminazione">Eliminazione automatica + eliminazione manuale tramite "Elimina dati cloud"</td>
-    </tr>
-    <tr>
-        <td data-label="Tipo di Dato"><strong>Log Attività (admin_activity_logs)</strong></td>
-        <td data-label="Periodo di Conservazione">90 giorni dall'ultima modifica</td>
-        <td data-label="Eliminazione">Eliminazione automatica (ogni 24h) + eliminazione manuale</td>
-    </tr>
-    <tr>
-        <td data-label="Tipo di Dato"><strong>Cronologia Acquisti (Firebase)</strong></td>
-        <td data-label="Periodo di Conservazione">365 giorni dall'acquisto</td>
-        <td data-label="Eliminazione">Automatica + eliminazione manuale</td>
-    </tr>
-    <tr>
-        <td data-label="Tipo di Dato"><strong>Dati Locali (Dispositivo)</strong></td>
-        <td data-label="Periodo di Conservazione">Fino alla disinstallazione</td>
-        <td data-label="Eliminazione">Disinstallazione app + eliminazione manuale</td>
-    </tr>
-    <tr>
-        <td data-label="Tipo di Dato"><strong>Cache Contatto-Lingua (Dispositivo)</strong></td>
-        <td data-label="Periodo di Conservazione">Fino a eliminazione manuale o disinstallazione</td>
-        <td data-label="Eliminazione">Pulsante "Elimina tutti i dati locali"</td>
-    </tr>
-    <tr>
-        <td data-label="Tipo di Dato"><strong>Modelli Predittivi N-gram (Dispositivo)</strong></td>
-        <td data-label="Periodo di Conservazione">Fino a eliminazione manuale o disinstallazione</td>
-        <td data-label="Eliminazione">Pulsante "Elimina tutti i dati locali" o rimozione dalla schermata Modelli Offline</td>
-    </tr>
-    <tr>
-        <td data-label="Tipo di Dato"><strong>Dizionari Hunspell (Dispositivo)</strong></td>
-        <td data-label="Periodo di Conservazione">Fino a eliminazione manuale o disinstallazione</td>
-        <td data-label="Eliminazione">Pulsante "Elimina tutti i dati locali"</td>
-    </tr>
-    <tr>
-        <td data-label="Tipo di Dato"><strong>Parole Apprese (Predizione)</strong></td>
-        <td data-label="Periodo di Conservazione">14 giorni (decadimento automatico)</td>
-        <td data-label="Eliminazione">Automatica + eliminazione manuale</td>
-    </tr>
-    <tr>
-        <td data-label="Tipo di Dato"><strong>Testo Tradotto</strong></td>
-        <td data-label="Periodo di Conservazione">0 secondi (MAI salvato)</td>
-        <td data-label="Eliminazione">Automatica (solo transito in memoria)</td>
-    </tr>
-    <tr>
-        <td data-label="Tipo di Dato"><strong>Cache Traduzioni (RAM)</strong></td>
-        <td data-label="Periodo di Conservazione">Fino alla chiusura dell'app</td>
-        <td data-label="Eliminazione">Automatica</td>
-    </tr>
-    <tr>
-        <td data-label="Tipo di Dato"><strong>Cache Disambiguazione (RAM)</strong></td>
-        <td data-label="Periodo di Conservazione">Fino al riavvio del servizio di accessibilità</td>
-        <td data-label="Eliminazione">Automatica</td>
-    </tr>
-</table></div>
-
-<div class="highlight">
-    <strong>🗑️ PULIZIA AUTOMATICA:</strong> L'app esegue automaticamente una pulizia ogni 24 ore. I dati più vecchi dei periodi indicati vengono eliminati automaticamente, anche se non usi più l'app.
-</div>
-
-<h2>6. I Tuoi Diritti (GDPR)</h2>
-
-<p>Ai sensi del GDPR, hai i seguenti diritti:</p>
-
-<h3>6.1 Diritto di Accesso (Art. 15 GDPR)</h3>
-<p>Puoi richiedere una copia di tutti i dati che conserviamo su di te. I dati dell'abbonamento sono visibili direttamente nell'app.</p>
-
-<h3>6.2 Diritto di Rettifica (Art. 16 GDPR)</h3>
-<p>Puoi correggere dati inesatti o incompleti, ad esempio modificando la lingua associata a un contatto.</p>
-
-<h3>6.3 Diritto alla Cancellazione (Art. 17 GDPR)</h3>
-<p>Puoi eliminare tutti i tuoi dati in qualsiasi momento tramite la <strong>schermata Privacy</strong> nell'app:</p>
-
-<ul>
-    <li>✅ <strong>Elimina dati cloud</strong>: Rimuove dati abbonamento, cronologia abbonamenti, cronologia acquisti e log attività da Firebase</li>
-    <li>✅ <strong>Elimina dati apprendimento</strong>: Rimuove parole apprese per suggerimenti (tutte le 13 lingue)</li>
-    <li>✅ <strong>Elimina tutti i dati locali</strong>: Rimuove tutte le preferenze, dati sul dispositivo, modelli scaricati, dizionari e cache</li>
-</ul>
-
-<div class="important">
-    <strong>⚠️ LIMITAZIONE CANCELLAZIONE CON ABBONAMENTO ATTIVO (Art. 17.3.b GDPR):</strong>
-    <p>Se hai un <strong>abbonamento mensile attivo</strong>, la cancellazione dei dati cloud viene <strong>temporaneamente bloccata</strong> fino all'annullamento dell'abbonamento.</p>
-
-    <p><strong>Motivo:</strong> I dati relativi all'abbonamento (piano attivo, limite token, data reset) sono necessari per l'esecuzione del contratto in corso (Art. 6.1.b GDPR). La cancellazione anticipata impedirebbe:</p>
-    <ul>
-        <li>❌ Il corretto funzionamento del servizio mensile acquistato</li>
-        <li>❌ La sincronizzazione del limite token tra dispositivi</li>
-        <li>❌ Il reset automatico dei token a inizio mese</li>
-    </ul>
-
-    <p><strong>Come procedere:</strong></p>
-    <ol>
-        <li>Annulla l'abbonamento tramite Google Play Store</li>
-        <li>Attendi la fine del periodo di fatturazione corrente</li>
-        <li>Elimina i dati cloud tramite l'app</li>
-    </ol>
-
-    <p><strong>Cancellazione immediata:</strong> L'app ti reindirizza automaticamente a Google Play per gestire l'abbonamento. Dopo l'annullamento, la cancellazione dati sarà immediatamente disponibile.</p>
-
-    <p><strong>Cancellazione durante il grace period:</strong> Una volta annullato l'abbonamento, puoi eliminare i dati cloud in qualsiasi momento, anche durante il periodo residuo già pagato (grace period). L'eliminazione è immediata e comporta la <strong>rinuncia definitiva</strong> al periodo residuo e al saldo token corrente. Questa scelta è irreversibile.</p>
-
-    <p><strong>Base giuridica del blocco:</strong> Art. 17.3.b GDPR - "Il diritto alla cancellazione non si applica nella misura in cui il trattamento sia necessario per l'esecuzione di un contratto di cui l'interessato è parte".</p>
-</div>
-
-<h3>6.4 Diritto alla Portabilità dei Dati (Art. 20 GDPR)</h3>
-<p>Puoi esportare i tuoi dati in formato JSON leggibile da macchina tramite il pulsante <strong>"Esporta i tuoi dati (JSON)"</strong> nella schermata Privacy. Il file include dati locali (preferenze, apprendimento) e dati cloud (abbonamento, cronologia, log attività).</p>
-
-<h3>6.5 Diritto di Opposizione (Art. 21 GDPR)</h3>
-<p>Puoi opporti al trattamento dei dati per motivi legittimi. Puoi disattivare in qualsiasi momento la traduzione, i report crash e revocare l'accesso ai contatti.</p>
-
-<h3>6.6 Diritto di Reclamo</h3>
-<p>Puoi presentare un reclamo all'autorità di controllo competente:</p>
-
-<ul>
-    <li><strong>Germania:</strong> Bundesbeauftragter für den Datenschutz und die Informationsfreiheit (BfDI) - <a href="https://www.bfdi.bund.de">www.bfdi.bund.de</a></li>
-    <li><strong>Italia:</strong> Garante per la protezione dei dati personali - <a href="https://www.garanteprivacy.it">www.garanteprivacy.it</a></li>
-</ul>
-
-<h2>7. Come Esercitare i Tuoi Diritti</h2>
-
-<h3>7.1 Tramite App (Immediato)</h3>
-
-<p><strong>Percorso:</strong> Impostazioni → Privacy & Sicurezza</p>
-
-<ol>
-    <li><strong>Esporta i tuoi dati (JSON)</strong>: Export completo dati locali e cloud in formato machine-readable (Art. 15 + Art. 20)</li>
-    <li><strong>Elimina dati cloud</strong>: Dati abbonamento + cronologia abbonamenti + cronologia acquisti + log attività (irreversibile - richiede annullamento abbonamento se attivo)</li>
-    <li><strong>Elimina dati apprendimento</strong>: Parole apprese (13 lingue)</li>
-    <li><strong>Elimina tutti i dati locali</strong>: Tutte le preferenze, modelli scaricati, dizionari, cache (riavvia app)</li>
-</ol>
-
-<h3>7.2 Richiesta via Email</h3>
-
-<p>Per esercitare altri diritti, scrivi a: <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
-
-<p>Risponderemo entro <strong>30 giorni</strong> dalla tua richiesta (Art. 12 GDPR).</p>
-
-<h2>8. Sicurezza dei Dati</h2>
-
-<p>Implementiamo misure tecniche e organizzative per proteggere i tuoi dati:</p>
-
-<ul>
-    <li>🔒 <strong>Crittografia in transito</strong>: HTTPS/TLS 1.3 per tutte le comunicazioni</li>
-    <li>🔒 <strong>Crittografia a riposo</strong>: Firebase utilizza crittografia AES-256</li>
-    <li>🔒 <strong>Crittografia database locale</strong>: Il database di apprendimento è crittografato con AES-256 tramite Android Keystore hardware-backed</li>
-    <li>🔒 <strong>Regole di Sicurezza Firebase</strong>: Accesso limitato al solo proprietario dei dati (default deny)</li>
-    <li>🔒 <strong>ID Pseudonimo</strong>: Nessun dato personale diretto (nome, email, telefono)</li>
-    <li>🔒 <strong>Minimizzazione dei dati</strong>: Raccogliamo solo lo strettamente necessario</li>
-    <li>🔒 <strong>Eliminazione automatica</strong>: Dati eliminati dopo i periodi di conservazione previsti (90-365 giorni)</li>
-    <li>🔒 <strong>API Key protetta</strong>: La chiave API OpenAI non è mai esposta nel client, è salvata come secret nel relay Cloudflare</li>
-</ul>
-
-<h2>9. Identificatori Dispositivo e Permessi Android</h2>
-
-<h3>9.1 Identificatori Dispositivo Utilizzati</h3>
-
-<p>kAIboard utilizza i seguenti identificatori per generare l'ID dispositivo anonimo:</p>
-
-<div class="table-wrapper"><table>
-    <tr>
-        <th>Identificatore</th>
-        <th>Tipo</th>
-        <th>Finalità</th>
-        <th>Persistenza</th>
-    </tr>
-    <tr>
-        <td data-label="Identificatore"><strong>Android ID</strong></td>
-        <td data-label="Tipo">Settings.Secure.ANDROID_ID</td>
-        <td data-label="Finalità">Generare ID dispositivo univoco e stabile</td>
-        <td data-label="Persistenza">Persiste tra reinstallazioni dell'app (stessa signing key). <strong>Cambia dopo un factory reset del dispositivo.</strong></td>
-    </tr>
-    <tr>
-        <td data-label="Identificatore"><strong>Install Referrer ID</strong></td>
-        <td data-label="Tipo">Google Play Install Referrer API</td>
-        <td data-label="Finalità">Fallback se Android ID non disponibile</td>
-        <td data-label="Persistenza">Persiste tra reinstallazioni (se installato da Play Store)</td>
-    </tr>
-    <tr>
-        <td data-label="Identificatore"><strong>UUID Locale</strong></td>
-        <td data-label="Tipo">java.util.UUID</td>
-        <td data-label="Finalità">Fallback finale (solo per sideload)</td>
-        <td data-label="Persistenza">NON persiste (si perde con disinstallazione)</td>
-    </tr>
-</table></div>
-
-<div class="important">
-    <strong>⚠️ FACTORY RESET:</strong> Dopo un ripristino alle impostazioni di fabbrica del dispositivo, l'identificativo anonimo (Install ID) viene rigenerato. L'abbonamento attivo viene ripristinato automaticamente da Google Play al primo avvio dell'app. I dati locali (preferenze, lingue contatti, parole apprese) vengono persi e non sono recuperabili, a meno che non sia stato effettuato un backup prima del reset.
-</div>
-
-<p><strong>⚠️ NOTA PRIVACY:</strong> L'Android ID è un identificatore univoco del dispositivo. kAIboard lo utilizza SOLO per generare l'ID anonimo pseudonimizzato (formato: "android_[hash]"). L'Android ID grezzo NON viene MAI inviato ai nostri server o a terze parti.</p>
-
-<h3>9.2 Permessi App</h3>
-
-<div class="table-wrapper"><table>
-    <tr>
-        <th>Permesso</th>
-        <th>Finalità</th>
-        <th>Obbligatorio</th>
-    </tr>
-    <tr>
-        <td data-label="Permesso"><strong>Contatti</strong></td>
-        <td data-label="Finalità">Assegnare lingua a ciascun contatto per cambio tastiera automatico</td>
-        <td data-label="Obbligatorio">❌ No (opzionale)</td>
-    </tr>
-    <tr>
-        <td data-label="Permesso"><strong>Accessibilità</strong></td>
-        <td data-label="Finalità">Rilevare app chat attiva per cambiare automaticamente lingua</td>
-        <td data-label="Obbligatorio">❌ No (opzionale)</td>
-    </tr>
-    <tr>
-        <td data-label="Permesso"><strong>Notifiche</strong></td>
-        <td data-label="Finalità">Risposte rapide da lockscreen con lingua corretta</td>
-        <td data-label="Obbligatorio">❌ No (opzionale)</td>
-    </tr>
-    <tr>
-        <td data-label="Permesso"><strong>Microfono</strong></td>
-        <td data-label="Finalità">Dettatura vocale (registrazione solo quando premi il pulsante microfono)</td>
-        <td data-label="Obbligatorio">❌ No (opzionale)</td>
-    </tr>
-    <tr>
-        <td data-label="Permesso"><strong>Internet</strong></td>
-        <td data-label="Finalità">Traduzione in tempo reale e backup cloud</td>
-        <td data-label="Obbligatorio">✅ Sì (per funzionalità di traduzione)</td>
-    </tr>
-</table></div>
-
-<div class="important">
-    <strong>⚠️ NOTA SULLA SICUREZZA:</strong> L'avviso di sicurezza di Android per le tastiere è standard per tutte le tastiere di terze parti, non significa che kAIboard legge o salva i tuoi messaggi. Puoi verificare il codice sorgente o contattarci per maggiori informazioni.
-</div>
-
-<h2>10. Report Crash (Opzionale)</h2>
-
-<p>kAIboard può inviare report crash anonimi a Firebase Crashlytics <strong>SOLO se attivi esplicitamente l'opzione</strong>.</p>
-
-<h3>Cosa Includono i Report Crash:</h3>
-
-<ul>
-    <li>✅ Stack trace (percorso errore nel codice)</li>
-    <li>✅ Versione app e sistema operativo</li>
-    <li>✅ Modello dispositivo</li>
-    <li>✅ Informazioni runtime (memoria, CPU)</li>
-</ul>
-
-<h3>Cosa NON Includono:</h3>
-
-<ul>
-    <li>❌ Testo digitato</li>
-    <li>❌ Contenuto chat</li>
-    <li>❌ Nomi contatti</li>
-    <li>❌ Messaggi</li>
-</ul>
-
-<p><strong>Base giuridica:</strong> Consenso esplicito (Art. 6.1.a GDPR)</p>
-
-<p><strong>Come disattivare:</strong> Impostazioni → Report crash (opzionale) → Disattiva. La disattivazione blocca l'invio futuro e cancella i report non ancora inviati presenti sul dispositivo. I report già inviati a Firebase restano sul backend e non possono essere eliminati dal telefono.</p>
-
-<h2>11. Minori</h2>
-
-<p>kAIboard non è destinata a bambini di età inferiore ai 13 anni. Non raccogliamo consapevolmente dati da minori. Se sei un genitore e scopri che tuo figlio ha fornito dati, contattaci per eliminarli.</p>
-
-<h2>12. Modifiche all'Informativa sulla Privacy</h2>
-
-<p>Potremmo aggiornare questa Informativa sulla Privacy periodicamente. Ti informeremo di eventuali modifiche sostanziali attraverso:</p>
-
-<ul>
-    <li>📧 Email (se fornita)</li>
-    <li>📱 Notifica in-app</li>
-    <li>🌐 Data aggiornata in cima a questo documento</li>
-</ul>
-
-<p>L'uso continuato dell'app dopo le modifiche costituisce accettazione della nuova Informativa sulla Privacy.</p>
-
-<h2>13. Base Giuridica per il Trattamento</h2>
-
-<p>Il trattamento dei tuoi dati si basa su:</p>
-
-<ul>
-    <li><strong>Art. 6.1.b GDPR</strong> - Esecuzione contratto: Gestione abbonamenti, sincronizzazione multi-device, contatore token condiviso, cronologia acquisti, traduzione</li>
-    <li><strong>Art. 6.1.a GDPR</strong> - Consenso: Report crash (opzionale)</li>
-    <li><strong>Art. 6.1.f GDPR</strong> - Interesse legittimo:
         <ul>
-            <li>Sicurezza degli acquisti</li>
-            <li>Protezione del sistema di billing da abusi</li>
-            <li>Log attività amministrativa (audit trail)</li>
+            <li><strong>Transazioni Google Play:</strong> Gestite da Google secondo le loro politiche (per richieste di rimborso, prevenzione frodi e conformità fiscale)</li>
+            <li><strong>Report Crash già inviati a Firebase:</strong> I report già trasmessi a Firebase Crashlytics restano sul backend e non possono essere eliminati dal dispositivo. I report non ancora inviati possono essere cancellati dalle Impostazioni (toggle Crashlytics OFF) o dal pulsante "Elimina Tutti i Dati Locali"</li>
         </ul>
-    </li>
-</ul>
 
-<div class="info">
-    <strong>📋 VALUTAZIONE INTERESSE LEGITTIMO (Art. 6.1.f GDPR):</strong>
-    <p>I log di attività amministrativa sono necessari per:</p>
-    <ul>
-        <li>✅ Gestione contestazioni entro 60 giorni (requisito Google Play)</li>
-        <li>✅ Supporto tecnico e risoluzione problemi</li>
-        <li>✅ Prevenzione frodi nel sistema di billing</li>
-    </ul>
-    <p>L'impatto sui diritti dell'utente è minimizzato perché:</p>
-    <ul>
-        <li>✅ L'utente può eliminare i log tramite "Elimina dati cloud"</li>
-        <li>✅ Il sistema usa solo dati pseudonimizzati (nessun dato personale diretto)</li>
-        <li>✅ La logica è trasparente e documentata in questa Privacy Policy</li>
-        <li>✅ Retention limitato a 90 giorni con eliminazione automatica</li>
-    </ul>
-</div>
+        <h2>Conseguenze della Cancellazione Dati</h2>
 
-<h2>14. Contatti</h2>
+        <div class="warning">
+            <p><strong>Avviso Importante:</strong> La cancellazione di alcuni dati è <strong>irreversibile</strong>. Assicurati di comprendere le conseguenze prima di procedere:</p>
+            <ul>
+                <li><strong>Elimina Dati Cloud:</strong> Perderai i dati abbonamento, la cronologia acquisti, la cronologia abbonamenti e i log attività. NON potrai recuperarli, anche dopo aver reinstallato l'app. Se hai un abbonamento attivo, dovrai prima annullarlo tramite Google Play Store e attendere la fine del periodo già pagato.</li>
+                <li><strong>Elimina Dati Apprendimento:</strong> Le predizioni di testo personalizzate ripartiranno da zero</li>
+                <li><strong>Elimina Tutti i Dati Locali:</strong> Tutte le preferenze, impostazioni, modelli predittivi scaricati, dizionari e cache andranno perse. L'app si riavvierà come una nuova installazione (i dati cloud vengono preservati)</li>
+                <li><strong>Reinstallazione o cambio dispositivo durante Grace Period:</strong> Se reinstalli l'app sullo stesso dispositivo o su un dispositivo già registrato, l'abbonamento e il saldo token vengono ripristinati automaticamente. Se installi l'app su un dispositivo completamente nuovo che non ha mai avuto kAIboard con il tuo account, i giorni rimanenti e il saldo token potrebbero non essere recuperabili per motivi di sicurezza.</li>
+            </ul>
+        </div>
 
-<div class="contact-box">
-    <p>Per domande, richieste GDPR o segnalazioni:</p>
-    <p><strong>Email:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
-    <p><strong>Tempo di risposta:</strong> Entro 30 giorni (Art. 12 GDPR)</p>
-    <p style="margin-top: 10px;"><a href="https://alessandrof78.github.io/kaiboard-privacy/">🌐 Privacy Policy in altre lingue</a></p>
-</div>
+        <h2>Domande Frequenti</h2>
 
-<p style="text-align: center; color: #4B5563; margin-top: 50px;">
-    <strong>Versione 2.0 - Ultimo aggiornamento: 21 Marzo 2026</strong><br>
-    © 2026 Alessandro Faedda - kAIboard
-</p>
+        <h3>Cosa succede se elimino i dati cloud?</h3>
+        <p>Perderai i dati abbonamento, la cronologia acquisti, la cronologia degli abbonamenti passati e i log attività. Se reinstalli l'app, l'abbonamento verrà comunque rilevato tramite Google Play ma i dati storici non saranno recuperabili.</p>
 
+        <h3>Posso eliminare solo dati specifici?</h3>
+        <p>Sì. Puoi scegliere di eliminare solo i dati cloud, solo i dati di apprendimento o tutti i dati locali. Puoi anche esportare i dati in formato JSON prima di eliminarli.</p>
+
+        <h3>I miei messaggi tradotti vengono salvati?</h3>
+        <p>No. Il testo che digiti per la traduzione <strong>non viene mai salvato</strong>. Viene inviato a OpenAI solo per l'elaborazione della traduzione e immediatamente scartato (0 secondi di conservazione).</p>
+
+        <h3>Quanto tempo richiede la cancellazione dei dati?</h3>
+        <p>La cancellazione tramite app è <strong>immediata</strong> (0-5 secondi). Le richieste via email vengono elaborate entro 30 giorni.</p>
+
+        <h3>Posso recuperare i dati dopo la cancellazione?</h3>
+        <p>No. La cancellazione è <strong>irreversibile</strong>. Assicurati di voler eliminare i tuoi dati prima di procedere. Ti consigliamo di usare "Esporta i tuoi dati (JSON)" prima della cancellazione.</p>
+
+        <h3>Cosa succede alla cronologia abbonamenti dopo la cancellazione?</h3>
+        <p>La cronologia abbonamenti viene eliminata insieme ai dati cloud. Include tutti gli abbonamenti passati (scaduti o cancellati) con relativi dettagli di utilizzo token, date e dispositivi utilizzati.</p>
+
+        <h3>Posso eliminare i dati durante il grace period?</h3>
+        <p>Sì, ma con una distinzione importante. Se l'abbonamento è ancora <strong>attivo e in rinnovo automatico</strong>, l'app ti reindirizzerà a Google Play per annullarlo prima. Una volta annullato l'abbonamento (grace period), puoi eliminare i dati cloud in qualsiasi momento: l'eliminazione è immediata e comporta la <strong>rinuncia definitiva</strong> al periodo residuo già pagato e al saldo token corrente. Questa scelta è irreversibile. <strong>Attenzione:</strong> la reinstallazione dell'app su un dispositivo completamente nuovo durante il grace period potrebbe comportare la perdita del periodo residuo e del saldo token per motivi di sicurezza. Su dispositivi già registrati, il ripristino avviene automaticamente.</p>
+
+        <h3>Cosa succede ai modelli predittivi e ai dizionari scaricati?</h3>
+        <p>Vengono eliminati dal pulsante "Elimina Tutti i Dati Locali". Al successivo utilizzo, i modelli predittivi dovranno essere riscaricati dalla schermata Modelli Offline e i dizionari verranno ricopiati automaticamente al primo utilizzo della lingua.</p>
+
+        <h2>Risorse Aggiuntive</h2>
+
+        <p>
+            <a href="https://alessandrof78.github.io/kaiboard-privacy/" class="button">Leggi l'Informativa sulla Privacy Completa</a>
+            <a href="/cdn-cgi/l/email-protection#c3b0b6b3b3acb1b783a8a2aaa1aca2b1a7eda6b6" class="button">Contatta il Supporto</a>
+            <a href="https://alessandrof78.github.io/kaiboard-privacy/data-deletion.html" class="button">Altre Lingue</a>
+        </p>
+
+        <div class="footer">
+            <p><strong>Versione 2.0 - Ultimo Aggiornamento: 21 Marzo 2026</strong></p>
+            <p>&copy; 2026 Alessa
+        </div>
+    </div>
 </body>
 </html>
