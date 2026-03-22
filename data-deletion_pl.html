@@ -85,7 +85,7 @@
             text-align: left;
         }
         th {
-            background-color: #F4F7FA;
+            background-color: #0FA3A3;
             font-weight: 600;
             color: white;
         }
@@ -118,47 +118,22 @@
             font-weight: 600;
         }
 
-        /* -- MOBILE RESPONSIVE FIX -- */
-        * { box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { overflow-x: hidden; max-width: 100%; }
-
+        /* -- MOBILE FIX -- */
+        html, body { overflow-x: hidden; }
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+        }
+        .table-wrapper table {
+            width: auto;
+            min-width: 480px;
+            margin: 0;
+        }
         @media (max-width: 650px) {
             body { padding: 15px; }
             .container { padding: 20px; }
-            .table-wrapper thead { display: none; }
-            .table-wrapper table,
-            .table-wrapper tbody,
-            .table-wrapper tr { display: block; width: 100%; }
-            .table-wrapper tr {
-                border: 1px solid #ddd;
-                border-radius: 6px;
-                margin-bottom: 12px;
-                background: #fff;
-                overflow: hidden;
-            }
-            .table-wrapper td {
-                display: block;
-                width: 100%;
-                padding: 10px 12px;
-                font-size: 13px;
-                line-height: 1.5;
-                border: none;
-                border-bottom: 1px solid #f0f0f0;
-                text-align: left;
-            }
-            .table-wrapper td:last-child { border-bottom: none; }
-            .table-wrapper td::before {
-                content: attr(data-label);
-                display: block;
-                font-weight: 600;
-                font-size: 11px;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                color: #0FA3A3;
-                margin-bottom: 4px;
-            }
-            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+            th, td { padding: 8px; font-size: 13px; }
         }
     </style>
 </head>
@@ -190,8 +165,8 @@
                 <th>Efekt</th>
             </tr>
             <tr>
-                <td data-label="Opcja"><strong>Usuń Dane w Chmurze</strong></td>
-                <td data-label="Co Zostanie Usunięte">
+                <td><strong>Usuń Dane w Chmurze</strong></td>
+                <td>
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>Dokument aktywnej subskrypcji (user_subscriptions)</li>
                         <li>Historia subskrypcji (user_subscriptions_history)</li>
@@ -200,16 +175,16 @@
                         <li>Tablica urządzeń multi-device</li>
                     </ul>
                 </td>
-                <td data-label="Efekt">Nieodwracalne. Stracisz historię zakupów, dzienniki aktywności i historię subskrypcji. Wymaga anulowania subskrypcji jeśli aktywna.</td>
+                <td>Nieodwracalne. Stracisz historię zakupów, dzienniki aktywności i historię subskrypcji. Wymaga anulowania subskrypcji jeśli aktywna.</td>
             </tr>
             <tr>
-                <td data-label="Opcja"><strong>Usuń Dane Uczenia</strong></td>
-                <td data-label="Co Zostanie Usunięte">Nauczone słowa dla spersonalizowanych sugestii (wszystkie 13 języków)</td>
-                <td data-label="Efekt">Tekst predykcyjny zacznie od nowa.</td>
+                <td><strong>Usuń Dane Uczenia</strong></td>
+                <td>Nauczone słowa dla spersonalizowanych sugestii (wszystkie 13 języków)</td>
+                <td>Tekst predykcyjny zacznie od nowa.</td>
             </tr>
             <tr>
-                <td data-label="Opcja"><strong>Usuń Wszystkie Dane Lokalne</strong></td>
-                <td data-label="Co Zostanie Usunięte">
+                <td><strong>Usuń Wszystkie Dane Lokalne</strong></td>
+                <td>
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>Dane uczenia (13 języków)</li>
                         <li>Wszystkie preferencje i ustawienia</li>
@@ -221,7 +196,7 @@
                         <li>Cała pamięć podręczna aplikacji (pliki tymczasowe, lokalne raporty awarii, pamięć podręczna WebView)</li>
                     </ul>
                 </td>
-                <td data-label="Efekt">Aplikacja uruchomi się ponownie z domyślnymi ustawieniami. Żadne pliki użytkownika nie pozostaną na urządzeniu. Dane w chmurze zostają zachowane.</td>
+                <td>Aplikacja uruchomi się ponownie z domyślnymi ustawieniami. Żadne pliki użytkownika nie pozostaną na urządzeniu. Dane w chmurze zostają zachowane.</td>
             </tr>
         </table></div>
 
@@ -256,7 +231,7 @@
         <p>Jeśli wolisz pomoc lub masz pytania dotyczące usuwania danych, możesz skontaktować się z nami e-mailem:</p>
 
         <div class="info-box">
-            <p><strong>E-mail:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+            <p><strong>E-mail:</strong> <a href="/cdn-cgi/l/email-protection#7704020707180503371c161e1518160513591202"><span class="__cf_email__" data-cfemail="c1b2b4b1b1aeb3b581aaa0a8a3aea0b3a5efa4b4">[email&#160;protected]</span></a></p>
             <p><strong>Temat:</strong> „Prośba o Usunięcie Danych RODO"</p>
             <p><strong>Informacje do Podania:</strong></p>
             <ul>
@@ -290,39 +265,39 @@
                 <th>Szczegóły</th>
             </tr>
             <tr>
-                <td data-label="Typ Danych"><strong>Aktywne Dane Subskrypcji (Firebase)</strong></td>
-                <td data-label="Okres Przechowywania">Do końca bieżącego okresu rozliczeniowego</td>
-                <td data-label="Szczegóły">Automatycznie przenoszone do historii po wygaśnięciu subskrypcji</td>
+                <td><strong>Aktywne Dane Subskrypcji (Firebase)</strong></td>
+                <td>Do końca bieżącego okresu rozliczeniowego</td>
+                <td>Automatycznie przenoszone do historii po wygaśnięciu subskrypcji</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych"><strong>Historia Subskrypcji (Firebase)</strong></td>
-                <td data-label="Okres Przechowywania">90 dni po wygaśnięciu</td>
-                <td data-label="Szczegóły">Automatycznie usuwana 90 dni po zakończeniu subskrypcji</td>
+                <td><strong>Historia Subskrypcji (Firebase)</strong></td>
+                <td>90 dni po wygaśnięciu</td>
+                <td>Automatycznie usuwana 90 dni po zakończeniu subskrypcji</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych"><strong>Dzienniki Aktywności Administracyjnej (Firebase)</strong></td>
-                <td data-label="Okres Przechowywania">90 dni od ostatniej modyfikacji</td>
-                <td data-label="Szczegóły">Automatycznie usuwane co 24 godziny przez czyszczenie w tle</td>
+                <td><strong>Dzienniki Aktywności Administracyjnej (Firebase)</strong></td>
+                <td>90 dni od ostatniej modyfikacji</td>
+                <td>Automatycznie usuwane co 24 godziny przez czyszczenie w tle</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych"><strong>Historia Zakupów (Firebase)</strong></td>
-                <td data-label="Okres Przechowywania">365 dni od zakupu</td>
-                <td data-label="Szczegóły">Automatycznie usuwana po roku</td>
+                <td><strong>Historia Zakupów (Firebase)</strong></td>
+                <td>365 dni od zakupu</td>
+                <td>Automatycznie usuwana po roku</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych"><strong>Nauczone Słowa</strong></td>
-                <td data-label="Okres Przechowywania">14 dni z degradacją</td>
-                <td data-label="Szczegóły">Wyniki częstotliwości maleją z czasem; nieużywane słowa są usuwane</td>
+                <td><strong>Nauczone Słowa</strong></td>
+                <td>14 dni z degradacją</td>
+                <td>Wyniki częstotliwości maleją z czasem; nieużywane słowa są usuwane</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych"><strong>Pamięć Podręczna Tłumaczeń</strong></td>
-                <td data-label="Okres Przechowywania">Tylko sesja</td>
-                <td data-label="Szczegóły">Przechowywane tylko w RAM; usuwane przy zamknięciu aplikacji</td>
+                <td><strong>Pamięć Podręczna Tłumaczeń</strong></td>
+                <td>Tylko sesja</td>
+                <td>Przechowywane tylko w RAM; usuwane przy zamknięciu aplikacji</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych"><strong>Tekst Tłumaczenia</strong></td>
-                <td data-label="Okres Przechowywania">Nigdy nie przechowywany</td>
-                <td data-label="Szczegóły">0 sekund przechowywania; tylko tranzyt do API OpenAI</td>
+                <td><strong>Tekst Tłumaczenia</strong></td>
+                <td>Nigdy nie przechowywany</td>
+                <td>0 sekund przechowywania; tylko tranzyt do API OpenAI</td>
             </tr>
         </table></div>
 
@@ -339,54 +314,54 @@
                 <th>Metoda Usuwania</th>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Tablica Urządzeń</td>
-                <td data-label="Lokalizacja Przechowywania">Firebase (chmura)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Dane w Chmurze"</td>
+                <td>Tablica Urządzeń</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk „Usuń Dane w Chmurze"</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Bieżące Wykorzystanie Tokenów</td>
-                <td data-label="Lokalizacja Przechowywania">Firebase (chmura)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
+                <td>Bieżące Wykorzystanie Tokenów</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Historia Zakupów</td>
-                <td data-label="Lokalizacja Przechowywania">Firebase (chmura)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Dane w Chmurze"</td>
+                <td>Historia Zakupów</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk „Usuń Dane w Chmurze"</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Plan Subskrypcji</td>
-                <td data-label="Lokalizacja Przechowywania">Firebase (chmura)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
+                <td>Plan Subskrypcji</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Miesięczny Limit Tokenów</td>
-                <td data-label="Lokalizacja Przechowywania">Firebase (chmura)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
+                <td>Miesięczny Limit Tokenów</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Data Miesięcznego Resetowania</td>
-                <td data-label="Lokalizacja Przechowywania">Firebase (chmura)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
+                <td>Data Miesięcznego Resetowania</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Data Zakończenia Subskrypcji</td>
-                <td data-label="Lokalizacja Przechowywania">Firebase (chmura)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Dane w Chmurze" (tylko po upływie okresu karencji)</td>
+                <td>Data Zakończenia Subskrypcji</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk „Usuń Dane w Chmurze" (tylko po upływie okresu karencji)</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Flaga „Nie Zostanie Odnowiona"</td>
-                <td data-label="Lokalizacja Przechowywania">Firebase (chmura)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Dane w Chmurze" (tylko po upływie okresu karencji)</td>
+                <td>Flaga „Nie Zostanie Odnowiona"</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk „Usuń Dane w Chmurze" (tylko po upływie okresu karencji)</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Historia Subskrypcji</td>
-                <td data-label="Lokalizacja Przechowywania">Firebase (chmura)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Dane w Chmurze" (usuwa wszystko: aktywne + historię)</td>
+                <td>Historia Subskrypcji</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk „Usuń Dane w Chmurze" (usuwa wszystko: aktywne + historię)</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Dzienniki Aktywności Administracyjnej</td>
-                <td data-label="Lokalizacja Przechowywania">Firebase (chmura)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Dane w Chmurze"</td>
+                <td>Dzienniki Aktywności Administracyjnej</td>
+                <td>Firebase (chmura)</td>
+                <td>Przycisk „Usuń Dane w Chmurze"</td>
             </tr>
         </table></div>
 
@@ -399,74 +374,74 @@
                 <th>Metoda Usuwania</th>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Nauczone Słowa (Predykcje)</td>
-                <td data-label="Lokalizacja Przechowywania">Lokalnie (urządzenie)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Dane Uczenia" lub „Usuń Wszystkie Dane Lokalne"</td>
+                <td>Nauczone Słowa (Predykcje)</td>
+                <td>Lokalnie (urządzenie)</td>
+                <td>Przycisk „Usuń Dane Uczenia" lub „Usuń Wszystkie Dane Lokalne"</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Preferencje Aplikacji</td>
-                <td data-label="Lokalizacja Przechowywania">Lokalnie (urządzenie)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Wszystkie Dane Lokalne"</td>
+                <td>Preferencje Aplikacji</td>
+                <td>Lokalnie (urządzenie)</td>
+                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Stan Aplikacji</td>
-                <td data-label="Lokalizacja Przechowywania">Lokalnie (urządzenie)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Wszystkie Dane Lokalne"</td>
+                <td>Stan Aplikacji</td>
+                <td>Lokalnie (urządzenie)</td>
+                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Przypisania Języków Kontaktów</td>
-                <td data-label="Lokalizacja Przechowywania">Lokalnie (urządzenie)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Wszystkie Dane Lokalne"</td>
+                <td>Przypisania Języków Kontaktów</td>
+                <td>Lokalnie (urządzenie)</td>
+                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Metadane Uczenia</td>
-                <td data-label="Lokalizacja Przechowywania">Lokalnie (urządzenie)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Wszystkie Dane Lokalne"</td>
+                <td>Metadane Uczenia</td>
+                <td>Lokalnie (urządzenie)</td>
+                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Metadane Kopii Zapasowych</td>
-                <td data-label="Lokalizacja Przechowywania">Lokalnie (urządzenie)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Wszystkie Dane Lokalne"</td>
+                <td>Metadane Kopii Zapasowych</td>
+                <td>Lokalnie (urządzenie)</td>
+                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Alerty Subskrypcji</td>
-                <td data-label="Lokalizacja Przechowywania">Lokalnie (urządzenie)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Wszystkie Dane Lokalne"</td>
+                <td>Alerty Subskrypcji</td>
+                <td>Lokalnie (urządzenie)</td>
+                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Modele Predykcyjne N-gram (pobrane)</td>
-                <td data-label="Lokalizacja Przechowywania">Lokalnie (urządzenie)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Wszystkie Dane Lokalne"</td>
+                <td>Modele Predykcyjne N-gram (pobrane)</td>
+                <td>Lokalnie (urządzenie)</td>
+                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Słowniki Hunspell (skopiowane z zasobów)</td>
-                <td data-label="Lokalizacja Przechowywania">Lokalnie (urządzenie)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Wszystkie Dane Lokalne"</td>
+                <td>Słowniki Hunspell (skopiowane z zasobów)</td>
+                <td>Lokalnie (urządzenie)</td>
+                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Pamięć Podręczna Słowników i Vocabulariów (w pamięci)</td>
-                <td data-label="Lokalizacja Przechowywania">RAM (ulotna)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Wszystkie Dane Lokalne" lub zamknięcie aplikacji</td>
+                <td>Pamięć Podręczna Słowników i Vocabulariów (w pamięci)</td>
+                <td>RAM (ulotna)</td>
+                <td>Przycisk „Usuń Wszystkie Dane Lokalne" lub zamknięcie aplikacji</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Pamięć Podręczna Aplikacji (pliki tymczasowe, lokalne raporty awarii, pamięć podręczna WebView)</td>
-                <td data-label="Lokalizacja Przechowywania">Lokalnie (urządzenie)</td>
-                <td data-label="Metoda Usuwania">Przycisk „Usuń Wszystkie Dane Lokalne"</td>
+                <td>Pamięć Podręczna Aplikacji (pliki tymczasowe, lokalne raporty awarii, pamięć podręczna WebView)</td>
+                <td>Lokalnie (urządzenie)</td>
+                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Pamięć Podręczna Disambiguacji Kontaktów</td>
-                <td data-label="Lokalizacja Przechowywania">RAM (ulotna)</td>
-                <td data-label="Metoda Usuwania">Automatyczne przy ponownym uruchomieniu usługi dostępności</td>
+                <td>Pamięć Podręczna Disambiguacji Kontaktów</td>
+                <td>RAM (ulotna)</td>
+                <td>Automatyczne przy ponownym uruchomieniu usługi dostępności</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Pamięć Podręczna Tłumaczeń</td>
-                <td data-label="Lokalizacja Przechowywania">RAM (ulotna)</td>
-                <td data-label="Metoda Usuwania">Automatyczne przy zamknięciu aplikacji</td>
+                <td>Pamięć Podręczna Tłumaczeń</td>
+                <td>RAM (ulotna)</td>
+                <td>Automatyczne przy zamknięciu aplikacji</td>
             </tr>
             <tr>
-                <td data-label="Typ Danych">Tekst Tłumaczenia</td>
-                <td data-label="Lokalizacja Przechowywania">Nigdy nie przechowywany</td>
-                <td data-label="Metoda Usuwania">Nie jest wymagane żadne działanie (0 sekund przechowywania)</td>
+                <td>Tekst Tłumaczenia</td>
+                <td>Nigdy nie przechowywany</td>
+                <td>Nie jest wymagane żadne działanie (0 sekund przechowywania)</td>
             </tr>
         </table></div>
 
@@ -521,19 +496,13 @@
 
         <p>
             <a href="https://alessandrof78.github.io/kaiboard-privacy/" class="button">Przeczytaj Pełną Politykę Prywatności</a>
-            <a href="mailto:support@kaiboard.eu" class="button">Skontaktuj się z Pomocą Techniczną</a>
+            <a href="/cdn-cgi/l/email-protection#7a090f0a0a15080e3a111b1318151b081e541f0f" class="button">Skontaktuj się z Pomocą Techniczną</a>
             <a href="https://alessandrof78.github.io/kaiboard-privacy/data-deletion.html" class="button">Inne języki</a>
         </p>
 
         <div class="footer">
             <p><strong>Wersja 2.0 - Ostatnia Aktualizacja: 21 Marca 2026</strong></p>
-            <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
-            <p>Zgodne z RODO (Rozporządzenie UE 2016/679)</p>
         </div>
     </div>
 </body>
 </html>
-
-
-
-
