@@ -90,43 +90,20 @@
         * { box-sizing: border-box; }
         html { overflow-x: hidden; }
         body { overflow-x: hidden; max-width: 100%; }
-
+        .table-wrapper {
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+        }
+        .table-wrapper table {
+            margin: 0;
+            min-width: 480px;
+        }
         @media (max-width: 650px) {
             body { padding: 15px; }
             .container { padding: 20px; }
-            .table-wrapper thead { display: none; }
-            .table-wrapper table,
-            .table-wrapper tbody,
-            .table-wrapper tr { display: block; width: 100%; }
-            .table-wrapper tr {
-                border: 1px solid #ddd;
-                border-radius: 6px;
-                margin-bottom: 12px;
-                background: #fff;
-                overflow: hidden;
-            }
-            .table-wrapper td {
-                display: block;
-                width: 100%;
-                padding: 10px 12px;
-                font-size: 13px;
-                line-height: 1.5;
-                border: none;
-                border-bottom: 1px solid #f0f0f0;
-                text-align: left;
-            }
-            .table-wrapper td:last-child { border-bottom: none; }
-            .table-wrapper td::before {
-                content: attr(data-label);
-                display: block;
-                font-weight: 600;
-                font-size: 11px;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                color: #0FA3A3;
-                margin-bottom: 4px;
-            }
-            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+            th, td { padding: 8px 10px; font-size: 13px; }
         }
     </style>
 </head>
@@ -161,28 +138,28 @@
         <th>法律依据</th>
     </tr>
     <tr>
-        <td data-label="数据"><strong>设备数组</strong></td>
-        <td data-label="类型">标识符列表（例如 ["android_e19d6c...", "android_175be4..."]）</td>
-        <td data-label="目的">在使用相同 Google Play 账户的多台设备间同步订阅和 Token 余额</td>
-        <td data-label="法律依据">合同履行（GDPR 第 6.1(b) 条）</td>
+        <td><strong>设备数组</strong></td>
+        <td>标识符列表（例如 ["android_e19d6c...", "android_175be4..."]）</td>
+        <td>在使用相同 Google Play 账户的多台设备间同步订阅和 Token 余额</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
     </tr>
     <tr>
-        <td data-label="数据"><strong>当前 Token 用量</strong></td>
-        <td data-label="类型">整数 (current_usage)</td>
-        <td data-label="目的">追踪所有设备间的共享月度消耗</td>
-        <td data-label="法律依据">合同履行（GDPR 第 6.1(b) 条）</td>
+        <td><strong>当前 Token 用量</strong></td>
+        <td>整数 (current_usage)</td>
+        <td>追踪所有设备间的共享月度消耗</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
     </tr>
     <tr>
-        <td data-label="数据"><strong>购买历史记录</strong></td>
-        <td data-label="类型">产品 ID、购买日期、订单 ID</td>
-        <td data-label="目的">验证购买并防止欺诈</td>
-        <td data-label="法律依据">合同履行（GDPR 第 6.1(b) 条）</td>
+        <td><strong>购买历史记录</strong></td>
+        <td>产品 ID、购买日期、订单 ID</td>
+        <td>验证购买并防止欺诈</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
     </tr>
     <tr>
-        <td data-label="数据"><strong>待翻译文本</strong></td>
-        <td data-label="类型">文本内容</td>
-        <td data-label="目的">实时翻译</td>
-        <td data-label="法律依据">合同履行（GDPR 第 6.1(b) 条）</td>
+        <td><strong>待翻译文本</strong></td>
+        <td>文本内容</td>
+        <td>实时翻译</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
     </tr>
 </table></div>
 
@@ -218,64 +195,64 @@
         <th>法律依据</th>
     </tr>
     <tr>
-        <td data-label="数据"><strong>订阅方案</strong></td>
-        <td data-label="类型">字符串（例如 "plus"、"pro"、"max"）</td>
-        <td data-label="目的">识别活跃方案并应用正确的 Token 限额</td>
-        <td data-label="法律依据">合同履行（GDPR 第 6.1(b) 条）</td>
+        <td><strong>订阅方案</strong></td>
+        <td>字符串（例如 "plus"、"pro"、"max"）</td>
+        <td>识别活跃方案并应用正确的 Token 限额</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
     </tr>
     <tr>
-        <td data-label="数据"><strong>每月 Token 限额</strong></td>
-        <td data-label="类型">整数（例如 250000、500000、1000000）</td>
-        <td data-label="目的">应用订阅包含的最大 Token 上限</td>
-        <td data-label="法律依据">合同履行（GDPR 第 6.1(b) 条）</td>
+        <td><strong>每月 Token 限额</strong></td>
+        <td>整数（例如 250000、500000、1000000）</td>
+        <td>应用订阅包含的最大 Token 上限</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
     </tr>
     <tr>
-        <td data-label="数据"><strong>当前 Token 用量</strong></td>
-        <td data-label="类型">整数</td>
-        <td data-label="目的">追踪共享的月度消耗并执行限额</td>
-        <td data-label="法律依据">合同履行（GDPR 第 6.1(b) 条）</td>
+        <td><strong>当前 Token 用量</strong></td>
+        <td>整数</td>
+        <td>追踪共享的月度消耗并执行限额</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
     </tr>
     <tr>
-        <td data-label="数据"><strong>每月重置日期</strong></td>
-        <td data-label="类型">ISO 日期（例如 "2026-02-01"）</td>
-        <td data-label="目的">每月自动重置用量</td>
-        <td data-label="法律依据">合同履行（GDPR 第 6.1(b) 条）</td>
+        <td><strong>每月重置日期</strong></td>
+        <td>ISO 日期（例如 "2026-02-01"）</td>
+        <td>每月自动重置用量</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
     </tr>
     <tr>
-        <td data-label="数据"><strong>Google Play 产品 ID</strong></td>
-        <td data-label="类型">字符串（例如 "abbonamento_mensile_2500"）</td>
-        <td data-label="目的">通过 Google Play Billing API 验证订阅有效性</td>
-        <td data-label="法律依据">合同履行（GDPR 第 6.1(b) 条）</td>
+        <td><strong>Google Play 产品 ID</strong></td>
+        <td>字符串（例如 "abbonamento_mensile_2500"）</td>
+        <td>通过 Google Play Billing API 验证订阅有效性</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
     </tr>
     <tr>
-        <td data-label="数据"><strong>自动续订状态</strong></td>
-        <td data-label="类型">布尔值</td>
-        <td data-label="目的">验证订阅是否将自动续订</td>
-        <td data-label="法律依据">合同履行（GDPR 第 6.1(b) 条）</td>
+        <td><strong>自动续订状态</strong></td>
+        <td>布尔值</td>
+        <td>验证订阅是否将自动续订</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
     </tr>
     <tr>
-        <td data-label="数据"><strong>订阅购买日期</strong></td>
-        <td data-label="类型">时间戳</td>
-        <td data-label="目的">管理计费周期和争议处理</td>
-        <td data-label="法律依据">合同履行（GDPR 第 6.1(b) 条）</td>
+        <td><strong>订阅购买日期</strong></td>
+        <td>时间戳</td>
+        <td>管理计费周期和争议处理</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
     </tr>
     <tr>
-        <td data-label="数据"><strong>订阅到期日期</strong></td>
-        <td data-label="类型">ISO 8601 时间戳（例如 "2026-02-28T14:30:00Z"）</td>
-        <td data-label="目的">管理取消后的宽限期（订阅在此日期前保持有效）</td>
-        <td data-label="法律依据">合同履行（GDPR 第 6.1(b) 条）</td>
+        <td><strong>订阅到期日期</strong></td>
+        <td>ISO 8601 时间戳（例如 "2026-02-28T14:30:00Z"）</td>
+        <td>管理取消后的宽限期（订阅在此日期前保持有效）</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
     </tr>
     <tr>
-        <td data-label="数据"><strong>"不再续订"标记</strong></td>
-        <td data-label="类型">布尔值 (will_not_renew)</td>
-        <td data-label="目的">标识订阅已取消但在到期前仍然有效</td>
-        <td data-label="法律依据">合同履行（GDPR 第 6.1(b) 条）</td>
+        <td><strong>"不再续订"标记</strong></td>
+        <td>布尔值 (will_not_renew)</td>
+        <td>标识订阅已取消但在到期前仍然有效</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
     </tr>
     <tr>
-        <td data-label="数据"><strong>取消日期</strong></td>
-        <td data-label="类型">时间戳 (cancelled_at)</td>
-        <td data-label="目的">追踪用户取消订阅的时间</td>
-        <td data-label="法律依据">合同履行（GDPR 第 6.1(b) 条）</td>
+        <td><strong>取消日期</strong></td>
+        <td>时间戳 (cancelled_at)</td>
+        <td>追踪用户取消订阅的时间</td>
+        <td>合同履行（GDPR 第 6.1(b) 条）</td>
     </tr>
 </table></div>
 
@@ -338,16 +315,16 @@
         <th>保留期限</th>
     </tr>
     <tr>
-        <td data-label="数据"><strong>订阅历史记录</strong></td>
-        <td data-label="类型">user_subscriptions_history/{purchaseToken} 中的对象数组</td>
-        <td data-label="目的">购买可追溯性、审计轨迹、GDPR 合规</td>
-        <td data-label="保留期限">到期后 90 天</td>
+        <td><strong>订阅历史记录</strong></td>
+        <td>user_subscriptions_history/{purchaseToken} 中的对象数组</td>
+        <td>购买可追溯性、审计轨迹、GDPR 合规</td>
+        <td>到期后 90 天</td>
     </tr>
     <tr>
-        <td data-label="数据"><strong>每条记录的数据</strong></td>
-        <td data-label="类型">方案、已用/限额 Token、开始/结束/取消日期、取消原因、设备</td>
-        <td data-label="目的">审计、用户支持、退款管理</td>
-        <td data-label="保留期限">到期后 90 天</td>
+        <td><strong>每条记录的数据</strong></td>
+        <td>方案、已用/限额 Token、开始/结束/取消日期、取消原因、设备</td>
+        <td>审计、用户支持、退款管理</td>
+        <td>到期后 90 天</td>
     </tr>
 </table></div>
 
@@ -377,9 +354,9 @@
         <th>保留期限</th>
     </tr>
     <tr>
-        <td data-label="数据"><strong>管理操作日志</strong></td>
-        <td data-label="类型">admin_activity_logs/{device_id} 中的事件数组</td>
-        <td data-label="目的">
+        <td><strong>管理操作日志</strong></td>
+        <td>admin_activity_logs/{device_id} 中的事件数组</td>
+        <td>
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>用户支持的审计轨迹</li>
                 <li>Google Play 争议解决（60 天内）</li>
@@ -387,11 +364,11 @@
                 <li>宽限期和自动续订管理</li>
             </ul>
         </td>
-        <td data-label="保留期限">最后修改后 90 天</td>
+        <td>最后修改后 90 天</td>
     </tr>
     <tr>
-        <td data-label="数据"><strong>记录的事件</strong></td>
-        <td data-label="类型">
+        <td><strong>记录的事件</strong></td>
+        <td>
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>订阅购买</li>
                 <li>订阅取消</li>
@@ -400,14 +377,14 @@
                 <li>方案变更</li>
             </ul>
         </td>
-        <td data-label="目的">追踪修改历史以供审计和支持</td>
-        <td data-label="保留期限">最后修改后 90 天</td>
+        <td>追踪修改历史以供审计和支持</td>
+        <td>最后修改后 90 天</td>
     </tr>
     <tr>
-        <td data-label="数据"><strong>每个事件的详细信息</strong></td>
-        <td data-label="类型">时间戳、操作、原因、方案、操作详情</td>
-        <td data-label="目的">在争议情况下重建事件时间线所需的信息</td>
-        <td data-label="保留期限">最后修改后 90 天</td>
+        <td><strong>每个事件的详细信息</strong></td>
+        <td>时间戳、操作、原因、方案、操作详情</td>
+        <td>在争议情况下重建事件时间线所需的信息</td>
+        <td>最后修改后 90 天</td>
     </tr>
 </table></div>
 
@@ -564,28 +541,28 @@
         <th>服务器位置</th>
     </tr>
     <tr>
-        <td data-label="服务"><strong>Firebase (Google)</strong></td>
-        <td data-label="发送的数据">匿名 ID、Token 余额、购买历史记录、订阅数据、操作日志</td>
-        <td data-label="目的">备份、同步、审计轨迹</td>
-        <td data-label="服务器位置">欧盟（欧洲服务器）</td>
+        <td><strong>Firebase (Google)</strong></td>
+        <td>匿名 ID、Token 余额、购买历史记录、订阅数据、操作日志</td>
+        <td>备份、同步、审计轨迹</td>
+        <td>欧盟（欧洲服务器）</td>
     </tr>
     <tr>
-        <td data-label="服务"><strong>Cloudflare Worker</strong></td>
-        <td data-label="发送的数据">待翻译文本（仅中转）</td>
-        <td data-label="目的">翻译的安全中转</td>
-        <td data-label="服务器位置">欧盟（欧洲服务器）</td>
+        <td><strong>Cloudflare Worker</strong></td>
+        <td>待翻译文本（仅中转）</td>
+        <td>翻译的安全中转</td>
+        <td>欧盟（欧洲服务器）</td>
     </tr>
     <tr>
-        <td data-label="服务"><strong>OpenAI</strong></td>
-        <td data-label="发送的数据">待翻译文本（仅中转）</td>
-        <td data-label="目的">翻译处理</td>
-        <td data-label="服务器位置">美国（使用标准合同条款）</td>
+        <td><strong>OpenAI</strong></td>
+        <td>待翻译文本（仅中转）</td>
+        <td>翻译处理</td>
+        <td>美国（使用标准合同条款）</td>
     </tr>
     <tr>
-        <td data-label="服务"><strong>Google Play Billing</strong></td>
-        <td data-label="发送的数据">订单 ID、购买的产品</td>
-        <td data-label="目的">应用内购买管理</td>
-        <td data-label="服务器位置">欧盟（Google 服务器）</td>
+        <td><strong>Google Play Billing</strong></td>
+        <td>订单 ID、购买的产品</td>
+        <td>应用内购买管理</td>
+        <td>欧盟（Google 服务器）</td>
     </tr>
 </table></div>
 
@@ -619,64 +596,64 @@
         <th>删除方式</th>
     </tr>
     <tr>
-        <td data-label="数据类型"><strong>活跃订阅数据 (Firebase)</strong></td>
-        <td data-label="保留期限">直到当前计费周期结束</td>
-        <td data-label="删除方式">订阅到期后自动删除 + 转入历史记录</td>
+        <td><strong>活跃订阅数据 (Firebase)</strong></td>
+        <td>直到当前计费周期结束</td>
+        <td>订阅到期后自动删除 + 转入历史记录</td>
     </tr>
     <tr>
-        <td data-label="数据类型"><strong>订阅历史记录 (Firebase)</strong></td>
-        <td data-label="保留期限">订阅到期后 90 天</td>
-        <td data-label="删除方式">自动删除 + 通过"删除云端数据"手动删除</td>
+        <td><strong>订阅历史记录 (Firebase)</strong></td>
+        <td>订阅到期后 90 天</td>
+        <td>自动删除 + 通过"删除云端数据"手动删除</td>
     </tr>
     <tr>
-        <td data-label="数据类型"><strong>操作日志 (admin_activity_logs)</strong></td>
-        <td data-label="保留期限">最后修改后 90 天</td>
-        <td data-label="删除方式">自动删除（每 24 小时）+ 手动删除</td>
+        <td><strong>操作日志 (admin_activity_logs)</strong></td>
+        <td>最后修改后 90 天</td>
+        <td>自动删除（每 24 小时）+ 手动删除</td>
     </tr>
     <tr>
-        <td data-label="数据类型"><strong>购买历史记录 (Firebase)</strong></td>
-        <td data-label="保留期限">购买后 365 天</td>
-        <td data-label="删除方式">自动删除 + 手动删除</td>
+        <td><strong>购买历史记录 (Firebase)</strong></td>
+        <td>购买后 365 天</td>
+        <td>自动删除 + 手动删除</td>
     </tr>
     <tr>
-        <td data-label="数据类型"><strong>本地数据（设备）</strong></td>
-        <td data-label="保留期限">直到卸载</td>
-        <td data-label="删除方式">卸载应用 + 手动删除</td>
+        <td><strong>本地数据（设备）</strong></td>
+        <td>直到卸载</td>
+        <td>卸载应用 + 手动删除</td>
     </tr>
     <tr>
-        <td data-label="数据类型"><strong>联系人-语言缓存（设备）</strong></td>
-        <td data-label="保留期限">直到手动删除或卸载</td>
-        <td data-label="删除方式">"删除所有本地数据"按钮</td>
+        <td><strong>联系人-语言缓存（设备）</strong></td>
+        <td>直到手动删除或卸载</td>
+        <td>"删除所有本地数据"按钮</td>
     </tr>
     <tr>
-        <td data-label="数据类型"><strong>N-gram 预测模型（设备）</strong></td>
-        <td data-label="保留期限">直到手动删除或卸载</td>
-        <td data-label="删除方式">"删除所有本地数据"按钮或从离线模型界面移除</td>
+        <td><strong>N-gram 预测模型（设备）</strong></td>
+        <td>直到手动删除或卸载</td>
+        <td>"删除所有本地数据"按钮或从离线模型界面移除</td>
     </tr>
     <tr>
-        <td data-label="数据类型"><strong>Hunspell 词典（设备）</strong></td>
-        <td data-label="保留期限">直到手动删除或卸载</td>
-        <td data-label="删除方式">"删除所有本地数据"按钮</td>
+        <td><strong>Hunspell 词典（设备）</strong></td>
+        <td>直到手动删除或卸载</td>
+        <td>"删除所有本地数据"按钮</td>
     </tr>
     <tr>
-        <td data-label="数据类型"><strong>已学习的词汇（预测输入）</strong></td>
-        <td data-label="保留期限">14 天（自动衰减）</td>
-        <td data-label="删除方式">自动删除 + 手动删除</td>
+        <td><strong>已学习的词汇（预测输入）</strong></td>
+        <td>14 天（自动衰减）</td>
+        <td>自动删除 + 手动删除</td>
     </tr>
     <tr>
-        <td data-label="数据类型"><strong>翻译文本</strong></td>
-        <td data-label="保留期限">0 秒（从不保存）</td>
-        <td data-label="删除方式">自动（仅在内存中中转）</td>
+        <td><strong>翻译文本</strong></td>
+        <td>0 秒（从不保存）</td>
+        <td>自动（仅在内存中中转）</td>
     </tr>
     <tr>
-        <td data-label="数据类型"><strong>翻译缓存 (RAM)</strong></td>
-        <td data-label="保留期限">直到关闭应用</td>
-        <td data-label="删除方式">自动</td>
+        <td><strong>翻译缓存 (RAM)</strong></td>
+        <td>直到关闭应用</td>
+        <td>自动</td>
     </tr>
     <tr>
-        <td data-label="数据类型"><strong>消歧缓存 (RAM)</strong></td>
-        <td data-label="保留期限">直到无障碍服务重启</td>
-        <td data-label="删除方式">自动</td>
+        <td><strong>消歧缓存 (RAM)</strong></td>
+        <td>直到无障碍服务重启</td>
+        <td>自动</td>
     </tr>
 </table></div>
 
@@ -790,22 +767,22 @@
         <th>持久性</th>
     </tr>
     <tr>
-        <td data-label="标识符"><strong>Android ID</strong></td>
-        <td data-label="类型">Settings.Secure.ANDROID_ID</td>
-        <td data-label="目的">生成唯一且稳定的设备 ID</td>
-        <td data-label="持久性">在应用重新安装间保持不变（相同签名密钥）。<strong>恢复出厂设置后会改变。</strong></td>
+        <td><strong>Android ID</strong></td>
+        <td>Settings.Secure.ANDROID_ID</td>
+        <td>生成唯一且稳定的设备 ID</td>
+        <td>在应用重新安装间保持不变（相同签名密钥）。<strong>恢复出厂设置后会改变。</strong></td>
     </tr>
     <tr>
-        <td data-label="标识符"><strong>Install Referrer ID</strong></td>
-        <td data-label="类型">Google Play Install Referrer API</td>
-        <td data-label="目的">Android ID 不可用时的备选方案</td>
-        <td data-label="持久性">在重新安装间保持不变（如从 Play 商店安装）</td>
+        <td><strong>Install Referrer ID</strong></td>
+        <td>Google Play Install Referrer API</td>
+        <td>Android ID 不可用时的备选方案</td>
+        <td>在重新安装间保持不变（如从 Play 商店安装）</td>
     </tr>
     <tr>
-        <td data-label="标识符"><strong>本地 UUID</strong></td>
-        <td data-label="类型">java.util.UUID</td>
-        <td data-label="目的">最终备选方案（仅用于侧载安装）</td>
-        <td data-label="持久性">不持久（卸载后丢失）</td>
+        <td><strong>本地 UUID</strong></td>
+        <td>java.util.UUID</td>
+        <td>最终备选方案（仅用于侧载安装）</td>
+        <td>不持久（卸载后丢失）</td>
     </tr>
 </table></div>
 
@@ -824,29 +801,29 @@
         <th>是否必需</th>
     </tr>
     <tr>
-        <td data-label="权限"><strong>通讯录</strong></td>
-        <td data-label="目的">为每位联系人分配语言以自动切换键盘</td>
-        <td data-label="是否必需">❌ 否（可选）</td>
+        <td><strong>通讯录</strong></td>
+        <td>为每位联系人分配语言以自动切换键盘</td>
+        <td>❌ 否（可选）</td>
     </tr>
     <tr>
-        <td data-label="权限"><strong>无障碍服务</strong></td>
-        <td data-label="目的">检测当前活跃的聊天应用以自动切换语言</td>
-        <td data-label="是否必需">❌ 否（可选）</td>
+        <td><strong>无障碍服务</strong></td>
+        <td>检测当前活跃的聊天应用以自动切换语言</td>
+        <td>❌ 否（可选）</td>
     </tr>
     <tr>
-        <td data-label="权限"><strong>通知</strong></td>
-        <td data-label="目的">在锁屏快捷回复中使用正确语言</td>
-        <td data-label="是否必需">❌ 否（可选）</td>
+        <td><strong>通知</strong></td>
+        <td>在锁屏快捷回复中使用正确语言</td>
+        <td>❌ 否（可选）</td>
     </tr>
     <tr>
-        <td data-label="权限"><strong>麦克风</strong></td>
-        <td data-label="目的">语音输入（仅在按下麦克风按钮时录音）</td>
-        <td data-label="是否必需">❌ 否（可选）</td>
+        <td><strong>麦克风</strong></td>
+        <td>语音输入（仅在按下麦克风按钮时录音）</td>
+        <td>❌ 否（可选）</td>
     </tr>
     <tr>
-        <td data-label="权限"><strong>互联网</strong></td>
-        <td data-label="目的">实时翻译和云端备份</td>
-        <td data-label="是否必需">✅ 是（翻译功能需要）</td>
+        <td><strong>互联网</strong></td>
+        <td>实时翻译和云端备份</td>
+        <td>✅ 是（翻译功能需要）</td>
     </tr>
 </table></div>
 

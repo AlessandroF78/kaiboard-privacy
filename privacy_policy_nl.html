@@ -90,43 +90,20 @@
         * { box-sizing: border-box; }
         html { overflow-x: hidden; }
         body { overflow-x: hidden; max-width: 100%; }
-
+        .table-wrapper {
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+        }
+        .table-wrapper table {
+            margin: 0;
+            min-width: 480px;
+        }
         @media (max-width: 650px) {
             body { padding: 15px; }
             .container { padding: 20px; }
-            .table-wrapper thead { display: none; }
-            .table-wrapper table,
-            .table-wrapper tbody,
-            .table-wrapper tr { display: block; width: 100%; }
-            .table-wrapper tr {
-                border: 1px solid #ddd;
-                border-radius: 6px;
-                margin-bottom: 12px;
-                background: #fff;
-                overflow: hidden;
-            }
-            .table-wrapper td {
-                display: block;
-                width: 100%;
-                padding: 10px 12px;
-                font-size: 13px;
-                line-height: 1.5;
-                border: none;
-                border-bottom: 1px solid #f0f0f0;
-                text-align: left;
-            }
-            .table-wrapper td:last-child { border-bottom: none; }
-            .table-wrapper td::before {
-                content: attr(data-label);
-                display: block;
-                font-weight: 600;
-                font-size: 11px;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                color: #0FA3A3;
-                margin-bottom: 4px;
-            }
-            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+            th, td { padding: 8px 10px; font-size: 13px; }
         }
     </style>
 </head>
@@ -161,28 +138,28 @@
         <th>Rechtsgrondslag</th>
     </tr>
     <tr>
-        <td data-label="Gegeven"><strong>Apparaat-Array</strong></td>
-        <td data-label="Type">Lijst van identifiers (bijv. ["android_e19d6c...", "android_175be4..."])</td>
-        <td data-label="Doel">Abonnement en tokens synchroniseren over meerdere apparaten met hetzelfde Google Play-account</td>
-        <td data-label="Rechtsgrondslag">Contractuitvoering (Art. 6.1.b AVG)</td>
+        <td><strong>Apparaat-Array</strong></td>
+        <td>Lijst van identifiers (bijv. ["android_e19d6c...", "android_175be4..."])</td>
+        <td>Abonnement en tokens synchroniseren over meerdere apparaten met hetzelfde Google Play-account</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
     <tr>
-        <td data-label="Gegeven"><strong>Huidig Tokengebruik</strong></td>
-        <td data-label="Type">Geheel getal (current_usage)</td>
-        <td data-label="Doel">Het maandelijkse verbruik bijhouden dat gedeeld wordt over alle apparaten</td>
-        <td data-label="Rechtsgrondslag">Contractuitvoering (Art. 6.1.b AVG)</td>
+        <td><strong>Huidig Tokengebruik</strong></td>
+        <td>Geheel getal (current_usage)</td>
+        <td>Het maandelijkse verbruik bijhouden dat gedeeld wordt over alle apparaten</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
     <tr>
-        <td data-label="Gegeven"><strong>Aankoopgeschiedenis</strong></td>
-        <td data-label="Type">Product-ID, aankoopdatum, bestelnummer</td>
-        <td data-label="Doel">Aankopen verifiëren en fraude voorkomen</td>
-        <td data-label="Rechtsgrondslag">Contractuitvoering (Art. 6.1.b AVG)</td>
+        <td><strong>Aankoopgeschiedenis</strong></td>
+        <td>Product-ID, aankoopdatum, bestelnummer</td>
+        <td>Aankopen verifiëren en fraude voorkomen</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
     <tr>
-        <td data-label="Gegeven"><strong>Te Vertalen Tekst</strong></td>
-        <td data-label="Type">Tekstinhoud</td>
-        <td data-label="Doel">Realtime vertaling</td>
-        <td data-label="Rechtsgrondslag">Contractuitvoering (Art. 6.1.b AVG)</td>
+        <td><strong>Te Vertalen Tekst</strong></td>
+        <td>Tekstinhoud</td>
+        <td>Realtime vertaling</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
 </table></div>
 
@@ -218,64 +195,64 @@
         <th>Rechtsgrondslag</th>
     </tr>
     <tr>
-        <td data-label="Gegevens"><strong>Abonnementsplan</strong></td>
-        <td data-label="Type">Tekenreeks (bijv. "plus", "pro", "max")</td>
-        <td data-label="Doel">Actief plan identificeren en correcte tokenlimiet toepassen</td>
-        <td data-label="Rechtsgrondslag">Contractuitvoering (Art. 6.1.b AVG)</td>
+        <td><strong>Abonnementsplan</strong></td>
+        <td>Tekenreeks (bijv. "plus", "pro", "max")</td>
+        <td>Actief plan identificeren en correcte tokenlimiet toepassen</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
     <tr>
-        <td data-label="Gegevens"><strong>Maandelijkse Tokenlimiet</strong></td>
-        <td data-label="Type">Geheel getal (bijv. 250000, 500000, 1000000)</td>
-        <td data-label="Doel">Maximum tokens in abonnement toepassen</td>
-        <td data-label="Rechtsgrondslag">Contractuitvoering (Art. 6.1.b AVG)</td>
+        <td><strong>Maandelijkse Tokenlimiet</strong></td>
+        <td>Geheel getal (bijv. 250000, 500000, 1000000)</td>
+        <td>Maximum tokens in abonnement toepassen</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
     <tr>
-        <td data-label="Gegevens"><strong>Huidig Tokengebruik</strong></td>
-        <td data-label="Type">Geheel getal</td>
-        <td data-label="Doel">Maandelijks verbruik bijhouden en limiet toepassen</td>
-        <td data-label="Rechtsgrondslag">Contractuitvoering (Art. 6.1.b AVG)</td>
+        <td><strong>Huidig Tokengebruik</strong></td>
+        <td>Geheel getal</td>
+        <td>Maandelijks verbruik bijhouden en limiet toepassen</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
     <tr>
-        <td data-label="Gegevens"><strong>Maandelijkse Resetdatum</strong></td>
-        <td data-label="Type">ISO-datum (bijv. "2026-02-01")</td>
-        <td data-label="Doel">Automatische gebruiksreset aan begin van maand</td>
-        <td data-label="Rechtsgrondslag">Contractuitvoering (Art. 6.1.b AVG)</td>
+        <td><strong>Maandelijkse Resetdatum</strong></td>
+        <td>ISO-datum (bijv. "2026-02-01")</td>
+        <td>Automatische gebruiksreset aan begin van maand</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
     <tr>
-        <td data-label="Gegevens"><strong>Google Play Product-ID</strong></td>
-        <td data-label="Type">Tekenreeks (bijv. "abbonamento_mensile_2500")</td>
-        <td data-label="Doel">Abonnementsgeldigheid verifiëren via Google Play Billing API</td>
-        <td data-label="Rechtsgrondslag">Contractuitvoering (Art. 6.1.b AVG)</td>
+        <td><strong>Google Play Product-ID</strong></td>
+        <td>Tekenreeks (bijv. "abbonamento_mensile_2500")</td>
+        <td>Abonnementsgeldigheid verifiëren via Google Play Billing API</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
     <tr>
-        <td data-label="Gegevens"><strong>Auto-vernieuwingsstatus</strong></td>
-        <td data-label="Type">Boolean</td>
-        <td data-label="Doel">Controleren of abonnement automatisch wordt verlengd</td>
-        <td data-label="Rechtsgrondslag">Contractuitvoering (Art. 6.1.b AVG)</td>
+        <td><strong>Auto-vernieuwingsstatus</strong></td>
+        <td>Boolean</td>
+        <td>Controleren of abonnement automatisch wordt verlengd</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
     <tr>
-        <td data-label="Gegevens"><strong>Aankoopdatum Abonnement</strong></td>
-        <td data-label="Type">Tijdstempel</td>
-        <td data-label="Doel">Beheer factureringscyclus en geschillen</td>
-        <td data-label="Rechtsgrondslag">Contractuitvoering (Art. 6.1.b AVG)</td>
+        <td><strong>Aankoopdatum Abonnement</strong></td>
+        <td>Tijdstempel</td>
+        <td>Beheer factureringscyclus en geschillen</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
     <tr>
-        <td data-label="Gegevens"><strong>Einddatum Abonnement</strong></td>
-        <td data-label="Type">ISO 8601 Tijdstempel (bijv. "2026-02-28T14:30:00Z")</td>
-        <td data-label="Doel">Respijtperiode beheren na annulering (abonnement blijft actief tot deze datum)</td>
-        <td data-label="Rechtsgrondslag">Contractuitvoering (Art. 6.1.b AVG)</td>
+        <td><strong>Einddatum Abonnement</strong></td>
+        <td>ISO 8601 Tijdstempel (bijv. "2026-02-28T14:30:00Z")</td>
+        <td>Respijtperiode beheren na annulering (abonnement blijft actief tot deze datum)</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
     <tr>
-        <td data-label="Gegevens"><strong>Vlag "Wordt niet verlengd"</strong></td>
-        <td data-label="Type">Boolean (will_not_renew)</td>
-        <td data-label="Doel">Aangeven of abonnement is geannuleerd maar geldig blijft tot afloop</td>
-        <td data-label="Rechtsgrondslag">Contractuitvoering (Art. 6.1.b AVG)</td>
+        <td><strong>Vlag "Wordt niet verlengd"</strong></td>
+        <td>Boolean (will_not_renew)</td>
+        <td>Aangeven of abonnement is geannuleerd maar geldig blijft tot afloop</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
     <tr>
-        <td data-label="Gegevens"><strong>Annuleringsdatum</strong></td>
-        <td data-label="Type">Tijdstempel (cancelled_at)</td>
-        <td data-label="Doel">Bijhouden wanneer de gebruiker het abonnement heeft geannuleerd</td>
-        <td data-label="Rechtsgrondslag">Contractuitvoering (Art. 6.1.b AVG)</td>
+        <td><strong>Annuleringsdatum</strong></td>
+        <td>Tijdstempel (cancelled_at)</td>
+        <td>Bijhouden wanneer de gebruiker het abonnement heeft geannuleerd</td>
+        <td>Contractuitvoering (Art. 6.1.b AVG)</td>
     </tr>
 </table></div>
 
@@ -338,16 +315,16 @@
         <th>Bewaring</th>
     </tr>
     <tr>
-        <td data-label="Gegeven"><strong>Abonnementsgeschiedenis</strong></td>
-        <td data-label="Type">Array van objecten in user_subscriptions_history/{purchaseToken}</td>
-        <td data-label="Doel">Traceerbaarheid van aankopen, audittrail, AVG-naleving</td>
-        <td data-label="Bewaring">90 dagen vanaf afloop</td>
+        <td><strong>Abonnementsgeschiedenis</strong></td>
+        <td>Array van objecten in user_subscriptions_history/{purchaseToken}</td>
+        <td>Traceerbaarheid van aankopen, audittrail, AVG-naleving</td>
+        <td>90 dagen vanaf afloop</td>
     </tr>
     <tr>
-        <td data-label="Gegeven"><strong>Gegevens per Vermelding</strong></td>
-        <td data-label="Type">Plan, gebruikte tokens/limiet, start-/eind-/annuleringsdatums, annuleringsreden, apparaten</td>
-        <td data-label="Doel">Audit, gebruikersondersteuning, terugbetalingsbeheer</td>
-        <td data-label="Bewaring">90 dagen vanaf afloop</td>
+        <td><strong>Gegevens per Vermelding</strong></td>
+        <td>Plan, gebruikte tokens/limiet, start-/eind-/annuleringsdatums, annuleringsreden, apparaten</td>
+        <td>Audit, gebruikersondersteuning, terugbetalingsbeheer</td>
+        <td>90 dagen vanaf afloop</td>
     </tr>
 </table></div>
 
@@ -377,9 +354,9 @@
         <th>Bewaring</th>
     </tr>
     <tr>
-        <td data-label="Gegeven"><strong>Administratieve Activiteitenlogboeken</strong></td>
-        <td data-label="Type">Array van gebeurtenissen in admin_activity_logs/{device_id}</td>
-        <td data-label="Doel">
+        <td><strong>Administratieve Activiteitenlogboeken</strong></td>
+        <td>Array van gebeurtenissen in admin_activity_logs/{device_id}</td>
+        <td>
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Audittrail voor gebruikersondersteuning</li>
                 <li>Google Play geschillenbeslechting (binnen 60 dagen)</li>
@@ -387,11 +364,11 @@
                 <li>Beheer van respijtperiode en automatische verlengingen</li>
             </ul>
         </td>
-        <td data-label="Bewaring">90 dagen vanaf laatste wijziging</td>
+        <td>90 dagen vanaf laatste wijziging</td>
     </tr>
     <tr>
-        <td data-label="Gegeven"><strong>Geregistreerde Gebeurtenissen</strong></td>
-        <td data-label="Type">
+        <td><strong>Geregistreerde Gebeurtenissen</strong></td>
+        <td>
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Abonnementsaanmaak</li>
                 <li>Abonnementsannulering</li>
@@ -400,14 +377,14 @@
                 <li>Planwijzigingen</li>
             </ul>
         </td>
-        <td data-label="Doel">Wijzigingsgeschiedenis bijhouden voor audit en ondersteuning</td>
-        <td data-label="Bewaring">90 dagen vanaf laatste wijziging</td>
+        <td>Wijzigingsgeschiedenis bijhouden voor audit en ondersteuning</td>
+        <td>90 dagen vanaf laatste wijziging</td>
     </tr>
     <tr>
-        <td data-label="Gegeven"><strong>Details per Gebeurtenis</strong></td>
-        <td data-label="Type">Tijdstempel, actie, reden, plan, operatiedetails</td>
-        <td data-label="Doel">Informatie nodig om tijdlijn te reconstrueren bij geschillen</td>
-        <td data-label="Bewaring">90 dagen vanaf laatste wijziging</td>
+        <td><strong>Details per Gebeurtenis</strong></td>
+        <td>Tijdstempel, actie, reden, plan, operatiedetails</td>
+        <td>Informatie nodig om tijdlijn te reconstrueren bij geschillen</td>
+        <td>90 dagen vanaf laatste wijziging</td>
     </tr>
 </table></div>
 
@@ -574,28 +551,28 @@
         <th>Locatie</th>
     </tr>
     <tr>
-        <td data-label="Dienst"><strong>Firebase (Google)</strong></td>
-        <td data-label="Verzonden Gegevens">Anoniem ID, huidig tokengebruik, aankoopgeschiedenis, abonnementsgegevens, activiteitenlogboeken</td>
-        <td data-label="Doel">Back-up, synchronisatie en audittrail</td>
-        <td data-label="Locatie">EU (Europese servers)</td>
+        <td><strong>Firebase (Google)</strong></td>
+        <td>Anoniem ID, huidig tokengebruik, aankoopgeschiedenis, abonnementsgegevens, activiteitenlogboeken</td>
+        <td>Back-up, synchronisatie en audittrail</td>
+        <td>EU (Europese servers)</td>
     </tr>
     <tr>
-        <td data-label="Dienst"><strong>Cloudflare Worker</strong></td>
-        <td data-label="Verzonden Gegevens">Te vertalen tekst (alleen doorvoer)</td>
-        <td data-label="Doel">Beveiligde relay voor vertaling</td>
-        <td data-label="Locatie">EU (Europese servers)</td>
+        <td><strong>Cloudflare Worker</strong></td>
+        <td>Te vertalen tekst (alleen doorvoer)</td>
+        <td>Beveiligde relay voor vertaling</td>
+        <td>EU (Europese servers)</td>
     </tr>
     <tr>
-        <td data-label="Dienst"><strong>OpenAI</strong></td>
-        <td data-label="Verzonden Gegevens">Te vertalen tekst (alleen doorvoer)</td>
-        <td data-label="Doel">Vertalingsverwerking</td>
-        <td data-label="Locatie">VS (met Standaard Contractbepalingen)</td>
+        <td><strong>OpenAI</strong></td>
+        <td>Te vertalen tekst (alleen doorvoer)</td>
+        <td>Vertalingsverwerking</td>
+        <td>VS (met Standaard Contractbepalingen)</td>
     </tr>
     <tr>
-        <td data-label="Dienst"><strong>Google Play Billing</strong></td>
-        <td data-label="Verzonden Gegevens">Bestelnummer, gekocht product</td>
-        <td data-label="Doel">Beheer van in-app-aankopen</td>
-        <td data-label="Locatie">EU (Google-servers)</td>
+        <td><strong>Google Play Billing</strong></td>
+        <td>Bestelnummer, gekocht product</td>
+        <td>Beheer van in-app-aankopen</td>
+        <td>EU (Google-servers)</td>
     </tr>
 </table></div>
 
@@ -632,64 +609,64 @@
         <th>Verwijdering</th>
     </tr>
     <tr>
-        <td data-label="Gegevenstype"><strong>Actieve Abonnementsgegevens (Firebase)</strong></td>
-        <td data-label="Bewaartermijn">Tot het einde van de huidige factureringsperiode</td>
-        <td data-label="Verwijdering">Automatische verwijdering bij afloop + verplaatsing naar geschiedenis</td>
+        <td><strong>Actieve Abonnementsgegevens (Firebase)</strong></td>
+        <td>Tot het einde van de huidige factureringsperiode</td>
+        <td>Automatische verwijdering bij afloop + verplaatsing naar geschiedenis</td>
     </tr>
     <tr>
-        <td data-label="Gegevenstype"><strong>Abonnementsgeschiedenis (Firebase)</strong></td>
-        <td data-label="Bewaartermijn">90 dagen vanaf afloop abonnement</td>
-        <td data-label="Verwijdering">Automatische verwijdering + handmatige verwijdering via "Cloudgegevens verwijderen"</td>
+        <td><strong>Abonnementsgeschiedenis (Firebase)</strong></td>
+        <td>90 dagen vanaf afloop abonnement</td>
+        <td>Automatische verwijdering + handmatige verwijdering via "Cloudgegevens verwijderen"</td>
     </tr>
     <tr>
-        <td data-label="Gegevenstype"><strong>Activiteitenlogboeken (admin_activity_logs)</strong></td>
-        <td data-label="Bewaartermijn">90 dagen vanaf laatste wijziging</td>
-        <td data-label="Verwijdering">Automatische verwijdering (elke 24u) + handmatige verwijdering</td>
+        <td><strong>Activiteitenlogboeken (admin_activity_logs)</strong></td>
+        <td>90 dagen vanaf laatste wijziging</td>
+        <td>Automatische verwijdering (elke 24u) + handmatige verwijdering</td>
     </tr>
     <tr>
-        <td data-label="Gegevenstype"><strong>Aankoopgeschiedenis (Firebase)</strong></td>
-        <td data-label="Bewaartermijn">365 dagen vanaf aankoop</td>
-        <td data-label="Verwijdering">Automatisch + handmatige verwijdering</td>
+        <td><strong>Aankoopgeschiedenis (Firebase)</strong></td>
+        <td>365 dagen vanaf aankoop</td>
+        <td>Automatisch + handmatige verwijdering</td>
     </tr>
     <tr>
-        <td data-label="Gegevenstype"><strong>Lokale Gegevens (Apparaat)</strong></td>
-        <td data-label="Bewaartermijn">Tot deïnstallatie</td>
-        <td data-label="Verwijdering">App deïnstalleren + handmatige verwijdering</td>
+        <td><strong>Lokale Gegevens (Apparaat)</strong></td>
+        <td>Tot deïnstallatie</td>
+        <td>App deïnstalleren + handmatige verwijdering</td>
     </tr>
     <tr>
-        <td data-label="Gegevenstype"><strong>Contact-Taal Cache (Apparaat)</strong></td>
-        <td data-label="Bewaartermijn">Tot handmatige verwijdering of deïnstallatie</td>
-        <td data-label="Verwijdering">Knop "Alle lokale gegevens verwijderen"</td>
+        <td><strong>Contact-Taal Cache (Apparaat)</strong></td>
+        <td>Tot handmatige verwijdering of deïnstallatie</td>
+        <td>Knop "Alle lokale gegevens verwijderen"</td>
     </tr>
     <tr>
-        <td data-label="Gegevenstype"><strong>Voorspellende N-gram Modellen (Apparaat)</strong></td>
-        <td data-label="Bewaartermijn">Tot handmatige verwijdering of deïnstallatie</td>
-        <td data-label="Verwijdering">Knop "Alle lokale gegevens verwijderen" of verwijdering vanuit het scherm Offline Modellen</td>
+        <td><strong>Voorspellende N-gram Modellen (Apparaat)</strong></td>
+        <td>Tot handmatige verwijdering of deïnstallatie</td>
+        <td>Knop "Alle lokale gegevens verwijderen" of verwijdering vanuit het scherm Offline Modellen</td>
     </tr>
     <tr>
-        <td data-label="Gegevenstype"><strong>Hunspell-woordenboeken (Apparaat)</strong></td>
-        <td data-label="Bewaartermijn">Tot handmatige verwijdering of deïnstallatie</td>
-        <td data-label="Verwijdering">Knop "Alle lokale gegevens verwijderen"</td>
+        <td><strong>Hunspell-woordenboeken (Apparaat)</strong></td>
+        <td>Tot handmatige verwijdering of deïnstallatie</td>
+        <td>Knop "Alle lokale gegevens verwijderen"</td>
     </tr>
     <tr>
-        <td data-label="Gegevenstype"><strong>Geleerde Woorden (Voorspelling)</strong></td>
-        <td data-label="Bewaartermijn">14 dagen (automatisch verval)</td>
-        <td data-label="Verwijdering">Automatisch + handmatige verwijdering</td>
+        <td><strong>Geleerde Woorden (Voorspelling)</strong></td>
+        <td>14 dagen (automatisch verval)</td>
+        <td>Automatisch + handmatige verwijdering</td>
     </tr>
     <tr>
-        <td data-label="Gegevenstype"><strong>Vertaalde Tekst</strong></td>
-        <td data-label="Bewaartermijn">0 seconden (NOOIT opgeslagen)</td>
-        <td data-label="Verwijdering">Automatisch (alleen doorvoer in geheugen)</td>
+        <td><strong>Vertaalde Tekst</strong></td>
+        <td>0 seconden (NOOIT opgeslagen)</td>
+        <td>Automatisch (alleen doorvoer in geheugen)</td>
     </tr>
     <tr>
-        <td data-label="Gegevenstype"><strong>Vertaalcache (RAM)</strong></td>
-        <td data-label="Bewaartermijn">Tot app wordt gesloten</td>
-        <td data-label="Verwijdering">Automatisch</td>
+        <td><strong>Vertaalcache (RAM)</strong></td>
+        <td>Tot app wordt gesloten</td>
+        <td>Automatisch</td>
     </tr>
     <tr>
-        <td data-label="Gegevenstype"><strong>Disambiguatiecache (RAM)</strong></td>
-        <td data-label="Bewaartermijn">Tot herstart van de toegankelijkheidsservice</td>
-        <td data-label="Verwijdering">Automatisch</td>
+        <td><strong>Disambiguatiecache (RAM)</strong></td>
+        <td>Tot herstart van de toegankelijkheidsservice</td>
+        <td>Automatisch</td>
     </tr>
 </table></div>
 
@@ -803,22 +780,22 @@
         <th>Persistentie</th>
     </tr>
     <tr>
-        <td data-label="Identifier"><strong>Android ID</strong></td>
-        <td data-label="Type">Settings.Secure.ANDROID_ID</td>
-        <td data-label="Doel">Unieke en stabiele apparaat-ID genereren</td>
-        <td data-label="Persistentie">Blijft bestaan bij herinstallaties van de app (zelfde ondertekeningssleutel). <strong>Verandert na een fabrieksreset van het apparaat.</strong></td>
+        <td><strong>Android ID</strong></td>
+        <td>Settings.Secure.ANDROID_ID</td>
+        <td>Unieke en stabiele apparaat-ID genereren</td>
+        <td>Blijft bestaan bij herinstallaties van de app (zelfde ondertekeningssleutel). <strong>Verandert na een fabrieksreset van het apparaat.</strong></td>
     </tr>
     <tr>
-        <td data-label="Identifier"><strong>Install Referrer ID</strong></td>
-        <td data-label="Type">Google Play Install Referrer API</td>
-        <td data-label="Doel">Fallback als Android ID niet beschikbaar</td>
-        <td data-label="Persistentie">Blijft tussen herinstallaties bestaan (als geïnstalleerd vanaf Play Store)</td>
+        <td><strong>Install Referrer ID</strong></td>
+        <td>Google Play Install Referrer API</td>
+        <td>Fallback als Android ID niet beschikbaar</td>
+        <td>Blijft tussen herinstallaties bestaan (als geïnstalleerd vanaf Play Store)</td>
     </tr>
     <tr>
-        <td data-label="Identifier"><strong>Lokale UUID</strong></td>
-        <td data-label="Type">java.util.UUID</td>
-        <td data-label="Doel">Laatste fallback (alleen voor sideload)</td>
-        <td data-label="Persistentie">Blijft NIET bestaan (verloren bij deïnstallatie)</td>
+        <td><strong>Lokale UUID</strong></td>
+        <td>java.util.UUID</td>
+        <td>Laatste fallback (alleen voor sideload)</td>
+        <td>Blijft NIET bestaan (verloren bij deïnstallatie)</td>
     </tr>
 </table></div>
 
@@ -837,29 +814,29 @@
         <th>Verplicht</th>
     </tr>
     <tr>
-        <td data-label="Machtiging"><strong>Contacten</strong></td>
-        <td data-label="Doel">Taal toewijzen aan elk contact voor automatisch toetsenbordwisselen</td>
-        <td data-label="Verplicht">❌ Nee (optioneel)</td>
+        <td><strong>Contacten</strong></td>
+        <td>Taal toewijzen aan elk contact voor automatisch toetsenbordwisselen</td>
+        <td>❌ Nee (optioneel)</td>
     </tr>
     <tr>
-        <td data-label="Machtiging"><strong>Toegankelijkheid</strong></td>
-        <td data-label="Doel">Actieve chat-app detecteren om automatisch van taal te wisselen</td>
-        <td data-label="Verplicht">❌ Nee (optioneel)</td>
+        <td><strong>Toegankelijkheid</strong></td>
+        <td>Actieve chat-app detecteren om automatisch van taal te wisselen</td>
+        <td>❌ Nee (optioneel)</td>
     </tr>
     <tr>
-        <td data-label="Machtiging"><strong>Meldingen</strong></td>
-        <td data-label="Doel">Snelle antwoorden vanaf vergrendelscherm met correcte taal</td>
-        <td data-label="Verplicht">❌ Nee (optioneel)</td>
+        <td><strong>Meldingen</strong></td>
+        <td>Snelle antwoorden vanaf vergrendelscherm met correcte taal</td>
+        <td>❌ Nee (optioneel)</td>
     </tr>
     <tr>
-        <td data-label="Machtiging"><strong>Microfoon</strong></td>
-        <td data-label="Doel">Spraakinvoer (opname alleen wanneer u de microfoonknop indrukt)</td>
-        <td data-label="Verplicht">❌ Nee (optioneel)</td>
+        <td><strong>Microfoon</strong></td>
+        <td>Spraakinvoer (opname alleen wanneer u de microfoonknop indrukt)</td>
+        <td>❌ Nee (optioneel)</td>
     </tr>
     <tr>
-        <td data-label="Machtiging"><strong>Internet</strong></td>
-        <td data-label="Doel">Realtime vertaling en cloud back-up</td>
-        <td data-label="Verplicht">✅ Ja (voor vertaalfuncties)</td>
+        <td><strong>Internet</strong></td>
+        <td>Realtime vertaling en cloud back-up</td>
+        <td>✅ Ja (voor vertaalfuncties)</td>
     </tr>
 </table></div>
 

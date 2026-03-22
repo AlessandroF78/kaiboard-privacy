@@ -1,508 +1,1 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuwanie Danych - kAIboard</title>
-    <style>
-        body {
-            font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.8;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            color: #111827;
-            background-color: #F4F7FA;
-        }
-        .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #111827;
-            font-size: 26px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #0FA3A3;
-            hyphens: auto;
-            -webkit-hyphens: auto;
-        }
-        h2 {
-            color: #111827;
-            font-size: 24px;
-            font-weight: 600;
-            margin-top: 40px;
-            margin-bottom: 15px;
-        }
-        h3 {
-            color: #111827;
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 25px;
-            margin-bottom: 10px;
-        }
-        p {
-            margin-bottom: 15px;
-        }
-        .intro {
-            background-color: #F4F7FA;
-            padding: 20px;
-            border-left: 4px solid #0FA3A3;
-            margin: 25px 0;
-        }
-        .warning {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-left: 4px solid #0FA3A3;
-            margin: 25px 0;
-        }
-        .info-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 6px;
-            margin: 25px 0;
-        }
-        ul, ol {
-            margin: 15px 0;
-            padding-left: 30px;
-        }
-        li {
-            margin: 8px 0;
-            line-height: 1.6;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 15px;
-        }
-        th, td {
-            border: 1px solid #dee2e6;
-            padding: 12px 15px;
-            text-align: left;
-        }
-        th {
-            background-color: #0FA3A3;
-            font-weight: 600;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #F8FAFA;
-        }
-        .button {
-            display: inline-block;
-            background-color: #0FA3A3;
-            color: white;
-            padding: 12px 28px;
-            text-decoration: none;
-            border-radius: 6px;
-            margin: 10px 10px 10px 0;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-        .button:hover {
-            background-color: #0D8F8F;
-        }
-        .footer {
-            margin-top: 50px;
-            padding-top: 25px;
-            border-top: 1px solid #e0e0e0;
-            text-align: center;
-            color: #4B5563;
-            font-size: 14px;
-        }
-        strong {
-            font-weight: 600;
-        }
-
-        /* -- MOBILE FIX -- */
-        html, body { overflow-x: hidden; }
-        .table-wrapper {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin: 20px 0;
-        }
-        .table-wrapper table {
-            width: auto;
-            min-width: 480px;
-            margin: 0;
-        }
-        @media (max-width: 650px) {
-            body { padding: 15px; }
-            .container { padding: 20px; }
-            th, td { padding: 8px; font-size: 13px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Polityka Usuwania Danych</h1>
-        
-        <div class="intro">
-            <p><strong>kAIboard</strong> szanuje Twoje prawo do usunięcia danych zgodnie z Artykułem 17 RODO (Prawo do Usunięcia). Możesz usunąć swoje dane osobowe w dowolnym momencie, bezpośrednio przez aplikację lub kontaktując się z nami e-mailem.</p>
-        </div>
-
-        <h2>Metoda 1: Usuwanie w Aplikacji (Natychmiastowe)</h2>
-        
-        <p>Najszybszym sposobem usunięcia danych jest bezpośrednio przez aplikację:</p>
-        
-        <ol>
-            <li>Otwórz <strong>kAIboard</strong> na urządzeniu Android</li>
-            <li>Przejdź do <strong>Ustawień</strong></li>
-            <li>Wybierz <strong>Prywatność i Bezpieczeństwo</strong></li>
-            <li>Wybierz jedną z trzech opcji usuwania</li>
-        </ol>
-
-        <h3>Dostępne Opcje Usuwania</h3>
-        
-        <div class="table-wrapper"><table>
-            <tr>
-                <th>Opcja</th>
-                <th>Co Zostanie Usunięte</th>
-                <th>Efekt</th>
-            </tr>
-            <tr>
-                <td><strong>Usuń Dane w Chmurze</strong></td>
-                <td>
-                    <ul style="margin: 5px 0; padding-left: 20px;">
-                        <li>Dokument aktywnej subskrypcji (user_subscriptions)</li>
-                        <li>Historia subskrypcji (user_subscriptions_history)</li>
-                        <li>Dzienniki aktywności administracyjnej (admin_activity_logs)</li>
-                        <li>Historia zakupów</li>
-                        <li>Tablica urządzeń multi-device</li>
-                    </ul>
-                </td>
-                <td>Nieodwracalne. Stracisz historię zakupów, dzienniki aktywności i historię subskrypcji. Wymaga anulowania subskrypcji jeśli aktywna.</td>
-            </tr>
-            <tr>
-                <td><strong>Usuń Dane Uczenia</strong></td>
-                <td>Nauczone słowa dla spersonalizowanych sugestii (wszystkie 13 języków)</td>
-                <td>Tekst predykcyjny zacznie od nowa.</td>
-            </tr>
-            <tr>
-                <td><strong>Usuń Wszystkie Dane Lokalne</strong></td>
-                <td>
-                    <ul style="margin: 5px 0; padding-left: 20px;">
-                        <li>Dane uczenia (13 języków)</li>
-                        <li>Wszystkie preferencje i ustawienia</li>
-                        <li>Stan aplikacji i przypisania kontakt-język</li>
-                        <li>Alerty subskrypcji</li>
-                        <li>Pobrane modele predykcyjne N-gram</li>
-                        <li>Skopiowane słowniki Hunspell</li>
-                        <li>Pamięć podręczna w RAM (słowniki i vocabularia)</li>
-                        <li>Cała pamięć podręczna aplikacji (pliki tymczasowe, lokalne raporty awarii, pamięć podręczna WebView)</li>
-                    </ul>
-                </td>
-                <td>Aplikacja uruchomi się ponownie z domyślnymi ustawieniami. Żadne pliki użytkownika nie pozostaną na urządzeniu. Dane w chmurze zostają zachowane.</td>
-            </tr>
-        </table></div>
-
-        <p><strong>Czas Przetwarzania:</strong> Natychmiastowy (0-5 sekund)</p>
-
-        <div class="warning">
-            <h3>⚠️ Ograniczenie Usuwania przy Aktywnej Subskrypcji (Art. 17.3.b RODO)</h3>
-            
-            <p>Jeśli masz <strong>aktywną miesięczną subskrypcję</strong>, usuwanie danych w chmurze jest <strong>tymczasowo zablokowane</strong> do momentu anulowania subskrypcji.</p>
-            
-            <p><strong>Powód:</strong> Dane związane z subskrypcją (aktywny plan, limit tokenów, data resetowania) są niezbędne do wykonania trwającej umowy (Art. 6.1.b RODO). Wcześniejsze usunięcie uniemożliwiłoby:</p>
-            <ul>
-                <li>❌ Prawidłowe działanie zakupionej usługi miesięcznej</li>
-                <li>❌ Synchronizację limitu tokenów między urządzeniami</li>
-                <li>❌ Automatyczne resetowanie tokenów na początku miesiąca</li>
-            </ul>
-            
-            <p><strong>Jak postępować:</strong></p>
-            <ol>
-                <li>Anuluj subskrypcję przez Google Play Store</li>
-                <li>Poczekaj do końca bieżącego okresu rozliczeniowego (okres karencji)</li>
-                <li>Usuń dane w chmurze przez aplikację</li>
-            </ol>
-            
-            <p><strong>Natychmiastowe usunięcie:</strong> Aplikacja automatycznie przekierowuje Cię do Google Play, aby zarządzać subskrypcją. Po anulowaniu usuwanie danych będzie dostępne po zakończeniu już opłaconego okresu.</p>
-            
-            <p><strong>Podstawa prawna blokady:</strong> Art. 17.3.b RODO - „Prawo do usunięcia nie ma zastosowania w zakresie, w jakim przetwarzanie jest niezbędne do wykonania umowy, której stroną jest osoba, której dane dotyczą".</p>
-        </div>
-
-        <h2>Metoda 2: Prośba E-mailowa</h2>
-
-        <p>Jeśli wolisz pomoc lub masz pytania dotyczące usuwania danych, możesz skontaktować się z nami e-mailem:</p>
-
-        <div class="info-box">
-            <p><strong>E-mail:</strong> <a href="/cdn-cgi/l/email-protection#7704020707180503371c161e1518160513591202"><span class="__cf_email__" data-cfemail="c1b2b4b1b1aeb3b581aaa0a8a3aea0b3a5efa4b4">[email&#160;protected]</span></a></p>
-            <p><strong>Temat:</strong> „Prośba o Usunięcie Danych RODO"</p>
-            <p><strong>Informacje do Podania:</strong></p>
-            <ul>
-                <li>ID urządzenia (jeśli znane) lub opis urządzenia</li>
-                <li>Typ danych, które chcesz usunąć (chmura, dane uczenia lub wszystkie)</li>
-                <li>Potwierdzenie tożsamości (ze względów bezpieczeństwa)</li>
-            </ul>
-            <p><strong>Czas Odpowiedzi:</strong> Maksymalnie 30 dni (zgodnie z wymogiem Artykułu 12 RODO)</p>
-        </div>
-
-        <h2>Metoda 3: Eksport Danych (Art. 20 RODO)</h2>
-
-        <p>Przed usunięciem danych możesz je wyeksportować w formacie JSON czytelnym maszynowo:</p>
-
-        <ol>
-            <li>Otwórz <strong>kAIboard</strong> na urządzeniu Android</li>
-            <li>Przejdź do <strong>Ustawienia → Prywatność i Bezpieczeństwo</strong></li>
-            <li>Dotknij <strong>„Eksportuj swoje dane (JSON)"</strong></li>
-        </ol>
-
-        <p>Plik JSON zawiera: metadane eksportu, lokalne preferencje, dane uczenia (dla wszystkich 13 języków) i dane w chmurze (subskrypcja, historia, dzienniki aktywności). Możesz udostępnić plik za pomocą dowolnej aplikacji zainstalowanej na urządzeniu.</p>
-
-        <h2>Automatyczne Usuwanie Danych</h2>
-
-        <p>kAIboard zawiera automatyczne mechanizmy czyszczenia danych w celu ochrony prywatności:</p>
-
-        <div class="table-wrapper"><table>
-            <tr>
-                <th>Typ Danych</th>
-                <th>Okres Przechowywania</th>
-                <th>Szczegóły</th>
-            </tr>
-            <tr>
-                <td><strong>Aktywne Dane Subskrypcji (Firebase)</strong></td>
-                <td>Do końca bieżącego okresu rozliczeniowego</td>
-                <td>Automatycznie przenoszone do historii po wygaśnięciu subskrypcji</td>
-            </tr>
-            <tr>
-                <td><strong>Historia Subskrypcji (Firebase)</strong></td>
-                <td>90 dni po wygaśnięciu</td>
-                <td>Automatycznie usuwana 90 dni po zakończeniu subskrypcji</td>
-            </tr>
-            <tr>
-                <td><strong>Dzienniki Aktywności Administracyjnej (Firebase)</strong></td>
-                <td>90 dni od ostatniej modyfikacji</td>
-                <td>Automatycznie usuwane co 24 godziny przez czyszczenie w tle</td>
-            </tr>
-            <tr>
-                <td><strong>Historia Zakupów (Firebase)</strong></td>
-                <td>365 dni od zakupu</td>
-                <td>Automatycznie usuwana po roku</td>
-            </tr>
-            <tr>
-                <td><strong>Nauczone Słowa</strong></td>
-                <td>14 dni z degradacją</td>
-                <td>Wyniki częstotliwości maleją z czasem; nieużywane słowa są usuwane</td>
-            </tr>
-            <tr>
-                <td><strong>Pamięć Podręczna Tłumaczeń</strong></td>
-                <td>Tylko sesja</td>
-                <td>Przechowywane tylko w RAM; usuwane przy zamknięciu aplikacji</td>
-            </tr>
-            <tr>
-                <td><strong>Tekst Tłumaczenia</strong></td>
-                <td>Nigdy nie przechowywany</td>
-                <td>0 sekund przechowywania; tylko tranzyt do API OpenAI</td>
-            </tr>
-        </table></div>
-
-        <h2>Pełny Inwentarz Danych</h2>
-
-        <p>Poniższe tabele szczegółowo przedstawiają wszystkie dane zbierane przez kAIboard i sposób ich usunięcia:</p>
-
-        <h3>Dane w Chmurze (Firebase)</h3>
-
-        <div class="table-wrapper"><table>
-            <tr>
-                <th>Typ Danych</th>
-                <th>Lokalizacja Przechowywania</th>
-                <th>Metoda Usuwania</th>
-            </tr>
-            <tr>
-                <td>Tablica Urządzeń</td>
-                <td>Firebase (chmura)</td>
-                <td>Przycisk „Usuń Dane w Chmurze"</td>
-            </tr>
-            <tr>
-                <td>Bieżące Wykorzystanie Tokenów</td>
-                <td>Firebase (chmura)</td>
-                <td>Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
-            </tr>
-            <tr>
-                <td>Historia Zakupów</td>
-                <td>Firebase (chmura)</td>
-                <td>Przycisk „Usuń Dane w Chmurze"</td>
-            </tr>
-            <tr>
-                <td>Plan Subskrypcji</td>
-                <td>Firebase (chmura)</td>
-                <td>Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
-            </tr>
-            <tr>
-                <td>Miesięczny Limit Tokenów</td>
-                <td>Firebase (chmura)</td>
-                <td>Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
-            </tr>
-            <tr>
-                <td>Data Miesięcznego Resetowania</td>
-                <td>Firebase (chmura)</td>
-                <td>Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>
-            </tr>
-            <tr>
-                <td>Data Zakończenia Subskrypcji</td>
-                <td>Firebase (chmura)</td>
-                <td>Przycisk „Usuń Dane w Chmurze" (tylko po upływie okresu karencji)</td>
-            </tr>
-            <tr>
-                <td>Flaga „Nie Zostanie Odnowiona"</td>
-                <td>Firebase (chmura)</td>
-                <td>Przycisk „Usuń Dane w Chmurze" (tylko po upływie okresu karencji)</td>
-            </tr>
-            <tr>
-                <td>Historia Subskrypcji</td>
-                <td>Firebase (chmura)</td>
-                <td>Przycisk „Usuń Dane w Chmurze" (usuwa wszystko: aktywne + historię)</td>
-            </tr>
-            <tr>
-                <td>Dzienniki Aktywności Administracyjnej</td>
-                <td>Firebase (chmura)</td>
-                <td>Przycisk „Usuń Dane w Chmurze"</td>
-            </tr>
-        </table></div>
-
-        <h3>Dane Lokalne (Urządzenie)</h3>
-
-        <div class="table-wrapper"><table>
-            <tr>
-                <th>Typ Danych</th>
-                <th>Lokalizacja Przechowywania</th>
-                <th>Metoda Usuwania</th>
-            </tr>
-            <tr>
-                <td>Nauczone Słowa (Predykcje)</td>
-                <td>Lokalnie (urządzenie)</td>
-                <td>Przycisk „Usuń Dane Uczenia" lub „Usuń Wszystkie Dane Lokalne"</td>
-            </tr>
-            <tr>
-                <td>Preferencje Aplikacji</td>
-                <td>Lokalnie (urządzenie)</td>
-                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
-            </tr>
-            <tr>
-                <td>Stan Aplikacji</td>
-                <td>Lokalnie (urządzenie)</td>
-                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
-            </tr>
-            <tr>
-                <td>Przypisania Języków Kontaktów</td>
-                <td>Lokalnie (urządzenie)</td>
-                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
-            </tr>
-            <tr>
-                <td>Metadane Uczenia</td>
-                <td>Lokalnie (urządzenie)</td>
-                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
-            </tr>
-            <tr>
-                <td>Metadane Kopii Zapasowych</td>
-                <td>Lokalnie (urządzenie)</td>
-                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
-            </tr>
-            <tr>
-                <td>Alerty Subskrypcji</td>
-                <td>Lokalnie (urządzenie)</td>
-                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
-            </tr>
-            <tr>
-                <td>Modele Predykcyjne N-gram (pobrane)</td>
-                <td>Lokalnie (urządzenie)</td>
-                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
-            </tr>
-            <tr>
-                <td>Słowniki Hunspell (skopiowane z zasobów)</td>
-                <td>Lokalnie (urządzenie)</td>
-                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
-            </tr>
-            <tr>
-                <td>Pamięć Podręczna Słowników i Vocabulariów (w pamięci)</td>
-                <td>RAM (ulotna)</td>
-                <td>Przycisk „Usuń Wszystkie Dane Lokalne" lub zamknięcie aplikacji</td>
-            </tr>
-            <tr>
-                <td>Pamięć Podręczna Aplikacji (pliki tymczasowe, lokalne raporty awarii, pamięć podręczna WebView)</td>
-                <td>Lokalnie (urządzenie)</td>
-                <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
-            </tr>
-            <tr>
-                <td>Pamięć Podręczna Disambiguacji Kontaktów</td>
-                <td>RAM (ulotna)</td>
-                <td>Automatyczne przy ponownym uruchomieniu usługi dostępności</td>
-            </tr>
-            <tr>
-                <td>Pamięć Podręczna Tłumaczeń</td>
-                <td>RAM (ulotna)</td>
-                <td>Automatyczne przy zamknięciu aplikacji</td>
-            </tr>
-            <tr>
-                <td>Tekst Tłumaczenia</td>
-                <td>Nigdy nie przechowywany</td>
-                <td>Nie jest wymagane żadne działanie (0 sekund przechowywania)</td>
-            </tr>
-        </table></div>
-
-        <h2>Dane Niemożliwe do Usunięcia</h2>
-
-        <p>Ze względów prawnych i technicznych niektóre dane nie mogą zostać natychmiast usunięte:</p>
-
-        <ul>
-            <li><strong>Transakcje Google Play:</strong> Zarządzane przez Google zgodnie z ich polityką (w celu obsługi próśb o zwrot, zapobiegania oszustwom i zgodności podatkowej)</li>
-            <li><strong>Raporty awarii już wysłane do Firebase:</strong> Raporty już przesłane do Firebase Crashlytics pozostają na backendzie i nie mogą zostać usunięte z urządzenia. Raporty jeszcze niewysłane można usunąć z poziomu Ustawień (przełącznik Crashlytics WYŁ.) lub za pomocą przycisku „Usuń Wszystkie Dane Lokalne"</li>
-        </ul>
-
-        <h2>Konsekwencje Usunięcia Danych</h2>
-
-        <div class="warning">
-            <p><strong>Ważne Powiadomienie:</strong> Usunięcie niektórych danych jest <strong>nieodwracalne</strong>. Upewnij się, że rozumiesz konsekwencje przed kontynuowaniem:</p>
-            <ul>
-                <li><strong>Usuń Dane w Chmurze:</strong> Stracisz historię zakupów, dane subskrypcji, historię subskrypcji i dzienniki aktywności. NIE będziesz mógł ich odzyskać, nawet po ponownej instalacji aplikacji. Jeśli masz aktywną subskrypcję, musisz ją najpierw anulować przez Google Play Store i poczekać do końca już opłaconego okresu.</li>
-                <li><strong>Usuń Dane Uczenia:</strong> Spersonalizowane predykcje tekstu zaczną od nowa</li>
-                <li><strong>Usuń Wszystkie Dane Lokalne:</strong> Wszystkie preferencje, ustawienia, pobrane modele predykcyjne, słowniki i pamięć podręczna zostaną utracone. Aplikacja uruchomi się jak nowa instalacja (dane w chmurze zostają zachowane)</li>
-                <li><strong>Ponowna instalacja lub zmiana urządzenia w okresie karencji:</strong> Jeśli ponownie zainstalujesz aplikację na tym samym urządzeniu lub na urządzeniu już zarejestrowanym, Twoja subskrypcja i saldo tokenów zostaną automatycznie przywrócone. Jeśli zainstalujesz aplikację na zupełnie nowym urządzeniu, które nigdy nie miało kAIboard z Twoim kontem, pozostałe dni i saldo tokenów mogą nie być możliwe do odzyskania ze względów bezpieczeństwa.</li>
-            </ul>
-        </div>
-
-        <h2>Często Zadawane Pytania</h2>
-
-        <h3>Co się stanie, jeśli usunę dane w chmurze?</h3>
-        <p>Stracisz historię zakupów, dane aktywnej subskrypcji, historię poprzednich subskrypcji i dzienniki aktywności. Jeśli ponownie zainstalujesz aplikację, subskrypcja nadal zostanie wykryta przez Google Play, ale danych historycznych nie będzie można odzyskać.</p>
-
-        <h3>Czy mogę usunąć tylko określone dane?</h3>
-        <p>Tak. Możesz wybrać usunięcie tylko danych w chmurze, tylko danych uczenia lub wszystkich danych lokalnych. Możesz również wyeksportować swoje dane w formacie JSON przed usunięciem.</p>
-
-        <h3>Czy moje przetłumaczone wiadomości są zapisywane?</h3>
-        <p>Nie. Tekst, który wpiszesz do tłumaczenia, <strong>nigdy nie jest zapisywany</strong>. Jest wysyłany do OpenAI tylko w celu przetworzenia tłumaczenia i natychmiast usuwany (0 sekund przechowywania).</p>
-
-        <h3>Jak długo trwa usuwanie danych?</h3>
-        <p>Usuwanie w aplikacji jest <strong>natychmiastowe</strong> (0-5 sekund). Prośby e-mailowe są przetwarzane w ciągu 30 dni.</p>
-
-        <h3>Czy mogę odzyskać dane po usunięciu?</h3>
-        <p>Nie. Usunięcie jest <strong>nieodwracalne</strong>. Upewnij się, że chcesz usunąć swoje dane przed kontynuowaniem. Zalecamy skorzystanie z opcji „Eksportuj swoje dane (JSON)" przed usunięciem.</p>
-
-        <h3>Co się dzieje z historią subskrypcji po usunięciu?</h3>
-        <p>Historia subskrypcji jest usuwana wraz z danymi w chmurze. Obejmuje wszystkie poprzednie subskrypcje (wygasłe lub anulowane) wraz ze szczegółami wykorzystania tokenów, datami i używanymi urządzeniami.</p>
-
-        <h3>Czy mogę usunąć dane w okresie karencji?</h3>
-        <p>Tak, ale z ważnym rozróżnieniem. Jeśli subskrypcja jest nadal <strong>aktywna i automatycznie odnawiana</strong>, aplikacja przekieruje Cię najpierw do Google Play w celu jej anulowania. Po anulowaniu subskrypcji (okres karencji) możesz usunąć dane z chmury w dowolnym momencie: usunięcie jest natychmiastowe i oznacza <strong>definitywną rezygnację</strong> z pozostałego opłaconego okresu i bieżącego salda tokenów. Ta decyzja jest nieodwracalna. <strong>Uwaga:</strong> ponowna instalacja aplikacji na zupełnie nowym urządzeniu w okresie karencji może skutkować utratą pozostałego okresu i salda tokenów ze względów bezpieczeństwa. Na już zarejestrowanych urządzeniach przywrócenie następuje automatycznie.</p>
-
-        <h3>Co się dzieje z pobranymi modelami predykcyjnymi i słownikami?</h3>
-        <p>Są usuwane przez przycisk „Usuń Wszystkie Dane Lokalne". Przy następnym użyciu modele predykcyjne będą musiały zostać ponownie pobrane z ekranu Modele Offline, a słowniki zostaną automatycznie skopiowane ponownie przy pierwszym użyciu języka.</p>
-
-        <h2>Dodatkowe Zasoby</h2>
-
-        <p>
-            <a href="https://alessandrof78.github.io/kaiboard-privacy/" class="button">Przeczytaj Pełną Politykę Prywatności</a>
-            <a href="/cdn-cgi/l/email-protection#7a090f0a0a15080e3a111b1318151b081e541f0f" class="button">Skontaktuj się z Pomocą Techniczną</a>
-            <a href="https://alessandrof78.github.io/kaiboard-privacy/data-deletion.html" class="button">Inne języki</a>
-        </p>
-
-        <div class="footer">
-            <p><strong>Wersja 2.0 - Ostatnia Aktualizacja: 21 Marca 2026</strong></p>
-        </div>
-    </div>
-</body>
-</html>
+<!DOCTYPE html><html lang="pl"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Usuwanie Danych - kAIboard</title>    <style>        body {            font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;            line-height: 1.8;            max-width: 900px;            margin: 0 auto;            padding: 40px 20px;            color: #111827;            background-color: #F4F7FA;        }        .container {            background-color: white;            padding: 40px;            border-radius: 8px;            box-shadow: 0 2px 4px rgba(0,0,0,0.1);        }        h1 {            color: #111827;            font-size: 26px;            font-weight: 600;            margin-bottom: 10px;            padding-bottom: 15px;            border-bottom: 3px solid #0FA3A3;            hyphens: auto;            -webkit-hyphens: auto;        }        h2 {            color: #111827;            font-size: 24px;            font-weight: 600;            margin-top: 40px;            margin-bottom: 15px;        }        h3 {            color: #111827;            font-size: 18px;            font-weight: 600;            margin-top: 25px;            margin-bottom: 10px;        }        p {            margin-bottom: 15px;        }        .intro {            background-color: #F4F7FA;            padding: 20px;            border-left: 4px solid #0FA3A3;            margin: 25px 0;        }        .warning {            background-color: #EDF7F7;            padding: 20px;            border-left: 4px solid #0FA3A3;            margin: 25px 0;        }        .info-box {            background-color: #EDF7F7;            padding: 20px;            border-radius: 6px;            margin: 25px 0;        }        ul, ol {            margin: 15px 0;            padding-left: 30px;        }        li {            margin: 8px 0;            line-height: 1.6;        }        table {            width: 100%;            border-collapse: collapse;            margin: 25px 0;            font-size: 15px;        }        th, td {            border: 1px solid #dee2e6;            padding: 12px 15px;            text-align: left;        }        th {            background-color: #0FA3A3;            font-weight: 600;            color: white;        }        tr:nth-child(even) {            background-color: #F8FAFA;        }        .button {            display: inline-block;            background-color: #0FA3A3;            color: white;            padding: 12px 28px;            text-decoration: none;            border-radius: 6px;            margin: 10px 10px 10px 0;            font-weight: 500;            transition: background-color 0.3s;        }        .button:hover {            background-color: #0D8F8F;        }        .footer {            margin-top: 50px;            padding-top: 25px;            border-top: 1px solid #e0e0e0;            text-align: center;            color: #4B5563;            font-size: 14px;        }        strong {            font-weight: 600;        }        /* -- MOBILE FIX -- */        html, body { overflow-x: hidden; }        .table-wrapper {            overflow-x: auto;            -webkit-overflow-scrolling: touch;            margin: 20px 0;        }        .table-wrapper table {            width: auto;            min-width: 480px;            margin: 0;        }        @media (max-width: 650px) {            body { padding: 15px; }            .container { padding: 20px; }            th, td { padding: 8px; font-size: 13px; }        }    </style></head><body><div class="container">    <h1>Polityka Usuwania Danych</h1>    <div class="intro">        <p><strong>kAIboard</strong> szanuje Twoje prawo do usunięcia danych zgodnie z Artykułem 17 RODO (Prawo do Usunięcia). Możesz usunąć swoje dane osobowe w dowolnym momencie, bezpośrednio przez aplikację lub kontaktując się z nami e-mailem.</p>    </div>    <h2>Metoda 1: Usuwanie w Aplikacji (Natychmiastowe)</h2>    <p>Najszybszym sposobem usunięcia danych jest bezpośrednio przez aplikację:</p>    <ol>        <li>Otwórz <strong>kAIboard</strong> na urządzeniu Android</li>        <li>Przejdź do <strong>Ustawień</strong></li>        <li>Wybierz <strong>Prywatność i Bezpieczeństwo</strong></li>        <li>Wybierz jedną z trzech opcji usuwania</li>    </ol>    <h3>Dostępne Opcje Usuwania</h3>    <div class="table-wrapper"><table>        <tr>            <th>Opcja</th>            <th>Co Zostanie Usunięte</th>            <th>Efekt</th>        </tr>        <tr>            <td><strong>Usuń Dane w Chmurze</strong></td>            <td>                <ul style="margin: 5px 0; padding-left: 20px;">                    <li>Dokument aktywnej subskrypcji (user_subscriptions)</li>                    <li>Historia subskrypcji (user_subscriptions_history)</li>                    <li>Dzienniki aktywności administracyjnej (admin_activity_logs)</li>                    <li>Historia zakupów</li>                    <li>Tablica urządzeń multi-device</li>                </ul>            </td>            <td>Nieodwracalne. Stracisz historię zakupów, dzienniki aktywności i historię subskrypcji. Wymaga anulowania subskrypcji jeśli aktywna.</td>        </tr>        <tr>            <td><strong>Usuń Dane Uczenia</strong></td>            <td>Nauczone słowa dla spersonalizowanych sugestii (wszystkie 13 języków)</td>            <td>Tekst predykcyjny zacznie od nowa.</td>        </tr>        <tr>            <td><strong>Usuń Wszystkie Dane Lokalne</strong></td>            <td>                <ul style="margin: 5px 0; padding-left: 20px;">                    <li>Dane uczenia (13 języków)</li>                    <li>Wszystkie preferencje i ustawienia</li>                    <li>Stan aplikacji i przypisania kontakt-język</li>                    <li>Alerty subskrypcji</li>                    <li>Pobrane modele predykcyjne N-gram</li>                    <li>Skopiowane słowniki Hunspell</li>                    <li>Pamięć podręczna w RAM (słowniki i vocabularia)</li>                    <li>Cała pamięć podręczna aplikacji (pliki tymczasowe, lokalne raporty awarii, pamięć podręczna WebView)</li>                </ul>            </td>            <td>Aplikacja uruchomi się ponownie z domyślnymi ustawieniami. Żadne pliki użytkownika nie pozostaną na urządzeniu. Dane w chmurze zostają zachowane.</td>        </tr>    </table></div>    <p><strong>Czas Przetwarzania:</strong> Natychmiastowy (0-5 sekund)</p>    <div class="warning">        <h3>⚠️ Ograniczenie Usuwania przy Aktywnej Subskrypcji (Art. 17.3.b RODO)</h3>        <p>Jeśli masz <strong>aktywną miesięczną subskrypcję</strong>, usuwanie danych w chmurze jest <strong>tymczasowo zablokowane</strong> do momentu anulowania subskrypcji.</p>        <p><strong>Powód:</strong> Dane związane z subskrypcją (aktywny plan, limit tokenów, data resetowania) są niezbędne do wykonania trwającej umowy (Art. 6.1.b RODO). Wcześniejsze usunięcie uniemożliwiłoby:</p>        <ul>            <li>❌ Prawidłowe działanie zakupionej usługi miesięcznej</li>            <li>❌ Synchronizację limitu tokenów między urządzeniami</li>            <li>❌ Automatyczne resetowanie tokenów na początku miesiąca</li>        </ul>        <p><strong>Jak postępować:</strong></p>        <ol>            <li>Anuluj subskrypcję przez Google Play Store</li>            <li>Poczekaj do końca bieżącego okresu rozliczeniowego (okres karencji)</li>            <li>Usuń dane w chmurze przez aplikację</li>        </ol>        <p><strong>Natychmiastowe usunięcie:</strong> Aplikacja automatycznie przekierowuje Cię do Google Play, aby zarządzać subskrypcją. Po anulowaniu usuwanie danych będzie dostępne po zakończeniu już opłaconego okresu.</p>        <p><strong>Podstawa prawna blokady:</strong> Art. 17.3.b RODO - „Prawo do usunięcia nie ma zastosowania w zakresie, w jakim przetwarzanie jest niezbędne do wykonania umowy, której stroną jest osoba, której dane dotyczą".</p>    </div>    <h2>Metoda 2: Prośba E-mailowa</h2>    <p>Jeśli wolisz pomoc lub masz pytania dotyczące usuwania danych, możesz skontaktować się z nami e-mailem:</p>    <div class="info-box">        <p><strong>E-mail:</strong> <a href="/cdn-cgi/l/email-protection#7704020707180503371c161e1518160513591202"><span class="__cf_email__" data-cfemail="c1b2b4b1b1aeb3b581aaa0a8a3aea0b3a5efa4b4">[email&#160;protected]</span></a></p>        <p><strong>Temat:</strong> „Prośba o Usunięcie Danych RODO"</p>        <p><strong>Informacje do Podania:</strong></p>        <ul>            <li>ID urządzenia (jeśli znane) lub opis urządzenia</li>            <li>Typ danych, które chcesz usunąć (chmura, dane uczenia lub wszystkie)</li>            <li>Potwierdzenie tożsamości (ze względów bezpieczeństwa)</li>        </ul>        <p><strong>Czas Odpowiedzi:</strong> Maksymalnie 30 dni (zgodnie z wymogiem Artykułu 12 RODO)</p>    </div>    <h2>Metoda 3: Eksport Danych (Art. 20 RODO)</h2>    <p>Przed usunięciem danych możesz je wyeksportować w formacie JSON czytelnym maszynowo:</p>    <ol>        <li>Otwórz <strong>kAIboard</strong> na urządzeniu Android</li>        <li>Przejdź do <strong>Ustawienia → Prywatność i Bezpieczeństwo</strong></li>        <li>Dotknij <strong>„Eksportuj swoje dane (JSON)"</strong></li>    </ol>    <p>Plik JSON zawiera: metadane eksportu, lokalne preferencje, dane uczenia (dla wszystkich 13 języków) i dane w chmurze (subskrypcja, historia, dzienniki aktywności). Możesz udostępnić plik za pomocą dowolnej aplikacji zainstalowanej na urządzeniu.</p>    <h2>Automatyczne Usuwanie Danych</h2>    <p>kAIboard zawiera automatyczne mechanizmy czyszczenia danych w celu ochrony prywatności:</p>    <div class="table-wrapper"><table>        <tr>            <th>Typ Danych</th>            <th>Okres Przechowywania</th>            <th>Szczegóły</th>        </tr>        <tr>            <td><strong>Aktywne Dane Subskrypcji (Firebase)</strong></td>            <td>Do końca bieżącego okresu rozliczeniowego</td>            <td>Automatycznie przenoszone do historii po wygaśnięciu subskrypcji</td>        </tr>        <tr>            <td><strong>Historia Subskrypcji (Firebase)</strong></td>            <td>90 dni po wygaśnięciu</td>            <td>Automatycznie usuwana 90 dni po zakończeniu subskrypcji</td>        </tr>        <tr>            <td><strong>Dzienniki Aktywności Administracyjnej (Firebase)</strong></td>            <td>90 dni od ostatniej modyfikacji</td>            <td>Automatycznie usuwane co 24 godziny przez czyszczenie w tle</td>        </tr>        <tr>            <td><strong>Historia Zakupów (Firebase)</strong></td>            <td>365 dni od zakupu</td>            <td>Automatycznie usuwana po roku</td>        </tr>        <tr>            <td><strong>Nauczone Słowa</strong></td>            <td>14 dni z degradacją</td>            <td>Wyniki częstotliwości maleją z czasem; nieużywane słowa są usuwane</td>        </tr>        <tr>            <td><strong>Pamięć Podręczna Tłumaczeń</strong></td>            <td>Tylko sesja</td>            <td>Przechowywane tylko w RAM; usuwane przy zamknięciu aplikacji</td>        </tr>        <tr>            <td><strong>Tekst Tłumaczenia</strong></td>            <td>Nigdy nie przechowywany</td>            <td>0 sekund przechowywania; tylko tranzyt do API OpenAI</td>        </tr>    </table></div>    <h2>Pełny Inwentarz Danych</h2>    <p>Poniższe tabele szczegółowo przedstawiają wszystkie dane zbierane przez kAIboard i sposób ich usunięcia:</p>    <h3>Dane w Chmurze (Firebase)</h3>    <div class="table-wrapper"><table>        <tr>            <th>Typ Danych</th>            <th>Lokalizacja Przechowywania</th>            <th>Metoda Usuwania</th>        </tr>        <tr>            <td>Tablica Urządzeń</td>            <td>Firebase (chmura)</td>            <td>Przycisk „Usuń Dane w Chmurze"</td>        </tr>        <tr>            <td>Bieżące Wykorzystanie Tokenów</td>            <td>Firebase (chmura)</td>            <td>Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>        </tr>        <tr>            <td>Historia Zakupów</td>            <td>Firebase (chmura)</td>            <td>Przycisk „Usuń Dane w Chmurze"</td>        </tr>        <tr>            <td>Plan Subskrypcji</td>            <td>Firebase (chmura)</td>            <td>Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>        </tr>        <tr>            <td>Miesięczny Limit Tokenów</td>            <td>Firebase (chmura)</td>            <td>Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>        </tr>        <tr>            <td>Data Miesięcznego Resetowania</td>            <td>Firebase (chmura)</td>            <td>Przycisk „Usuń Dane w Chmurze" (tylko po anulowaniu subskrypcji)</td>        </tr>        <tr>            <td>Data Zakończenia Subskrypcji</td>            <td>Firebase (chmura)</td>            <td>Przycisk „Usuń Dane w Chmurze" (tylko po upływie okresu karencji)</td>        </tr>        <tr>            <td>Flaga „Nie Zostanie Odnowiona"</td>            <td>Firebase (chmura)</td>            <td>Przycisk „Usuń Dane w Chmurze" (tylko po upływie okresu karencji)</td>        </tr>        <tr>            <td>Historia Subskrypcji</td>            <td>Firebase (chmura)</td>            <td>Przycisk „Usuń Dane w Chmurze" (usuwa wszystko: aktywne + historię)</td>        </tr>        <tr>            <td>Dzienniki Aktywności Administracyjnej</td>            <td>Firebase (chmura)</td>            <td>Przycisk „Usuń Dane w Chmurze"</td>        </tr>    </table></div>    <h3>Dane Lokalne (Urządzenie)</h3>    <div class="table-wrapper"><table>        <tr>            <th>Typ Danych</th>            <th>Lokalizacja Przechowywania</th>            <th>Metoda Usuwania</th>        </tr>        <tr>            <td>Nauczone Słowa (Predykcje)</td>            <td>Lokalnie (urządzenie)</td>            <td>Przycisk „Usuń Dane Uczenia" lub „Usuń Wszystkie Dane Lokalne"</td>        </tr>        <tr>            <td>Preferencje Aplikacji</td>            <td>Lokalnie (urządzenie)</td>            <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>        </tr>        <tr>            <td>Stan Aplikacji</td>            <td>Lokalnie (urządzenie)</td>            <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>        </tr>        <tr>            <td>Przypisania Języków Kontaktów</td>            <td>Lokalnie (urządzenie)</td>            <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>        </tr>        <tr>            <td>Metadane Uczenia</td>            <td>Lokalnie (urządzenie)</td>            <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>        </tr>        <tr>            <td>Metadane Kopii Zapasowych</td>            <td>Lokalnie (urządzenie)</td>            <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>        </tr>        <tr>            <td>Alerty Subskrypcji</td>            <td>Lokalnie (urządzenie)</td>            <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>        </tr>        <tr>            <td>Modele Predykcyjne N-gram (pobrane)</td>            <td>Lokalnie (urządzenie)</td>            <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>        </tr>        <tr>            <td>Słowniki Hunspell (skopiowane z zasobów)</td>            <td>Lokalnie (urządzenie)</td>            <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>        </tr>        <tr>            <td>Pamięć Podręczna Słowników i Vocabulariów (w pamięci)</td>            <td>RAM (ulotna)</td>            <td>Przycisk „Usuń Wszystkie Dane Lokalne" lub zamknięcie aplikacji</td>        </tr>        <tr>            <td>Pamięć Podręczna Aplikacji (pliki tymczasowe, lokalne raporty awarii, pamięć podręczna WebView)</td>            <td>Lokalnie (urządzenie)</td>            <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>        </tr>        <tr>            <td>Pamięć Podręczna Disambiguacji Kontaktów</td>            <td>RAM (ulotna)</td>            <td>Automatyczne przy ponownym uruchomieniu usługi dostępności</td>        </tr>        <tr>            <td>Pamięć Podręczna Tłumaczeń</td>            <td>RAM (ulotna)</td>            <td>Automatyczne przy zamknięciu aplikacji</td>        </tr>        <tr>            <td>Tekst Tłumaczenia</td>            <td>Nigdy nie przechowywany</td>            <td>Nie jest wymagane żadne działanie (0 sekund przechowywania)</td>        </tr>    </table></div>    <h2>Dane Niemożliwe do Usunięcia</h2>    <p>Ze względów prawnych i technicznych niektóre dane nie mogą zostać natychmiast usunięte:</p>    <ul>        <li><strong>Transakcje Google Play:</strong> Zarządzane przez Google zgodnie z ich polityką (w celu obsługi próśb o zwrot, zapobiegania oszustwom i zgodności podatkowej)</li>        <li><strong>Raporty awarii już wysłane do Firebase:</strong> Raporty już przesłane do Firebase Crashlytics pozostają na backendzie i nie mogą zostać usunięte z urządzenia. Raporty jeszcze niewysłane można usunąć z poziomu Ustawień (przełącznik Crashlytics WYŁ.) lub za pomocą przycisku „Usuń Wszystkie Dane Lokalne"</li>    </ul>    <h2>Konsekwencje Usunięcia Danych</h2>    <div class="warning">        <p><strong>Ważne Powiadomienie:</strong> Usunięcie niektórych danych jest <strong>nieodwracalne</strong>. Upewnij się, że rozumiesz konsekwencje przed kontynuowaniem:</p>        <ul>            <li><strong>Usuń Dane w Chmurze:</strong> Stracisz historię zakupów, dane subskrypcji, historię subskrypcji i dzienniki aktywności. NIE będziesz mógł ich odzyskać, nawet po ponownej instalacji aplikacji. Jeśli masz aktywną subskrypcję, musisz ją najpierw anulować przez Google Play Store i poczekać do końca już opłaconego okresu.</li>            <li><strong>Usuń Dane Uczenia:</strong> Spersonalizowane predykcje tekstu zaczną od nowa</li>            <li><strong>Usuń Wszystkie Dane Lokalne:</strong> Wszystkie preferencje, ustawienia, pobrane modele predykcyjne, słowniki i pamięć podręczna zostaną utracone. Aplikacja uruchomi się jak nowa instalacja (dane w chmurze zostają zachowane)</li>            <li><strong>Ponowna instalacja lub zmiana urządzenia w okresie karencji:</strong> Jeśli ponownie zainstalujesz aplikację na tym samym urządzeniu lub na urządzeniu już zarejestrowanym, Twoja subskrypcja i saldo tokenów zostaną automatycznie przywrócone. Jeśli zainstalujesz aplikację na zupełnie nowym urządzeniu, które nigdy nie miało kAIboard z Twoim kontem, pozostałe dni i saldo tokenów mogą nie być możliwe do odzyskania ze względów bezpieczeństwa.</li>        </ul>    </div>    <h2>Często Zadawane Pytania</h2>    <h3>Co się stanie, jeśli usunę dane w chmurze?</h3>    <p>Stracisz historię zakupów, dane aktywnej subskrypcji, historię poprzednich subskrypcji i dzienniki aktywności. Jeśli ponownie zainstalujesz aplikację, subskrypcja nadal zostanie wykryta przez Google Play, ale danych historycznych nie będzie można odzyskać.</p>    <h3>Czy mogę usunąć tylko określone dane?</h3>    <p>Tak. Możesz wybrać usunięcie tylko danych w chmurze, tylko danych uczenia lub wszystkich danych lokalnych. Możesz również wyeksportować swoje dane w formacie JSON przed usunięciem.</p>    <h3>Czy moje przetłumaczone wiadomości są zapisywane?</h3>    <p>Nie. Tekst, który wpiszesz do tłumaczenia, <strong>nigdy nie jest zapisywany</strong>. Jest wysyłany do OpenAI tylko w celu przetworzenia tłumaczenia i natychmiast usuwany (0 sekund przechowywania).</p>    <h3>Jak długo trwa usuwanie danych?</h3>    <p>Usuwanie w aplikacji jest <strong>natychmiastowe</strong> (0-5 sekund). Prośby e-mailowe są przetwarzane w ciągu 30 dni.</p>    <h3>Czy mogę odzyskać dane po usunięciu?</h3>    <p>Nie. Usunięcie jest <strong>nieodwracalne</strong>. Upewnij się, że chcesz usunąć swoje dane przed kontynuowaniem. Zalecamy skorzystanie z opcji „Eksportuj swoje dane (JSON)" przed usunięciem.</p>    <h3>Co się dzieje z historią subskrypcji po usunięciu?</h3>    <p>Historia subskrypcji jest usuwana wraz z danymi w chmurze. Obejmuje wszystkie poprzednie subskrypcje (wygasłe lub anulowane) wraz ze szczegółami wykorzystania tokenów, datami i używanymi urządzeniami.</p>    <h3>Czy mogę usunąć dane w okresie karencji?</h3>    <p>Tak, ale z ważnym rozróżnieniem. Jeśli subskrypcja jest nadal <strong>aktywna i automatycznie odnawiana</strong>, aplikacja przekieruje Cię najpierw do Google Play w celu jej anulowania. Po anulowaniu subskrypcji (okres karencji) możesz usunąć dane z chmury w dowolnym momencie: usunięcie jest natychmiastowe i oznacza <strong>definitywną rezygnację</strong> z pozostałego opłaconego okresu i bieżącego salda tokenów. Ta decyzja jest nieodwracalna. <strong>Uwaga:</strong> ponowna instalacja aplikacji na zupełnie nowym urządzeniu w okresie karencji może skutkować utratą pozostałego okresu i salda tokenów ze względów bezpieczeństwa. Na już zarejestrowanych urządzeniach przywrócenie następuje automatycznie.</p>    <h3>Co się dzieje z pobranymi modelami predykcyjnymi i słownikami?</h3>    <p>Są usuwane przez przycisk „Usuń Wszystkie Dane Lokalne". Przy następnym użyciu modele predykcyjne będą musiały zostać ponownie pobrane z ekranu Modele Offline, a słowniki zostaną automatycznie skopiowane ponownie przy pierwszym użyciu języka.</p>    <h2>Dodatkowe Zasoby</h2>    <p>        <a href="https://alessandrof78.github.io/kaiboard-privacy/" class="button">Przeczytaj Pełną Politykę Prywatności</a>        <a href="mailto:support@kaiboard.eu" class="button">Skontaktuj się z Pomocą Techniczną</a>        <a href="https://alessandrof78.github.io/kaiboard-privacy/data-deletion.html" class="button">Inne języki</a>    </p>    <div class="footer">        <p><strong>Wersja 2.0 - Ostatnia Aktualizacja: 21 Marca 2026</strong></p>    </div></div></body></html>

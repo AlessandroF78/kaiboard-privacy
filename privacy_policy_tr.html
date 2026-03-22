@@ -90,43 +90,20 @@
         * { box-sizing: border-box; }
         html { overflow-x: hidden; }
         body { overflow-x: hidden; max-width: 100%; }
-
+        .table-wrapper {
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+        }
+        .table-wrapper table {
+            margin: 0;
+            min-width: 480px;
+        }
         @media (max-width: 650px) {
             body { padding: 15px; }
             .container { padding: 20px; }
-            .table-wrapper thead { display: none; }
-            .table-wrapper table,
-            .table-wrapper tbody,
-            .table-wrapper tr { display: block; width: 100%; }
-            .table-wrapper tr {
-                border: 1px solid #ddd;
-                border-radius: 6px;
-                margin-bottom: 12px;
-                background: #fff;
-                overflow: hidden;
-            }
-            .table-wrapper td {
-                display: block;
-                width: 100%;
-                padding: 10px 12px;
-                font-size: 13px;
-                line-height: 1.5;
-                border: none;
-                border-bottom: 1px solid #f0f0f0;
-                text-align: left;
-            }
-            .table-wrapper td:last-child { border-bottom: none; }
-            .table-wrapper td::before {
-                content: attr(data-label);
-                display: block;
-                font-weight: 600;
-                font-size: 11px;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                color: #0FA3A3;
-                margin-bottom: 4px;
-            }
-            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+            th, td { padding: 8px 10px; font-size: 13px; }
         }
     </style>
 </head>
@@ -161,28 +138,28 @@
         <th>Yasal Dayanak</th>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Cihaz Dizisi</strong></td>
-        <td data-label="Tür">Tanımlayıcılar listesi (örn. ["android_e19d6c...", "android_175be4..."])</td>
-        <td data-label="Amaç">Aynı Google Play hesabıyla birden fazla cihazda abonelik ve token'ları senkronize etme</td>
-        <td data-label="Yasal Dayanak">Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+        <td><strong>Cihaz Dizisi</strong></td>
+        <td>Tanımlayıcılar listesi (örn. ["android_e19d6c...", "android_175be4..."])</td>
+        <td>Aynı Google Play hesabıyla birden fazla cihazda abonelik ve token'ları senkronize etme</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Mevcut Token Kullanımı</strong></td>
-        <td data-label="Tür">Tam sayı (current_usage)</td>
-        <td data-label="Amaç">Tüm cihazlar arasında paylaşılan aylık tüketimi izleme</td>
-        <td data-label="Yasal Dayanak">Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+        <td><strong>Mevcut Token Kullanımı</strong></td>
+        <td>Tam sayı (current_usage)</td>
+        <td>Tüm cihazlar arasında paylaşılan aylık tüketimi izleme</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Satın Alma Geçmişi</strong></td>
-        <td data-label="Tür">Ürün kimliği, satın alma tarihi, sipariş kimliği</td>
-        <td data-label="Amaç">Satın almaları doğrulama ve dolandırıcılığı önleme</td>
-        <td data-label="Yasal Dayanak">Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+        <td><strong>Satın Alma Geçmişi</strong></td>
+        <td>Ürün kimliği, satın alma tarihi, sipariş kimliği</td>
+        <td>Satın almaları doğrulama ve dolandırıcılığı önleme</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Çevrilecek Metin</strong></td>
-        <td data-label="Tür">Metin içeriği</td>
-        <td data-label="Amaç">Gerçek zamanlı çeviri</td>
-        <td data-label="Yasal Dayanak">Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+        <td><strong>Çevrilecek Metin</strong></td>
+        <td>Metin içeriği</td>
+        <td>Gerçek zamanlı çeviri</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
 </table></div>
 
@@ -218,64 +195,64 @@
         <th>Yasal Dayanak</th>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Abonelik Planı</strong></td>
-        <td data-label="Tür">Dize (örn. "plus", "pro", "max")</td>
-        <td data-label="Amaç">Aktif planı tanımla ve doğru token limitini uygula</td>
-        <td data-label="Yasal Dayanak">Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+        <td><strong>Abonelik Planı</strong></td>
+        <td>Dize (örn. "plus", "pro", "max")</td>
+        <td>Aktif planı tanımla ve doğru token limitini uygula</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Aylık Token Limiti</strong></td>
-        <td data-label="Tür">Tam sayı (örn. 250000, 500000, 1000000)</td>
-        <td data-label="Amaç">Aboneliğe dahil maksimum token'ı uygula</td>
-        <td data-label="Yasal Dayanak">Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+        <td><strong>Aylık Token Limiti</strong></td>
+        <td>Tam sayı (örn. 250000, 500000, 1000000)</td>
+        <td>Aboneliğe dahil maksimum token'ı uygula</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Mevcut Token Kullanımı</strong></td>
-        <td data-label="Tür">Tam sayı</td>
-        <td data-label="Amaç">Paylaşılan aylık tüketimi izle ve limiti uygula</td>
-        <td data-label="Yasal Dayanak">Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+        <td><strong>Mevcut Token Kullanımı</strong></td>
+        <td>Tam sayı</td>
+        <td>Paylaşılan aylık tüketimi izle ve limiti uygula</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Aylık Sıfırlama Tarihi</strong></td>
-        <td data-label="Tür">ISO Tarihi (örn. "2026-02-01")</td>
-        <td data-label="Amaç">Ay başında otomatik kullanım sıfırlama</td>
-        <td data-label="Yasal Dayanak">Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+        <td><strong>Aylık Sıfırlama Tarihi</strong></td>
+        <td>ISO Tarihi (örn. "2026-02-01")</td>
+        <td>Ay başında otomatik kullanım sıfırlama</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Google Play Ürün Kimliği</strong></td>
-        <td data-label="Tür">Dize (örn. "abbonamento_mensile_2500")</td>
-        <td data-label="Amaç">Google Play Billing API üzerinden abonelik geçerliliğini doğrula</td>
-        <td data-label="Yasal Dayanak">Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+        <td><strong>Google Play Ürün Kimliği</strong></td>
+        <td>Dize (örn. "abbonamento_mensile_2500")</td>
+        <td>Google Play Billing API üzerinden abonelik geçerliliğini doğrula</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Otomatik Yenileme Durumu</strong></td>
-        <td data-label="Tür">Boolean</td>
-        <td data-label="Amaç">Aboneliğin otomatik yenileneceğini kontrol et</td>
-        <td data-label="Yasal Dayanak">Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+        <td><strong>Otomatik Yenileme Durumu</strong></td>
+        <td>Boolean</td>
+        <td>Aboneliğin otomatik yenileneceğini kontrol et</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Abonelik Satın Alma Tarihi</strong></td>
-        <td data-label="Tür">Zaman damgası</td>
-        <td data-label="Amaç">Fatura döngüsü yönetimi ve anlaşmazlıklar</td>
-        <td data-label="Yasal Dayanak">Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+        <td><strong>Abonelik Satın Alma Tarihi</strong></td>
+        <td>Zaman damgası</td>
+        <td>Fatura döngüsü yönetimi ve anlaşmazlıklar</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Abonelik Bitiş Tarihi</strong></td>
-        <td data-label="Tür">ISO 8601 zaman damgası (örn. "2026-02-28T14:30:00Z")</td>
-        <td data-label="Amaç">İptalden sonra ek süreyi yönetme (abonelik bu tarihe kadar aktif kalır)</td>
-        <td data-label="Yasal Dayanak">Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+        <td><strong>Abonelik Bitiş Tarihi</strong></td>
+        <td>ISO 8601 zaman damgası (örn. "2026-02-28T14:30:00Z")</td>
+        <td>İptalden sonra ek süreyi yönetme (abonelik bu tarihe kadar aktif kalır)</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>"Yenilenmeyecek" İşareti</strong></td>
-        <td data-label="Tür">Boolean (will_not_renew)</td>
-        <td data-label="Amaç">Aboneliğin iptal edildiğini ancak süresi dolana kadar geçerli kaldığını belirtme</td>
-        <td data-label="Yasal Dayanak">Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+        <td><strong>"Yenilenmeyecek" İşareti</strong></td>
+        <td>Boolean (will_not_renew)</td>
+        <td>Aboneliğin iptal edildiğini ancak süresi dolana kadar geçerli kaldığını belirtme</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>İptal Tarihi</strong></td>
-        <td data-label="Tür">Zaman damgası (cancelled_at)</td>
-        <td data-label="Amaç">Kullanıcının aboneliği ne zaman iptal ettiğini izleme</td>
-        <td data-label="Yasal Dayanak">Sözleşme ifası (Mad. 6.1.b GDPR)</td>
+        <td><strong>İptal Tarihi</strong></td>
+        <td>Zaman damgası (cancelled_at)</td>
+        <td>Kullanıcının aboneliği ne zaman iptal ettiğini izleme</td>
+        <td>Sözleşme ifası (Mad. 6.1.b GDPR)</td>
     </tr>
 </table></div>
 
@@ -338,16 +315,16 @@
         <th>Saklama</th>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Abonelik Geçmişi</strong></td>
-        <td data-label="Tür">user_subscriptions_history/{purchaseToken} içinde nesne dizisi</td>
-        <td data-label="Amaç">Satın alma izlenebilirliği, denetim izi, GDPR uyumluluğu</td>
-        <td data-label="Saklama">Sona ermeden itibaren 90 gün</td>
+        <td><strong>Abonelik Geçmişi</strong></td>
+        <td>user_subscriptions_history/{purchaseToken} içinde nesne dizisi</td>
+        <td>Satın alma izlenebilirliği, denetim izi, GDPR uyumluluğu</td>
+        <td>Sona ermeden itibaren 90 gün</td>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Giriş Başına Veriler</strong></td>
-        <td data-label="Tür">Plan, kullanılan token/limit, başlangıç/bitiş/iptal tarihleri, iptal nedeni, cihazlar</td>
-        <td data-label="Amaç">Denetim, kullanıcı desteği, geri ödeme yönetimi</td>
-        <td data-label="Saklama">Sona ermeden itibaren 90 gün</td>
+        <td><strong>Giriş Başına Veriler</strong></td>
+        <td>Plan, kullanılan token/limit, başlangıç/bitiş/iptal tarihleri, iptal nedeni, cihazlar</td>
+        <td>Denetim, kullanıcı desteği, geri ödeme yönetimi</td>
+        <td>Sona ermeden itibaren 90 gün</td>
     </tr>
 </table></div>
 
@@ -377,9 +354,9 @@
         <th>Saklama</th>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Yönetim Etkinlik Günlükleri</strong></td>
-        <td data-label="Tür">admin_activity_logs/{device_id} içinde olay dizisi</td>
-        <td data-label="Amaç">
+        <td><strong>Yönetim Etkinlik Günlükleri</strong></td>
+        <td>admin_activity_logs/{device_id} içinde olay dizisi</td>
+        <td>
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Kullanıcı desteği için denetim izi</li>
                 <li>Google Play anlaşmazlık çözümü (60 gün içinde)</li>
@@ -387,11 +364,11 @@
                 <li>Ek süre ve otomatik yenileme yönetimi</li>
             </ul>
         </td>
-        <td data-label="Saklama">Son değişiklikten itibaren 90 gün</td>
+        <td>Son değişiklikten itibaren 90 gün</td>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Kaydedilen Olaylar</strong></td>
-        <td data-label="Tür">
+        <td><strong>Kaydedilen Olaylar</strong></td>
+        <td>
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Abonelik başlatma</li>
                 <li>Abonelik iptali</li>
@@ -400,14 +377,14 @@
                 <li>Plan değişiklikleri</li>
             </ul>
         </td>
-        <td data-label="Amaç">Denetim ve destek için değişiklik geçmişini izleme</td>
-        <td data-label="Saklama">Son değişiklikten itibaren 90 gün</td>
+        <td>Denetim ve destek için değişiklik geçmişini izleme</td>
+        <td>Son değişiklikten itibaren 90 gün</td>
     </tr>
     <tr>
-        <td data-label="Veri"><strong>Olay Detayları</strong></td>
-        <td data-label="Tür">Zaman damgası, eylem, neden, plan, işlem detayları</td>
-        <td data-label="Amaç">Anlaşmazlık durumunda kronolojinin yeniden oluşturulması için gerekli bilgiler</td>
-        <td data-label="Saklama">Son değişiklikten itibaren 90 gün</td>
+        <td><strong>Olay Detayları</strong></td>
+        <td>Zaman damgası, eylem, neden, plan, işlem detayları</td>
+        <td>Anlaşmazlık durumunda kronolojinin yeniden oluşturulması için gerekli bilgiler</td>
+        <td>Son değişiklikten itibaren 90 gün</td>
     </tr>
 </table></div>
 
@@ -573,28 +550,28 @@
         <th>Konum</th>
     </tr>
     <tr>
-        <td data-label="Hizmet"><strong>Firebase (Google)</strong></td>
-        <td data-label="Gönderilen Veriler">Anonim kimlik, token kullanımı, satın alma geçmişi, abonelik verileri, etkinlik günlükleri</td>
-        <td data-label="Amaç">Yedekleme, senkronizasyon ve denetim izi</td>
-        <td data-label="Konum">AB (Avrupa sunucuları)</td>
+        <td><strong>Firebase (Google)</strong></td>
+        <td>Anonim kimlik, token kullanımı, satın alma geçmişi, abonelik verileri, etkinlik günlükleri</td>
+        <td>Yedekleme, senkronizasyon ve denetim izi</td>
+        <td>AB (Avrupa sunucuları)</td>
     </tr>
     <tr>
-        <td data-label="Hizmet"><strong>Cloudflare Worker</strong></td>
-        <td data-label="Gönderilen Veriler">Çevrilecek metin (yalnızca geçiş)</td>
-        <td data-label="Amaç">Çeviri için güvenli aktarım</td>
-        <td data-label="Konum">AB (Avrupa sunucuları)</td>
+        <td><strong>Cloudflare Worker</strong></td>
+        <td>Çevrilecek metin (yalnızca geçiş)</td>
+        <td>Çeviri için güvenli aktarım</td>
+        <td>AB (Avrupa sunucuları)</td>
     </tr>
     <tr>
-        <td data-label="Hizmet"><strong>OpenAI</strong></td>
-        <td data-label="Gönderilen Veriler">Çevrilecek metin (yalnızca geçiş)</td>
-        <td data-label="Amaç">Çeviri işleme</td>
-        <td data-label="Konum">ABD (Standart Sözleşme Hükümleri ile)</td>
+        <td><strong>OpenAI</strong></td>
+        <td>Çevrilecek metin (yalnızca geçiş)</td>
+        <td>Çeviri işleme</td>
+        <td>ABD (Standart Sözleşme Hükümleri ile)</td>
     </tr>
     <tr>
-        <td data-label="Hizmet"><strong>Google Play Billing</strong></td>
-        <td data-label="Gönderilen Veriler">Sipariş kimliği, satın alınan ürün</td>
-        <td data-label="Amaç">Uygulama içi satın alma yönetimi</td>
-        <td data-label="Konum">AB (Google sunucuları)</td>
+        <td><strong>Google Play Billing</strong></td>
+        <td>Sipariş kimliği, satın alınan ürün</td>
+        <td>Uygulama içi satın alma yönetimi</td>
+        <td>AB (Google sunucuları)</td>
     </tr>
 </table></div>
 
@@ -631,64 +608,64 @@
         <th>Silme</th>
     </tr>
     <tr>
-        <td data-label="Veri Türü"><strong>Aktif Abonelik Verileri (Firebase)</strong></td>
-        <td data-label="Saklama Süresi">Mevcut fatura döneminin sonuna kadar</td>
-        <td data-label="Silme">Abonelik sona erdiğinde otomatik silme + geçmişe taşıma</td>
+        <td><strong>Aktif Abonelik Verileri (Firebase)</strong></td>
+        <td>Mevcut fatura döneminin sonuna kadar</td>
+        <td>Abonelik sona erdiğinde otomatik silme + geçmişe taşıma</td>
     </tr>
     <tr>
-        <td data-label="Veri Türü"><strong>Abonelik Geçmişi (Firebase)</strong></td>
-        <td data-label="Saklama Süresi">Abonelik sona ermesinden itibaren 90 gün</td>
-        <td data-label="Silme">Otomatik silme + "Bulut verilerini sil" ile manuel silme</td>
+        <td><strong>Abonelik Geçmişi (Firebase)</strong></td>
+        <td>Abonelik sona ermesinden itibaren 90 gün</td>
+        <td>Otomatik silme + "Bulut verilerini sil" ile manuel silme</td>
     </tr>
     <tr>
-        <td data-label="Veri Türü"><strong>Etkinlik Günlükleri (admin_activity_logs)</strong></td>
-        <td data-label="Saklama Süresi">Son değişiklikten itibaren 90 gün</td>
-        <td data-label="Silme">Otomatik silme (her 24 saatte) + manuel silme</td>
+        <td><strong>Etkinlik Günlükleri (admin_activity_logs)</strong></td>
+        <td>Son değişiklikten itibaren 90 gün</td>
+        <td>Otomatik silme (her 24 saatte) + manuel silme</td>
     </tr>
     <tr>
-        <td data-label="Veri Türü"><strong>Satın Alma Geçmişi (Firebase)</strong></td>
-        <td data-label="Saklama Süresi">Satın almadan itibaren 365 gün</td>
-        <td data-label="Silme">Otomatik + manuel silme</td>
+        <td><strong>Satın Alma Geçmişi (Firebase)</strong></td>
+        <td>Satın almadan itibaren 365 gün</td>
+        <td>Otomatik + manuel silme</td>
     </tr>
     <tr>
-        <td data-label="Veri Türü"><strong>Yerel Veriler (Cihaz)</strong></td>
-        <td data-label="Saklama Süresi">Kaldırılana kadar</td>
-        <td data-label="Silme">Uygulama kaldırma + manuel silme</td>
+        <td><strong>Yerel Veriler (Cihaz)</strong></td>
+        <td>Kaldırılana kadar</td>
+        <td>Uygulama kaldırma + manuel silme</td>
     </tr>
     <tr>
-        <td data-label="Veri Türü"><strong>Kişi-Dil Önbelleği (Cihaz)</strong></td>
-        <td data-label="Saklama Süresi">Manuel silme veya kaldırmaya kadar</td>
-        <td data-label="Silme">"Tüm yerel verileri sil" düğmesi</td>
+        <td><strong>Kişi-Dil Önbelleği (Cihaz)</strong></td>
+        <td>Manuel silme veya kaldırmaya kadar</td>
+        <td>"Tüm yerel verileri sil" düğmesi</td>
     </tr>
     <tr>
-        <td data-label="Veri Türü"><strong>Tahminsel N-gram Modelleri (Cihaz)</strong></td>
-        <td data-label="Saklama Süresi">Manuel silme veya kaldırmaya kadar</td>
-        <td data-label="Silme">"Tüm yerel verileri sil" düğmesi veya Çevrimdışı Modeller ekranından kaldırma</td>
+        <td><strong>Tahminsel N-gram Modelleri (Cihaz)</strong></td>
+        <td>Manuel silme veya kaldırmaya kadar</td>
+        <td>"Tüm yerel verileri sil" düğmesi veya Çevrimdışı Modeller ekranından kaldırma</td>
     </tr>
     <tr>
-        <td data-label="Veri Türü"><strong>Hunspell Sözlükleri (Cihaz)</strong></td>
-        <td data-label="Saklama Süresi">Manuel silme veya kaldırmaya kadar</td>
-        <td data-label="Silme">"Tüm yerel verileri sil" düğmesi</td>
+        <td><strong>Hunspell Sözlükleri (Cihaz)</strong></td>
+        <td>Manuel silme veya kaldırmaya kadar</td>
+        <td>"Tüm yerel verileri sil" düğmesi</td>
     </tr>
     <tr>
-        <td data-label="Veri Türü"><strong>Öğrenilen Kelimeler (Tahmin)</strong></td>
-        <td data-label="Saklama Süresi">14 gün (otomatik bozunma)</td>
-        <td data-label="Silme">Otomatik + manuel silme</td>
+        <td><strong>Öğrenilen Kelimeler (Tahmin)</strong></td>
+        <td>14 gün (otomatik bozunma)</td>
+        <td>Otomatik + manuel silme</td>
     </tr>
     <tr>
-        <td data-label="Veri Türü"><strong>Çevrilen Metin</strong></td>
-        <td data-label="Saklama Süresi">0 saniye (ASLA saklanmaz)</td>
-        <td data-label="Silme">Otomatik (yalnızca bellekte geçiş)</td>
+        <td><strong>Çevrilen Metin</strong></td>
+        <td>0 saniye (ASLA saklanmaz)</td>
+        <td>Otomatik (yalnızca bellekte geçiş)</td>
     </tr>
     <tr>
-        <td data-label="Veri Türü"><strong>Çeviri Önbelleği (RAM)</strong></td>
-        <td data-label="Saklama Süresi">Uygulama kapanana kadar</td>
-        <td data-label="Silme">Otomatik</td>
+        <td><strong>Çeviri Önbelleği (RAM)</strong></td>
+        <td>Uygulama kapanana kadar</td>
+        <td>Otomatik</td>
     </tr>
     <tr>
-        <td data-label="Veri Türü"><strong>Belirsizlik Çözme Önbelleği (RAM)</strong></td>
-        <td data-label="Saklama Süresi">Erişilebilirlik hizmeti yeniden başlatılana kadar</td>
-        <td data-label="Silme">Otomatik</td>
+        <td><strong>Belirsizlik Çözme Önbelleği (RAM)</strong></td>
+        <td>Erişilebilirlik hizmeti yeniden başlatılana kadar</td>
+        <td>Otomatik</td>
     </tr>
 </table></div>
 
@@ -802,22 +779,22 @@
         <th>Kalıcılık</th>
     </tr>
     <tr>
-        <td data-label="Tanımlayıcı"><strong>Android ID</strong></td>
-        <td data-label="Tür">Settings.Secure.ANDROID_ID</td>
-        <td data-label="Amaç">Benzersiz ve kararlı cihaz kimliği oluşturma</td>
-        <td data-label="Kalıcılık">Uygulama yeniden yüklemelerinde kalıcıdır (aynı imza anahtarı). <strong>Cihaz fabrika sıfırlamasından sonra değişir.</strong></td>
+        <td><strong>Android ID</strong></td>
+        <td>Settings.Secure.ANDROID_ID</td>
+        <td>Benzersiz ve kararlı cihaz kimliği oluşturma</td>
+        <td>Uygulama yeniden yüklemelerinde kalıcıdır (aynı imza anahtarı). <strong>Cihaz fabrika sıfırlamasından sonra değişir.</strong></td>
     </tr>
     <tr>
-        <td data-label="Tanımlayıcı"><strong>Install Referrer ID</strong></td>
-        <td data-label="Tür">Google Play Install Referrer API</td>
-        <td data-label="Amaç">Android ID kullanılamıyorsa yedek</td>
-        <td data-label="Kalıcılık">Yeniden yüklemeler arasında devam eder (Play Store'dan yüklenmişse)</td>
+        <td><strong>Install Referrer ID</strong></td>
+        <td>Google Play Install Referrer API</td>
+        <td>Android ID kullanılamıyorsa yedek</td>
+        <td>Yeniden yüklemeler arasında devam eder (Play Store'dan yüklenmişse)</td>
     </tr>
     <tr>
-        <td data-label="Tanımlayıcı"><strong>Yerel UUID</strong></td>
-        <td data-label="Tür">java.util.UUID</td>
-        <td data-label="Amaç">Son yedek (yalnızca sideload için)</td>
-        <td data-label="Kalıcılık">Devam ETMİYOR (kaldırmayla kaybolur)</td>
+        <td><strong>Yerel UUID</strong></td>
+        <td>java.util.UUID</td>
+        <td>Son yedek (yalnızca sideload için)</td>
+        <td>Devam ETMİYOR (kaldırmayla kaybolur)</td>
     </tr>
 </table></div>
 
@@ -836,29 +813,29 @@
         <th>Zorunlu</th>
     </tr>
     <tr>
-        <td data-label="İzin"><strong>Kişiler</strong></td>
-        <td data-label="Amaç">Otomatik klavye değişimi için her kişiye dil atama</td>
-        <td data-label="Zorunlu">❌ Hayır (isteğe bağlı)</td>
+        <td><strong>Kişiler</strong></td>
+        <td>Otomatik klavye değişimi için her kişiye dil atama</td>
+        <td>❌ Hayır (isteğe bağlı)</td>
     </tr>
     <tr>
-        <td data-label="İzin"><strong>Erişilebilirlik</strong></td>
-        <td data-label="Amaç">Otomatik dil değiştirmek için aktif sohbet uygulamasını algılama</td>
-        <td data-label="Zorunlu">❌ Hayır (isteğe bağlı)</td>
+        <td><strong>Erişilebilirlik</strong></td>
+        <td>Otomatik dil değiştirmek için aktif sohbet uygulamasını algılama</td>
+        <td>❌ Hayır (isteğe bağlı)</td>
     </tr>
     <tr>
-        <td data-label="İzin"><strong>Bildirimler</strong></td>
-        <td data-label="Amaç">Kilit ekranından doğru dilde hızlı yanıtlar</td>
-        <td data-label="Zorunlu">❌ Hayır (isteğe bağlı)</td>
+        <td><strong>Bildirimler</strong></td>
+        <td>Kilit ekranından doğru dilde hızlı yanıtlar</td>
+        <td>❌ Hayır (isteğe bağlı)</td>
     </tr>
     <tr>
-        <td data-label="İzin"><strong>Mikrofon</strong></td>
-        <td data-label="Amaç">Sesli dikte (yalnızca mikrofon düğmesine bastığınızda kayıt)</td>
-        <td data-label="Zorunlu">❌ Hayır (isteğe bağlı)</td>
+        <td><strong>Mikrofon</strong></td>
+        <td>Sesli dikte (yalnızca mikrofon düğmesine bastığınızda kayıt)</td>
+        <td>❌ Hayır (isteğe bağlı)</td>
     </tr>
     <tr>
-        <td data-label="İzin"><strong>İnternet</strong></td>
-        <td data-label="Amaç">Gerçek zamanlı çeviri ve bulut yedeği</td>
-        <td data-label="Zorunlu">✅ Evet (çeviri özellikleri için)</td>
+        <td><strong>İnternet</strong></td>
+        <td>Gerçek zamanlı çeviri ve bulut yedeği</td>
+        <td>✅ Evet (çeviri özellikleri için)</td>
     </tr>
 </table></div>
 
