@@ -85,7 +85,7 @@
             text-align: left;
         }
         th {
-            background-color: #F4F7FA;
+            background-color: #0FA3A3;
             font-weight: 600;
             color: white;
         }
@@ -118,47 +118,22 @@
             font-weight: 600;
         }
 
-        /* -- MOBILE RESPONSIVE FIX -- */
-        * { box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { overflow-x: hidden; max-width: 100%; }
-
+        /* -- MOBILE FIX -- */
+        html, body { overflow-x: hidden; }
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+        }
+        .table-wrapper table {
+            width: auto;
+            min-width: 480px;
+            margin: 0;
+        }
         @media (max-width: 650px) {
             body { padding: 15px; }
             .container { padding: 20px; }
-            .table-wrapper thead { display: none; }
-            .table-wrapper table,
-            .table-wrapper tbody,
-            .table-wrapper tr { display: block; width: 100%; }
-            .table-wrapper tr {
-                border: 1px solid #ddd;
-                border-radius: 6px;
-                margin-bottom: 12px;
-                background: #fff;
-                overflow: hidden;
-            }
-            .table-wrapper td {
-                display: block;
-                width: 100%;
-                padding: 10px 12px;
-                font-size: 13px;
-                line-height: 1.5;
-                border: none;
-                border-bottom: 1px solid #f0f0f0;
-                text-align: left;
-            }
-            .table-wrapper td:last-child { border-bottom: none; }
-            .table-wrapper td::before {
-                content: attr(data-label);
-                display: block;
-                font-weight: 600;
-                font-size: 11px;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                color: #0FA3A3;
-                margin-bottom: 4px;
-            }
-            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+            th, td { padding: 8px; font-size: 13px; }
         }
     </style>
 </head>
@@ -190,8 +165,8 @@
                 <th>Effect</th>
             </tr>
             <tr>
-                <td data-label="Optie"><strong>Cloudgegevens Verwijderen</strong></td>
-                <td data-label="Wat Wordt Verwijderd">
+                <td><strong>Cloudgegevens Verwijderen</strong></td>
+                <td>
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>Actief abonnementsdocument (user_subscriptions)</li>
                         <li>Abonnementsgeschiedenis (user_subscriptions_history)</li>
@@ -200,16 +175,16 @@
                         <li>Multi-device apparatenarray</li>
                     </ul>
                 </td>
-                <td data-label="Effect">Onomkeerbaar. U verliest uw aankoopgeschiedenis, activiteitslogboeken en abonnementsgeschiedenis. Vereist annulering van abonnement indien actief.</td>
+                <td>Onomkeerbaar. U verliest uw aankoopgeschiedenis, activiteitslogboeken en abonnementsgeschiedenis. Vereist annulering van abonnement indien actief.</td>
             </tr>
             <tr>
-                <td data-label="Optie"><strong>Leergegevens Verwijderen</strong></td>
-                <td data-label="Wat Wordt Verwijderd">Aangeleerde woorden voor gepersonaliseerde suggesties (alle 13 talen)</td>
-                <td data-label="Effect">Voorspellende tekst begint opnieuw vanaf nul.</td>
+                <td><strong>Leergegevens Verwijderen</strong></td>
+                <td>Aangeleerde woorden voor gepersonaliseerde suggesties (alle 13 talen)</td>
+                <td>Voorspellende tekst begint opnieuw vanaf nul.</td>
             </tr>
             <tr>
-                <td data-label="Optie"><strong>Alle Lokale Gegevens Verwijderen</strong></td>
-                <td data-label="Wat Wordt Verwijderd">
+                <td><strong>Alle Lokale Gegevens Verwijderen</strong></td>
+                <td>
                     <ul style="margin: 5px 0; padding-left: 20px;">
                         <li>Leergegevens (13 talen)</li>
                         <li>Alle voorkeuren en instellingen</li>
@@ -221,7 +196,7 @@
                         <li>Volledige app-cache (tijdelijke bestanden, lokale crashrapporten, WebView-cache)</li>
                     </ul>
                 </td>
-                <td data-label="Effect">De app herstart met standaardinstellingen. Er blijven geen gebruikersbestanden op het apparaat achter. Cloudgegevens blijven bewaard.</td>
+                <td>De app herstart met standaardinstellingen. Er blijven geen gebruikersbestanden op het apparaat achter. Cloudgegevens blijven bewaard.</td>
             </tr>
         </table></div>
 
@@ -256,7 +231,7 @@
         <p>Als u hulp nodig heeft of vragen heeft over gegevensverwijdering, kunt u contact met ons opnemen via e-mail:</p>
 
         <div class="info-box">
-            <p><strong>E-mail:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+            <p><strong>E-mail:</strong> <a href="/cdn-cgi/l/email-protection#5a292f2a2a35282e1a313b3338353b283e743f2f"><span class="__cf_email__" data-cfemail="51222421213e2325113a3038333e3023357f3424">[email&#160;protected]</span></a></p>
             <p><strong>Onderwerp:</strong> „AVG Verzoek Gegevensverwijdering"</p>
             <p><strong>Te Verstrekken Informatie:</strong></p>
             <ul>
@@ -290,39 +265,39 @@
                 <th>Details</th>
             </tr>
             <tr>
-                <td data-label="Gegevenstype"><strong>Actieve Abonnementsgegevens (Firebase)</strong></td>
-                <td data-label="Bewaartermijn">Tot het einde van de huidige factureringsperiode</td>
-                <td data-label="Details">Automatisch verplaatst naar geschiedenis wanneer het abonnement afloopt</td>
+                <td><strong>Actieve Abonnementsgegevens (Firebase)</strong></td>
+                <td>Tot het einde van de huidige factureringsperiode</td>
+                <td>Automatisch verplaatst naar geschiedenis wanneer het abonnement afloopt</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype"><strong>Abonnementsgeschiedenis (Firebase)</strong></td>
-                <td data-label="Bewaartermijn">90 dagen na afloop</td>
-                <td data-label="Details">Automatisch verwijderd 90 dagen na het einde van het abonnement</td>
+                <td><strong>Abonnementsgeschiedenis (Firebase)</strong></td>
+                <td>90 dagen na afloop</td>
+                <td>Automatisch verwijderd 90 dagen na het einde van het abonnement</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype"><strong>Administratieve Activiteitslogboeken (Firebase)</strong></td>
-                <td data-label="Bewaartermijn">90 dagen sinds laatste wijziging</td>
-                <td data-label="Details">Automatisch elke 24 uur verwijderd door achtergrondopschoning</td>
+                <td><strong>Administratieve Activiteitslogboeken (Firebase)</strong></td>
+                <td>90 dagen sinds laatste wijziging</td>
+                <td>Automatisch elke 24 uur verwijderd door achtergrondopschoning</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype"><strong>Aankoopgeschiedenis (Firebase)</strong></td>
-                <td data-label="Bewaartermijn">365 dagen na aankoop</td>
-                <td data-label="Details">Automatisch verwijderd na een jaar</td>
+                <td><strong>Aankoopgeschiedenis (Firebase)</strong></td>
+                <td>365 dagen na aankoop</td>
+                <td>Automatisch verwijderd na een jaar</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype"><strong>Aangeleerde Woorden</strong></td>
-                <td data-label="Bewaartermijn">14 dagen met verval</td>
-                <td data-label="Details">Frequentiescores nemen af in de loop van de tijd; ongebruikte woorden worden verwijderd</td>
+                <td><strong>Aangeleerde Woorden</strong></td>
+                <td>14 dagen met verval</td>
+                <td>Frequentiescores nemen af in de loop van de tijd; ongebruikte woorden worden verwijderd</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype"><strong>Vertaalcache</strong></td>
-                <td data-label="Bewaartermijn">Alleen sessie</td>
-                <td data-label="Details">Alleen opgeslagen in RAM; verwijderd bij sluiten app</td>
+                <td><strong>Vertaalcache</strong></td>
+                <td>Alleen sessie</td>
+                <td>Alleen opgeslagen in RAM; verwijderd bij sluiten app</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype"><strong>Vertaaltekst</strong></td>
-                <td data-label="Bewaartermijn">Nooit opgeslagen</td>
-                <td data-label="Details">0 seconden bewaring; alleen doorvoer naar OpenAI API</td>
+                <td><strong>Vertaaltekst</strong></td>
+                <td>Nooit opgeslagen</td>
+                <td>0 seconden bewaring; alleen doorvoer naar OpenAI API</td>
             </tr>
         </table></div>
 
@@ -339,54 +314,54 @@
                 <th>Verwijderingsmethode</th>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Apparatenarray</td>
-                <td data-label="Opslaglocatie">Firebase (cloud)</td>
-                <td data-label="Verwijderingsmethode">Knop „Cloudgegevens Verwijderen"</td>
+                <td>Apparatenarray</td>
+                <td>Firebase (cloud)</td>
+                <td>Knop „Cloudgegevens Verwijderen"</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Huidig Tokengebruik</td>
-                <td data-label="Opslaglocatie">Firebase (cloud)</td>
-                <td data-label="Verwijderingsmethode">Knop „Cloudgegevens Verwijderen" (alleen na annulering abonnement)</td>
+                <td>Huidig Tokengebruik</td>
+                <td>Firebase (cloud)</td>
+                <td>Knop „Cloudgegevens Verwijderen" (alleen na annulering abonnement)</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Aankoopgeschiedenis</td>
-                <td data-label="Opslaglocatie">Firebase (cloud)</td>
-                <td data-label="Verwijderingsmethode">Knop „Cloudgegevens Verwijderen"</td>
+                <td>Aankoopgeschiedenis</td>
+                <td>Firebase (cloud)</td>
+                <td>Knop „Cloudgegevens Verwijderen"</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Abonnementsplan</td>
-                <td data-label="Opslaglocatie">Firebase (cloud)</td>
-                <td data-label="Verwijderingsmethode">Knop „Cloudgegevens Verwijderen" (alleen na annulering abonnement)</td>
+                <td>Abonnementsplan</td>
+                <td>Firebase (cloud)</td>
+                <td>Knop „Cloudgegevens Verwijderen" (alleen na annulering abonnement)</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Maandelijkse Tokenlimiet</td>
-                <td data-label="Opslaglocatie">Firebase (cloud)</td>
-                <td data-label="Verwijderingsmethode">Knop „Cloudgegevens Verwijderen" (alleen na annulering abonnement)</td>
+                <td>Maandelijkse Tokenlimiet</td>
+                <td>Firebase (cloud)</td>
+                <td>Knop „Cloudgegevens Verwijderen" (alleen na annulering abonnement)</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Maandelijkse Reset-datum</td>
-                <td data-label="Opslaglocatie">Firebase (cloud)</td>
-                <td data-label="Verwijderingsmethode">Knop „Cloudgegevens Verwijderen" (alleen na annulering abonnement)</td>
+                <td>Maandelijkse Reset-datum</td>
+                <td>Firebase (cloud)</td>
+                <td>Knop „Cloudgegevens Verwijderen" (alleen na annulering abonnement)</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Einddatum Abonnement</td>
-                <td data-label="Opslaglocatie">Firebase (cloud)</td>
-                <td data-label="Verwijderingsmethode">Knop „Cloudgegevens Verwijderen" (alleen na afloop respijtperiode)</td>
+                <td>Einddatum Abonnement</td>
+                <td>Firebase (cloud)</td>
+                <td>Knop „Cloudgegevens Verwijderen" (alleen na afloop respijtperiode)</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Vlag „Wordt Niet Verlengd"</td>
-                <td data-label="Opslaglocatie">Firebase (cloud)</td>
-                <td data-label="Verwijderingsmethode">Knop „Cloudgegevens Verwijderen" (alleen na afloop respijtperiode)</td>
+                <td>Vlag „Wordt Niet Verlengd"</td>
+                <td>Firebase (cloud)</td>
+                <td>Knop „Cloudgegevens Verwijderen" (alleen na afloop respijtperiode)</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Abonnementsgeschiedenis</td>
-                <td data-label="Opslaglocatie">Firebase (cloud)</td>
-                <td data-label="Verwijderingsmethode">Knop „Cloudgegevens Verwijderen" (verwijdert alles: actief + geschiedenis)</td>
+                <td>Abonnementsgeschiedenis</td>
+                <td>Firebase (cloud)</td>
+                <td>Knop „Cloudgegevens Verwijderen" (verwijdert alles: actief + geschiedenis)</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Administratieve Activiteitslogboeken</td>
-                <td data-label="Opslaglocatie">Firebase (cloud)</td>
-                <td data-label="Verwijderingsmethode">Knop „Cloudgegevens Verwijderen"</td>
+                <td>Administratieve Activiteitslogboeken</td>
+                <td>Firebase (cloud)</td>
+                <td>Knop „Cloudgegevens Verwijderen"</td>
             </tr>
         </table></div>
 
@@ -399,74 +374,74 @@
                 <th>Verwijderingsmethode</th>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Aangeleerde Woorden (Voorspellingen)</td>
-                <td data-label="Opslaglocatie">Lokaal (apparaat)</td>
-                <td data-label="Verwijderingsmethode">Knop „Leergegevens Verwijderen" of „Alle Lokale Gegevens Verwijderen"</td>
+                <td>Aangeleerde Woorden (Voorspellingen)</td>
+                <td>Lokaal (apparaat)</td>
+                <td>Knop „Leergegevens Verwijderen" of „Alle Lokale Gegevens Verwijderen"</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">App-voorkeuren</td>
-                <td data-label="Opslaglocatie">Lokaal (apparaat)</td>
-                <td data-label="Verwijderingsmethode">Knop „Alle Lokale Gegevens Verwijderen"</td>
+                <td>App-voorkeuren</td>
+                <td>Lokaal (apparaat)</td>
+                <td>Knop „Alle Lokale Gegevens Verwijderen"</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">App-status</td>
-                <td data-label="Opslaglocatie">Lokaal (apparaat)</td>
-                <td data-label="Verwijderingsmethode">Knop „Alle Lokale Gegevens Verwijderen"</td>
+                <td>App-status</td>
+                <td>Lokaal (apparaat)</td>
+                <td>Knop „Alle Lokale Gegevens Verwijderen"</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Contacttaaltoewijzingen</td>
-                <td data-label="Opslaglocatie">Lokaal (apparaat)</td>
-                <td data-label="Verwijderingsmethode">Knop „Alle Lokale Gegevens Verwijderen"</td>
+                <td>Contacttaaltoewijzingen</td>
+                <td>Lokaal (apparaat)</td>
+                <td>Knop „Alle Lokale Gegevens Verwijderen"</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Leermetagegevens</td>
-                <td data-label="Opslaglocatie">Lokaal (apparaat)</td>
-                <td data-label="Verwijderingsmethode">Knop „Alle Lokale Gegevens Verwijderen"</td>
+                <td>Leermetagegevens</td>
+                <td>Lokaal (apparaat)</td>
+                <td>Knop „Alle Lokale Gegevens Verwijderen"</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Back-upmetagegevens</td>
-                <td data-label="Opslaglocatie">Lokaal (apparaat)</td>
-                <td data-label="Verwijderingsmethode">Knop „Alle Lokale Gegevens Verwijderen"</td>
+                <td>Back-upmetagegevens</td>
+                <td>Lokaal (apparaat)</td>
+                <td>Knop „Alle Lokale Gegevens Verwijderen"</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Abonnementswaarschuwingen</td>
-                <td data-label="Opslaglocatie">Lokaal (apparaat)</td>
-                <td data-label="Verwijderingsmethode">Knop „Alle Lokale Gegevens Verwijderen"</td>
+                <td>Abonnementswaarschuwingen</td>
+                <td>Lokaal (apparaat)</td>
+                <td>Knop „Alle Lokale Gegevens Verwijderen"</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">N-gram Voorspellingsmodellen (gedownload)</td>
-                <td data-label="Opslaglocatie">Lokaal (apparaat)</td>
-                <td data-label="Verwijderingsmethode">Knop „Alle Lokale Gegevens Verwijderen"</td>
+                <td>N-gram Voorspellingsmodellen (gedownload)</td>
+                <td>Lokaal (apparaat)</td>
+                <td>Knop „Alle Lokale Gegevens Verwijderen"</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Hunspell-woordenboeken (gekopieerd uit assets)</td>
-                <td data-label="Opslaglocatie">Lokaal (apparaat)</td>
-                <td data-label="Verwijderingsmethode">Knop „Alle Lokale Gegevens Verwijderen"</td>
+                <td>Hunspell-woordenboeken (gekopieerd uit assets)</td>
+                <td>Lokaal (apparaat)</td>
+                <td>Knop „Alle Lokale Gegevens Verwijderen"</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Cache voor Vocabulaires en Woordenboeken (in geheugen)</td>
-                <td data-label="Opslaglocatie">RAM (vluchtig)</td>
-                <td data-label="Verwijderingsmethode">Knop „Alle Lokale Gegevens Verwijderen" of app sluiten</td>
+                <td>Cache voor Vocabulaires en Woordenboeken (in geheugen)</td>
+                <td>RAM (vluchtig)</td>
+                <td>Knop „Alle Lokale Gegevens Verwijderen" of app sluiten</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">App-cache (tijdelijke bestanden, lokale crashrapporten, WebView-cache)</td>
-                <td data-label="Opslaglocatie">Lokaal (apparaat)</td>
-                <td data-label="Verwijderingsmethode">Knop „Alle Lokale Gegevens Verwijderen"</td>
+                <td>App-cache (tijdelijke bestanden, lokale crashrapporten, WebView-cache)</td>
+                <td>Lokaal (apparaat)</td>
+                <td>Knop „Alle Lokale Gegevens Verwijderen"</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Cache voor Contactdisambiguatie</td>
-                <td data-label="Opslaglocatie">RAM (vluchtig)</td>
-                <td data-label="Verwijderingsmethode">Automatisch bij herstart van de toegankelijkheidsdienst</td>
+                <td>Cache voor Contactdisambiguatie</td>
+                <td>RAM (vluchtig)</td>
+                <td>Automatisch bij herstart van de toegankelijkheidsdienst</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Vertaalcache</td>
-                <td data-label="Opslaglocatie">RAM (vluchtig)</td>
-                <td data-label="Verwijderingsmethode">Automatisch bij sluiten van de app</td>
+                <td>Vertaalcache</td>
+                <td>RAM (vluchtig)</td>
+                <td>Automatisch bij sluiten van de app</td>
             </tr>
             <tr>
-                <td data-label="Gegevenstype">Vertaaltekst</td>
-                <td data-label="Opslaglocatie">Nooit opgeslagen</td>
-                <td data-label="Verwijderingsmethode">Geen actie vereist (0 seconden bewaring)</td>
+                <td>Vertaaltekst</td>
+                <td>Nooit opgeslagen</td>
+                <td>Geen actie vereist (0 seconden bewaring)</td>
             </tr>
         </table></div>
 
@@ -521,19 +496,13 @@
 
         <p>
             <a href="https://alessandrof78.github.io/kaiboard-privacy/" class="button">Lees het Volledige Privacybeleid</a>
-            <a href="mailto:support@kaiboard.eu" class="button">Neem Contact Op met Ondersteuning</a>
+            <a href="/cdn-cgi/l/email-protection#bfcccacfcfd0cdcbffd4ded6ddd0decddb91daca" class="button">Neem Contact Op met Ondersteuning</a>
             <a href="https://alessandrof78.github.io/kaiboard-privacy/data-deletion.html" class="button">Andere talen</a>
         </p>
 
         <div class="footer">
-            <p><strong>Versie 2.0 - Laatste Update: 21 Maart 2026</strong></p>
-            <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
-            <p>Conform AVG (EU Verordening 2016/679)</p>
+            <p><strong>Versie 2.0 - Laatste Update: 21 Maart 2026</strong></
         </div>
     </div>
 </body>
 </html>
-
-
-
-
