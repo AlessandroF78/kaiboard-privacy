@@ -85,60 +85,22 @@
         ol li {
             margin: 10px 0;
         }
-
-        /* ── MOBILE RESPONSIVE FIX ── */
-        * { box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { overflow-x: hidden; max-width: 100%; }
-
+        /* ── MOBILE FIX ── */
+        html, body { overflow-x: hidden; }
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+        }
+        .table-wrapper table {
+            width: auto;
+            min-width: 480px;
+            margin: 0;
+        }
         @media (max-width: 650px) {
             body { padding: 15px; }
             .container { padding: 20px; }
-
-            /* Nascondi header tabella su mobile */
-            .table-wrapper thead { display: none; }
-
-            /* Ogni riga diventa una card */
-            .table-wrapper table,
-            .table-wrapper tbody,
-            .table-wrapper tr { display: block; width: 100%; }
-
-            .table-wrapper tr {
-                border: 1px solid #ddd;
-                border-radius: 6px;
-                margin-bottom: 12px;
-                background: #fff;
-                overflow: hidden;
-            }
-
-            /* Ogni cella occupa tutta la larghezza */
-            .table-wrapper td {
-                display: block;
-                width: 100%;
-                padding: 10px 12px;
-                font-size: 13px;
-                line-height: 1.5;
-                border: none;
-                border-bottom: 1px solid #f0f0f0;
-                text-align: left;
-            }
-
-            .table-wrapper td:last-child { border-bottom: none; }
-
-            /* Etichetta colonna prima del valore */
-            .table-wrapper td::before {
-                content: attr(data-label);
-                display: block;
-                font-weight: 600;
-                font-size: 11px;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                color: #0FA3A3;
-                margin-bottom: 4px;
-            }
-
-            /* Righe alternate */
-            .table-wrapper tr:nth-child(even) { background: #F8FAFA; }
+            th, td { padding: 8px; font-size: 13px; }
         }
     </style>
 </head>
@@ -173,28 +135,28 @@
         <th>Base Giuridica</th>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Array Dispositivi</strong></td>
-        <td data-label="Tipo">Lista di identificatori (es. ["android_e19d6c...", "android_175be4..."])</td>
-        <td data-label="Finalità">Sincronizzare abbonamento e saldo token su più dispositivi con stesso account Google Play</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
+        <td><strong>Array Dispositivi</strong></td>
+        <td>Lista di identificatori (es. ["android_e19d6c...", "android_175be4..."])</td>
+        <td>Sincronizzare abbonamento e saldo token su più dispositivi con stesso account Google Play</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Utilizzo Token Corrente</strong></td>
-        <td data-label="Tipo">Numero intero (current_usage)</td>
-        <td data-label="Finalità">Tracciare il consumo mensile condiviso tra tutti i dispositivi</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
+        <td><strong>Utilizzo Token Corrente</strong></td>
+        <td>Numero intero (current_usage)</td>
+        <td>Tracciare il consumo mensile condiviso tra tutti i dispositivi</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Cronologia Acquisti</strong></td>
-        <td data-label="Tipo">ID prodotto, data acquisto, ID ordine</td>
-        <td data-label="Finalità">Verificare gli acquisti e prevenire frodi</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
+        <td><strong>Cronologia Acquisti</strong></td>
+        <td>ID prodotto, data acquisto, ID ordine</td>
+        <td>Verificare gli acquisti e prevenire frodi</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Testo da Tradurre</strong></td>
-        <td data-label="Tipo">Contenuto testuale</td>
-        <td data-label="Finalità">Traduzione in tempo reale</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
+        <td><strong>Testo da Tradurre</strong></td>
+        <td>Contenuto testuale</td>
+        <td>Traduzione in tempo reale</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
 </table></div>
 
@@ -230,64 +192,64 @@
         <th>Base Giuridica</th>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Piano Abbonamento</strong></td>
-        <td data-label="Tipo">String (es. "plus", "pro", "max")</td>
-        <td data-label="Finalità">Identificare il piano attivo e applicare il limite token corretto</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
+        <td><strong>Piano Abbonamento</strong></td>
+        <td>String (es. "plus", "pro", "max")</td>
+        <td>Identificare il piano attivo e applicare il limite token corretto</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Limite Token Mensile</strong></td>
-        <td data-label="Tipo">Numero intero (es. 250000, 500000, 1000000)</td>
-        <td data-label="Finalità">Applicare il massimale di token inclusi nell'abbonamento</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
+        <td><strong>Limite Token Mensile</strong></td>
+        <td>Numero intero (es. 250000, 500000, 1000000)</td>
+        <td>Applicare il massimale di token inclusi nell'abbonamento</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Utilizzo Token Corrente</strong></td>
-        <td data-label="Tipo">Numero intero</td>
-        <td data-label="Finalità">Tracciare il consumo mensile condiviso e applicare il limite</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
+        <td><strong>Utilizzo Token Corrente</strong></td>
+        <td>Numero intero</td>
+        <td>Tracciare il consumo mensile condiviso e applicare il limite</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Data Reset Mensile</strong></td>
-        <td data-label="Tipo">Data ISO (es. "2026-02-01")</td>
-        <td data-label="Finalità">Reset automatico dell'utilizzo a inizio mese</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
+        <td><strong>Data Reset Mensile</strong></td>
+        <td>Data ISO (es. "2026-02-01")</td>
+        <td>Reset automatico dell'utilizzo a inizio mese</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>ID Prodotto Google Play</strong></td>
-        <td data-label="Tipo">String (es. "abbonamento_mensile_2500")</td>
-        <td data-label="Finalità">Verificare validità abbonamento tramite Google Play Billing API</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
+        <td><strong>ID Prodotto Google Play</strong></td>
+        <td>String (es. "abbonamento_mensile_2500")</td>
+        <td>Verificare validità abbonamento tramite Google Play Billing API</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Stato Rinnovo Automatico</strong></td>
-        <td data-label="Tipo">Boolean</td>
-        <td data-label="Finalità">Verificare se l'abbonamento si rinnoverà automaticamente</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
+        <td><strong>Stato Rinnovo Automatico</strong></td>
+        <td>Boolean</td>
+        <td>Verificare se l'abbonamento si rinnoverà automaticamente</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Data Acquisto Abbonamento</strong></td>
-        <td data-label="Tipo">Timestamp</td>
-        <td data-label="Finalità">Gestione ciclo di fatturazione e controversie</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
+        <td><strong>Data Acquisto Abbonamento</strong></td>
+        <td>Timestamp</td>
+        <td>Gestione ciclo di fatturazione e controversie</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Data Fine Abbonamento</strong></td>
-        <td data-label="Tipo">Timestamp ISO 8601 (es. "2026-02-28T14:30:00Z")</td>
-        <td data-label="Finalità">Gestire periodo di grazia dopo cancellazione (abbonamento resta attivo fino a questa data)</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
+        <td><strong>Data Fine Abbonamento</strong></td>
+        <td>Timestamp ISO 8601 (es. "2026-02-28T14:30:00Z")</td>
+        <td>Gestire periodo di grazia dopo cancellazione (abbonamento resta attivo fino a questa data)</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Flag "Non si Rinnoverà"</strong></td>
-        <td data-label="Tipo">Boolean (will_not_renew)</td>
-        <td data-label="Finalità">Indicare se l'abbonamento è stato cancellato ma resta valido fino a scadenza</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
+        <td><strong>Flag "Non si Rinnoverà"</strong></td>
+        <td>Boolean (will_not_renew)</td>
+        <td>Indicare se l'abbonamento è stato cancellato ma resta valido fino a scadenza</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Data Cancellazione</strong></td>
-        <td data-label="Tipo">Timestamp (cancelled_at)</td>
-        <td data-label="Finalità">Tracciare quando l'utente ha annullato l'abbonamento</td>
-        <td data-label="Base Giuridica">Esecuzione contratto (Art. 6.1.b GDPR)</td>
+        <td><strong>Data Cancellazione</strong></td>
+        <td>Timestamp (cancelled_at)</td>
+        <td>Tracciare quando l'utente ha annullato l'abbonamento</td>
+        <td>Esecuzione contratto (Art. 6.1.b GDPR)</td>
     </tr>
 </table></div>
 
@@ -350,16 +312,16 @@
         <th>Conservazione</th>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Cronologia Abbonamenti</strong></td>
-        <td data-label="Tipo">Array di oggetti in user_subscriptions_history/{purchaseToken}</td>
-        <td data-label="Finalità">Tracciabilità acquisti, audit trail, GDPR compliance</td>
-        <td data-label="Conservazione">90 giorni dalla scadenza</td>
+        <td><strong>Cronologia Abbonamenti</strong></td>
+        <td>Array di oggetti in user_subscriptions_history/{purchaseToken}</td>
+        <td>Tracciabilità acquisti, audit trail, GDPR compliance</td>
+        <td>90 giorni dalla scadenza</td>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Dati per Entry</strong></td>
-        <td data-label="Tipo">Piano, token usati/limite, date inizio/fine/cancellazione, motivo cancellazione, dispositivi</td>
-        <td data-label="Finalità">Audit, supporto utente, gestione rimborsi</td>
-        <td data-label="Conservazione">90 giorni dalla scadenza</td>
+        <td><strong>Dati per Entry</strong></td>
+        <td>Piano, token usati/limite, date inizio/fine/cancellazione, motivo cancellazione, dispositivi</td>
+        <td>Audit, supporto utente, gestione rimborsi</td>
+        <td>90 giorni dalla scadenza</td>
     </tr>
 </table></div>
 
@@ -389,9 +351,9 @@
         <th>Conservazione</th>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Log Attività Amministrativa</strong></td>
-        <td data-label="Tipo">Array di eventi in admin_activity_logs/{device_id}</td>
-        <td data-label="Finalità">
+        <td><strong>Log Attività Amministrativa</strong></td>
+        <td>Array di eventi in admin_activity_logs/{device_id}</td>
+        <td>
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Audit trail per supporto utente</li>
                 <li>Risoluzione controversie Google Play (entro 60 giorni)</li>
@@ -399,11 +361,11 @@
                 <li>Gestione grace period e rinnovi automatici</li>
             </ul>
         </td>
-        <td data-label="Conservazione">90 giorni dall'ultima modifica</td>
+        <td>90 giorni dall'ultima modifica</td>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Eventi Registrati</strong></td>
-        <td data-label="Tipo">
+        <td><strong>Eventi Registrati</strong></td>
+        <td>
             <ul style="margin: 5px 0; padding-left: 20px;">
                 <li>Sottoscrizione abbonamento</li>
                 <li>Cancellazione abbonamento</li>
@@ -412,14 +374,14 @@
                 <li>Modifiche piano</li>
             </ul>
         </td>
-        <td data-label="Finalità">Tracciare storia modifiche per audit e supporto</td>
-        <td data-label="Conservazione">90 giorni dall'ultima modifica</td>
+        <td>Tracciare storia modifiche per audit e supporto</td>
+        <td>90 giorni dall'ultima modifica</td>
     </tr>
     <tr>
-        <td data-label="Dato"><strong>Dettagli per Evento</strong></td>
-        <td data-label="Tipo">Timestamp, azione, motivo, piano, dettagli operazione</td>
-        <td data-label="Finalità">Informazioni necessarie per ricostruire cronologia in caso di dispute</td>
-        <td data-label="Conservazione">90 giorni dall'ultima modifica</td>
+        <td><strong>Dettagli per Evento</strong></td>
+        <td>Timestamp, azione, motivo, piano, dettagli operazione</td>
+        <td>Informazioni necessarie per ricostruire cronologia in caso di dispute</td>
+        <td>90 giorni dall'ultima modifica</td>
     </tr>
 </table></div>
 
@@ -586,28 +548,28 @@
         <th>Localizzazione</th>
     </tr>
     <tr>
-        <td data-label="Servizio"><strong>Firebase (Google)</strong></td>
-        <td data-label="Dati Inviati">ID anonimo, saldo token, cronologia acquisti, dati abbonamento, log attività</td>
-        <td data-label="Finalità">Backup, sincronizzazione, audit trail</td>
-        <td data-label="Localizzazione">UE (server europei)</td>
+        <td><strong>Firebase (Google)</strong></td>
+        <td>ID anonimo, saldo token, cronologia acquisti, dati abbonamento, log attività</td>
+        <td>Backup, sincronizzazione, audit trail</td>
+        <td>UE (server europei)</td>
     </tr>
     <tr>
-        <td data-label="Servizio"><strong>Cloudflare Worker</strong></td>
-        <td data-label="Dati Inviati">Testo da tradurre (solo transito)</td>
-        <td data-label="Finalità">Relay sicuro per traduzione</td>
-        <td data-label="Localizzazione">UE (server europei)</td>
+        <td><strong>Cloudflare Worker</strong></td>
+        <td>Testo da tradurre (solo transito)</td>
+        <td>Relay sicuro per traduzione</td>
+        <td>UE (server europei)</td>
     </tr>
     <tr>
-        <td data-label="Servizio"><strong>OpenAI</strong></td>
-        <td data-label="Dati Inviati">Testo da tradurre (solo transito)</td>
-        <td data-label="Finalità">Elaborazione traduzione</td>
-        <td data-label="Localizzazione">USA (con Clausole Contrattuali Standard)</td>
+        <td><strong>OpenAI</strong></td>
+        <td>Testo da tradurre (solo transito)</td>
+        <td>Elaborazione traduzione</td>
+        <td>USA (con Clausole Contrattuali Standard)</td>
     </tr>
     <tr>
-        <td data-label="Servizio"><strong>Google Play Billing</strong></td>
-        <td data-label="Dati Inviati">ID ordine, prodotto acquistato</td>
-        <td data-label="Finalità">Gestione acquisti in-app</td>
-        <td data-label="Localizzazione">UE (server Google)</td>
+        <td><strong>Google Play Billing</strong></td>
+        <td>ID ordine, prodotto acquistato</td>
+        <td>Gestione acquisti in-app</td>
+        <td>UE (server Google)</td>
     </tr>
 </table></div>
 
@@ -644,64 +606,64 @@
         <th>Eliminazione</th>
     </tr>
     <tr>
-        <td data-label="Tipo di Dato"><strong>Dati Abbonamento Attivo (Firebase)</strong></td>
-        <td data-label="Periodo di Conservazione">Fino alla fine del periodo di fatturazione corrente</td>
-        <td data-label="Eliminazione">Eliminazione automatica quando abbonamento scade + spostamento in cronologia</td>
+        <td><strong>Dati Abbonamento Attivo (Firebase)</strong></td>
+        <td>Fino alla fine del periodo di fatturazione corrente</td>
+        <td>Eliminazione automatica quando abbonamento scade + spostamento in cronologia</td>
     </tr>
     <tr>
-        <td data-label="Tipo di Dato"><strong>Cronologia Abbonamenti (Firebase)</strong></td>
-        <td data-label="Periodo di Conservazione">90 giorni dalla scadenza abbonamento</td>
-        <td data-label="Eliminazione">Eliminazione automatica + eliminazione manuale tramite "Elimina dati cloud"</td>
+        <td><strong>Cronologia Abbonamenti (Firebase)</strong></td>
+        <td>90 giorni dalla scadenza abbonamento</td>
+        <td>Eliminazione automatica + eliminazione manuale tramite "Elimina dati cloud"</td>
     </tr>
     <tr>
-        <td data-label="Tipo di Dato"><strong>Log Attività (admin_activity_logs)</strong></td>
-        <td data-label="Periodo di Conservazione">90 giorni dall'ultima modifica</td>
-        <td data-label="Eliminazione">Eliminazione automatica (ogni 24h) + eliminazione manuale</td>
+        <td><strong>Log Attività (admin_activity_logs)</strong></td>
+        <td>90 giorni dall'ultima modifica</td>
+        <td>Eliminazione automatica (ogni 24h) + eliminazione manuale</td>
     </tr>
     <tr>
-        <td data-label="Tipo di Dato"><strong>Cronologia Acquisti (Firebase)</strong></td>
-        <td data-label="Periodo di Conservazione">365 giorni dall'acquisto</td>
-        <td data-label="Eliminazione">Automatica + eliminazione manuale</td>
+        <td><strong>Cronologia Acquisti (Firebase)</strong></td>
+        <td>365 giorni dall'acquisto</td>
+        <td>Automatica + eliminazione manuale</td>
     </tr>
     <tr>
-        <td data-label="Tipo di Dato"><strong>Dati Locali (Dispositivo)</strong></td>
-        <td data-label="Periodo di Conservazione">Fino alla disinstallazione</td>
-        <td data-label="Eliminazione">Disinstallazione app + eliminazione manuale</td>
+        <td><strong>Dati Locali (Dispositivo)</strong></td>
+        <td>Fino alla disinstallazione</td>
+        <td>Disinstallazione app + eliminazione manuale</td>
     </tr>
     <tr>
-        <td data-label="Tipo di Dato"><strong>Cache Contatto-Lingua (Dispositivo)</strong></td>
-        <td data-label="Periodo di Conservazione">Fino a eliminazione manuale o disinstallazione</td>
-        <td data-label="Eliminazione">Pulsante "Elimina tutti i dati locali"</td>
+        <td><strong>Cache Contatto-Lingua (Dispositivo)</strong></td>
+        <td>Fino a eliminazione manuale o disinstallazione</td>
+        <td>Pulsante "Elimina tutti i dati locali"</td>
     </tr>
     <tr>
-        <td data-label="Tipo di Dato"><strong>Modelli Predittivi N-gram (Dispositivo)</strong></td>
-        <td data-label="Periodo di Conservazione">Fino a eliminazione manuale o disinstallazione</td>
-        <td data-label="Eliminazione">Pulsante "Elimina tutti i dati locali" o rimozione dalla schermata Modelli Offline</td>
+        <td><strong>Modelli Predittivi N-gram (Dispositivo)</strong></td>
+        <td>Fino a eliminazione manuale o disinstallazione</td>
+        <td>Pulsante "Elimina tutti i dati locali" o rimozione dalla schermata Modelli Offline</td>
     </tr>
     <tr>
-        <td data-label="Tipo di Dato"><strong>Dizionari Hunspell (Dispositivo)</strong></td>
-        <td data-label="Periodo di Conservazione">Fino a eliminazione manuale o disinstallazione</td>
-        <td data-label="Eliminazione">Pulsante "Elimina tutti i dati locali"</td>
+        <td><strong>Dizionari Hunspell (Dispositivo)</strong></td>
+        <td>Fino a eliminazione manuale o disinstallazione</td>
+        <td>Pulsante "Elimina tutti i dati locali"</td>
     </tr>
     <tr>
-        <td data-label="Tipo di Dato"><strong>Parole Apprese (Predizione)</strong></td>
-        <td data-label="Periodo di Conservazione">14 giorni (decadimento automatico)</td>
-        <td data-label="Eliminazione">Automatica + eliminazione manuale</td>
+        <td><strong>Parole Apprese (Predizione)</strong></td>
+        <td>14 giorni (decadimento automatico)</td>
+        <td>Automatica + eliminazione manuale</td>
     </tr>
     <tr>
-        <td data-label="Tipo di Dato"><strong>Testo Tradotto</strong></td>
-        <td data-label="Periodo di Conservazione">0 secondi (MAI salvato)</td>
-        <td data-label="Eliminazione">Automatica (solo transito in memoria)</td>
+        <td><strong>Testo Tradotto</strong></td>
+        <td>0 secondi (MAI salvato)</td>
+        <td>Automatica (solo transito in memoria)</td>
     </tr>
     <tr>
-        <td data-label="Tipo di Dato"><strong>Cache Traduzioni (RAM)</strong></td>
-        <td data-label="Periodo di Conservazione">Fino alla chiusura dell'app</td>
-        <td data-label="Eliminazione">Automatica</td>
+        <td><strong>Cache Traduzioni (RAM)</strong></td>
+        <td>Fino alla chiusura dell'app</td>
+        <td>Automatica</td>
     </tr>
     <tr>
-        <td data-label="Tipo di Dato"><strong>Cache Disambiguazione (RAM)</strong></td>
-        <td data-label="Periodo di Conservazione">Fino al riavvio del servizio di accessibilità</td>
-        <td data-label="Eliminazione">Automatica</td>
+        <td><strong>Cache Disambiguazione (RAM)</strong></td>
+        <td>Fino al riavvio del servizio di accessibilità</td>
+        <td>Automatica</td>
     </tr>
 </table></div>
 
@@ -815,22 +777,22 @@
         <th>Persistenza</th>
     </tr>
     <tr>
-        <td data-label="Identificatore"><strong>Android ID</strong></td>
-        <td data-label="Tipo">Settings.Secure.ANDROID_ID</td>
-        <td data-label="Finalità">Generare ID dispositivo univoco e stabile</td>
-        <td data-label="Persistenza">Persiste tra reinstallazioni dell'app (stessa signing key). <strong>Cambia dopo un factory reset del dispositivo.</strong></td>
+        <td><strong>Android ID</strong></td>
+        <td>Settings.Secure.ANDROID_ID</td>
+        <td>Generare ID dispositivo univoco e stabile</td>
+        <td>Persiste tra reinstallazioni dell'app (stessa signing key). <strong>Cambia dopo un factory reset del dispositivo.</strong></td>
     </tr>
     <tr>
-        <td data-label="Identificatore"><strong>Install Referrer ID</strong></td>
-        <td data-label="Tipo">Google Play Install Referrer API</td>
-        <td data-label="Finalità">Fallback se Android ID non disponibile</td>
-        <td data-label="Persistenza">Persiste tra reinstallazioni (se installato da Play Store)</td>
+        <td><strong>Install Referrer ID</strong></td>
+        <td>Google Play Install Referrer API</td>
+        <td>Fallback se Android ID non disponibile</td>
+        <td>Persiste tra reinstallazioni (se installato da Play Store)</td>
     </tr>
     <tr>
-        <td data-label="Identificatore"><strong>UUID Locale</strong></td>
-        <td data-label="Tipo">java.util.UUID</td>
-        <td data-label="Finalità">Fallback finale (solo per sideload)</td>
-        <td data-label="Persistenza">NON persiste (si perde con disinstallazione)</td>
+        <td><strong>UUID Locale</strong></td>
+        <td>java.util.UUID</td>
+        <td>Fallback finale (solo per sideload)</td>
+        <td>NON persiste (si perde con disinstallazione)</td>
     </tr>
 </table></div>
 
@@ -849,29 +811,29 @@
         <th>Obbligatorio</th>
     </tr>
     <tr>
-        <td data-label="Permesso"><strong>Contatti</strong></td>
-        <td data-label="Finalità">Assegnare lingua a ciascun contatto per cambio tastiera automatico</td>
-        <td data-label="Obbligatorio">❌ No (opzionale)</td>
+        <td><strong>Contatti</strong></td>
+        <td>Assegnare lingua a ciascun contatto per cambio tastiera automatico</td>
+        <td>❌ No (opzionale)</td>
     </tr>
     <tr>
-        <td data-label="Permesso"><strong>Accessibilità</strong></td>
-        <td data-label="Finalità">Rilevare app chat attiva per cambiare automaticamente lingua</td>
-        <td data-label="Obbligatorio">❌ No (opzionale)</td>
+        <td><strong>Accessibilità</strong></td>
+        <td>Rilevare app chat attiva per cambiare automaticamente lingua</td>
+        <td>❌ No (opzionale)</td>
     </tr>
     <tr>
-        <td data-label="Permesso"><strong>Notifiche</strong></td>
-        <td data-label="Finalità">Risposte rapide da lockscreen con lingua corretta</td>
-        <td data-label="Obbligatorio">❌ No (opzionale)</td>
+        <td><strong>Notifiche</strong></td>
+        <td>Risposte rapide da lockscreen con lingua corretta</td>
+        <td>❌ No (opzionale)</td>
     </tr>
     <tr>
-        <td data-label="Permesso"><strong>Microfono</strong></td>
-        <td data-label="Finalità">Dettatura vocale (registrazione solo quando premi il pulsante microfono)</td>
-        <td data-label="Obbligatorio">❌ No (opzionale)</td>
+        <td><strong>Microfono</strong></td>
+        <td>Dettatura vocale (registrazione solo quando premi il pulsante microfono)</td>
+        <td>❌ No (opzionale)</td>
     </tr>
     <tr>
-        <td data-label="Permesso"><strong>Internet</strong></td>
-        <td data-label="Finalità">Traduzione in tempo reale e backup cloud</td>
-        <td data-label="Obbligatorio">✅ Sì (per funzionalità di traduzione)</td>
+        <td><strong>Internet</strong></td>
+        <td>Traduzione in tempo reale e backup cloud</td>
+        <td>✅ Sì (per funzionalità di traduzione)</td>
     </tr>
 </table></div>
 
