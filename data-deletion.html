@@ -12,14 +12,14 @@
         h1 { color: #111827; font-size: 36px; font-weight: 700; margin-bottom: 10px; }
         h1 .ai { color: #0FA3A3; }
         .subtitle { color: #7f8c8d; font-size: 18px; margin-bottom: 40px; }
-        .language-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 40px; }
-        .lang-button { display: flex; align-items: center; justify-content: flex-start; gap: 10px; padding: 16px 20px; background: #0FA3A3; color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 15px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(15, 163, 163, 0.3); }
+        .language-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 40px; }
+        .lang-button { display: flex; align-items: center; justify-content: flex-start; gap: 10px; width: calc(25% - 12px); padding: 16px 20px; background: #0FA3A3; color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 15px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(15, 163, 163, 0.3); }
         .lang-button:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(15, 163, 163, 0.5); }
         .flag-img { width: 24px; height: 18px; border-radius: 2px; flex-shrink: 0; }
         .footer { margin-top: 40px; padding-top: 25px; border-top: 1px solid #ecf0f1; color: #7f8c8d; font-size: 14px; }
         .footer a { color: #0FA3A3; text-decoration: none; }
         .footer a:hover { text-decoration: underline; }
-        @media (max-width: 600px) { .container { padding: 30px 20px; } h1 { font-size: 28px; } .language-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .container { padding: 30px 15px; } h1 { font-size: 28px; } .language-grid { gap: 10px; } .lang-button { padding: 14px 16px; font-size: 14px; width: calc(50% - 5px); } }
     </style>
 </head>
 <body>
@@ -45,7 +45,7 @@
         </div>
         <div class="footer">
             <p><strong>Version 2.0</strong> - Last updated: March 21, 2026</p>
-            <p>&copy; 2026 Alessandro Faedda - kAIboard</p>
+            <p>&copy; 2026 Alessandro Faedda - k<span style="color:#0FA3A3">AI</span>board</p>
             <p><a href="https://www.kaiboard.eu" target="_blank">www.kaiboard.eu</a> | <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
         </div>
     </div>
