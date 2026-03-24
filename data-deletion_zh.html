@@ -1,1 +1,510 @@
-<!DOCTYPE html><html lang="zh-CN"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>数据删除政策 - kAIboard</title>    <style>        body {            font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif;            line-height: 1.8;            max-width: 900px;            margin: 0 auto;            padding: 40px 20px;            color: #111827;            background-color: #F4F7FA;        }        .container {            background-color: white;            padding: 40px;            border-radius: 8px;            box-shadow: 0 2px 4px rgba(0,0,0,0.1);        }        h1 {            color: #111827;            font-size: 26px;            font-weight: 600;            margin-bottom: 10px;            padding-bottom: 15px;            border-bottom: 3px solid #0FA3A3;            hyphens: auto;            -webkit-hyphens: auto;        }        h2 {            color: #111827;            font-size: 24px;            font-weight: 600;            margin-top: 40px;            margin-bottom: 15px;        }        h3 {            color: #111827;            font-size: 18px;            font-weight: 600;            margin-top: 25px;            margin-bottom: 10px;        }        p {            margin-bottom: 15px;        }        .intro {            background-color: #F4F7FA;            padding: 20px;            border-left: 4px solid #0FA3A3;            margin: 25px 0;        }        .warning {            background-color: #EDF7F7;            padding: 20px;            border-left: 4px solid #0FA3A3;            margin: 25px 0;        }        .info-box {            background-color: #EDF7F7;            padding: 20px;            border-radius: 6px;            margin: 25px 0;        }        ul, ol {            margin: 15px 0;            padding-left: 30px;        }        li {            margin: 8px 0;            line-height: 1.6;        }        table {            width: 100%;            border-collapse: collapse;            margin: 25px 0;            font-size: 15px;        }        th, td {            border: 1px solid #dee2e6;            padding: 12px 15px;            text-align: left;        }        th {            background-color: #0FA3A3;            font-weight: 600;            color: white;        }        tr:nth-child(even) {            background-color: #F8FAFA;        }        .button {            display: inline-block;            background-color: #0FA3A3;            color: white;            padding: 12px 28px;            text-decoration: none;            border-radius: 6px;            margin: 10px 10px 10px 0;            font-weight: 500;            transition: background-color 0.3s;        }        .button:hover {            background-color: #0D8F8F;        }        .footer {            margin-top: 50px;            padding-top: 25px;            border-top: 1px solid #e0e0e0;            text-align: center;            color: #4B5563;            font-size: 14px;        }        strong {            font-weight: 600;        }        /* -- MOBILE FIX -- */        html, body { overflow-x: hidden; }        .table-wrapper {            overflow-x: auto;            -webkit-overflow-scrolling: touch;            margin: 20px 0;        }        .table-wrapper table {            width: auto;            min-width: 480px;            margin: 0;        }        @media (max-width: 650px) {            body { padding: 15px; }            .container { padding: 20px; }            th, td { padding: 8px; font-size: 13px; }        }    </style></head><body><div class="container">    <h1>数据删除政策</h1>    <div class="intro">        <p><strong>kAIboard</strong> 尊重您依据 GDPR（《通用数据保护条例》）第 17 条（删除权）享有的数据删除权利。您可以随时通过应用内操作或发送电子邮件联系我们来删除您的个人数据。</p>    </div>    <h2>方式一：通过应用删除（立即生效）</h2>    <p>删除数据最快捷的方式是直接在应用内操作：</p>    <ol>        <li>在您的 Android 设备上打开 <strong>kAIboard</strong></li>        <li>进入<strong>设置</strong></li>        <li>选择<strong>隐私与安全</strong></li>        <li>选择以下三种删除选项之一</li>    </ol>    <h3>可用的删除选项</h3>    <div class="table-wrapper"><table>        <tr>            <th>选项</th>            <th>删除内容</th>            <th>影响</th>        </tr>        <tr>            <td><strong>删除云端数据</strong></td>            <td>                <ul style="margin: 5px 0; padding-left: 20px;">                    <li>活跃的订阅文档 (user_subscriptions)</li>                    <li>订阅历史记录 (user_subscriptions_history)</li>                    <li>管理操作日志 (admin_activity_logs)</li>                    <li>购买历史记录</li>                    <li>多设备的设备数组</li>                </ul>            </td>            <td>不可撤销。您将丢失订阅数据、购买历史记录、操作日志和订阅历史记录。如果订阅仍处于活跃状态，需要先取消订阅。</td>        </tr>        <tr>            <td><strong>删除学习数据</strong></td>            <td>用于个性化输入建议的已学习词汇（全部 13 种语言）</td>            <td>预测输入将从零开始重新学习。</td>        </tr>        <tr>            <td><strong>删除所有本地数据</strong></td>            <td>                <ul style="margin: 5px 0; padding-left: 20px;">                    <li>学习数据（13 种语言）</li>                    <li>所有偏好设置和配置</li>                    <li>应用状态和联系人-语言关联</li>                    <li>订阅提醒</li>                    <li>已下载的 N-gram 预测模型</li>                    <li>已复制的 Hunspell 词典</li>                    <li>内存缓存（词汇和词典）</li>                    <li>全部应用缓存（临时文件、本地崩溃报告、WebView 缓存）</li>                </ul>            </td>            <td>应用将恢复为默认设置重新启动。设备上不会保留任何用户文件。云端数据将被保留。</td>        </tr>    </table></div>    <p><strong>处理时间：</strong>立即生效（0-5 秒）</p>    <div class="warning">        <h3>⚠️ 活跃订阅期间的删除限制（GDPR 第 17.3(b) 条）</h3>        <p>如果您有<strong>活跃的月度订阅</strong>，云端数据的删除将<strong>暂时被阻止</strong>，直到您取消订阅。</p>        <p><strong>原因：</strong>与订阅相关的数据（活跃方案、Token 限额、重置日期）是履行现有合同所必需的（GDPR 第 6.1(b) 条）。提前删除将导致：</p>        <ul>            <li>❌ 已购买的月度服务无法正常运行</li>            <li>❌ Token 限额无法在多台设备间同步</li>            <li>❌ Token 无法在月初自动重置</li>        </ul>        <p><strong>操作步骤：</strong></p>        <ol>            <li>通过 Google Play 商店取消订阅</li>            <li>等待当前计费周期结束（宽限期）</li>            <li>通过应用删除云端数据</li>        </ol>        <p><strong>立即取消：</strong>应用会自动跳转到 Google Play 以管理您的订阅。取消订阅后，数据删除功能将在已付费的剩余有效期结束后可用。</p>        <p><strong>阻止删除的法律依据：</strong>GDPR 第 17.3(b) 条——"在数据处理对于履行数据主体所参与的合同是必要的情况下，删除权不适用"。</p>    </div>    <h2>方式二：通过电子邮件请求</h2>    <p>如果您更希望获得协助或对数据删除有任何疑问，可以通过电子邮件联系我们：</p>    <div class="info-box">        <p><strong>电子邮件：</strong> <a href="/cdn-cgi/l/email-protection#4b383e3b3b24393f0b202a2229242a392f652e3e"><span class="__cf_email__" data-cfemail="04777174746b7670446f656d666b6576602a6171">[email&#160;protected]</span></a></p>        <p><strong>邮件主题：</strong>"GDPR 数据删除请求"</p>        <p><strong>需要提供的信息：</strong></p>        <ul>            <li>设备 ID（如已知）或设备描述</li>            <li>您希望删除的数据类型（云端数据、学习数据或全部数据）</li>            <li>身份确认（出于安全目的）</li>        </ul>        <p><strong>响应时间：</strong>最长 30 天（依据 GDPR 第 12 条的要求）</p>    </div>    <h2>方式三：数据导出（GDPR 第 20 条）</h2>    <p>在删除数据之前，您可以将数据导出为机器可读的 JSON 格式：</p>    <ol>        <li>在您的 Android 设备上打开 <strong>kAIboard</strong></li>        <li>进入<strong>设置 → 隐私与安全</strong></li>        <li>点击<strong>"导出您的数据 (JSON)"</strong></li>    </ol>    <p>JSON 文件包括：导出元数据、本地偏好设置、学习数据（全部 13 种语言）以及云端数据（订阅信息、历史记录、操作日志）。您可以通过设备上安装的任何应用分享该文件。</p>    <h2>自动数据清理</h2>    <p>kAIboard 内置自动数据清理机制，以保护您的隐私：</p>    <div class="table-wrapper"><table>        <tr>            <th>数据类型</th>            <th>保留期限</th>            <th>详情</th>        </tr>        <tr>            <td><strong>活跃订阅数据 (Firebase)</strong></td>            <td>直到当前计费周期结束</td>            <td>订阅到期后自动转入历史记录</td>        </tr>        <tr>            <td><strong>订阅历史记录 (Firebase)</strong></td>            <td>到期后 90 天</td>            <td>订阅结束后 90 天自动删除</td>        </tr>        <tr>            <td><strong>管理操作日志 (Firebase)</strong></td>            <td>最后修改后 90 天</td>            <td>通过后台清理任务每 24 小时自动删除</td>        </tr>        <tr>            <td><strong>购买历史记录 (Firebase)</strong></td>            <td>购买后 365 天</td>            <td>一年后自动删除</td>        </tr>        <tr>            <td><strong>已学习的词汇</strong></td>            <td>14 天衰减机制</td>            <td>频率分数随时间递减；未使用的词汇将被自动移除</td>        </tr>        <tr>            <td><strong>翻译缓存</strong></td>            <td>仅限当前会话</td>            <td>仅保存在内存 (RAM) 中；关闭应用后即被清除</td>        </tr>        <tr>            <td><strong>翻译文本</strong></td>            <td>从不存储</td>            <td>保留时间为 0 秒；仅经由 OpenAI API 中转传输</td>        </tr>    </table></div>    <h2>完整数据清单</h2>    <p>下表列出了 kAIboard 收集的所有数据及其删除方式：</p>    <h3>云端数据 (Firebase)</h3>    <div class="table-wrapper"><table>        <tr>            <th>数据类型</th>            <th>存储位置</th>            <th>删除方式</th>        </tr>        <tr>            <td>设备数组</td>            <td>Firebase（云端）</td>            <td>"删除云端数据"按钮</td>        </tr>        <tr>            <td>当前 Token 用量</td>            <td>Firebase（云端）</td>            <td>"删除云端数据"按钮（仅在取消订阅后可用）</td>        </tr>        <tr>            <td>购买历史记录</td>            <td>Firebase（云端）</td>            <td>"删除云端数据"按钮</td>        </tr>        <tr>            <td>订阅方案</td>            <td>Firebase（云端）</td>            <td>"删除云端数据"按钮（仅在取消订阅后可用）</td>        </tr>        <tr>            <td>每月 Token 限额</td>            <td>Firebase（云端）</td>            <td>"删除云端数据"按钮（仅在取消订阅后可用）</td>        </tr>        <tr>            <td>每月重置日期</td>            <td>Firebase（云端）</td>            <td>"删除云端数据"按钮（仅在取消订阅后可用）</td>        </tr>        <tr>            <td>订阅到期日期</td>            <td>Firebase（云端）</td>            <td>"删除云端数据"按钮（仅在宽限期结束后可用）</td>        </tr>        <tr>            <td>"不再续订"标记</td>            <td>Firebase（云端）</td>            <td>"删除云端数据"按钮（仅在宽限期结束后可用）</td>        </tr>        <tr>            <td>订阅历史记录</td>            <td>Firebase（云端）</td>            <td>"删除云端数据"按钮（同时删除活跃记录和历史记录）</td>        </tr>        <tr>            <td>管理操作日志</td>            <td>Firebase（云端）</td>            <td>"删除云端数据"按钮</td>        </tr>    </table></div>    <h3>本地数据（设备）</h3>    <div class="table-wrapper"><table>        <tr>            <th>数据类型</th>            <th>存储位置</th>            <th>删除方式</th>        </tr>        <tr>            <td>已学习的词汇（预测输入）</td>            <td>本地（设备）</td>            <td>"删除学习数据"按钮 或 "删除所有本地数据"按钮</td>        </tr>        <tr>            <td>应用偏好设置</td>            <td>本地（设备）</td>            <td>"删除所有本地数据"按钮</td>        </tr>        <tr>            <td>应用状态</td>            <td>本地（设备）</td>            <td>"删除所有本地数据"按钮</td>        </tr>        <tr>            <td>联系人语言分配</td>            <td>本地（设备）</td>            <td>"删除所有本地数据"按钮</td>        </tr>        <tr>            <td>学习元数据</td>            <td>本地（设备）</td>            <td>"删除所有本地数据"按钮</td>        </tr>        <tr>            <td>备份元数据</td>            <td>本地（设备）</td>            <td>"删除所有本地数据"按钮</td>        </tr>        <tr>            <td>订阅提醒</td>            <td>本地（设备）</td>            <td>"删除所有本地数据"按钮</td>        </tr>        <tr>            <td>已下载的 N-gram 预测模型</td>            <td>本地（设备）</td>            <td>"删除所有本地数据"按钮</td>        </tr>        <tr>            <td>Hunspell 词典（从 assets 复制）</td>            <td>本地（设备）</td>            <td>"删除所有本地数据"按钮</td>        </tr>        <tr>            <td>词汇和词典缓存（内存中）</td>            <td>RAM（易失性）</td>            <td>"删除所有本地数据"按钮 或 关闭应用</td>        </tr>        <tr>            <td>应用缓存（临时文件、本地崩溃报告、WebView 缓存）</td>            <td>本地（设备）</td>            <td>"删除所有本地数据"按钮</td>        </tr>        <tr>            <td>联系人消歧缓存</td>            <td>RAM（易失性）</td>            <td>无障碍服务重启时自动清除</td>        </tr>        <tr>            <td>翻译缓存</td>            <td>RAM（易失性）</td>            <td>关闭应用时自动清除</td>        </tr>        <tr>            <td>翻译文本</td>            <td>从不存储</td>            <td>无需任何操作（保留时间为 0 秒）</td>        </tr>    </table></div>    <h2>无法删除的数据</h2>    <p>出于法律和技术原因，以下数据无法立即删除：</p>    <ul>        <li><strong>Google Play 交易记录：</strong>由 Google 根据其政策管理（用于退款处理、防欺诈和税务合规）</li>        <li><strong>已发送至 Firebase 的崩溃报告：</strong>已传输至 Firebase Crashlytics 的报告保留在后端，无法从设备端删除。尚未发送的报告可以通过设置（关闭 Crashlytics 开关）或"删除所有本地数据"按钮进行删除</li>    </ul>    <h2>数据删除的后果</h2>    <div class="warning">        <p><strong>重要提示：</strong>部分数据的删除<strong>不可撤销</strong>。请在操作前确保了解以下后果：</p>        <ul>            <li><strong>删除云端数据：</strong>您将丢失订阅数据、购买历史记录、订阅历史记录和操作日志。即使重新安装应用也无法恢复。如果您有活跃的订阅，需要先通过 Google Play 商店取消订阅，并等待已付费的剩余有效期结束。</li>            <li><strong>删除学习数据：</strong>个性化的预测输入将从零开始重新学习</li>            <li><strong>删除所有本地数据：</strong>所有偏好设置、配置、已下载的预测模型、词典和缓存都将丢失。应用将恢复为全新安装的状态（云端数据将被保留）</li>            <li><strong>宽限期内重新安装或更换设备：</strong>如果您在同一设备或已注册的设备上重新安装应用，订阅和代币余额将自动恢复。如果您在从未使用过您账户登录kAIboard的全新设备上安装应用，出于安全原因，剩余天数和代币余额可能无法恢复。</li>        </ul>    </div>    <h2>常见问题</h2>    <h3>删除云端数据后会怎样？</h3>    <p>您将丢失订阅数据、购买历史记录、过往订阅的历史记录和操作日志。如果重新安装应用，订阅仍可通过 Google Play 检测到，但历史数据将无法恢复。</p>    <h3>可以只删除特定数据吗？</h3>    <p>可以。您可以选择仅删除云端数据、仅删除学习数据或删除所有本地数据。您还可以在删除前将数据导出为 JSON 格式。</p>    <h3>我翻译的消息会被保存吗？</h3>    <p>不会。您输入的翻译文本<strong>从不保存</strong>。文本仅发送至 OpenAI 进行翻译处理，处理后立即丢弃（保留时间为 0 秒）。</p>    <h3>数据删除需要多长时间？</h3>    <p>通过应用内删除<strong>立即生效</strong>（0-5 秒）。通过电子邮件提交的请求将在 30 天内处理。</p>    <h3>删除后可以恢复数据吗？</h3>    <p>不可以。删除<strong>不可撤销</strong>。请确认确实要删除数据后再进行操作。建议在删除前使用"导出您的数据 (JSON)"功能进行备份。</p>    <h3>删除后订阅历史记录会怎样？</h3>    <p>订阅历史记录将随云端数据一并删除。其中包括所有过往订阅（已过期或已取消的），以及相关的 Token 使用详情、日期和使用设备信息。</p>    <h3>宽限期内可以删除数据吗？</h3>    <p>可以，但需要注意一个重要区别。如果订阅仍处于<strong>活跃状态且自动续订</strong>，应用会引导您前往 Google Play 先取消订阅。取消订阅后（进入宽限期），您可以随时删除云端数据：删除将立即生效，这意味着您<strong>永久放弃</strong>已付费的剩余有效期和当前 Token 余额。此操作不可撤销。<strong>请注意：</strong>在宽限期内，在全新设备上重新安装应用可能会因安全原因导致剩余期限和代币余额丢失。在已注册的设备上，恢复将自动进行。</p>    <h3>已下载的预测模型和词典会怎样？</h3>    <p>它们将通过"删除所有本地数据"按钮被删除。再次使用时，预测模型需要从"离线模型"界面重新下载，词典将在首次使用该语言时自动重新复制。</p>    <h2>其他资源</h2>    <p>        <a href="https://alessandrof78.github.io/kaiboard-privacy/" class="button">阅读完整隐私政策</a>        <a href="mailto:support@kaiboard.eu" class="button">联系客服</a>        <a href="https://alessandrof78.github.io/kaiboard-privacy/data-deletion.html" class="button">其他语言</a>    </p>    <div class="footer">        <p><strong>版本 2.0 - 最后更新：2026年3月21日</strong></p>        <p>&copy; 2026    </div></div></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据删除政策 - kAIboard</title>
+    <style>
+        body {
+            font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #111827;
+            background-color: #F4F7FA;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #111827;
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #0FA3A3;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+        }
+        h2 {
+            color: #111827;
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #111827;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .intro {
+            background-color: #F4F7FA;
+            padding: 20px;
+            border-left: 4px solid #0FA3A3;
+            margin: 25px 0;
+        }
+        .warning {
+            background-color: #EDF7F7;
+            padding: 20px;
+            border-left: 4px solid #0FA3A3;
+            margin: 25px 0;
+        }
+        .info-box {
+            background-color: #EDF7F7;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 25px 0;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 15px;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #0FA3A3;
+            font-weight: 600;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #F8FAFA;
+        }
+        .button {
+            display: inline-block;
+            background-color: #0FA3A3;
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px 10px 10px 0;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0D8F8F;
+        }
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #4B5563;
+            font-size: 14px;
+        }
+        strong {
+            font-weight: 600;
+        }
+
+        /* -- MOBILE FIX -- */
+        html, body { overflow-x: hidden; }
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+        }
+        .table-wrapper table {
+            width: auto;
+            min-width: 480px;
+            margin: 0;
+        }
+        @media (max-width: 650px) {
+            body { padding: 15px; }
+            .container { padding: 20px; }
+            th, td { padding: 8px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>数据删除政策</h1>
+
+    <div class="intro">
+        <p><strong>kAIboard</strong> 尊重您依据 GDPR（《通用数据保护条例》）第 17 条（删除权）享有的数据删除权利。您可以随时通过应用内操作或发送电子邮件联系我们来删除您的个人数据。</p>
+    </div>
+
+    <h2>方式一：通过应用删除（立即生效）</h2>
+
+    <p>删除数据最快捷的方式是直接在应用内操作：</p>
+
+    <ol>
+        <li>在您的 Android 设备上打开 <strong>kAIboard</strong></li>
+        <li>进入<strong>设置</strong></li>
+        <li>选择<strong>隐私与安全</strong></li>
+        <li>选择以下三种删除选项之一</li>
+    </ol>
+
+    <h3>可用的删除选项</h3>
+
+    <div class="table-wrapper"><table>
+        <tr>
+            <th>选项</th>
+            <th>删除内容</th>
+            <th>影响</th>
+        </tr>
+        <tr>
+            <td><strong>删除云端数据</strong></td>
+            <td>
+                <ul style="margin: 5px 0; padding-left: 20px;">
+                    <li>活跃的订阅文档 (user_subscriptions)</li>
+                    <li>订阅历史记录 (user_subscriptions_history)</li>
+                    <li>管理操作日志 (admin_activity_logs)</li>
+                    <li>购买历史记录</li>
+                    <li>多设备的设备数组</li>
+                </ul>
+            </td>
+            <td>不可撤销。您将丢失订阅数据、购买历史记录、操作日志和订阅历史记录。如果订阅仍处于活跃状态，需要先取消订阅。</td>
+        </tr>
+        <tr>
+            <td><strong>删除学习数据</strong></td>
+            <td>用于个性化输入建议的已学习词汇（全部 13 种语言）</td>
+            <td>预测输入将从零开始重新学习。</td>
+        </tr>
+        <tr>
+            <td><strong>删除所有本地数据</strong></td>
+            <td>
+                <ul style="margin: 5px 0; padding-left: 20px;">
+                    <li>学习数据（13 种语言）</li>
+                    <li>所有偏好设置和配置</li>
+                    <li>应用状态和联系人-语言关联</li>
+                    <li>订阅提醒</li>
+                    <li>已下载的 N-gram 预测模型</li>
+                    <li>已复制的 Hunspell 词典</li>
+                    <li>内存缓存（词汇和词典）</li>
+                    <li>全部应用缓存（临时文件、本地崩溃报告、WebView 缓存）</li>
+                </ul>
+            </td>
+            <td>应用将恢复为默认设置重新启动。设备上不会保留任何用户文件。云端数据将被保留。</td>
+        </tr>
+    </table></div>
+
+    <p><strong>处理时间：</strong>立即生效（0-5 秒）</p>
+
+    <div class="warning">
+        <h3>⚠️ 活跃订阅期间的删除限制（GDPR 第 17.3(b) 条）</h3>
+
+        <p>如果您有<strong>活跃的月度订阅</strong>，云端数据的删除将<strong>暂时被阻止</strong>，直到您取消订阅。</p>
+
+        <p><strong>原因：</strong>与订阅相关的数据（活跃方案、Token 限额、重置日期）是履行现有合同所必需的（GDPR 第 6.1(b) 条）。提前删除将导致：</p>
+        <ul>
+            <li>❌ 已购买的月度服务无法正常运行</li>
+            <li>❌ Token 限额无法在多台设备间同步</li>
+            <li>❌ Token 无法在月初自动重置</li>
+        </ul>
+
+        <p><strong>操作步骤：</strong></p>
+        <ol>
+            <li>通过 Google Play 商店取消订阅</li>
+            <li>等待当前计费周期结束（宽限期）</li>
+            <li>通过应用删除云端数据</li>
+        </ol>
+
+        <p><strong>立即取消：</strong>应用会自动跳转到 Google Play 以管理您的订阅。取消订阅后，数据删除功能将在已付费的剩余有效期结束后可用。</p>
+
+        <p><strong>阻止删除的法律依据：</strong>GDPR 第 17.3(b) 条——"在数据处理对于履行数据主体所参与的合同是必要的情况下，删除权不适用"。</p>
+    </div>
+
+    <h2>方式二：通过电子邮件请求</h2>
+
+    <p>如果您更希望获得协助或对数据删除有任何疑问，可以通过电子邮件联系我们：</p>
+
+    <div class="info-box">
+        <p><strong>电子邮件：</strong> <a href="/cdn-cgi/l/email-protection#4b383e3b3b24393f0b202a2229242a392f652e3e"><span class="__cf_email__" data-cfemail="04777174746b7670446f656d666b6576602a6171">[email&#160;protected]</span></a></p>
+        <p><strong>邮件主题：</strong>"GDPR 数据删除请求"</p>
+        <p><strong>需要提供的信息：</strong></p>
+        <ul>
+            <li>设备 ID（如已知）或设备描述</li>
+            <li>您希望删除的数据类型（云端数据、学习数据或全部数据）</li>
+            <li>身份确认（出于安全目的）</li>
+        </ul>
+        <p><strong>响应时间：</strong>最长 30 天（依据 GDPR 第 12 条的要求）</p>
+    </div>
+
+    <h2>方式三：数据导出（GDPR 第 20 条）</h2>
+
+    <p>在删除数据之前，您可以将数据导出为机器可读的 JSON 格式：</p>
+
+    <ol>
+        <li>在您的 Android 设备上打开 <strong>kAIboard</strong></li>
+        <li>进入<strong>设置 → 隐私与安全</strong></li>
+        <li>点击<strong>"导出您的数据 (JSON)"</strong></li>
+    </ol>
+
+    <p>JSON 文件包括：导出元数据、本地偏好设置、学习数据（全部 13 种语言）以及云端数据（订阅信息、历史记录、操作日志）。您可以通过设备上安装的任何应用分享该文件。</p>
+
+    <h2>自动数据清理</h2>
+
+    <p>kAIboard 内置自动数据清理机制，以保护您的隐私：</p>
+
+    <div class="table-wrapper"><table>
+        <tr>
+            <th>数据类型</th>
+            <th>保留期限</th>
+            <th>详情</th>
+        </tr>
+        <tr>
+            <td><strong>活跃订阅数据 (Firebase)</strong></td>
+            <td>直到当前计费周期结束</td>
+            <td>订阅到期后自动转入历史记录</td>
+        </tr>
+        <tr>
+            <td><strong>订阅历史记录 (Firebase)</strong></td>
+            <td>到期后 90 天</td>
+            <td>订阅结束后 90 天自动删除</td>
+        </tr>
+        <tr>
+            <td><strong>管理操作日志 (Firebase)</strong></td>
+            <td>最后修改后 90 天</td>
+            <td>通过后台清理任务每 24 小时自动删除</td>
+        </tr>
+        <tr>
+            <td><strong>购买历史记录 (Firebase)</strong></td>
+            <td>购买后 365 天</td>
+            <td>一年后自动删除</td>
+        </tr>
+        <tr>
+            <td><strong>已学习的词汇</strong></td>
+            <td>14 天衰减机制</td>
+            <td>频率分数随时间递减；未使用的词汇将被自动移除</td>
+        </tr>
+        <tr>
+            <td><strong>翻译缓存</strong></td>
+            <td>仅限当前会话</td>
+            <td>仅保存在内存 (RAM) 中；关闭应用后即被清除</td>
+        </tr>
+        <tr>
+            <td><strong>翻译文本</strong></td>
+            <td>从不存储</td>
+            <td>保留时间为 0 秒；仅经由 OpenAI API 中转传输</td>
+        </tr>
+    </table></div>
+
+    <h2>完整数据清单</h2>
+
+    <p>下表列出了 kAIboard 收集的所有数据及其删除方式：</p>
+
+    <h3>云端数据 (Firebase)</h3>
+
+    <div class="table-wrapper"><table>
+        <tr>
+            <th>数据类型</th>
+            <th>存储位置</th>
+            <th>删除方式</th>
+        </tr>
+        <tr>
+            <td>设备数组</td>
+            <td>Firebase（云端）</td>
+            <td>"删除云端数据"按钮</td>
+        </tr>
+        <tr>
+            <td>当前 Token 用量</td>
+            <td>Firebase（云端）</td>
+            <td>"删除云端数据"按钮（仅在取消订阅后可用）</td>
+        </tr>
+        <tr>
+            <td>购买历史记录</td>
+            <td>Firebase（云端）</td>
+            <td>"删除云端数据"按钮</td>
+        </tr>
+        <tr>
+            <td>订阅方案</td>
+            <td>Firebase（云端）</td>
+            <td>"删除云端数据"按钮（仅在取消订阅后可用）</td>
+        </tr>
+        <tr>
+            <td>每月 Token 限额</td>
+            <td>Firebase（云端）</td>
+            <td>"删除云端数据"按钮（仅在取消订阅后可用）</td>
+        </tr>
+        <tr>
+            <td>每月重置日期</td>
+            <td>Firebase（云端）</td>
+            <td>"删除云端数据"按钮（仅在取消订阅后可用）</td>
+        </tr>
+        <tr>
+            <td>订阅到期日期</td>
+            <td>Firebase（云端）</td>
+            <td>"删除云端数据"按钮（仅在宽限期结束后可用）</td>
+        </tr>
+        <tr>
+            <td>"不再续订"标记</td>
+            <td>Firebase（云端）</td>
+            <td>"删除云端数据"按钮（仅在宽限期结束后可用）</td>
+        </tr>
+        <tr>
+            <td>订阅历史记录</td>
+            <td>Firebase（云端）</td>
+            <td>"删除云端数据"按钮（同时删除活跃记录和历史记录）</td>
+        </tr>
+        <tr>
+            <td>管理操作日志</td>
+            <td>Firebase（云端）</td>
+            <td>"删除云端数据"按钮</td>
+        </tr>
+    </table></div>
+
+    <h3>本地数据（设备）</h3>
+
+    <div class="table-wrapper"><table>
+        <tr>
+            <th>数据类型</th>
+            <th>存储位置</th>
+            <th>删除方式</th>
+        </tr>
+        <tr>
+            <td>已学习的词汇（预测输入）</td>
+            <td>本地（设备）</td>
+            <td>"删除学习数据"按钮 或 "删除所有本地数据"按钮</td>
+        </tr>
+        <tr>
+            <td>应用偏好设置</td>
+            <td>本地（设备）</td>
+            <td>"删除所有本地数据"按钮</td>
+        </tr>
+        <tr>
+            <td>应用状态</td>
+            <td>本地（设备）</td>
+            <td>"删除所有本地数据"按钮</td>
+        </tr>
+        <tr>
+            <td>联系人语言分配</td>
+            <td>本地（设备）</td>
+            <td>"删除所有本地数据"按钮</td>
+        </tr>
+        <tr>
+            <td>学习元数据</td>
+            <td>本地（设备）</td>
+            <td>"删除所有本地数据"按钮</td>
+        </tr>
+        <tr>
+            <td>备份元数据</td>
+            <td>本地（设备）</td>
+            <td>"删除所有本地数据"按钮</td>
+        </tr>
+        <tr>
+            <td>订阅提醒</td>
+            <td>本地（设备）</td>
+            <td>"删除所有本地数据"按钮</td>
+        </tr>
+        <tr>
+            <td>已下载的 N-gram 预测模型</td>
+            <td>本地（设备）</td>
+            <td>"删除所有本地数据"按钮</td>
+        </tr>
+        <tr>
+            <td>Hunspell 词典（从 assets 复制）</td>
+            <td>本地（设备）</td>
+            <td>"删除所有本地数据"按钮</td>
+        </tr>
+        <tr>
+            <td>词汇和词典缓存（内存中）</td>
+            <td>RAM（易失性）</td>
+            <td>"删除所有本地数据"按钮 或 关闭应用</td>
+        </tr>
+        <tr>
+            <td>应用缓存（临时文件、本地崩溃报告、WebView 缓存）</td>
+            <td>本地（设备）</td>
+            <td>"删除所有本地数据"按钮</td>
+        </tr>
+        <tr>
+            <td>联系人消歧缓存</td>
+            <td>RAM（易失性）</td>
+            <td>无障碍服务重启时自动清除</td>
+        </tr>
+        <tr>
+            <td>翻译缓存</td>
+            <td>RAM（易失性）</td>
+            <td>关闭应用时自动清除</td>
+        </tr>
+        <tr>
+            <td>翻译文本</td>
+            <td>从不存储</td>
+            <td>无需任何操作（保留时间为 0 秒）</td>
+        </tr>
+    </table></div>
+
+    <h2>无法删除的数据</h2>
+
+    <p>出于法律和技术原因，以下数据无法立即删除：</p>
+
+    <ul>
+        <li><strong>Google Play 交易记录：</strong>由 Google 根据其政策管理（用于退款处理、防欺诈和税务合规）</li>
+        <li><strong>已发送至 Firebase 的崩溃报告：</strong>已传输至 Firebase Crashlytics 的报告保留在后端，无法从设备端删除。尚未发送的报告可以通过设置（关闭 Crashlytics 开关）或"删除所有本地数据"按钮进行删除</li>
+    </ul>
+
+    <h2>数据删除的后果</h2>
+
+    <div class="warning">
+        <p><strong>重要提示：</strong>部分数据的删除<strong>不可撤销</strong>。请在操作前确保了解以下后果：</p>
+        <ul>
+            <li><strong>删除云端数据：</strong>您将丢失订阅数据、购买历史记录、订阅历史记录和操作日志。即使重新安装应用也无法恢复。如果您有活跃的订阅，需要先通过 Google Play 商店取消订阅，并等待已付费的剩余有效期结束。</li>
+            <li><strong>删除学习数据：</strong>个性化的预测输入将从零开始重新学习</li>
+            <li><strong>删除所有本地数据：</strong>所有偏好设置、配置、已下载的预测模型、词典和缓存都将丢失。应用将恢复为全新安装的状态（云端数据将被保留）</li>
+            <li><strong>宽限期内重新安装或更换设备：</strong>如果您在同一设备或已注册的设备上重新安装应用，订阅和代币余额将自动恢复。如果您在从未使用过您账户登录kAIboard的全新设备上安装应用，出于安全原因，剩余天数和代币余额可能无法恢复。</li>
+        </ul>
+    </div>
+
+    <h2>常见问题</h2>
+
+    <h3>删除云端数据后会怎样？</h3>
+    <p>您将丢失订阅数据、购买历史记录、过往订阅的历史记录和操作日志。如果重新安装应用，订阅仍可通过 Google Play 检测到，但历史数据将无法恢复。</p>
+
+    <h3>可以只删除特定数据吗？</h3>
+    <p>可以。您可以选择仅删除云端数据、仅删除学习数据或删除所有本地数据。您还可以在删除前将数据导出为 JSON 格式。</p>
+
+    <h3>我翻译的消息会被保存吗？</h3>
+    <p>不会。您输入的翻译文本<strong>从不保存</strong>。文本仅发送至 OpenAI 进行翻译处理，处理后立即丢弃（保留时间为 0 秒）。</p>
+
+    <h3>数据删除需要多长时间？</h3>
+    <p>通过应用内删除<strong>立即生效</strong>（0-5 秒）。通过电子邮件提交的请求将在 30 天内处理。</p>
+
+    <h3>删除后可以恢复数据吗？</h3>
+    <p>不可以。删除<strong>不可撤销</strong>。请确认确实要删除数据后再进行操作。建议在删除前使用"导出您的数据 (JSON)"功能进行备份。</p>
+
+    <h3>删除后订阅历史记录会怎样？</h3>
+    <p>订阅历史记录将随云端数据一并删除。其中包括所有过往订阅（已过期或已取消的），以及相关的 Token 使用详情、日期和使用设备信息。</p>
+
+    <h3>宽限期内可以删除数据吗？</h3>
+    <p>可以，但需要注意一个重要区别。如果订阅仍处于<strong>活跃状态且自动续订</strong>，应用会引导您前往 Google Play 先取消订阅。取消订阅后（进入宽限期），您可以随时删除云端数据：删除将立即生效，这意味着您<strong>永久放弃</strong>已付费的剩余有效期和当前 Token 余额。此操作不可撤销。<strong>请注意：</strong>在宽限期内，在全新设备上重新安装应用可能会因安全原因导致剩余期限和代币余额丢失。在已注册的设备上，恢复将自动进行。</p>
+
+    <h3>已下载的预测模型和词典会怎样？</h3>
+    <p>它们将通过"删除所有本地数据"按钮被删除。再次使用时，预测模型需要从"离线模型"界面重新下载，词典将在首次使用该语言时自动重新复制。</p>
+
+    <h2>其他资源</h2>
+
+    <p>
+        <a href="https://alessandrof78.github.io/kaiboard-privacy/" class="button">阅读完整隐私政策</a>
+        <a href="mailto:support@kaiboard.eu" class="button">联系客服</a>
+        <a href="https://alessandrof78.github.io/kaiboard-privacy/data-deletion.html" class="button">其他语言</a>
+    </p>
+
+    <div class="footer">
+        <p><strong>版本 2.0 &#8211; 最后更新：2026年3月21日</strong></p>
+        <p>&copy; 2026 Alessandro Faedda &#8211; kAIboard</p>
+        <p>符合 GDPR（欧盟法规 2016/679）</p>
+    </div>
+</div>
+</body>
+</html>
