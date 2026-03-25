@@ -421,6 +421,7 @@
     <li>✅ <strong>Übersetzungs-Cache</strong> (nur im RAM, verloren beim Schließen der App)</li>
     <li>✅ <strong>Kontakt-Disambiguierungs-Cache</strong> (nur im RAM, verloren beim Neustart des Dienstes)</li>
     <li>✅ <strong>Prädiktive N-Gramm-Modelle</strong> (vom Nutzer heruntergeladen, lokal gespeichert)</li>
+    <li>✅ <strong>Übersetzungspakete auf dem Gerät</strong> (ML Kit, vom Benutzer heruntergeladen, ~30 MB pro Sprache, verwaltet von Google Play Services)</li>
     <li>✅ <strong>Hunspell-Wörterbücher</strong> (aus Assets kopiert, lokal gespeichert)</li>
     <li>✅ <strong>Abonnement-Benachrichtigungen</strong> (lokale Benachrichtigungen über Nutzung)</li>
 </ul>
@@ -465,6 +466,16 @@
     <li>Die Übersetzung wird an die App zurückgesendet</li>
     <li><strong>⚠️ WICHTIG: Der Text wird NIEMALS auf unseren Servern oder bei OpenAI gespeichert</strong> (nur Durchleitung im Speicher)</li>
 </ol>
+
+<h3>3.1.1 Übersetzung auf dem Gerät (ML Kit)</h3>
+<p>kAIboard bietet auch einen vollständig geräteinternen Übersetzungsmodus ohne Internetverbindung:</p>
+<ul>
+    <li>Sprachpakete (~30 MB pro Stück) werden von Google Play Services auf das Gerät heruntergeladen</li>
+    <li>Übersetzungen erfolgen <strong>vollständig auf dem Gerät</strong> — kein Text wird an externe Server gesendet</li>
+    <li>Google Play Services verwaltet den Download und die Speicherung der Modelle</li>
+    <li><strong>⚠️ DATENSCHUTZ:</strong> Im Gegensatz zur Cloud-Übersetzung werden bei der Übersetzung auf dem Gerät keine Daten an Dritte übermittelt. Der Text verbleibt ausschließlich auf Ihrem Gerät</li>
+</ul>
+<p>Sie können Sprachpakete (herunterladen und entfernen) über den Bildschirm <strong>Übersetzungspakete auf dem Gerät</strong> in den App-Einstellungen verwalten.</p>
 
 <h3>3.2 Backup und Synchronisierung des Abonnements</h3>
 
@@ -643,6 +654,11 @@
         <td><strong>Prädiktive N-Gramm-Modelle (Gerät)</strong></td>
         <td>Bis zur manuellen Löschung oder Deinstallation</td>
         <td>Schaltfläche „Alle lokalen Daten löschen" oder Entfernung aus dem Offline-Modelle-Bildschirm</td>
+    </tr>
+    <tr>
+        <td><strong>Übersetzungspakete auf dem Gerät (ML Kit)</strong></td>
+        <td>Bis zur manuellen Löschung oder Deinstallation</td>
+        <td>Schaltfläche „Alle lokalen Daten löschen" oder Entfernung über den Bildschirm Übersetzungspakete</td>
     </tr>
     <tr>
         <td><strong>Hunspell-Wörterbücher (Gerät)</strong></td>

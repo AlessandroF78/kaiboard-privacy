@@ -192,6 +192,7 @@
                     <li>App state and contact-language assignments</li>
                     <li>Subscription alerts</li>
                     <li>Downloaded N-gram predictive models</li>
+                    <li>On-device translation packs (ML Kit)</li>
                     <li>Copied Hunspell dictionaries</li>
                     <li>In-memory cache (vocabularies and dictionaries)</li>
                     <li>Entire app cache (temporary files, local crash reports, WebView cache)</li>
@@ -410,6 +411,16 @@
             <td>"Delete All Local Data" button</td>
         </tr>
         <tr>
+            <td>Predictive N-gram Models (downloaded)</td>
+            <td>Local (device)</td>
+            <td>"Delete All Local Data" button or removal from Offline Models screen</td>
+        </tr>
+        <tr>
+            <td>On-Device Translation Packs (ML Kit)</td>
+            <td>Local (device)</td>
+            <td>"Delete All Local Data" button or removal from Translation Packs screen</td>
+        </tr>
+        <tr>
             <td>Hunspell Dictionaries (copied from assets)</td>
             <td>Local (device)</td>
             <td>"Delete All Local Data" button</td>
@@ -485,8 +496,8 @@
     <h3>Can I delete my data during the grace period?</h3>
     <p>Yes, but with an important distinction. If your subscription is still <strong>active and auto-renewing</strong>, the app will redirect you to Google Play to cancel it first. Once the subscription is cancelled (grace period), you can delete your cloud data at any time: the deletion is immediate and means a <strong>permanent waiver</strong> of the remaining paid period and your current token balance. This choice is irreversible. <strong>Warning:</strong> reinstalling the app on a completely new device during the grace period may result in the loss of the remaining period and token balance for security reasons. On already registered devices, restoration happens automatically.</p>
 
-    <h3>What happens to downloaded predictive models and dictionaries?</h3>
-    <p>They are removed by the "Delete All Local Data" button. On next use, predictive models will need to be re-downloaded from the Offline Models screen and dictionaries will be automatically re-copied on first use of the language.</p>
+    <h3>What happens to downloaded predictive models, translation packs and dictionaries?</h3>
+    <p>They are removed by the "Delete All Local Data" button. On next use, predictive models will need to be re-downloaded from the Offline Models screen, on-device translation packs from the Translation Packs screen, and dictionaries will be automatically re-copied on first use of the language.</p>
 
     <h2>Additional Resources</h2>
 

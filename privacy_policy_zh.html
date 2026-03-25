@@ -421,6 +421,7 @@
     <li>✅ <strong>翻译缓存</strong>（仅存于内存，关闭应用后清除）</li>
     <li>✅ <strong>联系人消歧缓存</strong>（仅存于内存，服务重启后清除）</li>
     <li>✅ <strong>N-gram 预测模型</strong>（用户下载，本地保存）</li>
+    <li>✅ <strong>设备端翻译包</strong>（ML Kit，由用户下载，每种语言约 30 MB，由 Google Play Services 管理）</li>
     <li>✅ <strong>Hunspell 词典</strong>（从 assets 复制，本地保存）</li>
     <li>✅ <strong>订阅提醒</strong>（关于使用量的本地通知）</li>
 </ul>
@@ -459,6 +460,16 @@
     <li>翻译结果返回至应用</li>
     <li><strong>⚠️ 重要提示：文本绝不会保存在我们的服务器或 OpenAI 上</strong>（仅在内存中中转）</li>
 </ol>
+
+<h3>3.1.1 设备端翻译（ML Kit）</h3>
+<p>kAIboard 还提供完全在设备上进行的翻译模式，无需互联网连接：</p>
+<ul>
+    <li>语言包（每个约 30 MB）通过 Google Play Services 下载到设备</li>
+    <li>翻译<strong>完全在设备上</strong>完成——不会将任何文本发送到外部服务器</li>
+    <li>Google Play Services 管理模型的下载和存储</li>
+    <li><strong>⚠️ 隐私：</strong>与云翻译不同，设备端翻译不会向第三方传输任何数据。文本仅保留在您的设备上</li>
+</ul>
+<p>您可以在应用设置中的<strong>设备端翻译包</strong>界面管理语言包（下载和删除）。</p>
 
 <h3>3.2 备份与订阅同步</h3>
 
@@ -630,6 +641,11 @@
         <td><strong>N-gram 预测模型（设备）</strong></td>
         <td>直到手动删除或卸载</td>
         <td>"删除所有本地数据"按钮或从离线模型界面移除</td>
+    </tr>
+    <tr>
+        <td><strong>设备端翻译包（ML Kit）</strong></td>
+        <td>直到手动删除或卸载应用</td>
+        <td>"删除所有本地数据"按钮或从翻译包界面删除</td>
     </tr>
     <tr>
         <td><strong>Hunspell 词典（设备）</strong></td>

@@ -421,6 +421,7 @@
     <li>✅ <strong>Vertaalcache</strong> (alleen RAM, verloren bij sluiten van app)</li>
     <li>✅ <strong>Contact-disambiguatiecache</strong> (alleen RAM, verloren bij herstart van service)</li>
     <li>✅ <strong>Voorspellende N-gram modellen</strong> (gedownload door gebruiker, lokaal opgeslagen)</li>
+    <li>✅ <strong>Vertaalpakketten op het apparaat</strong> (ML Kit, gedownload door de gebruiker, ~30 MB per taal, beheerd door Google Play Services)</li>
     <li>✅ <strong>Hunspell-woordenboeken</strong> (gekopieerd uit assets, lokaal opgeslagen)</li>
     <li>✅ <strong>Abonnementsmeldingen</strong> (lokale meldingen over gebruik)</li>
 </ul>
@@ -465,6 +466,16 @@
     <li>De vertaling wordt teruggestuurd naar de app</li>
     <li><strong>⚠️ BELANGRIJK: De tekst wordt NOOIT opgeslagen op onze servers of bij OpenAI</strong> (alleen doorvoer in geheugen)</li>
 </ol>
+
+<h3>3.1.1 Vertaling op het Apparaat (ML Kit)</h3>
+<p>kAIboard biedt ook een volledig op het apparaat werkende vertaalmodus, zonder internetverbinding:</p>
+<ul>
+    <li>Taalpakketten (~30 MB per stuk) worden gedownload van Google Play Services naar het apparaat</li>
+    <li>Vertalingen vinden <strong>volledig op het apparaat</strong> plaats — er wordt geen tekst naar externe servers verzonden</li>
+    <li>Google Play Services beheert het downloaden en opslaan van de modellen</li>
+    <li><strong>⚠️ PRIVACY:</strong> In tegenstelling tot cloudvertaling worden bij vertaling op het apparaat geen gegevens aan derden doorgegeven. De tekst blijft uitsluitend op uw apparaat</li>
+</ul>
+<p>U kunt taalpakketten (downloaden en verwijderen) beheren via het scherm <strong>Vertaalpakketten op het Apparaat</strong> in de app-instellingen.</p>
 
 <h3>3.2 Back-up en Synchronisatie van Abonnement</h3>
 
@@ -643,6 +654,11 @@
         <td><strong>Voorspellende N-gram Modellen (Apparaat)</strong></td>
         <td>Tot handmatige verwijdering of deïnstallatie</td>
         <td>Knop "Alle lokale gegevens verwijderen" of verwijdering vanuit het scherm Offline Modellen</td>
+    </tr>
+    <tr>
+        <td><strong>Vertaalpakketten op het Apparaat (ML Kit)</strong></td>
+        <td>Tot handmatige verwijdering of de-installatie</td>
+        <td>Knop "Alle lokale gegevens verwijderen" of verwijdering via het scherm Vertaalpakketten</td>
     </tr>
     <tr>
         <td><strong>Hunspell-woordenboeken (Apparaat)</strong></td>

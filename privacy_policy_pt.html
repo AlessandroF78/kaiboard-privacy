@@ -421,6 +421,7 @@
     <li>✅ <strong>Cache de tradução</strong> (apenas RAM, perdido ao fechar o aplicativo)</li>
     <li>✅ <strong>Cache de desambiguação de contatos</strong> (apenas RAM, perdido ao reiniciar o serviço)</li>
     <li>✅ <strong>Modelos preditivos N-gram</strong> (baixados pelo usuário, salvos localmente)</li>
+    <li>✅ <strong>Pacotes de tradução no dispositivo</strong> (ML Kit, transferidos pelo utilizador, ~30 MB por idioma, geridos pelo Google Play Services)</li>
     <li>✅ <strong>Dicionários Hunspell</strong> (copiados dos recursos, salvos localmente)</li>
     <li>✅ <strong>Alertas de assinatura</strong> (notificações locais sobre uso)</li>
 </ul>
@@ -465,6 +466,16 @@
     <li>A tradução é devolvida ao aplicativo</li>
     <li><strong>⚠️ IMPORTANTE: O texto NUNCA é salvo em nossos servidores ou na OpenAI</strong> (apenas trânsito em memória)</li>
 </ol>
+
+<h3>3.1.1 Tradução no Dispositivo (ML Kit)</h3>
+<p>O kAIboard também oferece um modo de tradução totalmente no dispositivo, sem ligação à Internet:</p>
+<ul>
+    <li>Os pacotes de idiomas (~30 MB cada) são transferidos do Google Play Services para o dispositivo</li>
+    <li>As traduções são realizadas <strong>inteiramente no dispositivo</strong> — nenhum texto é enviado para servidores externos</li>
+    <li>O Google Play Services gere a transferência e o armazenamento dos modelos</li>
+    <li><strong>⚠️ PRIVACIDADE:</strong> Ao contrário da tradução na nuvem, a tradução no dispositivo não transmite quaisquer dados a terceiros. O texto permanece exclusivamente no seu dispositivo</li>
+</ul>
+<p>Pode gerir os pacotes de idiomas (transferir e remover) a partir do ecrã <strong>Pacotes de Tradução no Dispositivo</strong> nas Definições da aplicação.</p>
 
 <h3>3.2 Backup e Sincronização de Assinatura</h3>
 
@@ -643,6 +654,11 @@
         <td><strong>Modelos Preditivos N-gram (Dispositivo)</strong></td>
         <td>Até exclusão manual ou desinstalação</td>
         <td>Botão "Excluir todos os dados locais" ou remoção da tela Modelos Offline</td>
+    </tr>
+    <tr>
+        <td><strong>Pacotes de Tradução no Dispositivo (ML Kit)</strong></td>
+        <td>Até eliminação manual ou desinstalação</td>
+        <td>Botão "Eliminar todos os dados locais" ou remoção a partir do ecrã Pacotes de Tradução</td>
     </tr>
     <tr>
         <td><strong>Dicionários Hunspell (Dispositivo)</strong></td>

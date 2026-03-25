@@ -422,6 +422,7 @@
     <li>✅ <strong>Pamięć podręczna tłumaczeń</strong> (tylko RAM, utracona po zamknięciu aplikacji)</li>
     <li>✅ <strong>Pamięć podręczna disambiguacji kontaktów</strong> (tylko RAM, utracona po restarcie usługi)</li>
     <li>✅ <strong>Modele predykcyjne N-gram</strong> (pobrane przez użytkownika, zapisane lokalnie)</li>
+    <li>✅ <strong>Pakiety tłumaczeń na urządzeniu</strong> (ML Kit, pobrane przez użytkownika, ~30 MB na język, zarządzane przez Google Play Services)</li>
     <li>✅ <strong>Słowniki Hunspell</strong> (skopiowane z zasobów, zapisane lokalnie)</li>
     <li>✅ <strong>Alerty subskrypcji</strong> (lokalne powiadomienia o użyciu)</li>
 </ul>
@@ -466,6 +467,16 @@
     <li>Tłumaczenie jest zwracane do aplikacji</li>
     <li><strong>⚠️ WAŻNE: Tekst NIGDY nie jest zapisywany na naszych serwerach ani w OpenAI</strong> (tylko przesyłanie w pamięci)</li>
 </ol>
+
+<h3>3.1.1 Tłumaczenie na Urządzeniu (ML Kit)</h3>
+<p>kAIboard oferuje również tryb tłumaczenia w pełni na urządzeniu, bez połączenia z Internetem:</p>
+<ul>
+    <li>Pakiety językowe (~30 MB każdy) są pobierane z Google Play Services na urządzenie</li>
+    <li>Tłumaczenia odbywają się <strong>całkowicie na urządzeniu</strong> — żaden tekst nie jest wysyłany na zewnętrzne serwery</li>
+    <li>Google Play Services zarządza pobieraniem i przechowywaniem modeli</li>
+    <li><strong>⚠️ PRYWATNOŚĆ:</strong> W przeciwieństwie do tłumaczenia w chmurze, tłumaczenie na urządzeniu nie przesyła żadnych danych stronom trzecim. Tekst pozostaje wyłącznie na Twoim urządzeniu</li>
+</ul>
+<p>Możesz zarządzać pakietami językowymi (pobierać i usuwać) z ekranu <strong>Pakiety Tłumaczeń na Urządzeniu</strong> w Ustawieniach aplikacji.</p>
 
 <h3>3.2 Kopia Zapasowa i Synchronizacja Subskrypcji</h3>
 
@@ -644,6 +655,11 @@
         <td><strong>Modele Predykcyjne N-gram (Urządzenie)</strong></td>
         <td>Do ręcznego usunięcia lub odinstalowania</td>
         <td>Przycisk "Usuń wszystkie dane lokalne" lub usunięcie z ekranu Modele Offline</td>
+    </tr>
+    <tr>
+        <td><strong>Pakiety Tłumaczeń na Urządzeniu (ML Kit)</strong></td>
+        <td>Do ręcznego usunięcia lub odinstalowania</td>
+        <td>Przycisk „Usuń wszystkie dane lokalne" lub usunięcie z ekranu Pakiety Tłumaczeń</td>
     </tr>
     <tr>
         <td><strong>Słowniki Hunspell (Urządzenie)</strong></td>

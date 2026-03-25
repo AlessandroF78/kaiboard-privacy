@@ -418,6 +418,7 @@
     <li>✅ <strong>Cache traduzioni</strong> (solo RAM, persa alla chiusura dell'app)</li>
     <li>✅ <strong>Cache disambiguazione contatti</strong> (solo RAM, persa al riavvio del servizio)</li>
     <li>✅ <strong>Modelli predittivi N-gram</strong> (scaricati dall'utente, salvati localmente)</li>
+    <li>✅ <strong>Pacchetti traduzione on-device</strong> (ML Kit, scaricati dall'utente, ~30 MB per lingua, gestiti da Google Play Services)</li>
     <li>✅ <strong>Dizionari Hunspell</strong> (copiati da assets, salvati localmente)</li>
     <li>✅ <strong>Alert abbonamento</strong> (notifiche locali su utilizzo)</li>
 </ul>
@@ -462,6 +463,16 @@
     <li>La traduzione viene restituita all'app</li>
     <li><strong>⚠️ IMPORTANTE: Il testo NON viene MAI salvato sui nostri server o su OpenAI</strong> (solo transito in memoria)</li>
 </ol>
+
+<h3>3.1.1 Traduzione On-Device (ML Kit)</h3>
+<p>kAIboard offre anche una modalità di traduzione completamente on-device, senza connessione Internet:</p>
+<ul>
+    <li>I pacchetti lingua (~30 MB ciascuno) vengono scaricati da Google Play Services sul dispositivo</li>
+    <li>Le traduzioni avvengono <strong>interamente sul dispositivo</strong> — nessun testo viene inviato a server esterni</li>
+    <li>Google Play Services gestisce il download e l'archiviazione dei modelli</li>
+    <li><strong>⚠️ PRIVACY:</strong> A differenza della traduzione cloud, la traduzione on-device non trasmette alcun dato a terze parti. Il testo resta esclusivamente sul tuo dispositivo</li>
+</ul>
+<p>Puoi gestire i pacchetti lingua (scaricare e rimuovere) dalla schermata <strong>Pacchetti Traduzione On-Device</strong> nelle Impostazioni dell'app.</p>
 
 <h3>3.2 Backup e Sincronizzazione Abbonamento</h3>
 
@@ -640,6 +651,11 @@
         <td><strong>Modelli Predittivi N-gram (Dispositivo)</strong></td>
         <td>Fino a eliminazione manuale o disinstallazione</td>
         <td>Pulsante "Elimina tutti i dati locali" o rimozione dalla schermata Modelli Offline</td>
+    </tr>
+    <tr>
+        <td><strong>Pacchetti Traduzione On-Device (ML Kit)</strong></td>
+        <td>Fino a eliminazione manuale o disinstallazione</td>
+        <td>Pulsante "Elimina tutti i dati locali" o rimozione dalla schermata Pacchetti Traduzione</td>
     </tr>
     <tr>
         <td><strong>Dizionari Hunspell (Dispositivo)</strong></td>

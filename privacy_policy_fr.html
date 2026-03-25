@@ -421,6 +421,7 @@
     <li>✅ <strong>Cache de traduction</strong> (RAM uniquement, perdu à la fermeture de l'application)</li>
     <li>✅ <strong>Cache de désambiguïsation des contacts</strong> (RAM uniquement, perdu au redémarrage du service)</li>
     <li>✅ <strong>Modèles prédictifs N-grammes</strong> (téléchargés par l'utilisateur, sauvegardés localement)</li>
+    <li>✅ <strong>Paquets de traduction sur l'appareil</strong> (ML Kit, téléchargés par l'utilisateur, ~30 Mo par langue, gérés par Google Play Services)</li>
     <li>✅ <strong>Dictionnaires Hunspell</strong> (copiés depuis les assets, sauvegardés localement)</li>
     <li>✅ <strong>Alertes d'abonnement</strong> (notifications locales sur l'utilisation)</li>
 </ul>
@@ -465,6 +466,16 @@
     <li>La traduction est renvoyée à l'application</li>
     <li><strong>⚠️ IMPORTANT : Le texte n'est JAMAIS sauvegardé sur nos serveurs ou chez OpenAI</strong> (transit uniquement en mémoire)</li>
 </ol>
+
+<h3>3.1.1 Traduction sur l'Appareil (ML Kit)</h3>
+<p>kAIboard propose également un mode de traduction entièrement sur l'appareil, sans connexion Internet :</p>
+<ul>
+    <li>Les paquets de langues (~30 Mo chacun) sont téléchargés depuis Google Play Services sur l'appareil</li>
+    <li>Les traductions s'effectuent <strong>entièrement sur l'appareil</strong> — aucun texte n'est envoyé à des serveurs externes</li>
+    <li>Google Play Services gère le téléchargement et le stockage des modèles</li>
+    <li><strong>⚠️ CONFIDENTIALITÉ :</strong> Contrairement à la traduction cloud, la traduction sur l'appareil ne transmet aucune donnée à des tiers. Le texte reste exclusivement sur votre appareil</li>
+</ul>
+<p>Vous pouvez gérer les paquets de langues (télécharger et supprimer) depuis l'écran <strong>Paquets de Traduction sur l'Appareil</strong> dans les Paramètres de l'application.</p>
 
 <h3>3.2 Sauvegarde et Synchronisation de l'Abonnement</h3>
 
@@ -643,6 +654,11 @@
         <td><strong>Modèles Prédictifs N-grammes (Appareil)</strong></td>
         <td>Jusqu'à suppression manuelle ou désinstallation</td>
         <td>Bouton « Supprimer toutes les données locales » ou suppression depuis l'écran Modèles Hors Ligne</td>
+    </tr>
+    <tr>
+        <td><strong>Paquets de Traduction sur l'Appareil (ML Kit)</strong></td>
+        <td>Jusqu'à suppression manuelle ou désinstallation</td>
+        <td>Bouton « Supprimer toutes les données locales » ou suppression depuis l'écran Paquets de Traduction</td>
     </tr>
     <tr>
         <td><strong>Dictionnaires Hunspell (Appareil)</strong></td>

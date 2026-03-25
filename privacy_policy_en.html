@@ -418,6 +418,7 @@
     <li>✅ <strong>Translation cache</strong> (RAM only, lost when app closes)</li>
     <li>✅ <strong>Contact disambiguation cache</strong> (RAM only, lost when service restarts)</li>
     <li>✅ <strong>Predictive N-gram models</strong> (downloaded by user, saved locally)</li>
+    <li>✅ <strong>On-device translation packs</strong> (ML Kit, downloaded by user, ~30 MB per language, managed by Google Play Services)</li>
     <li>✅ <strong>Hunspell dictionaries</strong> (copied from assets, saved locally)</li>
     <li>✅ <strong>Subscription alerts</strong> (local notifications about usage)</li>
 </ul>
@@ -461,6 +462,16 @@
     <li>The translation is returned to the app</li>
     <li><strong>⚠️ IMPORTANT: The text is NEVER saved on our servers or OpenAI</strong> (transit only in memory)</li>
 </ol>
+
+<h3>3.1.1 On-Device Translation (ML Kit)</h3>
+<p>kAIboard also offers a fully on-device translation mode, without Internet connection:</p>
+<ul>
+    <li>Language packs (~30 MB each) are downloaded from Google Play Services onto the device</li>
+    <li>Translations happen <strong>entirely on the device</strong> — no text is sent to external servers</li>
+    <li>Google Play Services manages model download and storage</li>
+    <li><strong>⚠️ PRIVACY:</strong> Unlike cloud translation, on-device translation does not transmit any data to third parties. The text stays exclusively on your device</li>
+</ul>
+<p>You can manage language packs (download and remove) from the <strong>On-Device Translation Packs</strong> screen in the app Settings.</p>
 
 <h3>3.2 Subscription Backup and Synchronization</h3>
 
@@ -639,6 +650,11 @@
         <td><strong>Predictive N-gram Models (Device)</strong></td>
         <td>Until manual deletion or uninstall</td>
         <td>"Delete all local data" button or removal from Offline Models screen</td>
+    </tr>
+    <tr>
+        <td><strong>On-Device Translation Packs (ML Kit)</strong></td>
+        <td>Until manual deletion or uninstall</td>
+        <td>"Delete all local data" button or removal from Translation Packs screen</td>
     </tr>
     <tr>
         <td><strong>Hunspell Dictionaries (Device)</strong></td>

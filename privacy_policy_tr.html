@@ -421,6 +421,7 @@
     <li>✅ <strong>Çeviri önbelleği</strong> (yalnızca RAM, uygulama kapatıldığında kaybolur)</li>
     <li>✅ <strong>Kişi belirsizlik çözme önbelleği</strong> (yalnızca RAM, hizmet yeniden başlatıldığında kaybolur)</li>
     <li>✅ <strong>Tahminsel N-gram modelleri</strong> (kullanıcı tarafından indirilir, yerel olarak kaydedilir)</li>
+    <li>✅ <strong>Cihaz üzerinde çeviri paketleri</strong> (ML Kit, kullanıcı tarafından indirilir, dil başına ~30 MB, Google Play Services tarafından yönetilir)</li>
     <li>✅ <strong>Hunspell sözlükleri</strong> (kaynaklardan kopyalanır, yerel olarak kaydedilir)</li>
     <li>✅ <strong>Abonelik uyarıları</strong> (kullanım hakkında yerel bildirimler)</li>
 </ul>
@@ -464,6 +465,16 @@
     <li>Çeviri uygulamaya geri döner</li>
     <li><strong>⚠️ ÖNEMLİ: Metin ASLA sunucularımızda veya OpenAI'de saklanmaz</strong> (yalnızca bellekte geçiş)</li>
 </ol>
+
+<h3>3.1.1 Cihaz Üzerinde Çeviri (ML Kit)</h3>
+<p>kAIboard ayrıca internet bağlantısı olmadan tamamen cihaz üzerinde çalışan bir çeviri modu sunar:</p>
+<ul>
+    <li>Dil paketleri (her biri ~30 MB) Google Play Services üzerinden cihaza indirilir</li>
+    <li>Çeviriler <strong>tamamen cihaz üzerinde</strong> gerçekleşir — hiçbir metin harici sunuculara gönderilmez</li>
+    <li>Google Play Services, modellerin indirilmesini ve depolanmasını yönetir</li>
+    <li><strong>⚠️ GİZLİLİK:</strong> Bulut çevirisinin aksine, cihaz üzerinde çeviri üçüncü taraflara hiçbir veri iletmez. Metin yalnızca cihazınızda kalır</li>
+</ul>
+<p>Dil paketlerini (indirme ve kaldırma) uygulama Ayarlarındaki <strong>Cihaz Üzerinde Çeviri Paketleri</strong> ekranından yönetebilirsiniz.</p>
 
 <h3>3.2 Abonelik Yedekleme ve Senkronizasyonu</h3>
 
@@ -642,6 +653,11 @@
         <td><strong>Tahminsel N-gram Modelleri (Cihaz)</strong></td>
         <td>Manuel silme veya kaldırmaya kadar</td>
         <td>"Tüm yerel verileri sil" düğmesi veya Çevrimdışı Modeller ekranından kaldırma</td>
+    </tr>
+    <tr>
+        <td><strong>Cihaz Üzerinde Çeviri Paketleri (ML Kit)</strong></td>
+        <td>Manuel silme veya kaldırmaya kadar</td>
+        <td>„Tüm yerel verileri sil" düğmesi veya Çeviri Paketleri ekranından kaldırma</td>
     </tr>
     <tr>
         <td><strong>Hunspell Sözlükleri (Cihaz)</strong></td>
