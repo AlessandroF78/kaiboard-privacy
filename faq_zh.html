@@ -1,0 +1,323 @@
+﻿﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>常见问题 - kAIboard</title>
+    <style>
+        body {
+            font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #111827;
+            background-color: #F4F7FA;
+        }
+        h1 {
+            color: #111827;
+            border-bottom: 3px solid #0FA3A3;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #111827;
+            margin-top: 30px;
+            border-bottom: 1px solid #E2E8F0;
+            padding-bottom: 5px;
+        }
+        .question {
+            font-weight: bold;
+            color: #111827;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+        .answer {
+            margin-bottom: 20px;
+            color: #4B5563;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            margin: 8px 0;
+            color: #4B5563;
+        }
+        .contact-box {
+            background-color: #EDF7F7;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .highlight {
+            background-color: #EDF7F7;
+            padding: 15px;
+            border-left: 4px solid #0FA3A3;
+            margin: 20px 0;
+        }
+        .important {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 20px 0;
+        }
+        .info {
+            background-color: #EDF7F7;
+            padding: 15px;
+            border-left: 4px solid #0FA3A3;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>常见问题 - k<span style="color:#0FA3A3">AI</span>board</h1>
+
+<p><strong>最后更新：</strong>2026年3月26日</p>
+<p><strong>版本：</strong>3.0</p>
+
+<!-- ===== 第1节：入门指南 ===== -->
+<h2>1. 入门指南</h2>
+
+<p class="question">kAIboard 为什么需要通讯录权限？</p>
+<p class="answer">kAIboard 读取您的通讯录，将当前聊天对象与其电话号码进行关联。通过识别号码的国际区号（例如 +86 代表中国），kAIboard 自动确定应切换到的语言。联系人的姓名和电话号码不会被永久保存 &mdash; 仅在需要识别语言时临时使用。</p>
+
+<p class="question">kAIboard 为什么需要无障碍服务权限？</p>
+<p class="answer">此权限使 kAIboard 能够检测您在 WhatsApp、Telegram 或 Signal 等即时通讯应用中正在与哪位联系人聊天。没有此权限，自动语言切换功能将无法工作。kAIboard 仅读取对话标题（即联系人姓名） &mdash; 绝不会读取您的消息内容。</p>
+
+<p class="question">安装后如何设置 kAIboard？</p>
+<div class="answer">
+    <ol>
+        <li>打开 kAIboard 应用</li>
+        <li>在设备的键盘设置中启用 kAIboard 输入法</li>
+        <li>将 kAIboard 设为默认键盘</li>
+        <li>在系统提示时授予通讯录权限</li>
+        <li>启用两项无障碍服务：kAIboard 使用两项服务（一项用于检测聊天中的当前联系人，另一项用于支持非标准界面的应用）。两者都必须启用，自动切换才能正常工作。启动应用时，弹窗会提醒您缺少哪些权限，点击后将直接跳转到设备设置中的权限页面</li>
+        <li>在应用设置中启用"通知访问"（用于在通知快捷回复中自动切换语言）</li>
+        <li>在应用设置中启用"通知设置"（用于接收使用提醒，例如 AI 翻译的 Token 用量警告）</li>
+        <li>开始聊天吧 &mdash; 语言会自动切换！</li>
+    </ol>
+</div>
+
+<p class="question">需要额外下载什么吗？</p>
+<div class="answer">
+    <p>自动纠错词典已内置于应用中，覆盖全部 13 种语言 &mdash; 使用自动纠错无需下载任何内容。对于下一词预测功能，您需要从应用内的<strong>离线模型</strong>界面为每种想要使用的语言下载预测模型：点击目标语言旁边的蓝色 &quot;下载&quot; 按钮。下载完成后，按钮变为红色 &quot;移除&quot;，方便您释放空间。您最常使用的语言会被预加载到内存中，以确保即时切换。</p>
+    <p>如需设备端翻译（免费、无需互联网），您可以从设置中的<strong>翻译包</strong>界面下载语言包（每个约 30 MB）。</p>
+    <p>如果您发现某种语言的预测功能不工作，请在"离线模型"界面检查该语言的预测模型是否已下载。</p>
+</div>
+
+<p class="question">kAIboard 支持哪些语言？</p>
+<div class="answer">
+    <p>kAIboard 支持 13 种语言，提供完整键盘、自动纠错和预测输入：意大利语、德语、英语、西班牙语、法语、葡萄牙语、荷兰语、波兰语、土耳其语、希腊语、俄语、乌克兰语和格鲁吉亚语。每种语言都有专属的优化键盘布局和内置 Hunspell 词典（已内置于应用中）。如需下一词预测功能，请在"离线模型"界面为每种语言下载对应的 KenLM 模型。</p>
+    <p>应用的完整界面 &mdash; 包括设置、菜单和所有屏幕文字 &mdash; 已完整翻译为 14 种语言（以上 13 种语言加简体中文）。法律文件（隐私政策、常见问题、数据删除）也提供全部 14 种语言版本。支持拼音输入的中文键盘将在未来版本中推出。</p>
+    <p>系统自动识别超过 80 个国家（69 个地区）的国际电话区号，并映射到支持的语言。</p>
+</div>
+
+<!-- ===== 第2节：自动语言切换 ===== -->
+<h2>2. 自动语言切换</h2>
+
+<p class="question">自动语言切换是如何工作的？</p>
+<div class="answer">
+    <p>当您打开一个聊天窗口时，kAIboard 会检测联系人姓名，在通讯录中查找其电话号码并读取国际区号。例如，+39 表示意大利语，+49 表示德语，+33 表示法语。键盘布局会在大约 65 毫秒内自动切换。</p>
+    <p>系统使用多级优先级链：首先检查您是否在该特定应用中为该联系人手动设置了语言，然后检查是否有该联系人的全局设置，接着是通过电话区号自动检测，最后使用设备的系统语言作为后备方案。</p>
+    <p>您也可以通过两种方式手动设置或更改任意联系人的语言：在应用内的<strong>联系人管理</strong>界面（您可以查看和编辑通讯录中每位联系人关联的语言），或在聊天时直接在键盘上长按<strong>空格键</strong>（会出现可用语言菜单，您的选择会为该联系人保存）。</p>
+</div>
+
+<p class="question">如果我有两个同名联系人怎么办？</p>
+<p class="answer">kAIboard 会弹出一个对话框，显示每个重名联系人的姓名和电话号码，让您选择正确的联系人。您的选择会在当前会话中被记住，在键盘服务重启之前不会再次询问。系统也能正确处理同一姓名下有多个电话号码的联系人。</p>
+
+<p class="question">kAIboard 支持群聊吗？</p>
+<p class="answer">支持。对于无法检测到单个联系人的群聊，您可以手动指定一种语言。kAIboard 会通过隐私安全的哈希值记住您的选择 &mdash; 群组名称永远不会以明文保存。</p>
+
+<p class="question">支持哪些即时通讯应用？</p>
+<p class="answer">超过 120 款应用，包括 WhatsApp、Telegram、Signal、Facebook Messenger、Viber、微信、Discord、Slack 等众多应用 &mdash; 还包括交友应用、网约车应用、外卖应用和电商平台。通知快捷回复和 Google Messages 同样支持。</p>
+
+<div class="info">
+    <p class="question">关于 Telegram 的说明</p>
+    <p>Telegram 在内部管理联系人姓名、昵称和数字 ID 的方式与其他即时通讯应用不同。由于 Telegram 的这一特殊行为，当您进入或重新进入与通过通讯录电话号码自动识别的联系人的聊天时，可能偶尔会注意到系统语言的短暂闪现。闪现会很快消失，系统会在之后立即设置正确的语言。对于您已手动分配语言的联系人（通过"联系人管理"界面或长按空格键），语言切换应流畅无延迟，即使在 Telegram 中也是如此。此行为是由 Telegram 向系统传递联系人信息的方式导致的，不是 kAIboard 的问题。在其他即时通讯应用（WhatsApp、Signal、Messenger 等）中，自动和手动联系人的语言切换均应流畅运行。</p>
+</div>
+
+<!-- ===== 第3节：翻译 ===== -->
+<h2>3. 翻译</h2>
+
+<p class="question">AI 翻译（云端）是如何工作的？</p>
+<div class="answer">
+    <p>kAIboard 的 AI 翻译功能具有两个控制级别：</p>
+    <p><strong>1. 总开关（在应用设置中）：</strong>这是主开关。关闭时，所有聊天均无法翻译，且所有单独聊天的翻译设置将被重置。重新开启后，您需要在每个聊天中通过长按回车键重新激活翻译。这是有意为之的设计：防止翻译在被遗忘的聊天中重新激活，在您不知情的情况下消耗 Token。</p>
+    <p><strong>2. 逐聊天激活（长按回车键）：</strong>在总开关开启的状态下，长按回车键为该特定对话激活翻译。按键图标从 &quot;&#8617;&quot;（普通回车）变为 &quot;&#8644;&quot;（翻译已激活）。再次长按可关闭该聊天的翻译。该偏好按联系人保存：下次打开同一聊天时，翻译将保持您上次设置的状态（激活或关闭）。</p>
+    <p><strong>如何翻译：</strong>激活翻译后，用您自己的语言正常输入消息。当您在 kAIboard 键盘上按下回车键时，文本会自动翻译为联系人的语言。然后使用即时通讯应用的发送按钮（文本栏旁边）发送翻译后的消息。翻译仅在按下键盘的回车键时发生 &mdash; 您可以自由输入文字、标点符号和表情符号，不会受到任何干扰。</p>
+    <p>云端翻译需要有效的订阅和网络连接。仅翻译发出的文本（您输入的内容） &mdash; kAIboard 绝不会读取、拦截或以任何方式处理收到的消息。这一选择是为了确保最大程度的隐私保护。</p>
+</div>
+
+<p class="question">什么是设备端翻译，如何使用？</p>
+<div class="answer">
+    <p>kAIboard 还提供基于 Google ML Kit 的<strong>完全免费的离线</strong>翻译模式。无需订阅，也无需互联网连接。</p>
+    <p><strong>如何使用：</strong>长按键盘上方预测栏中的一个建议词（chip）。将弹出一个窗口，显示从文本框中捕获的文本以及您已下载语言包的所有语言网格。点击目标语言：翻译会在设备上即时完成。然后选择<strong>插入</strong>（替换文本框中的文本）或<strong>复制</strong>（放入剪贴板）。<strong>关闭</strong>按钮可让您返回而不执行任何操作。</p>
+    <p><strong>如何准备：</strong>进入设置 &rarr; 翻译包，下载您感兴趣的语言包（每个约 30 MB）。支持 kAIboard 的全部 14 种语言。</p>
+    <p><strong>何时使用：</strong>设备端翻译非常适合快速简单的翻译和无网络连接的情况。对于复杂文本或需要高质量翻译的情况，云端 AI 翻译（需要订阅）可提供更好的结果。</p>
+    <p><strong>隐私保护：</strong>设备端翻译不会向任何第三方传输数据。文本完全保留在您的设备上。</p>
+</div>
+
+<p class="question">与使用非拉丁语言（俄语、乌克兰语、希腊语、格鲁吉亚语）的联系人聊天时会怎样？</p>
+<div class="answer">
+    <p>当为使用非拉丁字母语言（俄语、乌克兰语、希腊语、格鲁吉亚语）的联系人激活翻译时，键盘会自动切换到设备系统语言的布局（例如中文），以便您舒适地输入。您用自己的语言输入，翻译会在您按下回车键时将文本转换为联系人的字母和语言。自动纠错和建议也会适应当前显示的布局语言。</p>
+    <p>当为同一联系人关闭翻译时（再次长按回车键），布局会自动恢复为联系人的原生字母（西里尔字母、希腊字母或格鲁吉亚字母）。</p>
+    <div class="info">
+        <strong>注意：</strong>此功能已包含在应用中并可正常使用，但正在根据用户反馈进行优化。在某些情况下，布局自动切换可能无法完全按预期工作。如遇问题，请通过 <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a> 与我们联系 &mdash; 每一条反馈都有助于我们改进。
+    </div>
+</div>
+
+<p class="question">翻译安全吗？我的消息会被保存吗？</p>
+<div class="answer">
+    <p><strong>云端翻译（AI）：</strong>文本通过 HTTPS 加密连接安全传输到 Cloudflare 中转服务器，再转发至 OpenAI API 进行翻译。文本绝不会保存在任何服务器上 &mdash; 仅作短暂中转后立即返回。OpenAI API 密钥绝不会在您的设备上暴露。</p>
+    <p><strong>设备端翻译：</strong>文本永远不会离开您的设备。翻译完全在本地通过 Google ML Kit 完成。不会有任何数据传输到外部服务器。</p>
+    <div class="highlight">
+        <strong>关于 OpenAI 的透明声明：</strong>kAIboard 使用 OpenAI 作为外部云端翻译服务提供商。OpenAI 公开声明，通过 API 发送的数据不会用于训练其模型。欧盟外数据传输的标准合同条款已生效。但是，我们目前尚未与 OpenAI 签订正式的数据处理协议（DPA）。我们建议您避免翻译高度敏感的信息（健康数据、财务数据、法律数据）。详情请参阅 <a href="https://openai.com/enterprise-privacy" target="_blank">OpenAI API 隐私政策</a>。
+    </div>
+</div>
+
+<!-- ===== 第4节：键盘与输入 ===== -->
+<h2>4. 键盘与输入</h2>
+
+<p class="question">自动纠错是如何工作的？</p>
+<div class="answer">
+    <p>kAIboard 的自动纠错采用多因素系统，分析输入单词与词典候选词之间的编辑距离、句子上下文（前面的单词）、单词的实际使用频率、键盘上按键的相邻关系以及您个人的输入习惯。系统支持纠正字母调换（顺序颠倒的字母）、缺失的重复字母、误按的相邻键和缺失的重音符号 &mdash; 覆盖所有 13 种支持语言，包括土耳其语、波兰语和希腊语等具有复杂变音符号的语言。</p>
+    <p>自动纠错采用保守策略：在建议栏中显示纠正建议，仅在系统足够确信时才自动应用。没有什么比键盘擅自覆盖您真正想输入的内容更令人沮丧的了。控制权始终在您手中。</p>
+    <p>如果自动纠错应用了不想要的修正，您可以在大约一秒半内按删除键撤销 &mdash; 原始文本将被恢复。</p>
+</div>
+
+<p class="question">kAIboard 的预测输入与其他键盘相比如何？</p>
+<div class="answer">
+    <p>kAIboard 的预测引擎基于坚实的技术基础：统计语言模型（KenLM）、完整的词典（Hunspell），以及随着您每次输入不断优化的个性化学习系统 &mdash; 所有处理均在设备本地完成，无需依赖云端。</p>
+    <p>不过，kAIboard 由一位独立开发者开发。预测功能扎实可靠，会随着使用而显著提升，但系统仍在持续开发和改进中 &mdash; 每次更新都会带来准确性和响应速度的优化。</p>
+    <p>真正让 kAIboard 与众不同的是其他键盘都做不到的功能：<strong>在您输入第一个字符之前，就知道您需要哪种语言。</strong></p>
+</div>
+
+<p class="question">kAIboard 会从我的输入习惯中学习吗？</p>
+<div class="answer">
+    <p>会的。学习系统会记录您最常使用的单词、最常见的词语组合（最多连续三个词）以及您输入的专有名词。建议会随着时间推移而改善，通过智能衰减系统保持近期习惯比旧习惯更具相关性，因此系统会随着您的输入风格变化而适应。</p>
+    <p>学习仅在您点击建议栏中的建议时发生 &mdash; 自动纠正不会被记录，以防止纠错错误被当作习惯学习。如果纠正有误且您拒绝了它，系统会学会不再提出该建议。</p>
+    <p>所有学习数据均保存在您的设备上，可随时在设置的隐私部分删除。</p>
+</div>
+
+<p class="question">有键盘快捷方式吗？</p>
+<div class="answer">
+    <p>有的，kAIboard 包含两个加速输入的快捷方式：</p>
+    <p><strong>双击空格键 &rarr; &quot;. &quot;</strong>（句号 + 空格 + 自动大写）。让您可以通过快速双击结束句子并开始新句子。</p>
+    <p><strong>双击句号键 &rarr; &quot;, &quot;</strong>（逗号 + 空格）。这是 kAIboard 的独家快捷方式 &mdash; 其他键盘都没有提供。让您无需在布局中寻找即可快速插入逗号。</p>
+    <p>两个快捷方式仅在快速双击（300毫秒内）时激活，不会干扰正常输入或长按操作（长按分别打开语言选择器和标点符号弹窗）。</p>
+</div>
+
+<p class="question">可以更改键盘大小吗？</p>
+<p class="answer">可以。在应用设置中您可以选择三种大小：<strong>Small</strong>（更紧凑，适合大屏幕或单手使用）、<strong>Medium</strong>（默认，均衡）和 <strong>Large</strong>（更大的按键，适合偏好更大触摸目标的用户）。更改会立即应用到所有布局（字母、符号、数字），无需重启。</p>
+
+<p class="question">可以自定义按键振动和声音吗？</p>
+<div class="answer">
+    <p>可以。kAIboard 提供三级触觉反馈系统：字母按键振动轻微，空格和标点按键振动中等，回车键和删除键振动强烈。您可以在设置中通过滑块调节振动强度（0% 到 100%），或完全关闭振动。</p>
+    <p>在声音方面，您可以选择 Android 系统声音或启用 <strong>kAIboard 自定义声音</strong>，同样按键类型区分，配有专用音量滑块。自定义声音通过设置中的单独开关启用。</p>
+</div>
+
+<!-- ===== 第5节：隐私与数据 ===== -->
+<h2>5. 隐私与数据</h2>
+
+<p class="question">kAIboard 收集哪些数据？</p>
+<div class="answer">
+    <p>kAIboard 采用本地优先的设计理念。联系人检测、自动纠错、预测输入、语言偏好设置和设备端翻译均在您的设备本地完成。唯一发送到外部的数据是您主动选择通过云端 AI 翻译的文本（通过安全的 HTTPS 加密连接传输），且不会保存在任何服务器上。设备端翻译不会向任何第三方传输数据。</p>
+    <p>无数据分析、无用户追踪、无广告标识符、无 Cookie、无用户画像。</p>
+</div>
+
+<p class="question">kAIboard 符合 GDPR 规定吗？</p>
+<div class="answer">
+    <p>是的。kAIboard 在隐私设置中提供四个选项：以 JSON 格式导出您的数据、仅删除学习数据、删除所有本地数据（包括已下载的设备端翻译包）、或删除所有云端数据。云端数据（订阅信息）会在 90&ndash;365 天不活跃后自动删除。</p>
+    <p>崩溃报告完全可选：您可以随时在设置中启用或禁用。首次启用时会显示确认对话框。崩溃报告仅包含技术错误信息和设备元数据 &mdash; 绝不包含输入的文本、联系人姓名或其他个人数据。</p>
+</div>
+
+<p class="question">应用中显示的管理员日志是什么？</p>
+<div class="answer">
+    <p>为确保最大透明度，kAIboard 在每次从服务器端对您的账户进行更改时会自动记录日志 &mdash; 例如，因争议或技术问题而进行的 Token 补偿。这些日志在应用内的相应部分可见，以便您随时查看是否以及何时对您的账户执行了操作。如果没有日志，则表示从未进行过任何服务器端更改。管理员日志会根据数据保留政策自动删除，您也可以通过隐私部分的 &quot;删除云端数据&quot; 按钮手动删除。</p>
+</div>
+
+<p class="question">我可以删除所有数据吗？</p>
+<div class="answer">
+    <p>可以。进入设置 &rarr; 隐私，使用相应按钮操作：</p>
+    <p><strong>导出数据：</strong>以 JSON 格式下载您的学习数据。</p>
+    <p><strong>删除学习数据：</strong>清除个性化预测和已学习的专有名词，保留所有其他设置。</p>
+    <p><strong>删除所有本地数据：</strong>清除所有设置、语言偏好、学习数据和已下载的翻译包。应用将作为全新安装重新启动。预测模型和翻译包需要重新下载。</p>
+    <p><strong>删除云端数据：</strong>从 Firebase 服务器删除所有订阅信息、历史记录和管理员日志。</p>
+    <p>卸载应用会自动删除所有本地数据。</p>
+</div>
+
+<!-- ===== 第6节：价格与订阅 ===== -->
+<h2>6. 价格与订阅</h2>
+
+<p class="question">kAIboard 多少钱？</p>
+<p class="answer">kAIboard 为一次性购买，价格 &euro;2.39（含税）。包含所有核心功能：自动语言切换、智能纠错、下一词预测、免费设备端翻译（ML Kit）、键盘快捷方式、可自定义触觉反馈、Emoji 选择器、联系人语言管理和本地备份。</p>
+
+<p class="question">订阅增加了哪些功能？</p>
+<div class="answer">
+    <p>可选的月度订阅解锁两项高级功能：<strong>AI 云端翻译</strong>（由 OpenAI 提供支持，复杂文本翻译质量更高）和 <strong>Google Drive 备份</strong>。</p>
+    <p>根据每月翻译用量，提供三种方案：Plus（&euro;3.49/月 &mdash; 约 2,130 次翻译）、Pro（&euro;5.99/月 &mdash; 约 4,200 次翻译）和 Max（&euro;9.49/月 &mdash; 约 8,530 次翻译）。三种方案仅在每月翻译次数上有区别。</p>
+    <p>设备端翻译（ML Kit）对所有用户始终免费，与订阅状态无关。</p>
+</div>
+
+<p class="question">订阅可以在多台设备上使用吗？</p>
+<p class="answer">可以。您的 Token 余额会在使用同一 Google Play 账户的所有设备间同步。每月 Token 限额为共享额度 &mdash; 例如，Plus 方案的 250,000 个 Token 将在您的所有设备间共享使用。</p>
+
+<p class="question">取消订阅后重新安装应用会怎样？</p>
+<div class="answer">
+    <p><strong>订阅有效（未取消）时：</strong>如果您卸载并重新安装应用，或者使用同一 Google 账户在新设备或多台设备上安装应用，订阅和 Token 余额将通过 Google Play 和 Firebase 自动同步。您无需执行任何操作 &mdash; 首次启动时系统将自动恢复。</p>
+    <p><strong>订阅已取消（宽限期内）时：</strong>如果您在同一设备上重新安装应用，系统将通过 Firebase 找到您的订阅和 Token 余额，并自动恢复，即使在宽限期内也是如此。在使用同一账户且之前已安装过该应用的其他设备上，如果该设备已在系统中注册，恢复也应自动完成。</p>
+    <div class="important">
+        <strong>重要提示：</strong>如果在宽限期内，您在一台从未使用过您的账户安装 kAIboard 的全新设备上安装应用，由于该新设备尚未在系统中注册，出于安全原因，剩余天数和 Token 余额可能无法恢复。同样，如果您在宽限期内从应用中删除云端数据，删除将立即生效，届时您将永久失去剩余有效期和 Token 余额。
+    </div>
+</div>
+
+<p class="question">备份是如何工作的？</p>
+<p class="answer">kAIboard 提供两种备份方式。所有用户均可创建设置和学习数据的本地备份。订阅用户还可以备份到个人 Google Drive。无论哪种方式，翻译 Token 余额始终从云端同步 &mdash; 不会保存在备份文件中，以防止数据重复。</p>
+
+<!-- ===== 第7节：故障排除 ===== -->
+<h2>7. 故障排除</h2>
+
+<p class="question">键盘没有自动切换语言。</p>
+<div class="answer">
+    <p>请检查以下要点：</p>
+    <ol>
+        <li>通讯录权限必须已启用</li>
+        <li>两项无障碍服务都必须处于活动状态（kAIboard 使用两项）</li>
+        <li>联系人在通讯录中必须有带国际区号的电话号码</li>
+        <li>如果联系人不在通讯录中，您可以通过长按空格键手动指定语言</li>
+    </ol>
+</div>
+
+<p class="question">翻译功能不工作。</p>
+<div class="answer">
+    <p><strong>云端翻译（AI）：</strong>请确认您有有效的订阅且有可用的 Token。检查应用设置中的翻译总开关是否已开启。确认您已通过长按回车键为特定聊天激活了翻译（图标应显示 &#8644;）。还需要网络连接。</p>
+    <p><strong>设备端翻译：</strong>请检查您是否已从设置中的翻译包界面下载了所需的语言包。设备端翻译通过长按预测栏中的建议词激活，而不是通过回车键。</p>
+</div>
+
+<p class="question">回车键图标没有显示翻译箭头。</p>
+<p class="answer">请检查应用设置中的翻译总开关是否已开启。如果已开启，请尝试退出聊天并重新进入。图标仅在您通过长按回车键激活了翻译的聊天中才会改变。</p>
+
+<p class="question">预测建议没有显示。</p>
+<div class="answer">
+    <p>请在<strong>离线模型</strong>界面检查您正在使用的语言的预测模型是否已下载。自动纠错词典已内置于应用中，但下一词预测模型需要为每种语言单独下载。</p>
+</div>
+
+<p class="question">设备端翻译没有显示可用语言。</p>
+<p class="answer">您需要先从设置中的<strong>翻译包</strong>界面下载至少一个语言包。每个包约 30 MB。下载后，当您长按预测栏中的建议词时，该语言将出现在选择网格中。</p>
+
+<div class="contact-box">
+    <p>如有任何问题、GDPR 请求或反馈：</p>
+    <p><strong>电子邮件：</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
+    <p><strong>网站:</strong> <a href="https://kaiboard.eu" target="_blank" rel="noopener">kaiboard.eu</a></p>
+    <p><strong>响应时间：</strong>30 天内（GDPR 第 12 条）</p>
+    <p style="margin-top: 10px;">&#127757; <a href="https://alessandrof78.github.io/kaiboard-faq/">其他语言的常见问题</a></p>
+</div>
+
+<p style="text-align: center; color: #4B5563; margin-top: 50px;">
+    &copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. 保留所有权利。<br>
+    符合 GDPR（欧盟法规 2016/679）
+</p>
+
+</body>
+</html>
