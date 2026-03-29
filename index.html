@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,6 +21,16 @@
         .footer a { color: #0FA3A3; text-decoration: none; }
         .footer a:hover { text-decoration: underline; }
         @media (max-width: 600px) { .container { padding: 30px 15px; } h1 { font-size: 28px; } .language-grid { gap: 10px; } .lang-button { padding: 14px 16px; font-size: 14px; width: calc(50% - 5px); } }
+        @media (prefers-color-scheme: dark) {
+            body { background: linear-gradient(170deg, #0A0F14 0%, #0D1A1A 45%, #0F1E1E 100%); }
+            .container { background: #141B22; border-color: rgba(25,199,199,0.20); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+            h1 { color: #E8EDEF; }
+            .subtitle { color: #6B8490; }
+            .lang-button { background: #19C7C7; color: #0A0F14; box-shadow: 0 4px 15px rgba(25,199,199,0.25); }
+            .lang-button:hover { box-shadow: 0 8px 25px rgba(25,199,199,0.45); }
+            .footer { border-top-color: rgba(255,255,255,0.06); color: #6B8490; }
+            .footer a { color: #22D4D4; }
+        }
     </style>
 </head>
 <body>
