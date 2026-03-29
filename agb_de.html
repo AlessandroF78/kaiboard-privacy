@@ -4,93 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Nutzungsbedingungen - kAIboard</title>
+    <title>Nutzungsbedingungen &mdash; kAIboard</title>
     <style>
-        body {
-            font-family: "DM Sans", "DM Sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #111827; background-color: #F4F7FA;
+        :root {
+            --teal: #19C7C7;
+            --teal-dark: #0FA3A3;
+            --teal-soft: rgba(25, 199, 199, 0.08);
+            --bg-page: #F0F6F6;
+            --bg-card: #FFFFFF;
+            --border: rgba(0, 0, 0, 0.06);
+            --border-card: rgba(25, 199, 199, 0.15);
+            --text-primary: #1A2E35;
+            --text-secondary: #4A6068;
+            --text-muted: #8A9EA6;
+            --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 800px;
         }
-        h1 {
-            color: #111827;
-            border-bottom: 3px solid #0FA3A3;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #111827;
-            margin-top: 30px;
-            border-bottom: 1px solid #E2E8F0;
-            padding-bottom: 5px;
-        }
-        h3 {
-            color: #4B5563;
-            margin-top: 20px;
-        }
-        h4 {
-            color: #6B7280;
-            margin-top: 15px;
-        }
-        .highlight {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        .important {
-            background-color: #f8d7da;
-            padding: 15px;
-            border-left: 4px solid #dc3545;
-            margin: 20px 0;
-        }
-        .info {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        .contact-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin: 10px 0;
-        }
-        ol {
-            padding-left: 20px;
-        }
-        ol li {
-            margin: 10px 0;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: var(--bg-page); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal-dark); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--teal); }
+        .content { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px 80px; }
+        h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+        .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 40px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 16px; padding: 36px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); overflow: hidden; }
+        .card h2 { font-size: 1.15rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 16px; letter-spacing: -0.01em; }
+        .card h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-top: 20px; margin-bottom: 10px; }
+        .card p, .card li { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 10px; }
+        .card ul, .card ol { padding-left: 20px; margin-bottom: 12px; }
+        .card li { margin-bottom: 6px; }
+        .card ul li { list-style: disc; }
+        .card ol li { list-style: decimal; }
+        .highlight { background: var(--teal-soft); border-left: 3px solid var(--teal-dark); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .important { background: rgba(220, 53, 69, 0.06); border-left: 3px solid #dc3545; border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .footer-copy { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 48px; }
+        .footer-copy a { color: var(--teal-dark); }
 
-        /* -- MOBILE RESPONSIVE FIX -- */
-        * { box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { overflow-x: hidden; max-width: 100%; }
-        @media (max-width: 650px) {
-            body { padding: 15px; }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --teal: #19C7C7;
+                --teal-dark: #19C7C7;
+                --teal-soft: rgba(25, 199, 199, 0.12);
+                --bg-page: #000000;
+                --bg-card: #121212;
+                --border: rgba(255, 255, 255, 0.08);
+                --border-card: rgba(25, 199, 199, 0.20);
+                --text-primary: #FFFFFF;
+                --text-secondary: #B0BEC5;
+                --text-muted: #78909C;
+            }
+            tr:nth-child(even) { background-color: #1A1A1A; }
+            th { background-color: #19C7C7; color: #000000; }
+            .highlight { background: rgba(25, 199, 199, 0.12); }
+            .important { background: rgba(255, 107, 107, 0.12); border-left-color: #FF6B6B; }
         }
+        @media (max-width: 600px) { .card { padding: 24px; } }
     </style>
 </head>
 <body>
 
-<h1>Nutzungsbedingungen - k<span style="color:#0FA3A3">AI</span>board</h1>
+<main class="content">
+    <h1>Nutzungsbedingungen</h1>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Letzte Aktualisierung: 26. M&auml;rz 2026 &mdash; Version: 3.0</p>
 
-<p><strong>Letzte Aktualisierung:</strong> 26. M&auml;rz 2026</p>
-<p><strong>Version:</strong> 3.0</p>
-
-<h2>1. Geltungsbereich</h2>
+    <div class="card">
+        <h2>1. Geltungsbereich</h2>
 
 <p>Diese Allgemeinen Gesch&auml;ftsbedingungen (nachfolgend &bdquo;AGB&ldquo;) gelten f&uuml;r die Nutzung der Android-App <strong>k<span style="color:#0FA3A3">AI</span>board</strong> (nachfolgend &bdquo;App&ldquo;), die &uuml;ber den Google Play Store vertrieben wird.</p>
 
-<div class="contact-box">
+<div class="highlight">
     <p><strong>Anbieter:</strong></p>
     <p>Alessandro Faedda<br>
     c/o POSTFLEX PFX-846-235<br>
@@ -101,8 +84,10 @@
 </div>
 
 <p>Mit dem Download, der Installation oder der Nutzung der App erkl&auml;rt sich der Nutzer (nachfolgend &bdquo;Nutzer&ldquo;) mit diesen AGB einverstanden. Sofern der Nutzer diesen AGB nicht zustimmt, ist die Nutzung der App nicht gestattet.</p>
+    </div>
 
-<h2>2. Leistungsbeschreibung</h2>
+    <div class="card">
+        <h2>2. Leistungsbeschreibung</h2>
 
 <p>kAIboard ist eine multilinguale Tastatur-App f&uuml;r Android mit folgenden Kernfunktionen:</p>
 
@@ -116,14 +101,18 @@
 </ul>
 
 <p>Der genaue Funktionsumfang h&auml;ngt vom gew&auml;hlten Abonnement ab (siehe Abschnitt&nbsp;4). Der Anbieter beh&auml;lt sich vor, den Funktionsumfang jederzeit zu erweitern oder anzupassen.</p>
+    </div>
 
-<h2>3. Vertragsschluss</h2>
+    <div class="card">
+        <h2>3. Vertragsschluss</h2>
 
 <p>Der Nutzungsvertrag kommt mit dem Download und der Installation der App aus dem Google Play Store zustande. Die Pr&auml;sentation der App im Google Play Store stellt kein rechtlich bindendes Angebot dar, sondern eine Aufforderung zur Abgabe eines Angebots (invitatio ad offerendum).</p>
 
 <p>F&uuml;r die Nutzung der App ist <strong>keine Registrierung und kein Benutzerkonto</strong> erforderlich.</p>
+    </div>
 
-<h2>4. Preise und Zahlungsbedingungen</h2>
+    <div class="card">
+        <h2>4. Preise und Zahlungsbedingungen</h2>
 
 <h3>4.1 Einmalkauf</h3>
 <p>Der einmalige Kaufpreis f&uuml;r die App betr&auml;gt <strong>&euro;&nbsp;2,39</strong> (inkl. MwSt.). Dieser erm&ouml;glicht den Zugang zu den Grundfunktionen der App.</p>
@@ -141,8 +130,10 @@
 <div class="highlight">
     <strong>Hinweis:</strong> Die genauen Leistungsunterschiede zwischen den Abonnement-Stufen werden im Google Play Store und innerhalb der App beschrieben. Der Anbieter beh&auml;lt sich vor, die Preise f&uuml;r zuk&uuml;nftige Abrechnungszeitr&auml;ume anzupassen. Bestehende Abonnements sind von einer Preis&auml;nderung erst nach Ablauf des laufenden Abrechnungszeitraums betroffen.
 </div>
+    </div>
 
-<h2>5. Abonnements und K&uuml;ndigung</h2>
+    <div class="card">
+        <h2>5. Abonnements und K&uuml;ndigung</h2>
 
 <h3>5.1 Laufzeit und Verl&auml;ngerung</h3>
 <p>Abonnements haben eine Laufzeit von jeweils einem Monat und verl&auml;ngern sich automatisch um einen weiteren Monat, sofern sie nicht rechtzeitig gek&uuml;ndigt werden.</p>
@@ -156,14 +147,18 @@
 <div class="highlight">
     <strong>Wichtiger Hinweis zur Ger&auml;tesynchronisierung:</strong> kAIboard verf&uuml;gt &uuml;ber kein eigenes Benutzerkonto und keinen eigenen Server zur Abonnement-Synchronisierung. Wenn der Nutzer die App auf einem neuen Ger&auml;t installiert oder nach einem Zur&uuml;cksetzen auf Werkseinstellungen (Factory Reset) neu einrichtet, werden Abonnementstatus und eventuell vorhandene Token-Kontingente <strong>nicht automatisch synchronisiert</strong>. Der Nutzer muss in diesem Fall die automatische Wiederherstellung durch Google Play abwarten oder den Support kontaktieren.
 </div>
+    </div>
 
-<h2>6. Widerrufsrecht</h2>
+    <div class="card">
+        <h2>6. Widerrufsrecht</h2>
 
 <p>F&uuml;r den Kauf digitaler Inhalte (Einmalkauf und Abonnements) gelten die Widerrufsbestimmungen gem&auml;&szlig; <strong>&sect;&nbsp;356 Abs.&nbsp;5 BGB</strong>. Das Widerrufsrecht erlischt, wenn der Anbieter mit der Ausf&uuml;hrung des Vertrags begonnen hat und der Nutzer seine Zustimmung erteilt hat, dass der Anbieter vor Ablauf der Widerrufsfrist mit der Vertragserf&uuml;llung beginnt.</p>
 
 <p>Beim Download &uuml;ber Google Play wird die Zustimmung zum sofortigen Beginn der digitalen Lieferung im Rahmen des Kaufprozesses eingeholt. Dar&uuml;ber hinaus gelten die <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener">R&uuml;ckgaberichtlinien von Google Play</a>.</p>
+    </div>
 
-<h2>7. Nutzungsrechte und Lizenzen</h2>
+    <div class="card">
+        <h2>7. Nutzungsrechte und Lizenzen</h2>
 
 <p>Mit dem Kauf der App erh&auml;lt der Nutzer ein <strong>einfaches, nicht &uuml;bertragbares, nicht unterlizenzierbares Nutzungsrecht</strong> zur Verwendung der App auf eigenen Android-Ger&auml;ten f&uuml;r den pers&ouml;nlichen, nicht-kommerziellen Gebrauch.</p>
 
@@ -182,8 +177,10 @@
     <li><strong>FrequencyWords</strong> &mdash; MIT-Lizenz (H&auml;ufigkeitswortlisten)</li>
 </ul>
 <p>Eine vollst&auml;ndige &Uuml;bersicht aller verwendeten Bibliotheken und deren Lizenzen ist innerhalb der App unter <strong>Einstellungen &rarr; Open Source Licenses</strong> verf&uuml;gbar.</p>
+    </div>
 
-<h2>8. Datenschutz</h2>
+    <div class="card">
+        <h2>8. Datenschutz</h2>
 
 <p>Der Schutz der Daten des Nutzers hat f&uuml;r den Anbieter h&ouml;chste Priorit&auml;t. Die ausf&uuml;hrliche Datenschutzerkl&auml;rung f&uuml;r die App ist als separates Dokument verf&uuml;gbar:</p>
 <ul>
@@ -197,8 +194,10 @@
     <li>Autokorrektur, Wortvorhersage und Offline-&Uuml;bersetzung arbeiten <strong>vollst&auml;ndig lokal</strong> auf dem Ger&auml;t</li>
     <li>Crash-Berichte (Firebase Crashlytics) werden nur mit ausdr&uuml;cklicher <strong>Einwilligung des Nutzers</strong> (DSGVO Opt-in) gesendet</li>
 </ul>
+    </div>
 
-<h2>9. Verf&uuml;gbarkeit und Updates</h2>
+    <div class="card">
+        <h2>9. Verf&uuml;gbarkeit und Updates</h2>
 
 <p>Der Anbieter ist bem&uuml;ht, die App m&ouml;glichst unterbrechungsfrei zur Verf&uuml;gung zu stellen. Eine <strong>Verf&uuml;gbarkeit von 100&nbsp;%</strong> kann jedoch nicht garantiert werden. Insbesondere kann es bei folgenden Funktionen zu Einschr&auml;nkungen kommen:</p>
 <ul>
@@ -209,8 +208,10 @@
 <p>Der Anbieter kann Updates f&uuml;r die App ver&ouml;ffentlichen, um Fehler zu beheben, die Sicherheit zu verbessern oder neue Funktionen bereitzustellen. Um die volle Funktionalit&auml;t der App zu gew&auml;hrleisten, wird dem Nutzer empfohlen, stets die neueste Version der App zu verwenden.</p>
 
 <p>Der Anbieter beh&auml;lt sich vor, einzelne Funktionen der App einzustellen, sofern dies aus technischen, wirtschaftlichen oder rechtlichen Gr&uuml;nden erforderlich ist.</p>
+    </div>
 
-<h2>10. Haftungsbeschr&auml;nkung</h2>
+    <div class="card">
+        <h2>10. Haftungsbeschr&auml;nkung</h2>
 
 <p>Der Anbieter haftet unbeschr&auml;nkt f&uuml;r Vorsatz und grobe Fahrl&auml;ssigkeit. Bei leichter Fahrl&auml;ssigkeit haftet der Anbieter nur bei Verletzung wesentlicher Vertragspflichten (Kardinalpflichten), und zwar beschr&auml;nkt auf den vorhersehbaren, vertragstypischen Schaden.</p>
 
@@ -223,41 +224,46 @@
 </ul>
 
 <p>Die Haftungsbeschr&auml;nkung gilt nicht f&uuml;r Sch&auml;den aus der Verletzung des Lebens, des K&ouml;rpers oder der Gesundheit sowie f&uuml;r Anspr&uuml;che nach dem Produkthaftungsgesetz.</p>
+    </div>
 
-<h2>11. Geistiges Eigentum</h2>
+    <div class="card">
+        <h2>11. Geistiges Eigentum</h2>
 
 <p>Alle Rechte an der App, einschlie&szlig;lich des Quellcodes, des Designs, der Grafiken, der Texte und der Marke &bdquo;kAIboard&ldquo;, stehen ausschlie&szlig;lich <strong>Alessandro Faedda</strong> zu, sofern nicht anders angegeben.</p>
 
 <p>Die in der App verwendeten Open-Source-Bibliotheken (siehe Abschnitt&nbsp;7.1) unterliegen den jeweiligen Open-Source-Lizenzen und sind von dieser Klausel ausgenommen.</p>
+    </div>
 
-<h2>12. &Auml;nderung der AGB</h2>
+    <div class="card">
+        <h2>12. &Auml;nderung der AGB</h2>
 
 <p>Der Anbieter beh&auml;lt sich vor, diese AGB jederzeit mit Wirkung f&uuml;r die Zukunft zu &auml;ndern oder zu erg&auml;nzen. &Uuml;ber wesentliche &Auml;nderungen wird der Nutzer in geeigneter Weise informiert (z.&nbsp;B. durch einen Hinweis in der App oder auf der Website).</p>
 
 <p>Die fortgesetzte Nutzung der App nach Inkrafttreten der ge&auml;nderten AGB gilt als Zustimmung zu den &Auml;nderungen. Widerspricht der Nutzer den ge&auml;nderten AGB, ist er berechtigt, die Nutzung der App einzustellen und ein bestehendes Abonnement zu k&uuml;ndigen.</p>
+    </div>
 
-<h2>13. Schlussbestimmungen</h2>
+    <div class="card">
+        <h2>13. Schlussbestimmungen</h2>
 
 <p>Es gilt das Recht der <strong>Bundesrepublik Deutschland</strong> unter Ausschluss des UN-Kaufrechts (CISG). Zwingende verbraucherschutzrechtliche Bestimmungen des Staates, in dem der Nutzer seinen gew&ouml;hnlichen Aufenthalt hat, bleiben unber&uuml;hrt.</p>
 
 <p>Sofern der Nutzer Kaufmann, juristische Person des &ouml;ffentlichen Rechts oder &ouml;ffentlich-rechtliches Sonderverm&ouml;gen ist, ist ausschlie&szlig;licher Gerichtsstand f&uuml;r alle Streitigkeiten aus diesem Vertrag <strong>Hamburg</strong>.</p>
 
 <p>Sollten einzelne Bestimmungen dieser AGB unwirksam oder undurchf&uuml;hrbar sein oder werden, so wird die Wirksamkeit der &uuml;brigen Bestimmungen hiervon nicht ber&uuml;hrt (Salvatorische Klausel). An die Stelle der unwirksamen Bestimmung tritt eine wirksame Bestimmung, die dem wirtschaftlichen Zweck der unwirksamen Bestimmung am n&auml;chsten kommt.</p>
+    </div>
 
-<h2>14. Kontakt</h2>
-
-<div class="contact-box">
-    <p>F&uuml;r Fragen, DSGVO-Anfragen oder Meldungen:</p>
+    <div class="card">
+        <h2>Kontakt</h2>
+        <p>F&uuml;r Fragen, DSGVO-Anfragen oder Meldungen:</p>
     <p><strong>E-Mail:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
     <p><strong>Website:</strong> <a href="https://kaiboard.eu" target="_blank" rel="noopener">kaiboard.eu</a></p>
     <p><strong>Antwortzeit:</strong> Innerhalb von 30 Tagen (Art. 12 DSGVO)</p>
-    <p style="margin-top: 10px;">&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/">Nutzungsbedingungen in anderen Sprachen</a></p>
-</div>
+    <p style="margin-top: 10px;">&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/agb.html">Nutzungsbedingungen in anderen Sprachen</a></p>
+    </div>
 
-<p style="text-align: center; color: #4B5563; margin-top: 50px;">
-    &copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. Alle Rechte vorbehalten.<br>
-    Konform mit der DSGVO (EU-Verordnung 2016/679)
-</p>
+    <p class="footer-copy">&copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. Alle Rechte vorbehalten.<br>
+    Konform mit der DSGVO (EU-Verordnung 2016/679)</p>
+</main>
 
 </body>
 </html>

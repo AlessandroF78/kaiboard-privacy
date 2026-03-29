@@ -4,93 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Умови використання - kAIboard</title>
+    <title>Умови використання &mdash; kAIboard</title>
     <style>
-        body {
-            font-family: "DM Sans", "DM Sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #111827; background-color: #F4F7FA;
+        :root {
+            --teal: #19C7C7;
+            --teal-dark: #0FA3A3;
+            --teal-soft: rgba(25, 199, 199, 0.08);
+            --bg-page: #F0F6F6;
+            --bg-card: #FFFFFF;
+            --border: rgba(0, 0, 0, 0.06);
+            --border-card: rgba(25, 199, 199, 0.15);
+            --text-primary: #1A2E35;
+            --text-secondary: #4A6068;
+            --text-muted: #8A9EA6;
+            --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 800px;
         }
-        h1 {
-            color: #111827;
-            border-bottom: 3px solid #0FA3A3;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #111827;
-            margin-top: 30px;
-            border-bottom: 1px solid #E2E8F0;
-            padding-bottom: 5px;
-        }
-        h3 {
-            color: #4B5563;
-            margin-top: 20px;
-        }
-        h4 {
-            color: #6B7280;
-            margin-top: 15px;
-        }
-        .highlight {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        .important {
-            background-color: #f8d7da;
-            padding: 15px;
-            border-left: 4px solid #dc3545;
-            margin: 20px 0;
-        }
-        .info {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        .contact-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin: 10px 0;
-        }
-        ol {
-            padding-left: 20px;
-        }
-        ol li {
-            margin: 10px 0;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: var(--bg-page); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal-dark); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--teal); }
+        .content { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px 80px; }
+        h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+        .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 40px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 16px; padding: 36px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); overflow: hidden; }
+        .card h2 { font-size: 1.15rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 16px; letter-spacing: -0.01em; }
+        .card h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-top: 20px; margin-bottom: 10px; }
+        .card p, .card li { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 10px; }
+        .card ul, .card ol { padding-left: 20px; margin-bottom: 12px; }
+        .card li { margin-bottom: 6px; }
+        .card ul li { list-style: disc; }
+        .card ol li { list-style: decimal; }
+        .highlight { background: var(--teal-soft); border-left: 3px solid var(--teal-dark); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .important { background: rgba(220, 53, 69, 0.06); border-left: 3px solid #dc3545; border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .footer-copy { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 48px; }
+        .footer-copy a { color: var(--teal-dark); }
 
-        /* -- MOBILE RESPONSIVE FIX -- */
-        * { box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { overflow-x: hidden; max-width: 100%; }
-        @media (max-width: 650px) {
-            body { padding: 15px; }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --teal: #19C7C7;
+                --teal-dark: #19C7C7;
+                --teal-soft: rgba(25, 199, 199, 0.12);
+                --bg-page: #000000;
+                --bg-card: #121212;
+                --border: rgba(255, 255, 255, 0.08);
+                --border-card: rgba(25, 199, 199, 0.20);
+                --text-primary: #FFFFFF;
+                --text-secondary: #B0BEC5;
+                --text-muted: #78909C;
+            }
+            tr:nth-child(even) { background-color: #1A1A1A; }
+            th { background-color: #19C7C7; color: #000000; }
+            .highlight { background: rgba(25, 199, 199, 0.12); }
+            .important { background: rgba(255, 107, 107, 0.12); border-left-color: #FF6B6B; }
         }
+        @media (max-width: 600px) { .card { padding: 24px; } }
     </style>
 </head>
 <body>
 
-<h1>Умови використання - k<span style="color:#0FA3A3">AI</span>board</h1>
+<main class="content">
+    <h1>Умови використання</h1>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Останнє оновлення: 26 березня 2026 р. &mdash; Версія: 3.0</p>
 
-<p><strong>Останнє оновлення:</strong> 26 березня 2026 р.</p>
-<p><strong>Версія:</strong> 3.0</p>
+    <div class="highlight" style="margin-bottom:20px;margin-top:20px"><strong>Примітка:</strong> Це переклад, наданий для зручності. <a target="_blank" href="agb_de.html">Юридично обов'язковою є німецька оригінальна версія</a>.</div>
 
-<h2>1. Сфера застосування</h2>
+    <div class="card">
+        <h2>1. Сфера застосування</h2>
 
 <p>Ці Умови використання (далі &laquo;Умови&raquo;) регулюють використання Android-додатку <strong>k<span style="color:#0FA3A3">AI</span>board</strong> (далі &laquo;Додаток&raquo;), який розповсюджується через Google Play Store.</p>
 
-<div class="contact-box">
+<div class="highlight">
     <p><strong>Постачальник:</strong></p>
     <p>Alessandro Faedda<br>
     c/o POSTFLEX PFX-846-235<br>
@@ -101,8 +86,10 @@
 </div>
 
 <p>Завантажуючи, встановлюючи або використовуючи Додаток, користувач (далі &laquo;Користувач&raquo;) погоджується з цими Умовами. Якщо Користувач не погоджується з цими Умовами, використання Додатку не дозволяється.</p>
+    </div>
 
-<h2>2. Опис послуг</h2>
+    <div class="card">
+        <h2>2. Опис послуг</h2>
 
 <p>kAIboard &mdash; це багатомовний додаток-клавіатура для Android з такими основними функціями:</p>
 
@@ -116,14 +103,18 @@
 </ul>
 
 <p>Доступні функції залежать від обраного плану підписки (див. розділ&nbsp;4). Постачальник залишає за собою право розширювати або змінювати функціональність у будь-який час.</p>
+    </div>
 
-<h2>3. Укладення договору</h2>
+    <div class="card">
+        <h2>3. Укладення договору</h2>
 
 <p>Договір на використання укладається при завантаженні та встановленні Додатку з Google Play Store. Розміщення Додатку в Google Play Store не є юридично обов'язковою пропозицією, а являє собою запрошення до подання пропозиції (invitatio ad offerendum).</p>
 
 <p>Для використання Додатку <strong>не потрібна реєстрація та створення облікового запису</strong>.</p>
+    </div>
 
-<h2>4. Ціни та умови оплати</h2>
+    <div class="card">
+        <h2>4. Ціни та умови оплати</h2>
 
 <h3>4.1 Одноразова покупка</h3>
 <p>Вартість одноразової покупки Додатку становить <strong>&euro;&nbsp;2,39</strong> (включно з ПДВ). Це забезпечує доступ до базових функцій Додатку.</p>
@@ -141,8 +132,10 @@
 <div class="highlight">
     <strong>Примітка:</strong> Конкретні відмінності між рівнями підписки описані в Google Play Store та всередині Додатку. Постачальник залишає за собою право коригувати ціни для майбутніх розрахункових періодів. Чинні підписки будуть зачеплені зміною ціни лише після завершення поточного розрахункового періоду.
 </div>
+    </div>
 
-<h2>5. Підписки та скасування</h2>
+    <div class="card">
+        <h2>5. Підписки та скасування</h2>
 
 <h3>5.1 Термін дії та поновлення</h3>
 <p>Підписки діють протягом одного місяця та автоматично поновлюються на один додатковий місяць, якщо не будуть своєчасно скасовані.</p>
@@ -156,14 +149,18 @@
 <div class="highlight">
     <strong>Важливе повідомлення щодо синхронізації пристроїв:</strong> kAIboard не має власного облікового запису користувача або сервера для синхронізації підписок. Якщо Користувач встановить Додаток на новому пристрої або після скидання до заводських налаштувань (factory reset), статус підписки та можливі залишкові токени <strong>не синхронізуються автоматично</strong>. У такому випадку Користувачу необхідно дочекатися автоматичного відновлення через Google Play або звернутися до служби підтримки.
 </div>
+    </div>
 
-<h2>6. Право на відкликання</h2>
+    <div class="card">
+        <h2>6. Право на відкликання</h2>
 
 <p>Для придбання цифрового контенту (одноразова покупка та підписки) діють положення про право на відкликання відповідно до <strong>Директиви ЄС 2011/83/EU</strong>. Право на відкликання виключається для надання цифрового контенту на нематеріальному носії, якщо виконання розпочалося за явною згодою Користувача та його підтвердженням втрати права на відкликання.</p>
 
 <p>При завантаженні через Google Play згода на негайний початок надання цифрового контенту отримується в процесі покупки. Крім того, діє <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener">політика повернення коштів Google Play</a>.</p>
+    </div>
 
-<h2>7. Права на використання та ліцензії</h2>
+    <div class="card">
+        <h2>7. Права на використання та ліцензії</h2>
 
 <p>При придбанні Додатку Користувач отримує <strong>просте, непередаване, таке що не підлягає субліцензуванню право на використання</strong> Додатку на власних пристроях Android для особистого, некомерційного використання.</p>
 
@@ -182,8 +179,10 @@
     <li><strong>FrequencyWords</strong> &mdash; ліцензія MIT (списки частотності слів)</li>
 </ul>
 <p>Повний перелік усіх використаних бібліотек та їхніх ліцензій доступний у Додатку в розділі <strong>Налаштування &rarr; Open Source Licenses</strong>.</p>
+    </div>
 
-<h2>8. Захист даних</h2>
+    <div class="card">
+        <h2>8. Захист даних</h2>
 
 <p>Захист даних Користувача є найвищим пріоритетом для Постачальника. Повна політика конфіденційності Додатку доступна як окремий документ:</p>
 <ul>
@@ -197,8 +196,10 @@
     <li>Автовиправлення, передбачення слів та офлайн-переклад працюють <strong>повністю локально</strong> на пристрої</li>
     <li>Звіти про збої (Firebase Crashlytics) надсилаються лише за <strong>явною згодою Користувача</strong> (згода GDPR)</li>
 </ul>
+    </div>
 
-<h2>9. Доступність та оновлення</h2>
+    <div class="card">
+        <h2>9. Доступність та оновлення</h2>
 
 <p>Постачальник прагне забезпечити безперебійну доступність Додатку. Однак <strong>гарантувати 100% доступність</strong> неможливо. Обмеження можуть виникнути, зокрема, для таких функцій:</p>
 <ul>
@@ -209,8 +210,10 @@
 <p>Постачальник може випускати оновлення Додатку для виправлення помилок, підвищення безпеки або додавання нових функцій. Для забезпечення повної функціональності Користувачу рекомендується завжди використовувати останню версію Додатку.</p>
 
 <p>Постачальник залишає за собою право припинити окремі функції Додатку, якщо це необхідно з технічних, економічних або юридичних причин.</p>
+    </div>
 
-<h2>10. Обмеження відповідальності</h2>
+    <div class="card">
+        <h2>10. Обмеження відповідальності</h2>
 
 <p>Постачальник несе необмежену відповідальність за умисел та грубу необережність. У разі легкої необережності Постачальник несе відповідальність лише за порушення істотних договірних зобов'язань (кардинальних обов'язків), обмежену передбачуваною, типовою для договору шкодою.</p>
 
@@ -223,41 +226,46 @@
 </ul>
 
 <p>Це обмеження відповідальності не поширюється на шкоду, заподіяну життю, здоров'ю або тілесній недоторканності, а також на претензії відповідно до законодавства про відповідальність за якість продукції.</p>
+    </div>
 
-<h2>11. Інтелектуальна власність</h2>
+    <div class="card">
+        <h2>11. Інтелектуальна власність</h2>
 
 <p>Усі права на Додаток, включаючи вихідний код, дизайн, графіку, тексти та торговельну марку &laquo;kAIboard&raquo;, належать виключно <strong>Alessandro Faedda</strong>, якщо не зазначено інше.</p>
 
 <p>Бібліотеки з відкритим вихідним кодом, що використовуються в Додатку (див. розділ&nbsp;7.1), підпорядковуються відповідним ліцензіям з відкритим вихідним кодом та виключені з дії цього пункту.</p>
+    </div>
 
-<h2>12. Зміна Умов</h2>
+    <div class="card">
+        <h2>12. Зміна Умов</h2>
 
 <p>Постачальник залишає за собою право в будь-який час змінювати або доповнювати ці Умови з дією на майбутнє. Про суттєві зміни Користувач буде повідомлений належним чином (напр., через повідомлення в Додатку або на веб-сайті).</p>
 
 <p>Продовження використання Додатку після набуття чинності змінених Умов вважається прийняттям змін. Якщо Користувач не погоджується зі зміненими Умовами, він має право припинити використання Додатку та скасувати наявну підписку.</p>
+    </div>
 
-<h2>13. Прикінцеві положення</h2>
+    <div class="card">
+        <h2>13. Прикінцеві положення</h2>
 
 <p>Застосовується право <strong>Федеративної Республіки Німеччина</strong> з виключенням Конвенції ООН про договори міжнародної купівлі-продажу товарів (CISG). Імперативні норми захисту прав споживачів держави, в якій Користувач має своє звичайне місце проживання, залишаються чинними.</p>
 
 <p>Якщо Користувач є підприємцем, юридичною особою публічного права або спеціальним майном публічного права, виключною підсудністю для всіх спорів, що випливають з цього договору, є <strong>Гамбург</strong>.</p>
 
 <p>Якщо окремі положення цих Умов виявляться недійсними або нездійсненними, дійсність інших положень цим не зачіпається (сальваторне застереження). Недійсне положення замінюється дійсним положенням, яке найбільше наближається до економічної мети недійсного положення.</p>
+    </div>
 
-<h2>14. Контакти</h2>
-
-<div class="contact-box">
-    <p>З питань, запитів GDPR або повідомлень:</p>
+    <div class="card">
+        <h2>Контакт</h2>
+        <p>З питань, запитів GDPR або повідомлень:</p>
     <p><strong>Електронна пошта:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
     <p><strong>Веб-сайт:</strong> <a href="https://kaiboard.eu" target="_blank" rel="noopener">kaiboard.eu</a></p>
     <p><strong>Час відповіді:</strong> Протягом 30 днів (ст. 12 GDPR)</p>
-    <p style="margin-top: 10px;">&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/">Умови використання іншими мовами</a></p>
-</div>
+    <p style="margin-top: 10px;">&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/agb.html">Умови використання іншими мовами</a></p>
+    </div>
 
-<p style="text-align: center; color: #4B5563; margin-top: 50px;">
-    &copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. Усі права захищені.<br>
-    Відповідає GDPR (Регламент ЄС 2016/679)
-</p>
+    <p class="footer-copy">&copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. Усі права захищені.<br>
+    Відповідає GDPR (Регламент ЄС 2016/679)</p>
+</main>
 
 </body>
 </html>

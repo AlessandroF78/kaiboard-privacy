@@ -4,93 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Kullan&#305;m Ko&#351;ullar&#305; - kAIboard</title>
+    <title>Kullan&#305;m Ko&#351;ullar&#305; &mdash; kAIboard</title>
     <style>
-        body {
-            font-family: "DM Sans", "DM Sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #111827; background-color: #F4F7FA;
+        :root {
+            --teal: #19C7C7;
+            --teal-dark: #0FA3A3;
+            --teal-soft: rgba(25, 199, 199, 0.08);
+            --bg-page: #F0F6F6;
+            --bg-card: #FFFFFF;
+            --border: rgba(0, 0, 0, 0.06);
+            --border-card: rgba(25, 199, 199, 0.15);
+            --text-primary: #1A2E35;
+            --text-secondary: #4A6068;
+            --text-muted: #8A9EA6;
+            --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 800px;
         }
-        h1 {
-            color: #111827;
-            border-bottom: 3px solid #0FA3A3;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #111827;
-            margin-top: 30px;
-            border-bottom: 1px solid #E2E8F0;
-            padding-bottom: 5px;
-        }
-        h3 {
-            color: #4B5563;
-            margin-top: 20px;
-        }
-        h4 {
-            color: #6B7280;
-            margin-top: 15px;
-        }
-        .highlight {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        .important {
-            background-color: #f8d7da;
-            padding: 15px;
-            border-left: 4px solid #dc3545;
-            margin: 20px 0;
-        }
-        .info {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        .contact-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin: 10px 0;
-        }
-        ol {
-            padding-left: 20px;
-        }
-        ol li {
-            margin: 10px 0;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: var(--bg-page); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal-dark); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--teal); }
+        .content { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px 80px; }
+        h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+        .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 40px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 16px; padding: 36px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); overflow: hidden; }
+        .card h2 { font-size: 1.15rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 16px; letter-spacing: -0.01em; }
+        .card h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-top: 20px; margin-bottom: 10px; }
+        .card p, .card li { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 10px; }
+        .card ul, .card ol { padding-left: 20px; margin-bottom: 12px; }
+        .card li { margin-bottom: 6px; }
+        .card ul li { list-style: disc; }
+        .card ol li { list-style: decimal; }
+        .highlight { background: var(--teal-soft); border-left: 3px solid var(--teal-dark); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .important { background: rgba(220, 53, 69, 0.06); border-left: 3px solid #dc3545; border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .footer-copy { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 48px; }
+        .footer-copy a { color: var(--teal-dark); }
 
-        /* -- MOBILE RESPONSIVE FIX -- */
-        * { box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { overflow-x: hidden; max-width: 100%; }
-        @media (max-width: 650px) {
-            body { padding: 15px; }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --teal: #19C7C7;
+                --teal-dark: #19C7C7;
+                --teal-soft: rgba(25, 199, 199, 0.12);
+                --bg-page: #000000;
+                --bg-card: #121212;
+                --border: rgba(255, 255, 255, 0.08);
+                --border-card: rgba(25, 199, 199, 0.20);
+                --text-primary: #FFFFFF;
+                --text-secondary: #B0BEC5;
+                --text-muted: #78909C;
+            }
+            tr:nth-child(even) { background-color: #1A1A1A; }
+            th { background-color: #19C7C7; color: #000000; }
+            .highlight { background: rgba(25, 199, 199, 0.12); }
+            .important { background: rgba(255, 107, 107, 0.12); border-left-color: #FF6B6B; }
         }
+        @media (max-width: 600px) { .card { padding: 24px; } }
     </style>
 </head>
 <body>
 
-<h1>Kullan&#305;m Ko&#351;ullar&#305; - k<span style="color:#0FA3A3">AI</span>board</h1>
+<main class="content">
+    <h1>Kullan&#305;m Ko&#351;ullar&#305;</h1>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Son g&uuml;ncelleme: 26 Mart 2026 &mdash; S&uuml;r&uuml;m: 3.0</p>
 
-<p><strong>Son g&uuml;ncelleme:</strong> 26 Mart 2026</p>
-<p><strong>S&uuml;r&uuml;m:</strong> 3.0</p>
+    <div class="highlight" style="margin-bottom:20px;margin-top:20px"><strong>Not:</strong> Bu bir nezaket &ccedil;evirisidir. <a target="_blank" href="agb_de.html">Hukuki a&ccedil;&#305;dan ba&#287;lay&#305;c&#305; olan s&uuml;r&uuml;m Almanca orijinaldir</a>.</div>
 
-<h2>1. Kapsam</h2>
+    <div class="card">
+        <h2>1. Kapsam</h2>
 
 <p>&#304;&#351;bu Kullan&#305;m Ko&#351;ullar&#305; (bundan b&ouml;yle &ldquo;Ko&#351;ullar&rdquo;) Google Play Store &uuml;zerinden da&#287;&#305;t&#305;lan Android uygulamas&#305; <strong>k<span style="color:#0FA3A3">AI</span>board</strong> (bundan b&ouml;yle &ldquo;Uygulama&rdquo;) kullan&#305;m&#305;n&#305; d&uuml;zenlemektedir.</p>
 
-<div class="contact-box">
+<div class="highlight">
     <p><strong>Sa&#287;lay&#305;c&#305;:</strong></p>
     <p>Alessandro Faedda<br>
     c/o POSTFLEX PFX-846-235<br>
@@ -101,8 +86,10 @@
 </div>
 
 <p>Uygulamay&#305; indirerek, y&uuml;kleyerek veya kullanarak kullan&#305;c&#305; (bundan b&ouml;yle &ldquo;Kullan&#305;c&#305;&rdquo;) i&#351;bu Ko&#351;ullar&#305; kabul etmi&#351; say&#305;l&#305;r. Kullan&#305;c&#305; i&#351;bu Ko&#351;ullar&#305; kabul etmezse Uygulamay&#305; kullanmas&#305;na izin verilmez.</p>
+    </div>
 
-<h2>2. Hizmet tan&#305;m&#305;</h2>
+    <div class="card">
+        <h2>2. Hizmet tan&#305;m&#305;</h2>
 
 <p>kAIboard, a&#351;a&#287;&#305;daki temel &ouml;zelliklere sahip Android i&ccedil;in &ccedil;ok dilli bir klavye uygulamas&#305;d&#305;r:</p>
 
@@ -116,14 +103,18 @@
 </ul>
 
 <p>Mevcut &ouml;zellikler se&ccedil;ilen abonelik plan&#305;na ba&#287;l&#305;d&#305;r (bkz. b&ouml;l&uuml;m&nbsp;4). Sa&#287;lay&#305;c&#305;, &ouml;zellikleri herhangi bir zamanda geni&#351;letme veya de&#287;i&#351;tirme hakk&#305;n&#305; sakl&#305; tutar.</p>
+    </div>
 
-<h2>3. S&ouml;zle&#351;menin kurulmas&#305;</h2>
+    <div class="card">
+        <h2>3. S&ouml;zle&#351;menin kurulmas&#305;</h2>
 
 <p>Kullan&#305;m s&ouml;zle&#351;mesi, Uygulaman&#305;n Google Play Store&rsquo;dan indirilmesi ve y&uuml;klenmesiyle kurulur. Uygulaman&#305;n Google Play Store&rsquo;da sunulmas&#305; hukuken ba&#287;lay&#305;c&#305; bir teklif de&#287;il, yaln&#305;zca teklifte bulunma daveti (invitatio ad offerendum) niteli&#287;indedir.</p>
 
 <p>Uygulaman&#305;n kullan&#305;m&#305; i&ccedil;in <strong>kay&#305;t veya kullan&#305;c&#305; hesab&#305; olu&#351;turma gerekmez</strong>.</p>
+    </div>
 
-<h2>4. Fiyatlar ve &ouml;deme ko&#351;ullar&#305;</h2>
+    <div class="card">
+        <h2>4. Fiyatlar ve &ouml;deme ko&#351;ullar&#305;</h2>
 
 <h3>4.1 Tek seferlik sat&#305;n alma</h3>
 <p>Uygulaman&#305;n tek seferlik sat&#305;n alma fiyat&#305; <strong>&euro;&nbsp;2,39</strong>&rsquo;dur (KDV d&acirc;hil). Bu, Uygulaman&#305;n temel &ouml;zelliklerine eri&#351;im sa&#287;lar.</p>
@@ -141,8 +132,10 @@
 <div class="highlight">
     <strong>Not:</strong> Abonelik d&uuml;zeyleri aras&#305;ndaki belirli farklar Google Play Store&rsquo;da ve Uygulama i&ccedil;inde a&ccedil;&#305;klanm&#305;&#351;t&#305;r. Sa&#287;lay&#305;c&#305;, gelecek fatura d&ouml;nemleri i&ccedil;in fiyatlar&#305; ayarlama hakk&#305;n&#305; sakl&#305; tutar. Mevcut abonelikler, fiyat de&#287;i&#351;ikli&#287;inden ancak ge&ccedil;erli fatura d&ouml;neminin sona ermesinden sonra etkilenir.
 </div>
+    </div>
 
-<h2>5. Abonelikler ve iptal</h2>
+    <div class="card">
+        <h2>5. Abonelikler ve iptal</h2>
 
 <h3>5.1 S&uuml;re ve yenileme</h3>
 <p>Abonelikler bir ay s&uuml;relidir ve zaman&#305;nda iptal edilmedikleri takdirde otomatik olarak bir ay daha yenilenir.</p>
@@ -156,14 +149,18 @@
 <div class="highlight">
     <strong>Cihaz senkronizasyonu hakk&#305;nda &ouml;nemli bilgi:</strong> kAIboard, abonelik senkronizasyonu i&ccedil;in kendi kullan&#305;c&#305; hesab&#305;na veya sunucusuna sahip de&#287;ildir. Kullan&#305;c&#305; Uygulamay&#305; yeni bir cihaza y&uuml;klerse veya fabrika ayarlar&#305;na s&#305;f&#305;rlama (factory reset) sonras&#305;nda yeniden kurulursa, abonelik durumu ve varsa kalan token kotalar&#305; <strong>otomatik olarak senkronize edilmez</strong>. Bu durumda Kullan&#305;c&#305;n&#305;n Google Play taraf&#305;ndan otomatik geri y&uuml;klemeyi beklemesi veya destek ekibiyle ileti&#351;ime ge&ccedil;mesi gerekmektedir.
 </div>
+    </div>
 
-<h2>6. Cayma hakk&#305;</h2>
+    <div class="card">
+        <h2>6. Cayma hakk&#305;</h2>
 
 <p>Dijital i&ccedil;eri&#287;in sat&#305;n al&#305;nmas&#305; (tek seferlik sat&#305;n alma ve abonelikler) i&ccedil;in <strong>AB Direktifi 2011/83/EU</strong> (6502 say&#305;l&#305; T&uuml;keticinin Korunmas&#305; Hakk&#305;nda Kanun, KVKK) kapsam&#305;ndaki cayma hakk&#305;na ili&#351;kin h&uuml;k&uuml;mler ge&ccedil;erlidir. Maddi olmayan bir ortamda sunulan dijital i&ccedil;eri&#287;in ifas&#305;na, Kullan&#305;c&#305;n&#305;n a&ccedil;&#305;k onay&#305; ve cayma hakk&#305;n&#305; kaybetti&#287;ini teyit etmesiyle ba&#351;lanm&#305;&#351;sa, cayma hakk&#305; uygulanmaz.</p>
 
 <p>Google Play &uuml;zerinden indirme s&#305;ras&#305;nda dijital i&ccedil;eri&#287;in derhal sunulmaya ba&#351;lanmas&#305;na ili&#351;kin onay, sat&#305;n alma s&uuml;recinde al&#305;n&#305;r. Ayr&#305;ca <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener">Google Play iade politikas&#305;</a> ge&ccedil;erlidir.</p>
+    </div>
 
-<h2>7. Kullan&#305;m haklar&#305; ve lisanslar</h2>
+    <div class="card">
+        <h2>7. Kullan&#305;m haklar&#305; ve lisanslar</h2>
 
 <p>Uygulaman&#305;n sat&#305;n al&#305;nmas&#305;yla Kullan&#305;c&#305;, Uygulamay&#305; kendi Android cihazlar&#305;nda ki&#351;isel ve ticari olmayan ama&ccedil;larla kullanmak &uuml;zere <strong>basit, devredilemez, alt lisanslanamaz bir kullan&#305;m hakk&#305;</strong> elde eder.</p>
 
@@ -182,8 +179,10 @@
     <li><strong>FrequencyWords</strong> &mdash; MIT Lisans&#305; (kelime s&#305;kl&#305;k listeleri)</li>
 </ul>
 <p>Kullan&#305;lan t&uuml;m k&uuml;t&uuml;phanelerin ve lisanslar&#305;n&#305;n tam listesi Uygulama i&ccedil;inde <strong>Ayarlar &rarr; Open Source Licenses</strong> b&ouml;l&uuml;m&uuml;nde mevcuttur.</p>
+    </div>
 
-<h2>8. Veri koruma</h2>
+    <div class="card">
+        <h2>8. Veri koruma</h2>
 
 <p>Kullan&#305;c&#305; verilerinin korunmas&#305; Sa&#287;lay&#305;c&#305; i&ccedil;in en y&uuml;ksek &ouml;nceli&#287;e sahiptir. Uygulaman&#305;n tam gizlilik politikas&#305; ayr&#305; bir belge olarak mevcuttur:</p>
 <ul>
@@ -197,8 +196,10 @@
     <li>Otomatik d&uuml;zeltme, kelime tahmini ve &ccedil;evrimd&#305;&#351;&#305; &ccedil;eviri <strong>tamamen yerel olarak</strong> cihaz &uuml;zerinde &ccedil;al&#305;&#351;&#305;r</li>
     <li>&Ccedil;&ouml;kme raporlar&#305; (Firebase Crashlytics) yaln&#305;zca <strong>Kullan&#305;c&#305;n&#305;n a&ccedil;&#305;k onay&#305;yla</strong> g&ouml;nderilir (KVKK onay&#305;)</li>
 </ul>
+    </div>
 
-<h2>9. Kullan&#305;labilirlik ve g&uuml;ncellemeler</h2>
+    <div class="card">
+        <h2>9. Kullan&#305;labilirlik ve g&uuml;ncellemeler</h2>
 
 <p>Sa&#287;lay&#305;c&#305;, Uygulamay&#305; kesintisiz olarak kullan&#305;labilir k&#305;lmaya &ccedil;al&#305;&#351;&#305;r. Ancak <strong>%100 kullan&#305;labilirlik</strong> garanti edilemez. &Ouml;zellikle a&#351;a&#287;&#305;daki &ouml;zelliklerde k&#305;s&#305;tlamalar ya&#351;anabilir:</p>
 <ul>
@@ -209,8 +210,10 @@
 <p>Sa&#287;lay&#305;c&#305;, hatalar&#305; d&uuml;zeltmek, g&uuml;venli&#287;i art&#305;rmak veya yeni &ouml;zellikler eklemek i&ccedil;in Uygulama g&uuml;ncellemeleri yay&#305;nlayabilir. Tam i&#351;levselli&#287;i sa&#287;lamak i&ccedil;in Kullan&#305;c&#305;n&#305;n her zaman Uygulaman&#305;n en son s&uuml;r&uuml;m&uuml;n&uuml; kullanmas&#305; &ouml;nerilir.</p>
 
 <p>Sa&#287;lay&#305;c&#305;, teknik, ekonomik veya hukuki nedenlerle gerekli olmas&#305; durumunda Uygulaman&#305;n belirli &ouml;zelliklerini durdurma hakk&#305;n&#305; sakl&#305; tutar.</p>
+    </div>
 
-<h2>10. Sorumluluk s&#305;n&#305;rlamas&#305;</h2>
+    <div class="card">
+        <h2>10. Sorumluluk s&#305;n&#305;rlamas&#305;</h2>
 
 <p>Sa&#287;lay&#305;c&#305;, kas&#305;t ve a&#287;&#305;r ihmal durumlar&#305;nda s&#305;n&#305;rs&#305;z olarak sorumludur. Hafif ihmal durumunda Sa&#287;lay&#305;c&#305;, yaln&#305;zca esasl&#305; s&ouml;zle&#351;mesel y&uuml;k&uuml;ml&uuml;l&uuml;klerin (as&#305;l y&uuml;k&uuml;ml&uuml;l&uuml;kler) ihlalinden, &ouml;ng&ouml;r&uuml;lebilir ve s&ouml;zle&#351;meye &ouml;zg&uuml; zararla s&#305;n&#305;rl&#305; olarak sorumludur.</p>
 
@@ -223,41 +226,46 @@
 </ul>
 
 <p>Bu sorumluluk s&#305;n&#305;rlamas&#305;, ya&#351;am, v&uuml;cut veya sa&#287;l&#305;k zararlar&#305;ndan kaynaklanan hasarlar ile &uuml;r&uuml;n sorumlulu&#287;u mevzuat&#305; kapsam&#305;ndaki talepler i&ccedil;in ge&ccedil;erli de&#287;ildir.</p>
+    </div>
 
-<h2>11. Fikri m&uuml;lkiyet</h2>
+    <div class="card">
+        <h2>11. Fikri m&uuml;lkiyet</h2>
 
 <p>Kaynak kodu, tasar&#305;m, grafikler, metinler ve &ldquo;kAIboard&rdquo; markas&#305; d&acirc;hil olmak &uuml;zere Uygulama &uuml;zerindeki t&uuml;m haklar, aksi belirtilmedik&ccedil;e m&uuml;nhas&#305;ran <strong>Alessandro Faedda</strong>&rsquo;ya aittir.</p>
 
 <p>Uygulamada kullan&#305;lan a&ccedil;&#305;k kaynak k&uuml;t&uuml;phaneleri (bkz. b&ouml;l&uuml;m&nbsp;7.1) ilgili a&ccedil;&#305;k kaynak lisanslar&#305;na tabidir ve bu maddeden muaft&#305;r.</p>
+    </div>
 
-<h2>12. Ko&#351;ullar&#305;n de&#287;i&#351;tirilmesi</h2>
+    <div class="card">
+        <h2>12. Ko&#351;ullar&#305;n de&#287;i&#351;tirilmesi</h2>
 
 <p>Sa&#287;lay&#305;c&#305;, i&#351;bu Ko&#351;ullar&#305; herhangi bir zamanda gelecek i&ccedil;in ge&ccedil;erli olacak &#351;ekilde de&#287;i&#351;tirme veya tamamlama hakk&#305;n&#305; sakl&#305; tutar. &Ouml;nemli de&#287;i&#351;iklikler Kullan&#305;c&#305;ya uygun bir &#351;ekilde bildirilir (&ouml;rn. Uygulama i&ccedil;inde veya web sitesinde bir bildirim arac&#305;l&#305;&#287;&#305;yla).</p>
 
 <p>De&#287;i&#351;tirilmi&#351; Ko&#351;ullar&#305;n y&uuml;r&uuml;rl&uuml;&#287;e girmesinden sonra Uygulaman&#305;n kullan&#305;lmaya devam edilmesi, de&#287;i&#351;ikliklerin kabul edildi&#287;i anlam&#305;na gelir. Kullan&#305;c&#305;, de&#287;i&#351;tirilmi&#351; Ko&#351;ullar&#305; kabul etmezse Uygulamay&#305; kullanmay&#305; b&#305;rakma ve mevcut aboneli&#287;ini iptal etme hakk&#305;na sahiptir.</p>
+    </div>
 
-<h2>13. Son h&uuml;k&uuml;mler</h2>
+    <div class="card">
+        <h2>13. Son h&uuml;k&uuml;mler</h2>
 
 <p><strong>Federal Almanya Cumhuriyeti</strong> hukuku, Birle&#351;mi&#351; Milletler Uluslararas&#305; Mal Sat&#305;m S&ouml;zle&#351;meleri Konvansiyonu (CISG) hari&ccedil; tutularak uygulan&#305;r. Kullan&#305;c&#305;n&#305;n muta't resid&ecirc;nsi olan devletin t&uuml;keticinin korunmas&#305;na ili&#351;kin emredici h&uuml;k&uuml;mleri etkilenmez.</p>
 
 <p>Kullan&#305;c&#305;n&#305;n tacir, kamu hukuku t&uuml;zel ki&#351;isi veya kamu hukuku &ouml;zel mal varl&#305;&#287;&#305; olmas&#305; durumunda, bu s&ouml;zle&#351;meden do&#287;an t&uuml;m uyu&#351;mazl&#305;klar i&ccedil;in m&uuml;nhas&#305;r yetkili mahkeme <strong>Hamburg</strong>&rsquo;dur.</p>
 
 <p>&#304;&#351;bu Ko&#351;ullar&#305;n herhangi bir h&uuml;km&uuml;n&uuml;n ge&ccedil;ersiz veya uygulanamaz olmas&#305; halinde, geri kalan h&uuml;k&uuml;mlerin ge&ccedil;erlili&#287;i bundan etkilenmez (b&ouml;l&uuml;nebilirlik maddesi). Ge&ccedil;ersiz h&uuml;k&uuml;m, ge&ccedil;ersiz h&uuml;km&uuml;n ekonomik amac&#305;na en yak&#305;n ge&ccedil;erli bir h&uuml;k&uuml;mle de&#287;i&#351;tirilir.</p>
+    </div>
 
-<h2>14. &#304;leti&#351;im</h2>
-
-<div class="contact-box">
-    <p>Sorular&#305;n&#305;z, KVKK talepleri veya bildirimler i&ccedil;in:</p>
+    <div class="card">
+        <h2>İletişim</h2>
+        <p>Sorular&#305;n&#305;z, KVKK talepleri veya bildirimler i&ccedil;in:</p>
     <p><strong>E-posta:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
     <p><strong>Web sitesi:</strong> <a href="https://kaiboard.eu" target="_blank" rel="noopener">kaiboard.eu</a></p>
     <p><strong>Yan&#305;t s&uuml;resi:</strong> 30 g&uuml;n i&ccedil;inde (KVKK Madde 13)</p>
-    <p style="margin-top: 10px;">&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/">Di&#287;er dillerde Kullan&#305;m Ko&#351;ullar&#305;</a></p>
-</div>
+    <p style="margin-top: 10px;">&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/agb.html">Di&#287;er dillerde Kullan&#305;m Ko&#351;ullar&#305;</a></p>
+    </div>
 
-<p style="text-align: center; color: #4B5563; margin-top: 50px;">
-    &copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. T&uuml;m haklar&inodot; sakl&inodot;d&inodot;r.<br>
-    KVKK (AB Y&ouml;netmeli&gbreve;i 2016/679) ile uyumludur
-</p>
+    <p class="footer-copy">&copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. T&uuml;m haklar&inodot; sakl&inodot;d&inodot;r.<br>
+    KVKK (AB Y&ouml;netmeli&gbreve;i 2016/679) ile uyumludur</p>
+</main>
 
 </body>
 </html>

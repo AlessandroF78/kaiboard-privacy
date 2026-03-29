@@ -4,126 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Privacy Policy - kAIboard</title>
+    <title>Privacy Policy &mdash; kAIboard</title>
     <style>
-        body {
-            font-family: "DM Sans", "DM Sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #111827; background-color: #F4F7FA;
+        :root {
+            --teal: #19C7C7;
+            --teal-dark: #0FA3A3;
+            --teal-soft: rgba(25, 199, 199, 0.08);
+            --bg-page: #F0F6F6;
+            --bg-card: #FFFFFF;
+            --border: rgba(0, 0, 0, 0.06);
+            --border-card: rgba(25, 199, 199, 0.15);
+            --text-primary: #1A2E35;
+            --text-secondary: #4A6068;
+            --text-muted: #8A9EA6;
+            --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 800px;
         }
-        h1 {
-            color: #111827;
-            border-bottom: 3px solid #0FA3A3;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #111827;
-            margin-top: 30px;
-            border-bottom: 1px solid #E2E8F0;
-            padding-bottom: 5px;
-        }
-        h3 {
-            color: #4B5563;
-            margin-top: 20px;
-        }
-        h4 {
-            color: #6B7280;
-            margin-top: 15px;
-        }
-        .highlight {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        .important {
-            background-color: #f8d7da;
-            padding: 15px;
-            border-left: 4px solid #dc3545;
-            margin: 20px 0;
-        }
-        .info {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #0FA3A3;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #F8FAFA;
-        }
-        .contact-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin: 10px 0;
-        }
-        ol {
-            padding-left: 20px;
-        }
-        ol li {
-            margin: 10px 0;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: var(--bg-page); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal-dark); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--teal); }
+        .content { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px 80px; }
+        h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+        .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 40px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 16px; padding: 36px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); overflow: hidden; }
+        .card h2 { font-size: 1.15rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 16px; letter-spacing: -0.01em; }
+        .card h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-top: 20px; margin-bottom: 10px; }
+        .card h4 { font-size: 0.92rem; font-weight: 600; color: var(--text-secondary); margin-top: 15px; margin-bottom: 8px; }
+        .card p, .card li { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 10px; }
+        .card ul, .card ol { padding-left: 20px; margin-bottom: 12px; }
+        .card li { margin-bottom: 6px; }
+        .card ul li { list-style: disc; }
+        .card ol li { list-style: decimal; }
+        .highlight { background: var(--teal-soft); border-left: 3px solid var(--teal-dark); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .important { background: rgba(220, 53, 69, 0.06); border-left: 3px solid #dc3545; border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        th, td { border: 1px solid var(--border); padding: 12px 15px; text-align: left; }
+        th { background-color: var(--teal-dark); font-weight: 600; color: white; }
+        tr:nth-child(even) { background-color: #F8FAFA; }
+        .table-wrapper { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+        .table-wrapper table { min-width: 480px; margin: 0; }
+        .footer-copy { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 48px; }
+        .footer-copy a { color: var(--teal-dark); }
 
-        /* ── MOBILE FIX ── */
-        html, body { overflow-x: hidden; }
-        .table-wrapper {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin: 20px 0;
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --teal: #19C7C7;
+                --teal-dark: #19C7C7;
+                --teal-soft: rgba(25, 199, 199, 0.12);
+                --bg-page: #000000;
+                --bg-card: #121212;
+                --border: rgba(255, 255, 255, 0.08);
+                --border-card: rgba(25, 199, 199, 0.20);
+                --text-primary: #FFFFFF;
+                --text-secondary: #B0BEC5;
+                --text-muted: #78909C;
+            }
+            tr:nth-child(even) { background-color: #1A1A1A; }
+            th { background-color: #19C7C7; color: #000000; }
+            .highlight { background: rgba(25, 199, 199, 0.12); }
+            .important { background: rgba(255, 107, 107, 0.12); border-left-color: #FF6B6B; }
         }
-        .table-wrapper table {
-            width: auto;
-            min-width: 480px;
-            margin: 0;
-        }
-        @media (max-width: 650px) {
-            body { padding: 15px; }
-            .container { padding: 20px; }
-            th, td { padding: 8px; font-size: 13px; }
-        }
+        @media (max-width: 600px) { .card { padding: 24px; } th, td { padding: 8px 10px; font-size: 0.82rem; } }
     </style>
 </head>
 <body>
 
-<h1>Privacy Policy - k<span style="color:#0FA3A3">AI</span>board</h1>
 
-<p><strong>Last updated:</strong> March 26, 2026</p>
-<p><strong>Version:</strong> 3.0</p>
+<main class="content">
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Last updated: March 26, 2026 &mdash; Version: 3.0</p>
 
-<h2>1. Data Controller</h2>
+    <div class="card">
+        <h2>1. Data Controller</h2>
 
-<div class="contact-box">
+    <div class="highlight">
     <p><strong>Name:</strong> Alessandro Faedda</p>
     <p><strong>Email:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
     <p><strong>Website:</strong> <a href="https://kaiboard.eu" target="_blank" rel="noopener">kaiboard.eu</a></p>    <p><strong>Type:</strong> Individual (independent developer)</p>
-</div>
+    </div>
+
+
+
 
 <p>Alessandro Faedda is the data controller for personal data collected through the kAIboard app.</p>
+    </div>
 
-<h2>2. What Data We Collect</h2>
+    <div class="card">
+        <h2>2. What Data We Collect</h2>
 
 <p>kAIboard is designed following the principle of <strong>data minimization</strong>. We only collect data strictly necessary for the app to function.</p>
 
@@ -265,7 +234,7 @@
 
 <h3>2.1.2 Grace Period</h3>
 
-<div class="info">
+<div class="highlight">
     <strong>📅 SUBSCRIPTION CANCELLED BUT STILL ACTIVE</strong>
     <p>If you cancel your subscription through Google Play, the premium service <strong>remains active until the end of the already paid period</strong>.</p>
 
@@ -450,8 +419,10 @@
     <li>❌ Biometric data</li>
     <li>❌ Advertising identifiers</li>
 </ul>
+    </div>
 
-<h2>3. How We Use Your Data</h2>
+    <div class="card">
+        <h2>3. How We Use Your Data</h2>
 
 <h3>3.1 Real-Time Translation</h3>
 
@@ -495,7 +466,7 @@
 
 <h3>3.3 Anti-Fraud Protection for Subscriptions</h3>
 
-<div class="info">
+<div class="highlight">
     <strong>🔒 HOW THE ANTI-FRAUD PROTECTION WORKS</strong>
     <p>kAIboard uses a protection system based on a <strong>shared counter</strong> to ensure the integrity of token consumption across all devices.</p>
 </div>
@@ -547,8 +518,10 @@
     <li>✅ Prevent fraud and abuse</li>
     <li>✅ Handle refunds and disputes with Google Play</li>
 </ul>
+    </div>
 
-<h2>4. Where We Send Your Data</h2>
+    <div class="card">
+        <h2>4. Where We Send Your Data</h2>
 
 <h3>4.1 Third-Party Services</h3>
 
@@ -606,8 +579,10 @@
     <li><a href="https://openai.com/enterprise-privacy" target="_blank">OpenAI API Data Usage Policy</a></li>
     <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Cloudflare Privacy Policy</a></li>
 </ul>
+    </div>
 
-<h2>5. How Long We Keep Your Data</h2>
+    <div class="card">
+        <h2>5. How Long We Keep Your Data</h2>
 
 <h3>5.1 Automatic Retention Policy</h3>
 
@@ -687,8 +662,10 @@
 <div class="highlight">
     <strong>🗑️ AUTOMATIC CLEANUP:</strong> The app automatically performs cleanup every 24 hours. Data older than the indicated periods is automatically deleted, even if you no longer use the app.
 </div>
+    </div>
 
-<h2>6. Your Rights (GDPR)</h2>
+    <div class="card">
+        <h2>6. Your Rights (GDPR)</h2>
 
 <p>Under the GDPR, you have the following rights:</p>
 
@@ -745,8 +722,10 @@
     <li><strong>Germany:</strong> Bundesbeauftragter für den Datenschutz und die Informationsfreiheit (BfDI) - <a href="https://www.bfdi.bund.de">www.bfdi.bund.de</a></li>
     <li><strong>Italy:</strong> Garante per la protezione dei dati personali - <a href="https://www.garanteprivacy.it">www.garanteprivacy.it</a></li>
 </ul>
+    </div>
 
-<h2>7. How to Exercise Your Rights</h2>
+    <div class="card">
+        <h2>7. How to Exercise Your Rights</h2>
 
 <h3>7.1 Through App (Immediate)</h3>
 
@@ -764,8 +743,10 @@
 <p>To exercise other rights, write to: <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
 
 <p>We will respond within <strong>30 days</strong> of your request (Art. 12 GDPR).</p>
+    </div>
 
-<h2>8. Data Security</h2>
+    <div class="card">
+        <h2>8. Data Security</h2>
 
 <p>We implement technical and organizational measures to protect your data:</p>
 
@@ -779,8 +760,10 @@
     <li>🔒 <strong>Automatic deletion</strong>: Data deleted after the indicated retention periods (90-365 days)</li>
     <li>🔒 <strong>Protected API Key</strong>: The OpenAI API key is never exposed in the client, it is stored as a secret in the Cloudflare relay</li>
 </ul>
+    </div>
 
-<h2>9. Device Identifiers and Android Permissions</h2>
+    <div class="card">
+        <h2>9. Device Identifiers and Android Permissions</h2>
 
 <h3>9.1 Device Identifiers Used</h3>
 
@@ -857,8 +840,10 @@
 <div class="important">
     <strong>⚠️ SECURITY NOTE:</strong> Android's security warning for keyboards is standard for all third-party keyboards, it does not mean kAIboard reads or saves your messages. You can verify the source code or contact us for more information.
 </div>
+    </div>
 
-<h2>10. Crash Reports (Optional)</h2>
+    <div class="card">
+        <h2>10. Crash Reports (Optional)</h2>
 
 <p>kAIboard can send anonymous crash reports to Firebase Crashlytics <strong>ONLY if you explicitly enable the option</strong>.</p>
 
@@ -883,12 +868,16 @@
 <p><strong>Legal basis:</strong> Explicit consent (Art. 6.1.a GDPR)</p>
 
 <p><strong>How to disable:</strong> Settings → Crash reports (optional) → Disable. Disabling stops future sending and deletes reports not yet sent on the device. Reports already sent to Firebase remain on the backend and cannot be deleted from the phone.</p>
+    </div>
 
-<h2>11. Minors</h2>
+    <div class="card">
+        <h2>11. Minors</h2>
 
 <p>kAIboard is not intended for children under 13 years of age. We do not knowingly collect data from minors. If you are a parent and discover that your child has provided data, contact us to delete it.</p>
+    </div>
 
-<h2>12. Changes to Privacy Policy</h2>
+    <div class="card">
+        <h2>12. Changes to Privacy Policy</h2>
 
 <p>We may update this Privacy Policy periodically. We will notify you of any substantial changes through:</p>
 
@@ -899,9 +888,10 @@
 </ul>
 
 <p>Continued use of the app after changes constitutes acceptance of the new Privacy Policy.</p>
+    </div>
 
-
-<h2>13. Legal Basis for Processing</h2>
+    <div class="card">
+        <h2>13. Legal Basis for Processing</h2>
 
 <p>Processing of your data is based on:</p>
 
@@ -917,7 +907,7 @@
     </li>
 </ul>
 
-<div class="info">
+<div class="highlight">
     <strong>📋 LEGITIMATE INTEREST ASSESSMENT (Art. 6.1.f GDPR):</strong>
     <p>Administrative activity logs are necessary for:</p>
     <ul>
@@ -933,21 +923,21 @@
         <li>✅ Retention limited to 90 days with automatic deletion</li>
     </ul>
 </div>
+    </div>
 
-<h2>14. Contact</h2>
 
-<div class="contact-box">
-    <p>For questions, GDPR requests or reports:</p>
+    <div class="card">
+        <h2>Contact</h2>
+        <p>For questions, GDPR requests or reports:</p>
     <p><strong>Email:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
     <p><strong>Website:</strong> <a href="https://kaiboard.eu" target="_blank" rel="noopener">kaiboard.eu</a></p>
     <p><strong>Response time:</strong> Within 30 days (Art. 12 GDPR)</p>
     <p>&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/">Privacy Policy in other languages</a></p>
-</div>
+    </div>
 
-<p style="text-align: center; color: #4B5563; margin-top: 50px;">
-    &copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. All rights reserved.<br>
-    Compliant with the GDPR (EU Regulation 2016/679)
-</p>
+    <p class="footer-copy">&copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. All rights reserved.<br>
+    Compliant with the GDPR (EU Regulation 2016/679)</p>
+</main>
 
 </body>
 </html>

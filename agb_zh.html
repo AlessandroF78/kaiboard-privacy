@@ -4,93 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>使用条款 - kAIboard</title>
+    <title>使用条款 &mdash; kAIboard</title>
     <style>
-        body {
-            font-family: "DM Sans", "DM Sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #111827; background-color: #F4F7FA;
+        :root {
+            --teal: #19C7C7;
+            --teal-dark: #0FA3A3;
+            --teal-soft: rgba(25, 199, 199, 0.08);
+            --bg-page: #F0F6F6;
+            --bg-card: #FFFFFF;
+            --border: rgba(0, 0, 0, 0.06);
+            --border-card: rgba(25, 199, 199, 0.15);
+            --text-primary: #1A2E35;
+            --text-secondary: #4A6068;
+            --text-muted: #8A9EA6;
+            --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 800px;
         }
-        h1 {
-            color: #111827;
-            border-bottom: 3px solid #0FA3A3;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #111827;
-            margin-top: 30px;
-            border-bottom: 1px solid #E2E8F0;
-            padding-bottom: 5px;
-        }
-        h3 {
-            color: #4B5563;
-            margin-top: 20px;
-        }
-        h4 {
-            color: #6B7280;
-            margin-top: 15px;
-        }
-        .highlight {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        .important {
-            background-color: #f8d7da;
-            padding: 15px;
-            border-left: 4px solid #dc3545;
-            margin: 20px 0;
-        }
-        .info {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        .contact-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin: 10px 0;
-        }
-        ol {
-            padding-left: 20px;
-        }
-        ol li {
-            margin: 10px 0;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: var(--bg-page); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal-dark); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--teal); }
+        .content { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px 80px; }
+        h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+        .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 40px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 16px; padding: 36px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); overflow: hidden; }
+        .card h2 { font-size: 1.15rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 16px; letter-spacing: -0.01em; }
+        .card h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-top: 20px; margin-bottom: 10px; }
+        .card p, .card li { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 10px; }
+        .card ul, .card ol { padding-left: 20px; margin-bottom: 12px; }
+        .card li { margin-bottom: 6px; }
+        .card ul li { list-style: disc; }
+        .card ol li { list-style: decimal; }
+        .highlight { background: var(--teal-soft); border-left: 3px solid var(--teal-dark); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .important { background: rgba(220, 53, 69, 0.06); border-left: 3px solid #dc3545; border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .footer-copy { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 48px; }
+        .footer-copy a { color: var(--teal-dark); }
 
-        /* -- MOBILE RESPONSIVE FIX -- */
-        * { box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { overflow-x: hidden; max-width: 100%; }
-        @media (max-width: 650px) {
-            body { padding: 15px; }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --teal: #19C7C7;
+                --teal-dark: #19C7C7;
+                --teal-soft: rgba(25, 199, 199, 0.12);
+                --bg-page: #000000;
+                --bg-card: #121212;
+                --border: rgba(255, 255, 255, 0.08);
+                --border-card: rgba(25, 199, 199, 0.20);
+                --text-primary: #FFFFFF;
+                --text-secondary: #B0BEC5;
+                --text-muted: #78909C;
+            }
+            tr:nth-child(even) { background-color: #1A1A1A; }
+            th { background-color: #19C7C7; color: #000000; }
+            .highlight { background: rgba(25, 199, 199, 0.12); }
+            .important { background: rgba(255, 107, 107, 0.12); border-left-color: #FF6B6B; }
         }
+        @media (max-width: 600px) { .card { padding: 24px; } }
     </style>
 </head>
 <body>
 
-<h1>使用条款 - k<span style="color:#0FA3A3">AI</span>board</h1>
+<main class="content">
+    <h1>使用条款</h1>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; 最后更新： 2026年3月26日 &mdash; 版本： 3.0</p>
 
-<p><strong>最后更新：</strong>2026年3月26日</p>
-<p><strong>版本：</strong>3.0</p>
+    <div class="highlight" style="margin-bottom:20px;margin-top:20px"><strong>提示：</strong>本文为礼节性翻译。<a target="_blank" href="agb_de.html">具有法律约束力的版本为德语原文</a>。</div>
 
-<h2>1. 适用范围</h2>
+    <div class="card">
+        <h2>1. 适用范围</h2>
 
 <p>本使用条款（以下简称&ldquo;条款&rdquo;）适用于通过 Google Play 商店分发的 Android 应用程序 <strong>k<span style="color:#0FA3A3">AI</span>board</strong>（以下简称&ldquo;应用&rdquo;）的使用。</p>
 
-<div class="contact-box">
+<div class="highlight">
     <p><strong>提供者：</strong></p>
     <p>Alessandro Faedda<br>
     c/o POSTFLEX PFX-846-235<br>
@@ -101,8 +86,10 @@
 </div>
 
 <p>通过下载、安装或使用本应用，用户（以下简称&ldquo;用户&rdquo;）即表示同意本条款。如用户不同意本条款，则不得使用本应用。</p>
+    </div>
 
-<h2>2. 服务描述</h2>
+    <div class="card">
+        <h2>2. 服务描述</h2>
 
 <p>kAIboard 是一款面向 Android 的多语言键盘应用，具有以下核心功能：</p>
 
@@ -116,14 +103,18 @@
 </ul>
 
 <p>可用功能取决于所选的订阅方案（请参阅第 4 节）。提供者保留随时扩展或修改功能的权利。</p>
+    </div>
 
-<h2>3. 合同成立</h2>
+    <div class="card">
+        <h2>3. 合同成立</h2>
 
 <p>使用合同在用户从 Google Play 商店下载并安装本应用时成立。本应用在 Google Play 商店中的展示不构成具有法律约束力的要约，而仅为要约邀请（invitatio ad offerendum）。</p>
 
 <p>使用本应用<strong>无需注册，也无需创建用户账户</strong>。</p>
+    </div>
 
-<h2>4. 价格与付款条件</h2>
+    <div class="card">
+        <h2>4. 价格与付款条件</h2>
 
 <h3>4.1 一次性购买</h3>
 <p>本应用的一次性购买价格为 <strong>&euro;&nbsp;2.39</strong>（含增值税）。购买后即可使用本应用的基本功能。</p>
@@ -141,8 +132,10 @@
 <div class="highlight">
     <strong>提示：</strong>各订阅等级之间的具体差异在 Google Play 商店和应用内有详细说明。提供者保留调整未来计费周期价格的权利。现有订阅仅在当前计费周期届满后才受价格变更影响。
 </div>
+    </div>
 
-<h2>5. 订阅与取消</h2>
+    <div class="card">
+        <h2>5. 订阅与取消</h2>
 
 <h3>5.1 期限与续订</h3>
 <p>订阅期限为一个月，如未及时取消，将自动续订一个月。</p>
@@ -156,14 +149,18 @@
 <div class="highlight">
     <strong>关于设备同步的重要提示：</strong>kAIboard 没有自己的用户账户或用于订阅同步的服务器。如果用户在新设备上安装本应用或在恢复出厂设置后重新安装，订阅状态和可能剩余的令牌配额<strong>不会自动同步</strong>。在此情况下，用户需要等待 Google Play 的自动恢复或联系客服支持。
 </div>
+    </div>
 
-<h2>6. 撤回权</h2>
+    <div class="card">
+        <h2>6. 撤回权</h2>
 
 <p>对于数字内容的购买（一次性购买和订阅），适用<strong>欧盟指令 2011/83/EU</strong> 中关于撤回权的规定。对于非实体介质提供的数字内容，如果在用户明确同意并确认放弃撤回权的情况下已开始履行，则撤回权不再适用。</p>
 
 <p>通过 Google Play 下载时，在购买过程中会获取用户对立即开始提供数字内容的同意。此外，还适用 <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener">Google Play 退款政策</a>。</p>
+    </div>
 
-<h2>7. 使用权与许可</h2>
+    <div class="card">
+        <h2>7. 使用权与许可</h2>
 
 <p>购买本应用后，用户即获得一项<strong>简单的、不可转让的、不可再许可的使用权</strong>，可在其自有 Android 设备上将本应用用于个人非商业目的。</p>
 
@@ -182,8 +179,10 @@
     <li><strong>FrequencyWords</strong> &mdash; MIT 许可证（词频列表）</li>
 </ul>
 <p>所有使用的库及其许可的完整列表可在应用内的<strong>设置 &rarr; Open Source Licenses</strong> 中查看。</p>
+    </div>
 
-<h2>8. 数据保护</h2>
+    <div class="card">
+        <h2>8. 数据保护</h2>
 
 <p>保护用户数据是提供者的首要任务。本应用的完整隐私政策作为单独文件提供：</p>
 <ul>
@@ -197,8 +196,10 @@
     <li>自动纠错、单词预测和离线翻译<strong>完全在设备本地</strong>运行</li>
     <li>崩溃报告（Firebase Crashlytics）仅在用户<strong>明确同意</strong>的情况下发送（GDPR 选择性同意）</li>
 </ul>
+    </div>
 
-<h2>9. 可用性与更新</h2>
+    <div class="card">
+        <h2>9. 可用性与更新</h2>
 
 <p>提供者致力于使本应用不间断地可用。但无法保证 <strong>100% 的可用性</strong>。以下功能尤其可能出现限制：</p>
 <ul>
@@ -209,8 +210,10 @@
 <p>提供者可能会发布应用更新，以修复错误、提升安全性或引入新功能。为确保完整的功能性，建议用户始终使用本应用的最新版本。</p>
 
 <p>如因技术、经济或法律原因有必要，提供者保留停止本应用个别功能的权利。</p>
+    </div>
 
-<h2>10. 责任限制</h2>
+    <div class="card">
+        <h2>10. 责任限制</h2>
 
 <p>提供者对故意行为和重大过失承担无限责任。对于轻微过失，提供者仅对违反重要合同义务（基本义务）承担责任，且仅限于可预见的、合同典型的损害。</p>
 
@@ -223,41 +226,46 @@
 </ul>
 
 <p>本责任限制不适用于因生命、身体或健康损害而造成的损害，也不适用于产品责任法规定的索赔。</p>
+    </div>
 
-<h2>11. 知识产权</h2>
+    <div class="card">
+        <h2>11. 知识产权</h2>
 
 <p>本应用的所有权利，包括源代码、设计、图形、文本和&ldquo;kAIboard&rdquo;商标，均专属于 <strong>Alessandro Faedda</strong>，除非另有说明。</p>
 
 <p>本应用中使用的开源库（参见第 7.1 节）受其各自的开源许可约束，不在本条款范围内。</p>
+    </div>
 
-<h2>12. 条款变更</h2>
+    <div class="card">
+        <h2>12. 条款变更</h2>
 
 <p>提供者保留随时修改或补充本条款的权利，修改将在未来生效。重大变更将以适当方式通知用户（例如通过应用内或网站上的通知）。</p>
 
 <p>在修改后的条款生效后继续使用本应用，即视为接受变更。如用户不同意修改后的条款，有权停止使用本应用并取消现有订阅。</p>
+    </div>
 
-<h2>13. 最终条款</h2>
+    <div class="card">
+        <h2>13. 最终条款</h2>
 
 <p>适用<strong>德意志联邦共和国</strong>法律，但排除《联合国国际货物销售合同公约》（CISG）的适用。用户惯常居住地所在国家的强制性消费者保护规定不受影响。</p>
 
 <p>如用户为商人、公法法人或公法特别财产，则因本合同产生的所有争议的专属管辖法院为<strong>汉堡</strong>。</p>
 
 <p>如本条款的个别规定无效或不可执行，其余规定的效力不受影响（可分割条款）。无效规定将由最接近其经济目的的有效规定替代。</p>
+    </div>
 
-<h2>14. 联系方式</h2>
-
-<div class="contact-box">
-    <p>如有疑问、GDPR 请求或报告：</p>
+    <div class="card">
+        <h2>联系方式</h2>
+        <p>如有疑问、GDPR 请求或报告：</p>
     <p><strong>电子邮件：</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
     <p><strong>网站：</strong> <a href="https://kaiboard.eu" target="_blank" rel="noopener">kaiboard.eu</a></p>
     <p><strong>响应时间：</strong>30 天内（GDPR 第 12 条）</p>
-    <p style="margin-top: 10px;">&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/">其他语言的使用条款</a></p>
-</div>
+    <p style="margin-top: 10px;">&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/agb.html">其他语言的使用条款</a></p>
+    </div>
 
-<p style="text-align: center; color: #4B5563; margin-top: 50px;">
-    &copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. 保留所有权利。<br>
-    符合 GDPR（欧盟法规 2016/679）
-</p>
+    <p class="footer-copy">&copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. 保留所有权利。<br>
+    符合 GDPR（欧盟法规 2016/679）</p>
+</main>
 
 </body>
 </html>

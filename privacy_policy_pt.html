@@ -4,129 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Política de Privacidade - kAIboard</title>
+    <title>Política de Privacidade &mdash; kAIboard</title>
     <style>
-        body {
-            font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #111827; background-color: #F4F7FA;
+        :root {
+            --teal: #19C7C7;
+            --teal-dark: #0FA3A3;
+            --teal-soft: rgba(25, 199, 199, 0.08);
+            --bg-page: #F0F6F6;
+            --bg-card: #FFFFFF;
+            --border: rgba(0, 0, 0, 0.06);
+            --border-card: rgba(25, 199, 199, 0.15);
+            --text-primary: #1A2E35;
+            --text-secondary: #4A6068;
+            --text-muted: #8A9EA6;
+            --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 800px;
         }
-        h1 {
-            color: #111827;
-            border-bottom: 3px solid #0FA3A3;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #111827;
-            margin-top: 30px;
-            border-bottom: 1px solid #E2E8F0;
-            padding-bottom: 5px;
-        }
-        h3 {
-            color: #4B5563;
-            margin-top: 20px;
-        }
-        h4 {
-            color: #6B7280;
-            margin-top: 15px;
-        }
-        .highlight {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        .important {
-            background-color: #f8d7da;
-            padding: 15px;
-            border-left: 4px solid #dc3545;
-            margin: 20px 0;
-        }
-        .info {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #0FA3A3;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #F8FAFA;
-        }
-        .contact-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin: 10px 0;
-        }
-        ol {
-            padding-left: 20px;
-        }
-        ol li {
-            margin: 10px 0;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: var(--bg-page); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal-dark); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--teal); }
+        .content { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px 80px; }
+        h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+        .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 40px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 16px; padding: 36px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); overflow: hidden; }
+        .card h2 { font-size: 1.15rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 16px; letter-spacing: -0.01em; }
+        .card h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-top: 20px; margin-bottom: 10px; }
+        .card h4 { font-size: 0.92rem; font-weight: 600; color: var(--text-secondary); margin-top: 15px; margin-bottom: 8px; }
+        .card p, .card li { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 10px; }
+        .card ul, .card ol { padding-left: 20px; margin-bottom: 12px; }
+        .card li { margin-bottom: 6px; }
+        .card ul li { list-style: disc; }
+        .card ol li { list-style: decimal; }
+        .highlight { background: var(--teal-soft); border-left: 3px solid var(--teal-dark); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .important { background: rgba(220, 53, 69, 0.06); border-left: 3px solid #dc3545; border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        th, td { border: 1px solid var(--border); padding: 12px 15px; text-align: left; }
+        th { background-color: var(--teal-dark); font-weight: 600; color: white; }
+        tr:nth-child(even) { background-color: #F8FAFA; }
+        .table-wrapper { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+        .table-wrapper table { min-width: 480px; margin: 0; }
+        .footer-copy { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 48px; }
+        .footer-copy a { color: var(--teal-dark); }
 
-        /* -- MOBILE RESPONSIVE FIX -- */
-        * { box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { overflow-x: hidden; max-width: 100%; }
-        .table-wrapper {
-            display: block;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin: 20px 0;
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --teal: #19C7C7;
+                --teal-dark: #19C7C7;
+                --teal-soft: rgba(25, 199, 199, 0.12);
+                --bg-page: #000000;
+                --bg-card: #121212;
+                --border: rgba(255, 255, 255, 0.08);
+                --border-card: rgba(25, 199, 199, 0.20);
+                --text-primary: #FFFFFF;
+                --text-secondary: #B0BEC5;
+                --text-muted: #78909C;
+            }
+            tr:nth-child(even) { background-color: #1A1A1A; }
+            th { background-color: #19C7C7; color: #000000; }
+            .highlight { background: rgba(25, 199, 199, 0.12); }
+            .important { background: rgba(255, 107, 107, 0.12); border-left-color: #FF6B6B; }
         }
-        .table-wrapper table {
-            margin: 0;
-            min-width: 480px;
-        }
-        @media (max-width: 650px) {
-            body { padding: 15px; }
-            .container { padding: 20px; }
-            th, td { padding: 8px 10px; font-size: 13px; }
-        }
+        @media (max-width: 600px) { .card { padding: 24px; } th, td { padding: 8px 10px; font-size: 0.82rem; } }
     </style>
 </head>
 <body>
 
-<h1>Política de Privacidade - k<span style="color:#0FA3A3">AI</span>board</h1>
 
-<p><strong>Última atualização:</strong> 26 de Março de 2026</p>
-<p><strong>Versão:</strong> 3.0</p>
+<main class="content">
+    <h1>Política de Privacidade</h1>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Última atualização: 26 de Março de 2026 &mdash; Versão: 3.0</p>
 
-<h2>1. Controlador de Dados</h2>
+    <div class="card">
+        <h2>1. Controlador de Dados</h2>
 
-<div class="contact-box">
+    <div class="highlight">
     <p><strong>Nome:</strong> Alessandro Faedda</p>
     <p><strong>Email:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
     <p><strong>Website:</strong> <a href="https://kaiboard.eu" target="_blank" rel="noopener">kaiboard.eu</a></p>
     <p><strong>Tipo:</strong> Pessoa física (desenvolvedor independente)</p>
-</div>
+    </div>
+
+
+
 
 <p>Alessandro Faedda é o controlador de dados pessoais coletados através do aplicativo kAIboard.</p>
+    </div>
 
-<h2>2. Quais Dados Coletamos</h2>
+    <div class="card">
+        <h2>2. Quais Dados Coletamos</h2>
 
 <p>O kAIboard é projetado seguindo o princípio da <strong>minimização de dados</strong>. Coletamos apenas os dados estritamente necessários para o funcionamento do aplicativo.</p>
 
@@ -268,7 +235,7 @@
 
 <h3>2.1.2 Período de Carência (Grace Period)</h3>
 
-<div class="info">
+<div class="highlight">
     <strong>📅 ASSINATURA CANCELADA MAS AINDA ATIVA</strong>
     <p>Se você cancelar a assinatura através do Google Play, o serviço premium <strong>permanece ativo até o final do período já pago</strong>.</p>
 
@@ -454,8 +421,10 @@
     <li>❌ Dados biométricos</li>
     <li>❌ Identificadores publicitários</li>
 </ul>
+    </div>
 
-<h2>3. Como Usamos Seus Dados</h2>
+    <div class="card">
+        <h2>3. Como Usamos Seus Dados</h2>
 
 <h3>3.1 Tradução em Tempo Real</h3>
 
@@ -499,7 +468,7 @@
 
 <h3>3.3 Proteção Antifraude para Assinaturas</h3>
 
-<div class="info">
+<div class="highlight">
     <strong>🔒 COMO FUNCIONA A PROTEÇÃO ANTIFRAUDE</strong>
     <p>O kAIboard usa um sistema de proteção baseado em um <strong>contador compartilhado</strong> para garantir a integridade do consumo de tokens em todos os dispositivos.</p>
 </div>
@@ -551,8 +520,10 @@
     <li>✅ Prevenir fraude e abuso</li>
     <li>✅ Gerenciar reembolsos e disputas com o Google Play</li>
 </ul>
+    </div>
 
-<h2>4. Para Onde Enviamos Seus Dados</h2>
+    <div class="card">
+        <h2>4. Para Onde Enviamos Seus Dados</h2>
 
 <h3>4.1 Serviços de Terceiros</h3>
 
@@ -610,8 +581,10 @@
     <li><a href="https://openai.com/enterprise-privacy" target="_blank">OpenAI API Data Usage Policy</a></li>
     <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Política de Privacidade da Cloudflare</a></li>
 </ul>
+    </div>
 
-<h2>5. Por Quanto Tempo Mantemos Seus Dados</h2>
+    <div class="card">
+        <h2>5. Por Quanto Tempo Mantemos Seus Dados</h2>
 
 <h3>5.1 Política de Retenção Automática</h3>
 
@@ -691,8 +664,10 @@
 <div class="highlight">
     <strong>🗑️ LIMPEZA AUTOMÁTICA:</strong> O aplicativo executa automaticamente uma limpeza a cada 24 horas. Dados com mais de 365 dias (ou 90 dias para histórico de assinaturas e logs de atividade) são automaticamente excluídos, mesmo que você não use mais o aplicativo.
 </div>
+    </div>
 
-<h2>6. Seus Direitos (RGPD)</h2>
+    <div class="card">
+        <h2>6. Seus Direitos (RGPD)</h2>
 
 <p>Sob o RGPD, você tem os seguintes direitos:</p>
 
@@ -749,8 +724,10 @@
     <li><strong>Alemanha:</strong> Bundesbeauftragter für den Datenschutz und die Informationsfreiheit (BfDI) - <a href="https://www.bfdi.bund.de">www.bfdi.bund.de</a></li>
     <li><strong>Itália:</strong> Garante per la protezione dei dati personali - <a href="https://www.garanteprivacy.it">www.garanteprivacy.it</a></li>
 </ul>
+    </div>
 
-<h2>7. Como Exercer Seus Direitos</h2>
+    <div class="card">
+        <h2>7. Como Exercer Seus Direitos</h2>
 
 <h3>7.1 Através do Aplicativo (Imediato)</h3>
 
@@ -768,8 +745,10 @@
 <p>Para exercer outros direitos, escreva para: <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
 
 <p>Responderemos dentro de <strong>30 dias</strong> da sua solicitação (Art. 12 RGPD).</p>
+    </div>
 
-<h2>8. Segurança de Dados</h2>
+    <div class="card">
+        <h2>8. Segurança de Dados</h2>
 
 <p>Implementamos medidas técnicas e organizacionais para proteger seus dados:</p>
 
@@ -783,8 +762,10 @@
     <li>🔒 <strong>Exclusão automática</strong>: Dados excluídos após os períodos de retenção previstos (90-365 dias)</li>
     <li>🔒 <strong>Chave API protegida</strong>: A chave API da OpenAI nunca é exposta no cliente, é salva como secret no relé Cloudflare</li>
 </ul>
+    </div>
 
-<h2>9. Identificadores de Dispositivo e Permissões Android</h2>
+    <div class="card">
+        <h2>9. Identificadores de Dispositivo e Permissões Android</h2>
 
 <h3>9.1 Identificadores de Dispositivo Utilizados</h3>
 
@@ -861,8 +842,10 @@
 <div class="important">
     <strong>⚠️ NOTA DE SEGURANÇA:</strong> O aviso de segurança do Android para teclados é padrão para todos os teclados de terceiros, não significa que o kAIboard lê ou salva suas mensagens. Você pode verificar o código-fonte ou nos contatar para mais informações.
 </div>
+    </div>
 
-<h2>10. Relatórios de Falhas (Opcional)</h2>
+    <div class="card">
+        <h2>10. Relatórios de Falhas (Opcional)</h2>
 
 <p>O kAIboard pode enviar relatórios de falhas anônimos para o Firebase Crashlytics <strong>APENAS se você ativar explicitamente a opção</strong>.</p>
 
@@ -887,12 +870,16 @@
 <p><strong>Base legal:</strong> Consentimento explícito (Art. 6.1.a RGPD)</p>
 
 <p><strong>Como desativar:</strong> Configurações → Relatórios de falhas (opcional) → Desativar. A desativação bloqueia o envio futuro e exclui os relatórios ainda não enviados no dispositivo. Os relatórios já enviados ao Firebase permanecem no servidor e não podem ser eliminados do telefone.</p>
+    </div>
 
-<h2>11. Menores</h2>
+    <div class="card">
+        <h2>11. Menores</h2>
 
 <p>O kAIboard não se destina a crianças menores de 13 anos. Não coletamos dados de menores conscientemente. Se você é um pai e descobre que seu filho forneceu dados, entre em contato conosco para excluí-los.</p>
+    </div>
 
-<h2>12. Alterações na Política de Privacidade</h2>
+    <div class="card">
+        <h2>12. Alterações na Política de Privacidade</h2>
 
 <p>Podemos atualizar esta Política de Privacidade periodicamente. Notificaremos você sobre quaisquer mudanças substanciais através de:</p>
 
@@ -903,9 +890,10 @@
 </ul>
 
 <p>O uso contínuo do aplicativo após as alterações constitui aceitação da nova Política de Privacidade.</p>
+    </div>
 
-
-<h2>13. Base Legal para Processamento</h2>
+    <div class="card">
+        <h2>13. Base Legal para Processamento</h2>
 
 <p>O processamento de seus dados é baseado em:</p>
 
@@ -921,7 +909,7 @@
     </li>
 </ul>
 
-<div class="info">
+<div class="highlight">
     <strong>📋 AVALIAÇÃO DE INTERESSE LEGÍTIMO (Art. 6.1.f RGPD):</strong>
     <p>Os logs de atividade administrativa são necessários para:</p>
     <ul>
@@ -937,21 +925,25 @@
         <li>✅ Retenção limitada a 90 dias com exclusão automática</li>
     </ul>
 </div>
+    </div>
 
-<h2>14. Contato</h2>
+    <div class="card">
+        <h2>14. Contato</h2>
+    </div>
 
-<div class="contact-box">
-    <p>Para perguntas, solicitações RGPD ou relatórios:</p>
+
+    <div class="card">
+        <h2>Contacto</h2>
+        <p>Para perguntas, solicitações RGPD ou relatórios:</p>
     <p><strong>Email:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
     <p><strong>Website:</strong> <a href="https://kaiboard.eu" target="_blank" rel="noopener">kaiboard.eu</a></p>
     <p><strong>Tempo de resposta:</strong> Dentro de 30 dias (Art. 12 RGPD)</p>
     <p style="margin-top: 10px;">&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/">Política de privacidade noutros idiomas</a></p>
-</div>
+    </div>
 
-<p style="text-align: center; color: #4B5563; margin-top: 50px;">
-    &copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. Todos os direitos reservados.<br>
-    Em conformidade com o RGPD (Regulamento UE 2016/679)
-</p>
+    <p class="footer-copy">&copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. Todos os direitos reservados.<br>
+    Em conformidade com o RGPD (Regulamento UE 2016/679)</p>
+</main>
 
 </body>
 </html>

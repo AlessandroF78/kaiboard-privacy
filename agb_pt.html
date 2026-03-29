@@ -4,93 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Termos e Condi&ccedil;&otilde;es de Utiliza&ccedil;&atilde;o - kAIboard</title>
+    <title>Termos e Condi&ccedil;&otilde;es de Utiliza&ccedil;&atilde;o &mdash; kAIboard</title>
     <style>
-        body {
-            font-family: "DM Sans", "DM Sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #111827; background-color: #F4F7FA;
+        :root {
+            --teal: #19C7C7;
+            --teal-dark: #0FA3A3;
+            --teal-soft: rgba(25, 199, 199, 0.08);
+            --bg-page: #F0F6F6;
+            --bg-card: #FFFFFF;
+            --border: rgba(0, 0, 0, 0.06);
+            --border-card: rgba(25, 199, 199, 0.15);
+            --text-primary: #1A2E35;
+            --text-secondary: #4A6068;
+            --text-muted: #8A9EA6;
+            --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 800px;
         }
-        h1 {
-            color: #111827;
-            border-bottom: 3px solid #0FA3A3;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #111827;
-            margin-top: 30px;
-            border-bottom: 1px solid #E2E8F0;
-            padding-bottom: 5px;
-        }
-        h3 {
-            color: #4B5563;
-            margin-top: 20px;
-        }
-        h4 {
-            color: #6B7280;
-            margin-top: 15px;
-        }
-        .highlight {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        .important {
-            background-color: #f8d7da;
-            padding: 15px;
-            border-left: 4px solid #dc3545;
-            margin: 20px 0;
-        }
-        .info {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        .contact-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin: 10px 0;
-        }
-        ol {
-            padding-left: 20px;
-        }
-        ol li {
-            margin: 10px 0;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: var(--bg-page); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal-dark); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--teal); }
+        .content { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px 80px; }
+        h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+        .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 40px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 16px; padding: 36px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); overflow: hidden; }
+        .card h2 { font-size: 1.15rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 16px; letter-spacing: -0.01em; }
+        .card h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-top: 20px; margin-bottom: 10px; }
+        .card p, .card li { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 10px; }
+        .card ul, .card ol { padding-left: 20px; margin-bottom: 12px; }
+        .card li { margin-bottom: 6px; }
+        .card ul li { list-style: disc; }
+        .card ol li { list-style: decimal; }
+        .highlight { background: var(--teal-soft); border-left: 3px solid var(--teal-dark); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .important { background: rgba(220, 53, 69, 0.06); border-left: 3px solid #dc3545; border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .footer-copy { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 48px; }
+        .footer-copy a { color: var(--teal-dark); }
 
-        /* -- MOBILE RESPONSIVE FIX -- */
-        * { box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { overflow-x: hidden; max-width: 100%; }
-        @media (max-width: 650px) {
-            body { padding: 15px; }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --teal: #19C7C7;
+                --teal-dark: #19C7C7;
+                --teal-soft: rgba(25, 199, 199, 0.12);
+                --bg-page: #000000;
+                --bg-card: #121212;
+                --border: rgba(255, 255, 255, 0.08);
+                --border-card: rgba(25, 199, 199, 0.20);
+                --text-primary: #FFFFFF;
+                --text-secondary: #B0BEC5;
+                --text-muted: #78909C;
+            }
+            tr:nth-child(even) { background-color: #1A1A1A; }
+            th { background-color: #19C7C7; color: #000000; }
+            .highlight { background: rgba(25, 199, 199, 0.12); }
+            .important { background: rgba(255, 107, 107, 0.12); border-left-color: #FF6B6B; }
         }
+        @media (max-width: 600px) { .card { padding: 24px; } }
     </style>
 </head>
 <body>
 
-<h1>Termos e Condi&ccedil;&otilde;es de Utiliza&ccedil;&atilde;o - k<span style="color:#0FA3A3">AI</span>board</h1>
+<main class="content">
+    <h1>Termos e Condi&ccedil;&otilde;es de Utiliza&ccedil;&atilde;o</h1>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; &Uacute;ltima atualiza&ccedil;&atilde;o: 26 de mar&ccedil;o de 2026 &mdash; Vers&atilde;o: 3.0</p>
 
-<p><strong>&Uacute;ltima atualiza&ccedil;&atilde;o:</strong> 26 de mar&ccedil;o de 2026</p>
-<p><strong>Vers&atilde;o:</strong> 3.0</p>
+    <div class="highlight" style="margin-bottom:20px;margin-top:20px"><strong>Nota:</strong> Esta &eacute; uma tradu&ccedil;&atilde;o de cortesia. A <a target="_blank" href="agb_de.html">vers&atilde;o juridicamente vinculativa &eacute; o original alem&atilde;o</a>.</div>
 
-<h2>1. &Acirc;mbito de aplica&ccedil;&atilde;o</h2>
+    <div class="card">
+        <h2>1. &Acirc;mbito de aplica&ccedil;&atilde;o</h2>
 
 <p>Os presentes Termos e Condi&ccedil;&otilde;es de Utiliza&ccedil;&atilde;o (doravante &ldquo;Termos&rdquo;) regulam a utiliza&ccedil;&atilde;o da aplica&ccedil;&atilde;o Android <strong>k<span style="color:#0FA3A3">AI</span>board</strong> (doravante &ldquo;Aplica&ccedil;&atilde;o&rdquo;), distribu&iacute;da atrav&eacute;s da Google Play Store.</p>
 
-<div class="contact-box">
+<div class="highlight">
     <p><strong>Fornecedor:</strong></p>
     <p>Alessandro Faedda<br>
     c/o POSTFLEX PFX-846-235<br>
@@ -101,8 +86,10 @@
 </div>
 
 <p>Ao descarregar, instalar ou utilizar a Aplica&ccedil;&atilde;o, o utilizador (doravante &ldquo;Utilizador&rdquo;) aceita os presentes Termos. Caso o Utilizador n&atilde;o aceite os presentes Termos, a utiliza&ccedil;&atilde;o da Aplica&ccedil;&atilde;o n&atilde;o &eacute; permitida.</p>
+    </div>
 
-<h2>2. Descri&ccedil;&atilde;o do servi&ccedil;o</h2>
+    <div class="card">
+        <h2>2. Descri&ccedil;&atilde;o do servi&ccedil;o</h2>
 
 <p>O kAIboard &eacute; uma aplica&ccedil;&atilde;o de teclado multilingue para Android com as seguintes funcionalidades principais:</p>
 
@@ -116,14 +103,18 @@
 </ul>
 
 <p>As funcionalidades dispon&iacute;veis dependem do plano de subscri&ccedil;&atilde;o escolhido (ver sec&ccedil;&atilde;o&nbsp;4). O Fornecedor reserva-se o direito de expandir ou modificar as funcionalidades a qualquer momento.</p>
+    </div>
 
-<h2>3. Celebra&ccedil;&atilde;o do contrato</h2>
+    <div class="card">
+        <h2>3. Celebra&ccedil;&atilde;o do contrato</h2>
 
 <p>O contrato de utiliza&ccedil;&atilde;o &eacute; celebrado com o download e a instala&ccedil;&atilde;o da Aplica&ccedil;&atilde;o a partir da Google Play Store. A apresenta&ccedil;&atilde;o da Aplica&ccedil;&atilde;o na Google Play Store n&atilde;o constitui uma oferta juridicamente vinculativa, mas sim um convite &agrave; apresenta&ccedil;&atilde;o de propostas (invitatio ad offerendum).</p>
 
 <p>A utiliza&ccedil;&atilde;o da Aplica&ccedil;&atilde;o <strong>n&atilde;o requer registo nem cria&ccedil;&atilde;o de conta de utilizador</strong>.</p>
+    </div>
 
-<h2>4. Pre&ccedil;os e condi&ccedil;&otilde;es de pagamento</h2>
+    <div class="card">
+        <h2>4. Pre&ccedil;os e condi&ccedil;&otilde;es de pagamento</h2>
 
 <h3>4.1 Compra &uacute;nica</h3>
 <p>O pre&ccedil;o de compra &uacute;nica da Aplica&ccedil;&atilde;o &eacute; de <strong>&euro;&nbsp;2,39</strong> (IVA inclu&iacute;do). Isto garante o acesso &agrave;s funcionalidades b&aacute;sicas da Aplica&ccedil;&atilde;o.</p>
@@ -141,8 +132,10 @@
 <div class="highlight">
     <strong>Nota:</strong> As diferen&ccedil;as espec&iacute;ficas entre os n&iacute;veis de subscri&ccedil;&atilde;o est&atilde;o descritas na Google Play Store e dentro da Aplica&ccedil;&atilde;o. O Fornecedor reserva-se o direito de ajustar os pre&ccedil;os para per&iacute;odos de fatura&ccedil;&atilde;o futuros. As subscri&ccedil;&otilde;es existentes s&oacute; ser&atilde;o afetadas por uma altera&ccedil;&atilde;o de pre&ccedil;o ap&oacute;s o t&eacute;rmino do per&iacute;odo de fatura&ccedil;&atilde;o em curso.
 </div>
+    </div>
 
-<h2>5. Subscri&ccedil;&otilde;es e cancelamento</h2>
+    <div class="card">
+        <h2>5. Subscri&ccedil;&otilde;es e cancelamento</h2>
 
 <h3>5.1 Dura&ccedil;&atilde;o e renova&ccedil;&atilde;o</h3>
 <p>As subscri&ccedil;&otilde;es t&ecirc;m a dura&ccedil;&atilde;o de um m&ecirc;s e s&atilde;o renovadas automaticamente por mais um m&ecirc;s, salvo cancelamento atempado.</p>
@@ -156,14 +149,18 @@
 <div class="highlight">
     <strong>Aviso importante sobre a sincroniza&ccedil;&atilde;o de dispositivos:</strong> O kAIboard n&atilde;o possui conta de utilizador pr&oacute;pria nem servidor para a sincroniza&ccedil;&atilde;o de subscri&ccedil;&otilde;es. Se o Utilizador instalar a Aplica&ccedil;&atilde;o num novo dispositivo ou ap&oacute;s uma reposi&ccedil;&atilde;o de f&aacute;brica (factory reset), o estado da subscri&ccedil;&atilde;o e os eventuais tokens restantes <strong>n&atilde;o s&atilde;o sincronizados automaticamente</strong>. Nesse caso, o Utilizador deve aguardar a restaura&ccedil;&atilde;o autom&aacute;tica pelo Google Play ou contactar o suporte.
 </div>
+    </div>
 
-<h2>6. Direito de retrata&ccedil;&atilde;o</h2>
+    <div class="card">
+        <h2>6. Direito de retrata&ccedil;&atilde;o</h2>
 
 <p>Para a aquisi&ccedil;&atilde;o de conte&uacute;dos digitais (compra &uacute;nica e subscri&ccedil;&otilde;es), aplicam-se as disposi&ccedil;&otilde;es relativas ao direito de retrata&ccedil;&atilde;o nos termos da <strong>Diretiva 2011/83/UE</strong>. O direito de retrata&ccedil;&atilde;o &eacute; exclu&iacute;do para o fornecimento de conte&uacute;dos digitais n&atilde;o fornecidos num suporte material, caso a execu&ccedil;&atilde;o tenha sido iniciada com o consentimento expresso do Utilizador e a sua confirma&ccedil;&atilde;o de perda do direito de retrata&ccedil;&atilde;o.</p>
 
 <p>Ao descarregar atrav&eacute;s do Google Play, o consentimento para o in&iacute;cio imediato do fornecimento do conte&uacute;do digital &eacute; obtido durante o processo de compra. Al&eacute;m disso, aplica-se a <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener">pol&iacute;tica de reembolso do Google Play</a>.</p>
+    </div>
 
-<h2>7. Direitos de utiliza&ccedil;&atilde;o e licen&ccedil;as</h2>
+    <div class="card">
+        <h2>7. Direitos de utiliza&ccedil;&atilde;o e licen&ccedil;as</h2>
 
 <p>Com a aquisi&ccedil;&atilde;o da Aplica&ccedil;&atilde;o, o Utilizador obt&eacute;m um <strong>direito de utiliza&ccedil;&atilde;o simples, intransfer&iacute;vel e n&atilde;o sublicenci&aacute;vel</strong> para utilizar a Aplica&ccedil;&atilde;o nos seus pr&oacute;prios dispositivos Android para uso pessoal e n&atilde;o comercial.</p>
 
@@ -182,8 +179,10 @@
     <li><strong>FrequencyWords</strong> &mdash; Licen&ccedil;a MIT (listas de frequ&ecirc;ncia de palavras)</li>
 </ul>
 <p>A lista completa de todas as bibliotecas utilizadas e respetivas licen&ccedil;as est&aacute; dispon&iacute;vel na Aplica&ccedil;&atilde;o em <strong>Defini&ccedil;&otilde;es &rarr; Open Source Licenses</strong>.</p>
+    </div>
 
-<h2>8. Prote&ccedil;&atilde;o de dados</h2>
+    <div class="card">
+        <h2>8. Prote&ccedil;&atilde;o de dados</h2>
 
 <p>A prote&ccedil;&atilde;o dos dados do Utilizador &eacute; a prioridade m&aacute;xima do Fornecedor. A pol&iacute;tica de privacidade completa da Aplica&ccedil;&atilde;o est&aacute; dispon&iacute;vel como documento separado:</p>
 <ul>
@@ -197,8 +196,10 @@
     <li>A autocorre&ccedil;&atilde;o, previs&atilde;o de palavras e tradu&ccedil;&atilde;o offline funcionam <strong>inteiramente no dispositivo</strong></li>
     <li>Os relat&oacute;rios de falhas (Firebase Crashlytics) s&atilde;o enviados apenas com o <strong>consentimento expresso do Utilizador</strong> (consentimento RGPD)</li>
 </ul>
+    </div>
 
-<h2>9. Disponibilidade e atualiza&ccedil;&otilde;es</h2>
+    <div class="card">
+        <h2>9. Disponibilidade e atualiza&ccedil;&otilde;es</h2>
 
 <p>O Fornecedor esfor&ccedil;a-se por disponibilizar a Aplica&ccedil;&atilde;o sem interrup&ccedil;&otilde;es. No entanto, <strong>uma disponibilidade de 100%</strong> n&atilde;o pode ser garantida. Em particular, podem ocorrer limita&ccedil;&otilde;es nas seguintes funcionalidades:</p>
 <ul>
@@ -209,8 +210,10 @@
 <p>O Fornecedor pode lan&ccedil;ar atualiza&ccedil;&otilde;es da Aplica&ccedil;&atilde;o para corrigir erros, melhorar a seguran&ccedil;a ou introduzir novas funcionalidades. Para garantir a funcionalidade completa, recomenda-se ao Utilizador utilizar sempre a vers&atilde;o mais recente da Aplica&ccedil;&atilde;o.</p>
 
 <p>O Fornecedor reserva-se o direito de descontinuar funcionalidades individuais da Aplica&ccedil;&atilde;o, caso tal seja necess&aacute;rio por raz&otilde;es t&eacute;cnicas, econ&oacute;micas ou legais.</p>
+    </div>
 
-<h2>10. Limita&ccedil;&atilde;o de responsabilidade</h2>
+    <div class="card">
+        <h2>10. Limita&ccedil;&atilde;o de responsabilidade</h2>
 
 <p>O Fornecedor &eacute; responsabilizado sem limita&ccedil;&atilde;o por dolo e neglig&ecirc;ncia grave. Em caso de neglig&ecirc;ncia leve, o Fornecedor &eacute; respons&aacute;vel apenas pela viola&ccedil;&atilde;o de obriga&ccedil;&otilde;es contratuais essenciais (obriga&ccedil;&otilde;es cardinais), limitada ao dano previs&iacute;vel e t&iacute;pico do contrato.</p>
 
@@ -223,41 +226,46 @@
 </ul>
 
 <p>Esta limita&ccedil;&atilde;o de responsabilidade n&atilde;o se aplica a danos resultantes de les&otilde;es &agrave; vida, &agrave; integridade f&iacute;sica ou &agrave; sa&uacute;de, nem a pretens&otilde;es ao abrigo da legisla&ccedil;&atilde;o sobre responsabilidade do produtor.</p>
+    </div>
 
-<h2>11. Propriedade intelectual</h2>
+    <div class="card">
+        <h2>11. Propriedade intelectual</h2>
 
 <p>Todos os direitos sobre a Aplica&ccedil;&atilde;o, incluindo o c&oacute;digo-fonte, o design, os gr&aacute;ficos, os textos e a marca &ldquo;kAIboard&rdquo;, pertencem exclusivamente a <strong>Alessandro Faedda</strong>, salvo indica&ccedil;&atilde;o em contr&aacute;rio.</p>
 
 <p>As bibliotecas de c&oacute;digo aberto utilizadas na Aplica&ccedil;&atilde;o (ver sec&ccedil;&atilde;o&nbsp;7.1) est&atilde;o sujeitas &agrave;s respetivas licen&ccedil;as de c&oacute;digo aberto e est&atilde;o exclu&iacute;das desta cl&aacute;usula.</p>
+    </div>
 
-<h2>12. Altera&ccedil;&atilde;o dos Termos</h2>
+    <div class="card">
+        <h2>12. Altera&ccedil;&atilde;o dos Termos</h2>
 
 <p>O Fornecedor reserva-se o direito de alterar ou complementar os presentes Termos a qualquer momento com efeito para o futuro. As altera&ccedil;&otilde;es substanciais ser&atilde;o comunicadas ao Utilizador de forma adequada (p. ex., atrav&eacute;s de uma notifica&ccedil;&atilde;o na Aplica&ccedil;&atilde;o ou no website).</p>
 
 <p>A utiliza&ccedil;&atilde;o continuada da Aplica&ccedil;&atilde;o ap&oacute;s a entrada em vigor dos Termos alterados constitui aceita&ccedil;&atilde;o das altera&ccedil;&otilde;es. Se o Utilizador n&atilde;o concordar com os Termos alterados, tem o direito de cessar a utiliza&ccedil;&atilde;o da Aplica&ccedil;&atilde;o e cancelar qualquer subscri&ccedil;&atilde;o existente.</p>
+    </div>
 
-<h2>13. Disposi&ccedil;&otilde;es finais</h2>
+    <div class="card">
+        <h2>13. Disposi&ccedil;&otilde;es finais</h2>
 
 <p>Aplica-se o direito da <strong>Rep&uacute;blica Federal da Alemanha</strong>, com exclus&atilde;o da Conven&ccedil;&atilde;o das Na&ccedil;&otilde;es Unidas sobre Contratos de Compra e Venda Internacional de Mercadorias (CISG). As disposi&ccedil;&otilde;es imperativas de prote&ccedil;&atilde;o do consumidor do Estado em que o Utilizador tem a sua resid&ecirc;ncia habitual permanecem inalteradas.</p>
 
 <p>Se o Utilizador for um comerciante, uma pessoa coletiva de direito p&uacute;blico ou um patrim&oacute;nio especial de direito p&uacute;blico, o foro exclusivamente competente para todos os lit&iacute;gios decorrentes deste contrato &eacute; <strong>Hamburgo</strong>.</p>
 
 <p>Se alguma disposi&ccedil;&atilde;o dos presentes Termos for inv&aacute;lida ou inexequ&iacute;vel, a validade das restantes disposi&ccedil;&otilde;es n&atilde;o &eacute; afetada (cl&aacute;usula de salvaguarda). A disposi&ccedil;&atilde;o inv&aacute;lida ser&aacute; substitu&iacute;da por uma disposi&ccedil;&atilde;o v&aacute;lida que mais se aproxime do objetivo econ&oacute;mico da disposi&ccedil;&atilde;o inv&aacute;lida.</p>
+    </div>
 
-<h2>14. Contacto</h2>
-
-<div class="contact-box">
-    <p>Para quest&otilde;es, pedidos RGPD ou comunica&ccedil;&otilde;es:</p>
+    <div class="card">
+        <h2>Contacto</h2>
+        <p>Para quest&otilde;es, pedidos RGPD ou comunica&ccedil;&otilde;es:</p>
     <p><strong>E-mail:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
     <p><strong>Website:</strong> <a href="https://kaiboard.eu" target="_blank" rel="noopener">kaiboard.eu</a></p>
     <p><strong>Tempo de resposta:</strong> No prazo de 30 dias (Art. 12.&ordm; RGPD)</p>
-    <p style="margin-top: 10px;">&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/">Termos e Condi&ccedil;&otilde;es em outros idiomas</a></p>
-</div>
+    <p style="margin-top: 10px;">&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/agb.html">Termos e Condi&ccedil;&otilde;es em outros idiomas</a></p>
+    </div>
 
-<p style="text-align: center; color: #4B5563; margin-top: 50px;">
-    &copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. Todos os direitos reservados.<br>
-    Em conformidade com o RGPD (Regulamento UE 2016/679)
-</p>
+    <p class="footer-copy">&copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. Todos os direitos reservados.<br>
+    Em conformidade com o RGPD (Regulamento UE 2016/679)</p>
+</main>
 
 </body>
 </html>

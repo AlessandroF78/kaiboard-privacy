@@ -4,93 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Algemene Voorwaarden - kAIboard</title>
+    <title>Algemene Voorwaarden &mdash; kAIboard</title>
     <style>
-        body {
-            font-family: "DM Sans", "DM Sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #111827; background-color: #F4F7FA;
+        :root {
+            --teal: #19C7C7;
+            --teal-dark: #0FA3A3;
+            --teal-soft: rgba(25, 199, 199, 0.08);
+            --bg-page: #F0F6F6;
+            --bg-card: #FFFFFF;
+            --border: rgba(0, 0, 0, 0.06);
+            --border-card: rgba(25, 199, 199, 0.15);
+            --text-primary: #1A2E35;
+            --text-secondary: #4A6068;
+            --text-muted: #8A9EA6;
+            --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 800px;
         }
-        h1 {
-            color: #111827;
-            border-bottom: 3px solid #0FA3A3;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #111827;
-            margin-top: 30px;
-            border-bottom: 1px solid #E2E8F0;
-            padding-bottom: 5px;
-        }
-        h3 {
-            color: #4B5563;
-            margin-top: 20px;
-        }
-        h4 {
-            color: #6B7280;
-            margin-top: 15px;
-        }
-        .highlight {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        .important {
-            background-color: #f8d7da;
-            padding: 15px;
-            border-left: 4px solid #dc3545;
-            margin: 20px 0;
-        }
-        .info {
-            background-color: #EDF7F7;
-            padding: 15px;
-            border-left: 4px solid #0FA3A3;
-            margin: 20px 0;
-        }
-        .contact-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin: 10px 0;
-        }
-        ol {
-            padding-left: 20px;
-        }
-        ol li {
-            margin: 10px 0;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: var(--bg-page); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal-dark); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--teal); }
+        .content { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px 80px; }
+        h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+        .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 40px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 16px; padding: 36px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); overflow: hidden; }
+        .card h2 { font-size: 1.15rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 16px; letter-spacing: -0.01em; }
+        .card h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-top: 20px; margin-bottom: 10px; }
+        .card p, .card li { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 10px; }
+        .card ul, .card ol { padding-left: 20px; margin-bottom: 12px; }
+        .card li { margin-bottom: 6px; }
+        .card ul li { list-style: disc; }
+        .card ol li { list-style: decimal; }
+        .highlight { background: var(--teal-soft); border-left: 3px solid var(--teal-dark); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .important { background: rgba(220, 53, 69, 0.06); border-left: 3px solid #dc3545; border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .footer-copy { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 48px; }
+        .footer-copy a { color: var(--teal-dark); }
 
-        /* -- MOBILE RESPONSIVE FIX -- */
-        * { box-sizing: border-box; }
-        html { overflow-x: hidden; }
-        body { overflow-x: hidden; max-width: 100%; }
-        @media (max-width: 650px) {
-            body { padding: 15px; }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --teal: #19C7C7;
+                --teal-dark: #19C7C7;
+                --teal-soft: rgba(25, 199, 199, 0.12);
+                --bg-page: #000000;
+                --bg-card: #121212;
+                --border: rgba(255, 255, 255, 0.08);
+                --border-card: rgba(25, 199, 199, 0.20);
+                --text-primary: #FFFFFF;
+                --text-secondary: #B0BEC5;
+                --text-muted: #78909C;
+            }
+            tr:nth-child(even) { background-color: #1A1A1A; }
+            th { background-color: #19C7C7; color: #000000; }
+            .highlight { background: rgba(25, 199, 199, 0.12); }
+            .important { background: rgba(255, 107, 107, 0.12); border-left-color: #FF6B6B; }
         }
+        @media (max-width: 600px) { .card { padding: 24px; } }
     </style>
 </head>
 <body>
 
-<h1>Algemene Voorwaarden - k<span style="color:#0FA3A3">AI</span>board</h1>
+<main class="content">
+    <h1>Algemene Voorwaarden</h1>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Laatst bijgewerkt: 26 maart 2026 &mdash; Versie: 3.0</p>
 
-<p><strong>Laatst bijgewerkt:</strong> 26 maart 2026</p>
-<p><strong>Versie:</strong> 3.0</p>
+    <div class="highlight" style="margin-bottom:20px;margin-top:20px"><strong>Opmerking:</strong> Dit is een vertaling uit hoffelijkheid. De <a target="_blank" href="agb_de.html">juridisch bindende versie is het Duitse origineel</a>.</div>
 
-<h2>1. Toepassingsgebied</h2>
+    <div class="card">
+        <h2>1. Toepassingsgebied</h2>
 
 <p>Deze Algemene Voorwaarden (hierna &ldquo;Voorwaarden&rdquo;) zijn van toepassing op het gebruik van de Android-app <strong>k<span style="color:#0FA3A3">AI</span>board</strong> (hierna &ldquo;App&rdquo;), die wordt aangeboden via de Google Play Store.</p>
 
-<div class="contact-box">
+<div class="highlight">
     <p><strong>Aanbieder:</strong></p>
     <p>Alessandro Faedda<br>
     c/o POSTFLEX PFX-846-235<br>
@@ -101,8 +86,10 @@
 </div>
 
 <p>Door het downloaden, installeren of gebruiken van de App stemt de gebruiker (hierna &ldquo;Gebruiker&rdquo;) in met deze Voorwaarden. Indien de Gebruiker niet instemt met deze Voorwaarden, is het gebruik van de App niet toegestaan.</p>
+    </div>
 
-<h2>2. Beschrijving van de dienst</h2>
+    <div class="card">
+        <h2>2. Beschrijving van de dienst</h2>
 
 <p>kAIboard is een meertalige toetsenbord-app voor Android met de volgende kernfuncties:</p>
 
@@ -116,14 +103,18 @@
 </ul>
 
 <p>De beschikbare functies zijn afhankelijk van het gekozen abonnement (zie paragraaf&nbsp;4). De Aanbieder behoudt zich het recht voor om de functies op elk moment uit te breiden of te wijzigen.</p>
+    </div>
 
-<h2>3. Totstandkoming van de overeenkomst</h2>
+    <div class="card">
+        <h2>3. Totstandkoming van de overeenkomst</h2>
 
 <p>De gebruiksovereenkomst komt tot stand bij het downloaden en installeren van de App uit de Google Play Store. De presentatie van de App in de Google Play Store vormt geen juridisch bindend aanbod, maar slechts een uitnodiging tot het doen van een aanbod (invitatio ad offerendum).</p>
 
 <p>Voor het gebruik van de App is <strong>geen registratie en geen gebruikersaccount</strong> vereist.</p>
+    </div>
 
-<h2>4. Prijzen en betalingsvoorwaarden</h2>
+    <div class="card">
+        <h2>4. Prijzen en betalingsvoorwaarden</h2>
 
 <h3>4.1 Eenmalige aankoop</h3>
 <p>De eenmalige aankoopprijs van de App bedraagt <strong>&euro;&nbsp;2,39</strong> (inclusief btw). Dit geeft toegang tot de basisfuncties van de App.</p>
@@ -141,8 +132,10 @@
 <div class="highlight">
     <strong>Opmerking:</strong> De specifieke verschillen tussen de abonnementsniveaus worden beschreven in de Google Play Store en binnen de App. De Aanbieder behoudt zich het recht voor om de prijzen voor toekomstige factureringsperioden aan te passen. Bestaande abonnementen worden pas na afloop van de lopende factureringsperiode door een prijswijziging be&iuml;nvloed.
 </div>
+    </div>
 
-<h2>5. Abonnementen en opzegging</h2>
+    <div class="card">
+        <h2>5. Abonnementen en opzegging</h2>
 
 <h3>5.1 Looptijd en verlenging</h3>
 <p>Abonnementen hebben een looptijd van &eacute;&eacute;n maand en worden automatisch verlengd met een extra maand, tenzij ze tijdig worden opgezegd.</p>
@@ -156,14 +149,18 @@
 <div class="highlight">
     <strong>Belangrijke opmerking over apparaatsynchronisatie:</strong> kAIboard beschikt niet over een eigen gebruikersaccount of server voor de synchronisatie van abonnementen. Als de Gebruiker de App op een nieuw apparaat installeert of na een fabrieksreset (factory reset) opnieuw instelt, worden de abonnementsstatus en eventuele resterende tokens <strong>niet automatisch gesynchroniseerd</strong>. In dat geval moet de Gebruiker wachten op automatisch herstel door Google Play of contact opnemen met de klantenservice.
 </div>
+    </div>
 
-<h2>6. Herroepingsrecht</h2>
+    <div class="card">
+        <h2>6. Herroepingsrecht</h2>
 
 <p>Voor de aankoop van digitale inhoud (eenmalige aankoop en abonnementen) gelden de bepalingen inzake het herroepingsrecht overeenkomstig <strong>Richtlijn 2011/83/EU</strong> (AVG, art.&nbsp;6:230o e.v. BW). Het herroepingsrecht is uitgesloten voor de levering van digitale inhoud die niet op een materi&euml;le drager is geleverd, indien de uitvoering is begonnen met de uitdrukkelijke toestemming van de Gebruiker en diens bevestiging dat hij daarmee zijn herroepingsrecht verliest.</p>
 
 <p>Bij het downloaden via Google Play wordt de toestemming voor de onmiddellijke levering van de digitale inhoud verkregen tijdens het aankoopproces. Daarnaast is het <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener">restitutiebeleid van Google Play</a> van toepassing.</p>
+    </div>
 
-<h2>7. Gebruiksrechten en licenties</h2>
+    <div class="card">
+        <h2>7. Gebruiksrechten en licenties</h2>
 
 <p>Met de aankoop van de App verkrijgt de Gebruiker een <strong>eenvoudig, niet-overdraagbaar, niet-sublicentieerbaar gebruiksrecht</strong> om de App op eigen Android-apparaten te gebruiken voor persoonlijk, niet-commercieel gebruik.</p>
 
@@ -182,8 +179,10 @@
     <li><strong>FrequencyWords</strong> &mdash; MIT-licentie (woordfrequentielijsten)</li>
 </ul>
 <p>Een volledig overzicht van alle gebruikte bibliotheken en hun licenties is beschikbaar in de App onder <strong>Instellingen &rarr; Open Source Licenses</strong>.</p>
+    </div>
 
-<h2>8. Gegevensbescherming</h2>
+    <div class="card">
+        <h2>8. Gegevensbescherming</h2>
 
 <p>De bescherming van de gegevens van de Gebruiker heeft de hoogste prioriteit voor de Aanbieder. Het volledige privacybeleid van de App is beschikbaar als afzonderlijk document:</p>
 <ul>
@@ -197,8 +196,10 @@
     <li>Autocorrectie, woordvoorspelling en offline vertaling werken <strong>volledig lokaal</strong> op het apparaat</li>
     <li>Crashrapporten (Firebase Crashlytics) worden alleen verzonden met de <strong>uitdrukkelijke toestemming van de Gebruiker</strong> (AVG opt-in)</li>
 </ul>
+    </div>
 
-<h2>9. Beschikbaarheid en updates</h2>
+    <div class="card">
+        <h2>9. Beschikbaarheid en updates</h2>
 
 <p>De Aanbieder streeft ernaar de App zonder onderbreking beschikbaar te stellen. Een <strong>beschikbaarheid van 100%</strong> kan echter niet worden gegarandeerd. Met name bij de volgende functies kunnen beperkingen optreden:</p>
 <ul>
@@ -209,8 +210,10 @@
 <p>De Aanbieder kan updates voor de App uitbrengen om fouten te verhelpen, de beveiliging te verbeteren of nieuwe functies toe te voegen. Om de volledige functionaliteit te waarborgen, wordt de Gebruiker aanbevolen altijd de nieuwste versie van de App te gebruiken.</p>
 
 <p>De Aanbieder behoudt zich het recht voor om individuele functies van de App stop te zetten, indien dit om technische, economische of juridische redenen noodzakelijk is.</p>
+    </div>
 
-<h2>10. Beperking van aansprakelijkheid</h2>
+    <div class="card">
+        <h2>10. Beperking van aansprakelijkheid</h2>
 
 <p>De Aanbieder is onbeperkt aansprakelijk voor opzet en grove nalatigheid. Bij lichte nalatigheid is de Aanbieder uitsluitend aansprakelijk voor de schending van wezenlijke contractuele verplichtingen (kardinale verplichtingen), beperkt tot de voorzienbare, voor het contract typische schade.</p>
 
@@ -223,41 +226,46 @@
 </ul>
 
 <p>Deze beperking van aansprakelijkheid geldt niet voor schade als gevolg van letsel aan leven, lichaam of gezondheid, noch voor vorderingen op grond van de wetgeving inzake productaansprakelijkheid.</p>
+    </div>
 
-<h2>11. Intellectueel eigendom</h2>
+    <div class="card">
+        <h2>11. Intellectueel eigendom</h2>
 
 <p>Alle rechten op de App, inclusief de broncode, het ontwerp, de grafische elementen, de teksten en het merk &ldquo;kAIboard&rdquo;, behoren uitsluitend toe aan <strong>Alessandro Faedda</strong>, tenzij anders vermeld.</p>
 
 <p>De in de App gebruikte open-sourcebibliotheken (zie paragraaf&nbsp;7.1) vallen onder de betreffende open-sourcelicenties en zijn uitgesloten van deze bepaling.</p>
+    </div>
 
-<h2>12. Wijziging van de Voorwaarden</h2>
+    <div class="card">
+        <h2>12. Wijziging van de Voorwaarden</h2>
 
 <p>De Aanbieder behoudt zich het recht voor om deze Voorwaarden op elk moment te wijzigen of aan te vullen met werking voor de toekomst. De Gebruiker wordt op passende wijze op de hoogte gesteld van wezenlijke wijzigingen (bijv. via een melding in de App of op de website).</p>
 
 <p>Het voortgezette gebruik van de App na inwerkingtreding van de gewijzigde Voorwaarden geldt als aanvaarding van de wijzigingen. Indien de Gebruiker niet instemt met de gewijzigde Voorwaarden, heeft hij het recht het gebruik van de App te be&euml;indigen en een bestaand abonnement op te zeggen.</p>
+    </div>
 
-<h2>13. Slotbepalingen</h2>
+    <div class="card">
+        <h2>13. Slotbepalingen</h2>
 
 <p>Het recht van de <strong>Bondsrepubliek Duitsland</strong> is van toepassing, met uitsluiting van het Verdrag der Verenigde Naties inzake internationale koopovereenkomsten betreffende roerende zaken (CISG). Dwingende bepalingen ter bescherming van de consument van de staat waarin de Gebruiker zijn gewone verblijfplaats heeft, blijven onverlet.</p>
 
 <p>Indien de Gebruiker een handelaar, een rechtspersoon naar publiekrecht of een bijzonder vermogen naar publiekrecht is, is de exclusieve bevoegde rechtbank voor alle geschillen die voortvloeien uit deze overeenkomst <strong>Hamburg</strong>.</p>
 
 <p>Indien afzonderlijke bepalingen van deze Voorwaarden ongeldig of niet-afdwingbaar zijn of worden, wordt de geldigheid van de overige bepalingen hierdoor niet aangetast (scheidbaarheidsclausule). De ongeldige bepaling wordt vervangen door een geldige bepaling die het economische doel van de ongeldige bepaling het dichtst benadert.</p>
+    </div>
 
-<h2>14. Contact</h2>
-
-<div class="contact-box">
-    <p>Voor vragen, AVG-verzoeken of meldingen:</p>
+    <div class="card">
+        <h2>Contact</h2>
+        <p>Voor vragen, AVG-verzoeken of meldingen:</p>
     <p><strong>E-mail:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
     <p><strong>Website:</strong> <a href="https://kaiboard.eu" target="_blank" rel="noopener">kaiboard.eu</a></p>
     <p><strong>Reactietijd:</strong> Binnen 30 dagen (Art. 12 AVG)</p>
-    <p style="margin-top: 10px;">&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/">Algemene Voorwaarden in andere talen</a></p>
-</div>
+    <p style="margin-top: 10px;">&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/agb.html">Algemene Voorwaarden in andere talen</a></p>
+    </div>
 
-<p style="text-align: center; color: #4B5563; margin-top: 50px;">
-    &copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. Alle rechten voorbehouden.<br>
-    Conform de AVG (EU-Verordening 2016/679)
-</p>
+    <p class="footer-copy">&copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. Alle rechten voorbehouden.<br>
+    Conform de AVG (EU-Verordening 2016/679)</p>
+</main>
 
 </body>
 </html>

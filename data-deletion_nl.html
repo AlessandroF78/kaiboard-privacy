@@ -4,158 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Gegevensverwijdering - kAIboard</title>
+    <title>Gegevensverwijdering &mdash; kAIboard</title>
     <style>
-        body {
-            font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.8;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            color: #111827;
-            background-color: #F4F7FA;
+        :root {
+            --teal: #19C7C7;
+            --teal-dark: #0FA3A3;
+            --teal-soft: rgba(25, 199, 199, 0.08);
+            --bg-page: #F0F6F6;
+            --bg-card: #FFFFFF;
+            --border: rgba(0, 0, 0, 0.06);
+            --border-card: rgba(25, 199, 199, 0.15);
+            --text-primary: #1A2E35;
+            --text-secondary: #4A6068;
+            --text-muted: #8A9EA6;
+            --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 800px;
         }
-        .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #111827;
-            font-size: 26px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #0FA3A3;
-            hyphens: auto;
-            -webkit-hyphens: auto;
-        }
-        h2 {
-            color: #111827;
-            font-size: 24px;
-            font-weight: 600;
-            margin-top: 40px;
-            margin-bottom: 15px;
-        }
-        h3 {
-            color: #111827;
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 25px;
-            margin-bottom: 10px;
-        }
-        p {
-            margin-bottom: 15px;
-        }
-        .intro {
-            background-color: #F4F7FA;
-            padding: 20px;
-            border-left: 4px solid #0FA3A3;
-            margin: 25px 0;
-        }
-        .warning {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-left: 4px solid #0FA3A3;
-            margin: 25px 0;
-        }
-        .info-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 6px;
-            margin: 25px 0;
-        }
-        ul, ol {
-            margin: 15px 0;
-            padding-left: 30px;
-        }
-        li {
-            margin: 8px 0;
-            line-height: 1.6;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 15px;
-        }
-        th, td {
-            border: 1px solid #dee2e6;
-            padding: 12px 15px;
-            text-align: left;
-        }
-        th {
-            background-color: #0FA3A3;
-            font-weight: 600;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #F8FAFA;
-        }
-        .button {
-            display: inline-block;
-            background-color: #0FA3A3;
-            color: white;
-            padding: 12px 28px;
-            text-decoration: none;
-            border-radius: 6px;
-            margin: 10px 10px 10px 0;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-        .button:hover {
-            background-color: #0D8F8F;
-        }
-        .contact-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        .footer {
-            margin-top: 50px;
-            padding-top: 25px;
-            border-top: 1px solid #e0e0e0;
-            text-align: center;
-            color: #4B5563;
-            font-size: 14px;
-        }
-        strong {
-            font-weight: 600;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: var(--bg-page); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal-dark); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--teal); }
+        .content { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px 80px; }
+        h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+        .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 40px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 16px; padding: 36px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); overflow: hidden; }
+        .card h2 { font-size: 1.15rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 16px; letter-spacing: -0.01em; }
+        .card h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-top: 20px; margin-bottom: 10px; }
+        .card p, .card li { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 10px; }
+        .card ul, .card ol { padding-left: 20px; margin-bottom: 12px; }
+        .card li { margin-bottom: 6px; }
+        .card ul li { list-style: disc; }
+        .card ol li { list-style: decimal; }
+        .highlight { background: var(--teal-soft); border-left: 3px solid var(--teal-dark); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .important { background: rgba(220, 53, 69, 0.06); border-left: 3px solid #dc3545; border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        th, td { border: 1px solid var(--border); padding: 12px 15px; text-align: left; }
+        th { background-color: var(--teal-dark); font-weight: 600; color: white; }
+        tr:nth-child(even) { background-color: #F8FAFA; }
+        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+        .table-wrapper table { width: auto; min-width: 480px; margin: 0; }
+        .footer-copy { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 48px; }
+        .footer-copy a { color: var(--teal-dark); }
 
-        /* -- MOBILE FIX -- */
-        html, body { overflow-x: hidden; }
-        .table-wrapper {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin: 20px 0;
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --teal: #19C7C7;
+                --teal-dark: #19C7C7;
+                --teal-soft: rgba(25, 199, 199, 0.12);
+                --bg-page: #000000;
+                --bg-card: #121212;
+                --border: rgba(255, 255, 255, 0.08);
+                --border-card: rgba(25, 199, 199, 0.20);
+                --text-primary: #FFFFFF;
+                --text-secondary: #B0BEC5;
+                --text-muted: #78909C;
+            }
+            tr:nth-child(even) { background-color: #1A1A1A; }
+            th { background-color: #19C7C7; color: #000000; }
+            .highlight { background: rgba(25, 199, 199, 0.12); }
+            .important { background: rgba(255, 107, 107, 0.12); border-left-color: #FF6B6B; }
         }
-        .table-wrapper table {
-            width: auto;
-            min-width: 480px;
-            margin: 0;
-        }
-        @media (max-width: 650px) {
-            body { padding: 15px; }
-            .container { padding: 20px; }
-            th, td { padding: 8px; font-size: 13px; }
-        }
+        @media (max-width: 600px) { .card { padding: 24px; } th, td { padding: 8px; font-size: 0.82rem; } }
     </style>
 </head>
 <body>
-<div class="container">
+
+
+<main class="content">
     <h1>Beleid Gegevensverwijdering</h1>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Laatst bijgewerkt: 26 Maart 2026 &mdash; Versie: 3.0</p>
 
-    <p><strong>Laatst bijgewerkt:</strong> 26 Maart 2026</p>
-    <p><strong>Versie:</strong> 3.0</p>
-
-    <div class="intro">
+    <div class="highlight">
         <p><strong>k<span style="color:#0FA3A3">AI</span>board</strong> respecteert uw recht op gegevensverwijdering onder AVG Artikel 17 (Recht op Wissing). U kunt uw persoonlijke gegevens op elk moment verwijderen, rechtstreeks via de app of door contact met ons op te nemen via e-mail.</p>
-    </div>
+        </div>
 
-    <h2>Methode 1: Verwijdering in de App (Onmiddellijk)</h2>
+    <div class="card">
+        <h2>Methode 1: Verwijdering in de App (Onmiddellijk)</h2>
 
     <p>De snelste manier om uw gegevens te verwijderen is rechtstreeks via de app:</p>
 
@@ -213,7 +138,7 @@
 
     <p><strong>Verwerkingstijd:</strong> Onmiddellijk (0-5 seconden)</p>
 
-    <div class="warning">
+    <div class="highlight">
         <h3>⚠️ Verwijderingsbeperking bij Actief Abonnement (Art. 17.3.b AVG)</h3>
 
         <p>Als u een <strong>actief maandabonnement</strong> heeft, wordt het verwijderen van cloudgegevens <strong>tijdelijk geblokkeerd</strong> totdat het abonnement wordt geannuleerd.</p>
@@ -236,12 +161,14 @@
 
         <p><strong>Juridische basis voor blokkering:</strong> Art. 17.3.b AVG - „Het recht op verwijdering is niet van toepassing voor zover de verwerking noodzakelijk is voor de uitvoering van een overeenkomst waarbij de betrokkene partij is".</p>
     </div>
+    </div>
 
-    <h2>Methode 2: Verzoek per E-mail</h2>
+    <div class="card">
+        <h2>Methode 2: Verzoek per E-mail</h2>
 
     <p>Als u hulp nodig heeft of vragen heeft over gegevensverwijdering, kunt u contact met ons opnemen via e-mail:</p>
 
-    <div class="info-box">
+    <div class="highlight">
         <p><strong>E-mail:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
         <p><strong>Website:</strong> <a href="https://kaiboard.eu" target="_blank" rel="noopener">kaiboard.eu</a></p>
         <p><strong>Onderwerp:</strong> „AVG Verzoek Gegevensverwijdering"</p>
@@ -253,8 +180,10 @@
         </ul>
         <p><strong>Reactietijd:</strong> Maximaal 30 dagen (zoals vereist door AVG Artikel 12)</p>
     </div>
+    </div>
 
-    <h2>Methode 3: Gegevensexport (Art. 20 AVG)</h2>
+    <div class="card">
+        <h2>Methode 3: Gegevensexport (Art. 20 AVG)</h2>
 
     <p>Voordat u uw gegevens verwijdert, kunt u ze exporteren in een machineleesbaar JSON-formaat:</p>
 
@@ -265,8 +194,10 @@
     </ol>
 
     <p>Het JSON-bestand bevat: exportmetagegevens, lokale voorkeuren, leergegevens (voor alle 13 talen) en cloudgegevens (abonnement, geschiedenis, activiteitslogboeken). U kunt het bestand delen via elke app die op het apparaat is geïnstalleerd.</p>
+    </div>
 
-    <h2>Automatische Gegevensverwijdering</h2>
+    <div class="card">
+        <h2>Automatische Gegevensverwijdering</h2>
 
     <p>kAIboard bevat automatische mechanismen voor gegevensopschoning om uw privacy te beschermen:</p>
 
@@ -312,8 +243,10 @@
             <td>0 seconden bewaring; alleen doorvoer naar OpenAI API</td>
         </tr>
     </table></div>
+    </div>
 
-    <h2>Volledige Gegevensinventaris</h2>
+    <div class="card">
+        <h2>Volledige Gegevensinventaris</h2>
 
     <p>De volgende tabellen geven alle door kAIboard verzamelde gegevens en hoe deze te verwijderen:</p>
 
@@ -461,8 +394,10 @@
             <td>Geen actie vereist (0 seconden bewaring)</td>
         </tr>
     </table></div>
+    </div>
 
-    <h2>Niet-Verwijderbare Gegevens</h2>
+    <div class="card">
+        <h2>Niet-Verwijderbare Gegevens</h2>
 
     <p>Om juridische en technische redenen kunnen bepaalde gegevens niet onmiddellijk worden verwijderd:</p>
 
@@ -470,10 +405,12 @@
         <li><strong>Google Play Transacties:</strong> Beheerd door Google volgens hun beleid (voor terugbetalingsverzoeken, fraudepreventie en fiscale naleving)</li>
         <li><strong>Reeds naar Firebase verzonden crashrapporten:</strong> Rapporten die al naar Firebase Crashlytics zijn verzonden, blijven op de backend en kunnen niet vanaf het apparaat worden verwijderd. Nog niet verzonden rapporten kunnen worden verwijderd via de Instellingen (Crashlytics-schakelaar UIT) of via de knop „Alle Lokale Gegevens Verwijderen"</li>
     </ul>
+    </div>
 
-    <h2>Gevolgen van Gegevensverwijdering</h2>
+    <div class="card">
+        <h2>Gevolgen van Gegevensverwijdering</h2>
 
-    <div class="warning">
+    <div class="highlight">
         <p><strong>Belangrijke Kennisgeving:</strong> Verwijdering van bepaalde gegevens is <strong>onomkeerbaar</strong>. Zorg ervoor dat u de gevolgen begrijpt voordat u doorgaat:</p>
         <ul>
             <li><strong>Cloudgegevens Verwijderen:</strong> U verliest uw aankoopgeschiedenis, abonnementsgegevens, abonnementsgeschiedenis en activiteitslogboeken. U kunt ze NIET herstellen, zelfs niet na herinstallatie van de app. Als u een actief abonnement heeft, moet u dit eerst annuleren via Google Play Store en wachten tot het einde van de reeds betaalde periode.</li>
@@ -482,8 +419,10 @@
             <li><strong>Herinstallatie of apparaatwissel tijdens de respijtperiode:</strong> Als je de app opnieuw installeert op hetzelfde apparaat of op een al geregistreerd apparaat, worden je abonnement en tokensaldo automatisch hersteld. Als je de app installeert op een volledig nieuw apparaat dat nog nooit kAIboard met jouw account heeft gehad, zijn de resterende dagen en het tokensaldo mogelijk niet te herstellen om veiligheidsredenen.</li>
         </ul>
     </div>
+    </div>
 
-    <h2>Veelgestelde Vragen</h2>
+    <div class="card">
+        <h2>Veelgestelde Vragen</h2>
 
     <h3>Wat gebeurt er als ik cloudgegevens verwijder?</h3>
     <p>U verliest uw aankoopgeschiedenis, actieve abonnementsgegevens, geschiedenis van eerdere abonnementen en activiteitslogboeken. Als u de app opnieuw installeert, wordt het abonnement nog steeds gedetecteerd via Google Play, maar historische gegevens zijn niet meer herstelbaar.</p>
@@ -508,10 +447,10 @@
 
     Wat gebeurt er met gedownloade voorspellingsmodellen, vertaalpakketten en woordenboeken?
     <p>Deze worden verwijderd door de knop „Alle Lokale Gegevens Verwijderen". Bij het volgende gebruik moeten de voorspellingsmodellen opnieuw worden gedownload via het scherm Offline Modellen, de vertaalpakketten via het scherm Vertaalpakketten en de woordenboeken worden automatisch opnieuw gekopieerd bij het eerste gebruik van de taal.</p>
+    </div>
 
-    <h2>Contact</h2>
-
-    <div class="contact-box">
+    <div class="card">
+        <h2>Contact</h2>
         <p>Voor vragen, AVG-verzoeken of meldingen:</p>
         <p><strong>E-mail:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
         <p><strong>Website:</strong> <a href="https://kaiboard.eu" target="_blank" rel="noopener">kaiboard.eu</a></p>
@@ -520,10 +459,9 @@
         <p>&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/data-deletion.html">Beleid voor gegevensverwijdering in andere talen</a></p>
     </div>
 
-    <p style="text-align: center; color: #4B5563; margin-top: 50px;">
-        &copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. Alle rechten voorbehouden.<br>
-        Conform de AVG (EU-Verordening 2016/679)
-    </p>
-</div>
+    <p class="footer-copy">&copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. Alle rechten voorbehouden.<br>
+        Conform de AVG (EU-Verordening 2016/679)</p>
+</main>
+
 </body>
 </html>

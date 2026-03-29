@@ -4,158 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Eliminación de Datos - kAIboard</title>
+    <title>Eliminación de Datos &mdash; kAIboard</title>
     <style>
-        body {
-            font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.8;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            color: #111827;
-            background-color: #F4F7FA;
+        :root {
+            --teal: #19C7C7;
+            --teal-dark: #0FA3A3;
+            --teal-soft: rgba(25, 199, 199, 0.08);
+            --bg-page: #F0F6F6;
+            --bg-card: #FFFFFF;
+            --border: rgba(0, 0, 0, 0.06);
+            --border-card: rgba(25, 199, 199, 0.15);
+            --text-primary: #1A2E35;
+            --text-secondary: #4A6068;
+            --text-muted: #8A9EA6;
+            --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 800px;
         }
-        .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #111827;
-            font-size: 26px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #0FA3A3;
-            hyphens: auto;
-            -webkit-hyphens: auto;
-        }
-        h2 {
-            color: #111827;
-            font-size: 24px;
-            font-weight: 600;
-            margin-top: 40px;
-            margin-bottom: 15px;
-        }
-        h3 {
-            color: #111827;
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 25px;
-            margin-bottom: 10px;
-        }
-        p {
-            margin-bottom: 15px;
-        }
-        .intro {
-            background-color: #F4F7FA;
-            padding: 20px;
-            border-left: 4px solid #0FA3A3;
-            margin: 25px 0;
-        }
-        .warning {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-left: 4px solid #0FA3A3;
-            margin: 25px 0;
-        }
-        .info-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 6px;
-            margin: 25px 0;
-        }
-        ul, ol {
-            margin: 15px 0;
-            padding-left: 30px;
-        }
-        li {
-            margin: 8px 0;
-            line-height: 1.6;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 15px;
-        }
-        th, td {
-            border: 1px solid #dee2e6;
-            padding: 12px 15px;
-            text-align: left;
-        }
-        th {
-            background-color: #0FA3A3;
-            font-weight: 600;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #F8FAFA;
-        }
-        .button {
-            display: inline-block;
-            background-color: #0FA3A3;
-            color: white;
-            padding: 12px 28px;
-            text-decoration: none;
-            border-radius: 6px;
-            margin: 10px 10px 10px 0;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-        .button:hover {
-            background-color: #0D8F8F;
-        }
-        .contact-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        .footer {
-            margin-top: 50px;
-            padding-top: 25px;
-            border-top: 1px solid #e0e0e0;
-            text-align: center;
-            color: #4B5563;
-            font-size: 14px;
-        }
-        strong {
-            font-weight: 600;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: var(--bg-page); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal-dark); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--teal); }
+        .content { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px 80px; }
+        h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+        .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 40px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 16px; padding: 36px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); overflow: hidden; }
+        .card h2 { font-size: 1.15rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 16px; letter-spacing: -0.01em; }
+        .card h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-top: 20px; margin-bottom: 10px; }
+        .card p, .card li { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 10px; }
+        .card ul, .card ol { padding-left: 20px; margin-bottom: 12px; }
+        .card li { margin-bottom: 6px; }
+        .card ul li { list-style: disc; }
+        .card ol li { list-style: decimal; }
+        .highlight { background: var(--teal-soft); border-left: 3px solid var(--teal-dark); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .important { background: rgba(220, 53, 69, 0.06); border-left: 3px solid #dc3545; border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        th, td { border: 1px solid var(--border); padding: 12px 15px; text-align: left; }
+        th { background-color: var(--teal-dark); font-weight: 600; color: white; }
+        tr:nth-child(even) { background-color: #F8FAFA; }
+        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+        .table-wrapper table { width: auto; min-width: 480px; margin: 0; }
+        .footer-copy { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 48px; }
+        .footer-copy a { color: var(--teal-dark); }
 
-        /* -- MOBILE FIX -- */
-        html, body { overflow-x: hidden; }
-        .table-wrapper {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin: 20px 0;
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --teal: #19C7C7;
+                --teal-dark: #19C7C7;
+                --teal-soft: rgba(25, 199, 199, 0.12);
+                --bg-page: #000000;
+                --bg-card: #121212;
+                --border: rgba(255, 255, 255, 0.08);
+                --border-card: rgba(25, 199, 199, 0.20);
+                --text-primary: #FFFFFF;
+                --text-secondary: #B0BEC5;
+                --text-muted: #78909C;
+            }
+            tr:nth-child(even) { background-color: #1A1A1A; }
+            th { background-color: #19C7C7; color: #000000; }
+            .highlight { background: rgba(25, 199, 199, 0.12); }
+            .important { background: rgba(255, 107, 107, 0.12); border-left-color: #FF6B6B; }
         }
-        .table-wrapper table {
-            width: auto;
-            min-width: 480px;
-            margin: 0;
-        }
-        @media (max-width: 650px) {
-            body { padding: 15px; }
-            .container { padding: 20px; }
-            th, td { padding: 8px; font-size: 13px; }
-        }
+        @media (max-width: 600px) { .card { padding: 24px; } th, td { padding: 8px; font-size: 0.82rem; } }
     </style>
 </head>
 <body>
-<div class="container">
+
+
+<main class="content">
     <h1>Política de Eliminación de Datos</h1>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Última actualización: 26 de Marzo de 2026 &mdash; Versión: 3.0</p>
 
-    <p><strong>Última actualización:</strong> 26 de Marzo de 2026</p>
-    <p><strong>Versión:</strong> 3.0</p>
-
-    <div class="intro">
+    <div class="highlight">
         <p><strong>k<span style="color:#0FA3A3">AI</span>board</strong> respeta su derecho a la eliminación de datos según el Artículo 17 del RGPD (Derecho al Olvido). Puede eliminar sus datos personales en cualquier momento, ya sea directamente a través de la aplicación o contactándonos por correo electrónico.</p>
-    </div>
+        </div>
 
-    <h2>Método 1: Eliminación en la Aplicación (Inmediata)</h2>
+    <div class="card">
+        <h2>Método 1: Eliminación en la Aplicación (Inmediata)</h2>
 
     <p>La forma más rápida de eliminar sus datos es directamente a través de la aplicación:</p>
 
@@ -213,7 +138,7 @@
 
     <p><strong>Tiempo de Procesamiento:</strong> Inmediato (0-5 segundos)</p>
 
-    <div class="warning">
+    <div class="highlight">
         <h3>⚠️ Limitación de Eliminación con Suscripción Activa (Art. 17.3.b RGPD)</h3>
 
         <p>Si tienes una <strong>suscripción mensual activa</strong>, la eliminación de datos en la nube está <strong>temporalmente bloqueada</strong> hasta la cancelación de la suscripción.</p>
@@ -236,12 +161,14 @@
 
         <p><strong>Base jurídica del bloqueo:</strong> Art. 17.3.b RGPD - "El derecho de supresión no se aplicará cuando el tratamiento sea necesario para la ejecución de un contrato en el que el interesado es parte".</p>
     </div>
+    </div>
 
-    <h2>Método 2: Solicitud por Correo Electrónico</h2>
+    <div class="card">
+        <h2>Método 2: Solicitud por Correo Electrónico</h2>
 
     <p>Si prefiere asistencia o tiene preguntas sobre la eliminación de datos, puede contactarnos por correo electrónico:</p>
 
-    <div class="info-box">
+    <div class="highlight">
         <p><strong>Correo Electrónico:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
         <p><strong>Asunto:</strong> "Solicitud de Eliminación de Datos RGPD"</p>
         <p><strong>Información a Incluir:</strong></p>
@@ -252,8 +179,10 @@
         </ul>
         <p><strong>Tiempo de Respuesta:</strong> Máximo 30 días (según lo exigido por el Artículo 12 del RGPD)</p>
     </div>
+    </div>
 
-    <h2>Método 3: Exportación de Datos (Art. 20 RGPD)</h2>
+    <div class="card">
+        <h2>Método 3: Exportación de Datos (Art. 20 RGPD)</h2>
 
     <p>Antes de eliminar sus datos, puede exportarlos en formato JSON legible por máquinas:</p>
 
@@ -264,8 +193,10 @@
     </ol>
 
     <p>El archivo JSON incluye: metadatos de exportación, preferencias locales, datos de aprendizaje (para los 13 idiomas) y datos en la nube (suscripción, historial, registros de actividad). Puede compartir el archivo a través de cualquier aplicación instalada en el dispositivo.</p>
+    </div>
 
-    <h2>Eliminación Automática de Datos</h2>
+    <div class="card">
+        <h2>Eliminación Automática de Datos</h2>
 
     <p>kAIboard incluye mecanismos de limpieza automática de datos para proteger su privacidad:</p>
 
@@ -311,8 +242,10 @@
             <td>0 segundos de retención; solo tránsito a la API de OpenAI</td>
         </tr>
     </table></div>
+    </div>
 
-    <h2>Inventario Completo de Datos</h2>
+    <div class="card">
+        <h2>Inventario Completo de Datos</h2>
 
     <p>Las siguientes tablas detallan todos los datos recopilados por kAIboard y cómo eliminarlos:</p>
 
@@ -460,8 +393,10 @@
             <td>No se requiere acción (0 segundos de retención)</td>
         </tr>
     </table></div>
+    </div>
 
-    <h2>Datos No Eliminables</h2>
+    <div class="card">
+        <h2>Datos No Eliminables</h2>
 
     <p>Por razones legales y técnicas, ciertos datos no pueden eliminarse inmediatamente:</p>
 
@@ -469,10 +404,12 @@
         <li><strong>Transacciones de Google Play:</strong> Gestionadas por Google según sus políticas (para solicitudes de reembolso, prevención de fraude y cumplimiento fiscal)</li>
         <li><strong>Informes de errores ya enviados a Firebase:</strong> Los informes ya transmitidos a Firebase Crashlytics permanecen en el backend y no pueden eliminarse desde el dispositivo. Los informes aún no enviados pueden eliminarse desde la Configuración (desactivar Crashlytics) o mediante el botón "Eliminar Todos los Datos Locales"</li>
     </ul>
+    </div>
 
-    <h2>Consecuencias de la Eliminación de Datos</h2>
+    <div class="card">
+        <h2>Consecuencias de la Eliminación de Datos</h2>
 
-    <div class="warning">
+    <div class="highlight">
         <p><strong>Aviso Importante:</strong> La eliminación de ciertos datos es <strong>irreversible</strong>. Asegúrese de comprender las consecuencias antes de continuar:</p>
         <ul>
             <li><strong>Eliminar Datos en la Nube:</strong> Perderás el historial de compras, los datos de suscripción, el historial de suscripciones y los registros de actividad. NO podrás recuperarlos, incluso después de reinstalar la app. Si tienes una suscripción activa, primero debes cancelarla a través de Google Play Store y esperar al final del período ya pagado.</li>
@@ -481,8 +418,10 @@
             <li><strong>Reinstalación o cambio de dispositivo durante el período de gracia:</strong> Si reinstalas la aplicación en el mismo dispositivo o en un dispositivo ya registrado, tu suscripción y saldo de tokens se restauran automáticamente. Si instalas la aplicación en un dispositivo completamente nuevo que nunca ha tenido kAIboard con tu cuenta, los días restantes y el saldo de tokens podrían no ser recuperables por motivos de seguridad.</li>
         </ul>
     </div>
+    </div>
 
-    <h2>Preguntas Frecuentes</h2>
+    <div class="card">
+        <h2>Preguntas Frecuentes</h2>
 
     <h3>¿Qué sucede si elimino los datos en la nube?</h3>
     <p>Perderá el historial de compras, los datos de suscripción activa, el historial de suscripciones pasadas y los registros de actividad. Si reinstala la aplicación, la suscripción seguirá siendo detectada a través de Google Play, pero los datos históricos no serán recuperables.</p>
@@ -507,10 +446,10 @@
 
     ¿Qué sucede con los modelos predictivos, los paquetes de traducción y los diccionarios descargados?
     <p>Se eliminan mediante el botón "Eliminar Todos los Datos Locales". En el siguiente uso, los modelos predictivos deberán descargarse nuevamente desde la pantalla de Modelos Offline, los paquetes de traducción desde la pantalla Paquetes de Traducción, y los diccionarios se copiarán automáticamente en el primer uso del idioma.</p>
+    </div>
 
-    <h2>Contacto</h2>
-
-    <div class="contact-box">
+    <div class="card">
+        <h2>Contacto</h2>
         <p>Para preguntas, solicitudes RGPD o informes:</p>
         <p><strong>E-Mail:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
         <p><strong>Sitio web:</strong> <a href="https://kaiboard.eu" target="_blank" rel="noopener">kaiboard.eu</a></p>
@@ -519,10 +458,9 @@
         <p>&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/data-deletion.html">Política de eliminación de datos en otros idiomas</a></p>
     </div>
 
-    <p style="text-align: center; color: #4B5563; margin-top: 50px;">
-        &copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. Todos los derechos reservados.<br>
-        Conforme con el RGPD (Reglamento UE 2016/679)
-    </p>
-</div>
+    <p class="footer-copy">&copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. Todos los derechos reservados.<br>
+        Conforme con el RGPD (Reglamento UE 2016/679)</p>
+</main>
+
 </body>
 </html>

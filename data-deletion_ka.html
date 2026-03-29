@@ -1,161 +1,86 @@
-﻿﻿﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ka">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>მონაცემთა წაშლა - kAIboard</title>
+    <title>მონაცემთა წაშლა &mdash; kAIboard</title>
     <style>
-        body {
-            font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.8;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            color: #111827;
-            background-color: #F4F7FA;
+        :root {
+            --teal: #19C7C7;
+            --teal-dark: #0FA3A3;
+            --teal-soft: rgba(25, 199, 199, 0.08);
+            --bg-page: #F0F6F6;
+            --bg-card: #FFFFFF;
+            --border: rgba(0, 0, 0, 0.06);
+            --border-card: rgba(25, 199, 199, 0.15);
+            --text-primary: #1A2E35;
+            --text-secondary: #4A6068;
+            --text-muted: #8A9EA6;
+            --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 800px;
         }
-        .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #111827;
-            font-size: 26px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #0FA3A3;
-            hyphens: auto;
-            -webkit-hyphens: auto;
-        }
-        h2 {
-            color: #111827;
-            font-size: 24px;
-            font-weight: 600;
-            margin-top: 40px;
-            margin-bottom: 15px;
-        }
-        h3 {
-            color: #111827;
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 25px;
-            margin-bottom: 10px;
-        }
-        p {
-            margin-bottom: 15px;
-        }
-        .intro {
-            background-color: #F4F7FA;
-            padding: 20px;
-            border-left: 4px solid #0FA3A3;
-            margin: 25px 0;
-        }
-        .warning {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-left: 4px solid #0FA3A3;
-            margin: 25px 0;
-        }
-        .info-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 6px;
-            margin: 25px 0;
-        }
-        ul, ol {
-            margin: 15px 0;
-            padding-left: 30px;
-        }
-        li {
-            margin: 8px 0;
-            line-height: 1.6;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 15px;
-        }
-        th, td {
-            border: 1px solid #dee2e6;
-            padding: 12px 15px;
-            text-align: left;
-        }
-        th {
-            background-color: #0FA3A3;
-            font-weight: 600;
-            color: #111827;
-        }
-        tr:nth-child(even) {
-            background-color: #F8FAFA;
-        }
-        .button {
-            display: inline-block;
-            background-color: #0FA3A3;
-            color: white;
-            padding: 12px 28px;
-            text-decoration: none;
-            border-radius: 6px;
-            margin: 10px 10px 10px 0;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-        .button:hover {
-            background-color: #0D8F8F;
-        }
-        .contact-box {
-            background-color: #EDF7F7;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        .footer {
-            margin-top: 50px;
-            padding-top: 25px;
-            border-top: 1px solid #e0e0e0;
-            text-align: center;
-            color: #4B5563;
-            font-size: 14px;
-        }
-        strong {
-            font-weight: 600;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: var(--bg-page); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        a { color: var(--teal-dark); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--teal); }
+        .content { max-width: var(--max-width); margin: 0 auto; padding: 48px 24px 80px; }
+        h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px; }
+        .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 40px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 16px; padding: 36px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); overflow: hidden; }
+        .card h2 { font-size: 1.15rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 16px; letter-spacing: -0.01em; }
+        .card h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-top: 20px; margin-bottom: 10px; }
+        .card p, .card li { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 10px; }
+        .card ul, .card ol { padding-left: 20px; margin-bottom: 12px; }
+        .card li { margin-bottom: 6px; }
+        .card ul li { list-style: disc; }
+        .card ol li { list-style: decimal; }
+        .highlight { background: var(--teal-soft); border-left: 3px solid var(--teal-dark); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        .important { background: rgba(220, 53, 69, 0.06); border-left: 3px solid #dc3545; border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; font-size: 0.88rem; color: var(--text-secondary); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        th, td { border: 1px solid var(--border); padding: 12px 15px; text-align: left; }
+        th { background-color: var(--teal-dark); font-weight: 600; color: white; }
+        tr:nth-child(even) { background-color: #F8FAFA; }
+        .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+        .table-wrapper table { width: auto; min-width: 480px; margin: 0; }
+        .footer-copy { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 48px; }
+        .footer-copy a { color: var(--teal-dark); }
 
-        /* -- MOBILE FIX -- */
-        html, body { overflow-x: hidden; }
-        .table-wrapper {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin: 20px 0;
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --teal: #19C7C7;
+                --teal-dark: #19C7C7;
+                --teal-soft: rgba(25, 199, 199, 0.12);
+                --bg-page: #000000;
+                --bg-card: #121212;
+                --border: rgba(255, 255, 255, 0.08);
+                --border-card: rgba(25, 199, 199, 0.20);
+                --text-primary: #FFFFFF;
+                --text-secondary: #B0BEC5;
+                --text-muted: #78909C;
+            }
+            tr:nth-child(even) { background-color: #1A1A1A; }
+            th { background-color: #19C7C7; color: #000000; }
+            .highlight { background: rgba(25, 199, 199, 0.12); }
+            .important { background: rgba(255, 107, 107, 0.12); border-left-color: #FF6B6B; }
         }
-        .table-wrapper table {
-            width: auto;
-            min-width: 480px;
-            margin: 0;
-        }
-        @media (max-width: 650px) {
-            body { padding: 15px; }
-            .container { padding: 20px; }
-            th, td { padding: 8px; font-size: 13px; }
-        }
+        @media (max-width: 600px) { .card { padding: 24px; } th, td { padding: 8px; font-size: 0.82rem; } }
     </style>
 </head>
 <body>
-<div class="container">
+
+
+<main class="content">
     <h1>მონაცემთა წაშლის პოლიტიკა</h1>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; ბოლო განახლება: 2026 წლის 26 მარტი &mdash; ვერსია: 3.0</p>
 
-    <p><strong>ბოლო განახლება:</strong> 2026 წლის 26 მარტი</p>
-    <p><strong>ვერსია:</strong> 3.0</p>
-
-    <div class="intro">
+    <div class="highlight">
         <p><strong>k<span style="color:#0FA3A3">AI</span>board</strong> პატივს სცემს თქვენს უფლებას მონაცემთა წაშლაზე GDPR-ის მე-17 მუხლის შესაბამისად (წაშლის უფლება). თქვენ შეგიძლიათ წაშალოთ თქვენი პერსონალური მონაცემები ნებისმიერ დროს, უშუალოდ აპლიკაციის საშუალებით ან ელფოსტით დაგვიკავშირდეთ.</p>
-    </div>
+        </div>
 
-    <h2>მეთოდი 1: წაშლა აპლიკაციის საშუალებით (მყისიერი)</h2>
+    <div class="card">
+        <h2>მეთოდი 1: წაშლა აპლიკაციის საშუალებით (მყისიერი)</h2>
 
     <p>თქვენი მონაცემების წაშლის ყველაზე სწრაფი გზა უშუალოდ აპლიკაციის საშუალებითაა:</p>
 
@@ -213,7 +138,7 @@
 
     <p><strong>დამუშავების დრო:</strong> მყისიერი (0-5 წამი)</p>
 
-    <div class="warning">
+    <div class="highlight">
         <h3>⚠️ წაშლის შეზღუდვა აქტიური გამოწერის დროს (მუხ. 17.3.ბ GDPR)</h3>
 
         <p>თუ თქვენ გაქვთ <strong>აქტიური ყოველთვიური გამოწერა</strong>, ღრუბლოვანი მონაცემების წაშლა <strong>დროებით დაბლოკილია</strong> გამოწერის გაუქმებამდე.</p>
@@ -236,12 +161,14 @@
 
         <p><strong>დაბლოკვის სამართლებრივი საფუძველი:</strong> მუხ. 17.3.ბ GDPR - „წაშლის უფლება არ გამოიყენება იმ ზომით, რამდენადაც დამუშავება აუცილებელია ხელშეკრულების შესრულებისთვის, რომლის მხარეც არის მონაცემთა სუბიექტი".</p>
     </div>
+    </div>
 
-    <h2>მეთოდი 2: მოთხოვნა ელფოსტით</h2>
+    <div class="card">
+        <h2>მეთოდი 2: მოთხოვნა ელფოსტით</h2>
 
     <p>თუ გსურთ დახმარება ან გაქვთ კითხვები მონაცემთა წაშლასთან დაკავშირებით, შეგიძლიათ დაგვიკავშირდეთ ელფოსტით:</p>
 
-    <div class="info-box">
+    <div class="highlight">
         <p><strong>ელფოსტა:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
         <p><strong>თემა:</strong> „GDPR მონაცემთა წაშლის მოთხოვნა"</p>
         <p><strong>ჩასართავი ინფორმაცია:</strong></p>
@@ -252,8 +179,10 @@
         </ul>
         <p><strong>პასუხის დრო:</strong> მაქსიმუმ 30 დღე (როგორც მოითხოვს GDPR-ის მე-12 მუხლი)</p>
     </div>
+    </div>
 
-    <h2>მეთოდი 3: მონაცემთა ექსპორტი (მუხ. 20 GDPR)</h2>
+    <div class="card">
+        <h2>მეთოდი 3: მონაცემთა ექსპორტი (მუხ. 20 GDPR)</h2>
 
     <p>მონაცემების წაშლამდე შეგიძლიათ მათი ექსპორტი მანქანით წაკითხვად JSON ფორმატში:</p>
 
@@ -264,8 +193,10 @@
     </ol>
 
     <p>JSON ფაილი მოიცავს: ექსპორტის მეტამონაცემებს, ლოკალურ პრეფერენციებს, სწავლის მონაცემებს (ყველა 13 ენაზე) და ღრუბლოვან მონაცემებს (გამოწერა, ისტორია, აქტივობის ჟურნალი). ფაილის გაზიარება შეგიძლიათ მოწყობილობაზე დაინსტალირებული ნებისმიერი აპლიკაციის საშუალებით.</p>
+    </div>
 
-    <h2>მონაცემთა ავტომატური წაშლა</h2>
+    <div class="card">
+        <h2>მონაცემთა ავტომატური წაშლა</h2>
 
     <p>kAIboard მოიცავს მონაცემთა ავტომატური გასუფთავების მექანიზმებს თქვენი კონფიდენციალურობის დასაცავად:</p>
 
@@ -311,8 +242,10 @@
             <td>შენახვის 0 წამი; მხოლოდ ტრანზიტი OpenAI API-სკენ</td>
         </tr>
     </table></div>
+    </div>
 
-    <h2>მონაცემთა სრული ინვენტარიზაცია</h2>
+    <div class="card">
+        <h2>მონაცემთა სრული ინვენტარიზაცია</h2>
 
     <p>ქვემოთ მოცემულ ცხრილებში ჩამოთვლილია kAIboard-ის მიერ შეგროვებული ყველა მონაცემი და მათი წაშლის გზები:</p>
 
@@ -460,8 +393,10 @@
             <td>მოქმედება არ არის საჭირო (შენახვის 0 წამი)</td>
         </tr>
     </table></div>
+    </div>
 
-    <h2>წაუშლელი მონაცემები</h2>
+    <div class="card">
+        <h2>წაუშლელი მონაცემები</h2>
 
     <p>სამართლებრივი და ტექნიკური მიზეზების გამო, ზოგიერთი მონაცემის დაუყოვნებლივ წაშლა შეუძლებელია:</p>
 
@@ -469,10 +404,12 @@
         <li><strong>Google Play ტრანზაქციები:</strong> იმართება Google-ის მიერ მათი პოლიტიკის შესაბამისად (თანხის დაბრუნების მოთხოვნების, თაღლითობის პრევენციისა და საგადასახადო შესაბამისობისთვის)</li>
         <li><strong>Firebase-ზე უკვე გაგზავნილი ავარიის ანგარიშები:</strong> Firebase Crashlytics-ზე უკვე გადაცემული ანგარიშები რჩება სერვერზე და მოწყობილობიდან წაშლა შეუძლებელია. ჯერ არგაგზავნილი ანგარიშები შეიძლება წაიშალოს პარამეტრებიდან (Crashlytics გამორთვა) ან ღილაკით „ყველა ლოკალური მონაცემის წაშლა"</li>
     </ul>
+    </div>
 
-    <h2>მონაცემთა წაშლის შედეგები</h2>
+    <div class="card">
+        <h2>მონაცემთა წაშლის შედეგები</h2>
 
-    <div class="warning">
+    <div class="highlight">
         <p><strong>მნიშვნელოვანი შეტყობინება:</strong> ზოგიერთი მონაცემის წაშლა <strong>შეუქცევადია</strong>. დარწმუნდით, რომ გესმით შედეგები, სანამ გააგრძელებთ:</p>
         <ul>
             <li><strong>ღრუბლოვანი მონაცემების წაშლა:</strong> თქვენ დაკარგავთ შეძენის ისტორიას, გამოწერის მონაცემებს, გამოწერების ისტორიას და აქტივობის ჟურნალს. თქვენ ვერ შეძლებთ მათ აღდგენას, აპლიკაციის ხელახალი ინსტალაციის შემდეგაც კი. თუ გაქვთ აქტიური გამოწერა, ჯერ უნდა გააუქმოთ ის Google Play Store-ის საშუალებით და დაელოდოთ უკვე გადახდილი პერიოდის დასრულებას.</li>
@@ -481,8 +418,10 @@
             <li><strong>ხელახალი ინსტალაცია ან მოწყობილობის შეცვლა საშეღავათო პერიოდში:</strong> თუ აპლიკაციას იმავე მოწყობილობაზე ან უკვე რეგისტრირებულ მოწყობილობაზე ხელახლა დააინსტალირებთ, თქვენი გამოწერა და ტოკენების ბალანსი ავტომატურად აღდგება. თუ აპლიკაციას სრულიად ახალ მოწყობილობაზე დააინსტალირებთ, რომელზეც არასდროს ყოფილა kAIboard თქვენი ანგარიშით, დარჩენილი დღეები და ტოკენების ბალანსი შესაძლოა ვერ აღდგეს უსაფრთხოების მიზეზების გამო.</li>
         </ul>
     </div>
+    </div>
 
-    <h2>ხშირად დასმული კითხვები</h2>
+    <div class="card">
+        <h2>ხშირად დასმული კითხვები</h2>
 
     <h3>რა მოხდება, თუ ღრუბლოვან მონაცემებს წავშლი?</h3>
     <p>თქვენ დაკარგავთ შეძენის ისტორიას, აქტიური გამოწერის მონაცემებს, წარსული გამოწერების ისტორიას და აქტივობის ჟურნალს. თუ აპლიკაციას ხელახლა დააინსტალირებთ, გამოწერა კვლავ აღმოჩენილი იქნება Google Play-ის საშუალებით, მაგრამ ისტორიული მონაცემების აღდგენა შეუძლებელი იქნება.</p>
@@ -507,10 +446,10 @@
 
     <h3>რა ხდება ჩამოტვირთულ პროგნოზირების მოდელებთან, თარგმანის პაკეტებთან და ლექსიკონებთან?</h3>
     <p>ისინი იშლება ღილაკით „ყველა ლოკალური მონაცემის წაშლა". შემდეგ გამოყენებისას, პროგნოზირების მოდელების ხელახალი ჩამოტვირთვა საჭირო იქნება ოფლაინ მოდელების ეკრანიდან, თარგმანის პაკეტები — თარგმანის პაკეტების ეკრანიდან, ხოლო ლექსიკონები ავტომატურად დაკოპირდება ენის პირველი გამოყენებისას.</p>
+    </div>
 
-    <h2>კონტაქტი</h2>
-
-    <div class="contact-box">
+    <div class="card">
+        <h2>კონტაქტი</h2>
         <p>კითხვების, GDPR მოთხოვნების ან შეტყობინებებისთვის:</p>
         <p><strong>ელ-ფოსტა:</strong> <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
         <p><strong>ვებგვერდი:</strong> <a href="https://kaiboard.eu" target="_blank" rel="noopener">kaiboard.eu</a></p>
@@ -519,10 +458,9 @@
         <p>&#127757; <a href="https://alessandrof78.github.io/kaiboard-privacy/data-deletion.html">მონაცემთა წაშლის პოლიტიკა სხვა ენებზე</a></p>
     </div>
 
-    <p style="text-align: center; color: #4B5563; margin-top: 50px;">
-        &copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. ყველა უფლება დაცულია.<br>
-        GDPR-თან შესაბამისი (EU რეგულაცია 2016/679)
-    </p>
-</div>
+    <p class="footer-copy">&copy; 2025-2026 k<span style="color:#0FA3A3">AI</span>board by Alessandro Faedda. ყველა უფლება დაცულია.<br>
+        GDPR-თან შესაბამისი (EU რეგულაცია 2016/679)</p>
+</main>
+
 </body>
 </html>
