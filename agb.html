@@ -8,7 +8,7 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(170deg, #FFFFFF 0%, #EDF7F7 45%, #E0F4F4 100%); padding: 20px; }
-        .container { background: #F4F7FA; border-radius: 20px; padding: 50px 40px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08); border: 1px solid #E2E8F0; max-width: 700px; width: 100%; text-align: center; }
+        .container { position: relative; background: #F4F7FA; border-radius: 20px; padding: 50px 40px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08); border: 1px solid #E2E8F0; max-width: 700px; width: 100%; text-align: center; }
         .logo { font-size: 48px; margin-bottom: 10px; }
         h1 { color: #111827; font-size: 36px; font-weight: 700; margin-bottom: 10px; }
         h1 .ai { color: #0FA3A3; }
@@ -30,11 +30,34 @@
             .footer { border-top-color: rgba(255,255,255,0.06); color: #6B8490; }
             .footer a { color: #22D4D4; }
         }
+        html[data-theme="dark"] body { background: linear-gradient(170deg, #0A0F14 0%, #0D1A1A 45%, #0F1E1E 100%); }
+        html[data-theme="dark"] .container { background: #141B22; border-color: rgba(25,199,199,0.20); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+        html[data-theme="dark"] h1 { color: #E8EDEF; }
+        html[data-theme="dark"] .subtitle { color: #6B8490; }
+        html[data-theme="dark"] .lang-button { background: #19C7C7; color: #0A0F14; box-shadow: 0 4px 15px rgba(25,199,199,0.25); }
+        html[data-theme="dark"] .lang-button:hover { box-shadow: 0 8px 25px rgba(25,199,199,0.45); }
+        html[data-theme="dark"] .footer { border-top-color: rgba(255,255,255,0.06); color: #6B8490; }
+        html[data-theme="dark"] .footer a { color: #22D4D4; }
+        html[data-theme="light"] body { background: linear-gradient(170deg, #FFFFFF 0%, #EDF7F7 45%, #E0F4F4 100%); }
+        html[data-theme="light"] .container { background: #F4F7FA; border-color: #E2E8F0; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08); }
+        html[data-theme="light"] h1 { color: #111827; }
+        html[data-theme="light"] .subtitle { color: #7f8c8d; }
+        html[data-theme="light"] .lang-button { background: #0FA3A3; color: white; box-shadow: 0 4px 15px rgba(15, 163, 163, 0.3); }
+        html[data-theme="light"] .lang-button:hover { box-shadow: 0 8px 25px rgba(15, 163, 163, 0.5); }
+        html[data-theme="light"] .footer { border-top-color: #ecf0f1; color: #7f8c8d; }
+        html[data-theme="light"] .footer a { color: #0FA3A3; }
+        .theme-toggle { position: absolute; top: 20px; right: 20px; background: none; border: 1px solid #E2E8F0; border-radius: 8px; padding: 6px 10px; cursor: pointer; color: #4B5563; font-size: 1.05rem; transition: all 0.2s; display: flex; align-items: center; line-height: 1; z-index: 10; font-family: inherit; }
+        .theme-toggle:hover { border-color: rgba(15,163,163,0.45); color: #111827; }
+        html[data-theme="dark"] .theme-toggle { border-color: rgba(255,255,255,0.06); color: #9AABB4; }
+        html[data-theme="dark"] .theme-toggle:hover { border-color: rgba(25,199,199,0.45); color: #E8EDEF; }
+        @media (prefers-color-scheme: dark) { .theme-toggle { border-color: rgba(255,255,255,0.06); color: #9AABB4; } .theme-toggle:hover { border-color: rgba(25,199,199,0.45); color: #E8EDEF; } }
         @media (max-width: 600px) { .container { padding: 30px 15px; } h1 { font-size: 28px; } .language-grid { gap: 10px; } .lang-button { padding: 14px 16px; font-size: 14px; width: calc(50% - 5px); } }
     </style>
+    <script>(function(){var s=null;try{s=localStorage.getItem("kaiboard-theme")}catch(e){}if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s)}else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme:dark)").matches){document.documentElement.setAttribute("data-theme","dark")}})();</script>
 </head>
 <body>
     <div class="container">
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
         <div class="logo">📋</div>
         <h1>k<span class="ai">AI</span>board</h1>
         <p class="subtitle">Terms of Use - Select your language</p>
@@ -60,5 +83,10 @@
             <p><a href="https://www.kaiboard.eu" target="_blank">www.kaiboard.eu</a> | <a href="mailto:support@kaiboard.eu">support@kaiboard.eu</a></p>
         </div>
     </div>
+    <script>
+        function toggleTheme(){var h=document.documentElement;var cur=h.getAttribute("data-theme");var isDark=cur?cur==="dark":window.matchMedia("(prefers-color-scheme:dark)").matches;var next=isDark?"light":"dark";h.setAttribute("data-theme",next);try{localStorage.setItem("kaiboard-theme",next)}catch(e){}updateThemeIcon(next)}
+        function updateThemeIcon(t){var b=document.getElementById("themeToggle");if(b)b.textContent=t==="dark"?"☀️":"🌙"}
+        (function(){var saved=null;try{saved=localStorage.getItem("kaiboard-theme")}catch(e){}if(saved==="dark"||saved==="light"){updateThemeIcon(saved)}else{var d=window.matchMedia("(prefers-color-scheme:dark)").matches;updateThemeIcon(d?"dark":"light")}})()
+    </script>
 </body>
 </html>
