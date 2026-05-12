@@ -74,7 +74,7 @@
 
 <main class="content">
     <h1>Política de Privacidad</h1>
-    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Última actualización: 26 de Marzo de 2026 &mdash; Versión: 3.0</p>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Última actualización: 10 de Mayo de 2026 &mdash; Versión: 3.1</p>
 
     <div class="card">
         <h2>1. Responsable del Tratamiento</h2>
@@ -519,6 +519,46 @@
     <li>✅ Prevenir fraude y abuso</li>
     <li>✅ Gestionar reembolsos y disputas con Google Play</li>
 </ul>
+
+        <h3>3.5 Copia de Seguridad Iniciada por el Usuario (Cifrada)</h3>
+
+        <p>kAIboard le permite crear manualmente una copia de seguridad cifrada de los datos de la aplicación y restaurarla en el mismo dispositivo u otro. La función de copia de seguridad es completamente opcional y se activa únicamente por usted desde <strong>Configuración &rarr; Copia de seguridad</strong>.</p>
+
+        <h4>Contenido de la copia de seguridad</h4>
+        <ul>
+            <li>✅ Configuración y preferencias de la aplicación (sin tokens sensibles)</li>
+            <li>✅ Vocabulario predictivo &mdash; su base de datos de aprendizaje personal (<code>kb_user_learning.db</code>)</li>
+        </ul>
+
+        <h4>Lo que NO se incluye</h4>
+        <ul>
+            <li>❌ Historial del portapapeles &mdash; solo local, nunca incluido en la copia de seguridad</li>
+            <li>❌ Mensajes programados &mdash; solo local, nunca incluidos</li>
+            <li>❌ Tokens de suscripción &mdash; gestionados via Firebase Cloud Sync</li>
+            <li>❌ Claves API &mdash; siempre enmascaradas y excluidas</li>
+        </ul>
+
+        <h4>Cifrado</h4>
+        <ul>
+            <li>🔒 <strong>Algoritmo</strong>: AES-256-GCM</li>
+            <li>🔒 <strong>Derivación de clave</strong>: PBKDF2-SHA256, 600.000 iteraciones (OWASP 2023)</li>
+            <li>🔒 <strong>Salt aleatorio</strong> (16 bytes) e IV (12 bytes) por copia de seguridad</li>
+        </ul>
+
+        <h4>Responsabilidad de la frase de contraseña</h4>
+        <p>Usted elige una frase de contraseña al crear la copia de seguridad. <strong>La frase de contraseña nunca es almacenada por la aplicación.</strong> Si la pierde, la copia de seguridad es irrecuperable.</p>
+
+        <h4>Destino de la copia de seguridad</h4>
+        <p>Usted elige dónde guardar el archivo de copia de seguridad (<code>.kaibak</code>):</p>
+        <ul>
+            <li>📁 <strong>Almacenamiento local</strong>: una carpeta que selecciona en su dispositivo</li>
+            <li>☁️ <strong>Su Google Drive</strong>: solo su cuenta personal</li>
+        </ul>
+        <p><strong>Los servidores de kAIboard nunca reciben ni almacenan su archivo de copia de seguridad.</strong></p>
+
+        <h4>Base legal</h4>
+        <p>Artículo 6(1)(a) RGPD &mdash; Consentimiento. Usted inicia cada copia de seguridad.</p>
+
     </div>
 
     <div class="card">
@@ -653,6 +693,11 @@
         <td>Hasta cerrar aplicación</td>
         <td>Automática</td>
     </tr>
+    <tr>
+        <td><strong>Entradas fijadas del portapapeles</strong></td>
+        <td>365 días desde la fecha de fijación</td>
+        <td>Automática (DataCleanupWorker cada 24h)</td>
+    </tr>
 </table></div>
 
 <div class="highlight">
@@ -754,6 +799,9 @@
     <li>🔒 <strong>Minimización de datos</strong>: Solo recopilamos lo estrictamente necesario</li>
     <li>🔒 <strong>Eliminación automática</strong>: Datos eliminados después de los períodos de conservación previstos (90-365 días)</li>
     <li>🔒 <strong>Clave API protegida</strong>: La clave API de OpenAI nunca se expone en el cliente, se almacena como secreto en el relé de Cloudflare</li>
+    <li>🔒 <strong>Cifrado de copia de seguridad</strong>: Los archivos de copia de seguridad (<code>.kaibak</code>) se cifran con AES-256-GCM; la clave se deriva mediante PBKDF2-SHA256 (600.000 iteraciones) a partir de una frase de contraseña elegida por el usuario &mdash; nunca almacenada por la aplicación</li>
+    <li>🔒 <strong>Soberanía de la copia de seguridad</strong>: Los archivos de copia de seguridad se guardan en una ubicación que tú controlas (dispositivo local o tu Google Drive personal) &mdash; nunca se envían a los servidores de kAIboard</li>
+    <li>🔒 <strong>Propiedad de la frase de contraseña</strong>: La frase de contraseña de la copia de seguridad nunca es almacenada ni recuperada por kAIboard &mdash; solo tú la conoces</li>
 </ul>
     </div>
 

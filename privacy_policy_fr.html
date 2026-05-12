@@ -74,7 +74,7 @@
 
 <main class="content">
     <h1>Politique de Confidentialité</h1>
-    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Dernière mise à jour : 26 Mars 2026 &mdash; Version : 3.0</p>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Dernière mise à jour : 10 Mai 2026 &mdash; Version : 3.1</p>
 
     <div class="card">
         <h2>1. Responsable du Traitement</h2>
@@ -519,6 +519,46 @@
     <li>✅ Prévenir la fraude et les abus</li>
     <li>✅ Gérer les remboursements et les litiges avec Google Play</li>
 </ul>
+
+        <h3>3.5 Sauvegarde initiée par l'utilisateur (chiffrée)</h3>
+
+        <p>kAIboard vous permet de créer manuellement une sauvegarde chiffrée de vos données d'application et de la restaurer sur le même appareil ou sur un autre. La fonction de sauvegarde est entièrement facultative et déclenchée uniquement par vous depuis <strong>Paramètres &rarr; Sauvegarde</strong>.</p>
+
+        <h4>Contenu de la sauvegarde</h4>
+        <ul>
+            <li>✅ Paramètres et préférences de l'application (hors tokens sensibles)</li>
+            <li>✅ Vocabulaire prédictif &mdash; votre base d'apprentissage personnelle (<code>kb_user_learning.db</code>)</li>
+        </ul>
+
+        <h4>Ce qui N'est PAS inclus</h4>
+        <ul>
+            <li>❌ Historique du presse-papiers &mdash; local uniquement, jamais sauvegardé</li>
+            <li>❌ Messages programmés &mdash; local uniquement, jamais sauvegardés</li>
+            <li>❌ Tokens d'abonnement &mdash; gérés via Firebase Cloud Sync, non inclus</li>
+            <li>❌ Clés API &mdash; toujours masquées et exclues</li>
+        </ul>
+
+        <h4>Chiffrement</h4>
+        <ul>
+            <li>🔒 <strong>Algorithme</strong> : AES-256-GCM (chiffrement authentifié)</li>
+            <li>🔒 <strong>Dérivation de clé</strong> : PBKDF2-SHA256, 600 000 itérations (OWASP 2023)</li>
+            <li>🔒 <strong>Salt aléatoire</strong> (16 octets) et IV (12 octets) par sauvegarde</li>
+        </ul>
+
+        <h4>Responsabilité de la phrase secrète</h4>
+        <p>Vous choisissez une phrase secrète lors de la création. <strong>Elle n'est jamais stockée par l'application.</strong> En cas de perte, la sauvegarde est irrécupérable.</p>
+
+        <h4>Destination de la sauvegarde</h4>
+        <p>Vous choisissez où enregistrer le fichier de sauvegarde (<code>.kaibak</code>) :</p>
+        <ul>
+            <li>📁 <strong>Stockage local</strong> : un dossier de votre choix sur l'appareil</li>
+            <li>☁️ <strong>Votre Google Drive</strong> : uniquement votre compte personnel</li>
+        </ul>
+        <p><strong>Les serveurs kAIboard ne reçoivent ni ne stockent jamais votre fichier de sauvegarde.</strong></p>
+
+        <h4>Base juridique</h4>
+        <p>Article 6(1)(a) RGPD &mdash; Consentement. Vous initiez chaque sauvegarde vous-même.</p>
+
     </div>
 
     <div class="card">
@@ -653,6 +693,11 @@
         <td>Jusqu'à la fermeture de l'application</td>
         <td>Automatique</td>
     </tr>
+    <tr>
+        <td><strong>Entrées épinglées du presse-papiers</strong></td>
+        <td>365 jours à compter de la date d'épinglage</td>
+        <td>Automatique (DataCleanupWorker toutes les 24h)</td>
+    </tr>
 </table></div>
 
 <div class="highlight">
@@ -756,6 +801,9 @@
     <li>🔒 <strong>Minimisation des données</strong> : Nous ne collectons que le strict nécessaire</li>
     <li>🔒 <strong>Suppression automatique</strong> : Données supprimées après les périodes de conservation prévues (90-365 jours)</li>
     <li>🔒 <strong>Clé API protégée</strong> : La clé API OpenAI n'est jamais exposée dans le client, elle est stockée comme secret dans le relais Cloudflare</li>
+    <li>🔒 <strong>Chiffrement de la sauvegarde</strong> : Les fichiers de sauvegarde (<code>.kaibak</code>) sont chiffrés avec AES-256-GCM ; la clé est dérivée via PBKDF2-SHA256 (600 000 itérations) à partir d'une phrase secrète choisie par l'utilisateur &mdash; jamais stockée par l'application</li>
+    <li>🔒 <strong>Souveraineté de la sauvegarde</strong> : Les fichiers de sauvegarde sont stockés dans un emplacement que vous contrôlez (stockage local ou votre Google Drive personnel) &mdash; jamais envoyés aux serveurs kAIboard</li>
+    <li>🔒 <strong>Propriété de la phrase secrète</strong> : La phrase secrète de sauvegarde n'est jamais stockée ni récupérable par kAIboard &mdash; vous seul la connaissez</li>
 </ul>
     </div>
 

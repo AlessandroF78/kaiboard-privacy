@@ -74,7 +74,7 @@
 
 <main class="content">
     <h1>Informativa sulla Privacy</h1>
-    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Ultimo aggiornamento: 26 Marzo 2026 &mdash; Versione: 3.0</p>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Ultimo aggiornamento: 10 Maggio 2026 &mdash; Versione: 3.1</p>
 
     <div class="card">
         <h2>1. Titolare del Trattamento</h2>
@@ -519,6 +519,47 @@
     <li>✅ Prevenire frodi e abusi</li>
     <li>✅ Gestire rimborsi e controversie con Google Play</li>
 </ul>
+
+        <h3>3.5 Backup Avviato dall&apos;Utente (Cifrato)</h3>
+
+        <p>kAIboard consente di creare manualmente un backup cifrato dei dati dell&apos;app e di ripristinarlo sullo stesso dispositivo o su un dispositivo diverso. La funzione di backup è completamente opzionale e viene attivata solo da te tramite <strong>Impostazioni &rarr; Backup</strong>.</p>
+
+        <h4>Cosa è incluso nel backup</h4>
+        <ul>
+            <li>✅ Impostazioni e preferenze dell&apos;app (esclusi i token sensibili)</li>
+            <li>✅ Vocabolario predittivo &mdash; il tuo database di apprendimento personale (<code>kb_user_learning.db</code>)</li>
+        </ul>
+
+        <h4>Cosa NON è incluso nel backup</h4>
+        <ul>
+            <li>❌ Cronologia degli appunti &mdash; solo locale per design, mai inclusa nel backup</li>
+            <li>❌ Messaggi programmati &mdash; solo locale per design, mai inclusi nel backup</li>
+            <li>❌ Token di abbonamento &mdash; gestiti tramite Firebase Cloud Sync, non inclusi</li>
+            <li>❌ Chiavi API &mdash; sempre mascherate ed escluse</li>
+        </ul>
+
+        <h4>Cifratura</h4>
+        <p>Il backup viene cifrato sul dispositivo <strong>prima</strong> di essere salvato. Utilizziamo:</p>
+        <ul>
+            <li>🔒 <strong>Algoritmo</strong>: AES-256-GCM (cifratura autenticata &mdash; rileva manomissioni)</li>
+            <li>🔒 <strong>Derivazione chiave</strong>: PBKDF2-SHA256 con 600.000 iterazioni (raccomandazione OWASP 2023)</li>
+            <li>🔒 <strong>Salt casuale per backup</strong> (16 byte) e IV (12 byte) &mdash; ogni backup è unico</li>
+        </ul>
+
+        <h4>Responsabilità della passphrase</h4>
+        <p>Scegli una passphrase alla creazione del backup. <strong>La passphrase non viene mai memorizzata dall&apos;app.</strong> In caso di smarrimento della passphrase, il backup non può essere recuperato &mdash; non esiste alcun meccanismo di recupero.</p>
+
+        <h4>Destinazione del backup</h4>
+        <p>Scegli dove salvare il file di backup (<code>.kaibak</code>):</p>
+        <ul>
+            <li>📁 <strong>Archiviazione locale</strong>: una cartella da te selezionata sul dispositivo</li>
+            <li>☁️ <strong>Il tuo Google Drive</strong>: solo il tuo account personale</li>
+        </ul>
+        <p><strong>I server di kAIboard non ricevono né memorizzano mai il file di backup.</strong> Il file cifrato rimane interamente sotto il tuo controllo.</p>
+
+        <h4>Base giuridica</h4>
+        <p>Art. 6(1)(a) GDPR &mdash; Consenso. Avvii tu stesso ogni backup. Puoi eliminare il file <code>.kaibak</code> in qualsiasi momento dalla destinazione di archiviazione scelta.</p>
+
     </div>
 
     <div class="card">
@@ -653,6 +694,11 @@
         <td>Fino alla chiusura dell'app</td>
         <td>Automatica</td>
     </tr>
+    <tr>
+        <td><strong>Cronologia Appunti Fissati</strong></td>
+        <td>365 giorni dalla data di fissaggio</td>
+        <td>Automatica (DataCleanupWorker ogni 24h)</td>
+    </tr>
 </table></div>
 
 <div class="highlight">
@@ -755,6 +801,9 @@
     <li>🔒 <strong>Minimizzazione dei dati</strong>: Raccogliamo solo lo strettamente necessario</li>
     <li>🔒 <strong>Eliminazione automatica</strong>: Dati eliminati dopo i periodi di conservazione previsti (90-365 giorni)</li>
     <li>🔒 <strong>API Key protetta</strong>: La chiave API OpenAI non è mai esposta nel client, è salvata come secret nel relay Cloudflare</li>
+    <li>🔒 <strong>Crittografia backup utente</strong>: I file di backup (<code>.kaibak</code>) sono cifrati con AES-256-GCM; la chiave è derivata tramite PBKDF2-SHA256 (600.000 iterazioni) dalla passphrase scelta dall&apos;utente &mdash; mai salvata dall&apos;app</li>
+    <li>🔒 <strong>Sovranità del backup</strong>: I file di backup sono salvati in una posizione sotto il tuo controllo (dispositivo locale o il tuo Google Drive personale) &mdash; non vengono mai inviati ai server kAIboard</li>
+    <li>🔒 <strong>Proprietà della passphrase</strong>: La passphrase di backup non viene mai memorizzata o recuperata da kAIboard &mdash; solo tu la conosci</li>
 </ul>
     </div>
 

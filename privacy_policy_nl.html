@@ -74,7 +74,7 @@
 
 <main class="content">
     <h1>Privacybeleid</h1>
-    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Laatst bijgewerkt: 26 Maart 2026 &mdash; Versie: 3.0</p>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Laatst bijgewerkt: 10 Mei 2026 &mdash; Versie: 3.1</p>
 
     <div class="card">
         <h2>1. Verwerkingsverantwoordelijke</h2>
@@ -519,6 +519,46 @@
     <li>✅ Fraude en misbruik te voorkomen</li>
     <li>✅ Terugbetalingen en geschillen met Google Play af te handelen</li>
 </ul>
+
+        <h3>3.5 Door gebruiker geïnitieerde back-up (versleuteld)</h3>
+
+        <p>kAIboard stelt u in staat handmatig een versleutelde back-up van uw app-gegevens te maken en deze te herstellen op hetzelfde of een ander apparaat. De back-upfunctie is volledig optioneel en wordt uitsluitend door u geactiveerd via <strong>Instellingen &rarr; Back-up</strong>.</p>
+
+        <h4>Wat is opgenomen in de back-up</h4>
+        <ul>
+            <li>✅ App-instellingen en -voorkeuren (zonder gevoelige tokens)</li>
+            <li>✅ Voorspellend woordenboek &mdash; uw persoonlijke leerdatabase (<code>kb_user_learning.db</code>)</li>
+        </ul>
+
+        <h4>Wat NIET is opgenomen</h4>
+        <ul>
+            <li>❌ Klembordgeschiedenis &mdash; alleen lokaal, nooit in back-up</li>
+            <li>❌ Geplande berichten &mdash; alleen lokaal, nooit in back-up</li>
+            <li>❌ Abonnementstokens &mdash; beheerd via Firebase Cloud Sync</li>
+            <li>❌ API-sleutels &mdash; altijd gemaskeerd en uitgesloten</li>
+        </ul>
+
+        <h4>Versleuteling</h4>
+        <ul>
+            <li>🔒 <strong>Algoritme</strong>: AES-256-GCM</li>
+            <li>🔒 <strong>Sleutelafleiding</strong>: PBKDF2-SHA256, 600.000 iteraties (OWASP 2023)</li>
+            <li>🔒 <strong>Willekeurig salt</strong> (16 bytes) en IV (12 bytes) per back-up</li>
+        </ul>
+
+        <h4>Verantwoordelijkheid wachtwoordzin</h4>
+        <p>U kiest een wachtwoordzin bij het maken van de back-up. <strong>De wachtwoordzin wordt nooit opgeslagen door de app.</strong> Bij verlies is de back-up onherstelbaar.</p>
+
+        <h4>Back-upbestemming</h4>
+        <p>U kiest waar het back-upbestand (<code>.kaibak</code>) wordt opgeslagen:</p>
+        <ul>
+            <li>📁 <strong>Lokale opslag</strong>: een door u geselecteerde map op het apparaat</li>
+            <li>☁️ <strong>Uw Google Drive</strong>: alleen uw persoonlijke account</li>
+        </ul>
+        <p><strong>kAIboard-servers ontvangen of slaan uw back-upbestand nooit op.</strong></p>
+
+        <h4>Rechtsgrondslag</h4>
+        <p>Artikel 6(1)(a) AVG &mdash; Toestemming. U initieert elke back-up zelf.</p>
+
     </div>
 
     <div class="card">
@@ -653,6 +693,11 @@
         <td>Tot app wordt gesloten</td>
         <td>Automatisch</td>
     </tr>
+    <tr>
+        <td><strong>Vastgezette klembordinvoer</strong></td>
+        <td>365 dagen vanaf de vastzetdatum</td>
+        <td>Automatisch (DataCleanupWorker elke 24u)</td>
+    </tr>
 </table></div>
 
 <div class="highlight">
@@ -755,6 +800,9 @@
     <li>🔒 <strong>Gegevensminimalisatie</strong>: We verzamelen alleen wat strikt noodzakelijk is</li>
     <li>🔒 <strong>Automatische verwijdering</strong>: Gegevens verwijderd na de voorziene bewaarperiodes (90-365 dagen)</li>
     <li>🔒 <strong>Beschermde API-sleutel</strong>: De OpenAI API-sleutel wordt nooit blootgesteld in de client, deze is opgeslagen als secret in de Cloudflare-relay</li>
+    <li>🔒 <strong>Back-up versleuteling</strong>: Back-upbestanden (<code>.kaibak</code>) worden versleuteld met AES-256-GCM; de sleutel wordt afgeleid via PBKDF2-SHA256 (600.000 iteraties) uit een door de gebruiker gekozen wachtwoordzin &mdash; nooit opgeslagen door de app</li>
+    <li>🔒 <strong>Back-up datasouvereiniteit</strong>: Back-upbestanden worden opgeslagen op een locatie die u beheert (lokaal apparaat of uw persoonlijke Google Drive) &mdash; nooit verzonden naar kAIboard-servers</li>
+    <li>🔒 <strong>Eigenaarschap wachtwoordzin</strong>: De back-upwachtwoordzin wordt nooit opgeslagen of hersteld door kAIboard &mdash; alleen u kent deze</li>
 </ul>
     </div>
 

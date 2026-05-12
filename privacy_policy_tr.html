@@ -74,7 +74,7 @@
 
 <main class="content">
     <h1>Gizlilik Politikası</h1>
-    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Son güncelleme: 26 Mart 2026 &mdash; Sürüm: 3.0</p>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Son güncelleme: 10 Mayıs 2026 &mdash; Sürüm: 3.1</p>
 
     <div class="card">
         <h2>1. Veri Sorumlusu</h2>
@@ -518,6 +518,46 @@
     <li>✅ Dolandırıcılığı ve kötüye kullanımı önleme</li>
     <li>✅ Google Play ile geri ödemeleri ve anlaşmazlıkları yönetme</li>
 </ul>
+
+        <h3>3.5 Kullanıcı Tarafından Başlatılan Yedekleme (Şifreli)</h3>
+
+        <p>kAIboard, uygulama verilerinizin şifreli yedeğini manuel olarak oluşturmanıza ve aynı veya farklı bir cihaza geri yüklemenize olanak tanır. Yedekleme özelliği tamamen isteğe bağlıdır ve yalnızca <strong>Ayarlar &rarr; Yedekleme</strong> bölümünden sizin tarafınızdan başlatılır.</p>
+
+        <h4>Yedeklemeye dahil edilenler</h4>
+        <ul>
+            <li>✅ Uygulama ayarları ve tercihleri (hassas tokenlar hariç)</li>
+            <li>✅ Tahmine dayalı kelime hazinesi &mdash; kişisel öğrenme veritabanınız (<code>kb_user_learning.db</code>)</li>
+        </ul>
+
+        <h4>Yedeklemeye dahil EDİLMEYENLER</h4>
+        <ul>
+            <li>❌ Pano geçmişi &mdash; yalnızca yerel, hiçbir zaman yedeklenmez</li>
+            <li>❌ Zamanlanmış mesajlar &mdash; yalnızca yerel, hiçbir zaman yedeklenmez</li>
+            <li>❌ Abonelik tokenları &mdash; Firebase Cloud Sync üzerinden yönetilir</li>
+            <li>❌ API anahtarları &mdash; her zaman maskelenmiş ve hariç tutulmuş</li>
+        </ul>
+
+        <h4>Şifreleme</h4>
+        <ul>
+            <li>🔒 <strong>Algoritma</strong>: AES-256-GCM</li>
+            <li>🔒 <strong>Anahtar türetme</strong>: PBKDF2-SHA256, 600.000 yineleme (OWASP 2023)</li>
+            <li>🔒 <strong>Rastgele salt</strong> (16 bayt) ve IV (12 bayt) her yedekleme için</li>
+        </ul>
+
+        <h4>Parola sorumluluğu</h4>
+        <p>Yedekleme oluştururken bir parola seçersiniz. <strong>Parola uygulama tarafından hiçbir zaman saklanmaz.</strong> Parolayı kaybederseniz yedekleme kurtarılamaz.</p>
+
+        <h4>Yedekleme hedefi</h4>
+        <p>Yedek dosyasının (<code>.kaibak</code>) nereye kaydedileceğini siz seçersiniz:</p>
+        <ul>
+            <li>📁 <strong>Yerel depolama</strong>: cihazınızda seçtiğiniz bir klasör</li>
+            <li>☁️ <strong>Google Drive'ınız</strong>: yalnızca kişisel hesabınız</li>
+        </ul>
+        <p><strong>kAIboard sunucuları yedek dosyanızı asla almaz veya saklamaz.</strong></p>
+
+        <h4>Hukuki dayanak</h4>
+        <p>GDPR Madde 6(1)(a) &mdash; Rıza. Her yedeklemeyi kendiniz başlatırsınız.</p>
+
     </div>
 
     <div class="card">
@@ -652,6 +692,11 @@
         <td>Uygulama kapanana kadar</td>
         <td>Otomatik</td>
     </tr>
+    <tr>
+        <td><strong>Sabitlenmiş pano girişleri</strong></td>
+        <td>Sabitleme tarihinden itibaren 365 gün</td>
+        <td>Otomatik (DataCleanupWorker her 24 saatte bir)</td>
+    </tr>
 </table></div>
 
 <div class="highlight">
@@ -754,6 +799,9 @@
     <li>🔒 <strong>Veri minimizasyonu</strong>: Yalnızca kesinlikle gerekli olanı topluyoruz</li>
     <li>🔒 <strong>Otomatik silme</strong>: Veriler belirlenen saklama sürelerinden sonra silinir (90-365 gün)</li>
     <li>🔒 <strong>Korumalı API anahtarı</strong>: OpenAI API anahtarı istemcide asla açığa çıkmaz, Cloudflare aktarıcısında secret olarak saklanır</li>
+    <li>🔒 <strong>Yedekleme şifrelemesi</strong>: Yedek dosyaları (<code>.kaibak</code>) AES-256-GCM ile şifrelenir; anahtar, kullanıcı tarafından seçilen paroladan PBKDF2-SHA256 (600.000 iterasyon) ile türetilir &mdash; uygulama tarafından hiçbir zaman saklanmaz</li>
+    <li>🔒 <strong>Yedekleme veri egemenliği</strong>: Yedek dosyaları sizin kontrolünüzdeki bir konumda saklanır (yerel cihaz veya kişisel Google Drive'ınız) &mdash; kAIboard sunucularına hiçbir zaman gönderilmez</li>
+    <li>🔒 <strong>Parola sahipliği</strong>: Yedekleme parolası kAIboard tarafından hiçbir zaman saklanmaz veya kurtarılamaz &mdash; yalnızca siz bilirsiniz</li>
 </ul>
     </div>
 

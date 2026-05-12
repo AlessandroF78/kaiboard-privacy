@@ -74,7 +74,7 @@
 
 <main class="content">
     <h1>Polityka Prywatności</h1>
-    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Ostatnia aktualizacja: 26 Marca 2026 &mdash; Wersja: 3.0</p>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Ostatnia aktualizacja: 10 Maja 2026 &mdash; Wersja: 3.1</p>
 
     <div class="card">
         <h2>1. Administrator Danych</h2>
@@ -520,6 +520,46 @@
     <li>✅ Zapobiegania oszustwom i nadużyciom</li>
     <li>✅ Obsługi zwrotów i sporów z Google Play</li>
 </ul>
+
+        <h3>3.5 Kopia zapasowa inicjowana przez użytkownika (zaszyfrowana)</h3>
+
+        <p>kAIboard umożliwia ręczne tworzenie zaszyfrowanej kopii zapasowej danych aplikacji i przywracanie jej na tym samym lub innym urządzeniu. Funkcja kopii zapasowej jest całkowicie opcjonalna i uruchamiana wyłącznie przez użytkownika z poziomu <strong>Ustawienia &rarr; Kopia zapasowa</strong>.</p>
+
+        <h4>Co zawiera kopia zapasowa</h4>
+        <ul>
+            <li>✅ Ustawienia i preferencje aplikacji (bez wrażliwych tokenów)</li>
+            <li>✅ Słownik predykcyjny &mdash; osobista baza danych uczenia (<code>kb_user_learning.db</code>)</li>
+        </ul>
+
+        <h4>Czego NIE zawiera kopia zapasowa</h4>
+        <ul>
+            <li>❌ Historia schowka &mdash; tylko lokalna, nigdy nie uwzględniana w kopii zapasowej</li>
+            <li>❌ Zaplanowane wiadomości &mdash; tylko lokalne, nigdy nie uwzględniane</li>
+            <li>❌ Tokeny subskrypcji &mdash; zarządzane przez Firebase Cloud Sync</li>
+            <li>❌ Klucze API &mdash; zawsze maskowane i wykluczone</li>
+        </ul>
+
+        <h4>Szyfrowanie</h4>
+        <ul>
+            <li>🔒 <strong>Algorytm</strong>: AES-256-GCM</li>
+            <li>🔒 <strong>Wyprowadzanie klucza</strong>: PBKDF2-SHA256, 600 000 iteracji (OWASP 2023)</li>
+            <li>🔒 <strong>Losowe salt</strong> (16 bajtów) i IV (12 bajtów) na kopię zapasową</li>
+        </ul>
+
+        <h4>Odpowiedzialność za hasło</h4>
+        <p>Użytkownik wybiera hasło podczas tworzenia kopii zapasowej. <strong>Hasło nigdy nie jest przechowywane przez aplikację.</strong> W przypadku utraty hasła kopia zapasowa jest nieodwracalna.</p>
+
+        <h4>Miejsce docelowe kopii zapasowej</h4>
+        <p>Użytkownik wybiera, gdzie zapisać plik kopii zapasowej (<code>.kaibak</code>):</p>
+        <ul>
+            <li>📁 <strong>Pamięć lokalna</strong>: wybrany przez użytkownika folder na urządzeniu</li>
+            <li>☁️ <strong>Google Drive użytkownika</strong>: tylko konto osobiste</li>
+        </ul>
+        <p><strong>Serwery kAIboard nigdy nie otrzymują ani nie przechowują pliku kopii zapasowej.</strong></p>
+
+        <h4>Podstawa prawna</h4>
+        <p>Art. 6(1)(a) RODO &mdash; Zgoda. Użytkownik sam inicjuje każdą kopię zapasową.</p>
+
     </div>
 
     <div class="card">
@@ -654,6 +694,11 @@
         <td>Do zamknięcia aplikacji</td>
         <td>Automatyczne</td>
     </tr>
+    <tr>
+        <td><strong>Przypięte wpisy schowka</strong></td>
+        <td>365 dni od daty przypięcia</td>
+        <td>Automatyczne (DataCleanupWorker co 24h)</td>
+    </tr>
 </table></div>
 
 <div class="highlight">
@@ -756,6 +801,9 @@
     <li>🔒 <strong>Minimalizacja danych</strong>: Zbieramy tylko to, co ściśle niezbędne</li>
     <li>🔒 <strong>Automatyczne usuwanie</strong>: Dane usuwane po przewidzianych okresach przechowywania (90-365 dni)</li>
     <li>🔒 <strong>Chroniony klucz API</strong>: Klucz API OpenAI nigdy nie jest eksponowany w kliencie, jest zapisany jako secret w przekaźniku Cloudflare</li>
+    <li>🔒 <strong>Szyfrowanie kopii zapasowej</strong>: Pliki kopii zapasowej (<code>.kaibak</code>) są szyfrowane algorytmem AES-256-GCM; klucz jest wyprowadzany przez PBKDF2-SHA256 (600 000 iteracji) z hasła wybranego przez użytkownika &mdash; nigdy nie przechowywanego przez aplikację</li>
+    <li>🔒 <strong>Suwerenność kopii zapasowej</strong>: Pliki kopii zapasowej są przechowywane w lokalizacji kontrolowanej przez użytkownika (lokalne urządzenie lub osobisty Google Drive) &mdash; nigdy nie wysyłane na serwery kAIboard</li>
+    <li>🔒 <strong>Własność hasła</strong>: Hasło do kopii zapasowej nigdy nie jest przechowywane ani odzyskiwalne przez kAIboard &mdash; tylko użytkownik je zna</li>
 </ul>
     </div>
 

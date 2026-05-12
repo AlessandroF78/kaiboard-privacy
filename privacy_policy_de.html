@@ -74,7 +74,7 @@
 
 <main class="content">
     <h1>Datenschutzerklärung</h1>
-    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Letzte Aktualisierung: 26. März 2026 &mdash; Version: 3.0</p>
+    <p class="subtitle">k<span style="color:#0FA3A3">AI</span>board &mdash; Letzte Aktualisierung: 10. Mai 2026 &mdash; Version: 3.1</p>
 
     <div class="card">
         <h2>1. Verantwortlicher</h2>
@@ -519,6 +519,47 @@
     <li>✅ Betrug und Missbrauch zu verhindern</li>
     <li>✅ Rückerstattungen und Streitigkeiten mit Google Play zu verwalten</li>
 </ul>
+
+        <h3>3.5 Vom Benutzer initiiertes Backup (Verschlüsselt)</h3>
+
+        <p>kAIboard ermöglicht es Ihnen, manuell ein verschlüsseltes Backup Ihrer App-Daten zu erstellen und es auf demselben oder einem anderen Gerät wiederherzustellen. Die Backup-Funktion ist vollständig optional und wird nur von Ihnen über <strong>Einstellungen &rarr; Backup</strong> gestartet.</p>
+
+        <h4>Was im Backup enthalten ist</h4>
+        <ul>
+            <li>✅ App-Einstellungen und -Präferenzen (ohne sensible Tokens)</li>
+            <li>✅ Prädiktiver Wortschatz &mdash; Ihre persönliche Lerndatenbank (<code>kb_user_learning.db</code>)</li>
+        </ul>
+
+        <h4>Was NICHT im Backup enthalten ist</h4>
+        <ul>
+            <li>❌ Zwischenablageverlauf &mdash; nur lokal gespeichert, nie gesichert</li>
+            <li>❌ Geplante Nachrichten &mdash; nur lokal gespeichert, nie gesichert</li>
+            <li>❌ Abonnement-Tokens &mdash; über Firebase Cloud Sync verwaltet, nicht enthalten</li>
+            <li>❌ API-Schlüssel &mdash; immer maskiert und ausgeschlossen</li>
+        </ul>
+
+        <h4>Verschlüsselung</h4>
+        <p>Ihr Backup wird auf dem Gerät verschlüsselt, <strong>bevor</strong> es gespeichert wird:</p>
+        <ul>
+            <li>🔒 <strong>Algorithmus</strong>: AES-256-GCM (authentifizierte Verschlüsselung)</li>
+            <li>🔒 <strong>Schlüsselableitung</strong>: PBKDF2-SHA256 mit 600.000 Iterationen (OWASP 2023)</li>
+            <li>🔒 <strong>Zufälliges Salt</strong> (16 Byte) und IV (12 Byte) pro Backup</li>
+        </ul>
+
+        <h4>Verantwortung für die Passphrase</h4>
+        <p>Sie wählen eine Passphrase beim Erstellen des Backups. <strong>Die Passphrase wird von der App niemals gespeichert.</strong> Bei Verlust der Passphrase ist das Backup nicht wiederherstellbar.</p>
+
+        <h4>Backup-Ziel</h4>
+        <p>Sie wählen, wo die Backup-Datei (<code>.kaibak</code>) gespeichert wird:</p>
+        <ul>
+            <li>📁 <strong>Lokaler Speicher</strong>: ein von Ihnen gewählter Ordner auf dem Gerät</li>
+            <li>☁️ <strong>Ihr Google Drive</strong>: nur Ihr persönliches Konto</li>
+        </ul>
+        <p><strong>kAIboard-Server empfangen oder speichern Ihre Backup-Datei niemals.</strong></p>
+
+        <h4>Rechtsgrundlage</h4>
+        <p>Art. 6(1)(a) DSGVO &mdash; Einwilligung. Sie initiieren jedes Backup selbst. Sie können die Datei <code>.kaibak</code> jederzeit vom gewählten Speicherort löschen.</p>
+
     </div>
 
     <div class="card">
@@ -653,6 +694,11 @@
         <td>Bis App geschlossen wird</td>
         <td>Automatisch</td>
     </tr>
+    <tr>
+        <td><strong>Angepinnte Zwischenablage-Einträge</strong></td>
+        <td>365 Tage ab Anheftungsdatum</td>
+        <td>Automatisch (DataCleanupWorker alle 24h)</td>
+    </tr>
 </table></div>
     </div>
 
@@ -751,6 +797,9 @@
     <li>🔒 <strong>Datenminimierung</strong>: Wir sammeln nur das absolut Notwendige</li>
     <li>🔒 <strong>Automatische Löschung</strong>: Daten werden nach den vorgesehenen Aufbewahrungszeiträumen gelöscht (90-365 Tage)</li>
     <li>🔒 <strong>Geschützter API-Schlüssel</strong>: Der OpenAI-API-Schlüssel wird niemals im Client offengelegt, er wird als Secret im Cloudflare-Relais gespeichert</li>
+    <li>🔒 <strong>Backup-Verschlüsselung</strong>: Backup-Dateien (<code>.kaibak</code>) werden mit AES-256-GCM verschlüsselt; der Schlüssel wird per PBKDF2-SHA256 (600.000 Iterationen) aus einer vom Benutzer gewählten Passphrase abgeleitet &mdash; niemals von der App gespeichert</li>
+    <li>🔒 <strong>Backup-Datensouveränität</strong>: Backup-Dateien werden an einem Ort gespeichert, den Sie kontrollieren (lokales Gerät oder Ihr persönliches Google Drive) &mdash; niemals an kAIboard-Server gesendet</li>
+    <li>🔒 <strong>Passphrase-Eigentümerschaft</strong>: Die Backup-Passphrase wird von kAIboard weder gespeichert noch wiederhergestellt &mdash; nur Sie kennen sie</li>
 </ul>
     </div>
 
