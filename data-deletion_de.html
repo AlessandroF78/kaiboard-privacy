@@ -114,7 +114,7 @@
         </tr>
         <tr>
             <td><strong>Lerndaten löschen</strong></td>
-            <td>Gelernte Wörter für personalisierte Vorschläge (alle 13 Sprachen)</td>
+            <td>Gelernte Wörter für personalisierte Vorschläge (alle 13 Sprachen) und erlernte Wörter des chinesischen Pinyin (user.dict + user.history)</td>
             <td>Vorhersagetext beginnt von vorne.</td>
         </tr>
         <tr>
@@ -122,6 +122,8 @@
             <td>
                 <ul style="margin: 5px 0; padding-left: 20px;">
                     <li>Lerndaten (13 Sprachen)</li>
+                        <li>Erlernte Wörter des chinesischen Pinyin (user.dict + user.history)</li>
+                        <li>Chinesische Pinyin-Datendateien (sc.dict + zh_CN.lm)</li>
                     <li>Alle Einstellungen und Präferenzen</li>
                     <li>App-Status und Kontakt-Sprach-Zuweisungen</li>
                     <li>Abonnement-Benachrichtigungen</li>
@@ -367,6 +369,16 @@
             <td>Hunspell-Wörterbücher (aus Assets kopiert)</td>
             <td>Lokal (Gerät)</td>
             <td>Schaltfläche „Alle lokalen Daten löschen"</td>
+        </tr>
+        <tr>
+            <td>Chinesische Pinyin-Datendateien (sc.dict, zh_CN.lm)</td>
+            <td>Lokal (Gerät) — filesDir/pinyin/</td>
+            <td>Schaltfläche „Alle lokalen Daten löschen" oder Entfernung im Bildschirm Offline-Modelle</td>
+        </tr>
+        <tr>
+            <td>Erlernte Wörter des chinesischen Pinyin (user.dict, user.history)</td>
+            <td>Lokal (Gerät) — filesDir/pinyin/</td>
+            <td>Schaltfläche „Lerndaten löschen" oder „Alle lokalen Daten löschen"</td>
         </tr>
         <tr>
             <td>Cache für Vokabularien und Wörterbücher (im Arbeitsspeicher)</td>

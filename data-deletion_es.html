@@ -122,6 +122,8 @@
             <td>
                 <ul style="margin: 5px 0; padding-left: 20px;">
                     <li>Datos de aprendizaje (13 idiomas)</li>
+                        <li>Palabras aprendidas de Pinyin chino (user.dict + user.history)</li>
+                        <li>Archivos de datos Pinyin chino (sc.dict + zh_CN.lm)</li>
                     <li>Todas las preferencias y configuraciones</li>
                     <li>Estado de la app y asignaciones contacto-idioma</li>
                     <li>Alertas de suscripción</li>
@@ -368,6 +370,16 @@
             <td>Botón "Eliminar Todos los Datos Locales"</td>
         </tr>
         <tr>
+            <td>Archivos de datos Pinyin chino (sc.dict, zh_CN.lm)</td>
+            <td>Local (dispositivo) — filesDir/pinyin/</td>
+            <td>Botón "Eliminar Todos los Datos Locales" o eliminación desde la pantalla Modelos Offline</td>
+        </tr>
+        <tr>
+            <td>Palabras aprendidas de Pinyin chino (user.dict, user.history)</td>
+            <td>Local (dispositivo) — filesDir/pinyin/</td>
+            <td>Botón "Eliminar Datos de Aprendizaje" o "Eliminar Todos los Datos Locales"</td>
+        </tr>
+        <tr>
             <td>Caché de Vocabularios y Diccionarios (en memoria)</td>
             <td>RAM (volátil)</td>
             <td>Botón "Eliminar Todos los Datos Locales" o cierre de la app</td>
@@ -376,6 +388,16 @@
             <td>Caché de la App (archivos temporales, informes de errores locales, caché WebView)</td>
             <td>Local (dispositivo)</td>
             <td>Botón "Eliminar Todos los Datos Locales"</td>
+        </tr>
+        <tr>
+            <td>Archivos de datos Pinyin chino (sc.dict, zh_CN.lm)</td>
+            <td>Local (dispositivo) — filesDir/pinyin/</td>
+            <td>Botón "Eliminar Todos los Datos Locales" o eliminación desde la pantalla Modelos Offline</td>
+        </tr>
+        <tr>
+            <td>Palabras aprendidas de Pinyin chino (user.dict, user.history)</td>
+            <td>Local (dispositivo) — filesDir/pinyin/</td>
+            <td>Botón "Eliminar Datos de Aprendizaje" o "Eliminar Todos los Datos Locales"</td>
         </tr>
         <tr>
             <td>Caché de Traducción</td>
@@ -440,7 +462,7 @@
     <p>Sí, pero con una distinción importante. Si tu suscripción aún está <strong>activa y en renovación automática</strong>, la aplicación te redirigirá a Google Play para cancelarla primero. Una vez cancelada la suscripción (período de gracia), puedes eliminar tus datos en la nube en cualquier momento: la eliminación es inmediata e implica la <strong>renuncia definitiva</strong> al período restante ya pagado y a tu saldo de tokens actual. Esta elección es irreversible. <strong>Atención:</strong> la reinstalación de la aplicación en un dispositivo completamente nuevo durante el período de gracia podría provocar la pérdida del período restante y del saldo de tokens por motivos de seguridad. En dispositivos ya registrados, la restauración se realiza automáticamente.</p>
 
     ¿Qué sucede con los modelos predictivos, los paquetes de traducción y los diccionarios descargados?
-    <p>Se eliminan mediante el botón "Eliminar Todos los Datos Locales". En el siguiente uso, los modelos predictivos deberán descargarse nuevamente desde la pantalla de Modelos Offline, los paquetes de traducción desde la pantalla Paquetes de Traducción, y los diccionarios se copiarán automáticamente en el primer uso del idioma.</p>
+    <p>Se eliminan mediante el botón "Eliminar Todos los Datos Locales". En el siguiente uso, los modelos predictivos deberán descargarse nuevamente desde la pantalla de Modelos Offline (incluidos los archivos de datos Pinyin chino sc.dict y zh_CN.lm), los paquetes de traducción desde la pantalla Paquetes de Traducción, y los diccionarios se copiarán automáticamente en el primer uso del idioma. Las palabras aprendidas de Pinyin chino (user.dict + user.history) también se eliminan con el botón "Eliminar Datos de Aprendizaje".</p>
     </div>
 
     <div class="card">

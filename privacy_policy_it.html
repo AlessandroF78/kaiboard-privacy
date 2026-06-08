@@ -390,6 +390,8 @@
     <li>✅ <strong>Modelli predittivi N-gram</strong> (scaricati dall'utente, salvati localmente)</li>
     <li>✅ <strong>Pacchetti traduzione on-device</strong> (ML Kit, scaricati dall'utente, ~30 MB per lingua, gestiti da Google Play Services)</li>
     <li>✅ <strong>Dizionari Hunspell</strong> (copiati da assets, salvati localmente)</li>
+        <li>✅ <strong>File dati Pinyin cinese</strong> (sc.dict + zh_CN.lm, scaricati dall'utente, salvati localmente in filesDir/pinyin/)</li>
+        <li>✅ <strong>Parole apprese Pinyin cinese</strong> (user.dict + user.history, generate dal motore libime, salvate localmente in filesDir/pinyin/)</li>
     <li>✅ <strong>Alert abbonamento</strong> (notifiche locali su utilizzo)</li>
 </ul>
 
@@ -727,7 +729,7 @@
 
 <ul>
     <li>✅ <strong>Elimina dati cloud</strong>: Rimuove dati abbonamento, cronologia abbonamenti, cronologia acquisti e log attività da Firebase</li>
-    <li>✅ <strong>Elimina dati apprendimento</strong>: Rimuove parole apprese per suggerimenti (tutte le 13 lingue)</li>
+    <li>✅ <strong>Elimina dati apprendimento</strong>: Rimuove parole apprese per suggerimenti (tutte le 13 lingue) e le parole apprese Pinyin cinese (user.dict + user.history)</li>
     <li>✅ <strong>Elimina tutti i dati locali</strong>: Rimuove tutte le preferenze, dati sul dispositivo, modelli scaricati, dizionari e cache</li>
 </ul>
 
@@ -781,7 +783,7 @@
 <ol>
     <li><strong>Esporta i tuoi dati (JSON)</strong>: Export completo dati locali e cloud in formato machine-readable (Art. 15 + Art. 20)</li>
     <li><strong>Elimina dati cloud</strong>: Dati abbonamento + cronologia abbonamenti + cronologia acquisti + log attività (irreversibile - richiede annullamento abbonamento se attivo)</li>
-    <li><strong>Elimina dati apprendimento</strong>: Parole apprese (13 lingue)</li>
+    <li><strong>Elimina dati apprendimento</strong>: Parole apprese (13 lingue) + parole apprese Pinyin cinese (user.dict + user.history)</li>
     <li><strong>Elimina tutti i dati locali</strong>: Tutte le preferenze, modelli scaricati, dizionari, cache (riavvia app)</li>
 </ol>
 

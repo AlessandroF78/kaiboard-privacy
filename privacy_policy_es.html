@@ -390,6 +390,8 @@
     <li>✅ <strong>Modelos predictivos N-gram</strong> (descargados por el usuario, guardados localmente)</li>
     <li>✅ <strong>Paquetes de traducción en el dispositivo</strong> (ML Kit, descargados por el usuario, ~30 MB por idioma, gestionados por Google Play Services)</li>
     <li>✅ <strong>Diccionarios Hunspell</strong> (copiados de assets, guardados localmente)</li>
+        <li>✅ <strong>Archivos de datos Pinyin chino</strong> (sc.dict + zh_CN.lm, descargados por el usuario, guardados localmente en filesDir/pinyin/)</li>
+        <li>✅ <strong>Palabras aprendidas de Pinyin chino</strong> (user.dict + user.history, generadas por el motor libime, guardadas localmente en filesDir/pinyin/)</li>
     <li>✅ <strong>Alertas de suscripción</strong> (notificaciones locales sobre uso)</li>
 </ul>
 
@@ -726,7 +728,7 @@
 
 <ul>
     <li>✅ <strong>Eliminar datos en la nube</strong>: Elimina los datos de suscripción, historial de suscripciones, historial de compras y registros de actividad de Firebase</li>
-    <li>✅ <strong>Eliminar datos de aprendizaje</strong>: Elimina las palabras aprendidas para sugerencias (los 13 idiomas)</li>
+    <li>✅ <strong>Eliminar datos de aprendizaje</strong>: Elimina las palabras aprendidas para sugerencias (los 13 idiomas) y las palabras aprendidas de Pinyin chino (user.dict + user.history)</li>
     <li>✅ <strong>Eliminar todos los datos locales</strong>: Elimina todas las preferencias, datos en el dispositivo, modelos descargados, diccionarios y caché</li>
 </ul>
 
@@ -779,7 +781,7 @@
 <ol>
     <li><strong>Exportar tus datos (JSON)</strong>: Exportación completa de datos locales y en la nube en formato legible por máquina (Art. 15 + Art. 20)</li>
     <li><strong>Eliminar datos en la nube</strong>: Datos de suscripción + historial de suscripciones + historial de compras + registros de actividad (irreversible - requiere cancelación de suscripción si está activa)</li>
-    <li><strong>Eliminar datos de aprendizaje</strong>: Palabras aprendidas (13 idiomas)</li>
+    <li><strong>Eliminar datos de aprendizaje</strong>: Palabras aprendidas (13 idiomas) + palabras aprendidas de Pinyin chino (user.dict + user.history)</li>
     <li><strong>Eliminar todos los datos locales</strong>: Todas las preferencias, modelos descargados, diccionarios, caché (reinicia aplicación)</li>
 </ol>
 

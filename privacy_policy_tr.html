@@ -390,6 +390,8 @@
     <li>✅ <strong>Tahminsel N-gram modelleri</strong> (kullanıcı tarafından indirilir, yerel olarak kaydedilir)</li>
     <li>✅ <strong>Cihaz üzerinde çeviri paketleri</strong> (ML Kit, kullanıcı tarafından indirilir, dil başına ~30 MB, Google Play Services tarafından yönetilir)</li>
     <li>✅ <strong>Hunspell sözlükleri</strong> (kaynaklardan kopyalanır, yerel olarak kaydedilir)</li>
+        <li>✅ <strong>Çince Pinyin veri dosyaları</strong> (sc.dict + zh_CN.lm, kullanıcı tarafından indirildi, yerel olarak filesDir/pinyin/ konumuna kaydedildi)</li>
+        <li>✅ <strong>Çince Pinyin öğrenilen kelimeler</strong> (user.dict + user.history, libime motoru tarafından oluşturuldu, yerel olarak filesDir/pinyin/ konumuna kaydedildi)</li>
     <li>✅ <strong>Abonelik uyarıları</strong> (kullanım hakkında yerel bildirimler)</li>
 </ul>
 
@@ -678,6 +680,16 @@
         <td>"Tüm yerel verileri sil" düğmesi</td>
     </tr>
     <tr>
+        <td><strong>Çince Pinyin veri dosyaları (sc.dict, zh_CN.lm) (Cihaz)</strong></td>
+        <td>Manuel silme veya kaldırmaya kadar</td>
+        <td>"Tüm yerel verileri sil" düğmesi veya Çevrimdışı Modeller ekranından kaldırma</td>
+    </tr>
+    <tr>
+        <td><strong>Çince Pinyin öğrenilen kelimeler (user.dict, user.history) (Cihaz)</strong></td>
+        <td>Manuel silme veya kaldırmaya kadar</td>
+        <td>"Öğrenme verilerini sil" düğmesi veya "Tüm yerel verileri sil" düğmesi</td>
+    </tr>
+    <tr>
         <td><strong>Öğrenilen Kelimeler (Tahmin)</strong></td>
         <td>14 gün (otomatik bozunma)</td>
         <td>Otomatik + manuel silme</td>
@@ -725,7 +737,7 @@
 
 <ul>
     <li>✅ <strong>Bulut verilerini sil</strong>: Firebase'den abonelik verilerini, abonelik geçmişini, satın alma geçmişini ve etkinlik günlüklerini kaldırır</li>
-    <li>✅ <strong>Öğrenme verilerini sil</strong>: Öneriler için öğrenilen kelimeleri kaldırır (tüm 13 dil)</li>
+    <li>✅ <strong>Öğrenme verilerini sil</strong>: Öneriler için öğrenilen kelimeleri kaldırır (tüm 13 dil) ve Çince Pinyin öğrenilen kelimelerini (user.dict + user.history)</li>
     <li>✅ <strong>Tüm yerel verileri sil</strong>: Cihazdaki tüm tercihleri, verileri, indirilen modelleri, sözlükleri ve önbelleği kaldırır</li>
 </ul>
 
@@ -779,7 +791,7 @@
 <ol>
     <li><strong>Verilerinizi dışa aktarın (JSON)</strong>: Yerel ve bulut verilerinin makine tarafından okunabilir formatta tam dışa aktarımı (Mad. 15 + Mad. 20)</li>
     <li><strong>Bulut verilerini sil</strong>: Abonelik verileri + abonelik geçmişi + satın alma geçmişi + etkinlik günlükleri (geri alınamaz - aktif ise abonelik iptali gerekir)</li>
-    <li><strong>Öğrenme verilerini sil</strong>: Öğrenilen kelimeler (13 dil)</li>
+    <li><strong>Öğrenme verilerini sil</strong>: Öğrenilen kelimeler (13 dil) + Çince Pinyin öğrenilen kelimeler (user.dict + user.history)</li>
     <li><strong>Tüm yerel verileri sil</strong>: Tüm tercihler, indirilen modeller, sözlükler, önbellek (uygulamayı yeniden başlatır)</li>
 </ol>
 

@@ -122,6 +122,8 @@
             <td>
                 <ul style="margin: 5px 0; padding-left: 20px;">
                     <li>Dati apprendimento (13 lingue)</li>
+                        <li>Parole apprese Pinyin cinese (user.dict + user.history)</li>
+                        <li>File dati Pinyin cinese (sc.dict + zh_CN.lm)</li>
                     <li>Tutte le preferenze e impostazioni</li>
                     <li>Stato app e associazioni contatto-lingua</li>
                     <li>Alert abbonamento</li>
@@ -368,6 +370,16 @@
             <td>Pulsante "Elimina Tutti i Dati Locali"</td>
         </tr>
         <tr>
+            <td>File dati Pinyin cinese (sc.dict, zh_CN.lm)</td>
+            <td>Locale (dispositivo) — filesDir/pinyin/</td>
+            <td>Pulsante "Elimina Tutti i Dati Locali" o rimozione dalla schermata Modelli Offline</td>
+        </tr>
+        <tr>
+            <td>Parole apprese Pinyin cinese (user.dict, user.history)</td>
+            <td>Locale (dispositivo) — filesDir/pinyin/</td>
+            <td>Pulsante "Elimina Dati Apprendimento" o "Elimina Tutti i Dati Locali"</td>
+        </tr>
+        <tr>
             <td>Cache Vocabolari e Dizionari (in memoria)</td>
             <td>RAM (volatile)</td>
             <td>Pulsante "Elimina Tutti i Dati Locali" oppure chiusura app</td>
@@ -440,7 +452,7 @@
     <p>Sì, ma con una distinzione importante. Se l'abbonamento è ancora <strong>attivo e in rinnovo automatico</strong>, l'app ti reindirizzerà a Google Play per annullarlo prima. Una volta annullato l'abbonamento (grace period), puoi eliminare i dati cloud in qualsiasi momento: l'eliminazione è immediata e comporta la <strong>rinuncia definitiva</strong> al periodo residuo già pagato e al saldo token corrente. Questa scelta è irreversibile. <strong>Attenzione:</strong> la reinstallazione dell'app su un dispositivo completamente nuovo durante il grace period potrebbe comportare la perdita del periodo residuo e del saldo token per motivi di sicurezza. Su dispositivi già registrati, il ripristino avviene automaticamente.</p>
 
     <h3>Cosa succede ai modelli predittivi, ai pacchetti traduzione e ai dizionari scaricati?</h3>
-    <p>Vengono eliminati dal pulsante "Elimina Tutti i Dati Locali". Al successivo utilizzo, i modelli predittivi dovranno essere riscaricati dalla schermata Modelli Offline, i pacchetti traduzione on-device dalla schermata Pacchetti Traduzione, e i dizionari verranno ricopiati automaticamente al primo utilizzo della lingua.</p>
+    <p>Vengono eliminati dal pulsante "Elimina Tutti i Dati Locali". Al successivo utilizzo, i modelli predittivi dovranno essere riscaricati dalla schermata Modelli Offline (inclusi i file dati Pinyin cinese sc.dict e zh_CN.lm), i pacchetti traduzione on-device dalla schermata Pacchetti Traduzione, e i dizionari verranno ricopiati automaticamente al primo utilizzo della lingua. Le parole apprese Pinyin cinese (user.dict + user.history) vengono rimosse anche dal pulsante "Elimina Dati Apprendimento".</p>
     </div>
 
     <div class="card">

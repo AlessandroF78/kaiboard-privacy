@@ -390,6 +390,8 @@
     <li>✅ <strong>N-gram 预测模型</strong>（用户下载，本地保存）</li>
     <li>✅ <strong>设备端翻译包</strong>（ML Kit，由用户下载，每种语言约 30 MB，由 Google Play Services 管理）</li>
     <li>✅ <strong>Hunspell 词典</strong>（从 assets 复制，本地保存）</li>
+        <li>✅ <strong>中文拼音数据文件</strong>（sc.dict + zh_CN.lm，由用户下载，保存在 filesDir/pinyin/）</li>
+        <li>✅ <strong>中文拼音已学词汇</strong>（user.dict + user.history，由 libime 引擎生成，保存在 filesDir/pinyin/）</li>
     <li>✅ <strong>订阅提醒</strong>（关于使用量的本地通知）</li>
 </ul>
 
@@ -666,6 +668,16 @@
         <td>"删除所有本地数据"按钮</td>
     </tr>
     <tr>
+        <td><strong>中文拼音数据文件（sc.dict、zh_CN.lm）（设备）</strong></td>
+        <td>直到手动删除或卸载</td>
+        <td>"删除所有本地数据"按钮或从离线模型界面移除</td>
+    </tr>
+    <tr>
+        <td><strong>中文拼音已学词汇（user.dict、user.history）（设备）</strong></td>
+        <td>直到手动删除或卸载</td>
+        <td>"删除学习数据"按钮或"删除所有本地数据"按钮</td>
+    </tr>
+    <tr>
         <td><strong>已学习的词汇（预测输入）</strong></td>
         <td>14 天（自动衰减）</td>
         <td>自动删除 + 手动删除</td>
@@ -713,7 +725,7 @@
 
 <ul>
     <li>✅ <strong>删除云端数据</strong>：从 Firebase 移除订阅数据、订阅历史记录、购买历史记录和操作日志</li>
-    <li>✅ <strong>删除学习数据</strong>：移除用于输入建议的已学习词汇（全部 13 种语言）</li>
+    <li>✅ <strong>删除学习数据</strong>：移除用于输入建议的已学习词汇（全部 13 种语言）及中文拼音已学词汇（user.dict + user.history）</li>
     <li>✅ <strong>删除所有本地数据</strong>：移除设备上的所有偏好设置、数据、已下载的模型、词典和缓存</li>
 </ul>
 
@@ -767,7 +779,7 @@
 <ol>
     <li><strong>导出您的数据 (JSON)</strong>：以机器可读格式完整导出本地和云端数据（第 15 条 + 第 20 条）</li>
     <li><strong>删除云端数据</strong>：订阅数据 + 订阅历史记录 + 购买历史记录 + 操作日志（不可撤销 - 如有活跃订阅需先取消）</li>
-    <li><strong>删除学习数据</strong>：已学习的词汇（13 种语言）</li>
+    <li><strong>删除学习数据</strong>：已学习的词汇（13 种语言）+ 中文拼音已学词汇（user.dict + user.history）</li>
     <li><strong>删除所有本地数据</strong>：所有偏好设置、已下载的模型、词典、缓存（应用重启）</li>
 </ol>
 

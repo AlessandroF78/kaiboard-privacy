@@ -390,6 +390,8 @@
     <li>✅ <strong>Prädiktive N-Gramm-Modelle</strong> (vom Nutzer heruntergeladen, lokal gespeichert)</li>
     <li>✅ <strong>Übersetzungspakete auf dem Gerät</strong> (ML Kit, vom Benutzer heruntergeladen, ~30 MB pro Sprache, verwaltet von Google Play Services)</li>
     <li>✅ <strong>Hunspell-Wörterbücher</strong> (aus Assets kopiert, lokal gespeichert)</li>
+        <li>✅ <strong>Chinesische Pinyin-Datendateien</strong> (sc.dict + zh_CN.lm, vom Nutzer heruntergeladen, lokal gespeichert in filesDir/pinyin/)</li>
+        <li>✅ <strong>Erlernte Wörter des chinesischen Pinyin</strong> (user.dict + user.history, vom libime-Engine erzeugt, lokal gespeichert in filesDir/pinyin/)</li>
     <li>✅ <strong>Abonnement-Benachrichtigungen</strong> (lokale Benachrichtigungen über Nutzung)</li>
 </ul>
 
@@ -680,6 +682,16 @@
         <td>Schaltfläche „Alle lokalen Daten löschen"</td>
     </tr>
     <tr>
+        <td><strong>Chinesische Pinyin-Datendateien (sc.dict, zh_CN.lm) (Gerät)</strong></td>
+        <td>Bis zur manuellen Löschung oder Deinstallation</td>
+        <td>Schaltfläche „Alle lokalen Daten löschen" oder Entfernung im Bildschirm Offline-Modelle</td>
+    </tr>
+    <tr>
+        <td><strong>Erlernte Wörter des chinesischen Pinyin (user.dict, user.history) (Gerät)</strong></td>
+        <td>Bis zur manuellen Löschung oder Deinstallation</td>
+        <td>Schaltfläche „Lerndaten löschen" oder „Alle lokalen Daten löschen"</td>
+    </tr>
+    <tr>
         <td><strong>Gelernte Wörter (Vorhersage)</strong></td>
         <td>14 Tage (automatischer Verfall)</td>
         <td>Automatisch + manuelle Löschung</td>
@@ -723,7 +735,7 @@
 
 <ul>
     <li>✅ <strong>Cloud-Daten löschen</strong>: Entfernt Abonnementdaten, Abonnement-Historie, Kaufhistorie und Aktivitätsprotokolle aus Firebase</li>
-    <li>✅ <strong>Lerndaten löschen</strong>: Entfernt gelernte Wörter für Vorschläge (alle 13 Sprachen)</li>
+    <li>✅ <strong>Lerndaten löschen</strong>: Entfernt gelernte Wörter für Vorschläge (alle 13 Sprachen) und erlernte Wörter des chinesischen Pinyin (user.dict + user.history)</li>
     <li>✅ <strong>Alle lokalen Daten löschen</strong>: Entfernt alle Einstellungen, Daten auf dem Gerät, heruntergeladene Modelle, Wörterbücher und Cache</li>
 </ul>
 
@@ -777,7 +789,7 @@
 <ol>
     <li><strong>Daten exportieren (JSON)</strong>: Vollständiger Export lokaler und Cloud-Daten im maschinenlesbaren Format (Art. 15 + Art. 20)</li>
     <li><strong>Cloud-Daten löschen</strong>: Abonnementdaten + Abonnement-Historie + Kaufhistorie + Aktivitätsprotokolle (unwiderruflich - erfordert Abonnementkündigung falls aktiv)</li>
-    <li><strong>Lerndaten löschen</strong>: Gelernte Wörter (13 Sprachen)</li>
+    <li><strong>Lerndaten löschen</strong>: Gelernte Wörter (13 Sprachen) + erlernte Wörter des chinesischen Pinyin (user.dict + user.history)</li>
     <li><strong>Alle lokalen Daten löschen</strong>: Alle Einstellungen, heruntergeladene Modelle, Wörterbücher, Cache (startet App neu)</li>
 </ol>
 

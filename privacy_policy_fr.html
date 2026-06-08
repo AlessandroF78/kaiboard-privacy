@@ -390,6 +390,8 @@
     <li>✅ <strong>Modèles prédictifs N-grammes</strong> (téléchargés par l'utilisateur, sauvegardés localement)</li>
     <li>✅ <strong>Paquets de traduction sur l'appareil</strong> (ML Kit, téléchargés par l'utilisateur, ~30 Mo par langue, gérés par Google Play Services)</li>
     <li>✅ <strong>Dictionnaires Hunspell</strong> (copiés depuis les assets, sauvegardés localement)</li>
+        <li>✅ <strong>Fichiers de données Pinyin chinois</strong> (sc.dict + zh_CN.lm, téléchargés par l'utilisateur, enregistrés localement dans filesDir/pinyin/)</li>
+        <li>✅ <strong>Mots appris du Pinyin chinois</strong> (user.dict + user.history, générés par le moteur libime, enregistrés localement dans filesDir/pinyin/)</li>
     <li>✅ <strong>Alertes d'abonnement</strong> (notifications locales sur l'utilisation)</li>
 </ul>
 
@@ -726,7 +728,7 @@
 
 <ul>
     <li>✅ <strong>Supprimer les données cloud</strong> : Supprime les données d'abonnement, l'historique des abonnements, l'historique des achats et les journaux d'activité de Firebase</li>
-    <li>✅ <strong>Supprimer les données d'apprentissage</strong> : Supprime les mots appris pour les suggestions (les 13 langues)</li>
+    <li>✅ <strong>Supprimer les données d'apprentissage</strong> : Supprime les mots appris pour les suggestions (les 13 langues) et les mots appris du Pinyin chinois (user.dict + user.history)</li>
     <li>✅ <strong>Supprimer toutes les données locales</strong> : Supprime toutes les préférences, données sur l'appareil, modèles téléchargés, dictionnaires et cache</li>
 </ul>
 
@@ -781,7 +783,7 @@
 <ol>
     <li><strong>Exporter vos données (JSON)</strong> : Export complet des données locales et cloud au format lisible par machine (Art. 15 + Art. 20)</li>
     <li><strong>Supprimer les données cloud</strong> : Données d'abonnement + historique des abonnements + historique des achats + journaux d'activité (irréversible - nécessite l'annulation de l'abonnement si actif)</li>
-    <li><strong>Supprimer les données d'apprentissage</strong> : Mots appris (13 langues)</li>
+    <li><strong>Supprimer les données d'apprentissage</strong> : Mots appris (13 langues) + mots appris du Pinyin chinois (user.dict + user.history)</li>
     <li><strong>Supprimer toutes les données locales</strong> : Toutes les préférences, modèles téléchargés, dictionnaires, cache (redémarre l'application)</li>
 </ol>
 

@@ -122,6 +122,8 @@
             <td>
                 <ul style="margin: 5px 0; padding-left: 20px;">
                     <li>Données d'apprentissage (13 langues)</li>
+                        <li>Mots appris du Pinyin chinois (user.dict + user.history)</li>
+                        <li>Fichiers de données Pinyin chinois (sc.dict + zh_CN.lm)</li>
                     <li>Toutes les préférences et paramètres</li>
                     <li>État de l'app et affectations contact-langue</li>
                     <li>Alertes d'abonnement</li>
@@ -368,6 +370,16 @@
             <td>Bouton « Supprimer Toutes les Données Locales »</td>
         </tr>
         <tr>
+            <td>Fichiers de données Pinyin chinois (sc.dict, zh_CN.lm)</td>
+            <td>Local (appareil) — filesDir/pinyin/</td>
+            <td>Bouton « Supprimer Toutes les Données Locales » ou suppression depuis l'écran Modèles Hors Ligne</td>
+        </tr>
+        <tr>
+            <td>Mots appris du Pinyin chinois (user.dict, user.history)</td>
+            <td>Local (appareil) — filesDir/pinyin/</td>
+            <td>Bouton « Supprimer les Données d'Apprentissage » ou « Supprimer Toutes les Données Locales »</td>
+        </tr>
+        <tr>
             <td>Cache de Vocabulaires et Dictionnaires (en mémoire)</td>
             <td>RAM (volatile)</td>
             <td>Bouton « Supprimer Toutes les Données Locales » ou fermeture de l'app</td>
@@ -376,6 +388,16 @@
             <td>Cache de l'App (fichiers temporaires, rapports de crash locaux, cache WebView)</td>
             <td>Local (appareil)</td>
             <td>Bouton « Supprimer Toutes les Données Locales »</td>
+        </tr>
+        <tr>
+            <td>Fichiers de données Pinyin chinois (sc.dict, zh_CN.lm)</td>
+            <td>Local (appareil) — filesDir/pinyin/</td>
+            <td>Bouton « Supprimer Toutes les Données Locales » ou suppression depuis l'écran Modèles Hors Ligne</td>
+        </tr>
+        <tr>
+            <td>Mots appris du Pinyin chinois (user.dict, user.history)</td>
+            <td>Local (appareil) — filesDir/pinyin/</td>
+            <td>Bouton « Supprimer les Données d'Apprentissage » ou « Supprimer Toutes les Données Locales »</td>
         </tr>
         <tr>
             <td>Cache de Traduction</td>
@@ -440,7 +462,7 @@
     <p>Oui, mais avec une distinction importante. Si votre abonnement est encore <strong>actif et en renouvellement automatique</strong>, l'application vous redirigera vers Google Play pour l'annuler d'abord. Une fois l'abonnement annulé (période de grâce), vous pouvez supprimer vos données cloud à tout moment : la suppression est immédiate et implique la <strong>renonciation définitive</strong> à la période restante déjà payée et à votre solde de tokens actuel. Ce choix est irréversible. <strong>Attention :</strong> la réinstallation de l'application sur un appareil entièrement nouveau pendant la période de grâce peut entraîner la perte de la période restante et du solde de tokens pour des raisons de sécurité. Sur les appareils déjà enregistrés, la restauration se fait automatiquement.</p>
 
     Qu'advient-il des modèles prédictifs, des paquets de traduction et des dictionnaires téléchargés ?
-    <p>Ils sont supprimés par le bouton « Supprimer Toutes les Données Locales ». Lors de la prochaine utilisation, les modèles prédictifs devront être retéléchargés depuis l'écran Modèles Hors Ligne, les paquets de traduction depuis l'écran Paquets de Traduction, et les dictionnaires seront automatiquement recopiés lors de la première utilisation de la langue.</p>
+    <p>Ils sont supprimés par le bouton « Supprimer Toutes les Données Locales ». Lors de la prochaine utilisation, les modèles prédictifs devront être retéléchargés depuis l'écran Modèles Hors Ligne (y compris les fichiers de données Pinyin chinois sc.dict et zh_CN.lm), les paquets de traduction depuis l'écran Paquets de Traduction, et les dictionnaires seront automatiquement recopiés lors de la première utilisation de la langue. Les mots appris du Pinyin chinois (user.dict + user.history) sont également supprimés par le bouton « Supprimer les Données d'Apprentissage ».</p>
     </div>
 
     <div class="card">

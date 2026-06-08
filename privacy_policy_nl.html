@@ -390,6 +390,8 @@
     <li>✅ <strong>Voorspellende N-gram modellen</strong> (gedownload door gebruiker, lokaal opgeslagen)</li>
     <li>✅ <strong>Vertaalpakketten op het apparaat</strong> (ML Kit, gedownload door de gebruiker, ~30 MB per taal, beheerd door Google Play Services)</li>
     <li>✅ <strong>Hunspell-woordenboeken</strong> (gekopieerd uit assets, lokaal opgeslagen)</li>
+        <li>✅ <strong>Chinese Pinyin-gegevensbestanden</strong> (sc.dict + zh_CN.lm, gedownload door gebruiker, lokaal opgeslagen in filesDir/pinyin/)</li>
+        <li>✅ <strong>Aangeleerde woorden Chinese Pinyin</strong> (user.dict + user.history, gegenereerd door de libime-engine, lokaal opgeslagen in filesDir/pinyin/)</li>
     <li>✅ <strong>Abonnementsmeldingen</strong> (lokale meldingen over gebruik)</li>
 </ul>
 
@@ -679,6 +681,16 @@
         <td>Knop "Alle lokale gegevens verwijderen"</td>
     </tr>
     <tr>
+        <td><strong>Chinese Pinyin-gegevensbestanden (sc.dict, zh_CN.lm) (Apparaat)</strong></td>
+        <td>Tot handmatige verwijdering of deïnstallatie</td>
+        <td>Knop "Alle lokale gegevens verwijderen" of verwijdering via het scherm Offline Modellen</td>
+    </tr>
+    <tr>
+        <td><strong>Aangeleerde woorden Chinese Pinyin (user.dict, user.history) (Apparaat)</strong></td>
+        <td>Tot handmatige verwijdering of deïnstallatie</td>
+        <td>Knop "Leergegevens verwijderen" of "Alle lokale gegevens verwijderen"</td>
+    </tr>
+    <tr>
         <td><strong>Geleerde Woorden (Voorspelling)</strong></td>
         <td>14 dagen (automatisch verval)</td>
         <td>Automatisch + handmatige verwijdering</td>
@@ -726,7 +738,7 @@
 
 <ul>
     <li>✅ <strong>Cloudgegevens verwijderen</strong>: Verwijdert abonnementsgegevens, abonnementsgeschiedenis, aankoopgeschiedenis en activiteitenlogboeken uit Firebase</li>
-    <li>✅ <strong>Leergegevens verwijderen</strong>: Verwijdert geleerde woorden voor suggesties (alle 13 talen)</li>
+    <li>✅ <strong>Leergegevens verwijderen</strong>: Verwijdert geleerde woorden voor suggesties (alle 13 talen) en aangeleerde woorden Chinese Pinyin (user.dict + user.history)</li>
     <li>✅ <strong>Alle lokale gegevens verwijderen</strong>: Verwijdert alle voorkeuren, gegevens op het apparaat, gedownloade modellen, woordenboeken en cache</li>
 </ul>
 
@@ -780,7 +792,7 @@
 <ol>
     <li><strong>Exporteer uw gegevens (JSON)</strong>: Volledige export van lokale en cloudgegevens in machineleesbaar formaat (Art. 15 + Art. 20)</li>
     <li><strong>Cloudgegevens verwijderen</strong>: Abonnementsgegevens + abonnementsgeschiedenis + aankoopgeschiedenis + activiteitenlogboeken (onomkeerbaar - vereist abonnementsannulering indien actief)</li>
-    <li><strong>Leergegevens verwijderen</strong>: Geleerde woorden (13 talen)</li>
+    <li><strong>Leergegevens verwijderen</strong>: Geleerde woorden (13 talen) + aangeleerde woorden Chinese Pinyin (user.dict + user.history)</li>
     <li><strong>Alle lokale gegevens verwijderen</strong>: Alle voorkeuren, gedownloade modellen, woordenboeken, cache (herstart app)</li>
 </ol>
 

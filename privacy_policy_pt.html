@@ -390,6 +390,8 @@
     <li>✅ <strong>Modelos preditivos N-gram</strong> (baixados pelo usuário, salvos localmente)</li>
     <li>✅ <strong>Pacotes de tradução no dispositivo</strong> (ML Kit, transferidos pelo utilizador, ~30 MB por idioma, geridos pelo Google Play Services)</li>
     <li>✅ <strong>Dicionários Hunspell</strong> (copiados dos recursos, salvos localmente)</li>
+        <li>✅ <strong>Ficheiros de dados Pinyin chinês</strong> (sc.dict + zh_CN.lm, transferidos pelo utilizador, guardados localmente em filesDir/pinyin/)</li>
+        <li>✅ <strong>Palavras aprendidas do Pinyin chinês</strong> (user.dict + user.history, geradas pelo motor libime, guardadas localmente em filesDir/pinyin/)</li>
     <li>✅ <strong>Alertas de assinatura</strong> (notificações locais sobre uso)</li>
 </ul>
 
@@ -726,7 +728,7 @@
 
 <ul>
     <li>✅ <strong>Excluir dados na nuvem</strong>: Remove dados de assinatura, histórico de assinaturas, histórico de compras e logs de atividade do Firebase</li>
-    <li>✅ <strong>Excluir dados de aprendizagem</strong>: Remove palavras aprendidas para sugestões (todos os 13 idiomas)</li>
+    <li>✅ <strong>Excluir dados de aprendizagem</strong>: Remove palavras aprendidas para sugestões (todos os 13 idiomas) e palavras aprendidas do Pinyin chinês (user.dict + user.history)</li>
     <li>✅ <strong>Excluir todos os dados locais</strong>: Remove todas as preferências, dados no dispositivo, modelos baixados, dicionários e cache</li>
 </ul>
 
@@ -780,7 +782,7 @@
 <ol>
     <li><strong>Exportar seus dados (JSON)</strong>: Exportação completa de dados locais e na nuvem em formato machine-readable (Art. 15 + Art. 20)</li>
     <li><strong>Excluir dados na nuvem</strong>: Dados de assinatura + histórico de assinaturas + histórico de compras + logs de atividade (irreversível - requer cancelamento da assinatura se ativa)</li>
-    <li><strong>Excluir dados de aprendizagem</strong>: Palavras aprendidas (13 idiomas)</li>
+    <li><strong>Excluir dados de aprendizagem</strong>: Palavras aprendidas (13 idiomas) + palavras aprendidas do Pinyin chinês (user.dict + user.history)</li>
     <li><strong>Excluir todos os dados locais</strong>: Todas as preferências, modelos baixados, dicionários, cache (reinicia aplicativo)</li>
 </ol>
 

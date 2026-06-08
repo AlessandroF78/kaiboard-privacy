@@ -391,6 +391,8 @@
     <li>✅ <strong>Modele predykcyjne N-gram</strong> (pobrane przez użytkownika, zapisane lokalnie)</li>
     <li>✅ <strong>Pakiety tłumaczeń na urządzeniu</strong> (ML Kit, pobrane przez użytkownika, ~30 MB na język, zarządzane przez Google Play Services)</li>
     <li>✅ <strong>Słowniki Hunspell</strong> (skopiowane z zasobów, zapisane lokalnie)</li>
+        <li>✅ <strong>Pliki danych chińskiego Pinyin</strong> (sc.dict + zh_CN.lm, pobrane przez użytkownika, zapisane lokalnie w filesDir/pinyin/)</li>
+        <li>✅ <strong>Wyuczone słowa chińskiego Pinyin</strong> (user.dict + user.history, generowane przez silnik libime, zapisane lokalnie w filesDir/pinyin/)</li>
     <li>✅ <strong>Alerty subskrypcji</strong> (lokalne powiadomienia o użyciu)</li>
 </ul>
 
@@ -680,6 +682,16 @@
         <td>Przycisk "Usuń wszystkie dane lokalne"</td>
     </tr>
     <tr>
+        <td><strong>Pliki danych chińskiego Pinyin (sc.dict, zh_CN.lm) (Urządzenie)</strong></td>
+        <td>Do ręcznego usunięcia lub odinstalowania</td>
+        <td>Przycisk "Usuń wszystkie dane lokalne" lub usunięcie z ekranu Modele Offline</td>
+    </tr>
+    <tr>
+        <td><strong>Wyuczone słowa chińskiego Pinyin (user.dict, user.history) (Urządzenie)</strong></td>
+        <td>Do ręcznego usunięcia lub odinstalowania</td>
+        <td>Przycisk "Usuń dane uczenia" lub "Usuń wszystkie dane lokalne"</td>
+    </tr>
+    <tr>
         <td><strong>Nauczone Słowa (Przewidywanie)</strong></td>
         <td>14 dni (automatyczny zanik)</td>
         <td>Automatyczne + ręczne usuwanie</td>
@@ -727,7 +739,7 @@
 
 <ul>
     <li>✅ <strong>Usuń dane w chmurze</strong>: Usuwa dane subskrypcji, historię subskrypcji, historię zakupów i logi aktywności z Firebase</li>
-    <li>✅ <strong>Usuń dane uczenia</strong>: Usuwa nauczone słowa do sugestii (wszystkie 13 języków)</li>
+    <li>✅ <strong>Usuń dane uczenia</strong>: Usuwa nauczone słowa do sugestii (wszystkie 13 języków) i wyuczone słowa chińskiego Pinyin (user.dict + user.history)</li>
     <li>✅ <strong>Usuń wszystkie dane lokalne</strong>: Usuwa wszystkie preferencje, dane na urządzeniu, pobrane modele, słowniki i pamięć podręczną</li>
 </ul>
 
@@ -781,7 +793,7 @@
 <ol>
     <li><strong>Eksportuj swoje dane (JSON)</strong>: Pełny eksport danych lokalnych i w chmurze w formacie machine-readable (Art. 15 + Art. 20)</li>
     <li><strong>Usuń dane w chmurze</strong>: Dane subskrypcji + historia subskrypcji + historia zakupów + logi aktywności (nieodwracalne - wymaga anulowania subskrypcji jeśli aktywna)</li>
-    <li><strong>Usuń dane uczenia</strong>: Nauczone słowa (13 języków)</li>
+    <li><strong>Usuń dane uczenia</strong>: Nauczone słowa (13 języków) + wyuczone słowa chińskiego Pinyin (user.dict + user.history)</li>
     <li><strong>Usuń wszystkie dane lokalne</strong>: Wszystkie preferencje, pobrane modele, słowniki, pamięć podręczna (restartuje aplikację)</li>
 </ol>
 

@@ -114,7 +114,7 @@
         </tr>
         <tr>
             <td><strong>Öğrenme Verilerini Sil</strong></td>
-            <td>Kişiselleştirilmiş öneriler için öğrenilen kelimeler (tüm 13 dil)</td>
+            <td>Kişiselleştirilmiş öneriler için öğrenilen kelimeler (tüm 13 dil) ve Çince Pinyin öğrenilen kelimeler (user.dict + user.history)</td>
             <td>Tahmin metni sıfırdan başlayacak.</td>
         </tr>
         <tr>
@@ -122,6 +122,8 @@
             <td>
                 <ul style="margin: 5px 0; padding-left: 20px;">
                     <li>Öğrenme verileri (13 dil)</li>
+                        <li>Çince Pinyin öğrenilen kelimeler (user.dict + user.history)</li>
+                        <li>Çince Pinyin veri dosyaları (sc.dict + zh_CN.lm)</li>
                     <li>Tüm tercihler ve ayarlar</li>
                     <li>Uygulama durumu ve kişi-dil atamaları</li>
                     <li>Abonelik uyarıları</li>
@@ -369,6 +371,16 @@
             <td>«Tüm Yerel Verileri Sil» düğmesi</td>
         </tr>
         <tr>
+            <td>Çince Pinyin veri dosyaları (sc.dict, zh_CN.lm)</td>
+            <td>Yerel (cihaz) — filesDir/pinyin/</td>
+            <td>«Tüm Yerel Verileri Sil» düğmesi veya Çevrimdışı Modeller ekranından kaldırma</td>
+        </tr>
+        <tr>
+            <td>Çince Pinyin öğrenilen kelimeler (user.dict, user.history)</td>
+            <td>Yerel (cihaz) — filesDir/pinyin/</td>
+            <td>«Öğrenme Verilerini Sil» düğmesi veya «Tüm Yerel Verileri Sil» düğmesi</td>
+        </tr>
+        <tr>
             <td>Kelime Dağarcığı ve Sözlük Önbelleği (bellekte)</td>
             <td>RAM (geçici)</td>
             <td>«Tüm Yerel Verileri Sil» düğmesi veya uygulama kapatma</td>
@@ -441,7 +453,7 @@
     <p>Evet, ancak önemli bir ayrımla. Aboneliğiniz hâlâ <strong>aktif ve otomatik yenileniyorsa</strong>, uygulama sizi önce iptal etmek için Google Play'e yönlendirir. Abonelik iptal edildikten sonra (ek süre), bulut verilerinizi istediğiniz zaman silebilirsiniz: silme işlemi anında gerçekleşir ve kalan ödenmiş süre ile mevcut token bakiyenizden <strong>kesin olarak feragat etmeniz</strong> anlamına gelir. Bu seçim geri alınamaz. <strong>Uyarı:</strong> ek süre boyunca uygulamanın tamamen yeni bir cihaza yeniden yüklenmesi, güvenlik nedeniyle kalan sürenin ve token bakiyesinin kaybına yol açabilir. Zaten kayıtlı cihazlarda geri yükleme otomatik olarak gerçekleşir.</p>
 
     İndirilen tahmin modelleri, çeviri paketleri ve sözlüklere ne olur?
-    <p>«Tüm Yerel Verileri Sil» düğmesiyle kaldırılırlar. Sonraki kullanımda, tahmin modelleri Çevrimdışı Modeller ekranından, çeviri paketleri Çeviri Paketleri ekranından yeniden indirilmesi gerekecek ve sözlükler dilin ilk kullanımında otomatik olarak yeniden kopyalanacaktır.</p>
+    <p>«Tüm Yerel Verileri Sil» düğmesiyle kaldırılırlar. Sonraki kullanımda, tahmin modelleri Çevrimdışı Modeller ekranından (Çince Pinyin veri dosyaları sc.dict ve zh_CN.lm dahil), çeviri paketleri Çeviri Paketleri ekranından yeniden indirilmesi gerekecek ve sözlükler dilin ilk kullanımında otomatik olarak yeniden kopyalanacaktır. Çince Pinyin öğrenilen kelimeler (user.dict + user.history) ayrıca «Öğrenme Verilerini Sil» düğmesiyle de kaldırılır.</p>
     </div>
 
     <div class="card">

@@ -122,6 +122,8 @@
             <td>
                 <ul style="margin: 5px 0; padding-left: 20px;">
                     <li>Dane uczenia (13 języków)</li>
+                        <li>Wyuczone słowa chińskiego Pinyin (user.dict + user.history)</li>
+                        <li>Pliki danych chińskiego Pinyin (sc.dict + zh_CN.lm)</li>
                     <li>Wszystkie preferencje i ustawienia</li>
                     <li>Stan aplikacji i przypisania kontakt-język</li>
                     <li>Alerty subskrypcji</li>
@@ -369,6 +371,16 @@
             <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
         </tr>
         <tr>
+            <td>Pliki danych chińskiego Pinyin (sc.dict, zh_CN.lm)</td>
+            <td>Lokalne (urządzenie) — filesDir/pinyin/</td>
+            <td>Przycisk „Usuń Wszystkie Dane Lokalne" lub usunięcie z ekranu Modele Offline</td>
+        </tr>
+        <tr>
+            <td>Wyuczone słowa chińskiego Pinyin (user.dict, user.history)</td>
+            <td>Lokalne (urządzenie) — filesDir/pinyin/</td>
+            <td>Przycisk „Usuń Dane Uczenia" lub „Usuń Wszystkie Dane Lokalne"</td>
+        </tr>
+        <tr>
             <td>Pamięć Podręczna Słowników i Vocabulariów (w pamięci)</td>
             <td>RAM (ulotna)</td>
             <td>Przycisk „Usuń Wszystkie Dane Lokalne" lub zamknięcie aplikacji</td>
@@ -377,6 +389,16 @@
             <td>Pamięć Podręczna Aplikacji (pliki tymczasowe, lokalne raporty awarii, pamięć podręczna WebView)</td>
             <td>Lokalnie (urządzenie)</td>
             <td>Przycisk „Usuń Wszystkie Dane Lokalne"</td>
+        </tr>
+        <tr>
+            <td>Pliki danych chińskiego Pinyin (sc.dict, zh_CN.lm)</td>
+            <td>Lokalne (urządzenie) — filesDir/pinyin/</td>
+            <td>Przycisk „Usuń Wszystkie Dane Lokalne" lub usunięcie z ekranu Modele Offline</td>
+        </tr>
+        <tr>
+            <td>Wyuczone słowa chińskiego Pinyin (user.dict, user.history)</td>
+            <td>Lokalne (urządzenie) — filesDir/pinyin/</td>
+            <td>Przycisk „Usuń Dane Uczenia" lub „Usuń Wszystkie Dane Lokalne"</td>
         </tr>
         <tr>
             <td>Pamięć Podręczna Tłumaczeń</td>
@@ -441,7 +463,7 @@
     <p>Tak, ale z ważnym rozróżnieniem. Jeśli subskrypcja jest nadal <strong>aktywna i automatycznie odnawiana</strong>, aplikacja przekieruje Cię najpierw do Google Play w celu jej anulowania. Po anulowaniu subskrypcji (okres karencji) możesz usunąć dane z chmury w dowolnym momencie: usunięcie jest natychmiastowe i oznacza <strong>definitywną rezygnację</strong> z pozostałego opłaconego okresu i bieżącego salda tokenów. Ta decyzja jest nieodwracalna. <strong>Uwaga:</strong> ponowna instalacja aplikacji na zupełnie nowym urządzeniu w okresie karencji może skutkować utratą pozostałego okresu i salda tokenów ze względów bezpieczeństwa. Na już zarejestrowanych urządzeniach przywrócenie następuje automatycznie.</p>
 
     Co się dzieje z pobranymi modelami predykcyjnymi, pakietami tłumaczeń i słownikami?
-    <p>Są usuwane przez przycisk „Usuń Wszystkie Dane Lokalne". Przy następnym użyciu modele predykcyjne będą musiały zostać ponownie pobrane z ekranu Modele Offline, pakiety tłumaczeń z ekranu Pakiety Tłumaczeń, a słowniki zostaną automatycznie skopiowane ponownie przy pierwszym użyciu języka.</p>
+    <p>Są usuwane przez przycisk „Usuń Wszystkie Dane Lokalne". Przy następnym użyciu modele predykcyjne będą musiały zostać ponownie pobrane z ekranu Modele Offline (w tym pliki danych chińskiego Pinyin sc.dict i zh_CN.lm), pakiety tłumaczeń z ekranu Pakiety Tłumaczeń, a słowniki zostaną automatycznie skopiowane ponownie przy pierwszym użyciu języka. Wyuczone słowa chińskiego Pinyin (user.dict + user.history) są również usuwane przez przycisk „Usuń Dane Uczenia".</p>
     </div>
 
     <div class="card">
